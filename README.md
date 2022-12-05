@@ -1,16 +1,11 @@
-# ecg_monitor
+# ECG Monitor
+
+[![GitHub license](https://img.shields.io/github/license/ccxxxi/ecg_monitor)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ccxxxi/ecg_monitor)](https://github.com/CCXXXI/ecg_monitor/commits)
+[![Dart](https://img.shields.io/badge/Dart-0175C2?logo=dart)](https://dart.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter)](https://flutter.dev)
+[![CodeFactor](https://www.codefactor.io/repository/github/ccxxxi/ecg_monitor/badge)](https://www.codefactor.io/repository/github/ccxxxi/ecg_monitor)
+[![codecov](https://codecov.io/gh/CCXXXI/ecg_monitor/branch/main/graph/badge.svg?token=S4lx2P25rr)](https://codecov.io/gh/CCXXXI/ecg_monitor)
+[![GitHub release](https://img.shields.io/github/v/release/ccxxxi/ecg_monitor)](https://github.com/CCXXXI/ecg_monitor/releases)
 
 Yet another electrocardiogram monitor app.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
