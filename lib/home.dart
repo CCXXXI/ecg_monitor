@@ -1,32 +1,35 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "constants.dart";
 
-class HomeView extends StatefulWidget {
+part "home.g.dart";
+
+@riverpod
+class Counter extends _$Counter {
+  @override
+  int build() => 0;
+
+  void increment() {
+    state++;
+  }
+}
+
+class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(counterProvider);
 
-class _HomeViewState extends State<HomeView> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(appName),
       ),
-      body: Center(child: Text("$_counter")),
+      body: Center(child: Text("$value")),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: ref.read(counterProvider.notifier).increment,
         child: const Icon(Icons.add),
       ),
     );
