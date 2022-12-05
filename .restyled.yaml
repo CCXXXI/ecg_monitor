@@ -1,0 +1,7 @@
+commit_template: |
+  style: reformat by ${restyler.name}
+
+restylers:
+  - prettier-markdown:
+      arguments: [ "--prose-wrap", "preserve" ]
+  - "*"
