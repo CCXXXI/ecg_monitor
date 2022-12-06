@@ -1,36 +1,52 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
+import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "constants.dart";
 
 part "home.g.dart";
 
 @riverpod
-class Counter extends _$Counter {
+class _Index extends _$Index {
   @override
   int build() => 0;
 
-  void increment() {
-    state++;
-  }
+  void set(int index) => state = index;
 }
+
+const _pages = [
+  Placeholder(color: Colors.red),
+  Placeholder(color: Colors.green),
+  Placeholder(color: Colors.blue),
+];
 
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final value = ref.watch(counterProvider);
+    final index = ref.watch(_indexProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(appName),
-      ),
-      body: Center(child: Text("$value")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: ref.read(counterProvider.notifier).increment,
-        child: const Icon(Icons.add),
+      body: _pages[index],
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: index,
+        onTap: (index) => ref.read(_indexProvider.notifier).set(index),
+        items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.monitor_heart),
+            title: const Text(Strings.monitor),
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.device_hub),
+            title: const Text(Strings.device),
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.person),
+            title: const Text(Strings.mine),
+          ),
+        ],
       ),
     );
   }
