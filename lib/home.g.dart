@@ -29,19 +29,19 @@ class _SystemHash {
   }
 }
 
-String $CounterHash() => r'd7b735345f36157f0f650bfda814f0d2dc6cd647';
+String $_IndexHash() => r'1a8399ee328692fc6ea55064051535d0e81b089b';
 
-/// See also [Counter].
-final counterProvider = AutoDisposeNotifierProvider<Counter, int>(
-  Counter.new,
-  name: r'counterProvider',
+/// See also [_Index].
+final _indexProvider = AutoDisposeNotifierProvider<_Index, int>(
+  _Index.new,
+  name: r'_indexProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : $CounterHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : $_IndexHash,
 );
 
-typedef CounterRef = AutoDisposeNotifierProviderRef<int>;
+typedef _IndexRef = AutoDisposeNotifierProviderRef<int>;
 
-abstract class _$Counter extends AutoDisposeNotifier<int> {
+abstract class _$Index extends AutoDisposeNotifier<int> {
   @override
   int build();
 }
