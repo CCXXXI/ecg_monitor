@@ -4,6 +4,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "constants.dart";
+import 'device.dart';
 import "monitor.dart";
 
 part "home.g.dart";
@@ -18,8 +19,8 @@ class _Index extends _$Index {
 
 const _pages = [
   MonitorView(),
-  Placeholder(color: Colors.green),
-  Placeholder(color: Colors.blue),
+  Placeholder(),
+  DeviceView(),
   Placeholder(color: Colors.black),
 ];
 
