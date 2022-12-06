@@ -3,6 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
+import "analysis.dart";
 import "constants.dart";
 import "device.dart";
 import "mine.dart";
@@ -20,7 +21,7 @@ class _Index extends _$Index {
 
 const _pages = [
   MonitorView(),
-  Placeholder(),
+  AnalysisView(),
   DeviceView(),
   MineView(),
 ];
