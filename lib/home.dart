@@ -4,6 +4,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "constants.dart";
+import "monitor.dart";
 
 part "home.g.dart";
 
@@ -16,9 +17,10 @@ class _Index extends _$Index {
 }
 
 const _pages = [
-  Placeholder(color: Colors.red),
+  MonitorView(),
   Placeholder(color: Colors.green),
   Placeholder(color: Colors.blue),
+  Placeholder(color: Colors.black),
 ];
 
 class HomeView extends ConsumerWidget {
@@ -29,6 +31,7 @@ class HomeView extends ConsumerWidget {
     final index = ref.watch(_indexProvider);
 
     return Scaffold(
+      appBar: AppBar(title: const Text(Strings.appName)),
       body: _pages[index],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: index,
@@ -37,6 +40,10 @@ class HomeView extends ConsumerWidget {
           SalomonBottomBarItem(
             icon: const Icon(Icons.monitor_heart),
             title: const Text(Strings.monitor),
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.analytics),
+            title: const Text(Strings.analysis),
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.device_hub),
