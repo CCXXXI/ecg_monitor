@@ -14,9 +14,10 @@ class DeviceView extends StatelessWidget {
           color: Colors.greenAccent,
           child: const Center(child: Text("这里放设备图片")),
         ),
+        const Text("设备型号", style: TextStyle(fontSize: 20)),
         ListTile(
           leading: const Icon(Icons.bluetooth_disabled),
-          title: const Text("某型号设备 连接已断开"),
+          title: const Text("蓝牙已断开"),
           trailing: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.refresh),
