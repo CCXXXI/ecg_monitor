@@ -4,8 +4,8 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "constants.dart";
-import 'device.dart';
-import 'mine.dart';
+import "device.dart";
+import "mine.dart";
 import "monitor.dart";
 
 part "home.g.dart";
