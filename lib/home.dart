@@ -5,6 +5,7 @@ import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "constants.dart";
 import 'device.dart';
+import 'mine.dart';
 import "monitor.dart";
 
 part "home.g.dart";
@@ -21,7 +22,7 @@ const _pages = [
   MonitorView(),
   Placeholder(),
   DeviceView(),
-  Placeholder(color: Colors.black),
+  MineView(),
 ];
 
 class HomeView extends ConsumerWidget {
