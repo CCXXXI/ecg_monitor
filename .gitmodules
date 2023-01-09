@@ -1,0 +1,3 @@
+[submodule "ios/Cpp"]
+	path = ios/Cpp
+	url = https://github.com/CCXXXI/ecg_model
