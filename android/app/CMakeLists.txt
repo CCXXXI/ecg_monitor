@@ -5,8 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -Werror")
 
-add_library(ecg_model SHARED ../../ios/Cpp/src/forward.hpp)
-set_target_properties(ecg_model PROPERTIES LINKER_LANGUAGE CXX)
+add_library(ecg_model SHARED ../../ios/Cpp/src/forward.cpp)
 
 set(build_DIR ../../build/app)
 
