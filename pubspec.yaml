@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.18.5 <3.0.0"
 
 dependencies:
+  ffi: ^2.0.1
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.1.1
