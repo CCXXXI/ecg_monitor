@@ -3,8 +3,14 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 
 import "constants.dart";
 import "home.dart";
+import "model.dart";
 
-void main() {
+void main() async {
+  // initializations
+  WidgetsFlutterBinding.ensureInitialized();
+  await loadModel();
+
+  // run app
   runApp(const ProviderScope(child: App()));
 }
 
