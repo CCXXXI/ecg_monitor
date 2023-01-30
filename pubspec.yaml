@@ -17,7 +17,6 @@ dependencies:
   path: ^1.8.2
   path_provider: ^2.0.12
   riverpod_annotation: ^1.0.6
-  salomon_bottom_bar: ^3.3.1
 
 dev_dependencies:
   flutter_test:
