@@ -17,6 +17,7 @@ dependencies:
   path: ^1.8.2
   path_provider: ^2.0.12
   riverpod_annotation: ^1.0.6
+  settings_ui: ^2.0.2
 
 dev_dependencies:
   flutter_test:
