@@ -3,7 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
-import "analysis.dart";
+import "analytics.dart";
 import "constants.dart";
 import "device.dart";
 import "mine/mine.dart";
@@ -21,7 +21,7 @@ class _Index extends _$Index {
 
 const _pages = [
   MonitorView(),
-  AnalysisView(),
+  AnalyticsView(),
   DeviceView(),
   MineView(),
 ];
@@ -46,7 +46,7 @@ class HomeView extends ConsumerWidget {
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.analytics),
-            title: const Text(Strings.analysis),
+            title: const Text(Strings.analytics),
           ),
           SalomonBottomBarItem(
             icon: const Icon(Icons.device_hub),

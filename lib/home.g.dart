@@ -29,16 +29,15 @@ class _SystemHash {
   }
 }
 
-String $_IndexHash() => r'1a8399ee328692fc6ea55064051535d0e81b089b';
+String _$_IndexHash() => r'1a8399ee328692fc6ea55064051535d0e81b089b';
 
 /// See also [_Index].
 final _indexProvider = AutoDisposeNotifierProvider<_Index, int>(
   _Index.new,
   name: r'_indexProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : $_IndexHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$_IndexHash,
 );
-
 typedef _IndexRef = AutoDisposeNotifierProviderRef<int>;
 
 abstract class _$Index extends AutoDisposeNotifier<int> {
