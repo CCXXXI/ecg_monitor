@@ -6,7 +6,7 @@ import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 import "analysis.dart";
 import "constants.dart";
 import "device.dart";
-import "mine.dart";
+import "mine/mine.dart";
 import "monitor.dart";
 
 part "home.g.dart";
