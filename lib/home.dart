@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
-import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
 import "analytics.dart";
 import "constants.dart";
@@ -34,25 +33,26 @@ class HomeView extends ConsumerWidget {
         DeviceView(),
         MineView(),
       ][index],
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: index,
-        onTap: (index) => ref.read(_indexProvider.notifier).set(index),
-        items: [
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.monitor_heart),
-            title: const Text(Strings.monitor),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: index,
+        onDestinationSelected: (index) =>
+            ref.read(_indexProvider.notifier).set(index),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.monitor_heart),
+            label: Strings.monitor,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.analytics),
-            title: const Text(Strings.analytics),
+          NavigationDestination(
+            icon: Icon(Icons.analytics),
+            label: Strings.analytics,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.device_hub),
-            title: const Text(Strings.device),
+          NavigationDestination(
+            icon: Icon(Icons.device_hub),
+            label: Strings.device,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.person),
-            title: const Text(Strings.mine),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            label: Strings.mine,
           ),
         ],
       ),
