@@ -19,3 +19,4 @@ find_library(FBJNI_LIBRARY fbjni
   PATHS ${PYTORCH_LINK_DIRS}
   NO_CMAKE_FIND_ROOT_PATH)
 target_link_libraries(ecg_model ${PYTORCH_LIBRARY} ${FBJNI_LIBRARY})
+target_link_options(ecg_model PUBLIC "-Wl,--no-fatal-warnings")
