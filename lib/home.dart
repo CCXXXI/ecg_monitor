@@ -19,13 +19,6 @@ class _Index extends _$Index {
   void set(int index) => state = index;
 }
 
-const _pages = [
-  MonitorView(),
-  AnalyticsView(),
-  DeviceView(),
-  MineView(),
-];
-
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
@@ -35,7 +28,12 @@ class HomeView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
-      body: _pages[index],
+      body: const [
+        MonitorView(),
+        AnalyticsView(),
+        DeviceView(),
+        MineView(),
+      ][index],
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: index,
         onTap: (index) => ref.read(_indexProvider.notifier).set(index),
