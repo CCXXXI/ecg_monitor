@@ -31,3 +31,4 @@ flutter:
   assets:
     - assets/images/
     - assets/model.pt
+    - assets/debug/
