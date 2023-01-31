@@ -7,4 +7,5 @@ class Strings {
   static const String settings = "设置";
   static const String devTools = "开发者工具";
   static const String modelTest = "模型测试";
+  static const String log = "日志";
 }
