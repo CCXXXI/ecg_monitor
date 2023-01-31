@@ -1,3 +1,6 @@
+import "package:flutter/services.dart";
+import "package:package_info_plus/package_info_plus.dart";
+
 class Strings {
   static const String appName = "心电监测";
   static const String monitor = "实时数据";
@@ -8,6 +11,9 @@ class Strings {
   static const String devTools = "开发者工具";
   static const String modelTest = "模型测试";
   static const String log = "日志";
+  static const String about = "关于";
+  static late final String version;
+  static late final String license;
 }
 
 class Numbers {
@@ -31,4 +37,11 @@ class Numbers {
 
   /// 最高心电 mV
   static const double maxY = 10;
+}
+
+Future<void> initConstants() async {
+  final packageInfo = await PackageInfo.fromPlatform();
+  Strings.version = packageInfo.version;
+
+  Strings.license = await rootBundle.loadString("LICENSE");
 }
