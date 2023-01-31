@@ -3,10 +3,10 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "analytics.dart";
-import "constants.dart";
 import "device.dart";
 import "mine/mine.dart";
 import "monitor.dart";
+import "utils/constants.dart";
 
 part "home.g.dart";
 
