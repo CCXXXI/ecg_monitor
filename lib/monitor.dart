@@ -70,15 +70,15 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
       LineChartData(
+        minY: Numbers.minY,
+        maxY: Numbers.maxY,
+        minX: points.first.x,
+        maxX: points.first.x + Numbers.duration / 1000,
         lineBarsData: [
           LineChartBarData(
             spots: points,
           ),
         ],
-        minY: Numbers.minY,
-        maxY: Numbers.maxY,
-        minX: points.first.x,
-        maxX: points.first.x + Numbers.duration / 1000,
       ),
     );
   }
