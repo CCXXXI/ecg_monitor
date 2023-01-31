@@ -74,8 +74,8 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
       LineChartData(
         minY: Numbers.minY,
         maxY: Numbers.maxY,
-        minX: points.isEmpty ? 0 : points.first.x,
-        maxX: (points.isEmpty ? 0 : points.first.x) + Numbers.duration / 1000,
+        minX: points.isEmpty ? 0 : points.last.x - Numbers.duration / 1000,
+        maxX: points.isEmpty ? 0 : points.last.x,
         clipData: FlClipData.all(),
         titlesData: FlTitlesData(
           topTitles: AxisTitles(
