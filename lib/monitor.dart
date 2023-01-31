@@ -77,6 +77,22 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
         minX: points.isEmpty ? 0 : points.first.x,
         maxX: (points.isEmpty ? 0 : points.first.x) + Numbers.duration / 1000,
         clipData: FlClipData.all(),
+        titlesData: FlTitlesData(
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(
+              reservedSize: 30,
+              showTitles: true,
+              interval: 1,
+            ),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              reservedSize: 30,
+              showTitles: true,
+              interval: 1,
+            ),
+          ),
+        ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
