@@ -9,3 +9,23 @@ class Strings {
   static const String modelTest = "模型测试";
   static const String log = "日志";
 }
+
+class Numbers {
+  /// 采样率 Hz
+  static const int _sampleRate = 250;
+
+  /// 采样周期 ms
+  static const int tick = 1000 ~/ _sampleRate;
+
+  /// 显示时长 ms
+  static const int duration = 10 * 1000;
+
+  /// 显示点数
+  static const int points = duration ~/ tick;
+
+  /// 最低心电 mV
+  static const double minY = -10;
+
+  /// 最高心电 mV
+  static const double maxY = 10;
+}
