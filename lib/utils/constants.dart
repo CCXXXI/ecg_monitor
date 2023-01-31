@@ -18,7 +18,7 @@ class Numbers {
   static const int tick = 1000 ~/ _sampleRate;
 
   /// 显示时长 ms
-  static const int duration = 10 * 1000;
+  static const int duration = 5 * 1000;
 
   /// 显示点数
   static const int points = duration ~/ tick;
