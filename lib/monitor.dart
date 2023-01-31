@@ -77,6 +77,8 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
         lineBarsData: [
           LineChartBarData(
             spots: points,
+            color: Colors.red,
+            dotData: FlDotData(show: false),
           ),
         ],
       ),
