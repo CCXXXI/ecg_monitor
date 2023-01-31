@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home.dart';
+part of 'monitor.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,30 +29,20 @@ class _SystemHash {
   }
 }
 
-String _$_IndexHash() => r'1a8399ee328692fc6ea55064051535d0e81b089b';
+String _$MonitorControllerHash() => r'74fc2fa88fe35a66387b4bc10eb8bef01fc3b05f';
 
-/// See also [_Index].
-final _indexProvider = AutoDisposeNotifierProvider<_Index, int>(
-  _Index.new,
-  name: r'_indexProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$_IndexHash,
-);
-typedef _IndexRef = AutoDisposeNotifierProviderRef<int>;
-
-abstract class _$Index extends AutoDisposeNotifier<int> {
-  @override
-  int build();
-}
-
-String _$_monitorClearHash() => r'70444b26ee37e75d5e7ff19efea7754bdf0b9da2';
-
-/// See also [_monitorClear].
-final _monitorClearProvider = AutoDisposeProvider<void>(
-  _monitorClear,
-  name: r'_monitorClearProvider',
+/// See also [MonitorController].
+final monitorControllerProvider =
+    AutoDisposeNotifierProvider<MonitorController, List<FlSpot>>(
+  MonitorController.new,
+  name: r'monitorControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$_monitorClearHash,
+      : _$MonitorControllerHash,
 );
-typedef _MonitorClearRef = AutoDisposeProviderRef<void>;
+typedef MonitorControllerRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
+
+abstract class _$MonitorController extends AutoDisposeNotifier<List<FlSpot>> {
+  @override
+  List<FlSpot> build();
+}
