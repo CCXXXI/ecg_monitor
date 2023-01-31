@@ -53,7 +53,7 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
       const Duration(milliseconds: Numbers.tick),
       (timer) => ref
           .read(_monitorControllerProvider.notifier)
-          .add(_fakeData[timer.tick % _fakeData.length]),
+          .add(_fakeData[timer.tick * Numbers.interval % _fakeData.length]),
     );
   }
 
@@ -74,6 +74,7 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
         maxY: Numbers.maxY,
         minX: points.first.x,
         maxX: points.first.x + Numbers.duration / 1000,
+        clipData: FlClipData.all(),
         lineBarsData: [
           LineChartBarData(
             spots: points,
