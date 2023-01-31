@@ -18,6 +18,15 @@ class _Index extends _$Index {
   void set(int index) => state = index;
 }
 
+@riverpod
+void _monitorClear(_MonitorClearRef ref) {
+  ref.listen(_indexProvider, (prev, index) {
+    if (index == 0) {
+      ref.read(monitorControllerProvider.notifier).clear();
+    }
+  });
+}
+
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
