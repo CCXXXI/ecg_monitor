@@ -29,19 +29,18 @@ class _SystemHash {
   }
 }
 
-String _$_MonitorControllerHash() =>
-    r'500d6ea204975ffb16955caef50421c685606b0b';
+String _$MonitorControllerHash() => r'74fc2fa88fe35a66387b4bc10eb8bef01fc3b05f';
 
-/// See also [_MonitorController].
-final _monitorControllerProvider =
-    AutoDisposeNotifierProvider<_MonitorController, List<FlSpot>>(
-  _MonitorController.new,
-  name: r'_monitorControllerProvider',
+/// See also [MonitorController].
+final monitorControllerProvider =
+    AutoDisposeNotifierProvider<MonitorController, List<FlSpot>>(
+  MonitorController.new,
+  name: r'monitorControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$_MonitorControllerHash,
+      : _$MonitorControllerHash,
 );
-typedef _MonitorControllerRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
+typedef MonitorControllerRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
 
 abstract class _$MonitorController extends AutoDisposeNotifier<List<FlSpot>> {
   @override
