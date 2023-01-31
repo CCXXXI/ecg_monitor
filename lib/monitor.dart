@@ -23,9 +23,9 @@ Future<void> initMonitor() async {
 }
 
 @riverpod
-class _MonitorController extends _$MonitorController {
+class MonitorController extends _$MonitorController {
   @override
-  List<FlSpot> build() => const [FlSpot(0, 0)];
+  List<FlSpot> build() => const [];
 
   void add(double y) {
     final x = (DateTime.now().millisecondsSinceEpoch - start) / 1000;
@@ -34,6 +34,8 @@ class _MonitorController extends _$MonitorController {
     }
     state = [...state, FlSpot(x, y)];
   }
+
+  void clear() => state = const [];
 }
 
 class MonitorView extends ConsumerStatefulWidget {
@@ -52,7 +54,7 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
     _timer = Timer.periodic(
       const Duration(milliseconds: Numbers.tick),
       (timer) => ref
-          .read(_monitorControllerProvider.notifier)
+          .read(monitorControllerProvider.notifier)
           .add(_fakeData[timer.tick * Numbers.interval % _fakeData.length]),
     );
   }
@@ -65,15 +67,15 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
 
   @override
   Widget build(BuildContext context) {
-    final points = ref.watch(_monitorControllerProvider);
+    final points = ref.watch(monitorControllerProvider);
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
       LineChartData(
         minY: Numbers.minY,
         maxY: Numbers.maxY,
-        minX: points.first.x,
-        maxX: points.first.x + Numbers.duration / 1000,
+        minX: points.isEmpty ? 0 : points.first.x,
+        maxX: (points.isEmpty ? 0 : points.first.x) + Numbers.duration / 1000,
         clipData: FlClipData.all(),
         lineBarsData: [
           LineChartBarData(
