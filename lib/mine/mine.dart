@@ -29,9 +29,11 @@ class MineView extends StatelessWidget {
           title: const Text(Strings.settings),
           onTap: () => context.push("/mine/settings"),
         ),
-        const ListTile(
-          leading: Icon(Icons.info),
-          title: Text("关于"),
+        AboutListTile(
+          icon: const Icon(Icons.info),
+          applicationVersion: Strings.version,
+          applicationLegalese: Strings.license,
+          child: const Text(Strings.about),
         ),
       ],
     );

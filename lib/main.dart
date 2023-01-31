@@ -13,6 +13,7 @@ import "utils/log.dart";
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
+  await initConstants();
   await loadModel();
   await initMonitor();
 

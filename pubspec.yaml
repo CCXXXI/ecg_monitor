@@ -36,3 +36,4 @@ flutter:
     - assets/images/
     - assets/model.pt
     - assets/debug/
+    - LICENSE
