@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 
-import "../constants.dart";
+import "../utils/constants.dart";
 
 class MineView extends StatelessWidget {
   const MineView({super.key});
