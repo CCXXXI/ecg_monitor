@@ -5,17 +5,17 @@ final logConsoleManager = LogConsoleManager(isDark: false);
 final logger = Logger(
   output: MultiOutput(
     [
-      AppOutput(logConsoleManager: logConsoleManager),
+      _AppOutput(logConsoleManager: logConsoleManager),
       ConsoleOutput(),
     ],
   ),
   printer: PrettyPrinter(methodCount: 0),
 );
 
-class AppOutput extends LogOutput {
+class _AppOutput extends LogOutput {
   final LogConsoleManager logConsoleManager;
 
-  AppOutput({required this.logConsoleManager});
+  _AppOutput({required this.logConsoleManager});
 
   @override
   void output(OutputEvent event) {
