@@ -25,6 +25,11 @@ class SettingsView extends StatelessWidget {
                   modelTest();
                 },
               ),
+              SettingsTile.navigation(
+                leading: const Icon(Icons.developer_mode),
+                title: const Text(Strings.log),
+                onPressed: (context) => context.push("/log"),
+              ),
             ],
           )
         ],
