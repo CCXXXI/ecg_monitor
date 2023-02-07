@@ -10,7 +10,7 @@ import "utils/constants.dart";
 
 part "monitor.g.dart";
 
-final start = DateTime.now().millisecondsSinceEpoch;
+final _start = DateTime.now().millisecondsSinceEpoch;
 late final List<double> _fakeData;
 
 Future<void> initMonitor() async {
@@ -23,12 +23,12 @@ Future<void> initMonitor() async {
 }
 
 @riverpod
-class MonitorController extends _$MonitorController {
+class MonitorModel extends _$MonitorModel {
   @override
   List<FlSpot> build() => const [];
 
   void add(double y) {
-    final x = (DateTime.now().millisecondsSinceEpoch - start) / 1000;
+    final x = (DateTime.now().millisecondsSinceEpoch - _start) / 1000;
     if (state.length >= Numbers.points) {
       state.removeAt(0);
     }
@@ -54,7 +54,7 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
     _timer = Timer.periodic(
       const Duration(milliseconds: Numbers.tick),
       (timer) => ref
-          .read(monitorControllerProvider.notifier)
+          .read(monitorModelProvider.notifier)
           .add(_fakeData[timer.tick * Numbers.interval % _fakeData.length]),
     );
   }
@@ -67,7 +67,7 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
 
   @override
   Widget build(BuildContext context) {
-    final points = ref.watch(monitorControllerProvider);
+    final points = ref.watch(monitorModelProvider);
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation

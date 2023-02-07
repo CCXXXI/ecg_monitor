@@ -29,23 +29,23 @@ class _SystemHash {
   }
 }
 
-String _$_IndexHash() => r'1a8399ee328692fc6ea55064051535d0e81b089b';
+String _$_HomeModelHash() => r'ca760783acae059820bffb3db250db2004fee4ff';
 
-/// See also [_Index].
-final _indexProvider = AutoDisposeNotifierProvider<_Index, int>(
-  _Index.new,
-  name: r'_indexProvider',
+/// See also [_HomeModel].
+final _homeModelProvider = AutoDisposeNotifierProvider<_HomeModel, int>(
+  _HomeModel.new,
+  name: r'_homeModelProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$_IndexHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$_HomeModelHash,
 );
-typedef _IndexRef = AutoDisposeNotifierProviderRef<int>;
+typedef _HomeModelRef = AutoDisposeNotifierProviderRef<int>;
 
-abstract class _$Index extends AutoDisposeNotifier<int> {
+abstract class _$HomeModel extends AutoDisposeNotifier<int> {
   @override
   int build();
 }
 
-String _$_monitorClearHash() => r'70444b26ee37e75d5e7ff19efea7754bdf0b9da2';
+String _$_monitorClearHash() => r'1e14b401f46351aaa87c3e97242b93a2ce83fb69';
 
 /// See also [_monitorClear].
 final _monitorClearProvider = AutoDisposeProvider<void>(
