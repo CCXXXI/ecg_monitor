@@ -18,20 +18,11 @@ class Strings {
 }
 
 class Numbers {
-  /// 采样率 Hz
-  static const int _sampleRate = 250;
-
   /// 抽取间隔，每几点取一点
   static const int interval = 4;
 
-  /// 采样周期 ms
-  static const int tick = 1000 ~/ _sampleRate * interval;
-
   /// 显示时长 ms
   static const int duration = 5 * 1000;
-
-  /// 显示点数
-  static const int points = duration ~/ tick;
 
   /// 最低心电 mV
   static const double minY = -10;
