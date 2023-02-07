@@ -29,21 +29,19 @@ class _SystemHash {
   }
 }
 
-String _$SettingsModelHash() => r'd138d555e53235f0785a15aa100f403d20eb149b';
+String _$SettingsHash() => r'32b137879b66eff7ee4619c52ae64afaee789eb0';
 
-/// See also [SettingsModel].
-final settingsModelProvider =
-    AutoDisposeNotifierProvider<SettingsModel, Settings>(
-  SettingsModel.new,
-  name: r'settingsModelProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$SettingsModelHash,
+/// See also [Settings].
+final settingsProvider = AutoDisposeNotifierProvider<Settings, SettingList>(
+  Settings.new,
+  name: r'settingsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$SettingsHash,
 );
 
-typedef SettingsModelRef = AutoDisposeNotifierProviderRef<Settings>;
+typedef SettingsRef = AutoDisposeNotifierProviderRef<SettingList>;
 
-abstract class _$SettingsModel extends AutoDisposeNotifier<Settings> {
+abstract class _$Settings extends AutoDisposeNotifier<SettingList> {
   @override
-  Settings build();
+  SettingList build();
 }
