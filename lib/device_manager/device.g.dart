@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'monitor.dart';
+part of 'device.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,18 +29,14 @@ class _SystemHash {
   }
 }
 
-String _$PointsHash() => r'04d49bea5e61ca93ace1093f69425f51687f65e0';
+String _$deviceHash() => r'e5bbd6b42ffb79a1b3d09439d0e330903d93e753';
 
-/// See also [Points].
-final pointsProvider = AutoDisposeNotifierProvider<Points, List<FlSpot>>(
-  Points.new,
-  name: r'pointsProvider',
+/// See also [device].
+final deviceProvider = AutoDisposeProvider<Device?>(
+  device,
+  name: r'deviceProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$PointsHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$deviceHash,
 );
-typedef PointsRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
 
-abstract class _$Points extends AutoDisposeNotifier<List<FlSpot>> {
-  @override
-  List<FlSpot> build();
-}
+typedef DeviceRef = AutoDisposeProviderRef<Device?>;

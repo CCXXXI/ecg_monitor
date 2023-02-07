@@ -1,30 +1,62 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 
-class DeviceManagerView extends StatelessWidget {
+import "../utils/constants.dart";
+import "device.dart";
+
+class DeviceManagerView extends ConsumerWidget {
   const DeviceManagerView({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final device = ref.watch(deviceProvider);
+
+    if (device == null) {
+      return const Placeholder();
+    }
+
+    final rssi = ref.watch(rssiProvider);
+    final battery = ref.watch(batteryProvider);
+
     return ListView(
       children: [
-        Container(
-          height: 150,
-          width: 150,
-          color: Colors.greenAccent,
-          child: const Center(child: Text("这里放设备图片")),
-        ),
-        const Text("设备型号", style: TextStyle(fontSize: 20)),
         ListTile(
-          leading: const Icon(Icons.bluetooth_disabled),
-          title: const Text("蓝牙已断开"),
-          trailing: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.refresh),
+          leading: const Icon(Icons.device_hub),
+          title: Text(device.name),
+          subtitle: Text(device.model),
+        ),
+        ListTile(
+          leading: const Icon(Icons.bluetooth_connected),
+          title: const Text(Strings.bluetoothConnected),
+          subtitle: rssi.whenOrNull(
+            data: (r) => Text(
+              "${Strings.bluetoothRssi} $r ${Strings.bluetoothRssiUnit}",
+            ),
           ),
         ),
-        const ListTile(
-          leading: Icon(Icons.battery_unknown),
-          title: Text("电量未知"),
+        ListTile(
+          leading: Icon(
+            battery.whenOrNull(
+              loading: () => Icons.battery_unknown,
+              data: (b) => [
+                Icons.battery_0_bar,
+                Icons.battery_1_bar,
+                Icons.battery_2_bar,
+                Icons.battery_3_bar,
+                Icons.battery_4_bar,
+                Icons.battery_5_bar,
+                Icons.battery_6_bar,
+                Icons.battery_full,
+              ][b * 7 ~/ 100],
+            ),
+          ),
+          title: Text(
+            battery.when(
+              loading: () => Strings.batteryUnknown,
+              error: (e, s) => Strings.batteryUnknown,
+              data: (b) => "${Strings.battery} $b%",
+            ),
+          ),
         ),
         const ListTile(
           leading: Icon(Icons.not_interested),

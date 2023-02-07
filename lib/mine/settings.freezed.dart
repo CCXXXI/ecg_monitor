@@ -28,7 +28,6 @@ abstract class $SettingListCopyWith<$Res> {
   factory $SettingListCopyWith(
           SettingList value, $Res Function(SettingList) then) =
       _$SettingListCopyWithImpl<$Res, SettingList>;
-
   @useResult
   $Res call({bool fakeDevice});
 }
@@ -40,7 +39,6 @@ class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -64,7 +62,6 @@ abstract class _$$_SettingListCopyWith<$Res>
   factory _$$_SettingListCopyWith(
           _$_SettingList value, $Res Function(_$_SettingList) then) =
       __$$_SettingListCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({bool fakeDevice});
@@ -129,7 +126,6 @@ abstract class _SettingList implements SettingList {
 
   @override
   bool get fakeDevice;
-
   @override
   @JsonKey(ignore: true)
   _$$_SettingListCopyWith<_$_SettingList> get copyWith =>
