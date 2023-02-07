@@ -44,8 +44,7 @@ class HomeView extends ConsumerWidget {
       ][index],
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
-        onDestinationSelected: (index) =>
-            ref.read(_homeModelProvider.notifier).set(index),
+        onDestinationSelected: ref.read(_homeModelProvider.notifier).set,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.monitor_heart),
