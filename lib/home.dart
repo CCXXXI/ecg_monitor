@@ -11,7 +11,7 @@ import "utils/constants.dart";
 part "home.g.dart";
 
 @riverpod
-class _Index extends _$Index {
+class _HomeModel extends _$HomeModel {
   @override
   int build() => 0;
 
@@ -20,9 +20,9 @@ class _Index extends _$Index {
 
 @riverpod
 void _monitorClear(_MonitorClearRef ref) {
-  ref.listen(_indexProvider, (prev, index) {
+  ref.listen(_homeModelProvider, (prev, index) {
     if (index == 0) {
-      ref.read(monitorControllerProvider.notifier).clear();
+      ref.read(monitorModelProvider.notifier).clear();
     }
   });
 }
@@ -32,7 +32,7 @@ class HomeView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final index = ref.watch(_indexProvider);
+    final index = ref.watch(_homeModelProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
@@ -45,7 +45,7 @@ class HomeView extends ConsumerWidget {
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
         onDestinationSelected: (index) =>
-            ref.read(_indexProvider.notifier).set(index),
+            ref.read(_homeModelProvider.notifier).set(index),
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.monitor_heart),
