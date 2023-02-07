@@ -38,7 +38,6 @@ final _indexProvider = AutoDisposeNotifierProvider<_Index, int>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$_IndexHash,
 );
-
 typedef _IndexRef = AutoDisposeNotifierProviderRef<int>;
 
 abstract class _$Index extends AutoDisposeNotifier<int> {
@@ -46,7 +45,7 @@ abstract class _$Index extends AutoDisposeNotifier<int> {
   int build();
 }
 
-String _$_monitorClearHash() => r'fadbaa99bbe2f5d3a547dcc49f4dd7dd8ef82c35';
+String _$_monitorClearHash() => r'71a284e26e821f4038f73bbb180d20cd6484dac0';
 
 /// See also [_monitorClear].
 final _monitorClearProvider = AutoDisposeProvider<void>(
@@ -56,5 +55,4 @@ final _monitorClearProvider = AutoDisposeProvider<void>(
       ? null
       : _$_monitorClearHash,
 );
-
 typedef _MonitorClearRef = AutoDisposeProviderRef<void>;
