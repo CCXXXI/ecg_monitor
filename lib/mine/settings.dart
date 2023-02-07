@@ -13,16 +13,16 @@ part "settings.freezed.dart";
 part "settings.g.dart";
 
 @freezed
-class Settings with _$Settings {
-  const factory Settings({
+class SettingList with _$SettingList {
+  const factory SettingList({
     required bool fakeDevice,
-  }) = _Settings;
+  }) = _SettingList;
 }
 
 @riverpod
-class SettingsModel extends _$SettingsModel {
+class Settings extends _$Settings {
   @override
-  Settings build() => Settings(
+  SettingList build() => SettingList(
         fakeDevice: prefs.getBool(Strings.fakeDevice) ?? false,
       );
 
@@ -37,7 +37,7 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(settingsModelProvider);
+    final settings = ref.watch(settingsProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.settings)),
@@ -48,8 +48,7 @@ class SettingsView extends ConsumerWidget {
             tiles: [
               SettingsTile.switchTile(
                 initialValue: settings.fakeDevice,
-                onToggle:
-                    ref.read(settingsModelProvider.notifier).setFakeDevice,
+                onToggle: ref.read(settingsProvider.notifier).setFakeDevice,
                 leading: const Icon(Icons.device_hub),
                 title: const Text(Strings.fakeDevice),
               ),

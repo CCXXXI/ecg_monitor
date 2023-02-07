@@ -15,27 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Settings {
+mixin _$SettingList {
   bool get fakeDevice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SettingsCopyWith<Settings> get copyWith =>
+  $SettingListCopyWith<SettingList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SettingsCopyWith<$Res> {
-  factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) =
-      _$SettingsCopyWithImpl<$Res, Settings>;
+abstract class $SettingListCopyWith<$Res> {
+  factory $SettingListCopyWith(
+          SettingList value, $Res Function(SettingList) then) =
+      _$SettingListCopyWithImpl<$Res, SettingList>;
 
   @useResult
   $Res call({bool fakeDevice});
 }
 
 /// @nodoc
-class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
-    implements $SettingsCopyWith<$Res> {
-  _$SettingsCopyWithImpl(this._value, this._then);
+class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
+    implements $SettingListCopyWith<$Res> {
+  _$SettingListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,10 +59,11 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
 }
 
 /// @nodoc
-abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
-  factory _$$_SettingsCopyWith(
-          _$_Settings value, $Res Function(_$_Settings) then) =
-      __$$_SettingsCopyWithImpl<$Res>;
+abstract class _$$_SettingListCopyWith<$Res>
+    implements $SettingListCopyWith<$Res> {
+  factory _$$_SettingListCopyWith(
+          _$_SettingList value, $Res Function(_$_SettingList) then) =
+      __$$_SettingListCopyWithImpl<$Res>;
 
   @override
   @useResult
@@ -69,11 +71,11 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SettingsCopyWithImpl<$Res>
-    extends _$SettingsCopyWithImpl<$Res, _$_Settings>
-    implements _$$_SettingsCopyWith<$Res> {
-  __$$_SettingsCopyWithImpl(
-      _$_Settings _value, $Res Function(_$_Settings) _then)
+class __$$_SettingListCopyWithImpl<$Res>
+    extends _$SettingListCopyWithImpl<$Res, _$_SettingList>
+    implements _$$_SettingListCopyWith<$Res> {
+  __$$_SettingListCopyWithImpl(
+      _$_SettingList _value, $Res Function(_$_SettingList) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -81,7 +83,7 @@ class __$$_SettingsCopyWithImpl<$Res>
   $Res call({
     Object? fakeDevice = null,
   }) {
-    return _then(_$_Settings(
+    return _then(_$_SettingList(
       fakeDevice: null == fakeDevice
           ? _value.fakeDevice
           : fakeDevice // ignore: cast_nullable_to_non_nullable
@@ -92,22 +94,22 @@ class __$$_SettingsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Settings implements _Settings {
-  const _$_Settings({required this.fakeDevice});
+class _$_SettingList implements _SettingList {
+  const _$_SettingList({required this.fakeDevice});
 
   @override
   final bool fakeDevice;
 
   @override
   String toString() {
-    return 'Settings(fakeDevice: $fakeDevice)';
+    return 'SettingList(fakeDevice: $fakeDevice)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Settings &&
+            other is _$_SettingList &&
             (identical(other.fakeDevice, fakeDevice) ||
                 other.fakeDevice == fakeDevice));
   }
@@ -118,18 +120,18 @@ class _$_Settings implements _Settings {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
-      __$$_SettingsCopyWithImpl<_$_Settings>(this, _$identity);
+  _$$_SettingListCopyWith<_$_SettingList> get copyWith =>
+      __$$_SettingListCopyWithImpl<_$_SettingList>(this, _$identity);
 }
 
-abstract class _Settings implements Settings {
-  const factory _Settings({required final bool fakeDevice}) = _$_Settings;
+abstract class _SettingList implements SettingList {
+  const factory _SettingList({required final bool fakeDevice}) = _$_SettingList;
 
   @override
   bool get fakeDevice;
 
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
+  _$$_SettingListCopyWith<_$_SettingList> get copyWith =>
       throw _privateConstructorUsedError;
 }

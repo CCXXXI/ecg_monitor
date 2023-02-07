@@ -29,19 +29,19 @@ class _SystemHash {
   }
 }
 
-String _$MonitorModelHash() => r'734a087464cdb2ac556d4c5a16dd890d5fe1e94c';
+String _$PointsHash() => r'97d5eca436ae90c7de6080c5b3b6e385220547cd';
 
-/// See also [MonitorModel].
-final monitorModelProvider =
-    AutoDisposeNotifierProvider<MonitorModel, List<FlSpot>>(
-  MonitorModel.new,
-  name: r'monitorModelProvider',
+/// See also [Points].
+final pointsProvider = AutoDisposeNotifierProvider<Points, List<FlSpot>>(
+  Points.new,
+  name: r'pointsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$MonitorModelHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$PointsHash,
 );
-typedef MonitorModelRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
 
-abstract class _$MonitorModel extends AutoDisposeNotifier<List<FlSpot>> {
+typedef PointsRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
+
+abstract class _$Points extends AutoDisposeNotifier<List<FlSpot>> {
   @override
   List<FlSpot> build();
 }

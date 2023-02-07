@@ -11,7 +11,7 @@ part "monitor.g.dart";
 final _start = DateTime.now().millisecondsSinceEpoch;
 
 @riverpod
-class MonitorModel extends _$MonitorModel {
+class Points extends _$Points {
   @override
   List<FlSpot> build() => const [];
 
@@ -37,12 +37,12 @@ class _MonitorViewState extends ConsumerState<MonitorView> {
   @override
   void initState() {
     super.initState();
-    device.ecgStream.forEach(ref.read(monitorModelProvider.notifier).add);
+    device.ecgStream.forEach(ref.read(pointsProvider.notifier).add);
   }
 
   @override
   Widget build(BuildContext context) {
-    final points = ref.watch(monitorModelProvider);
+    final points = ref.watch(pointsProvider);
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
