@@ -19,8 +19,8 @@ class Points extends _$Points {
   }
 
   void add(double y) {
-    final x = (DateTime.now().millisecondsSinceEpoch - _start) / 1000;
-    while (state.isNotEmpty && state.first.x < x - Numbers.duration / 1000) {
+    final x = (DateTime.now().millisecondsSinceEpoch - _start).toDouble();
+    while (state.isNotEmpty && state.first.x < x - Numbers.duration) {
       state.removeAt(0);
     }
     state = [...state, FlSpot(x, y)];
@@ -41,24 +41,12 @@ class MonitorView extends ConsumerWidget {
       LineChartData(
         minY: Numbers.minY,
         maxY: Numbers.maxY,
-        minX: points.isEmpty ? 0 : points.last.x - Numbers.duration / 1000,
+        minX: points.isEmpty ? 0 : points.last.x - Numbers.duration,
         maxX: points.isEmpty ? 0 : points.last.x,
         clipData: FlClipData.all(),
         titlesData: FlTitlesData(
-          topTitles: AxisTitles(
-            sideTitles: SideTitles(
-              reservedSize: 30,
-              showTitles: true,
-              interval: 1,
-            ),
-          ),
-          bottomTitles: AxisTitles(
-            sideTitles: SideTitles(
-              reservedSize: 30,
-              showTitles: true,
-              interval: 1,
-            ),
-          ),
+          topTitles: _getTimeAxisTitles(),
+          bottomTitles: _getTimeAxisTitles(),
         ),
         lineBarsData: [
           LineChartBarData(
@@ -67,6 +55,24 @@ class MonitorView extends ConsumerWidget {
             dotData: FlDotData(show: false),
           ),
         ],
+      ),
+    );
+  }
+
+  AxisTitles _getTimeAxisTitles() {
+    return AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 30,
+        interval: Duration.millisecondsPerSecond.toDouble(),
+        getTitlesWidget: (value, meta) => SideTitleWidget(
+          axisSide: meta.axisSide,
+          child: Text(
+            DateTime.fromMillisecondsSinceEpoch(value.toInt())
+                .second
+                .toString(),
+          ),
+        ),
       ),
     );
   }
