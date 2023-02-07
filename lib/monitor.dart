@@ -13,7 +13,10 @@ final _start = DateTime.now().millisecondsSinceEpoch;
 @riverpod
 class Points extends _$Points {
   @override
-  List<FlSpot> build() => const [];
+  List<FlSpot> build() {
+    ref.watch(ecgProvider.stream).forEach(add);
+    return const [];
+  }
 
   void add(double y) {
     final x = (DateTime.now().millisecondsSinceEpoch - _start) / 1000;
@@ -26,22 +29,11 @@ class Points extends _$Points {
   void clear() => state = const [];
 }
 
-class MonitorView extends ConsumerStatefulWidget {
+class MonitorView extends ConsumerWidget {
   const MonitorView({super.key});
 
   @override
-  ConsumerState<MonitorView> createState() => _MonitorViewState();
-}
-
-class _MonitorViewState extends ConsumerState<MonitorView> {
-  @override
-  void initState() {
-    super.initState();
-    device.ecgStream.forEach(ref.read(pointsProvider.notifier).add);
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.watch(pointsProvider);
 
     return LineChart(

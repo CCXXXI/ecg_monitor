@@ -38,7 +38,6 @@ final settingsProvider = AutoDisposeNotifierProvider<Settings, SettingList>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$SettingsHash,
 );
-
 typedef SettingsRef = AutoDisposeNotifierProviderRef<SettingList>;
 
 abstract class _$Settings extends AutoDisposeNotifier<SettingList> {

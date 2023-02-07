@@ -1,20 +1,29 @@
 import "dart:math";
 
 import "package:flutter/services.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:quiver/time.dart";
+import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../mine/settings.dart";
 import "../utils/constants.dart";
 
-abstract class _Device {
+part "device.g.dart";
+
+abstract class Device {
   String get name;
+
+  String get model;
 
   /// Received Signal Strength Indication
   Stream<int> get rssiStream;
 
+  Stream<int> get batteryStream;
+
   Stream<double> get ecgStream;
 }
 
-class _FakeDevice extends _Device {
+class _FakeDevice extends Device {
   /// 采样频率
   static const _sampleRateHz = 250;
 
@@ -29,9 +38,18 @@ class _FakeDevice extends _Device {
   String get name => Strings.fakeDevice;
 
   @override
+  String get model => Strings.fakeDeviceModel;
+
+  @override
   Stream<int> get rssiStream => Stream.periodic(
         aSecond,
         (_) => -32 - _random.nextInt(20),
+      );
+
+  @override
+  Stream<int> get batteryStream => Stream.periodic(
+        aSecond,
+        (_) => 100,
       );
 
   @override
@@ -50,4 +68,22 @@ class _FakeDevice extends _Device {
   }
 }
 
-final device = _FakeDevice();
+@riverpod
+Device? device(DeviceRef ref) {
+  if (ref.watch(settingsProvider.select((s) => s.fakeDevice))) {
+    return _FakeDevice();
+  }
+  return null;
+}
+
+final rssiProvider = StreamProvider.autoDispose<int>(
+  (ref) => ref.watch(deviceProvider)!.rssiStream,
+);
+
+final batteryProvider = StreamProvider.autoDispose<int>(
+  (ref) => ref.watch(deviceProvider)!.batteryStream,
+);
+
+final ecgProvider = StreamProvider.autoDispose<double>(
+  (ref) => ref.watch(deviceProvider)!.ecgStream,
+);
