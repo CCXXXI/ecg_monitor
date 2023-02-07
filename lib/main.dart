@@ -7,7 +7,6 @@ import "database.dart";
 import "home.dart";
 import "mine/settings.dart";
 import "model.dart";
-import "monitor.dart";
 import "utils/constants.dart";
 import "utils/log.dart";
 
@@ -17,7 +16,6 @@ void main() async {
   await initConstants();
   await initPrefs();
   await loadModel();
-  await initMonitor();
 
   // run app
   runApp(const ProviderScope(child: App()));

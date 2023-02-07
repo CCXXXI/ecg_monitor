@@ -1,26 +1,14 @@
-import "dart:async";
-
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "device_manager/device.dart";
 import "utils/constants.dart";
 
 part "monitor.g.dart";
 
 final _start = DateTime.now().millisecondsSinceEpoch;
-late final List<double> _fakeData;
-
-Future<void> initMonitor() async {
-  final s = await rootBundle.loadString("assets/debug/input.txt");
-  _fakeData = s
-      .split("\n")
-      .where((line) => line.isNotEmpty)
-      .map(double.parse)
-      .toList(growable: false);
-}
 
 @riverpod
 class MonitorModel extends _$MonitorModel {
@@ -29,7 +17,7 @@ class MonitorModel extends _$MonitorModel {
 
   void add(double y) {
     final x = (DateTime.now().millisecondsSinceEpoch - _start) / 1000;
-    if (state.length >= Numbers.points) {
+    while (state.isNotEmpty && state.first.x < x - Numbers.duration / 1000) {
       state.removeAt(0);
     }
     state = [...state, FlSpot(x, y)];
@@ -46,23 +34,10 @@ class MonitorView extends ConsumerStatefulWidget {
 }
 
 class _MonitorViewState extends ConsumerState<MonitorView> {
-  late final Timer _timer;
-
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(
-      const Duration(milliseconds: Numbers.tick),
-      (timer) => ref
-          .read(monitorModelProvider.notifier)
-          .add(_fakeData[timer.tick * Numbers.interval % _fakeData.length]),
-    );
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
+    device.ecgStream.forEach(ref.read(monitorModelProvider.notifier).add);
   }
 
   @override
