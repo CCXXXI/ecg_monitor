@@ -38,5 +38,4 @@ final deviceProvider = AutoDisposeProvider<Device?>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$deviceHash,
 );
-
 typedef DeviceRef = AutoDisposeProviderRef<Device?>;

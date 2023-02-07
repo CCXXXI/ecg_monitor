@@ -33,12 +33,6 @@ class Numbers {
 
   /// 显示时长 ms
   static const int duration = 5 * 1000;
-
-  /// 最低心电 mV
-  static const double minY = -10;
-
-  /// 最高心电 mV
-  static const double maxY = 10;
 }
 
 Future<void> initConstants() async {

@@ -35,12 +35,14 @@ class MonitorView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.watch(pointsProvider);
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
       LineChartData(
-        minY: Numbers.minY,
-        maxY: Numbers.maxY,
+        minY: isPortrait ? -10 : null,
+        maxY: isPortrait ? 10 : null,
         minX: points.isEmpty ? 0 : points.last.x - Numbers.duration,
         maxX: points.isEmpty ? 0 : points.last.x,
         clipData: FlClipData.all(),
