@@ -73,7 +73,7 @@ class SettingsView extends ConsumerWidget {
                   min: 1,
                   max: 10,
                   divisions: 9,
-                  label: settings.portraitDuration.toStringAsFixed(0),
+                  label: "${settings.portraitDuration.toStringAsFixed(0)}s",
                 ),
               ),
               SettingsTile(
@@ -88,7 +88,7 @@ class SettingsView extends ConsumerWidget {
                   min: 2,
                   max: 20,
                   divisions: 9,
-                  label: settings.landscapeDuration.toStringAsFixed(0),
+                  label: "${settings.landscapeDuration.toStringAsFixed(0)}s",
                 ),
               ),
             ],
