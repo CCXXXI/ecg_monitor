@@ -5,8 +5,7 @@ class DeviceManagerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return ListView(
       children: [
         Container(
           height: 150,

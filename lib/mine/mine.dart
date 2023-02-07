@@ -8,8 +8,7 @@ class MineView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return ListView(
       children: [
         const ListTile(
           leading: Icon(Icons.person),
