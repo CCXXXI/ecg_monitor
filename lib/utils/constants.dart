@@ -17,6 +17,8 @@ class Strings {
 
   static const String mine = "我的";
   static const String settings = "设置";
+  static const String portraitDuration = "竖屏时长";
+  static const String landscapeDuration = "横屏时长";
   static const String devTools = "开发者工具";
   static const String fakeDevice = "模拟设备";
   static const String fakeDeviceModel = "Fake-Device";
@@ -25,14 +27,6 @@ class Strings {
   static const String about = "关于";
   static late final String version;
   static late final String license;
-}
-
-class Numbers {
-  /// 抽取间隔，每几点取一点
-  static const int interval = 4;
-
-  /// 显示时长 ms
-  static const int duration = 5 * 1000;
 }
 
 Future<void> initConstants() async {
