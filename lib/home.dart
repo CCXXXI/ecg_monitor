@@ -20,8 +20,8 @@ class _Index extends _$Index {
 
 @riverpod
 void _monitorClear(_MonitorClearRef ref) {
-  ref.listen(_indexProvider, (prev, index) {
-    if (index == 0) {
+  ref.listen(_indexProvider, (previous, next) {
+    if (next == 0) {
       ref.read(pointsProvider.notifier).clear();
     }
   });
