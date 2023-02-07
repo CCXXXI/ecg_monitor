@@ -14,6 +14,7 @@ class MineView extends StatelessWidget {
           leading: Icon(Icons.person),
           title: Text("某用户"),
           subtitle: Text("某些信息\n某些信息"),
+          isThreeLine: true,
         ),
         const ListTile(
           leading: Icon(Icons.feedback),
