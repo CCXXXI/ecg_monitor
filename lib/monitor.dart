@@ -4,7 +4,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "device_manager/device.dart";
-import "utils/constants.dart";
+import "mine/settings.dart";
 
 part "monitor.g.dart";
 
@@ -12,6 +12,8 @@ final _start = DateTime.now().millisecondsSinceEpoch;
 
 @riverpod
 class Points extends _$Points {
+  static const _maxDurationMs = 20 * Duration.millisecondsPerSecond;
+
   @override
   List<FlSpot> build() {
     ref.watch(ecgProvider.stream).forEach(add);
@@ -20,7 +22,7 @@ class Points extends _$Points {
 
   void add(double y) {
     final x = (DateTime.now().millisecondsSinceEpoch - _start).toDouble();
-    while (state.isNotEmpty && state.first.x < x - Numbers.duration) {
+    while (state.isNotEmpty && state.first.x < x - _maxDurationMs) {
       state.removeAt(0);
     }
     state = [...state, FlSpot(x, y)];
@@ -37,13 +39,16 @@ class MonitorView extends ConsumerWidget {
     final points = ref.watch(pointsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
+    final durationS = ref.watch(settingsProvider
+        .select((s) => isPortrait ? s.portraitDuration : s.landscapeDuration));
+    final durationMs = durationS * Duration.millisecondsPerSecond;
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
       LineChartData(
         minY: isPortrait ? -10 : null,
         maxY: isPortrait ? 10 : null,
-        minX: points.isEmpty ? 0 : points.last.x - Numbers.duration,
+        minX: points.isEmpty ? 0 : points.last.x - durationMs,
         maxX: points.isEmpty ? 0 : points.last.x,
         clipData: FlClipData.all(),
         titlesData: FlTitlesData(
