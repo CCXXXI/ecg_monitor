@@ -17,9 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingList {
   double get portraitDuration => throw _privateConstructorUsedError;
-
   double get landscapeDuration => throw _privateConstructorUsedError;
-
   bool get fakeDevice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +30,6 @@ abstract class $SettingListCopyWith<$Res> {
   factory $SettingListCopyWith(
           SettingList value, $Res Function(SettingList) then) =
       _$SettingListCopyWithImpl<$Res, SettingList>;
-
   @useResult
   $Res call(
       {double portraitDuration, double landscapeDuration, bool fakeDevice});
@@ -45,7 +42,6 @@ class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -79,7 +75,6 @@ abstract class _$$_SettingListCopyWith<$Res>
   factory _$$_SettingListCopyWith(
           _$_SettingList value, $Res Function(_$_SettingList) then) =
       __$$_SettingListCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -170,13 +165,10 @@ abstract class _SettingList implements SettingList {
 
   @override
   double get portraitDuration;
-
   @override
   double get landscapeDuration;
-
   @override
   bool get fakeDevice;
-
   @override
   @JsonKey(ignore: true)
   _$$_SettingListCopyWith<_$_SettingList> get copyWith =>
