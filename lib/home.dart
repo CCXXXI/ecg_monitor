@@ -3,7 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "analytics.dart";
-import "device.dart";
+import "device_manager/device_manager.dart";
 import "mine/mine.dart";
 import "monitor.dart";
 import "utils/constants.dart";
@@ -39,7 +39,7 @@ class HomeView extends ConsumerWidget {
       body: const [
         MonitorView(),
         AnalyticsView(),
-        DeviceView(),
+        DeviceManagerView(),
         MineView(),
       ][index],
       bottomNavigationBar: NavigationBar(
@@ -57,7 +57,7 @@ class HomeView extends ConsumerWidget {
           ),
           NavigationDestination(
             icon: Icon(Icons.device_hub),
-            label: Strings.device,
+            label: Strings.deviceManager,
           ),
           NavigationDestination(
             icon: Icon(Icons.person),
