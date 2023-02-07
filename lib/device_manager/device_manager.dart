@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class DeviceView extends StatelessWidget {
-  const DeviceView({super.key});
+class DeviceManagerView extends StatelessWidget {
+  const DeviceManagerView({super.key});
 
   @override
   Widget build(BuildContext context) {
