@@ -23,7 +23,7 @@ abstract class Device {
   Stream<double> get ecgStream;
 }
 
-class _FakeDevice extends Device {
+class _FakeDevice implements Device {
   /// 采样频率
   static const _sampleRateHz = 250;
 
