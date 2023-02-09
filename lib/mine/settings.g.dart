@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$SettingsHash() => r'851989241a0b61499fbbc3b4662227411476d38c';
+String _$SettingsHash() => r'f3b37a81b7a78f311c5ebf87338aca62ba6040d7';
 
 /// See also [Settings].
 final settingsProvider = AutoDisposeNotifierProvider<Settings, SettingList>(

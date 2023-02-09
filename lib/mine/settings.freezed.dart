@@ -17,7 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingList {
   double get portraitDuration => throw _privateConstructorUsedError;
+
   double get landscapeDuration => throw _privateConstructorUsedError;
+
+  bool get autoUpload => throw _privateConstructorUsedError;
+
   bool get fakeDevice => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,9 +34,13 @@ abstract class $SettingListCopyWith<$Res> {
   factory $SettingListCopyWith(
           SettingList value, $Res Function(SettingList) then) =
       _$SettingListCopyWithImpl<$Res, SettingList>;
+
   @useResult
   $Res call(
-      {double portraitDuration, double landscapeDuration, bool fakeDevice});
+      {double portraitDuration,
+      double landscapeDuration,
+      bool autoUpload,
+      bool fakeDevice});
 }
 
 /// @nodoc
@@ -42,6 +50,7 @@ class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -50,6 +59,7 @@ class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
+    Object? autoUpload = null,
     Object? fakeDevice = null,
   }) {
     return _then(_value.copyWith(
@@ -61,6 +71,10 @@ class _$SettingListCopyWithImpl<$Res, $Val extends SettingList>
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
               as double,
+      autoUpload: null == autoUpload
+          ? _value.autoUpload
+          : autoUpload // ignore: cast_nullable_to_non_nullable
+              as bool,
       fakeDevice: null == fakeDevice
           ? _value.fakeDevice
           : fakeDevice // ignore: cast_nullable_to_non_nullable
@@ -75,10 +89,14 @@ abstract class _$$_SettingListCopyWith<$Res>
   factory _$$_SettingListCopyWith(
           _$_SettingList value, $Res Function(_$_SettingList) then) =
       __$$_SettingListCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
-      {double portraitDuration, double landscapeDuration, bool fakeDevice});
+      {double portraitDuration,
+      double landscapeDuration,
+      bool autoUpload,
+      bool fakeDevice});
 }
 
 /// @nodoc
@@ -94,6 +112,7 @@ class __$$_SettingListCopyWithImpl<$Res>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
+    Object? autoUpload = null,
     Object? fakeDevice = null,
   }) {
     return _then(_$_SettingList(
@@ -105,6 +124,10 @@ class __$$_SettingListCopyWithImpl<$Res>
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
               as double,
+      autoUpload: null == autoUpload
+          ? _value.autoUpload
+          : autoUpload // ignore: cast_nullable_to_non_nullable
+              as bool,
       fakeDevice: null == fakeDevice
           ? _value.fakeDevice
           : fakeDevice // ignore: cast_nullable_to_non_nullable
@@ -119,6 +142,7 @@ class _$_SettingList implements _SettingList {
   const _$_SettingList(
       {required this.portraitDuration,
       required this.landscapeDuration,
+      required this.autoUpload,
       required this.fakeDevice});
 
   @override
@@ -126,11 +150,13 @@ class _$_SettingList implements _SettingList {
   @override
   final double landscapeDuration;
   @override
+  final bool autoUpload;
+  @override
   final bool fakeDevice;
 
   @override
   String toString() {
-    return 'SettingList(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, fakeDevice: $fakeDevice)';
+    return 'SettingList(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, autoUpload: $autoUpload, fakeDevice: $fakeDevice)';
   }
 
   @override
@@ -142,13 +168,15 @@ class _$_SettingList implements _SettingList {
                 other.portraitDuration == portraitDuration) &&
             (identical(other.landscapeDuration, landscapeDuration) ||
                 other.landscapeDuration == landscapeDuration) &&
+            (identical(other.autoUpload, autoUpload) ||
+                other.autoUpload == autoUpload) &&
             (identical(other.fakeDevice, fakeDevice) ||
                 other.fakeDevice == fakeDevice));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, portraitDuration, landscapeDuration, fakeDevice);
+  int get hashCode => Object.hash(
+      runtimeType, portraitDuration, landscapeDuration, autoUpload, fakeDevice);
 
   @JsonKey(ignore: true)
   @override
@@ -161,14 +189,21 @@ abstract class _SettingList implements SettingList {
   const factory _SettingList(
       {required final double portraitDuration,
       required final double landscapeDuration,
+      required final bool autoUpload,
       required final bool fakeDevice}) = _$_SettingList;
 
   @override
   double get portraitDuration;
+
   @override
   double get landscapeDuration;
+
+  @override
+  bool get autoUpload;
+
   @override
   bool get fakeDevice;
+
   @override
   @JsonKey(ignore: true)
   _$$_SettingListCopyWith<_$_SettingList> get copyWith =>
