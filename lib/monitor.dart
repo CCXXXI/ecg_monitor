@@ -46,7 +46,7 @@ class MonitorView extends ConsumerWidget {
     final intervalMs = getIntervalMs(isPortrait, durationS);
 
     return LineChart(
-      swapAnimationDuration: const Duration(), // disable animation
+      swapAnimationDuration: Duration.zero, // disable animation
       LineChartData(
         minY: isPortrait ? -10 : null,
         maxY: isPortrait ? 10 : null,
