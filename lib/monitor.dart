@@ -50,8 +50,8 @@ class MonitorView extends ConsumerWidget {
       LineChartData(
         minY: isPortrait ? -10 : null,
         maxY: isPortrait ? 10 : null,
-        minX: points.isEmpty ? 0 : points.last.x - durationMs,
-        maxX: points.isEmpty ? 0 : points.last.x,
+        minX: points.isEmpty ? null : points.last.x - durationMs,
+        maxX: points.isEmpty ? null : points.last.x,
         clipData: FlClipData.all(),
         titlesData: FlTitlesData(
           topTitles: _getTimeAxisTitles(intervalMs),
