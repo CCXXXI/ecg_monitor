@@ -39,8 +39,9 @@ class MonitorView extends ConsumerWidget {
     final points = ref.watch(pointsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    final durationS = ref.watch(settingsProvider
-        .select((s) => isPortrait ? s.portraitDuration : s.landscapeDuration));
+    final durationS = ref.watch(
+      isPortrait ? portraitDurationProvider : landscapeDurationProvider,
+    );
     final durationMs = durationS * Duration.millisecondsPerSecond;
 
     return LineChart(
