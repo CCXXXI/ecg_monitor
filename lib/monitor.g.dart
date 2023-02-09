@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$PointsHash() => r'00fab0701f2f7acb8b5316746dbfa74213dd95f0';
+String _$PointsHash() => r'01ba82498f7192940526706b297834fdf6956ba6';
 
 /// See also [Points].
 final pointsProvider = AutoDisposeNotifierProvider<Points, List<FlSpot>>(

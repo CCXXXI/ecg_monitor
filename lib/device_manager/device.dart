@@ -70,7 +70,7 @@ class _FakeDevice extends Device {
 
 @riverpod
 Device? device(DeviceRef ref) {
-  if (ref.watch(settingsProvider.select((s) => s.fakeDevice))) {
+  if (ref.watch(fakeDeviceProvider)) {
     return _FakeDevice();
   }
   return null;

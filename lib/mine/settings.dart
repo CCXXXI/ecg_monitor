@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:freezed_annotation/freezed_annotation.dart";
 import "package:go_router/go_router.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:settings_ui/settings_ui.dart";
@@ -9,48 +8,48 @@ import "../database.dart";
 import "../utils/constants.dart";
 import "model_test.dart";
 
-part "settings.freezed.dart";
 part "settings.g.dart";
 
-@freezed
-class SettingList with _$SettingList {
-  const factory SettingList({
-    required double portraitDuration,
-    required double landscapeDuration,
-    required bool autoUpload,
-    required bool fakeDevice,
-  }) = _SettingList;
+@riverpod
+class PortraitDuration extends _$PortraitDuration {
+  @override
+  double build() => prefs.getDouble(Strings.portraitDuration) ?? 5;
+
+  void set(double value) {
+    state = value;
+    prefs.setDouble(Strings.portraitDuration, value);
+  }
 }
 
 @riverpod
-class Settings extends _$Settings {
+class LandscapeDuration extends _$LandscapeDuration {
   @override
-  SettingList build() {
-    return SettingList(
-      portraitDuration: prefs.getDouble(Strings.portraitDuration) ?? 5,
-      landscapeDuration: prefs.getDouble(Strings.landscapeDuration) ?? 10,
-      autoUpload: prefs.getBool(Strings.autoUpload) ?? true,
-      fakeDevice: prefs.getBool(Strings.fakeDevice) ?? false,
-    );
-  }
+  double build() => prefs.getDouble(Strings.landscapeDuration) ?? 10;
 
-  void setPortraitDuration(double value) {
-    state = state.copyWith(portraitDuration: value);
-    prefs.setDouble(Strings.portraitDuration, value);
-  }
-
-  void setLandscapeDuration(double value) {
-    state = state.copyWith(landscapeDuration: value);
+  void set(double value) {
+    state = value;
     prefs.setDouble(Strings.landscapeDuration, value);
   }
+}
 
-  void setAutoUpload(bool value) {
-    state = state.copyWith(autoUpload: value);
+@riverpod
+class AutoUpload extends _$AutoUpload {
+  @override
+  bool build() => prefs.getBool(Strings.autoUpload) ?? true;
+
+  void set(bool value) {
+    state = value;
     prefs.setBool(Strings.autoUpload, value);
   }
+}
 
-  void setFakeDevice(bool value) {
-    state = state.copyWith(fakeDevice: value);
+@riverpod
+class FakeDevice extends _$FakeDevice {
+  @override
+  bool build() => prefs.getBool(Strings.fakeDevice) ?? false;
+
+  void set(bool value) {
+    state = value;
     prefs.setBool(Strings.fakeDevice, value);
   }
 }
@@ -60,7 +59,13 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(settingsProvider);
+    final portraitDuration = ref.watch(portraitDurationProvider);
+    final landscapeDuration = ref.watch(landscapeDurationProvider);
+    final autoUpload = ref.watch(autoUploadProvider);
+    final fakeDevice = ref.watch(fakeDeviceProvider);
+
+    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
+    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.settings)),
@@ -72,30 +77,27 @@ class SettingsView extends ConsumerWidget {
               SettingsTile(
                 leading: const Icon(Icons.stay_primary_portrait),
                 title: const Text(Strings.portraitDuration),
-                value: Text("${settings.portraitDuration.toStringAsFixed(0)}s"),
+                value: Text(portraitDurationString),
                 trailing: Slider.adaptive(
-                  value: settings.portraitDuration,
-                  onChanged:
-                      ref.read(settingsProvider.notifier).setPortraitDuration,
+                  value: portraitDuration,
+                  onChanged: ref.read(portraitDurationProvider.notifier).set,
                   min: 1,
                   max: 10,
                   divisions: 9,
-                  label: "${settings.portraitDuration.toStringAsFixed(0)}s",
+                  label: portraitDurationString,
                 ),
               ),
               SettingsTile(
                 leading: const Icon(Icons.stay_primary_landscape),
                 title: const Text(Strings.landscapeDuration),
-                value:
-                    Text("${settings.landscapeDuration.toStringAsFixed(0)}s"),
+                value: Text(landscapeDurationString),
                 trailing: Slider.adaptive(
-                  value: settings.landscapeDuration,
-                  onChanged:
-                      ref.read(settingsProvider.notifier).setLandscapeDuration,
+                  value: landscapeDuration,
+                  onChanged: ref.read(landscapeDurationProvider.notifier).set,
                   min: 2,
                   max: 20,
                   divisions: 9,
-                  label: "${settings.landscapeDuration.toStringAsFixed(0)}s",
+                  label: landscapeDurationString,
                 ),
               ),
             ],
@@ -104,8 +106,8 @@ class SettingsView extends ConsumerWidget {
             title: const Text(Strings.analytics),
             tiles: [
               SettingsTile.switchTile(
-                initialValue: settings.autoUpload,
-                onToggle: ref.read(settingsProvider.notifier).setAutoUpload,
+                initialValue: autoUpload,
+                onToggle: ref.read(autoUploadProvider.notifier).set,
                 leading: const Icon(Icons.cloud_upload),
                 title: const Text(Strings.autoUpload),
               ),
@@ -115,8 +117,8 @@ class SettingsView extends ConsumerWidget {
             title: const Text(Strings.devTools),
             tiles: [
               SettingsTile.switchTile(
-                initialValue: settings.fakeDevice,
-                onToggle: ref.read(settingsProvider.notifier).setFakeDevice,
+                initialValue: fakeDevice,
+                onToggle: ref.read(fakeDeviceProvider.notifier).set,
                 leading: const Icon(Icons.device_hub),
                 title: const Text(Strings.fakeDevice),
               ),
