@@ -28,6 +28,9 @@ class Points extends _$Points {
 }
 
 class MonitorView extends ConsumerWidget {
+  static const maxIntervalCountPortrait = 5;
+  static const maxIntervalCountLandscape = 10;
+
   const MonitorView({super.key});
 
   @override
@@ -40,9 +43,7 @@ class MonitorView extends ConsumerWidget {
     );
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
-    final intervalCount = isPortrait ? 5 : 10;
-    final intervalS = (durationS / intervalCount).ceilToDouble();
-    final intervalMs = intervalS * Duration.millisecondsPerSecond;
+    final intervalMs = getIntervalMs(isPortrait, durationS);
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
@@ -65,6 +66,15 @@ class MonitorView extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  @visibleForTesting
+  static double getIntervalMs(bool isPortrait, double durationS) {
+    final intervalCount =
+        isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
+    final intervalS = (durationS / intervalCount).ceilToDouble();
+    final intervalMs = intervalS * Duration.millisecondsPerSecond;
+    return intervalMs;
   }
 
   AxisTitles _getTimeAxisTitles(double interval) {
