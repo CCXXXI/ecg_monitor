@@ -8,8 +8,6 @@ import "mine/settings.dart";
 
 part "monitor.g.dart";
 
-final _start = DateTime.now().millisecondsSinceEpoch;
-
 @riverpod
 class Points extends _$Points {
   static const _maxDurationMs = 20 * Duration.millisecondsPerSecond;
@@ -21,7 +19,7 @@ class Points extends _$Points {
   }
 
   void add(double y) {
-    final x = (DateTime.now().millisecondsSinceEpoch - _start).toDouble();
+    final x = DateTime.now().millisecondsSinceEpoch.toDouble();
     while (state.isNotEmpty && state.first.x < x - _maxDurationMs) {
       state.removeAt(0);
     }
@@ -74,12 +72,16 @@ class MonitorView extends ConsumerWidget {
         getTitlesWidget: (value, meta) => SideTitleWidget(
           axisSide: meta.axisSide,
           child: Text(
-            DateTime.fromMillisecondsSinceEpoch(value.toInt())
-                .second
-                .toString(),
+            DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
           ),
         ),
       ),
     );
   }
+}
+
+extension on DateTime {
+  String toTimeString() => "${hour.toString().padLeft(2, "0")}"
+      ":${minute.toString().padLeft(2, "0")}"
+      ":${second.toString().padLeft(2, "0")}";
 }
