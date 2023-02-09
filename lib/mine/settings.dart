@@ -17,6 +17,7 @@ class SettingList with _$SettingList {
   const factory SettingList({
     required double portraitDuration,
     required double landscapeDuration,
+    required bool autoUpload,
     required bool fakeDevice,
   }) = _SettingList;
 }
@@ -28,6 +29,7 @@ class Settings extends _$Settings {
     return SettingList(
       portraitDuration: prefs.getDouble(Strings.portraitDuration) ?? 5,
       landscapeDuration: prefs.getDouble(Strings.landscapeDuration) ?? 10,
+      autoUpload: prefs.getBool(Strings.autoUpload) ?? true,
       fakeDevice: prefs.getBool(Strings.fakeDevice) ?? false,
     );
   }
@@ -40,6 +42,11 @@ class Settings extends _$Settings {
   void setLandscapeDuration(double value) {
     state = state.copyWith(landscapeDuration: value);
     prefs.setDouble(Strings.landscapeDuration, value);
+  }
+
+  void setAutoUpload(bool value) {
+    state = state.copyWith(autoUpload: value);
+    prefs.setBool(Strings.autoUpload, value);
   }
 
   void setFakeDevice(bool value) {
@@ -90,6 +97,17 @@ class SettingsView extends ConsumerWidget {
                   divisions: 9,
                   label: "${settings.landscapeDuration.toStringAsFixed(0)}s",
                 ),
+              ),
+            ],
+          ),
+          SettingsSection(
+            title: const Text(Strings.analytics),
+            tiles: [
+              SettingsTile.switchTile(
+                initialValue: settings.autoUpload,
+                onToggle: ref.read(settingsProvider.notifier).setAutoUpload,
+                leading: const Icon(Icons.cloud_upload),
+                title: const Text(Strings.autoUpload),
               ),
             ],
           ),

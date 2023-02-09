@@ -19,6 +19,7 @@ class Strings {
   static const String settings = "设置";
   static const String portraitDuration = "竖屏时长";
   static const String landscapeDuration = "横屏时长";
+  static const String autoUpload = "自动上传";
   static const String devTools = "开发者工具";
   static const String fakeDevice = "模拟设备";
   static const String fakeDeviceModel = "Fake-Device";
