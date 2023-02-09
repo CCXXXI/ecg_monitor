@@ -27,8 +27,6 @@ class Points extends _$Points {
     }
     state = [...state, FlSpot(x, y)];
   }
-
-  void clear() => state = const [];
 }
 
 class MonitorView extends ConsumerWidget {

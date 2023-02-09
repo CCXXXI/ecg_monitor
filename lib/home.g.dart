@@ -44,15 +44,3 @@ abstract class _$Index extends AutoDisposeNotifier<int> {
   @override
   int build();
 }
-
-String _$_monitorClearHash() => r'71a284e26e821f4038f73bbb180d20cd6484dac0';
-
-/// See also [_monitorClear].
-final _monitorClearProvider = AutoDisposeProvider<void>(
-  _monitorClear,
-  name: r'_monitorClearProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$_monitorClearHash,
-);
-typedef _MonitorClearRef = AutoDisposeProviderRef<void>;

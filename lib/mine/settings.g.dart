@@ -40,7 +40,6 @@ final portraitDurationProvider =
       ? null
       : _$PortraitDurationHash,
 );
-
 typedef PortraitDurationRef = AutoDisposeNotifierProviderRef<double>;
 
 abstract class _$PortraitDuration extends AutoDisposeNotifier<double> {
@@ -59,7 +58,6 @@ final landscapeDurationProvider =
       ? null
       : _$LandscapeDurationHash,
 );
-
 typedef LandscapeDurationRef = AutoDisposeNotifierProviderRef<double>;
 
 abstract class _$LandscapeDuration extends AutoDisposeNotifier<double> {
@@ -76,7 +74,6 @@ final autoUploadProvider = AutoDisposeNotifierProvider<AutoUpload, bool>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$AutoUploadHash,
 );
-
 typedef AutoUploadRef = AutoDisposeNotifierProviderRef<bool>;
 
 abstract class _$AutoUpload extends AutoDisposeNotifier<bool> {
@@ -93,7 +90,6 @@ final fakeDeviceProvider = AutoDisposeNotifierProvider<FakeDevice, bool>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$FakeDeviceHash,
 );
-
 typedef FakeDeviceRef = AutoDisposeNotifierProviderRef<bool>;
 
 abstract class _$FakeDevice extends AutoDisposeNotifier<bool> {

@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$deviceHash() => r'e5bbd6b42ffb79a1b3d09439d0e330903d93e753';
+String _$deviceHash() => r'ea3792c80cf0a6028118bd5bb0dffe4d80304bac';
 
 /// See also [device].
 final deviceProvider = AutoDisposeProvider<Device?>(
