@@ -38,7 +38,11 @@ class MonitorView extends ConsumerWidget {
     final durationS = ref.watch(
       isPortrait ? portraitDurationProvider : landscapeDurationProvider,
     );
+
     final durationMs = durationS * Duration.millisecondsPerSecond;
+    final intervalCount = isPortrait ? 5 : 10;
+    final intervalS = (durationS / intervalCount).ceilToDouble();
+    final intervalMs = intervalS * Duration.millisecondsPerSecond;
 
     return LineChart(
       swapAnimationDuration: const Duration(), // disable animation
@@ -49,8 +53,8 @@ class MonitorView extends ConsumerWidget {
         maxX: points.isEmpty ? 0 : points.last.x,
         clipData: FlClipData.all(),
         titlesData: FlTitlesData(
-          topTitles: _getTimeAxisTitles(),
-          bottomTitles: _getTimeAxisTitles(),
+          topTitles: _getTimeAxisTitles(intervalMs),
+          bottomTitles: _getTimeAxisTitles(intervalMs),
         ),
         lineBarsData: [
           LineChartBarData(
@@ -63,12 +67,12 @@ class MonitorView extends ConsumerWidget {
     );
   }
 
-  AxisTitles _getTimeAxisTitles() {
+  AxisTitles _getTimeAxisTitles(double interval) {
     return AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,
         reservedSize: 30,
-        interval: Duration.millisecondsPerSecond.toDouble(),
+        interval: interval,
         getTitlesWidget: (value, meta) => SideTitleWidget(
           axisSide: meta.axisSide,
           child: Text(
