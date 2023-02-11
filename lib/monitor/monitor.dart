@@ -9,7 +9,7 @@ import "../mine/settings.dart";
 part "monitor.g.dart";
 
 @riverpod
-class Points extends _$Points {
+class _Points extends _$Points {
   static const _maxDurationMs = 20 * Duration.millisecondsPerSecond;
 
   @override
@@ -35,7 +35,7 @@ class MonitorView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final points = ref.watch(pointsProvider);
+    final points = ref.watch(_pointsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     final durationS = ref.watch(

@@ -29,16 +29,16 @@ class _SystemHash {
   }
 }
 
-String _$PointsHash() => r'f6dd3c1c61f2ab25d737c1fbc46acedb81fcdf0f';
+String _$_PointsHash() => r'23bb500a57e9f9e0ba9f0bb614da9390f5e1a597';
 
-/// See also [Points].
-final pointsProvider = AutoDisposeNotifierProvider<Points, List<FlSpot>>(
-  Points.new,
-  name: r'pointsProvider',
+/// See also [_Points].
+final _pointsProvider = AutoDisposeNotifierProvider<_Points, List<FlSpot>>(
+  _Points.new,
+  name: r'_pointsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$PointsHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$_PointsHash,
 );
-typedef PointsRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
+typedef _PointsRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
 
 abstract class _$Points extends AutoDisposeNotifier<List<FlSpot>> {
   @override
