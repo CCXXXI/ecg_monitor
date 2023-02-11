@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "device_manager/device.dart";
-import "mine/settings.dart";
+import "../device_manager/device.dart";
+import "../mine/settings.dart";
 
 part "monitor.g.dart";
 

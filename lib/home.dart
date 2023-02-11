@@ -5,7 +5,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "analytics.dart";
 import "device_manager/device_manager.dart";
 import "mine/mine.dart";
-import "monitor.dart";
+import "monitor/monitor.dart";
 import "utils/constants.dart";
 
 part "home.g.dart";

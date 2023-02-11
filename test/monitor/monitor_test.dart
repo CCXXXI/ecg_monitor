@@ -1,4 +1,4 @@
-import "package:ecg_monitor/monitor.dart";
+import "package:ecg_monitor/monitor/monitor.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
