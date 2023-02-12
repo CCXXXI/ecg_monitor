@@ -1,11 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:go_router/go_router.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "analytics.dart";
-import "device_manager/device_manager.dart";
-import "mine/mine.dart";
-import "monitor/monitor.dart";
 import "utils/constants.dart";
 
 part "home.g.dart";
@@ -19,7 +16,9 @@ class _Index extends _$Index {
 }
 
 class Home extends ConsumerWidget {
-  const Home({super.key});
+  final Widget _child;
+
+  const Home(this._child, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,15 +26,13 @@ class Home extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
-      body: const [
-        Monitor(),
-        Analytics(),
-        DeviceManager(),
-        Mine(),
-      ][index],
+      body: _child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
-        onDestinationSelected: ref.read(_indexProvider.notifier).set,
+        onDestinationSelected: (i) {
+          ref.read(_indexProvider.notifier).set(i);
+          context.go(["/monitor", "/analytics", "/device_manager", "/mine"][i]);
+        },
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.monitor_heart),
