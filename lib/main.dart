@@ -25,11 +25,11 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: "/",
-      builder: (context, state) => const HomeView(),
+      builder: (context, state) => const Home(),
     ),
     GoRoute(
       path: "/mine/settings",
-      builder: (context, state) => const SettingsView(),
+      builder: (context, state) => const Settings(),
     ),
     GoRoute(
       path: "/log",

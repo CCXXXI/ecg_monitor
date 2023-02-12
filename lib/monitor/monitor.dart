@@ -27,11 +27,11 @@ class _Points extends _$Points {
   }
 }
 
-class MonitorView extends ConsumerWidget {
+class Monitor extends ConsumerWidget {
   static const maxIntervalCountPortrait = 5;
   static const maxIntervalCountLandscape = 10;
 
-  const MonitorView({super.key});
+  const Monitor({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

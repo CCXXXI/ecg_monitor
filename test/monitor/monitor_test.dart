@@ -4,9 +4,9 @@ import "package:flutter_test/flutter_test.dart";
 void main() {
   group("getIntervalMs", () {
     test("portrait", () {
-      f(double durationS) => MonitorView.getIntervalMs(true, durationS);
+      f(double durationS) => Monitor.getIntervalMs(true, durationS);
 
-      const maxIntervalCount = MonitorView.maxIntervalCountPortrait;
+      const maxIntervalCount = Monitor.maxIntervalCountPortrait;
 
       for (double i = 1; i <= maxIntervalCount; ++i) {
         expect(f(i), 1000);
@@ -17,9 +17,9 @@ void main() {
       }
     });
     test("landscape", () {
-      f(double durationS) => MonitorView.getIntervalMs(false, durationS);
+      f(double durationS) => Monitor.getIntervalMs(false, durationS);
 
-      const maxIntervalCount = MonitorView.maxIntervalCountLandscape;
+      const maxIntervalCount = Monitor.maxIntervalCountLandscape;
 
       for (double i = 1; i <= maxIntervalCount; ++i) {
         expect(f(i), 1000);

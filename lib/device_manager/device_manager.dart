@@ -4,8 +4,8 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "../utils/constants.dart";
 import "device.dart";
 
-class DeviceManagerView extends ConsumerWidget {
-  const DeviceManagerView({super.key});
+class DeviceManager extends ConsumerWidget {
+  const DeviceManager({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

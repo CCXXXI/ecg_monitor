@@ -54,8 +54,8 @@ class FakeDevice extends _$FakeDevice {
   }
 }
 
-class SettingsView extends ConsumerWidget {
-  const SettingsView({super.key});
+class Settings extends ConsumerWidget {
+  const Settings({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
