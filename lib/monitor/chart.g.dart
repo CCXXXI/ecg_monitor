@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'monitor.dart';
+part of 'chart.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -38,6 +38,7 @@ final _pointsProvider = AutoDisposeNotifierProvider<_Points, List<FlSpot>>(
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$_PointsHash,
 );
+
 typedef _PointsRef = AutoDisposeNotifierProviderRef<List<FlSpot>>;
 
 abstract class _$Points extends AutoDisposeNotifier<List<FlSpot>> {
