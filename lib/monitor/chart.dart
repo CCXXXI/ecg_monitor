@@ -6,7 +6,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "../device_manager/device.dart";
 import "../mine/settings.dart";
 
-part "monitor.g.dart";
+part "chart.g.dart";
 
 @riverpod
 class _Points extends _$Points {
@@ -27,11 +27,11 @@ class _Points extends _$Points {
   }
 }
 
-class Monitor extends ConsumerWidget {
+class Chart extends ConsumerWidget {
   static const maxIntervalCountPortrait = 5;
   static const maxIntervalCountLandscape = 10;
 
-  const Monitor({super.key});
+  const Chart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

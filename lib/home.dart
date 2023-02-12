@@ -5,7 +5,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "analytics.dart";
 import "device_manager/device_manager.dart";
 import "mine/mine.dart";
-import "monitor/monitor.dart";
+import "monitor/chart.dart";
 import "utils/constants.dart";
 
 part "home.g.dart";
@@ -28,7 +28,7 @@ class Home extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
       body: const [
-        Monitor(),
+        Chart(),
         Analytics(),
         DeviceManager(),
         Mine(),
