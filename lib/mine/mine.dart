@@ -3,8 +3,8 @@ import "package:go_router/go_router.dart";
 
 import "../utils/constants.dart";
 
-class MineView extends StatelessWidget {
-  const MineView({super.key});
+class Mine extends StatelessWidget {
+  const Mine({super.key});
 
   @override
   Widget build(BuildContext context) {

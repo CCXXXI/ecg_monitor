@@ -18,8 +18,8 @@ class _Index extends _$Index {
   void set(int index) => state = index;
 }
 
-class HomeView extends ConsumerWidget {
-  const HomeView({super.key});
+class Home extends ConsumerWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,10 +28,10 @@ class HomeView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
       body: const [
-        MonitorView(),
-        AnalyticsView(),
-        DeviceManagerView(),
-        MineView(),
+        Monitor(),
+        Analytics(),
+        DeviceManager(),
+        Mine(),
       ][index],
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
