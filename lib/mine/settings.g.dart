@@ -68,6 +68,20 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 );
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
+String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
+
+/// See also [ShowDots].
+@ProviderFor(ShowDots)
+final showDotsProvider = AutoDisposeNotifierProvider<ShowDots, bool>.internal(
+  ShowDots.new,
+  name: r'showDotsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$showDotsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$ShowDots = AutoDisposeNotifier<bool>;
 String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
 
 /// See also [AutoUpload].
