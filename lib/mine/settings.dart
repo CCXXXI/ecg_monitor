@@ -57,6 +57,17 @@ class LineColor extends _$LineColor {
 }
 
 @riverpod
+class ShowDots extends _$ShowDots {
+  @override
+  bool build() => prefs.getBool(Strings.showDots) ?? false;
+
+  void set(bool value) {
+    state = value;
+    prefs.setBool(Strings.showDots, value);
+  }
+}
+
+@riverpod
 class AutoUpload extends _$AutoUpload {
   @override
   bool build() => prefs.getBool(Strings.autoUpload) ?? true;
@@ -105,6 +116,7 @@ class Settings extends ConsumerWidget {
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
     final backgroundColor = Color(backgroundColorHex);
     final lineColor = Color(lineColorHex);
+    final showDots = ref.watch(showDotsProvider);
 
     // analytics settings
     final autoUpload = ref.watch(autoUploadProvider);
@@ -166,6 +178,12 @@ class Settings extends ConsumerWidget {
                     .read(lineColorProvider.notifier)
                     .set(await _pickColor(context, lineColor)),
               ),
+              SettingsTile.switchTile(
+                initialValue: showDots,
+                onToggle: ref.read(showDotsProvider.notifier).set,
+                leading: const Icon(Icons.linear_scale),
+                title: const Text(Strings.showDots),
+              )
             ],
           ),
           SettingsSection(
