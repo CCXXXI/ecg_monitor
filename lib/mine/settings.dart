@@ -1,3 +1,4 @@
+import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
@@ -30,6 +31,17 @@ class LandscapeDuration extends _$LandscapeDuration {
   void set(double value) {
     state = value;
     prefs.setDouble(Strings.landscapeDuration, value);
+  }
+}
+
+@riverpod
+class BackgroundColor extends _$BackgroundColor {
+  @override
+  int build() => prefs.getInt(Strings.backgroundColor) ?? Colors.white.value;
+
+  void set(int value) {
+    state = value;
+    prefs.setInt(Strings.backgroundColor, value);
   }
 }
 
@@ -72,15 +84,23 @@ class Settings extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // monitor settings
     final portraitDuration = ref.watch(portraitDurationProvider);
     final landscapeDuration = ref.watch(landscapeDurationProvider);
-    final autoUpload = ref.watch(autoUploadProvider);
-    final fakeDevice = ref.watch(fakeDeviceProvider);
-    final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
-    final loggerLevelName = loggerLevels[loggerLevelIndex].name;
+    final backgroundColorHex = ref.watch(backgroundColorProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
+    final backgroundColor = Color(backgroundColorHex);
+
+    // analytics settings
+    final autoUpload = ref.watch(autoUploadProvider);
+
+    // devTools settings
+    final fakeDevice = ref.watch(fakeDeviceProvider);
+    final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
+
+    final loggerLevelName = loggerLevels[loggerLevelIndex].name;
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.settings)),
@@ -114,6 +134,15 @@ class Settings extends ConsumerWidget {
                   divisions: 9,
                   label: landscapeDurationString,
                 ),
+              ),
+              SettingsTile(
+                leading: const Icon(Icons.color_lens),
+                title: const Text(Strings.backgroundColor),
+                value: Text("0x${backgroundColor.hex}"),
+                trailing: ColorIndicator(color: backgroundColor),
+                onPressed: (context) async => ref
+                    .read(backgroundColorProvider.notifier)
+                    .set(await _pickColor(context, backgroundColor)),
               ),
             ],
           ),
@@ -162,5 +191,20 @@ class Settings extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<int> _pickColor(BuildContext context, Color initialColor) async {
+    final color = await showColorPickerDialog(
+      context,
+      initialColor,
+      enableShadesSelection: false,
+      enableTonalPalette: true,
+      pickersEnabled: {
+        ColorPickerType.accent: false,
+        ColorPickerType.primary: false,
+        ColorPickerType.wheel: true,
+      },
+    );
+    return color.value;
   }
 }

@@ -41,6 +41,7 @@ class Chart extends ConsumerWidget {
     final durationS = ref.watch(
       isPortrait ? portraitDurationProvider : landscapeDurationProvider,
     );
+    final backgroundColor = ref.watch(backgroundColorProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
@@ -51,6 +52,7 @@ class Chart extends ConsumerWidget {
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
+        backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(
           topTitles: _getTimeAxisTitles(intervalMs),
           bottomTitles: _getTimeAxisTitles(intervalMs),
