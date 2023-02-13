@@ -6,93 +6,66 @@ part of 'settings.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
-
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-String _$PortraitDurationHash() => r'90bc4c7a674771c36e31367573bc1455979fb61a';
+String _$portraitDurationHash() => r'90bc4c7a674771c36e31367573bc1455979fb61a';
 
 /// See also [PortraitDuration].
+@ProviderFor(PortraitDuration)
 final portraitDurationProvider =
-    AutoDisposeNotifierProvider<PortraitDuration, double>(
+    AutoDisposeNotifierProvider<PortraitDuration, double>.internal(
   PortraitDuration.new,
   name: r'portraitDurationProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$PortraitDurationHash,
+      : _$portraitDurationHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
-typedef PortraitDurationRef = AutoDisposeNotifierProviderRef<double>;
 
-abstract class _$PortraitDuration extends AutoDisposeNotifier<double> {
-  @override
-  double build();
-}
-
-String _$LandscapeDurationHash() => r'8687d81f5f4d75e08fb7e58fe5da21ebcfe70cd5';
+typedef _$PortraitDuration = AutoDisposeNotifier<double>;
+String _$landscapeDurationHash() => r'8687d81f5f4d75e08fb7e58fe5da21ebcfe70cd5';
 
 /// See also [LandscapeDuration].
+@ProviderFor(LandscapeDuration)
 final landscapeDurationProvider =
-    AutoDisposeNotifierProvider<LandscapeDuration, double>(
+    AutoDisposeNotifierProvider<LandscapeDuration, double>.internal(
   LandscapeDuration.new,
   name: r'landscapeDurationProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$LandscapeDurationHash,
+      : _$landscapeDurationHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
-typedef LandscapeDurationRef = AutoDisposeNotifierProviderRef<double>;
 
-abstract class _$LandscapeDuration extends AutoDisposeNotifier<double> {
-  @override
-  double build();
-}
-
-String _$AutoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
+typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
+String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
 
 /// See also [AutoUpload].
-final autoUploadProvider = AutoDisposeNotifierProvider<AutoUpload, bool>(
+@ProviderFor(AutoUpload)
+final autoUploadProvider =
+    AutoDisposeNotifierProvider<AutoUpload, bool>.internal(
   AutoUpload.new,
   name: r'autoUploadProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$AutoUploadHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$autoUploadHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
-typedef AutoUploadRef = AutoDisposeNotifierProviderRef<bool>;
 
-abstract class _$AutoUpload extends AutoDisposeNotifier<bool> {
-  @override
-  bool build();
-}
-
-String _$FakeDeviceHash() => r'c3a63ddf4d531d5d97008e8ca64e873ed2590744';
+typedef _$AutoUpload = AutoDisposeNotifier<bool>;
+String _$fakeDeviceHash() => r'c3a63ddf4d531d5d97008e8ca64e873ed2590744';
 
 /// See also [FakeDevice].
-final fakeDeviceProvider = AutoDisposeNotifierProvider<FakeDevice, bool>(
+@ProviderFor(FakeDevice)
+final fakeDeviceProvider =
+    AutoDisposeNotifierProvider<FakeDevice, bool>.internal(
   FakeDevice.new,
   name: r'fakeDeviceProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$FakeDeviceHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeDeviceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
-typedef FakeDeviceRef = AutoDisposeNotifierProviderRef<bool>;
 
-abstract class _$FakeDevice extends AutoDisposeNotifier<bool> {
-  @override
-  bool build();
-}
+typedef _$FakeDevice = AutoDisposeNotifier<bool>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
