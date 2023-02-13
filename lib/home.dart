@@ -29,19 +29,19 @@ class Home extends ConsumerWidget {
         onDestinationSelected: (i) => context.go(_routes[i]),
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.monitor_heart),
+            icon: Icon(Icons.monitor_heart_outlined),
             label: Strings.monitor,
           ),
           NavigationDestination(
-            icon: Icon(Icons.analytics),
+            icon: Icon(Icons.analytics_outlined),
             label: Strings.analytics,
           ),
           NavigationDestination(
-            icon: Icon(Icons.device_hub),
+            icon: Icon(Icons.device_hub_outlined),
             label: Strings.deviceManager,
           ),
           NavigationDestination(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
             label: Strings.mine,
           ),
         ],

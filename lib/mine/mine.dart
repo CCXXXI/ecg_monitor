@@ -11,26 +11,26 @@ class Mine extends StatelessWidget {
     return ListView(
       children: [
         const ListTile(
-          leading: Icon(Icons.person),
+          leading: Icon(Icons.person_outlined),
           title: Text("某用户"),
           subtitle: Text("某些信息\n某些信息"),
           isThreeLine: true,
         ),
         const ListTile(
-          leading: Icon(Icons.feedback),
+          leading: Icon(Icons.feedback_outlined),
           title: Text("反馈"),
         ),
         const ListTile(
-          leading: Icon(Icons.help),
+          leading: Icon(Icons.help_outlined),
           title: Text("帮助"),
         ),
         ListTile(
-          leading: const Icon(Icons.settings),
+          leading: const Icon(Icons.settings_outlined),
           title: const Text(Strings.settings),
           onTap: () => context.push("/mine/settings"),
         ),
         AboutListTile(
-          icon: const Icon(Icons.info),
+          icon: const Icon(Icons.info_outlined),
           applicationVersion: Strings.version,
           applicationLegalese: Strings.license,
           child: const Text(Strings.about),
