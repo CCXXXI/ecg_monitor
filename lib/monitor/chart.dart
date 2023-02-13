@@ -49,16 +49,15 @@ class Chart extends ConsumerWidget {
     _maxDurationMs = durationMs;
     final intervalMs = getIntervalMs(isPortrait, durationS);
 
+    final titles = _getTimeAxisTitles(intervalMs);
+
     return LineChart(
       swapAnimationDuration: Duration.zero, // disable animation
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
         backgroundColor: Color(backgroundColor),
-        titlesData: FlTitlesData(
-          topTitles: _getTimeAxisTitles(intervalMs),
-          bottomTitles: _getTimeAxisTitles(intervalMs),
-        ),
+        titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         lineBarsData: [
           LineChartBarData(
             spots: points,
