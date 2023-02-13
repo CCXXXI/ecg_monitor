@@ -68,4 +68,20 @@ final fakeDeviceProvider =
 );
 
 typedef _$FakeDevice = AutoDisposeNotifier<bool>;
+String _$loggerLevelIndexHash() => r'87e6418344bd57a84c76d6f0686a8393ea9dec4b';
+
+/// See also [LoggerLevelIndex].
+@ProviderFor(LoggerLevelIndex)
+final loggerLevelIndexProvider =
+    AutoDisposeNotifierProvider<LoggerLevelIndex, int>.internal(
+  LoggerLevelIndex.new,
+  name: r'loggerLevelIndexProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$loggerLevelIndexHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
