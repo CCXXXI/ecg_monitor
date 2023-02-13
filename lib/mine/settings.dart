@@ -147,7 +147,7 @@ class Settings extends ConsumerWidget {
             title: const Text(Strings.monitor),
             tiles: [
               SettingsTile(
-                leading: const Icon(Icons.stay_primary_portrait),
+                leading: const Icon(Icons.stay_primary_portrait_outlined),
                 title: const Text(Strings.portraitDuration),
                 value: Text(portraitDurationString),
                 trailing: Slider.adaptive(
@@ -160,7 +160,7 @@ class Settings extends ConsumerWidget {
                 ),
               ),
               SettingsTile(
-                leading: const Icon(Icons.stay_primary_landscape),
+                leading: const Icon(Icons.stay_primary_landscape_outlined),
                 title: const Text(Strings.landscapeDuration),
                 value: Text(landscapeDurationString),
                 trailing: Slider.adaptive(
@@ -173,7 +173,7 @@ class Settings extends ConsumerWidget {
                 ),
               ),
               SettingsTile(
-                leading: const Icon(Icons.color_lens),
+                leading: const Icon(Icons.color_lens_outlined),
                 title: const Text(Strings.backgroundColor),
                 value: Text("0x${backgroundColor.hex}"),
                 trailing: ColorIndicator(color: backgroundColor),
@@ -182,7 +182,7 @@ class Settings extends ConsumerWidget {
                     .set(await _pickColor(context, backgroundColor)),
               ),
               SettingsTile(
-                leading: const Icon(Icons.line_axis),
+                leading: const Icon(Icons.line_axis_outlined),
                 title: const Text(Strings.lineColor),
                 value: Text("0x${lineColor.hex}"),
                 trailing: ColorIndicator(color: lineColor),
@@ -199,7 +199,7 @@ class Settings extends ConsumerWidget {
               SettingsTile.switchTile(
                 initialValue: showDots,
                 onToggle: ref.read(showDotsProvider.notifier).set,
-                leading: const Icon(Icons.linear_scale),
+                leading: const Icon(Icons.linear_scale_outlined),
                 title: const Text(Strings.showDots),
               ),
             ],
@@ -210,7 +210,7 @@ class Settings extends ConsumerWidget {
               SettingsTile.switchTile(
                 initialValue: autoUpload,
                 onToggle: ref.read(autoUploadProvider.notifier).set,
-                leading: const Icon(Icons.cloud_upload),
+                leading: const Icon(Icons.cloud_upload_outlined),
                 title: const Text(Strings.autoUpload),
               ),
             ],
@@ -221,16 +221,16 @@ class Settings extends ConsumerWidget {
               SettingsTile.switchTile(
                 initialValue: fakeDevice,
                 onToggle: ref.read(fakeDeviceProvider.notifier).set,
-                leading: const Icon(Icons.device_hub),
+                leading: const Icon(Icons.device_hub_outlined),
                 title: const Text(Strings.fakeDevice),
               ),
               SettingsTile.navigation(
-                leading: const Icon(Icons.compare_arrows),
+                leading: const Icon(Icons.compare_arrows_outlined),
                 title: const Text(Strings.modelTest),
                 onPressed: (context) => modelTest(),
               ),
               SettingsTile(
-                leading: const Icon(Icons.developer_mode),
+                leading: const Icon(Icons.developer_mode_outlined),
                 title: const Text(Strings.loggerLevel),
                 value: Text(loggerLevelName),
                 trailing: Slider.adaptive(
