@@ -9,6 +9,7 @@ class Strings {
   static const String landscapeDuration = "横屏时长";
   static const String backgroundColor = "背景颜色";
   static const String lineColor = "折线颜色";
+  static const String showGrids = "显示网格";
   static const String showDots = "显示数据点";
 
   static const String analytics = "分析报告";

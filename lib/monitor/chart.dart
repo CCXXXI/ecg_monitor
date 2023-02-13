@@ -43,6 +43,7 @@ class Chart extends ConsumerWidget {
     );
     final backgroundColor = ref.watch(backgroundColorProvider);
     final lineColor = ref.watch(lineColorProvider);
+    final showGrids = ref.watch(showGridsProvider);
     final showDots = ref.watch(showDotsProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
@@ -58,6 +59,7 @@ class Chart extends ConsumerWidget {
         maxX: points.isEmpty ? null : points.last.x,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
+        gridData: FlGridData(show: showGrids),
         lineBarsData: [
           LineChartBarData(
             spots: points,

@@ -57,6 +57,17 @@ class LineColor extends _$LineColor {
 }
 
 @riverpod
+class ShowGrids extends _$ShowGrids {
+  @override
+  bool build() => prefs.getBool(Strings.showGrids) ?? true;
+
+  void set(bool value) {
+    state = value;
+    prefs.setBool(Strings.showGrids, value);
+  }
+}
+
+@riverpod
 class ShowDots extends _$ShowDots {
   @override
   bool build() => prefs.getBool(Strings.showDots) ?? false;
@@ -111,12 +122,13 @@ class Settings extends ConsumerWidget {
     final landscapeDuration = ref.watch(landscapeDurationProvider);
     final backgroundColorHex = ref.watch(backgroundColorProvider);
     final lineColorHex = ref.watch(lineColorProvider);
+    final showGrids = ref.watch(showGridsProvider);
+    final showDots = ref.watch(showDotsProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
     final backgroundColor = Color(backgroundColorHex);
     final lineColor = Color(lineColorHex);
-    final showDots = ref.watch(showDotsProvider);
 
     // analytics settings
     final autoUpload = ref.watch(autoUploadProvider);
@@ -179,11 +191,17 @@ class Settings extends ConsumerWidget {
                     .set(await _pickColor(context, lineColor)),
               ),
               SettingsTile.switchTile(
+                initialValue: showGrids,
+                onToggle: ref.read(showGridsProvider.notifier).set,
+                leading: Icon(showGrids ? Icons.grid_on : Icons.grid_off),
+                title: const Text(Strings.showGrids),
+              ),
+              SettingsTile.switchTile(
                 initialValue: showDots,
                 onToggle: ref.read(showDotsProvider.notifier).set,
                 leading: const Icon(Icons.linear_scale),
                 title: const Text(Strings.showDots),
-              )
+              ),
             ],
           ),
           SettingsSection(
