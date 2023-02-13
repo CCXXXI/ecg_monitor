@@ -40,6 +40,7 @@ final router = GoRouter(
     GoRoute(
       path: "/mine/settings",
       builder: (context, state) => const Settings(),
+      parentNavigatorKey: _rootKey,
     ),
   ],
   debugLogDiagnostics: true,
