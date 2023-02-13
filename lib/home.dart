@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
+import "package:logging/logging.dart";
 
 import "utils/constants.dart";
-import "utils/log.dart";
+
+final _logger = Logger("home");
 
 class Home extends ConsumerWidget {
   static const _routes = ["/monitor", "/analytics", "/device_manager", "/mine"];
@@ -17,7 +19,7 @@ class Home extends ConsumerWidget {
     final route = GoRouterState.of(context).location;
     final index = _routes.indexOf(route);
 
-    logger.d("Home.build: route=$route, index=$index");
+    _logger.fine("Home.build: route=$route, index=$index");
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),

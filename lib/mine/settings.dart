@@ -1,11 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:go_router/go_router.dart";
+import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:settings_ui/settings_ui.dart";
 
 import "../database.dart";
 import "../utils/constants.dart";
+import "../utils/logger.dart";
 import "model_test.dart";
 
 part "settings.g.dart";
@@ -54,6 +55,18 @@ class FakeDevice extends _$FakeDevice {
   }
 }
 
+@riverpod
+class LoggerLevelIndex extends _$LoggerLevelIndex {
+  @override
+  int build() => prefs.getInt(Strings.loggerLevel) ?? infoLevelIndex;
+
+  void set(int value) {
+    state = value;
+    Logger.root.level = loggerLevels[value];
+    prefs.setInt(Strings.loggerLevel, value);
+  }
+}
+
 class Settings extends ConsumerWidget {
   const Settings({super.key});
 
@@ -63,6 +76,8 @@ class Settings extends ConsumerWidget {
     final landscapeDuration = ref.watch(landscapeDurationProvider);
     final autoUpload = ref.watch(autoUploadProvider);
     final fakeDevice = ref.watch(fakeDeviceProvider);
+    final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
+    final loggerLevelName = loggerLevels[loggerLevelIndex].name;
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
@@ -125,15 +140,22 @@ class Settings extends ConsumerWidget {
               SettingsTile.navigation(
                 leading: const Icon(Icons.compare_arrows),
                 title: const Text(Strings.modelTest),
-                onPressed: (context) {
-                  context.push("/log");
-                  modelTest();
-                },
+                onPressed: (context) => modelTest(),
               ),
-              SettingsTile.navigation(
+              SettingsTile(
                 leading: const Icon(Icons.developer_mode),
-                title: const Text(Strings.log),
-                onPressed: (context) => context.push("/log"),
+                title: const Text(Strings.loggerLevel),
+                value: Text(loggerLevelName),
+                trailing: Slider.adaptive(
+                  value: loggerLevelIndex.toDouble(),
+                  onChanged: (value) => ref
+                      .read(loggerLevelIndexProvider.notifier)
+                      .set(value.toInt()),
+                  min: 0,
+                  max: loggerLevels.length - 1,
+                  divisions: loggerLevels.length - 1,
+                  label: loggerLevelName,
+                ),
               ),
             ],
           ),

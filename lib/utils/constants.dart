@@ -24,7 +24,7 @@ class Strings {
   static const String fakeDevice = "模拟设备";
   static const String fakeDeviceModel = "Fake-Device";
   static const String modelTest = "模型测试";
-  static const String log = "日志";
+  static const String loggerLevel = "日志等级";
   static const String about = "关于";
   static late final String version;
   static late final String license;

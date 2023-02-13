@@ -4,6 +4,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "database.dart";
 import "model.dart";
 import "utils/constants.dart";
+import "utils/logger.dart";
 import "utils/router.dart";
 
 void main() async {
@@ -11,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initConstants();
   await initPrefs();
+  initLogger();
   await loadModel();
 
   // run app
