@@ -8,10 +8,10 @@ import "../mine/settings.dart";
 
 part "chart.g.dart";
 
+var _maxDurationMs = 0.0;
+
 @riverpod
 class _Points extends _$Points {
-  static const _maxDurationMs = 20 * Duration.millisecondsPerSecond;
-
   @override
   List<FlSpot> build() {
     ref.watch(ecgProvider.stream).forEach(add);
@@ -43,6 +43,7 @@ class Chart extends ConsumerWidget {
     );
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
+    _maxDurationMs = durationMs;
     final intervalMs = getIntervalMs(isPortrait, durationS);
 
     return LineChart(
@@ -50,7 +51,6 @@ class Chart extends ConsumerWidget {
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
-        clipData: FlClipData.all(),
         titlesData: FlTitlesData(
           topTitles: _getTimeAxisTitles(intervalMs),
           bottomTitles: _getTimeAxisTitles(intervalMs),

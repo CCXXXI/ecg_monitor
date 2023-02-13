@@ -6,7 +6,7 @@ part of 'chart.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'23bb500a57e9f9e0ba9f0bb614da9390f5e1a597';
+String _$pointsHash() => r'388c70dd677518225418cb658e7dd8fe223b05ab';
 
 /// See also [_Points].
 @ProviderFor(_Points)
