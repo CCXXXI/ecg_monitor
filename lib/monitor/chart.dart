@@ -59,7 +59,11 @@ class Chart extends ConsumerWidget {
         maxX: points.isEmpty ? null : points.last.x,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
-        gridData: FlGridData(show: showGrids),
+        gridData: FlGridData(
+          show: showGrids,
+          horizontalInterval: .5,
+          verticalInterval: 200,
+        ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
