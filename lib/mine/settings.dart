@@ -202,7 +202,7 @@ class Settings extends ConsumerWidget {
       pickersEnabled: {
         ColorPickerType.accent: false,
         ColorPickerType.primary: false,
-        ColorPickerType.wheel: true,
+        ColorPickerType.both: true,
       },
     );
     return color.value;
