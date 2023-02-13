@@ -42,6 +42,7 @@ class Chart extends ConsumerWidget {
       isPortrait ? portraitDurationProvider : landscapeDurationProvider,
     );
     final backgroundColor = ref.watch(backgroundColorProvider);
+    final lineColor = ref.watch(lineColorProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
@@ -60,7 +61,7 @@ class Chart extends ConsumerWidget {
         lineBarsData: [
           LineChartBarData(
             spots: points,
-            color: Colors.red,
+            color: Color(lineColor),
             dotData: FlDotData(show: false),
           ),
         ],

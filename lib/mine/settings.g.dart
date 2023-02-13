@@ -38,6 +38,36 @@ final landscapeDurationProvider =
 );
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
+String _$backgroundColorHash() => r'e1ca133482796e3b571637d9a9c1364b0a950af6';
+
+/// See also [BackgroundColor].
+@ProviderFor(BackgroundColor)
+final backgroundColorProvider =
+    AutoDisposeNotifierProvider<BackgroundColor, int>.internal(
+  BackgroundColor.new,
+  name: r'backgroundColorProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$backgroundColorHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$BackgroundColor = AutoDisposeNotifier<int>;
+String _$lineColorHash() => r'8eca86ef42442d5d093593d6271449778ae479b1';
+
+/// See also [LineColor].
+@ProviderFor(LineColor)
+final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
+  LineColor.new,
+  name: r'lineColorProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$lineColorHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$LineColor = AutoDisposeNotifier<int>;
 String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
 
 /// See also [AutoUpload].
@@ -84,20 +114,4 @@ final loggerLevelIndexProvider =
 );
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
-String _$backgroundColorHash() => r'cf28b2ed6c09d087e83d5a37c6157ff11316bb90';
-
-/// See also [BackgroundColor].
-@ProviderFor(BackgroundColor)
-final backgroundColorProvider =
-    AutoDisposeNotifierProvider<BackgroundColor, int>.internal(
-  BackgroundColor.new,
-  name: r'backgroundColorProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$backgroundColorHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$BackgroundColor = AutoDisposeNotifier<int>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

@@ -46,6 +46,17 @@ class BackgroundColor extends _$BackgroundColor {
 }
 
 @riverpod
+class LineColor extends _$LineColor {
+  @override
+  int build() => prefs.getInt(Strings.lineColor) ?? Colors.red.value;
+
+  void set(int value) {
+    state = value;
+    prefs.setInt(Strings.lineColor, value);
+  }
+}
+
+@riverpod
 class AutoUpload extends _$AutoUpload {
   @override
   bool build() => prefs.getBool(Strings.autoUpload) ?? true;
@@ -88,10 +99,12 @@ class Settings extends ConsumerWidget {
     final portraitDuration = ref.watch(portraitDurationProvider);
     final landscapeDuration = ref.watch(landscapeDurationProvider);
     final backgroundColorHex = ref.watch(backgroundColorProvider);
+    final lineColorHex = ref.watch(lineColorProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
     final backgroundColor = Color(backgroundColorHex);
+    final lineColor = Color(lineColorHex);
 
     // analytics settings
     final autoUpload = ref.watch(autoUploadProvider);
@@ -143,6 +156,15 @@ class Settings extends ConsumerWidget {
                 onPressed: (context) async => ref
                     .read(backgroundColorProvider.notifier)
                     .set(await _pickColor(context, backgroundColor)),
+              ),
+              SettingsTile(
+                leading: const Icon(Icons.line_axis),
+                title: const Text(Strings.lineColor),
+                value: Text("0x${lineColor.hex}"),
+                trailing: ColorIndicator(color: lineColor),
+                onPressed: (context) async => ref
+                    .read(lineColorProvider.notifier)
+                    .set(await _pickColor(context, lineColor)),
               ),
             ],
           ),
