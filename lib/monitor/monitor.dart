@@ -7,6 +7,19 @@ class Monitor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Chart();
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
+    if (isPortrait) {
+      return Column(
+        children: const [
+          Expanded(child: Placeholder()),
+          Expanded(child: Chart()),
+          Expanded(child: Placeholder()),
+        ],
+      );
+    } else {
+      return const Chart();
+    }
   }
 }

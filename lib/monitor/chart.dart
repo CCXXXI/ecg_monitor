@@ -48,8 +48,6 @@ class Chart extends ConsumerWidget {
     return LineChart(
       swapAnimationDuration: Duration.zero, // disable animation
       LineChartData(
-        minY: isPortrait ? -10 : null,
-        maxY: isPortrait ? 10 : null,
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
         clipData: FlClipData.all(),
