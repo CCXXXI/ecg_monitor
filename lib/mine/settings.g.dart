@@ -84,4 +84,20 @@ final loggerLevelIndexProvider =
 );
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
+String _$backgroundColorHash() => r'cf28b2ed6c09d087e83d5a37c6157ff11316bb90';
+
+/// See also [BackgroundColor].
+@ProviderFor(BackgroundColor)
+final backgroundColorProvider =
+    AutoDisposeNotifierProvider<BackgroundColor, int>.internal(
+  BackgroundColor.new,
+  name: r'backgroundColorProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$backgroundColorHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$BackgroundColor = AutoDisposeNotifier<int>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
