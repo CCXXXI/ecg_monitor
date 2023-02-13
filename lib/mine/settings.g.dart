@@ -68,6 +68,20 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 );
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
+String _$showGridsHash() => r'7d4b13ce9acbc971555737f00c22e440957ed566';
+
+/// See also [ShowGrids].
+@ProviderFor(ShowGrids)
+final showGridsProvider = AutoDisposeNotifierProvider<ShowGrids, bool>.internal(
+  ShowGrids.new,
+  name: r'showGridsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$showGridsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$ShowGrids = AutoDisposeNotifier<bool>;
 String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
 
 /// See also [ShowDots].
