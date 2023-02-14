@@ -8,7 +8,7 @@ import "../mine/settings.dart";
 
 part "chart.g.dart";
 
-var _maxDurationMs = 0.0;
+var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
