@@ -57,13 +57,37 @@ class LineColor extends _$LineColor {
 }
 
 @riverpod
-class ShowGrids extends _$ShowGrids {
+class GridColor extends _$GridColor {
   @override
-  bool build() => prefs.getBool(Strings.showGrids) ?? true;
+  int build() => prefs.getInt(Strings.gridColor) ?? Colors.red.value;
 
-  void set(bool value) {
+  void set(int value) {
     state = value;
-    prefs.setBool(Strings.showGrids, value);
+    prefs.setInt(Strings.gridColor, value);
+  }
+}
+
+enum LineType { hide, simple, full }
+
+@riverpod
+class HorizontalLineTypeIndex extends _$HorizontalLineTypeIndex {
+  @override
+  int build() => prefs.getInt(Strings.horizontalLine) ?? LineType.full.index;
+
+  void set(int value) {
+    state = value;
+    prefs.setInt(Strings.horizontalLine, value);
+  }
+}
+
+@riverpod
+class VerticalLineTypeIndex extends _$VerticalLineTypeIndex {
+  @override
+  int build() => prefs.getInt(Strings.verticalLine) ?? LineType.full.index;
+
+  void set(int value) {
+    state = value;
+    prefs.setInt(Strings.verticalLine, value);
   }
 }
 
@@ -122,12 +146,17 @@ class Settings extends ConsumerWidget {
     final landscapeDuration = ref.watch(landscapeDurationProvider);
     final backgroundColorHex = ref.watch(backgroundColorProvider);
     final lineColorHex = ref.watch(lineColorProvider);
-    final showGrids = ref.watch(showGridsProvider);
+    final gridColorHex = ref.watch(gridColorProvider);
+    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
+    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
     final backgroundColor = Color(backgroundColorHex);
     final lineColor = Color(lineColorHex);
+    final gridColor = Color(gridColorHex);
+    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
+    final verticalLineType = LineType.values[verticalLineTypeIndex];
 
     // analytics settings
     final autoUpload = ref.watch(autoUploadProvider);
@@ -190,11 +219,36 @@ class Settings extends ConsumerWidget {
                     .read(lineColorProvider.notifier)
                     .set(await _pickColor(context, lineColor)),
               ),
-              SettingsTile.switchTile(
-                initialValue: showGrids,
-                onToggle: ref.read(showGridsProvider.notifier).set,
-                leading: Icon(showGrids ? Icons.grid_on : Icons.grid_off),
-                title: const Text(Strings.showGrids),
+              SettingsTile(
+                leading: const Icon(Icons.grid_3x3_outlined),
+                title: const Text(Strings.gridColor),
+                value: Text("0x${gridColor.hex}"),
+                trailing: ColorIndicator(color: gridColor),
+                onPressed: (context) async => ref
+                    .read(gridColorProvider.notifier)
+                    .set(await _pickColor(context, gridColor)),
+              ),
+              SettingsTile(
+                leading: const Icon(Icons.border_horizontal_outlined),
+                title: const Text(Strings.horizontalLine),
+                trailing: SegmentedButton(
+                  segments: lineTypeSegments,
+                  selected: {horizontalLineType},
+                  onSelectionChanged: (selected) => ref
+                      .read(horizontalLineTypeIndexProvider.notifier)
+                      .set(selected.first.index),
+                ),
+              ),
+              SettingsTile(
+                leading: const Icon(Icons.border_vertical_outlined),
+                title: const Text(Strings.verticalLine),
+                trailing: SegmentedButton(
+                  segments: lineTypeSegments,
+                  selected: {verticalLineType},
+                  onSelectionChanged: (selected) => ref
+                      .read(verticalLineTypeIndexProvider.notifier)
+                      .set(selected.first.index),
+                ),
               ),
             ],
           ),
@@ -265,4 +319,19 @@ class Settings extends ConsumerWidget {
     );
     return color.value;
   }
+
+  static const lineTypeSegments = [
+    ButtonSegment(
+      value: LineType.hide,
+      label: Text(Strings.lineTypeHide),
+    ),
+    ButtonSegment(
+      value: LineType.simple,
+      label: Text(Strings.lineTypeSimple),
+    ),
+    ButtonSegment(
+      value: LineType.full,
+      label: Text(Strings.lineTypeFull),
+    ),
+  ];
 }
