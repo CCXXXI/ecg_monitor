@@ -117,7 +117,7 @@ class Chart extends ConsumerWidget {
     return intervalMs;
   }
 
-  AxisTitles _getTimeAxisTitles(double interval) {
+  static AxisTitles _getTimeAxisTitles(double interval) {
     return AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,
@@ -133,7 +133,7 @@ class Chart extends ConsumerWidget {
     );
   }
 
-  double _getStrokeWidth(double value, {required bool isHorizontal}) {
+  static double _getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval =
         isHorizontal ? _largeHorizontalInterval : _largeVerticalInterval;
     final smallInterval =

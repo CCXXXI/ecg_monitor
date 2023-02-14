@@ -305,7 +305,10 @@ class Settings extends ConsumerWidget {
     );
   }
 
-  Future<int> _pickColor(BuildContext context, Color initialColor) async {
+  static Future<int> _pickColor(
+    BuildContext context,
+    Color initialColor,
+  ) async {
     final color = await showColorPickerDialog(
       context,
       initialColor,
