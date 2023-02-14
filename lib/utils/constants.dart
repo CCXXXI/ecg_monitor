@@ -10,7 +10,6 @@ class Strings {
   static const String backgroundColor = "背景颜色";
   static const String lineColor = "折线颜色";
   static const String showGrids = "显示网格";
-  static const String showDots = "显示数据点";
 
   static const String analytics = "分析报告";
   static const String autoUpload = "自动上传";
@@ -31,6 +30,7 @@ class Strings {
   static const String fakeDeviceModel = "Fake-Device";
   static const String modelTest = "模型测试";
   static const String loggerLevel = "日志等级";
+  static const String showDots = "显示数据点";
 
   static const String about = "关于";
   static late final String version;
