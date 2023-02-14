@@ -9,7 +9,12 @@ class Strings {
   static const String landscapeDuration = "横屏时长";
   static const String backgroundColor = "背景颜色";
   static const String lineColor = "折线颜色";
-  static const String showGrids = "显示网格";
+  static const String gridColor = "网格颜色";
+  static const String horizontalLine = "横格线";
+  static const String verticalLine = "竖格线";
+  static const String lineTypeHide = "隐藏";
+  static const String lineTypeSimple = "简化";
+  static const String lineTypeFull = "完整";
 
   static const String analytics = "分析报告";
   static const String autoUpload = "自动上传";

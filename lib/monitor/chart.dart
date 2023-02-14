@@ -34,6 +34,14 @@ class Chart extends ConsumerWidget {
   @visibleForTesting
   static const maxIntervalCountLandscape = 10;
 
+  static const _largeHorizontalInterval = .5;
+  static const _smallHorizontalInterval = .1;
+  static const _largeVerticalInterval = 200.0;
+  static const _smallVerticalInterval = 40.0;
+
+  static const _thickLineWidth = 1.0;
+  static const _thinLineWidth = .5;
+
   const Chart({super.key});
 
   @override
@@ -46,12 +54,24 @@ class Chart extends ConsumerWidget {
     );
     final backgroundColor = ref.watch(backgroundColorProvider);
     final lineColor = ref.watch(lineColorProvider);
-    final showGrids = ref.watch(showGridsProvider);
+    final gridColor = ref.watch(gridColorProvider);
+    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
+    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
     final showDots = ref.watch(showDotsProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
     final intervalMs = getIntervalMs(isPortrait, durationS);
+    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
+    final verticalLineType = LineType.values[verticalLineTypeIndex];
+    final drawHorizontalLine = horizontalLineType != LineType.hide;
+    final drawVerticalLine = verticalLineType != LineType.hide;
+    final horizontalInterval = horizontalLineType == LineType.full
+        ? _smallHorizontalInterval
+        : _largeHorizontalInterval;
+    final verticalInterval = verticalLineType == LineType.full
+        ? _smallVerticalInterval
+        : _largeVerticalInterval;
 
     final titles = _getTimeAxisTitles(intervalMs);
 
@@ -63,9 +83,19 @@ class Chart extends ConsumerWidget {
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         gridData: FlGridData(
-          show: showGrids,
-          horizontalInterval: .5,
-          verticalInterval: 200,
+          show: drawHorizontalLine || drawVerticalLine,
+          drawHorizontalLine: drawHorizontalLine,
+          drawVerticalLine: drawVerticalLine,
+          horizontalInterval: horizontalInterval,
+          verticalInterval: verticalInterval,
+          getDrawingHorizontalLine: (value) => FlLine(
+            color: Color(gridColor),
+            strokeWidth: _getStrokeWidth(value, isHorizontal: true),
+          ),
+          getDrawingVerticalLine: (value) => FlLine(
+            color: Color(gridColor),
+            strokeWidth: _getStrokeWidth(value, isHorizontal: false),
+          ),
         ),
         lineBarsData: [
           LineChartBarData(
@@ -101,6 +131,16 @@ class Chart extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  double _getStrokeWidth(double value, {required bool isHorizontal}) {
+    final largeInterval =
+        isHorizontal ? _largeHorizontalInterval : _largeVerticalInterval;
+    final smallInterval =
+        isHorizontal ? _smallHorizontalInterval : _smallVerticalInterval;
+    return value % largeInterval < smallInterval / 2
+        ? _thickLineWidth
+        : _thinLineWidth;
   }
 }
 

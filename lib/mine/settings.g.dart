@@ -68,34 +68,54 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 );
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
-String _$showGridsHash() => r'7d4b13ce9acbc971555737f00c22e440957ed566';
+String _$gridColorHash() => r'f7788d0df73e5940678f73525b39736854f9833d';
 
-/// See also [ShowGrids].
-@ProviderFor(ShowGrids)
-final showGridsProvider = AutoDisposeNotifierProvider<ShowGrids, bool>.internal(
-  ShowGrids.new,
-  name: r'showGridsProvider',
+/// See also [GridColor].
+@ProviderFor(GridColor)
+final gridColorProvider = AutoDisposeNotifierProvider<GridColor, int>.internal(
+  GridColor.new,
+  name: r'gridColorProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$showGridsHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$gridColorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ShowGrids = AutoDisposeNotifier<bool>;
-String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
+typedef _$GridColor = AutoDisposeNotifier<int>;
+String _$horizontalLineTypeIndexHash() =>
+    r'd6fe0841354bf0b39b1b47248d3a41109362786f';
 
-/// See also [ShowDots].
-@ProviderFor(ShowDots)
-final showDotsProvider = AutoDisposeNotifierProvider<ShowDots, bool>.internal(
-  ShowDots.new,
-  name: r'showDotsProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$showDotsHash,
+/// See also [HorizontalLineTypeIndex].
+@ProviderFor(HorizontalLineTypeIndex)
+final horizontalLineTypeIndexProvider =
+    AutoDisposeNotifierProvider<HorizontalLineTypeIndex, int>.internal(
+  HorizontalLineTypeIndex.new,
+  name: r'horizontalLineTypeIndexProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$horizontalLineTypeIndexHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ShowDots = AutoDisposeNotifier<bool>;
+typedef _$HorizontalLineTypeIndex = AutoDisposeNotifier<int>;
+String _$verticalLineTypeIndexHash() =>
+    r'36637e9ed45431c4f20e889364618d2efe057557';
+
+/// See also [VerticalLineTypeIndex].
+@ProviderFor(VerticalLineTypeIndex)
+final verticalLineTypeIndexProvider =
+    AutoDisposeNotifierProvider<VerticalLineTypeIndex, int>.internal(
+  VerticalLineTypeIndex.new,
+  name: r'verticalLineTypeIndexProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$verticalLineTypeIndexHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$VerticalLineTypeIndex = AutoDisposeNotifier<int>;
 String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
 
 /// See also [AutoUpload].
@@ -142,4 +162,18 @@ final loggerLevelIndexProvider =
 );
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
+String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
+
+/// See also [ShowDots].
+@ProviderFor(ShowDots)
+final showDotsProvider = AutoDisposeNotifierProvider<ShowDots, bool>.internal(
+  ShowDots.new,
+  name: r'showDotsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$showDotsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$ShowDots = AutoDisposeNotifier<bool>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
