@@ -28,7 +28,10 @@ class _Points extends _$Points {
 }
 
 class Chart extends ConsumerWidget {
+  @visibleForTesting
   static const maxIntervalCountPortrait = 5;
+
+  @visibleForTesting
   static const maxIntervalCountLandscape = 10;
 
   const Chart({super.key});
