@@ -68,17 +68,6 @@ class ShowGrids extends _$ShowGrids {
 }
 
 @riverpod
-class ShowDots extends _$ShowDots {
-  @override
-  bool build() => prefs.getBool(Strings.showDots) ?? false;
-
-  void set(bool value) {
-    state = value;
-    prefs.setBool(Strings.showDots, value);
-  }
-}
-
-@riverpod
 class AutoUpload extends _$AutoUpload {
   @override
   bool build() => prefs.getBool(Strings.autoUpload) ?? true;
@@ -112,6 +101,17 @@ class LoggerLevelIndex extends _$LoggerLevelIndex {
   }
 }
 
+@riverpod
+class ShowDots extends _$ShowDots {
+  @override
+  bool build() => prefs.getBool(Strings.showDots) ?? false;
+
+  void set(bool value) {
+    state = value;
+    prefs.setBool(Strings.showDots, value);
+  }
+}
+
 class Settings extends ConsumerWidget {
   const Settings({super.key});
 
@@ -123,7 +123,6 @@ class Settings extends ConsumerWidget {
     final backgroundColorHex = ref.watch(backgroundColorProvider);
     final lineColorHex = ref.watch(lineColorProvider);
     final showGrids = ref.watch(showGridsProvider);
-    final showDots = ref.watch(showDotsProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
@@ -136,6 +135,7 @@ class Settings extends ConsumerWidget {
     // devTools settings
     final fakeDevice = ref.watch(fakeDeviceProvider);
     final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
+    final showDots = ref.watch(showDotsProvider);
 
     final loggerLevelName = loggerLevels[loggerLevelIndex].name;
 
@@ -196,12 +196,6 @@ class Settings extends ConsumerWidget {
                 leading: Icon(showGrids ? Icons.grid_on : Icons.grid_off),
                 title: const Text(Strings.showGrids),
               ),
-              SettingsTile.switchTile(
-                initialValue: showDots,
-                onToggle: ref.read(showDotsProvider.notifier).set,
-                leading: const Icon(Icons.linear_scale_outlined),
-                title: const Text(Strings.showDots),
-              ),
             ],
           ),
           SettingsSection(
@@ -243,6 +237,12 @@ class Settings extends ConsumerWidget {
                   divisions: loggerLevels.length - 1,
                   label: loggerLevelName,
                 ),
+              ),
+              SettingsTile.switchTile(
+                initialValue: showDots,
+                onToggle: ref.read(showDotsProvider.notifier).set,
+                leading: const Icon(Icons.linear_scale_outlined),
+                title: const Text(Strings.showDots),
               ),
             ],
           ),
