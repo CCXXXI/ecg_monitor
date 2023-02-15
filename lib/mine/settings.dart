@@ -12,6 +12,12 @@ import "model_test.dart";
 
 part "settings.g.dart";
 
+// todo: 更多参数，预设配置组合
+// 大概这样: 专业 | 简洁 | 自定义
+// 图像刷新率 Hz
+
+// todo: better types
+
 @riverpod
 class PortraitDuration extends _$PortraitDuration {
   @override
@@ -171,6 +177,7 @@ class Settings extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.settings)),
       body: SettingsList(
+        // todo: use material design
         sections: [
           SettingsSection(
             title: const Text(Strings.monitor),
