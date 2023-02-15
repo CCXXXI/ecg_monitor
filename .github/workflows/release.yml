@@ -1,0 +1,14 @@
+name: release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        with:
+          token: ${{ secrets.RELEASE_PAT }}
+          release-type: dart
+          package-name: ecg_monitor
