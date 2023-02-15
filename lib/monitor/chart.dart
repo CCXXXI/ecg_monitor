@@ -80,6 +80,7 @@ class Chart extends ConsumerWidget {
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
+        // todo: y 轴不要顶格，留点间距
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         gridData: FlGridData(
@@ -118,6 +119,7 @@ class Chart extends ConsumerWidget {
   }
 
   static AxisTitles _getTimeAxisTitles(double interval) {
+    // todo: 最左最右的标签去掉，不然会和滚动的重叠
     return AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,

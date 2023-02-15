@@ -13,7 +13,7 @@ void main() async {
   await initConstants();
   await initPrefs();
   initLogger();
-  await loadModel();
+  await loadModel(); // todo: disable on web
 
   // run app
   runApp(const ProviderScope(child: App()));
