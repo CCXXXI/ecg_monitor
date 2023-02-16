@@ -10,16 +10,11 @@ runs:
     - uses: gradle/gradle-build-action@v2
       with:
         build-root-directory: android
-    - run: ls # debug
-      shell: bash
-    - run: ls android # debug
-      shell: bash
-    - run: chmod +x android/gradlew
-      shell: bash
-    - uses: gradle/gradle-build-action@v2
-      with:
-        build-root-directory: android
         arguments: extractAARForNativeBuild
+      # debug
+      continue-on-error: true
+    - run: ls -la android
+      shell: bash
 
     - uses: subosito/flutter-action@v2
     - run: flutter pub get
