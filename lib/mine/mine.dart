@@ -32,7 +32,6 @@ class Mine extends StatelessWidget {
         AboutListTile(
           icon: const Icon(Icons.info_outlined),
           applicationVersion: Strings.version,
-          applicationLegalese: Strings.license,
           child: const Text(Strings.about),
         ),
       ],
