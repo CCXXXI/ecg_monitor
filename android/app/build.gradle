@@ -100,8 +100,4 @@ task extractAARForNativeBuild {
     }
 }
 
-tasks.whenTaskAdded { task ->
-    if (task.name.contains('externalNativeBuild')) {
-        task.dependsOn(extractAARForNativeBuild)
-    }
-}
+tasks.preBuild.dependsOn(extractAARForNativeBuild)
