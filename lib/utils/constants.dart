@@ -24,6 +24,7 @@ class Strings {
   static const String batteryUnknown = "电量未知";
 
   static const String mine = "我的";
+  static const String feedback = "反馈";
 
   static const String settings = "设置";
 
@@ -40,6 +41,12 @@ class Strings {
   static late final String appName;
   static late final String version;
   static late final String license;
+}
+
+class Urls {
+  static const String _repo = "https://github.com/CCXXXI/ecg_monitor";
+
+  static final Uri issues = Uri.parse("$_repo/issues");
 }
 
 Future<void> initConstants() async {
