@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:url_launcher/url_launcher.dart";
 
 import "../utils/constants.dart";
 
@@ -16,9 +17,10 @@ class Mine extends StatelessWidget {
           subtitle: Text("某些信息\n某些信息"),
           isThreeLine: true,
         ),
-        const ListTile(
-          leading: Icon(Icons.feedback_outlined),
-          title: Text("反馈"),
+        ListTile(
+          leading: const Icon(Icons.feedback_outlined),
+          title: const Text(Strings.feedback),
+          onTap: () => launchUrl(Urls.issues),
         ),
         const ListTile(
           leading: Icon(Icons.help_outlined),
