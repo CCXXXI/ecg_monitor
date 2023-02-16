@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.3.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.2.0...v1.3.0) (2023-02-16)
+
+
+### Features
+
+* basic monitor ([d158761](https://github.com/CCXXXI/ecg_monitor/commit/d15876174168367f6ab0112188ee1578270e37b3))
+* better monitor style ([cf65c4b](https://github.com/CCXXXI/ecg_monitor/commit/cf65c4bb6870761105d06937269ddbe1a7e4b34d))
+* clear monitor while route changing ([88ca0fe](https://github.com/CCXXXI/ecg_monitor/commit/88ca0fec1c24675a7905ad1e2f4526d3f13faf60))
+* **mine:** AboutListTile ([ca5a594](https://github.com/CCXXXI/ecg_monitor/commit/ca5a594f3506c1098de4d3c692efc4ad4a425d53))
+* **monitor:** interval: 1 ([8cb631a](https://github.com/CCXXXI/ecg_monitor/commit/8cb631a8b7ffee0f0c41d00a472fa2597f41acf6))
+* **monitor:** roll right to left at beginning ([f6bfa04](https://github.com/CCXXXI/ecg_monitor/commit/f6bfa04c1ec513fad5e9a6e7b932a5018b211344))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v7.4.1 ([62b5778](https://github.com/CCXXXI/ecg_monitor/commit/62b57784adaeac5f7691f0b70333de17a171f2b6))
+* **deps:** update dependency org.pytorch:pytorch_android to v1.13.0 ([2582608](https://github.com/CCXXXI/ecg_monitor/commit/2582608d0d2ffbea40322ca1e6adf108bef99683))
+* **deps:** update kotlin monorepo to v1.8.10 ([46c24bc](https://github.com/CCXXXI/ecg_monitor/commit/46c24bc3d9af7f26db3e971e31e7ff4e68375bb7))
+
+
+### Performance Improvements
+
+* improve monitor performance ([120af20](https://github.com/CCXXXI/ecg_monitor/commit/120af2027263ae5eb54fe84030c6fcbfda748cf7))
+
 ## [1.2.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.1.0...v1.2.0) (2023-01-31)
 
 ### Features
