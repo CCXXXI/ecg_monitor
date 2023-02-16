@@ -1,13 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
-import "package:salomon_bottom_bar/salomon_bottom_bar.dart";
 
-import "analysis.dart";
-import "constants.dart";
+import "analytics.dart";
 import "device.dart";
-import "mine.dart";
+import "mine/mine.dart";
 import "monitor.dart";
+import "utils/constants.dart";
 
 part "home.g.dart";
 
@@ -19,13 +18,6 @@ class _Index extends _$Index {
   void set(int index) => state = index;
 }
 
-const _pages = [
-  MonitorView(),
-  AnalysisView(),
-  DeviceView(),
-  MineView(),
-];
-
 class HomeView extends ConsumerWidget {
   const HomeView({super.key});
 
@@ -35,26 +27,32 @@ class HomeView extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
-      body: _pages[index],
-      bottomNavigationBar: SalomonBottomBar(
-        currentIndex: index,
-        onTap: (index) => ref.read(_indexProvider.notifier).set(index),
-        items: [
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.monitor_heart),
-            title: const Text(Strings.monitor),
+      body: const [
+        MonitorView(),
+        AnalyticsView(),
+        DeviceView(),
+        MineView(),
+      ][index],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: index,
+        onDestinationSelected: (index) =>
+            ref.read(_indexProvider.notifier).set(index),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.monitor_heart),
+            label: Strings.monitor,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.analytics),
-            title: const Text(Strings.analysis),
+          NavigationDestination(
+            icon: Icon(Icons.analytics),
+            label: Strings.analytics,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.device_hub),
-            title: const Text(Strings.device),
+          NavigationDestination(
+            icon: Icon(Icons.device_hub),
+            label: Strings.device,
           ),
-          SalomonBottomBarItem(
-            icon: const Icon(Icons.person),
-            title: const Text(Strings.mine),
+          NavigationDestination(
+            icon: Icon(Icons.person),
+            label: Strings.mine,
           ),
         ],
       ),
