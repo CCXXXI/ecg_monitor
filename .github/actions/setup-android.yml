@@ -1,0 +1,14 @@
+name: setup-android
+description: 'Setup Android'
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+    - uses: subosito/flutter-action@v2
+    - run: flutter pub get
+      shell: bash
+    - run: cd android && ./gradlew extractAARForNativeBuild && cd ..
+      shell: bash
