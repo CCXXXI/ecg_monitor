@@ -1,66 +1,47 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:riverpod_annotation/riverpod_annotation.dart";
+import "package:go_router/go_router.dart";
+import "package:logging/logging.dart";
 
-import "analytics.dart";
-import "device.dart";
-import "mine/mine.dart";
-import "monitor.dart";
 import "utils/constants.dart";
 
-part "home.g.dart";
+final _logger = Logger("home");
 
-@riverpod
-class _Index extends _$Index {
-  @override
-  int build() => 0;
+class Home extends ConsumerWidget {
+  static const _routes = ["/monitor", "/analytics", "/device_manager", "/mine"];
 
-  void set(int index) => state = index;
-}
+  final Widget _child;
 
-@riverpod
-void _monitorClear(_MonitorClearRef ref) {
-  ref.listen(_indexProvider, (prev, index) {
-    if (index == 0) {
-      ref.read(monitorControllerProvider.notifier).clear();
-    }
-  });
-}
-
-class HomeView extends ConsumerWidget {
-  const HomeView({super.key});
+  const Home(this._child, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final index = ref.watch(_indexProvider);
+    final route = GoRouterState.of(context).location;
+    final index = _routes.indexOf(route);
+
+    _logger.fine("Home.build: route=$route, index=$index");
 
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.appName)),
-      body: const [
-        MonitorView(),
-        AnalyticsView(),
-        DeviceView(),
-        MineView(),
-      ][index],
+      body: _child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
-        onDestinationSelected: (index) =>
-            ref.read(_indexProvider.notifier).set(index),
+        onDestinationSelected: (i) => context.go(_routes[i]),
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.monitor_heart),
+            icon: Icon(Icons.monitor_heart_outlined),
             label: Strings.monitor,
           ),
           NavigationDestination(
-            icon: Icon(Icons.analytics),
+            icon: Icon(Icons.analytics_outlined),
             label: Strings.analytics,
           ),
           NavigationDestination(
-            icon: Icon(Icons.device_hub),
-            label: Strings.device,
+            icon: Icon(Icons.device_hub_outlined),
+            label: Strings.deviceManager,
           ),
           NavigationDestination(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
             label: Strings.mine,
           ),
         ],

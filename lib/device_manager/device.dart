@@ -1,0 +1,90 @@
+import "dart:math";
+
+import "package:flutter/services.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:quiver/time.dart";
+import "package:riverpod_annotation/riverpod_annotation.dart";
+
+import "../mine/settings.dart";
+import "../utils/constants.dart";
+
+part "device.g.dart";
+
+// todo: 未绑定和未连接应该是不同的状态
+abstract class Device {
+  String get name;
+
+  String get model;
+
+  /// Received Signal Strength Indication
+  Stream<int> get rssiStream;
+
+  Stream<int> get batteryStream;
+
+  Stream<double> get ecgStream;
+}
+
+class _FakeDevice implements Device {
+  /// 采样频率
+  static const _sampleRateHz = 250;
+
+  /// 采样周期
+  static const _tick = Duration(
+    milliseconds: Duration.millisecondsPerSecond ~/ _sampleRateHz,
+  );
+
+  final _random = Random();
+
+  @override
+  String get name => Strings.fakeDevice;
+
+  @override
+  String get model => Strings.fakeDeviceModel;
+
+  @override
+  Stream<int> get rssiStream => Stream.periodic(
+        aSecond,
+        (_) => -32 - _random.nextInt(20),
+      );
+
+  @override
+  Stream<int> get batteryStream => Stream.periodic(
+        aSecond,
+        (_) => 100,
+      );
+
+  @override
+  Stream<double> get ecgStream async* {
+    final dataRaw = await rootBundle.loadString("assets/debug/input.txt");
+    final data = dataRaw
+        .split("\n")
+        .where((line) => line.isNotEmpty)
+        .map(double.parse)
+        .toList(growable: false);
+
+    yield* Stream.periodic(
+      _tick,
+      (i) => data[i % data.length],
+    );
+  }
+}
+
+@riverpod
+Device? device(DeviceRef ref) {
+  if (ref.watch(fakeDeviceProvider)) {
+    return _FakeDevice();
+  }
+  return null;
+}
+
+final rssiProvider = StreamProvider.autoDispose<int>(
+  (ref) => ref.watch(deviceProvider)!.rssiStream,
+);
+
+final batteryProvider = StreamProvider.autoDispose<int>(
+  (ref) => ref.watch(deviceProvider)!.batteryStream,
+);
+
+final ecgProvider = StreamProvider.autoDispose<double>(
+  (ref) => ref.watch(deviceProvider)!.ecgStream,
+);

@@ -6,7 +6,7 @@ import "package:flutter/services.dart";
 import "package:path/path.dart";
 import "package:path_provider/path_provider.dart";
 
-final DynamicLibrary _lib = Platform.isAndroid
+final _lib = Platform.isAndroid
     ? DynamicLibrary.open("libecg_model.so")
     : DynamicLibrary.process();
 
