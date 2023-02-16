@@ -10,6 +10,11 @@ runs:
     - uses: gradle/gradle-build-action@v2
       with:
         build-root-directory: android
+    - run: chmod +x android/gradlew
+      shell: bash
+    - uses: gradle/gradle-build-action@v2
+      with:
+        build-root-directory: android
         arguments: extractAARForNativeBuild
 
     - uses: subosito/flutter-action@v2
