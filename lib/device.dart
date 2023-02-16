@@ -1,0 +1,36 @@
+import "package:flutter/material.dart";
+
+class DeviceView extends StatelessWidget {
+  const DeviceView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          height: 150,
+          width: 150,
+          color: Colors.greenAccent,
+          child: const Center(child: Text("这里放设备图片")),
+        ),
+        ListTile(
+          leading: const Icon(Icons.bluetooth_disabled),
+          title: const Text("某型号设备 连接已断开"),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.refresh),
+          ),
+        ),
+        const ListTile(
+          leading: Icon(Icons.battery_unknown),
+          title: Text("电量未知"),
+        ),
+        const ListTile(
+          leading: Icon(Icons.not_interested),
+          title: Text("解绑设备"),
+        ),
+      ],
+    );
+  }
+}
