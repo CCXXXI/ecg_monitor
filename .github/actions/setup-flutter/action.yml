@@ -1,0 +1,8 @@
+name: setup-flutter
+description: 'Setup Flutter'
+runs:
+  using: composite
+  steps:
+    - uses: subosito/flutter-action@v2
+    - run: flutter pub get
+      shell: bash
