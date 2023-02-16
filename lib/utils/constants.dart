@@ -40,13 +40,15 @@ class Strings {
   static const String about = "关于";
   static late final String appName;
   static late final String version;
-  static late final String license;
+  static const String changelog = "更新日志";
 }
 
 class Urls {
   static const String _repo = "https://github.com/CCXXXI/ecg_monitor";
+  static const String _blob = "$_repo/blob/main";
 
   static final Uri issues = Uri.parse("$_repo/issues");
+  static final Uri changelog = Uri.parse("$_blob/CHANGELOG.md#changelog");
 }
 
 Future<void> initConstants() async {

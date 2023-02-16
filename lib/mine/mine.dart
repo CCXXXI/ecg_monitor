@@ -34,6 +34,12 @@ class Mine extends StatelessWidget {
         AboutListTile(
           icon: const Icon(Icons.info_outlined),
           applicationVersion: Strings.version,
+          aboutBoxChildren: [
+            OutlinedButton(
+              onPressed: () => launchUrl(Urls.changelog),
+              child: const Text(Strings.changelog),
+            ),
+          ],
           child: const Text(Strings.about),
         ),
       ],
