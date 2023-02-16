@@ -10,8 +10,7 @@ runs:
     - uses: gradle/gradle-build-action@v2
       with:
         build-root-directory: android
-    - run: cd android && ./gradlew extractAARForNativeBuild && cd ..
-      shell: bash
+        arguments: extractAARForNativeBuild
 
     - uses: subosito/flutter-action@v2
     - run: flutter pub get
