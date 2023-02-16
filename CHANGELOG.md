@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.4.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.3.0...v1.4.0) (2023-02-16)
+
+
+### Features
+
+* Column to ListView ([d7924e1](https://github.com/CCXXXI/ecg_monitor/commit/d7924e1289b69252d49df04ddd1247ca6c663fe6))
+* device infos ([263eb34](https://github.com/CCXXXI/ecg_monitor/commit/263eb34e7d289c66f1bb9c2ee206d6e85ce034ea))
+* **device:** fake device ([99bbcfa](https://github.com/CCXXXI/ecg_monitor/commit/99bbcfa0cc685af0ed7b0769fc7394f697f6182f))
+* extends to implements ([fbedddd](https://github.com/CCXXXI/ecg_monitor/commit/fbedddd9c60582ee1563c804f07ce382b70344e1))
+* **mine:** add auto-upload setting ([5ef9892](https://github.com/CCXXXI/ecg_monitor/commit/5ef98920ac96936c21708db13175267b46450986))
+* **mine:** better color picker ([2665265](https://github.com/CCXXXI/ecg_monitor/commit/26652658adef2cdaf430e0d2cc34c6fa5bc5c985))
+* **mine:** better slider labels ([d105782](https://github.com/CCXXXI/ecg_monitor/commit/d105782ea07a98c3eb8fb5daa93bf9a70f5bd4fb))
+* **mine:** fake device setting ([b7558ac](https://github.com/CCXXXI/ecg_monitor/commit/b7558ac034dd595ff67eb57a42cce3ef61a46d67))
+* **mine:** isThreeLine ([103d1bf](https://github.com/CCXXXI/ecg_monitor/commit/103d1bf081a73ff4bd95e6f0b7d379cb1338fd82))
+* **monitor:** background color ([23fbd57](https://github.com/CCXXXI/ecg_monitor/commit/23fbd5766d2ec264a6718f78614833f219ef9809))
+* **monitor:** better y axis in landscape ([e5a6936](https://github.com/CCXXXI/ecg_monitor/commit/e5a6936a13b1eeb6f68097c16b482d8b4d57434b))
+* **monitor:** correct grids interval ([b5f96bc](https://github.com/CCXXXI/ecg_monitor/commit/b5f96bc3cdf03d7d0f64ee98a9979f82dfc7a8ef))
+* **monitor:** duration settings ([271a951](https://github.com/CCXXXI/ecg_monitor/commit/271a9516eeb11c7793af50e85fff09bb51b33d12))
+* **monitor:** dynamic interval ([a48ce45](https://github.com/CCXXXI/ecg_monitor/commit/a48ce45b40c4553cf5efee55937b9680fe26f54c))
+* **monitor:** grids ([5acbc58](https://github.com/CCXXXI/ecg_monitor/commit/5acbc5842ed0bc32bdf3e5a9c557632e9e9d40ab))
+* **monitor:** line color ([cea494c](https://github.com/CCXXXI/ecg_monitor/commit/cea494c6a5bb41d4ead9d31ad8235b2073895888))
+* **monitor:** show dots ([bc86a4f](https://github.com/CCXXXI/ecg_monitor/commit/bc86a4fc5c0f41843122a287638d9dd7eb1cc0b3))
+* **monitor:** show grids ([71a656e](https://github.com/CCXXXI/ecg_monitor/commit/71a656eb9eac0520bf326ec0cb59a8fc4e8d2fc5))
+* **monitor:** time as SideTitleWidget ([36c5a53](https://github.com/CCXXXI/ecg_monitor/commit/36c5a53d658cc3abf62ff02a3c7357a8e383fb52))
+* **monitor:** TimeAxisTitles ([5fedca4](https://github.com/CCXXXI/ecg_monitor/commit/5fedca4f4db6d0c0d1b28eb5aceb9f3983281832))
+* **monitor:** vertical mode: more infos & adaptive y-axis ([c327620](https://github.com/CCXXXI/ecg_monitor/commit/c3276207069071528e1f14ed08393dfc392c4548))
+* move showDots setting to devtools ([c39c9f5](https://github.com/CCXXXI/ecg_monitor/commit/c39c9f5f8ea2c2baad3f05f9eb02ddea3b0859ae))
+* new logger ([e31564b](https://github.com/CCXXXI/ecg_monitor/commit/e31564b639857c9343870ccc8e73871afc651d09))
+* outlined icons ([3934483](https://github.com/CCXXXI/ecg_monitor/commit/3934483fba6ba6a22f2399150eaa33b8d30e97cc))
+* prefs ([7cb187b](https://github.com/CCXXXI/ecg_monitor/commit/7cb187b47803ddf59bb21873a53ca165261d685e))
+
+
+### Bug Fixes
+
+* parentNavigatorKey ([df964e4](https://github.com/CCXXXI/ecg_monitor/commit/df964e44a2e9550082aac444267b6d7f6f0fbe81))
+
+
+### Performance Improvements
+
+* **monitor:** clip data source ([dfaeb59](https://github.com/CCXXXI/ecg_monitor/commit/dfaeb59a4848c27b769ebe772b30f44e8c575f42))
+* **monitor:** reuse titles widget ([7abc553](https://github.com/CCXXXI/ecg_monitor/commit/7abc553296454d408fb70639fdfb9012330c9095))
+
 ## [1.3.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.2.0...v1.3.0) (2023-01-31)
 
 ### Features
