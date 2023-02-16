@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.2.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.1.0...v1.2.0) (2023-02-16)
+
+
+### Features
+
+* add model as submodule ([3853fd3](https://github.com/CCXXXI/ecg_monitor/commit/3853fd30fa71488ade770c17cfe7dc8a77633067))
+* disable sanitizer ([8804a93](https://github.com/CCXXXI/ecg_monitor/commit/8804a9385789f48acb316904599c5311a672af04))
+* **home:** NavigationBar instead of SalomonBottomBar ([e78a2bf](https://github.com/CCXXXI/ecg_monitor/commit/e78a2bf2f774a01b96d485e491960a4abaf84176))
+* load model ([f9bd5fc](https://github.com/CCXXXI/ecg_monitor/commit/f9bd5fcd8403b1e3d69d421e1cf0db31d0cc1819))
+* log ([3dd1004](https://github.com/CCXXXI/ecg_monitor/commit/3dd1004bd7fd6f14e518fd47feadfed00df8e916))
+* logging system ([c9d4017](https://github.com/CCXXXI/ecg_monitor/commit/c9d4017a7a5fe46aebfd279503c624eb8d07bf97))
+* **mine:** SettingsView ([a1894f7](https://github.com/CCXXXI/ecg_monitor/commit/a1894f732ca8e21586a2d132632c1e8d9436864a))
+* model test ([57837e0](https://github.com/CCXXXI/ecg_monitor/commit/57837e0cbeaa6d9a9947505042ab6803b2a13d61))
+* **model:** forward ([b9542f0](https://github.com/CCXXXI/ecg_monitor/commit/b9542f0cf45f2daafdabec89cccf9f876ab1002f))
+* use material 3 ([3257fa1](https://github.com/CCXXXI/ecg_monitor/commit/3257fa193ca774736eccf5d3a2d81d91bf87b6df))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v7.4.0 ([1a24958](https://github.com/CCXXXI/ecg_monitor/commit/1a249588efbf8c85ae534dd7f6286d28c0260b44))
+* hpp to cpp ([f352b49](https://github.com/CCXXXI/ecg_monitor/commit/f352b49c2e18176990578457e2cd2aa3c2cbb9ec))
+* no Werror ([1645948](https://github.com/CCXXXI/ecg_monitor/commit/164594895cb4e16f6cbba594dd20f7933b940c7a))
+* set(CMAKE_CXX_STANDARD 20) ([02d4462](https://github.com/CCXXXI/ecg_monitor/commit/02d44627cae651f78dcc05bc38e700de9c8dc920))
+
 ## [1.1.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.0.0...v1.1.0) (2022-12-26)
 
 ### Features
