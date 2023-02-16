@@ -12,4 +12,3 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_PAT }}
           release-type: dart
-          package-name: ecg_monitor
