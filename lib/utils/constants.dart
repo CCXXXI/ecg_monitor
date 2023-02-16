@@ -1,9 +1,6 @@
-import "package:flutter/services.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
 class Strings {
-  static const String appName = "心电监测";
-
   static const String monitor = "实时数据";
   static const String portraitDuration = "竖屏时长";
   static const String landscapeDuration = "横屏时长";
@@ -40,13 +37,13 @@ class Strings {
   static const String rebootNeeded = "重启后生效"; // todo: reboot auto?
 
   static const String about = "关于";
+  static late final String appName;
   static late final String version;
   static late final String license;
 }
 
 Future<void> initConstants() async {
   final packageInfo = await PackageInfo.fromPlatform();
-  Strings.version = packageInfo.version;
-
-  Strings.license = await rootBundle.loadString("LICENSE");
+  Strings.appName = packageInfo.appName;
+  Strings.version = "${packageInfo.version}+${packageInfo.buildNumber}";
 }

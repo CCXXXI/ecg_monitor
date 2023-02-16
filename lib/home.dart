@@ -22,7 +22,7 @@ class Home extends ConsumerWidget {
     _logger.fine("Home.build: route=$route, index=$index");
 
     return Scaffold(
-      appBar: AppBar(title: const Text(Strings.appName)),
+      appBar: AppBar(title: Text(Strings.appName)),
       body: _child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
