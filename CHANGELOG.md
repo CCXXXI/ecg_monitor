@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.0.0...v1.1.0) (2023-02-16)
+
+
+### Features
+
+* **analysis:** AnalysisView ([61e4d2b](https://github.com/CCXXXI/ecg_monitor/commit/61e4d2b23890caf87baa6e50c264ae60f6c7cd45))
+* **device:** better DeviceView ([110eae6](https://github.com/CCXXXI/ecg_monitor/commit/110eae666f599bd5def8cc251ea281d9f6d7c9e0))
+
+
+### Bug Fixes
+
+* **deps:** update kotlin monorepo to v1.8.0 ([c78fb43](https://github.com/CCXXXI/ecg_monitor/commit/c78fb43f5c3930d8682b5acc798931e89de125f9))
+
 ## 1.0.0 (2023-02-16)
 
 ### Features
