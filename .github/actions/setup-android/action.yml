@@ -7,13 +7,9 @@ runs:
       with:
         distribution: 'zulu'
         java-version: '17'
-    - uses: gradle/gradle-build-action@v2
-      with:
-        build-root-directory: android
-        arguments: extractAARForNativeBuild
-      # debug
-      continue-on-error: true
-    - run: ls -la android
+
+    - run: gradle wrapper
+      working-directory: android
       shell: bash
 
     - uses: subosito/flutter-action@v2
