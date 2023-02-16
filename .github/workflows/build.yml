@@ -32,3 +32,15 @@ jobs:
         with:
           name: appbundle
           path: build/app/outputs/bundle/release/app-release.aab
+
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-flutter
+
+      - run: flutter build web --source-maps
+      - uses: actions/upload-artifact@v3
+        with:
+          name: web
+          path: build/web
