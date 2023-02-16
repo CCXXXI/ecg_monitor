@@ -5,6 +5,6 @@ class Analytics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset("assets/images/report placeholder.jpg");
+    return const Placeholder();
   }
 }
