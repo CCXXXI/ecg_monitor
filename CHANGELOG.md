@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.0.0...v1.1.0) (2023-02-16)
+## [1.1.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.0.0...v1.1.0) (2022-12-26)
 
 ### Features
 
@@ -11,7 +11,7 @@
 
 - **deps:** update kotlin monorepo to v1.8.0 ([c78fb43](https://github.com/CCXXXI/ecg_monitor/commit/c78fb43f5c3930d8682b5acc798931e89de125f9))
 
-## 1.0.0 (2023-02-16)
+## 1.0.0 (2022-12-06)
 
 ### Features
 
