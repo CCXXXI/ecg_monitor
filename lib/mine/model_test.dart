@@ -2,7 +2,8 @@ import "package:flutter/foundation.dart";
 import "package:flutter/services.dart";
 import "package:logging/logging.dart";
 
-import "../model.dart";
+import "../analytics/model_stub.dart"
+    if (dart.library.io) "../analytics/model.dart";
 
 final _logger = Logger("model_test");
 
