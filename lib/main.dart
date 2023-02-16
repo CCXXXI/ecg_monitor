@@ -6,13 +6,16 @@ import "package:logger_flutter_plus/logger_flutter_plus.dart";
 import "home.dart";
 import "mine/settings.dart";
 import "model.dart";
+import "monitor.dart";
 import "utils/constants.dart";
 import "utils/log.dart";
 
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
+  await initConstants();
   await loadModel();
+  await initMonitor();
 
   // run app
   runApp(const ProviderScope(child: App()));
