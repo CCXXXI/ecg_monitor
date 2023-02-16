@@ -1,23 +1,10 @@
 import "package:ecg_monitor/utils/constants.dart";
-import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:package_info_plus/package_info_plus.dart";
+
+const expectedIssuesUrl = "https://github.com/CCXXXI/ecg_monitor/issues";
 
 void main() {
-  setUpAll(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-
-    PackageInfo.setMockInitialValues(
-      appName: "",
-      packageName: "",
-      version: "",
-      buildNumber: "",
-      buildSignature: "",
-      installerStore: null,
-    );
-
-    await initConstants();
+  group("Urls", () {
+    test("issues", () => expect(Urls.issues.toString(), expectedIssuesUrl));
   });
-
-  test("license", () => expect(Strings.license, startsWith("MIT License")));
 }
