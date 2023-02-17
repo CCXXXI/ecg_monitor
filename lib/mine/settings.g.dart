@@ -22,6 +22,7 @@ final portraitDurationProvider =
 );
 
 typedef _$PortraitDuration = AutoDisposeNotifier<double>;
+
 String _$landscapeDurationHash() => r'8687d81f5f4d75e08fb7e58fe5da21ebcfe70cd5';
 
 /// See also [LandscapeDuration].
@@ -38,6 +39,7 @@ final landscapeDurationProvider =
 );
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
+
 String _$backgroundColorHash() => r'e1ca133482796e3b571637d9a9c1364b0a950af6';
 
 /// See also [BackgroundColor].
@@ -54,6 +56,7 @@ final backgroundColorProvider =
 );
 
 typedef _$BackgroundColor = AutoDisposeNotifier<int>;
+
 String _$lineColorHash() => r'8eca86ef42442d5d093593d6271449778ae479b1';
 
 /// See also [LineColor].
@@ -68,6 +71,7 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 );
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
+
 String _$gridColorHash() => r'f7788d0df73e5940678f73525b39736854f9833d';
 
 /// See also [GridColor].
@@ -82,6 +86,7 @@ final gridColorProvider = AutoDisposeNotifierProvider<GridColor, int>.internal(
 );
 
 typedef _$GridColor = AutoDisposeNotifier<int>;
+
 String _$horizontalLineTypeIndexHash() =>
     r'd6fe0841354bf0b39b1b47248d3a41109362786f';
 
@@ -99,6 +104,7 @@ final horizontalLineTypeIndexProvider =
 );
 
 typedef _$HorizontalLineTypeIndex = AutoDisposeNotifier<int>;
+
 String _$verticalLineTypeIndexHash() =>
     r'36637e9ed45431c4f20e889364618d2efe057557';
 
@@ -116,6 +122,7 @@ final verticalLineTypeIndexProvider =
 );
 
 typedef _$VerticalLineTypeIndex = AutoDisposeNotifier<int>;
+
 String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
 
 /// See also [AutoUpload].
@@ -131,6 +138,7 @@ final autoUploadProvider =
 );
 
 typedef _$AutoUpload = AutoDisposeNotifier<bool>;
+
 String _$fakeDeviceHash() => r'c3a63ddf4d531d5d97008e8ca64e873ed2590744';
 
 /// See also [FakeDevice].
@@ -146,6 +154,7 @@ final fakeDeviceProvider =
 );
 
 typedef _$FakeDevice = AutoDisposeNotifier<bool>;
+
 String _$loggerLevelIndexHash() => r'87e6418344bd57a84c76d6f0686a8393ea9dec4b';
 
 /// See also [LoggerLevelIndex].
@@ -162,6 +171,7 @@ final loggerLevelIndexProvider =
 );
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
+
 String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
 
 /// See also [ShowDots].

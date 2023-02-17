@@ -4,7 +4,7 @@ import "package:flutter_test/flutter_test.dart";
 void main() {
   group("getIntervalMs", () {
     test("portrait", () {
-      f(double durationS) => Chart.getIntervalMs(true, durationS);
+      double f(double durationS) => Chart.getIntervalMs(true, durationS);
 
       const maxIntervalCount = Chart.maxIntervalCountPortrait;
 
@@ -17,7 +17,7 @@ void main() {
       }
     });
     test("landscape", () {
-      f(double durationS) => Chart.getIntervalMs(false, durationS);
+      double f(double durationS) => Chart.getIntervalMs(false, durationS);
 
       const maxIntervalCount = Chart.maxIntervalCountLandscape;
 

@@ -286,7 +286,6 @@ class Settings extends ConsumerWidget {
                   onChanged: (value) => ref
                       .read(loggerLevelIndexProvider.notifier)
                       .set(value.toInt()),
-                  min: 0,
                   max: loggerLevels.length - 1,
                   divisions: loggerLevels.length - 1,
                   label: loggerLevelName,

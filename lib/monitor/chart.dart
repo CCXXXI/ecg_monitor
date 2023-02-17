@@ -28,6 +28,8 @@ class _Points extends _$Points {
 }
 
 class Chart extends ConsumerWidget {
+  const Chart({super.key});
+
   @visibleForTesting
   static const maxIntervalCountPortrait = 5;
 
@@ -41,8 +43,6 @@ class Chart extends ConsumerWidget {
 
   static const _thickLineWidth = 1.0;
   static const _thinLineWidth = .5;
-
-  const Chart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -117,21 +117,19 @@ class Chart extends ConsumerWidget {
     return intervalMs;
   }
 
-  static AxisTitles _getTimeAxisTitles(double interval) {
-    return AxisTitles(
-      sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 30,
-        interval: interval,
-        getTitlesWidget: (value, meta) => SideTitleWidget(
-          axisSide: meta.axisSide,
-          child: Text(
-            DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+  static AxisTitles _getTimeAxisTitles(double interval) => AxisTitles(
+        sideTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 30,
+          interval: interval,
+          getTitlesWidget: (value, meta) => SideTitleWidget(
+            axisSide: meta.axisSide,
+            child: Text(
+              DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 
   static double _getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval =

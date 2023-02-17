@@ -8,11 +8,11 @@ import "utils/constants.dart";
 final _logger = Logger("home");
 
 class Home extends ConsumerWidget {
+  const Home(this._child, {super.key});
+
   static const _routes = ["/monitor", "/analytics", "/device_manager", "/mine"];
 
   final Widget _child;
-
-  const Home(this._child, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
