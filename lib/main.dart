@@ -19,8 +19,9 @@ void main() async {
   // init Sentry & run app
   await SentryFlutter.init(
     (options) {
-      options.dsn = Strings.sentryDsn;
-      options.tracesSampleRate = 1.0;
+      options
+        ..dsn = Strings.sentryDsn
+        ..tracesSampleRate = 1.0;
     },
     appRunner: () => runApp(const App()),
   );
