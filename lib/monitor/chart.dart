@@ -63,7 +63,7 @@ class Chart extends ConsumerWidget {
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
-    final intervalMs = getIntervalMs(isPortrait, durationS);
+    final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
     final horizontalLineType = LineType.values[horizontalLineTypeIndex];
     final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
@@ -111,7 +111,7 @@ class Chart extends ConsumerWidget {
   }
 
   @visibleForTesting
-  static double getIntervalMs(bool isPortrait, double durationS) {
+  static double getIntervalMs(double durationS, {required bool isPortrait}) {
     final intervalCount =
         isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
     final intervalS = (durationS / intervalCount).ceilToDouble();

@@ -96,6 +96,7 @@ class AutoUpload extends _$AutoUpload {
   @override
   bool build() => prefs.getBool(Strings.autoUpload) ?? true;
 
+  // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
     await prefs.setBool(Strings.autoUpload, value);
@@ -107,6 +108,7 @@ class FakeDevice extends _$FakeDevice {
   @override
   bool build() => prefs.getBool(Strings.fakeDevice) ?? false;
 
+  // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
     await prefs.setBool(Strings.fakeDevice, value);
@@ -130,6 +132,7 @@ class ShowDots extends _$ShowDots {
   @override
   bool build() => prefs.getBool(Strings.showDots) ?? false;
 
+  // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
     await prefs.setBool(Strings.showDots, value);
