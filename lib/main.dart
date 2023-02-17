@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
+import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
-import "model.dart";
 import "utils/constants.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
@@ -13,7 +13,7 @@ void main() async {
   await initConstants();
   await initPrefs();
   initLogger();
-  await loadModel(); // todo: disable on web
+  await loadModel();
 
   // run app
   runApp(const ProviderScope(child: App()));

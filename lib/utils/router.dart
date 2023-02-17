@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 
-import "../analytics.dart";
+import "../analytics/analytics.dart";
 import "../device_manager/device_manager.dart";
 import "../home.dart";
 import "../mine/mine.dart";

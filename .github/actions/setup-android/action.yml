@@ -1,0 +1,10 @@
+name: setup-android
+description: 'Setup Java and Flutter'
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+    - uses: ./.github/actions/setup-flutter

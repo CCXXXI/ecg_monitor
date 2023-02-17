@@ -1,8 +1,9 @@
 name: release
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -11,4 +12,3 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_PAT }}
           release-type: dart
-          package-name: ecg_monitor

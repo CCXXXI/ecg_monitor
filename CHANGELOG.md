@@ -14,7 +14,7 @@
 - **mine:** fake device setting ([b7558ac](https://github.com/CCXXXI/ecg_monitor/commit/b7558ac034dd595ff67eb57a42cce3ef61a46d67))
 - **mine:** isThreeLine ([103d1bf](https://github.com/CCXXXI/ecg_monitor/commit/103d1bf081a73ff4bd95e6f0b7d379cb1338fd82))
 - **monitor:** background color ([23fbd57](https://github.com/CCXXXI/ecg_monitor/commit/23fbd5766d2ec264a6718f78614833f219ef9809))
-- **monitor:** better y axis in landscape ([e5a6936](https://github.com/CCXXXI/ecg_monitor/commit/e5a6936a13b1eeb6f68097c16b482d8b4d57434b))
+- **monitor:** better y-axis in landscape ([e5a6936](https://github.com/CCXXXI/ecg_monitor/commit/e5a6936a13b1eeb6f68097c16b482d8b4d57434b))
 - **monitor:** correct grids interval ([b5f96bc](https://github.com/CCXXXI/ecg_monitor/commit/b5f96bc3cdf03d7d0f64ee98a9979f82dfc7a8ef))
 - **monitor:** duration settings ([271a951](https://github.com/CCXXXI/ecg_monitor/commit/271a9516eeb11c7793af50e85fff09bb51b33d12))
 - **monitor:** dynamic interval ([a48ce45](https://github.com/CCXXXI/ecg_monitor/commit/a48ce45b40c4553cf5efee55937b9680fe26f54c))

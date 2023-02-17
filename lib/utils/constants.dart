@@ -1,9 +1,6 @@
-import "package:flutter/services.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
 class Strings {
-  static const String appName = "心电监测";
-
   static const String monitor = "实时数据";
   static const String portraitDuration = "竖屏时长";
   static const String landscapeDuration = "横屏时长";
@@ -27,6 +24,7 @@ class Strings {
   static const String batteryUnknown = "电量未知";
 
   static const String mine = "我的";
+  static const String feedback = "反馈";
 
   static const String settings = "设置";
 
@@ -40,13 +38,21 @@ class Strings {
   static const String rebootNeeded = "重启后生效"; // todo: reboot auto?
 
   static const String about = "关于";
+  static late final String appName;
   static late final String version;
-  static late final String license;
+  static const String changelog = "更新日志";
+}
+
+class Urls {
+  static const String _repo = "https://github.com/CCXXXI/ecg_monitor";
+  static const String _blob = "$_repo/blob/main";
+
+  static final Uri issues = Uri.parse("$_repo/issues");
+  static final Uri changelog = Uri.parse("$_blob/CHANGELOG.md#changelog");
 }
 
 Future<void> initConstants() async {
   final packageInfo = await PackageInfo.fromPlatform();
-  Strings.version = packageInfo.version;
-
-  Strings.license = await rootBundle.loadString("LICENSE");
+  Strings.appName = packageInfo.appName;
+  Strings.version = "${packageInfo.version}+${packageInfo.buildNumber}";
 }

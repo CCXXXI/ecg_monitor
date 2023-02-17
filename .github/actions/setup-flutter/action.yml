@@ -1,0 +1,10 @@
+name: setup-flutter
+description: 'Setup Flutter'
+runs:
+  using: composite
+  steps:
+    - uses: subosito/flutter-action@v2
+      with:
+        cache: true
+    - run: flutter pub get
+      shell: bash

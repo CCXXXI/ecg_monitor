@@ -1,0 +1,69 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build apk --split-per-abi
+      - uses: actions/upload-artifact@v3
+        with:
+          name: apk
+          path: build/app/outputs/flutter-apk
+
+  build-appbundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build appbundle
+      - uses: actions/upload-artifact@v3
+        with:
+          name: appbundle
+          path: build/app/outputs/bundle/release/app-release.aab
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [ build-apk, build-appbundle ]
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: apk
+      - uses: actions/download-artifact@v3
+        with:
+          name: appbundle
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            *.apk
+            *.aab
+
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-flutter
+
+      - run: flutter build web --source-maps --base-href /ecg_monitor/
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: build/web
+
+  release-web:
+    runs-on: ubuntu-latest
+    needs: build-web
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/deploy-pages@v1
