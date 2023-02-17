@@ -34,8 +34,8 @@ class Strings {
   static const String modelTest = "模型测试";
   static const String loggerLevel = "日志等级";
   static const String showDots = "显示数据点";
-  static const String resetSettings = "恢复默认设置"; // todo: implement
-  static const String rebootNeeded = "重启后生效"; // todo: reboot auto?
+  static const String resetSettings = "恢复默认设置";
+  static const String rebootNeeded = "重启后生效";
 
   static const String about = "关于";
   static late final String appName;

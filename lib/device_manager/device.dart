@@ -10,7 +10,6 @@ import "../utils/constants.dart";
 
 part "device.g.dart";
 
-// todo: 未绑定和未连接应该是不同的状态
 abstract class Device {
   String get name;
 
