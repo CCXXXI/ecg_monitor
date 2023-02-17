@@ -41,6 +41,10 @@ class Strings {
   static late final String appName;
   static late final String version;
   static const String changelog = "更新日志";
+
+  static const String sentryDsn =
+      "https://2f8266dc3f2947a186a1bb5a835f4b37@o996799.ingest.sentry.io"
+      "/4504697112625152";
 }
 
 class Urls {
