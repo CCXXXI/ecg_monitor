@@ -8,11 +8,11 @@ void main() {
 
       const maxIntervalCount = Chart.maxIntervalCountPortrait;
 
-      for (double i = 1; i <= maxIntervalCount; ++i) {
+      for (var i = 1.0; i <= maxIntervalCount; ++i) {
         expect(f(i), 1000);
       }
 
-      for (double i = maxIntervalCount + 1; i <= maxIntervalCount * 2; ++i) {
+      for (var i = maxIntervalCount + 1.0; i <= maxIntervalCount * 2; ++i) {
         expect(f(i), 2000);
       }
     });
@@ -21,11 +21,11 @@ void main() {
 
       const maxIntervalCount = Chart.maxIntervalCountLandscape;
 
-      for (double i = 1; i <= maxIntervalCount; ++i) {
+      for (var i = 1.0; i <= maxIntervalCount; ++i) {
         expect(f(i), 1000);
       }
 
-      for (double i = maxIntervalCount + 1; i <= maxIntervalCount * 2; ++i) {
+      for (var i = maxIntervalCount + 1.0; i <= maxIntervalCount * 2; ++i) {
         expect(f(i), 2000);
       }
     });
