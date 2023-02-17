@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.4.0...v1.5.0) (2023-02-17)
+
+
+### Features
+
+* **analytics:** model_stub for web ([c6b7465](https://github.com/CCXXXI/ecg_monitor/commit/c6b74652e453731463dffcb278204dd0cf2af670))
+* **analytics:** Placeholder ([85bee09](https://github.com/CCXXXI/ecg_monitor/commit/85bee090d21be83ba6d1e8a5ab9a9829cc83d641))
+* **mine:** changelog in about ([12161cf](https://github.com/CCXXXI/ecg_monitor/commit/12161cf361b6904ba9d9c45f182e325e82ca96fb))
+* **mine:** feedback ([483eec2](https://github.com/CCXXXI/ecg_monitor/commit/483eec24f02b4c2c58dacaade58433a1f3d826bc))
+* update AboutListTile ([15eba3d](https://github.com/CCXXXI/ecg_monitor/commit/15eba3d9a85b6fb904da5a4d54af4fd857bd3536))
+
 ## [1.4.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.3.0...v1.4.0) (2023-02-16)
 
 ### Features
