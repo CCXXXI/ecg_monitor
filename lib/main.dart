@@ -22,7 +22,7 @@ void main() async {
       options.dsn = Strings.sentryDsn;
       options.tracesSampleRate = 1.0;
     },
-    appRunner: () => runApp(const ProviderScope(child: App())),
+    appRunner: () => runApp(const App()),
   );
 }
 
@@ -31,10 +31,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: Strings.appName,
-      routerConfig: router,
-      theme: ThemeData(useMaterial3: true),
+    return ProviderScope(
+      child: MaterialApp.router(
+        title: Strings.appName,
+        routerConfig: router,
+        theme: ThemeData(useMaterial3: true),
+      ),
     );
   }
 }
