@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -14,7 +16,7 @@ var _maxDurationMs = .0;
 class _Points extends _$Points {
   @override
   List<FlSpot> build() {
-    ref.watch(ecgProvider.stream).forEach(add);
+    unawaited(ref.watch(ecgProvider.stream).forEach(add));
     return const [];
   }
 

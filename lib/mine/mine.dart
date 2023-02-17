@@ -19,7 +19,7 @@ class Mine extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.feedback_outlined),
             title: const Text(Strings.feedback),
-            onTap: () => launchUrl(Urls.issues),
+            onTap: () async => launchUrl(Urls.issues),
           ),
           const ListTile(
             leading: Icon(Icons.help_outlined),
@@ -35,7 +35,7 @@ class Mine extends StatelessWidget {
             applicationVersion: Strings.version,
             aboutBoxChildren: [
               OutlinedButton(
-                onPressed: () => launchUrl(Urls.changelog),
+                onPressed: () async => launchUrl(Urls.changelog),
                 child: const Text(Strings.changelog),
               ),
             ],
