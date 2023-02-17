@@ -48,8 +48,9 @@ List<int> forward(List<double> data) {
   _forwardArgmax(dataPtr, data.length, outPtr);
   final result = outPtr.asTypedList(data.length).toList(growable: false);
 
-  malloc.free(outPtr);
-  malloc.free(dataPtr);
+  malloc
+    ..free(outPtr)
+    ..free(dataPtr);
 
   return result;
 }
