@@ -17,7 +17,6 @@ linter:
     - always_use_package_imports
     - annotate_overrides
     - avoid_annotating_with_dynamic
-    - avoid_as
     - avoid_bool_literals_in_conditional_expressions
     - avoid_catches_without_on_clauses
     - avoid_catching_errors
@@ -87,7 +86,6 @@ linter:
     - hash_and_equals
     - implementation_imports
     - implicit_call_tearoffs
-    - invariant_booleans
     - iterable_contains_unrelated_type
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
@@ -121,7 +119,6 @@ linter:
     - prefer_adjacent_string_concatenation
     - prefer_asserts_in_initializer_lists
     - prefer_asserts_with_message
-    - prefer_bool_in_asserts
     - prefer_collection_literals
     - prefer_conditional_assignment
     - prefer_const_constructors
@@ -169,7 +166,6 @@ linter:
     - sort_constructors_first
     - sort_pub_dependencies
     - sort_unnamed_constructors_first
-    - super_goes_last
     - test_types_in_equals
     - throw_in_finally
     - tighten_type_of_initializing_formals
