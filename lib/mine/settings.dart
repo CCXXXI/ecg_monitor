@@ -17,9 +17,9 @@ class PortraitDuration extends _$PortraitDuration {
   @override
   double build() => prefs.getDouble(Strings.portraitDuration) ?? 5;
 
-  void set(double value) {
+  Future<void> set(double value) async {
     state = value;
-    prefs.setDouble(Strings.portraitDuration, value);
+    await prefs.setDouble(Strings.portraitDuration, value);
   }
 }
 
@@ -28,9 +28,9 @@ class LandscapeDuration extends _$LandscapeDuration {
   @override
   double build() => prefs.getDouble(Strings.landscapeDuration) ?? 10;
 
-  void set(double value) {
+  Future<void> set(double value) async {
     state = value;
-    prefs.setDouble(Strings.landscapeDuration, value);
+    await prefs.setDouble(Strings.landscapeDuration, value);
   }
 }
 
@@ -39,9 +39,9 @@ class BackgroundColor extends _$BackgroundColor {
   @override
   int build() => prefs.getInt(Strings.backgroundColor) ?? Colors.white.value;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
-    prefs.setInt(Strings.backgroundColor, value);
+    await prefs.setInt(Strings.backgroundColor, value);
   }
 }
 
@@ -50,9 +50,9 @@ class LineColor extends _$LineColor {
   @override
   int build() => prefs.getInt(Strings.lineColor) ?? Colors.red.value;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
-    prefs.setInt(Strings.lineColor, value);
+    await prefs.setInt(Strings.lineColor, value);
   }
 }
 
@@ -61,9 +61,9 @@ class GridColor extends _$GridColor {
   @override
   int build() => prefs.getInt(Strings.gridColor) ?? Colors.red.value;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
-    prefs.setInt(Strings.gridColor, value);
+    await prefs.setInt(Strings.gridColor, value);
   }
 }
 
@@ -74,9 +74,9 @@ class HorizontalLineTypeIndex extends _$HorizontalLineTypeIndex {
   @override
   int build() => prefs.getInt(Strings.horizontalLine) ?? LineType.full.index;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
-    prefs.setInt(Strings.horizontalLine, value);
+    await prefs.setInt(Strings.horizontalLine, value);
   }
 }
 
@@ -85,9 +85,9 @@ class VerticalLineTypeIndex extends _$VerticalLineTypeIndex {
   @override
   int build() => prefs.getInt(Strings.verticalLine) ?? LineType.full.index;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
-    prefs.setInt(Strings.verticalLine, value);
+    await prefs.setInt(Strings.verticalLine, value);
   }
 }
 
@@ -96,9 +96,9 @@ class AutoUpload extends _$AutoUpload {
   @override
   bool build() => prefs.getBool(Strings.autoUpload) ?? true;
 
-  void set(bool value) {
+  Future<void> set(bool value) async {
     state = value;
-    prefs.setBool(Strings.autoUpload, value);
+    await prefs.setBool(Strings.autoUpload, value);
   }
 }
 
@@ -107,9 +107,9 @@ class FakeDevice extends _$FakeDevice {
   @override
   bool build() => prefs.getBool(Strings.fakeDevice) ?? false;
 
-  void set(bool value) {
+  Future<void> set(bool value) async {
     state = value;
-    prefs.setBool(Strings.fakeDevice, value);
+    await prefs.setBool(Strings.fakeDevice, value);
   }
 }
 
@@ -118,10 +118,10 @@ class LoggerLevelIndex extends _$LoggerLevelIndex {
   @override
   int build() => prefs.getInt(Strings.loggerLevel) ?? infoLevelIndex;
 
-  void set(int value) {
+  Future<void> set(int value) async {
     state = value;
     Logger.root.level = loggerLevels[value];
-    prefs.setInt(Strings.loggerLevel, value);
+    await prefs.setInt(Strings.loggerLevel, value);
   }
 }
 
@@ -130,9 +130,9 @@ class ShowDots extends _$ShowDots {
   @override
   bool build() => prefs.getBool(Strings.showDots) ?? false;
 
-  void set(bool value) {
+  Future<void> set(bool value) async {
     state = value;
-    prefs.setBool(Strings.showDots, value);
+    await prefs.setBool(Strings.showDots, value);
   }
 }
 
@@ -234,7 +234,7 @@ class Settings extends ConsumerWidget {
                 trailing: SegmentedButton(
                   segments: lineTypeSegments,
                   selected: {horizontalLineType},
-                  onSelectionChanged: (selected) => ref
+                  onSelectionChanged: (selected) async => ref
                       .read(horizontalLineTypeIndexProvider.notifier)
                       .set(selected.first.index),
                 ),
@@ -245,7 +245,7 @@ class Settings extends ConsumerWidget {
                 trailing: SegmentedButton(
                   segments: lineTypeSegments,
                   selected: {verticalLineType},
-                  onSelectionChanged: (selected) => ref
+                  onSelectionChanged: (selected) async => ref
                       .read(verticalLineTypeIndexProvider.notifier)
                       .set(selected.first.index),
                 ),
@@ -275,7 +275,7 @@ class Settings extends ConsumerWidget {
               SettingsTile.navigation(
                 leading: const Icon(Icons.compare_arrows_outlined),
                 title: const Text(Strings.modelTest),
-                onPressed: (context) => modelTest(),
+                onPressed: (context) async => modelTest(),
               ),
               SettingsTile(
                 leading: const Icon(Icons.developer_mode_outlined),
@@ -283,7 +283,7 @@ class Settings extends ConsumerWidget {
                 value: Text(loggerLevelName),
                 trailing: Slider.adaptive(
                   value: loggerLevelIndex.toDouble(),
-                  onChanged: (value) => ref
+                  onChanged: (value) async => ref
                       .read(loggerLevelIndexProvider.notifier)
                       .set(value.toInt()),
                   max: loggerLevels.length - 1,
