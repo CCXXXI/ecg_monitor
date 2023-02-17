@@ -7,7 +7,7 @@ import "../analytics/model_stub.dart"
 
 final _logger = Logger("model_test");
 
-void modelTest() async {
+Future<void> modelTest() async {
   _logger.fine("读取测试输入");
   final inputStr = await rootBundle.loadString("assets/debug/input.txt");
   final input = inputStr

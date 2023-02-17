@@ -30,19 +30,14 @@ Future<void> loadModel() async {
 // endregion
 
 // region forward
-typedef _ForwardArgmaxNative = Void Function(
-  Pointer<Double> data,
-  Int32 size,
-  Pointer<Uint8> out,
-);
-typedef _ForwardArgmax = void Function(
-  Pointer<Double> data,
-  int size,
-  Pointer<Uint8> out,
-);
-
-final _ForwardArgmax _forwardArgmax = _lib
-    .lookup<NativeFunction<_ForwardArgmaxNative>>("forward_argmax")
+final void Function(Pointer<Double>, int, Pointer<Uint8>) _forwardArgmax = _lib
+    .lookup<
+        NativeFunction<
+            Void Function(
+      Pointer<Double>,
+      Int32,
+      Pointer<Uint8>,
+    )>>("forward_argmax")
     .asFunction();
 
 List<int> forward(List<double> data) {
