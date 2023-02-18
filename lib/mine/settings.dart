@@ -27,11 +27,11 @@ class PortraitDuration extends _$PortraitDuration {
 @riverpod
 class LandscapeDuration extends _$LandscapeDuration {
   @override
-  double build() => prefs.getDouble(str.landscapeDuration) ?? 10;
+  double build() => prefs.getDouble(key.landscapeDuration) ?? 10;
 
   Future<void> set(double value) async {
     state = value;
-    await prefs.setDouble(str.landscapeDuration, value);
+    await prefs.setDouble(key.landscapeDuration, value);
   }
 }
 
