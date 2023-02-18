@@ -18,9 +18,9 @@ class PortraitDuration extends _$PortraitDuration {
   @override
   double build() => prefs.getDouble(key.portraitDuration) ?? 5;
 
-  Future<void> set(double value) async {
-    state = value;
-    await prefs.setDouble(key.portraitDuration, value);
+  Future<void> set(double duration) async {
+    state = duration;
+    await prefs.setDouble(key.portraitDuration, duration);
   }
 }
 
@@ -29,9 +29,9 @@ class LandscapeDuration extends _$LandscapeDuration {
   @override
   double build() => prefs.getDouble(key.landscapeDuration) ?? 10;
 
-  Future<void> set(double value) async {
-    state = value;
-    await prefs.setDouble(key.landscapeDuration, value);
+  Future<void> set(double duration) async {
+    state = duration;
+    await prefs.setDouble(key.landscapeDuration, duration);
   }
 }
 
