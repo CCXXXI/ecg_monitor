@@ -227,7 +227,7 @@ class Settings extends ConsumerWidget {
                 .set(await _pickColor(context, lineColor)),
           ),
           ListTile(
-            leading: const Icon(Icons.grid_3x3_outlined),
+            leading: const Icon(Icons.grid_on_outlined),
             title: const Text(str.gridColor),
             subtitle: Text("0x${gridColor.hex}"),
             trailing: ColorIndicator(color: gridColor),
@@ -325,14 +325,17 @@ class Settings extends ConsumerWidget {
   static const lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
+      icon: Icon(Icons.visibility_off_outlined),
       label: Text(str.lineTypeHide),
     ),
     ButtonSegment(
       value: LineType.simple,
+      icon: Icon(Icons.grid_3x3_outlined),
       label: Text(str.lineTypeSimple),
     ),
     ButtonSegment(
       value: LineType.full,
+      icon: Icon(Icons.grid_4x4_outlined),
       label: Text(str.lineTypeFull),
     ),
   ];
