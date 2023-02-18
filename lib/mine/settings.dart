@@ -274,7 +274,15 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),
             title: const Text(str.modelTest),
-            onTap: () async => modelTest(),
+            onTap: () async {
+              final res = await modelTest();
+              final resStr = res ? str.pass : str.fail;
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(resStr + str.detailsInConsole)),
+                );
+              }
+            },
           ),
           ListTile(
             leading: const Icon(Icons.developer_mode_outlined),

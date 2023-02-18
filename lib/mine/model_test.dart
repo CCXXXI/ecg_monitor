@@ -7,7 +7,7 @@ import "../analytics/model_stub.dart"
 
 final _logger = Logger("model_test");
 
-Future<void> modelTest() async {
+Future<bool> modelTest() async {
   _logger.fine("读取测试输入");
   final inputStr = await rootBundle.loadString("assets/debug/input.txt");
   final input = inputStr
@@ -34,7 +34,9 @@ Future<void> modelTest() async {
     ..fine("比较实际输出与预期输出");
   if (listEquals(expectedOutput, actualOutput)) {
     _logger.info("一致");
+    return true;
   } else {
     _logger.severe("不一致");
+    return false;
   }
 }
