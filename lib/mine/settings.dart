@@ -52,7 +52,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     showDotsOn: false,
   );
 
-  /// For ButtonSegment only.
+  /// For [ButtonSegment.value] only.
   static const custom = MonitorSettingGroup(
     portraitDuration: 5,
     landscapeDuration: 10,
