@@ -38,33 +38,42 @@ class LandscapeDuration extends _$LandscapeDuration {
 @riverpod
 class BackgroundColor extends _$BackgroundColor {
   @override
-  int build() => prefs.getInt(key.backgroundColorHex) ?? Colors.white.value;
+  Color build() {
+    final hex = prefs.getInt(key.backgroundColorHex) ?? Colors.white.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(key.backgroundColorHex, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.backgroundColorHex, color.value);
   }
 }
 
 @riverpod
 class LineColor extends _$LineColor {
   @override
-  int build() => prefs.getInt(key.lineColorHex) ?? Colors.red.value;
+  Color build() {
+    final hex = prefs.getInt(key.lineColorHex) ?? Colors.black.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(key.lineColorHex, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.lineColorHex, color.value);
   }
 }
 
 @riverpod
 class GridColor extends _$GridColor {
   @override
-  int build() => prefs.getInt(key.gridColorHex) ?? Colors.red.value;
+  Color build() {
+    final hex = prefs.getInt(key.gridColorHex) ?? Colors.red.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(key.gridColorHex, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.gridColorHex, color.value);
   }
 }
 
@@ -153,17 +162,14 @@ class Settings extends ConsumerWidget {
     // monitor settings
     final portraitDuration = ref.watch(portraitDurationProvider);
     final landscapeDuration = ref.watch(landscapeDurationProvider);
-    final backgroundColorHex = ref.watch(backgroundColorProvider);
-    final lineColorHex = ref.watch(lineColorProvider);
-    final gridColorHex = ref.watch(gridColorProvider);
+    final backgroundColor = ref.watch(backgroundColorProvider);
+    final lineColor = ref.watch(lineColorProvider);
+    final gridColor = ref.watch(gridColorProvider);
     final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
     final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
-    final backgroundColor = Color(backgroundColorHex);
-    final lineColor = Color(lineColorHex);
-    final gridColor = Color(gridColorHex);
     final horizontalLineType = LineType.values[horizontalLineTypeIndex];
     final verticalLineType = LineType.values[verticalLineTypeIndex];
 
@@ -318,23 +324,21 @@ class Settings extends ConsumerWidget {
     );
   }
 
-  static Future<int> _pickColor(
+  static Future<Color> _pickColor(
     BuildContext context,
     Color initialColor,
-  ) async {
-    final color = await showColorPickerDialog(
-      context,
-      initialColor,
-      enableShadesSelection: false,
-      enableTonalPalette: true,
-      pickersEnabled: {
-        ColorPickerType.accent: false,
-        ColorPickerType.primary: false,
-        ColorPickerType.both: true,
-      },
-    );
-    return color.value;
-  }
+  ) async =>
+      showColorPickerDialog(
+        context,
+        initialColor,
+        enableShadesSelection: false,
+        enableTonalPalette: true,
+        pickersEnabled: {
+          ColorPickerType.accent: false,
+          ColorPickerType.primary: false,
+          ColorPickerType.both: true,
+        },
+      );
 
   static const _lineTypeSegments = [
     ButtonSegment(
