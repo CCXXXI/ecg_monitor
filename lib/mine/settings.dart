@@ -35,7 +35,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     landscapeDuration: 10,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
-    gridColor: Colors.red,
+    gridColor: Color(0xffff0000),
     horizontalLineType: LineType.full,
     verticalLineType: LineType.full,
     showDotsOn: false,
@@ -45,11 +45,23 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     portraitDuration: 5,
     landscapeDuration: 10,
     backgroundColor: Colors.black,
-    lineColor: Colors.green,
+    lineColor: Color(0xff00ff00),
     gridColor: Colors.white,
     horizontalLineType: LineType.hide,
     verticalLineType: LineType.hide,
     showDotsOn: false,
+  );
+
+  /// For ButtonSegment only.
+  static const custom = MonitorSettingGroup(
+    portraitDuration: 5,
+    landscapeDuration: 10,
+    backgroundColor: Colors.black,
+    lineColor: Colors.green,
+    gridColor: Colors.white,
+    horizontalLineType: LineType.hide,
+    verticalLineType: LineType.hide,
+    showDotsOn: true,
   );
 }
 
@@ -104,6 +116,18 @@ class MonitorSettings extends _$MonitorSettings {
     }
 
     return s;
+  }
+
+  Future<void> set(MonitorSettingGroup s) async {
+    state = s;
+    await prefs.setDouble(key.portraitDuration, s.portraitDuration);
+    await prefs.setDouble(key.landscapeDuration, s.landscapeDuration);
+    await prefs.setInt(key.backgroundColorHex, s.backgroundColor.value);
+    await prefs.setInt(key.lineColorHex, s.lineColor.value);
+    await prefs.setInt(key.gridColorHex, s.gridColor.value);
+    await prefs.setInt(key.horizontalLineTypeIndex, s.horizontalLineType.index);
+    await prefs.setInt(key.verticalLineTypeIndex, s.verticalLineType.index);
+    await prefs.setBool(key.showDotsOn, s.showDotsOn);
   }
 
   Future<void> setPortraitDuration(double duration) async {
@@ -217,6 +241,40 @@ class Settings extends ConsumerWidget {
       body: ListView(
         children: [
           const _SectionTitle(str.monitor),
+          ListTile(
+            leading: const Icon(Icons.monitor_heart_outlined),
+            title: const Text(str.style),
+            trailing: SegmentedButton(
+              segments: const [
+                ButtonSegment(
+                  value: MonitorSettingGroup.professional,
+                  icon: Icon(Icons.grid_on_outlined),
+                  label: Text(str.professional),
+                ),
+                ButtonSegment(
+                  value: MonitorSettingGroup.simple,
+                  icon: Icon(Icons.square_outlined),
+                  label: Text(str.simple),
+                ),
+                ButtonSegment(
+                  value: MonitorSettingGroup.custom,
+                  icon: Icon(Icons.tune_outlined),
+                  label: Text(str.custom),
+                  enabled: false,
+                ),
+              ],
+              selected: {
+                if (monitorSettings == MonitorSettingGroup.professional ||
+                    monitorSettings == MonitorSettingGroup.simple)
+                  monitorSettings
+                else
+                  MonitorSettingGroup.custom
+              },
+              onSelectionChanged: (selected) async => ref
+                  .read(monitorSettingsProvider.notifier)
+                  .set(selected.first),
+            ),
+          ),
           ListTile(
             leading: const Icon(Icons.stay_primary_portrait_outlined),
             title: const Text(str.portraitDuration),
