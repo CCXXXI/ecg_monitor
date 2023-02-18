@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:math";
 
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
@@ -82,6 +83,12 @@ class Chart extends ConsumerWidget {
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
+        minY: points.isEmpty
+            ? null
+            : points.map((p) => p.y).reduce(min) - _largeHorizontalInterval,
+        maxY: points.isEmpty
+            ? null
+            : points.map((p) => p.y).reduce(max) + _largeHorizontalInterval,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         gridData: FlGridData(
