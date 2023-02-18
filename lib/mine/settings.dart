@@ -16,11 +16,11 @@ part "settings.g.dart";
 @riverpod
 class PortraitDuration extends _$PortraitDuration {
   @override
-  double build() => prefs.getDouble(str.portraitDuration) ?? 5;
+  double build() => prefs.getDouble(key.portraitDuration) ?? 5;
 
   Future<void> set(double value) async {
     state = value;
-    await prefs.setDouble(str.portraitDuration, value);
+    await prefs.setDouble(key.portraitDuration, value);
   }
 }
 
