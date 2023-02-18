@@ -263,7 +263,7 @@ class Settings extends ConsumerWidget {
                 .setBackgroundColor(await _pickColor(context, backgroundColor)),
           ),
           ListTile(
-            leading: const Icon(Icons.line_axis_outlined),
+            leading: const Icon(Icons.show_chart_outlined),
             title: const Text(str.lineColor),
             subtitle: Text("0x${lineColor.hex}"),
             trailing: ColorIndicator(color: lineColor, hasBorder: true),
