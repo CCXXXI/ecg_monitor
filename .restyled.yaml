@@ -1,6 +1,9 @@
 commit_template: |
   style: reformat by ${restyler.name}
 
+exclude:
+  - "**/generated_plugin_registrant.cc"
+
 restylers:
   - prettier-markdown:
       arguments: [ "--prose-wrap", "preserve" ]
