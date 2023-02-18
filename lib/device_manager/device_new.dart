@@ -10,7 +10,7 @@ class DeviceNew extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fakeDevice = ref.watch(fakeDeviceProvider);
+    final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
 
     return Column(
       children: [
@@ -20,7 +20,7 @@ class DeviceNew extends ConsumerWidget {
         ),
         const Divider(),
         Expanded(
-          child: fakeDevice ? const _DeviceList() : const _NoDevice(),
+          child: fakeDeviceOn ? const _DeviceList() : const _NoDevice(),
         )
       ],
     );

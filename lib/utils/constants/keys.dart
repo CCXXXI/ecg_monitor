@@ -7,3 +7,6 @@ const lineColorHex = "lineColorHex";
 const gridColorHex = "gridColorHex";
 const horizontalLineTypeIndex = "horizontalLineTypeIndex";
 const verticalLineTypeIndex = "verticalLineTypeIndex";
+const autoUploadOn = "autoUploadOn";
+const fakeDeviceOn = "fakeDeviceOn";
+const showDotsOn = "showDotsOn";
