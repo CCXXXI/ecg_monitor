@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.7.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.6.0...v1.7.0) (2023-02-18)
+
+### Features
+
+- add border for ColorIndicator ([c307150](https://github.com/CCXXXI/ecg_monitor/commit/c307150143ef86d04d8a7ded56e8635910f81966))
+- better icons for grids ([35a51a2](https://github.com/CCXXXI/ecg_monitor/commit/35a51a2f3455cb9fc3bb7bf74af70d45e9ed0153))
+- dark theme ([81951a3](https://github.com/CCXXXI/ecg_monitor/commit/81951a3b4b7c7042e084437c9386cdaee4ec2e3c))
+- **device:** connect & disconnect ([820e084](https://github.com/CCXXXI/ecg_monitor/commit/820e084604498295122405a7901af277aaa914ff))
+- **device:** update key of CurrentDevice ([f23f79c](https://github.com/CCXXXI/ecg_monitor/commit/f23f79cb04273bd89d5dd8f00824e84506edcfdb))
+- material 3 settings UI ([c310500](https://github.com/CCXXXI/ecg_monitor/commit/c310500277b8d8049699841b1633690b40a85cae))
+- **mine:** show snackbar after model testing ([84d4d5d](https://github.com/CCXXXI/ecg_monitor/commit/84d4d5d6c5e1704909abd81ce85ed8cb7214c2b4))
+- **mine:** update key of LoggerLevel ([c039379](https://github.com/CCXXXI/ecg_monitor/commit/c0393790d5cf5c5dae7fb5d7e21e762afb331c1f))
+- monitor redirect to device manager if no device ([072cfef](https://github.com/CCXXXI/ecg_monitor/commit/072cfef67d004294d5ddc5f4b5fa1624788041c4))
+- **monitor:** 0.1 mV padding for y-axis ([4cc42c7](https://github.com/CCXXXI/ecg_monitor/commit/4cc42c751b33e9e26a60623d18d169b21fa87433))
+- **monitor:** better y-axis ([fa7ac5e](https://github.com/CCXXXI/ecg_monitor/commit/fa7ac5e354ea7b2e379e657e80da2a66dfc1e40f))
+- **monitor:** hide border ([b18f0f0](https://github.com/CCXXXI/ecg_monitor/commit/b18f0f05efcaf99d29c33ad8e548ed4c882d3676))
+- **monitor:** setting group ([cb92240](https://github.com/CCXXXI/ecg_monitor/commit/cb92240b944ebe2c550dd0f981b2573b5fc4d931))
+- **monitor:** update key of landscapeDuration ([6c95f31](https://github.com/CCXXXI/ecg_monitor/commit/6c95f31bc80f85944e0ce1ad167de7c6cd961106))
+- **monitor:** update key of portraitDuration ([5159c24](https://github.com/CCXXXI/ecg_monitor/commit/5159c245a72684e380b7e560d06992a7162f6775))
+- **monitor:** update keys of color settings ([1953a1d](https://github.com/CCXXXI/ecg_monitor/commit/1953a1de5298fcb7407ae9a5543524474f7d32c7))
+- **monitor:** update lineTypes ([efdf778](https://github.com/CCXXXI/ecg_monitor/commit/efdf778361102acb19b53e701700e8e8ed494a67))
+- update lineColor icon ([beb8b56](https://github.com/CCXXXI/ecg_monitor/commit/beb8b56df3144cafd871cb02032b199f063915fb))
+
+### Bug Fixes
+
+- **device:** correct setting key ([e84693b](https://github.com/CCXXXI/ecg_monitor/commit/e84693b990777581a4b2cc7804b4fc2e2b038af9))
+- **monitor:** remove overlapping axis labels ([7bd7dc8](https://github.com/CCXXXI/ecg_monitor/commit/7bd7dc877c47383065bd668994094070a87bc0d8))
+- **monitor:** remove overlapping y-axis labels ([a19bf9f](https://github.com/CCXXXI/ecg_monitor/commit/a19bf9f379caf7c9c2ec59c7f126a65788f6e024))
+
 ## [1.6.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.5.0...v1.6.0) (2023-02-18)
 
 ### Features
