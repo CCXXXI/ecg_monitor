@@ -79,10 +79,10 @@ class Chart extends ConsumerWidget {
         maxX: points.isEmpty ? null : points.last.x,
         minY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(min) - _largeHorizontalInterval,
+            : points.map((p) => p.y).reduce(min) - _smallHorizontalInterval,
         maxY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(max) + _largeHorizontalInterval,
+            : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         borderData: FlBorderData(show: false),
