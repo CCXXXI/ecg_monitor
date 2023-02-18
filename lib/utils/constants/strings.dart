@@ -33,8 +33,6 @@ const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";
 const loggerLevel = "日志等级";
 const showDots = "显示数据点";
-const resetSettings = "恢复默认设置";
-const rebootNeeded = "重启后生效";
 
 const about = "关于";
 late final String appName;
