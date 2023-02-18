@@ -23,6 +23,9 @@ const bluetoothRssi = "信号强度";
 const bluetoothRssiUnit = "dBm";
 const battery = "电量";
 const batteryUnknown = "电量未知";
+const bluetoothSearching = "正在搜索蓝牙设备";
+const noDeviceFound = "未发现设备";
+const disconnectDevice = "解绑设备";
 
 const mine = "我的";
 const feedback = "反馈";
