@@ -198,8 +198,6 @@ class Settings extends ConsumerWidget {
     final backgroundColor = monitorSettings.backgroundColor;
     final lineColor = monitorSettings.lineColor;
     final gridColor = monitorSettings.gridColor;
-    final horizontalLineType = monitorSettings.horizontalLineType;
-    final verticalLineType = monitorSettings.verticalLineType;
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
@@ -287,7 +285,7 @@ class Settings extends ConsumerWidget {
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {horizontalLineType},
+              selected: {(monitorSettings.horizontalLineType)},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
                   .setHorizontalLineType(selected.first),
@@ -298,7 +296,7 @@ class Settings extends ConsumerWidget {
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {verticalLineType},
+              selected: {(monitorSettings.verticalLineType)},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
                   .setVerticalLineType(selected.first),

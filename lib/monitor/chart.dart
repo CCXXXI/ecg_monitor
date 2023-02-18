@@ -55,16 +55,11 @@ class Chart extends ConsumerWidget {
         MediaQuery.of(context).orientation == Orientation.portrait;
     final durationS =
         isPortrait ? settings.portraitDuration : settings.landscapeDuration;
-    final backgroundColor = settings.backgroundColor;
-    final lineColor = settings.lineColor;
-    final gridColor = settings.gridColor;
     final horizontalLineType = settings.horizontalLineType;
     final verticalLineType = settings.verticalLineType;
-    final showDots = settings.showDotsOn;
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
-    final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
@@ -72,7 +67,7 @@ class Chart extends ConsumerWidget {
       sideTitles: SideTitles(
         showTitles: true,
         reservedSize: 30,
-        interval: intervalMs,
+        interval: getIntervalMs(durationS, isPortrait: isPortrait),
         getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
             ? const SizedBox.shrink()
             : SideTitleWidget(
@@ -106,7 +101,7 @@ class Chart extends ConsumerWidget {
         maxY: points.isEmpty
             ? null
             : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
-        backgroundColor: backgroundColor,
+        backgroundColor: settings.backgroundColor,
         titlesData: FlTitlesData(
           topTitles: xTitles,
           bottomTitles: xTitles,
@@ -125,19 +120,19 @@ class Chart extends ConsumerWidget {
               ? _smallVerticalInterval
               : _largeVerticalInterval,
           getDrawingHorizontalLine: (value) => FlLine(
-            color: gridColor,
+            color: settings.gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
           ),
           getDrawingVerticalLine: (value) => FlLine(
-            color: gridColor,
+            color: settings.gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: false),
           ),
         ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
-            color: lineColor,
-            dotData: FlDotData(show: showDots),
+            color: settings.lineColor,
+            dotData: FlDotData(show: settings.showDotsOn),
           ),
         ],
       ),
