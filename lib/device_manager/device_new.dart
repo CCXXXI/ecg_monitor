@@ -20,15 +20,15 @@ class DeviceNew extends ConsumerWidget {
         ),
         const Divider(),
         Expanded(
-          child: fakeDevice ? const DeviceList() : const NoDevice(),
+          child: fakeDevice ? const _DeviceList() : const _NoDevice(),
         )
       ],
     );
   }
 }
 
-class DeviceList extends ConsumerWidget {
-  const DeviceList({super.key});
+class _DeviceList extends ConsumerWidget {
+  const _DeviceList();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => ListView(
@@ -46,8 +46,8 @@ class DeviceList extends ConsumerWidget {
       );
 }
 
-class NoDevice extends StatelessWidget {
-  const NoDevice({super.key});
+class _NoDevice extends StatelessWidget {
+  const _NoDevice();
 
   @override
   Widget build(BuildContext context) => Center(
