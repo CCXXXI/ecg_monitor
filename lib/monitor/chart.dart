@@ -1,3 +1,5 @@
+import "dart:async";
+
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -14,7 +16,7 @@ var _maxDurationMs = .0;
 class _Points extends _$Points {
   @override
   List<FlSpot> build() {
-    ref.watch(ecgProvider.stream).forEach(add);
+    unawaited(ref.watch(ecgProvider.stream).forEach(add));
     return const [];
   }
 
@@ -28,6 +30,8 @@ class _Points extends _$Points {
 }
 
 class Chart extends ConsumerWidget {
+  const Chart({super.key});
+
   @visibleForTesting
   static const maxIntervalCountPortrait = 5;
 
@@ -41,8 +45,6 @@ class Chart extends ConsumerWidget {
 
   static const _thickLineWidth = 1.0;
   static const _thinLineWidth = .5;
-
-  const Chart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -61,7 +63,7 @@ class Chart extends ConsumerWidget {
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
-    final intervalMs = getIntervalMs(isPortrait, durationS);
+    final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
     final horizontalLineType = LineType.values[horizontalLineTypeIndex];
     final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
@@ -109,7 +111,7 @@ class Chart extends ConsumerWidget {
   }
 
   @visibleForTesting
-  static double getIntervalMs(bool isPortrait, double durationS) {
+  static double getIntervalMs(double durationS, {required bool isPortrait}) {
     final intervalCount =
         isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
     final intervalS = (durationS / intervalCount).ceilToDouble();
@@ -117,21 +119,19 @@ class Chart extends ConsumerWidget {
     return intervalMs;
   }
 
-  static AxisTitles _getTimeAxisTitles(double interval) {
-    return AxisTitles(
-      sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 30,
-        interval: interval,
-        getTitlesWidget: (value, meta) => SideTitleWidget(
-          axisSide: meta.axisSide,
-          child: Text(
-            DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+  static AxisTitles _getTimeAxisTitles(double interval) => AxisTitles(
+        sideTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 30,
+          interval: interval,
+          getTitlesWidget: (value, meta) => SideTitleWidget(
+            axisSide: meta.axisSide,
+            child: Text(
+              DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 
   static double _getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval =

@@ -6,7 +6,7 @@ import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../mine/settings.dart";
-import "../utils/constants.dart";
+import "../utils/constants/strings.dart" as str;
 
 part "device.g.dart";
 
@@ -35,10 +35,10 @@ class _FakeDevice implements Device {
   final _random = Random();
 
   @override
-  String get name => Strings.fakeDevice;
+  String get name => str.fakeDevice;
 
   @override
-  String get model => Strings.fakeDeviceModel;
+  String get model => str.fakeDeviceModel;
 
   @override
   Stream<int> get rssiStream => Stream.periodic(
