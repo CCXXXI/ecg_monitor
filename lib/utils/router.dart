@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
 import "../device_manager/device_manager.dart";
@@ -14,6 +15,8 @@ final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
 final router = GoRouter(
   navigatorKey: _rootKey,
   initialLocation: "/monitor",
+  debugLogDiagnostics: true,
+  observers: [SentryNavigatorObserver()],
   routes: [
     ShellRoute(
       navigatorKey: _homeKey,
@@ -43,5 +46,4 @@ final router = GoRouter(
       parentNavigatorKey: _rootKey,
     ),
   ],
-  debugLogDiagnostics: true,
 );
