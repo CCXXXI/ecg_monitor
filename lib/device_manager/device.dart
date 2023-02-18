@@ -1,8 +1,5 @@
-import "dart:math";
-
 import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../mine/settings.dart";
@@ -32,8 +29,6 @@ class _FakeDevice implements Device {
     milliseconds: Duration.millisecondsPerSecond ~/ _sampleRateHz,
   );
 
-  final _random = Random();
-
   @override
   String get name => str.fakeDevice;
 
@@ -41,16 +36,10 @@ class _FakeDevice implements Device {
   String get model => str.fakeDeviceModel;
 
   @override
-  Stream<int> get rssiStream => Stream.periodic(
-        aSecond,
-        (_) => -32 - _random.nextInt(20),
-      );
+  Stream<int> get rssiStream => Stream.value(-42);
 
   @override
-  Stream<int> get batteryStream => Stream.periodic(
-        aSecond,
-        (_) => 100,
-      );
+  Stream<int> get batteryStream => Stream.value(100);
 
   @override
   Stream<double> get ecgStream async* {
