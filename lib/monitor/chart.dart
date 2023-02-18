@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:math";
 
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
@@ -68,12 +69,6 @@ class Chart extends ConsumerWidget {
     final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
-    final horizontalInterval = horizontalLineType == LineType.full
-        ? _smallHorizontalInterval
-        : _largeHorizontalInterval;
-    final verticalInterval = verticalLineType == LineType.full
-        ? _smallVerticalInterval
-        : _largeVerticalInterval;
 
     final titles = _getTimeAxisTitles(intervalMs);
 
@@ -82,14 +77,24 @@ class Chart extends ConsumerWidget {
       LineChartData(
         minX: points.isEmpty ? null : points.last.x - durationMs,
         maxX: points.isEmpty ? null : points.last.x,
+        minY: points.isEmpty
+            ? null
+            : points.map((p) => p.y).reduce(min) - _largeHorizontalInterval,
+        maxY: points.isEmpty
+            ? null
+            : points.map((p) => p.y).reduce(max) + _largeHorizontalInterval,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
         gridData: FlGridData(
           show: drawHorizontalLine || drawVerticalLine,
           drawHorizontalLine: drawHorizontalLine,
           drawVerticalLine: drawVerticalLine,
-          horizontalInterval: horizontalInterval,
-          verticalInterval: verticalInterval,
+          horizontalInterval: horizontalLineType == LineType.full
+              ? _smallHorizontalInterval
+              : _largeHorizontalInterval,
+          verticalInterval: verticalLineType == LineType.full
+              ? _smallVerticalInterval
+              : _largeVerticalInterval,
           getDrawingHorizontalLine: (value) => FlLine(
             color: Color(gridColor),
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
