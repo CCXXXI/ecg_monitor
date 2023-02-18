@@ -135,7 +135,7 @@ class Chart extends ConsumerWidget {
                   ? const SizedBox.shrink()
                   : SideTitleWidget(
                       axisSide: meta.axisSide,
-                      child: Text(millisecondsToTimeString(value)),
+                      child: Text(msToTimeString(value)),
                     ),
         ),
       );
@@ -150,7 +150,8 @@ class Chart extends ConsumerWidget {
         : _thinLineWidth;
   }
 
-  static String millisecondsToTimeString(double milliseconds) {
+  @visibleForTesting
+  static String msToTimeString(double milliseconds) {
     final dateTime = DateTime.fromMillisecondsSinceEpoch(milliseconds.toInt());
     return "${dateTime.hour.toString().padLeft(2, "0")}"
         ":${dateTime.minute.toString().padLeft(2, "0")}"
