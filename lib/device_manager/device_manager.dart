@@ -3,6 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 
 import "../utils/constants/strings.dart" as str;
 import "device.dart";
+import "device_new.dart";
 
 class DeviceManager extends ConsumerWidget {
   const DeviceManager({super.key});
@@ -12,7 +13,7 @@ class DeviceManager extends ConsumerWidget {
     final device = ref.watch(currentDeviceProvider);
 
     if (device == null) {
-      return const Placeholder();
+      return const DeviceNew();
     }
 
     final rssi = ref.watch(rssiProvider);
@@ -66,9 +67,10 @@ class DeviceManager extends ConsumerWidget {
               ),
             ),
           ),
-        const ListTile(
-          leading: Icon(Icons.not_interested_outlined),
-          title: Text("解绑设备"),
+        ListTile(
+          leading: const Icon(Icons.close_outlined),
+          title: const Text(str.disconnectDevice),
+          onTap: () async => ref.read(currentDeviceProvider.notifier).set(null),
         ),
       ],
     );

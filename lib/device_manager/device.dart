@@ -96,17 +96,28 @@ class CurrentDevice extends _$CurrentDevice {
 }
 
 final rssiProvider = StreamProvider.autoDispose<int>(
-  (ref) => ref.watch(currentDeviceProvider)!.rssiStream,
+  (ref) => ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty(),
 );
 
 final batteryProvider = StreamProvider.autoDispose<int>(
-  (ref) => ref.watch(currentDeviceProvider)!.batteryStream,
-);
-
-final ecgProvider = StreamProvider.autoDispose<double>(
-  (ref) => ref.watch(currentDeviceProvider)!.ecgStream,
+  (ref) =>
+      ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty(),
 );
 
 final connectedProvider = StreamProvider.autoDispose<bool>(
-  (ref) => ref.watch(currentDeviceProvider)!.connectedStream,
+  (ref) =>
+      ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
+);
+
+final ecgProvider = StreamProvider.autoDispose<double>(
+  (ref) {
+    final device = ref.watch(currentDeviceProvider);
+    final connected = ref.watch(connectedProvider).valueOrNull ?? false;
+
+    if (device == null || !connected) {
+      return const Stream.empty();
+    }
+
+    return device.ecgStream;
+  },
 );
