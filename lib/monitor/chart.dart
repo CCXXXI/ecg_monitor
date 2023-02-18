@@ -69,12 +69,6 @@ class Chart extends ConsumerWidget {
     final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
-    final horizontalInterval = horizontalLineType == LineType.full
-        ? _smallHorizontalInterval
-        : _largeHorizontalInterval;
-    final verticalInterval = verticalLineType == LineType.full
-        ? _smallVerticalInterval
-        : _largeVerticalInterval;
 
     final titles = _getTimeAxisTitles(intervalMs);
 
@@ -95,8 +89,12 @@ class Chart extends ConsumerWidget {
           show: drawHorizontalLine || drawVerticalLine,
           drawHorizontalLine: drawHorizontalLine,
           drawVerticalLine: drawVerticalLine,
-          horizontalInterval: horizontalInterval,
-          verticalInterval: verticalInterval,
+          horizontalInterval: horizontalLineType == LineType.full
+              ? _smallHorizontalInterval
+              : _largeHorizontalInterval,
+          verticalInterval: verticalLineType == LineType.full
+              ? _smallVerticalInterval
+              : _largeVerticalInterval,
           getDrawingHorizontalLine: (value) => FlLine(
             color: Color(gridColor),
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
