@@ -22,7 +22,6 @@ final portraitDurationProvider =
 );
 
 typedef _$PortraitDuration = AutoDisposeNotifier<double>;
-
 String _$landscapeDurationHash() => r'936876a43988528ab92fa0ead0c742eadcf805da';
 
 /// See also [LandscapeDuration].
@@ -39,7 +38,6 @@ final landscapeDurationProvider =
 );
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
-
 String _$backgroundColorHash() => r'63dd4ccb356a0df77080888e7d0fbe2330b38bd2';
 
 /// See also [BackgroundColor].
@@ -56,7 +54,6 @@ final backgroundColorProvider =
 );
 
 typedef _$BackgroundColor = AutoDisposeNotifier<Color>;
-
 String _$lineColorHash() => r'4f2a3cc65d125187457e6f759d357bde14adda5c';
 
 /// See also [LineColor].
@@ -72,7 +69,6 @@ final lineColorProvider =
 );
 
 typedef _$LineColor = AutoDisposeNotifier<Color>;
-
 String _$gridColorHash() => r'1257f07d11cc7631c94ea91d831e0a94773228fc';
 
 /// See also [GridColor].
@@ -88,40 +84,40 @@ final gridColorProvider =
 );
 
 typedef _$GridColor = AutoDisposeNotifier<Color>;
-String _$horizontalLineTypeIndexHash() =>
-    r'bf7aecbaf1180624f787e5e9da7638c5d69f7aea';
+String _$horizontalLineTypeHash() =>
+    r'642911cbc75e66daea32bfe578165cc7b73cf5a3';
 
-/// See also [HorizontalLineTypeIndex].
-@ProviderFor(HorizontalLineTypeIndex)
-final horizontalLineTypeIndexProvider =
-    AutoDisposeNotifierProvider<HorizontalLineTypeIndex, int>.internal(
-  HorizontalLineTypeIndex.new,
-  name: r'horizontalLineTypeIndexProvider',
+/// See also [HorizontalLineType].
+@ProviderFor(HorizontalLineType)
+final horizontalLineTypeProvider =
+    AutoDisposeNotifierProvider<HorizontalLineType, LineType>.internal(
+  HorizontalLineType.new,
+  name: r'horizontalLineTypeProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$horizontalLineTypeIndexHash,
+      : _$horizontalLineTypeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HorizontalLineTypeIndex = AutoDisposeNotifier<int>;
-String _$verticalLineTypeIndexHash() =>
-    r'0b3a54c0ae5058496a53523a5192b40bc2035b64';
+typedef _$HorizontalLineType = AutoDisposeNotifier<LineType>;
 
-/// See also [VerticalLineTypeIndex].
-@ProviderFor(VerticalLineTypeIndex)
-final verticalLineTypeIndexProvider =
-    AutoDisposeNotifierProvider<VerticalLineTypeIndex, int>.internal(
-  VerticalLineTypeIndex.new,
-  name: r'verticalLineTypeIndexProvider',
+String _$verticalLineTypeHash() => r'b9a8b0e94b64e7c1d455555fa01260665bdf5810';
+
+/// See also [VerticalLineType].
+@ProviderFor(VerticalLineType)
+final verticalLineTypeProvider =
+    AutoDisposeNotifierProvider<VerticalLineType, LineType>.internal(
+  VerticalLineType.new,
+  name: r'verticalLineTypeProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$verticalLineTypeIndexHash,
+      : _$verticalLineTypeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$VerticalLineTypeIndex = AutoDisposeNotifier<int>;
+typedef _$VerticalLineType = AutoDisposeNotifier<LineType>;
 String _$autoUploadHash() => r'bf0d8c7d291c5b1a8d47651975d93eb06fbbddec';
 
 /// See also [AutoUpload].

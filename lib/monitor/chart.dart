@@ -58,15 +58,13 @@ class Chart extends ConsumerWidget {
     final backgroundColor = ref.watch(backgroundColorProvider);
     final lineColor = ref.watch(lineColorProvider);
     final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
-    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
+    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
+    final verticalLineType = ref.watch(verticalLineTypeProvider);
     final showDots = ref.watch(showDotsProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
     final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
-    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
-    final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 

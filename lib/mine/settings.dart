@@ -80,24 +80,32 @@ class GridColor extends _$GridColor {
 enum LineType { hide, simple, full }
 
 @riverpod
-class HorizontalLineTypeIndex extends _$HorizontalLineTypeIndex {
+class HorizontalLineType extends _$HorizontalLineType {
   @override
-  int build() => prefs.getInt(str.horizontalLine) ?? LineType.full.index;
+  LineType build() {
+    final index =
+        prefs.getInt(key.horizontalLineTypeIndex) ?? LineType.full.index;
+    return LineType.values[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.horizontalLine, value);
+  Future<void> set(LineType type) async {
+    state = type;
+    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
   }
 }
 
 @riverpod
-class VerticalLineTypeIndex extends _$VerticalLineTypeIndex {
+class VerticalLineType extends _$VerticalLineType {
   @override
-  int build() => prefs.getInt(str.verticalLine) ?? LineType.full.index;
+  LineType build() {
+    final index =
+        prefs.getInt(key.verticalLineTypeIndex) ?? LineType.full.index;
+    return LineType.values[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.verticalLine, value);
+  Future<void> set(LineType type) async {
+    state = type;
+    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
   }
 }
 
@@ -165,13 +173,11 @@ class Settings extends ConsumerWidget {
     final backgroundColor = ref.watch(backgroundColorProvider);
     final lineColor = ref.watch(lineColorProvider);
     final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
-    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
+    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
+    final verticalLineType = ref.watch(verticalLineTypeProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
-    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
-    final verticalLineType = LineType.values[verticalLineTypeIndex];
 
     // analytics settings
     final autoUpload = ref.watch(autoUploadProvider);
@@ -254,8 +260,8 @@ class Settings extends ConsumerWidget {
               segments: _lineTypeSegments,
               selected: {horizontalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(horizontalLineTypeIndexProvider.notifier)
-                  .set(selected.first.index),
+                  .read(horizontalLineTypeProvider.notifier)
+                  .set(selected.first),
             ),
           ),
           ListTile(
@@ -265,8 +271,8 @@ class Settings extends ConsumerWidget {
               segments: _lineTypeSegments,
               selected: {verticalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(verticalLineTypeIndexProvider.notifier)
-                  .set(selected.first.index),
+                  .read(verticalLineTypeProvider.notifier)
+                  .set(selected.first),
             ),
           ),
           const _SectionTitle(str.analytics),
