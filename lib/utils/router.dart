@@ -9,7 +9,7 @@ import "../home.dart";
 import "../mine/mine.dart";
 import "../mine/settings.dart";
 import "../monitor/monitor.dart";
-import "../utils/constants/strings.dart" as str;
+import "../utils/constants/keys.dart" as key;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
 final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
@@ -27,7 +27,7 @@ final router = GoRouter(
         GoRoute(
           path: "/monitor",
           redirect: (context, state) =>
-              prefs.getString(str.deviceManager) == null
+              prefs.getString(key.currentDeviceId) == null
                   ? "/device_manager"
                   : null,
           builder: (context, state) => const Monitor(),

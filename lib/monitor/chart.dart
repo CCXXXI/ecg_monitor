@@ -58,15 +58,13 @@ class Chart extends ConsumerWidget {
     final backgroundColor = ref.watch(backgroundColorProvider);
     final lineColor = ref.watch(lineColorProvider);
     final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
-    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
-    final showDots = ref.watch(showDotsProvider);
+    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
+    final verticalLineType = ref.watch(verticalLineTypeProvider);
+    final showDotsOn = ref.watch(showDotsOnProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
     final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
-    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
-    final verticalLineType = LineType.values[verticalLineTypeIndex];
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
@@ -108,7 +106,7 @@ class Chart extends ConsumerWidget {
         maxY: points.isEmpty
             ? null
             : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
-        backgroundColor: Color(backgroundColor),
+        backgroundColor: backgroundColor,
         titlesData: FlTitlesData(
           topTitles: xTitles,
           bottomTitles: xTitles,
@@ -127,19 +125,19 @@ class Chart extends ConsumerWidget {
               ? _smallVerticalInterval
               : _largeVerticalInterval,
           getDrawingHorizontalLine: (value) => FlLine(
-            color: Color(gridColor),
+            color: gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
           ),
           getDrawingVerticalLine: (value) => FlLine(
-            color: Color(gridColor),
+            color: gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: false),
           ),
         ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
-            color: Color(lineColor),
-            dotData: FlDotData(show: showDots),
+            color: lineColor,
+            dotData: FlDotData(show: showDotsOn),
           ),
         ],
       ),

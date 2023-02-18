@@ -4,6 +4,7 @@ import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
+import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart" as str;
 
 part "device.g.dart";
@@ -67,7 +68,7 @@ class _FakeDevice implements Device {
   @override
   Stream<bool> get connectedStream => Stream.periodic(
         aSecond,
-        (_) => prefs.getBool(str.fakeDevice) ?? false,
+        (_) => prefs.getBool(key.fakeDeviceOn) ?? false,
       );
 }
 
@@ -77,7 +78,7 @@ final fakeDevice = _FakeDevice();
 class CurrentDevice extends _$CurrentDevice {
   @override
   Device? build() {
-    final id = prefs.getString(str.deviceManager);
+    final id = prefs.getString(key.currentDeviceId);
     if (id == fakeDevice.id) {
       return fakeDevice;
     }
@@ -87,9 +88,9 @@ class CurrentDevice extends _$CurrentDevice {
   // ignore: use_setters_to_change_properties
   Future<void> set(Device? device) async {
     if (device == null) {
-      await prefs.remove(str.deviceManager);
+      await prefs.remove(key.currentDeviceId);
     } else {
-      await prefs.setString(str.deviceManager, device.id);
+      await prefs.setString(key.currentDeviceId, device.id);
     }
     state = device;
   }

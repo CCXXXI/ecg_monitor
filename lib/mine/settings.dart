@@ -6,6 +6,7 @@ import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
+import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart" as str;
 import "../utils/logger.dart";
 import "model_test.dart";
@@ -15,127 +16,146 @@ part "settings.g.dart";
 @riverpod
 class PortraitDuration extends _$PortraitDuration {
   @override
-  double build() => prefs.getDouble(str.portraitDuration) ?? 5;
+  double build() => prefs.getDouble(key.portraitDuration) ?? 5;
 
-  Future<void> set(double value) async {
-    state = value;
-    await prefs.setDouble(str.portraitDuration, value);
+  Future<void> set(double duration) async {
+    state = duration;
+    await prefs.setDouble(key.portraitDuration, duration);
   }
 }
 
 @riverpod
 class LandscapeDuration extends _$LandscapeDuration {
   @override
-  double build() => prefs.getDouble(str.landscapeDuration) ?? 10;
+  double build() => prefs.getDouble(key.landscapeDuration) ?? 10;
 
-  Future<void> set(double value) async {
-    state = value;
-    await prefs.setDouble(str.landscapeDuration, value);
+  Future<void> set(double duration) async {
+    state = duration;
+    await prefs.setDouble(key.landscapeDuration, duration);
   }
 }
 
 @riverpod
 class BackgroundColor extends _$BackgroundColor {
   @override
-  int build() => prefs.getInt(str.backgroundColor) ?? Colors.white.value;
+  Color build() {
+    final hex = prefs.getInt(key.backgroundColorHex) ?? Colors.white.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.backgroundColor, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.backgroundColorHex, color.value);
   }
 }
 
 @riverpod
 class LineColor extends _$LineColor {
   @override
-  int build() => prefs.getInt(str.lineColor) ?? Colors.red.value;
+  Color build() {
+    final hex = prefs.getInt(key.lineColorHex) ?? Colors.black.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.lineColor, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.lineColorHex, color.value);
   }
 }
 
 @riverpod
 class GridColor extends _$GridColor {
   @override
-  int build() => prefs.getInt(str.gridColor) ?? Colors.red.value;
+  Color build() {
+    final hex = prefs.getInt(key.gridColorHex) ?? Colors.red.value;
+    return Color(hex);
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.gridColor, value);
+  Future<void> set(Color color) async {
+    state = color;
+    await prefs.setInt(key.gridColorHex, color.value);
   }
 }
 
 enum LineType { hide, simple, full }
 
 @riverpod
-class HorizontalLineTypeIndex extends _$HorizontalLineTypeIndex {
+class HorizontalLineType extends _$HorizontalLineType {
   @override
-  int build() => prefs.getInt(str.horizontalLine) ?? LineType.full.index;
+  LineType build() {
+    final index =
+        prefs.getInt(key.horizontalLineTypeIndex) ?? LineType.full.index;
+    return LineType.values[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.horizontalLine, value);
+  Future<void> set(LineType type) async {
+    state = type;
+    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
   }
 }
 
 @riverpod
-class VerticalLineTypeIndex extends _$VerticalLineTypeIndex {
+class VerticalLineType extends _$VerticalLineType {
   @override
-  int build() => prefs.getInt(str.verticalLine) ?? LineType.full.index;
+  LineType build() {
+    final index =
+        prefs.getInt(key.verticalLineTypeIndex) ?? LineType.full.index;
+    return LineType.values[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    await prefs.setInt(str.verticalLine, value);
+  Future<void> set(LineType type) async {
+    state = type;
+    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
   }
 }
 
 @riverpod
-class AutoUpload extends _$AutoUpload {
+class AutoUploadOn extends _$AutoUploadOn {
   @override
-  bool build() => prefs.getBool(str.autoUpload) ?? true;
+  bool build() => prefs.getBool(key.autoUploadOn) ?? true;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.autoUpload, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.autoUploadOn, on);
   }
 }
 
 @riverpod
-class FakeDevice extends _$FakeDevice {
+class FakeDeviceOn extends _$FakeDeviceOn {
   @override
-  bool build() => prefs.getBool(str.fakeDevice) ?? false;
+  bool build() => prefs.getBool(key.fakeDeviceOn) ?? false;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.fakeDevice, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.fakeDeviceOn, on);
   }
 }
 
 @riverpod
-class _LoggerLevelIndex extends _$LoggerLevelIndex {
+class _LoggerLevel extends _$LoggerLevel {
   @override
-  int build() => prefs.getInt(str.loggerLevel) ?? infoLevelIndex;
+  Level build() {
+    final index = prefs.getInt(key.loggerLevelIndex) ?? infoLevelIndex;
+    return loggerLevels[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    Logger.root.level = loggerLevels[value];
-    await prefs.setInt(str.loggerLevel, value);
+  Future<void> set(Level level) async {
+    state = level;
+    Logger.root.level = level;
+
+    final index = loggerLevels.indexOf(level);
+    await prefs.setInt(key.loggerLevelIndex, index);
   }
 }
 
 @riverpod
-class ShowDots extends _$ShowDots {
+class ShowDotsOn extends _$ShowDotsOn {
   @override
-  bool build() => prefs.getBool(str.showDots) ?? false;
+  bool build() => prefs.getBool(key.showDotsOn) ?? false;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.showDots, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.showDotsOn, on);
   }
 }
 
@@ -147,29 +167,24 @@ class Settings extends ConsumerWidget {
     // monitor settings
     final portraitDuration = ref.watch(portraitDurationProvider);
     final landscapeDuration = ref.watch(landscapeDurationProvider);
-    final backgroundColorHex = ref.watch(backgroundColorProvider);
-    final lineColorHex = ref.watch(lineColorProvider);
-    final gridColorHex = ref.watch(gridColorProvider);
-    final horizontalLineTypeIndex = ref.watch(horizontalLineTypeIndexProvider);
-    final verticalLineTypeIndex = ref.watch(verticalLineTypeIndexProvider);
+    final backgroundColor = ref.watch(backgroundColorProvider);
+    final lineColor = ref.watch(lineColorProvider);
+    final gridColor = ref.watch(gridColorProvider);
+    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
+    final verticalLineType = ref.watch(verticalLineTypeProvider);
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
-    final backgroundColor = Color(backgroundColorHex);
-    final lineColor = Color(lineColorHex);
-    final gridColor = Color(gridColorHex);
-    final horizontalLineType = LineType.values[horizontalLineTypeIndex];
-    final verticalLineType = LineType.values[verticalLineTypeIndex];
 
     // analytics settings
-    final autoUpload = ref.watch(autoUploadProvider);
+    final autoUploadOn = ref.watch(autoUploadOnProvider);
 
     // devTools settings
-    final fakeDevice = ref.watch(fakeDeviceProvider);
-    final loggerLevelIndex = ref.watch(_loggerLevelIndexProvider);
-    final showDots = ref.watch(showDotsProvider);
+    final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
+    final loggerLevel = ref.watch(_loggerLevelProvider);
+    final showDotsOn = ref.watch(showDotsOnProvider);
 
-    final loggerLevelName = loggerLevels[loggerLevelIndex].name;
+    final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
     return Scaffold(
       appBar: AppBar(title: const Text(str.settings)),
@@ -242,8 +257,8 @@ class Settings extends ConsumerWidget {
               segments: _lineTypeSegments,
               selected: {horizontalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(horizontalLineTypeIndexProvider.notifier)
-                  .set(selected.first.index),
+                  .read(horizontalLineTypeProvider.notifier)
+                  .set(selected.first),
             ),
           ),
           ListTile(
@@ -253,23 +268,25 @@ class Settings extends ConsumerWidget {
               segments: _lineTypeSegments,
               selected: {verticalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(verticalLineTypeIndexProvider.notifier)
-                  .set(selected.first.index),
+                  .read(verticalLineTypeProvider.notifier)
+                  .set(selected.first),
             ),
           ),
           const _SectionTitle(str.analytics),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
-            value: autoUpload,
-            onChanged: ref.read(autoUploadProvider.notifier).set,
+            value: autoUploadOn,
+            onChanged: (on) async =>
+                ref.read(autoUploadOnProvider.notifier).set(on: on),
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.device_hub_outlined),
             title: const Text(str.fakeDevice),
-            value: fakeDevice,
-            onChanged: ref.read(fakeDeviceProvider.notifier).set,
+            value: fakeDeviceOn,
+            onChanged: (on) async =>
+                ref.read(fakeDeviceOnProvider.notifier).set(on: on),
           ),
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),
@@ -287,48 +304,47 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.developer_mode_outlined),
             title: const Text(str.loggerLevel),
-            subtitle: Text(loggerLevelName),
+            subtitle: Text(loggerLevel.name),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
                 value: loggerLevelIndex.toDouble(),
                 onChanged: (value) async => ref
-                    .read(_loggerLevelIndexProvider.notifier)
-                    .set(value.toInt()),
+                    .read(_loggerLevelProvider.notifier)
+                    .set(loggerLevels[value.toInt()]),
                 max: loggerLevels.length - 1,
                 divisions: loggerLevels.length - 1,
-                label: loggerLevelName,
+                label: loggerLevel.name,
               ),
             ),
           ),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.linear_scale_outlined),
             title: const Text(str.showDots),
-            value: showDots,
-            onChanged: ref.read(showDotsProvider.notifier).set,
+            value: showDotsOn,
+            onChanged: (on) async =>
+                ref.read(showDotsOnProvider.notifier).set(on: on),
           ),
         ],
       ),
     );
   }
 
-  static Future<int> _pickColor(
+  static Future<Color> _pickColor(
     BuildContext context,
     Color initialColor,
-  ) async {
-    final color = await showColorPickerDialog(
-      context,
-      initialColor,
-      enableShadesSelection: false,
-      enableTonalPalette: true,
-      pickersEnabled: {
-        ColorPickerType.accent: false,
-        ColorPickerType.primary: false,
-        ColorPickerType.both: true,
-      },
-    );
-    return color.value;
-  }
+  ) async =>
+      showColorPickerDialog(
+        context,
+        initialColor,
+        enableShadesSelection: false,
+        enableTonalPalette: true,
+        pickersEnabled: {
+          ColorPickerType.accent: false,
+          ColorPickerType.primary: false,
+          ColorPickerType.both: true,
+        },
+      );
 
   static const _lineTypeSegments = [
     ButtonSegment(
