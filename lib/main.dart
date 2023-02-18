@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
+import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
@@ -21,7 +22,8 @@ void main() async {
     (options) {
       options
         ..dsn = str.sentryDsn
-        ..tracesSampleRate = 1.0;
+        ..tracesSampleRate = 1.0
+        ..addIntegration(LoggingIntegration());
     },
     appRunner: () => runApp(const App()),
   );
