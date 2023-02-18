@@ -9,7 +9,7 @@ class DeviceManager extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final device = ref.watch(deviceProvider);
+    final device = ref.watch(currentDeviceProvider);
 
     if (device == null) {
       return const Placeholder();
@@ -17,6 +17,7 @@ class DeviceManager extends ConsumerWidget {
 
     final rssi = ref.watch(rssiProvider);
     final battery = ref.watch(batteryProvider);
+    final connected = ref.watch(connectedProvider).valueOrNull ?? false;
 
     return ListView(
       children: [
@@ -25,39 +26,46 @@ class DeviceManager extends ConsumerWidget {
           title: Text(device.name),
           subtitle: Text(device.model),
         ),
-        ListTile(
-          leading: const Icon(Icons.bluetooth_connected_outlined),
-          title: const Text(str.bluetoothConnected),
-          subtitle: rssi.whenOrNull(
-            data: (r) => Text(
-              "${str.bluetoothRssi} $r ${str.bluetoothRssiUnit}",
+        if (connected)
+          ListTile(
+            leading: const Icon(Icons.bluetooth_connected_outlined),
+            title: const Text(str.bluetoothConnected),
+            subtitle: rssi.whenOrNull(
+              data: (r) => Text(
+                "${str.bluetoothRssi} $r ${str.bluetoothRssiUnit}",
+              ),
+            ),
+          )
+        else
+          const ListTile(
+            leading: Icon(Icons.bluetooth_disabled_outlined),
+            title: Text(str.bluetoothDisconnected),
+          ),
+        if (connected)
+          ListTile(
+            leading: Icon(
+              battery.whenOrNull(
+                loading: () => Icons.battery_unknown_outlined,
+                data: (b) => [
+                  Icons.battery_0_bar_outlined,
+                  Icons.battery_1_bar_outlined,
+                  Icons.battery_2_bar_outlined,
+                  Icons.battery_3_bar_outlined,
+                  Icons.battery_4_bar_outlined,
+                  Icons.battery_5_bar_outlined,
+                  Icons.battery_6_bar_outlined,
+                  Icons.battery_full_outlined,
+                ][b * 7 ~/ 100],
+              ),
+            ),
+            title: Text(
+              battery.when(
+                loading: () => str.batteryUnknown,
+                error: (e, s) => str.batteryUnknown,
+                data: (b) => "${str.battery} $b%",
+              ),
             ),
           ),
-        ),
-        ListTile(
-          leading: Icon(
-            battery.whenOrNull(
-              loading: () => Icons.battery_unknown_outlined,
-              data: (b) => [
-                Icons.battery_0_bar_outlined,
-                Icons.battery_1_bar_outlined,
-                Icons.battery_2_bar_outlined,
-                Icons.battery_3_bar_outlined,
-                Icons.battery_4_bar_outlined,
-                Icons.battery_5_bar_outlined,
-                Icons.battery_6_bar_outlined,
-                Icons.battery_full_outlined,
-              ][b * 7 ~/ 100],
-            ),
-          ),
-          title: Text(
-            battery.when(
-              loading: () => str.batteryUnknown,
-              error: (e, s) => str.batteryUnknown,
-              data: (b) => "${str.battery} $b%",
-            ),
-          ),
-        ),
         const ListTile(
           leading: Icon(Icons.not_interested_outlined),
           title: Text("解绑设备"),
