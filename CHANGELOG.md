@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.6.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.5.0...v1.6.0) (2023-02-18)
+
+
+### Features
+
+* init sentry ([0f49231](https://github.com/CCXXXI/ecg_monitor/commit/0f492311c6d7b5ca8748a9bf96f7c28f24994a16))
+* LoggingIntegration ([7ec5d6f](https://github.com/CCXXXI/ecg_monitor/commit/7ec5d6f339000ff1e1bbcb671844e481a330f9d5))
+* sentry record ip ([354d530](https://github.com/CCXXXI/ecg_monitor/commit/354d53097c1fea8f7b511dc91340f0975e32ff77))
+* SentryNavigatorObserver ([f20020b](https://github.com/CCXXXI/ecg_monitor/commit/f20020b42f2fe2c6668ce677523d79e28c72a87d))
+* SentryScreenshotWidget ([704d131](https://github.com/CCXXXI/ecg_monitor/commit/704d131c1b219c9ca4972830b0ed9693b64a2a5e))
+
+
+### Bug Fixes
+
+* add android.permission.INTERNET ([8386665](https://github.com/CCXXXI/ecg_monitor/commit/83866652b97a8cc69aa3225858fdd76035d39f9f))
+
 ## [1.5.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.4.0...v1.5.0) (2023-02-17)
 
 ### Features
