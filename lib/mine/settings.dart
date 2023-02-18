@@ -15,6 +15,8 @@ import "model_test.dart";
 part "settings.freezed.dart";
 part "settings.g.dart";
 
+enum LineType { hide, simple, full }
+
 @freezed
 class MonitorSettingGroup with _$MonitorSettingGroup {
   const factory MonitorSettingGroup({
@@ -144,8 +146,6 @@ class MonitorSettings extends _$MonitorSettings {
     await prefs.setBool(key.showDotsOn, on);
   }
 }
-
-enum LineType { hide, simple, full }
 
 @riverpod
 class AutoUploadOn extends _$AutoUploadOn {
