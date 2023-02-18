@@ -18,12 +18,16 @@ void main() async {
   await loadModel();
 
   // init Sentry & run app
+  Sentry.configureScope(
+    (scope) => scope.setUser(SentryUser(ipAddress: "{{auto}}")),
+  );
   await SentryFlutter.init(
     (options) {
       options
         ..dsn = str.sentryDsn
         ..tracesSampleRate = 1.0
-        ..addIntegration(LoggingIntegration());
+        ..addIntegration(LoggingIntegration())
+        ..sendDefaultPii = true;
     },
     appRunner: () => runApp(const App()),
   );
