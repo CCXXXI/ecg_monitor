@@ -6,7 +6,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:settings_ui/settings_ui.dart";
 
 import "../database.dart";
-import "../utils/constants.dart";
+import "../utils/constants/strings.dart" as str;
 import "../utils/logger.dart";
 import "model_test.dart";
 
@@ -15,55 +15,55 @@ part "settings.g.dart";
 @riverpod
 class PortraitDuration extends _$PortraitDuration {
   @override
-  double build() => prefs.getDouble(Strings.portraitDuration) ?? 5;
+  double build() => prefs.getDouble(str.portraitDuration) ?? 5;
 
   Future<void> set(double value) async {
     state = value;
-    await prefs.setDouble(Strings.portraitDuration, value);
+    await prefs.setDouble(str.portraitDuration, value);
   }
 }
 
 @riverpod
 class LandscapeDuration extends _$LandscapeDuration {
   @override
-  double build() => prefs.getDouble(Strings.landscapeDuration) ?? 10;
+  double build() => prefs.getDouble(str.landscapeDuration) ?? 10;
 
   Future<void> set(double value) async {
     state = value;
-    await prefs.setDouble(Strings.landscapeDuration, value);
+    await prefs.setDouble(str.landscapeDuration, value);
   }
 }
 
 @riverpod
 class BackgroundColor extends _$BackgroundColor {
   @override
-  int build() => prefs.getInt(Strings.backgroundColor) ?? Colors.white.value;
+  int build() => prefs.getInt(str.backgroundColor) ?? Colors.white.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(Strings.backgroundColor, value);
+    await prefs.setInt(str.backgroundColor, value);
   }
 }
 
 @riverpod
 class LineColor extends _$LineColor {
   @override
-  int build() => prefs.getInt(Strings.lineColor) ?? Colors.red.value;
+  int build() => prefs.getInt(str.lineColor) ?? Colors.red.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(Strings.lineColor, value);
+    await prefs.setInt(str.lineColor, value);
   }
 }
 
 @riverpod
 class GridColor extends _$GridColor {
   @override
-  int build() => prefs.getInt(Strings.gridColor) ?? Colors.red.value;
+  int build() => prefs.getInt(str.gridColor) ?? Colors.red.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(Strings.gridColor, value);
+    await prefs.setInt(str.gridColor, value);
   }
 }
 
@@ -72,70 +72,70 @@ enum LineType { hide, simple, full }
 @riverpod
 class HorizontalLineTypeIndex extends _$HorizontalLineTypeIndex {
   @override
-  int build() => prefs.getInt(Strings.horizontalLine) ?? LineType.full.index;
+  int build() => prefs.getInt(str.horizontalLine) ?? LineType.full.index;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(Strings.horizontalLine, value);
+    await prefs.setInt(str.horizontalLine, value);
   }
 }
 
 @riverpod
 class VerticalLineTypeIndex extends _$VerticalLineTypeIndex {
   @override
-  int build() => prefs.getInt(Strings.verticalLine) ?? LineType.full.index;
+  int build() => prefs.getInt(str.verticalLine) ?? LineType.full.index;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(Strings.verticalLine, value);
+    await prefs.setInt(str.verticalLine, value);
   }
 }
 
 @riverpod
 class AutoUpload extends _$AutoUpload {
   @override
-  bool build() => prefs.getBool(Strings.autoUpload) ?? true;
+  bool build() => prefs.getBool(str.autoUpload) ?? true;
 
   // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
-    await prefs.setBool(Strings.autoUpload, value);
+    await prefs.setBool(str.autoUpload, value);
   }
 }
 
 @riverpod
 class FakeDevice extends _$FakeDevice {
   @override
-  bool build() => prefs.getBool(Strings.fakeDevice) ?? false;
+  bool build() => prefs.getBool(str.fakeDevice) ?? false;
 
   // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
-    await prefs.setBool(Strings.fakeDevice, value);
+    await prefs.setBool(str.fakeDevice, value);
   }
 }
 
 @riverpod
 class LoggerLevelIndex extends _$LoggerLevelIndex {
   @override
-  int build() => prefs.getInt(Strings.loggerLevel) ?? infoLevelIndex;
+  int build() => prefs.getInt(str.loggerLevel) ?? infoLevelIndex;
 
   Future<void> set(int value) async {
     state = value;
     Logger.root.level = loggerLevels[value];
-    await prefs.setInt(Strings.loggerLevel, value);
+    await prefs.setInt(str.loggerLevel, value);
   }
 }
 
 @riverpod
 class ShowDots extends _$ShowDots {
   @override
-  bool build() => prefs.getBool(Strings.showDots) ?? false;
+  bool build() => prefs.getBool(str.showDots) ?? false;
 
   // ignore: avoid_positional_boolean_parameters
   Future<void> set(bool value) async {
     state = value;
-    await prefs.setBool(Strings.showDots, value);
+    await prefs.setBool(str.showDots, value);
   }
 }
 
@@ -172,15 +172,15 @@ class Settings extends ConsumerWidget {
     final loggerLevelName = loggerLevels[loggerLevelIndex].name;
 
     return Scaffold(
-      appBar: AppBar(title: const Text(Strings.settings)),
+      appBar: AppBar(title: const Text(str.settings)),
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: const Text(Strings.monitor),
+            title: const Text(str.monitor),
             tiles: [
               SettingsTile(
                 leading: const Icon(Icons.stay_primary_portrait_outlined),
-                title: const Text(Strings.portraitDuration),
+                title: const Text(str.portraitDuration),
                 value: Text(portraitDurationString),
                 trailing: Slider.adaptive(
                   value: portraitDuration,
@@ -193,7 +193,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.stay_primary_landscape_outlined),
-                title: const Text(Strings.landscapeDuration),
+                title: const Text(str.landscapeDuration),
                 value: Text(landscapeDurationString),
                 trailing: Slider.adaptive(
                   value: landscapeDuration,
@@ -206,7 +206,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.color_lens_outlined),
-                title: const Text(Strings.backgroundColor),
+                title: const Text(str.backgroundColor),
                 value: Text("0x${backgroundColor.hex}"),
                 trailing: ColorIndicator(color: backgroundColor),
                 onPressed: (context) async => ref
@@ -215,7 +215,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.line_axis_outlined),
-                title: const Text(Strings.lineColor),
+                title: const Text(str.lineColor),
                 value: Text("0x${lineColor.hex}"),
                 trailing: ColorIndicator(color: lineColor),
                 onPressed: (context) async => ref
@@ -224,7 +224,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.grid_3x3_outlined),
-                title: const Text(Strings.gridColor),
+                title: const Text(str.gridColor),
                 value: Text("0x${gridColor.hex}"),
                 trailing: ColorIndicator(color: gridColor),
                 onPressed: (context) async => ref
@@ -233,7 +233,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.border_horizontal_outlined),
-                title: const Text(Strings.horizontalLine),
+                title: const Text(str.horizontalLine),
                 trailing: SegmentedButton(
                   segments: lineTypeSegments,
                   selected: {horizontalLineType},
@@ -244,7 +244,7 @@ class Settings extends ConsumerWidget {
               ),
               SettingsTile(
                 leading: const Icon(Icons.border_vertical_outlined),
-                title: const Text(Strings.verticalLine),
+                title: const Text(str.verticalLine),
                 trailing: SegmentedButton(
                   segments: lineTypeSegments,
                   selected: {verticalLineType},
@@ -256,33 +256,33 @@ class Settings extends ConsumerWidget {
             ],
           ),
           SettingsSection(
-            title: const Text(Strings.analytics),
+            title: const Text(str.analytics),
             tiles: [
               SettingsTile.switchTile(
                 initialValue: autoUpload,
                 onToggle: ref.read(autoUploadProvider.notifier).set,
                 leading: const Icon(Icons.cloud_upload_outlined),
-                title: const Text(Strings.autoUpload),
+                title: const Text(str.autoUpload),
               ),
             ],
           ),
           SettingsSection(
-            title: const Text(Strings.devTools),
+            title: const Text(str.devTools),
             tiles: [
               SettingsTile.switchTile(
                 initialValue: fakeDevice,
                 onToggle: ref.read(fakeDeviceProvider.notifier).set,
                 leading: const Icon(Icons.device_hub_outlined),
-                title: const Text(Strings.fakeDevice),
+                title: const Text(str.fakeDevice),
               ),
               SettingsTile.navigation(
                 leading: const Icon(Icons.compare_arrows_outlined),
-                title: const Text(Strings.modelTest),
+                title: const Text(str.modelTest),
                 onPressed: (context) async => modelTest(),
               ),
               SettingsTile(
                 leading: const Icon(Icons.developer_mode_outlined),
-                title: const Text(Strings.loggerLevel),
+                title: const Text(str.loggerLevel),
                 value: Text(loggerLevelName),
                 trailing: Slider.adaptive(
                   value: loggerLevelIndex.toDouble(),
@@ -298,7 +298,7 @@ class Settings extends ConsumerWidget {
                 initialValue: showDots,
                 onToggle: ref.read(showDotsProvider.notifier).set,
                 leading: const Icon(Icons.linear_scale_outlined),
-                title: const Text(Strings.showDots),
+                title: const Text(str.showDots),
               ),
             ],
           ),
@@ -328,15 +328,15 @@ class Settings extends ConsumerWidget {
   static const lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
-      label: Text(Strings.lineTypeHide),
+      label: Text(str.lineTypeHide),
     ),
     ButtonSegment(
       value: LineType.simple,
-      label: Text(Strings.lineTypeSimple),
+      label: Text(str.lineTypeSimple),
     ),
     ButtonSegment(
       value: LineType.full,
-      label: Text(Strings.lineTypeFull),
+      label: Text(str.lineTypeFull),
     ),
   ];
 }

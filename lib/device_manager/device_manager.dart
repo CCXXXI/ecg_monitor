@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import "../utils/constants.dart";
+import "../utils/constants/strings.dart" as str;
 import "device.dart";
 
 class DeviceManager extends ConsumerWidget {
@@ -27,10 +27,10 @@ class DeviceManager extends ConsumerWidget {
         ),
         ListTile(
           leading: const Icon(Icons.bluetooth_connected_outlined),
-          title: const Text(Strings.bluetoothConnected),
+          title: const Text(str.bluetoothConnected),
           subtitle: rssi.whenOrNull(
             data: (r) => Text(
-              "${Strings.bluetoothRssi} $r ${Strings.bluetoothRssiUnit}",
+              "${str.bluetoothRssi} $r ${str.bluetoothRssiUnit}",
             ),
           ),
         ),
@@ -52,9 +52,9 @@ class DeviceManager extends ConsumerWidget {
           ),
           title: Text(
             battery.when(
-              loading: () => Strings.batteryUnknown,
-              error: (e, s) => Strings.batteryUnknown,
-              data: (b) => "${Strings.battery} $b%",
+              loading: () => str.batteryUnknown,
+              error: (e, s) => str.batteryUnknown,
+              data: (b) => "${str.battery} $b%",
             ),
           ),
         ),

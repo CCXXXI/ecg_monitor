@@ -3,7 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:go_router/go_router.dart";
 import "package:logging/logging.dart";
 
-import "utils/constants.dart";
+import "utils/constants/strings.dart" as str;
 
 final _logger = Logger("home");
 
@@ -22,7 +22,7 @@ class Home extends ConsumerWidget {
     _logger.fine("Home.build: route=$route, index=$index");
 
     return Scaffold(
-      appBar: AppBar(title: Text(Strings.appName)),
+      appBar: AppBar(title: Text(str.appName)),
       body: _child,
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
@@ -30,19 +30,19 @@ class Home extends ConsumerWidget {
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.monitor_heart_outlined),
-            label: Strings.monitor,
+            label: str.monitor,
           ),
           NavigationDestination(
             icon: Icon(Icons.analytics_outlined),
-            label: Strings.analytics,
+            label: str.analytics,
           ),
           NavigationDestination(
             icon: Icon(Icons.device_hub_outlined),
-            label: Strings.deviceManager,
+            label: str.deviceManager,
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outlined),
-            label: Strings.mine,
+            label: str.mine,
           ),
         ],
       ),

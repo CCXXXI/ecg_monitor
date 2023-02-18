@@ -2,7 +2,8 @@ import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import "package:url_launcher/url_launcher.dart";
 
-import "../utils/constants.dart";
+import "../utils/constants/strings.dart" as str;
+import "../utils/constants/urls.dart" as urls;
 
 class Mine extends StatelessWidget {
   const Mine({super.key});
@@ -18,8 +19,8 @@ class Mine extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.feedback_outlined),
-            title: const Text(Strings.feedback),
-            onTap: () async => launchUrl(Urls.issues),
+            title: const Text(str.feedback),
+            onTap: () async => launchUrl(urls.issues),
           ),
           const ListTile(
             leading: Icon(Icons.help_outlined),
@@ -27,19 +28,19 @@ class Mine extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.settings_outlined),
-            title: const Text(Strings.settings),
+            title: const Text(str.settings),
             onTap: () => context.push("/mine/settings"),
           ),
           AboutListTile(
             icon: const Icon(Icons.info_outlined),
-            applicationVersion: Strings.version,
+            applicationVersion: str.version,
             aboutBoxChildren: [
               OutlinedButton(
-                onPressed: () async => launchUrl(Urls.changelog),
-                child: const Text(Strings.changelog),
+                onPressed: () async => launchUrl(urls.changelog),
+                child: const Text(str.changelog),
               ),
             ],
-            child: const Text(Strings.about),
+            child: const Text(str.about),
           ),
         ],
       );
