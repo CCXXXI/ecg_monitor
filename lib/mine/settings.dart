@@ -116,7 +116,7 @@ class FakeDevice extends _$FakeDevice {
 }
 
 @riverpod
-class LoggerLevelIndex extends _$LoggerLevelIndex {
+class _LoggerLevelIndex extends _$LoggerLevelIndex {
   @override
   int build() => prefs.getInt(str.loggerLevel) ?? infoLevelIndex;
 
@@ -166,7 +166,7 @@ class Settings extends ConsumerWidget {
 
     // devTools settings
     final fakeDevice = ref.watch(fakeDeviceProvider);
-    final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
+    final loggerLevelIndex = ref.watch(_loggerLevelIndexProvider);
     final showDots = ref.watch(showDotsProvider);
 
     final loggerLevelName = loggerLevels[loggerLevelIndex].name;
@@ -239,7 +239,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.border_horizontal_outlined),
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
-              segments: lineTypeSegments,
+              segments: _lineTypeSegments,
               selected: {horizontalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(horizontalLineTypeIndexProvider.notifier)
@@ -250,7 +250,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.border_vertical_outlined),
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
-              segments: lineTypeSegments,
+              segments: _lineTypeSegments,
               selected: {verticalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(verticalLineTypeIndexProvider.notifier)
@@ -274,7 +274,15 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),
             title: const Text(str.modelTest),
-            onTap: () async => modelTest(),
+            onTap: () async {
+              final res = await modelTest();
+              final resStr = res ? str.pass : str.fail;
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(resStr + str.detailsInConsole)),
+                );
+              }
+            },
           ),
           ListTile(
             leading: const Icon(Icons.developer_mode_outlined),
@@ -285,7 +293,7 @@ class Settings extends ConsumerWidget {
               child: Slider.adaptive(
                 value: loggerLevelIndex.toDouble(),
                 onChanged: (value) async => ref
-                    .read(loggerLevelIndexProvider.notifier)
+                    .read(_loggerLevelIndexProvider.notifier)
                     .set(value.toInt()),
                 max: loggerLevels.length - 1,
                 divisions: loggerLevels.length - 1,
@@ -322,7 +330,7 @@ class Settings extends ConsumerWidget {
     return color.value;
   }
 
-  static const lineTypeSegments = [
+  static const _lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
       icon: Icon(Icons.visibility_off_outlined),

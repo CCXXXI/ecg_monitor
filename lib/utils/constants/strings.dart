@@ -32,6 +32,9 @@ const devTools = "开发者工具";
 const fakeDevice = "模拟设备";
 const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";
+const pass = "通过";
+const fail = "失败";
+const detailsInConsole = "，详情见控制台。";
 const loggerLevel = "日志等级";
 const showDots = "显示数据点";
 
