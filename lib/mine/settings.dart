@@ -381,10 +381,9 @@ class Settings extends ConsumerWidget {
             title: const Text(str.modelTest),
             onTap: () async {
               final res = await modelTest();
-              final resStr = res ? str.pass : str.fail;
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(resStr + str.detailsInConsole)),
+                  SnackBar(content: Text(res ? str.pass : str.fail)),
                 );
               }
             },
