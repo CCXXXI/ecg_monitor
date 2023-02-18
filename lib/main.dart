@@ -31,11 +31,13 @@ class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) => ProviderScope(
-        child: MaterialApp.router(
-          title: str.appName,
-          routerConfig: router,
-          theme: ThemeData(useMaterial3: true),
+  Widget build(BuildContext context) => SentryScreenshotWidget(
+        child: ProviderScope(
+          child: MaterialApp.router(
+            title: str.appName,
+            routerConfig: router,
+            theme: ThemeData(useMaterial3: true),
+          ),
         ),
       );
 }
