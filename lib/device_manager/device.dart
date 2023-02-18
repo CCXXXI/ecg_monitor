@@ -68,7 +68,7 @@ class _FakeDevice implements Device {
   @override
   Stream<bool> get connectedStream => Stream.periodic(
         aSecond,
-        (_) => prefs.getBool(str.fakeDevice) ?? false,
+        (_) => prefs.getBool(key.fakeDeviceOn) ?? false,
       );
 }
 
