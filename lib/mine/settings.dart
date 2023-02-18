@@ -2,6 +2,7 @@ import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -11,101 +12,162 @@ import "../utils/constants/strings.dart" as str;
 import "../utils/logger.dart";
 import "model_test.dart";
 
+part "settings.freezed.dart";
 part "settings.g.dart";
-
-@riverpod
-class PortraitDuration extends _$PortraitDuration {
-  @override
-  double build() => prefs.getDouble(key.portraitDuration) ?? 5;
-
-  Future<void> set(double duration) async {
-    state = duration;
-    await prefs.setDouble(key.portraitDuration, duration);
-  }
-}
-
-@riverpod
-class LandscapeDuration extends _$LandscapeDuration {
-  @override
-  double build() => prefs.getDouble(key.landscapeDuration) ?? 10;
-
-  Future<void> set(double duration) async {
-    state = duration;
-    await prefs.setDouble(key.landscapeDuration, duration);
-  }
-}
-
-@riverpod
-class BackgroundColor extends _$BackgroundColor {
-  @override
-  Color build() {
-    final hex = prefs.getInt(key.backgroundColorHex) ?? Colors.white.value;
-    return Color(hex);
-  }
-
-  Future<void> set(Color color) async {
-    state = color;
-    await prefs.setInt(key.backgroundColorHex, color.value);
-  }
-}
-
-@riverpod
-class LineColor extends _$LineColor {
-  @override
-  Color build() {
-    final hex = prefs.getInt(key.lineColorHex) ?? Colors.black.value;
-    return Color(hex);
-  }
-
-  Future<void> set(Color color) async {
-    state = color;
-    await prefs.setInt(key.lineColorHex, color.value);
-  }
-}
-
-@riverpod
-class GridColor extends _$GridColor {
-  @override
-  Color build() {
-    final hex = prefs.getInt(key.gridColorHex) ?? Colors.red.value;
-    return Color(hex);
-  }
-
-  Future<void> set(Color color) async {
-    state = color;
-    await prefs.setInt(key.gridColorHex, color.value);
-  }
-}
 
 enum LineType { hide, simple, full }
 
-@riverpod
-class HorizontalLineType extends _$HorizontalLineType {
-  @override
-  LineType build() {
-    final index =
-        prefs.getInt(key.horizontalLineTypeIndex) ?? LineType.full.index;
-    return LineType.values[index];
-  }
+@freezed
+class MonitorSettingGroup with _$MonitorSettingGroup {
+  const factory MonitorSettingGroup({
+    required double portraitDuration,
+    required double landscapeDuration,
+    required Color backgroundColor,
+    required Color lineColor,
+    required Color gridColor,
+    required LineType horizontalLineType,
+    required LineType verticalLineType,
+    required bool showDotsOn,
+  }) = _MonitorSettingGroup;
 
-  Future<void> set(LineType type) async {
-    state = type;
-    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
-  }
+  static const professional = MonitorSettingGroup(
+    portraitDuration: 5,
+    landscapeDuration: 10,
+    backgroundColor: Colors.white,
+    lineColor: Colors.black,
+    gridColor: Color(0xffff0000),
+    horizontalLineType: LineType.full,
+    verticalLineType: LineType.full,
+    showDotsOn: false,
+  );
+
+  static const simple = MonitorSettingGroup(
+    portraitDuration: 5,
+    landscapeDuration: 10,
+    backgroundColor: Colors.black,
+    lineColor: Color(0xff00ff00),
+    gridColor: Colors.white,
+    horizontalLineType: LineType.hide,
+    verticalLineType: LineType.hide,
+    showDotsOn: false,
+  );
+
+  /// For [ButtonSegment.value] only.
+  static const custom = MonitorSettingGroup(
+    portraitDuration: 5,
+    landscapeDuration: 10,
+    backgroundColor: Colors.black,
+    lineColor: Colors.green,
+    gridColor: Colors.white,
+    horizontalLineType: LineType.hide,
+    verticalLineType: LineType.hide,
+    showDotsOn: true,
+  );
 }
 
 @riverpod
-class VerticalLineType extends _$VerticalLineType {
+class MonitorSettings extends _$MonitorSettings {
   @override
-  LineType build() {
-    final index =
-        prefs.getInt(key.verticalLineTypeIndex) ?? LineType.full.index;
-    return LineType.values[index];
+  MonitorSettingGroup build() {
+    var s = MonitorSettingGroup.professional;
+
+    final portraitDuration = prefs.getDouble(key.portraitDuration);
+    if (portraitDuration != null) {
+      s = s.copyWith(portraitDuration: portraitDuration);
+    }
+
+    final landscapeDuration = prefs.getDouble(key.landscapeDuration);
+    if (landscapeDuration != null) {
+      s = s.copyWith(landscapeDuration: landscapeDuration);
+    }
+
+    final backgroundColorHex = prefs.getInt(key.backgroundColorHex);
+    if (backgroundColorHex != null) {
+      s = s.copyWith(backgroundColor: Color(backgroundColorHex));
+    }
+
+    final lineColorHex = prefs.getInt(key.lineColorHex);
+    if (lineColorHex != null) {
+      s = s.copyWith(lineColor: Color(lineColorHex));
+    }
+
+    final gridColorHex = prefs.getInt(key.gridColorHex);
+    if (gridColorHex != null) {
+      s = s.copyWith(gridColor: Color(gridColorHex));
+    }
+
+    final horizontalLineTypeIndex = prefs.getInt(key.horizontalLineTypeIndex);
+    if (horizontalLineTypeIndex != null) {
+      s = s.copyWith(
+        horizontalLineType: LineType.values[horizontalLineTypeIndex],
+      );
+    }
+
+    final verticalLineTypeIndex = prefs.getInt(key.verticalLineTypeIndex);
+    if (verticalLineTypeIndex != null) {
+      s = s.copyWith(
+        verticalLineType: LineType.values[verticalLineTypeIndex],
+      );
+    }
+
+    final showDotsOn = prefs.getBool(key.showDotsOn);
+    if (showDotsOn != null) {
+      s = s.copyWith(showDotsOn: showDotsOn);
+    }
+
+    return s;
   }
 
-  Future<void> set(LineType type) async {
-    state = type;
+  Future<void> set(MonitorSettingGroup s) async {
+    state = s;
+    await prefs.setDouble(key.portraitDuration, s.portraitDuration);
+    await prefs.setDouble(key.landscapeDuration, s.landscapeDuration);
+    await prefs.setInt(key.backgroundColorHex, s.backgroundColor.value);
+    await prefs.setInt(key.lineColorHex, s.lineColor.value);
+    await prefs.setInt(key.gridColorHex, s.gridColor.value);
+    await prefs.setInt(key.horizontalLineTypeIndex, s.horizontalLineType.index);
+    await prefs.setInt(key.verticalLineTypeIndex, s.verticalLineType.index);
+    await prefs.setBool(key.showDotsOn, s.showDotsOn);
+  }
+
+  Future<void> setPortraitDuration(double duration) async {
+    state = state.copyWith(portraitDuration: duration);
+    await prefs.setDouble(key.portraitDuration, duration);
+  }
+
+  Future<void> setLandscapeDuration(double duration) async {
+    state = state.copyWith(landscapeDuration: duration);
+    await prefs.setDouble(key.landscapeDuration, duration);
+  }
+
+  Future<void> setBackgroundColor(Color color) async {
+    state = state.copyWith(backgroundColor: color);
+    await prefs.setInt(key.backgroundColorHex, color.value);
+  }
+
+  Future<void> setLineColor(Color color) async {
+    state = state.copyWith(lineColor: color);
+    await prefs.setInt(key.lineColorHex, color.value);
+  }
+
+  Future<void> setGridColor(Color color) async {
+    state = state.copyWith(gridColor: color);
+    await prefs.setInt(key.gridColorHex, color.value);
+  }
+
+  Future<void> setHorizontalLineType(LineType type) async {
+    state = state.copyWith(horizontalLineType: type);
     await prefs.setInt(key.horizontalLineTypeIndex, type.index);
+  }
+
+  Future<void> setVerticalLineType(LineType type) async {
+    state = state.copyWith(verticalLineType: type);
+    await prefs.setInt(key.verticalLineTypeIndex, type.index);
+  }
+
+  Future<void> setShowDots({required bool on}) async {
+    state = state.copyWith(showDotsOn: on);
+    await prefs.setBool(key.showDotsOn, on);
   }
 }
 
@@ -148,30 +210,18 @@ class _LoggerLevel extends _$LoggerLevel {
   }
 }
 
-@riverpod
-class ShowDotsOn extends _$ShowDotsOn {
-  @override
-  bool build() => prefs.getBool(key.showDotsOn) ?? false;
-
-  Future<void> set({required bool on}) async {
-    state = on;
-    await prefs.setBool(key.showDotsOn, on);
-  }
-}
-
 class Settings extends ConsumerWidget {
   const Settings({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // monitor settings
-    final portraitDuration = ref.watch(portraitDurationProvider);
-    final landscapeDuration = ref.watch(landscapeDurationProvider);
-    final backgroundColor = ref.watch(backgroundColorProvider);
-    final lineColor = ref.watch(lineColorProvider);
-    final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
-    final verticalLineType = ref.watch(verticalLineTypeProvider);
+    final monitorSettings = ref.watch(monitorSettingsProvider);
+    final portraitDuration = monitorSettings.portraitDuration;
+    final landscapeDuration = monitorSettings.landscapeDuration;
+    final backgroundColor = monitorSettings.backgroundColor;
+    final lineColor = monitorSettings.lineColor;
+    final gridColor = monitorSettings.gridColor;
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
@@ -182,7 +232,7 @@ class Settings extends ConsumerWidget {
     // devTools settings
     final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
     final loggerLevel = ref.watch(_loggerLevelProvider);
-    final showDotsOn = ref.watch(showDotsOnProvider);
+    final showDotsOn = monitorSettings.showDotsOn;
 
     final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
@@ -192,6 +242,40 @@ class Settings extends ConsumerWidget {
         children: [
           const _SectionTitle(str.monitor),
           ListTile(
+            leading: const Icon(Icons.monitor_heart_outlined),
+            title: const Text(str.style),
+            trailing: SegmentedButton(
+              segments: const [
+                ButtonSegment(
+                  value: MonitorSettingGroup.professional,
+                  icon: Icon(Icons.grid_on_outlined),
+                  label: Text(str.professional),
+                ),
+                ButtonSegment(
+                  value: MonitorSettingGroup.simple,
+                  icon: Icon(Icons.square_outlined),
+                  label: Text(str.simple),
+                ),
+                ButtonSegment(
+                  value: MonitorSettingGroup.custom,
+                  icon: Icon(Icons.tune_outlined),
+                  label: Text(str.custom),
+                  enabled: false,
+                ),
+              ],
+              selected: {
+                if (monitorSettings == MonitorSettingGroup.professional ||
+                    monitorSettings == MonitorSettingGroup.simple)
+                  monitorSettings
+                else
+                  MonitorSettingGroup.custom
+              },
+              onSelectionChanged: (selected) async => ref
+                  .read(monitorSettingsProvider.notifier)
+                  .set(selected.first),
+            ),
+          ),
+          ListTile(
             leading: const Icon(Icons.stay_primary_portrait_outlined),
             title: const Text(str.portraitDuration),
             subtitle: Text("${str.recent} $portraitDurationString"),
@@ -199,7 +283,9 @@ class Settings extends ConsumerWidget {
               width: 200,
               child: Slider.adaptive(
                 value: portraitDuration,
-                onChanged: ref.read(portraitDurationProvider.notifier).set,
+                onChanged: ref
+                    .read(monitorSettingsProvider.notifier)
+                    .setPortraitDuration,
                 min: 1,
                 max: 10,
                 divisions: 9,
@@ -215,7 +301,9 @@ class Settings extends ConsumerWidget {
               width: 200,
               child: Slider.adaptive(
                 value: landscapeDuration,
-                onChanged: ref.read(landscapeDurationProvider.notifier).set,
+                onChanged: ref
+                    .read(monitorSettingsProvider.notifier)
+                    .setLandscapeDuration,
                 min: 2,
                 max: 20,
                 divisions: 9,
@@ -229,17 +317,17 @@ class Settings extends ConsumerWidget {
             subtitle: Text("0x${backgroundColor.hex}"),
             trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
             onTap: () async => ref
-                .read(backgroundColorProvider.notifier)
-                .set(await _pickColor(context, backgroundColor)),
+                .read(monitorSettingsProvider.notifier)
+                .setBackgroundColor(await _pickColor(context, backgroundColor)),
           ),
           ListTile(
-            leading: const Icon(Icons.line_axis_outlined),
+            leading: const Icon(Icons.show_chart_outlined),
             title: const Text(str.lineColor),
             subtitle: Text("0x${lineColor.hex}"),
             trailing: ColorIndicator(color: lineColor, hasBorder: true),
             onTap: () async => ref
-                .read(lineColorProvider.notifier)
-                .set(await _pickColor(context, lineColor)),
+                .read(monitorSettingsProvider.notifier)
+                .setLineColor(await _pickColor(context, lineColor)),
           ),
           ListTile(
             leading: const Icon(Icons.grid_on_outlined),
@@ -247,18 +335,18 @@ class Settings extends ConsumerWidget {
             subtitle: Text("0x${gridColor.hex}"),
             trailing: ColorIndicator(color: gridColor, hasBorder: true),
             onTap: () async => ref
-                .read(gridColorProvider.notifier)
-                .set(await _pickColor(context, gridColor)),
+                .read(monitorSettingsProvider.notifier)
+                .setGridColor(await _pickColor(context, gridColor)),
           ),
           ListTile(
             leading: const Icon(Icons.border_horizontal_outlined),
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {horizontalLineType},
+              selected: {monitorSettings.horizontalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(horizontalLineTypeProvider.notifier)
-                  .set(selected.first),
+                  .read(monitorSettingsProvider.notifier)
+                  .setHorizontalLineType(selected.first),
             ),
           ),
           ListTile(
@@ -266,10 +354,10 @@ class Settings extends ConsumerWidget {
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {verticalLineType},
+              selected: {monitorSettings.verticalLineType},
               onSelectionChanged: (selected) async => ref
-                  .read(verticalLineTypeProvider.notifier)
-                  .set(selected.first),
+                  .read(monitorSettingsProvider.notifier)
+                  .setVerticalLineType(selected.first),
             ),
           ),
           const _SectionTitle(str.analytics),
@@ -323,7 +411,7 @@ class Settings extends ConsumerWidget {
             title: const Text(str.showDots),
             value: showDotsOn,
             onChanged: (on) async =>
-                ref.read(showDotsOnProvider.notifier).set(on: on),
+                ref.read(monitorSettingsProvider.notifier).setShowDots(on: on),
           ),
         ],
       ),

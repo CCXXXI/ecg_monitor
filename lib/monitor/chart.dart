@@ -50,21 +50,16 @@ class Chart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.watch(_pointsProvider);
+    final settings = ref.watch(monitorSettingsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    final durationS = ref.watch(
-      isPortrait ? portraitDurationProvider : landscapeDurationProvider,
-    );
-    final backgroundColor = ref.watch(backgroundColorProvider);
-    final lineColor = ref.watch(lineColorProvider);
-    final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
-    final verticalLineType = ref.watch(verticalLineTypeProvider);
-    final showDotsOn = ref.watch(showDotsOnProvider);
+    final durationS =
+        isPortrait ? settings.portraitDuration : settings.landscapeDuration;
+    final horizontalLineType = settings.horizontalLineType;
+    final verticalLineType = settings.verticalLineType;
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
-    final intervalMs = getIntervalMs(durationS, isPortrait: isPortrait);
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
@@ -72,7 +67,7 @@ class Chart extends ConsumerWidget {
       sideTitles: SideTitles(
         showTitles: true,
         reservedSize: 30,
-        interval: intervalMs,
+        interval: getIntervalMs(durationS, isPortrait: isPortrait),
         getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
             ? const SizedBox.shrink()
             : SideTitleWidget(
@@ -106,7 +101,7 @@ class Chart extends ConsumerWidget {
         maxY: points.isEmpty
             ? null
             : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
-        backgroundColor: backgroundColor,
+        backgroundColor: settings.backgroundColor,
         titlesData: FlTitlesData(
           topTitles: xTitles,
           bottomTitles: xTitles,
@@ -125,19 +120,19 @@ class Chart extends ConsumerWidget {
               ? _smallVerticalInterval
               : _largeVerticalInterval,
           getDrawingHorizontalLine: (value) => FlLine(
-            color: gridColor,
+            color: settings.gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
           ),
           getDrawingVerticalLine: (value) => FlLine(
-            color: gridColor,
+            color: settings.gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: false),
           ),
         ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
-            color: lineColor,
-            dotData: FlDotData(show: showDotsOn),
+            color: settings.lineColor,
+            dotData: FlDotData(show: settings.showDotsOn),
           ),
         ],
       ),

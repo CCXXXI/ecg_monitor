@@ -1,6 +1,10 @@
 import "package:package_info_plus/package_info_plus.dart";
 
 const monitor = "实时数据";
+const style = "样式";
+const professional = "专业";
+const simple = "简洁";
+const custom = "自定义";
 const portraitDuration = "竖屏时长";
 const landscapeDuration = "横屏时长";
 const recent = "最近";
