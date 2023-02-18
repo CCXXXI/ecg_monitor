@@ -85,6 +85,7 @@ class Chart extends ConsumerWidget {
             : points.map((p) => p.y).reduce(max) + _largeHorizontalInterval,
         backgroundColor: Color(backgroundColor),
         titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
+        borderData: FlBorderData(show: false),
         gridData: FlGridData(
           show: drawHorizontalLine || drawVerticalLine,
           drawHorizontalLine: drawHorizontalLine,
