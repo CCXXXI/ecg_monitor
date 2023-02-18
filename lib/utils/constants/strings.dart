@@ -1,47 +1,47 @@
 import "package:package_info_plus/package_info_plus.dart";
 
-const String monitor = "实时数据";
-const String portraitDuration = "竖屏时长";
-const String landscapeDuration = "横屏时长";
-const String backgroundColor = "背景颜色";
-const String lineColor = "折线颜色";
-const String gridColor = "网格颜色";
-const String horizontalLine = "横格线";
-const String verticalLine = "竖格线";
-const String lineTypeHide = "隐藏";
-const String lineTypeSimple = "简化";
-const String lineTypeFull = "完整";
+const monitor = "实时数据";
+const portraitDuration = "竖屏时长";
+const landscapeDuration = "横屏时长";
+const backgroundColor = "背景颜色";
+const lineColor = "折线颜色";
+const gridColor = "网格颜色";
+const horizontalLine = "横格线";
+const verticalLine = "竖格线";
+const lineTypeHide = "隐藏";
+const lineTypeSimple = "简化";
+const lineTypeFull = "完整";
 
-const String analytics = "分析报告";
-const String autoUpload = "自动上传";
+const analytics = "分析报告";
+const autoUpload = "自动上传";
 
-const String deviceManager = "设备管理";
-const String bluetoothConnected = "蓝牙已连接";
-const String bluetoothRssi = "信号强度";
-const String bluetoothRssiUnit = "dBm";
-const String battery = "电量";
-const String batteryUnknown = "电量未知";
+const deviceManager = "设备管理";
+const bluetoothConnected = "蓝牙已连接";
+const bluetoothRssi = "信号强度";
+const bluetoothRssiUnit = "dBm";
+const battery = "电量";
+const batteryUnknown = "电量未知";
 
-const String mine = "我的";
-const String feedback = "反馈";
+const mine = "我的";
+const feedback = "反馈";
 
-const String settings = "设置";
+const settings = "设置";
 
-const String devTools = "开发者工具";
-const String fakeDevice = "模拟设备";
-const String fakeDeviceModel = "Fake-Device";
-const String modelTest = "模型测试";
-const String loggerLevel = "日志等级";
-const String showDots = "显示数据点";
-const String resetSettings = "恢复默认设置";
-const String rebootNeeded = "重启后生效";
+const devTools = "开发者工具";
+const fakeDevice = "模拟设备";
+const fakeDeviceModel = "Fake-Device";
+const modelTest = "模型测试";
+const loggerLevel = "日志等级";
+const showDots = "显示数据点";
+const resetSettings = "恢复默认设置";
+const rebootNeeded = "重启后生效";
 
-const String about = "关于";
+const about = "关于";
 late final String appName;
 late final String version;
-const String changelog = "更新日志";
+const changelog = "更新日志";
 
-const String sentryDsn =
+const sentryDsn =
     "https://2f8266dc3f2947a186a1bb5a835f4b37@o996799.ingest.sentry.io"
     "/4504697112625152";
 
