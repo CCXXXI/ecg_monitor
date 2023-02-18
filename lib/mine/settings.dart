@@ -1,9 +1,9 @@
 import "package:flex_color_picker/flex_color_picker.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
-import "package:settings_ui/settings_ui.dart";
 
 import "../database.dart";
 import "../utils/constants/strings.dart" as str;
@@ -173,134 +173,131 @@ class Settings extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text(str.settings)),
-      body: SettingsList(
-        sections: [
-          SettingsSection(
-            title: const Text(str.monitor),
-            tiles: [
-              SettingsTile(
-                leading: const Icon(Icons.stay_primary_portrait_outlined),
-                title: const Text(str.portraitDuration),
-                value: Text(portraitDurationString),
-                trailing: Slider.adaptive(
-                  value: portraitDuration,
-                  onChanged: ref.read(portraitDurationProvider.notifier).set,
-                  min: 1,
-                  max: 10,
-                  divisions: 9,
-                  label: portraitDurationString,
-                ),
+      body: ListView(
+        children: [
+          const _SectionTitle(str.monitor),
+          ListTile(
+            leading: const Icon(Icons.stay_primary_portrait_outlined),
+            title: const Text(str.portraitDuration),
+            subtitle: Text("${str.recent} $portraitDurationString"),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: portraitDuration,
+                onChanged: ref.read(portraitDurationProvider.notifier).set,
+                min: 1,
+                max: 10,
+                divisions: 9,
+                label: portraitDurationString,
               ),
-              SettingsTile(
-                leading: const Icon(Icons.stay_primary_landscape_outlined),
-                title: const Text(str.landscapeDuration),
-                value: Text(landscapeDurationString),
-                trailing: Slider.adaptive(
-                  value: landscapeDuration,
-                  onChanged: ref.read(landscapeDurationProvider.notifier).set,
-                  min: 2,
-                  max: 20,
-                  divisions: 9,
-                  label: landscapeDurationString,
-                ),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.color_lens_outlined),
-                title: const Text(str.backgroundColor),
-                value: Text("0x${backgroundColor.hex}"),
-                trailing: ColorIndicator(color: backgroundColor),
-                onPressed: (context) async => ref
-                    .read(backgroundColorProvider.notifier)
-                    .set(await _pickColor(context, backgroundColor)),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.line_axis_outlined),
-                title: const Text(str.lineColor),
-                value: Text("0x${lineColor.hex}"),
-                trailing: ColorIndicator(color: lineColor),
-                onPressed: (context) async => ref
-                    .read(lineColorProvider.notifier)
-                    .set(await _pickColor(context, lineColor)),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.grid_3x3_outlined),
-                title: const Text(str.gridColor),
-                value: Text("0x${gridColor.hex}"),
-                trailing: ColorIndicator(color: gridColor),
-                onPressed: (context) async => ref
-                    .read(gridColorProvider.notifier)
-                    .set(await _pickColor(context, gridColor)),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.border_horizontal_outlined),
-                title: const Text(str.horizontalLine),
-                trailing: SegmentedButton(
-                  segments: lineTypeSegments,
-                  selected: {horizontalLineType},
-                  onSelectionChanged: (selected) async => ref
-                      .read(horizontalLineTypeIndexProvider.notifier)
-                      .set(selected.first.index),
-                ),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.border_vertical_outlined),
-                title: const Text(str.verticalLine),
-                trailing: SegmentedButton(
-                  segments: lineTypeSegments,
-                  selected: {verticalLineType},
-                  onSelectionChanged: (selected) async => ref
-                      .read(verticalLineTypeIndexProvider.notifier)
-                      .set(selected.first.index),
-                ),
-              ),
-            ],
+            ),
           ),
-          SettingsSection(
-            title: const Text(str.analytics),
-            tiles: [
-              SettingsTile.switchTile(
-                initialValue: autoUpload,
-                onToggle: ref.read(autoUploadProvider.notifier).set,
-                leading: const Icon(Icons.cloud_upload_outlined),
-                title: const Text(str.autoUpload),
+          ListTile(
+            leading: const Icon(Icons.stay_primary_landscape_outlined),
+            title: const Text(str.landscapeDuration),
+            subtitle: Text("${str.recent} $landscapeDurationString"),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: landscapeDuration,
+                onChanged: ref.read(landscapeDurationProvider.notifier).set,
+                min: 2,
+                max: 20,
+                divisions: 9,
+                label: landscapeDurationString,
               ),
-            ],
+            ),
           ),
-          SettingsSection(
-            title: const Text(str.devTools),
-            tiles: [
-              SettingsTile.switchTile(
-                initialValue: fakeDevice,
-                onToggle: ref.read(fakeDeviceProvider.notifier).set,
-                leading: const Icon(Icons.device_hub_outlined),
-                title: const Text(str.fakeDevice),
+          ListTile(
+            leading: const Icon(Icons.color_lens_outlined),
+            title: const Text(str.backgroundColor),
+            subtitle: Text("0x${backgroundColor.hex}"),
+            trailing: ColorIndicator(color: backgroundColor),
+            onTap: () async => ref
+                .read(backgroundColorProvider.notifier)
+                .set(await _pickColor(context, backgroundColor)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.line_axis_outlined),
+            title: const Text(str.lineColor),
+            subtitle: Text("0x${lineColor.hex}"),
+            trailing: ColorIndicator(color: lineColor),
+            onTap: () async => ref
+                .read(lineColorProvider.notifier)
+                .set(await _pickColor(context, lineColor)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.grid_3x3_outlined),
+            title: const Text(str.gridColor),
+            subtitle: Text("0x${gridColor.hex}"),
+            trailing: ColorIndicator(color: gridColor),
+            onTap: () async => ref
+                .read(gridColorProvider.notifier)
+                .set(await _pickColor(context, gridColor)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.border_horizontal_outlined),
+            title: const Text(str.horizontalLine),
+            trailing: SegmentedButton(
+              segments: lineTypeSegments,
+              selected: {horizontalLineType},
+              onSelectionChanged: (selected) async => ref
+                  .read(horizontalLineTypeIndexProvider.notifier)
+                  .set(selected.first.index),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.border_vertical_outlined),
+            title: const Text(str.verticalLine),
+            trailing: SegmentedButton(
+              segments: lineTypeSegments,
+              selected: {verticalLineType},
+              onSelectionChanged: (selected) async => ref
+                  .read(verticalLineTypeIndexProvider.notifier)
+                  .set(selected.first.index),
+            ),
+          ),
+          const _SectionTitle(str.analytics),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.cloud_upload_outlined),
+            title: const Text(str.autoUpload),
+            value: autoUpload,
+            onChanged: ref.read(autoUploadProvider.notifier).set,
+          ),
+          const _SectionTitle(str.devTools),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.device_hub_outlined),
+            title: const Text(str.fakeDevice),
+            value: fakeDevice,
+            onChanged: ref.read(fakeDeviceProvider.notifier).set,
+          ),
+          ListTile(
+            leading: const Icon(Icons.compare_arrows_outlined),
+            title: const Text(str.modelTest),
+            onTap: () async => modelTest(),
+          ),
+          ListTile(
+            leading: const Icon(Icons.developer_mode_outlined),
+            title: const Text(str.loggerLevel),
+            subtitle: Text(loggerLevelName),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: loggerLevelIndex.toDouble(),
+                onChanged: (value) async => ref
+                    .read(loggerLevelIndexProvider.notifier)
+                    .set(value.toInt()),
+                max: loggerLevels.length - 1,
+                divisions: loggerLevels.length - 1,
+                label: loggerLevelName,
               ),
-              SettingsTile.navigation(
-                leading: const Icon(Icons.compare_arrows_outlined),
-                title: const Text(str.modelTest),
-                onPressed: (context) async => modelTest(),
-              ),
-              SettingsTile(
-                leading: const Icon(Icons.developer_mode_outlined),
-                title: const Text(str.loggerLevel),
-                value: Text(loggerLevelName),
-                trailing: Slider.adaptive(
-                  value: loggerLevelIndex.toDouble(),
-                  onChanged: (value) async => ref
-                      .read(loggerLevelIndexProvider.notifier)
-                      .set(value.toInt()),
-                  max: loggerLevels.length - 1,
-                  divisions: loggerLevels.length - 1,
-                  label: loggerLevelName,
-                ),
-              ),
-              SettingsTile.switchTile(
-                initialValue: showDots,
-                onToggle: ref.read(showDotsProvider.notifier).set,
-                leading: const Icon(Icons.linear_scale_outlined),
-                title: const Text(str.showDots),
-              ),
-            ],
+            ),
+          ),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.linear_scale_outlined),
+            title: const Text(str.showDots),
+            value: showDots,
+            onChanged: ref.read(showDotsProvider.notifier).set,
           ),
         ],
       ),
@@ -339,4 +336,30 @@ class Settings extends ConsumerWidget {
       label: Text(str.lineTypeFull),
     ),
   ];
+}
+
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle(this.title);
+
+  static const padding =
+      EdgeInsetsDirectional.only(top: 24, bottom: 10, start: 24, end: 24);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    final textStyle = Theme.of(context).textTheme.labelLarge;
+
+    return Padding(
+      padding: padding,
+      child: Text(title, style: textStyle!.copyWith(color: color)),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty("title", title));
+  }
 }
