@@ -6,6 +6,7 @@ import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
+import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart" as str;
 import "../utils/logger.dart";
 import "model_test.dart";
@@ -116,14 +117,19 @@ class FakeDevice extends _$FakeDevice {
 }
 
 @riverpod
-class _LoggerLevelIndex extends _$LoggerLevelIndex {
+class _LoggerLevel extends _$LoggerLevel {
   @override
-  int build() => prefs.getInt(str.loggerLevel) ?? infoLevelIndex;
+  Level build() {
+    final index = prefs.getInt(key.loggerLevelIndex) ?? infoLevelIndex;
+    return loggerLevels[index];
+  }
 
-  Future<void> set(int value) async {
-    state = value;
-    Logger.root.level = loggerLevels[value];
-    await prefs.setInt(str.loggerLevel, value);
+  Future<void> set(Level level) async {
+    state = level;
+    Logger.root.level = level;
+
+    final index = loggerLevels.indexOf(level);
+    await prefs.setInt(key.loggerLevelIndex, index);
   }
 }
 
@@ -166,10 +172,10 @@ class Settings extends ConsumerWidget {
 
     // devTools settings
     final fakeDevice = ref.watch(fakeDeviceProvider);
-    final loggerLevelIndex = ref.watch(_loggerLevelIndexProvider);
+    final loggerLevel = ref.watch(_loggerLevelProvider);
     final showDots = ref.watch(showDotsProvider);
 
-    final loggerLevelName = loggerLevels[loggerLevelIndex].name;
+    final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
     return Scaffold(
       appBar: AppBar(title: const Text(str.settings)),
@@ -287,17 +293,17 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.developer_mode_outlined),
             title: const Text(str.loggerLevel),
-            subtitle: Text(loggerLevelName),
+            subtitle: Text(loggerLevel.name),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
                 value: loggerLevelIndex.toDouble(),
                 onChanged: (value) async => ref
-                    .read(_loggerLevelIndexProvider.notifier)
-                    .set(value.toInt()),
+                    .read(_loggerLevelProvider.notifier)
+                    .set(loggerLevels[value.toInt()]),
                 max: loggerLevels.length - 1,
                 divisions: loggerLevels.length - 1,
-                label: loggerLevelName,
+                label: loggerLevel.name,
               ),
             ),
           ),
