@@ -84,6 +84,19 @@ class Chart extends ConsumerWidget {
       ),
     );
 
+    final yTitles = AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 30,
+        getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
+            ? const SizedBox.shrink()
+            : SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(value.toStringAsFixed(0)),
+              ),
+      ),
+    );
+
     return LineChart(
       swapAnimationDuration: Duration.zero, // disable animation
       LineChartData(
@@ -96,7 +109,12 @@ class Chart extends ConsumerWidget {
             ? null
             : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
         backgroundColor: Color(backgroundColor),
-        titlesData: FlTitlesData(topTitles: xTitles, bottomTitles: xTitles),
+        titlesData: FlTitlesData(
+          topTitles: xTitles,
+          bottomTitles: xTitles,
+          leftTitles: yTitles,
+          rightTitles: yTitles,
+        ),
         borderData: FlBorderData(show: false),
         gridData: FlGridData(
           show: drawHorizontalLine || drawVerticalLine,
