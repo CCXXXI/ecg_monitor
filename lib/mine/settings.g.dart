@@ -22,7 +22,6 @@ final portraitDurationProvider =
 );
 
 typedef _$PortraitDuration = AutoDisposeNotifier<double>;
-
 String _$landscapeDurationHash() => r'10fc1322e7ab43a58ecd3e034a901402849b8035';
 
 /// See also [LandscapeDuration].
@@ -39,7 +38,6 @@ final landscapeDurationProvider =
 );
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
-
 String _$backgroundColorHash() => r'3b38f019531e73c1699ad74ae762dc3b11e50459';
 
 /// See also [BackgroundColor].
@@ -56,7 +54,6 @@ final backgroundColorProvider =
 );
 
 typedef _$BackgroundColor = AutoDisposeNotifier<int>;
-
 String _$lineColorHash() => r'04a85c65bdcc94b2b5fc87ee11c76a5f28347ca6';
 
 /// See also [LineColor].
@@ -71,7 +68,6 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 );
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
-
 String _$gridColorHash() => r'f3b5062d51bd8fe8df0da110bc296b6930182a98';
 
 /// See also [GridColor].
@@ -120,7 +116,6 @@ final verticalLineTypeIndexProvider =
 );
 
 typedef _$VerticalLineTypeIndex = AutoDisposeNotifier<int>;
-
 String _$autoUploadHash() => r'bf0d8c7d291c5b1a8d47651975d93eb06fbbddec';
 
 /// See also [AutoUpload].
@@ -136,7 +131,6 @@ final autoUploadProvider =
 );
 
 typedef _$AutoUpload = AutoDisposeNotifier<bool>;
-
 String _$fakeDeviceHash() => r'fcfb88da54b9bd770e0cb620aeee7639b46477e7';
 
 /// See also [FakeDevice].
@@ -152,7 +146,6 @@ final fakeDeviceProvider =
 );
 
 typedef _$FakeDevice = AutoDisposeNotifier<bool>;
-
 String _$loggerLevelIndexHash() => r'e50fa0093f77ccfe21a55df5a0292802dc5754e5';
 
 /// See also [_LoggerLevelIndex].
@@ -169,7 +162,6 @@ final _loggerLevelIndexProvider =
 );
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
-
 String _$showDotsHash() => r'926013d9f59edad396fd6eddc3a2534dbc1444f3';
 
 /// See also [ShowDots].
