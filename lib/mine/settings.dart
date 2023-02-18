@@ -285,7 +285,7 @@ class Settings extends ConsumerWidget {
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {(monitorSettings.horizontalLineType)},
+              selected: {monitorSettings.horizontalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
                   .setHorizontalLineType(selected.first),
@@ -296,7 +296,7 @@ class Settings extends ConsumerWidget {
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {(monitorSettings.verticalLineType)},
+              selected: {monitorSettings.verticalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
                   .setVerticalLineType(selected.first),
