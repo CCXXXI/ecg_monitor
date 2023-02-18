@@ -70,7 +70,32 @@ class Chart extends ConsumerWidget {
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
-    final titles = _getTimeAxisTitles(intervalMs);
+    final xTitles = AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 30,
+        interval: intervalMs,
+        getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
+            ? const SizedBox.shrink()
+            : SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(Chart.msToTimeString(value)),
+              ),
+      ),
+    );
+
+    final yTitles = AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 30,
+        getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
+            ? const SizedBox.shrink()
+            : SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(value.toStringAsFixed(0)),
+              ),
+      ),
+    );
 
     return LineChart(
       swapAnimationDuration: Duration.zero, // disable animation
@@ -79,12 +104,18 @@ class Chart extends ConsumerWidget {
         maxX: points.isEmpty ? null : points.last.x,
         minY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(min) - _largeHorizontalInterval,
+            : points.map((p) => p.y).reduce(min) - _smallHorizontalInterval,
         maxY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(max) + _largeHorizontalInterval,
+            : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
         backgroundColor: Color(backgroundColor),
-        titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
+        titlesData: FlTitlesData(
+          topTitles: xTitles,
+          bottomTitles: xTitles,
+          leftTitles: yTitles,
+          rightTitles: yTitles,
+        ),
+        borderData: FlBorderData(show: false),
         gridData: FlGridData(
           show: drawHorizontalLine || drawVerticalLine,
           drawHorizontalLine: drawHorizontalLine,
@@ -124,20 +155,6 @@ class Chart extends ConsumerWidget {
     return intervalMs;
   }
 
-  static AxisTitles _getTimeAxisTitles(double interval) => AxisTitles(
-        sideTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 30,
-          interval: interval,
-          getTitlesWidget: (value, meta) => SideTitleWidget(
-            axisSide: meta.axisSide,
-            child: Text(
-              DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
-            ),
-          ),
-        ),
-      );
-
   static double _getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval =
         isHorizontal ? _largeHorizontalInterval : _largeVerticalInterval;
@@ -147,10 +164,12 @@ class Chart extends ConsumerWidget {
         ? _thickLineWidth
         : _thinLineWidth;
   }
-}
 
-extension on DateTime {
-  String toTimeString() => "${hour.toString().padLeft(2, "0")}"
-      ":${minute.toString().padLeft(2, "0")}"
-      ":${second.toString().padLeft(2, "0")}";
+  @visibleForTesting
+  static String msToTimeString(double milliseconds) {
+    final dateTime = DateTime.fromMillisecondsSinceEpoch(milliseconds.toInt());
+    return "${dateTime.hour.toString().padLeft(2, "0")}"
+        ":${dateTime.minute.toString().padLeft(2, "0")}"
+        ":${dateTime.second.toString().padLeft(2, "0")}";
+  }
 }
