@@ -70,7 +70,19 @@ class Chart extends ConsumerWidget {
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
-    final titles = _getTimeAxisTitles(intervalMs);
+    final xTitles = AxisTitles(
+      sideTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 30,
+        interval: intervalMs,
+        getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
+            ? const SizedBox.shrink()
+            : SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(Chart.msToTimeString(value)),
+              ),
+      ),
+    );
 
     return LineChart(
       swapAnimationDuration: Duration.zero, // disable animation
@@ -84,7 +96,7 @@ class Chart extends ConsumerWidget {
             ? null
             : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
         backgroundColor: Color(backgroundColor),
-        titlesData: FlTitlesData(topTitles: titles, bottomTitles: titles),
+        titlesData: FlTitlesData(topTitles: xTitles, bottomTitles: xTitles),
         borderData: FlBorderData(show: false),
         gridData: FlGridData(
           show: drawHorizontalLine || drawVerticalLine,
@@ -124,21 +136,6 @@ class Chart extends ConsumerWidget {
     final intervalMs = intervalS * Duration.millisecondsPerSecond;
     return intervalMs;
   }
-
-  static AxisTitles _getTimeAxisTitles(double interval) => AxisTitles(
-        sideTitles: SideTitles(
-          showTitles: true,
-          reservedSize: 30,
-          interval: interval,
-          getTitlesWidget: (value, meta) =>
-              value == meta.max || value == meta.min
-                  ? const SizedBox.shrink()
-                  : SideTitleWidget(
-                      axisSide: meta.axisSide,
-                      child: Text(msToTimeString(value)),
-                    ),
-        ),
-      );
 
   static double _getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval =
