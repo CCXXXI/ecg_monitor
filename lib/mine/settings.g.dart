@@ -85,7 +85,7 @@ final gridColorProvider =
 
 typedef _$GridColor = AutoDisposeNotifier<Color>;
 String _$horizontalLineTypeHash() =>
-    r'642911cbc75e66daea32bfe578165cc7b73cf5a3';
+    r'c76c82e1ee480bd6b0e9a7a2fa1c112443b34cf7';
 
 /// See also [HorizontalLineType].
 @ProviderFor(HorizontalLineType)
@@ -102,7 +102,7 @@ final horizontalLineTypeProvider =
 
 typedef _$HorizontalLineType = AutoDisposeNotifier<LineType>;
 
-String _$verticalLineTypeHash() => r'b9a8b0e94b64e7c1d455555fa01260665bdf5810';
+String _$verticalLineTypeHash() => r'675ccffab89c0224a03cac810a4ea47d94a16fae';
 
 /// See also [VerticalLineType].
 @ProviderFor(VerticalLineType)
@@ -118,36 +118,39 @@ final verticalLineTypeProvider =
 );
 
 typedef _$VerticalLineType = AutoDisposeNotifier<LineType>;
-String _$autoUploadHash() => r'bf0d8c7d291c5b1a8d47651975d93eb06fbbddec';
 
-/// See also [AutoUpload].
-@ProviderFor(AutoUpload)
-final autoUploadProvider =
-    AutoDisposeNotifierProvider<AutoUpload, bool>.internal(
-  AutoUpload.new,
-  name: r'autoUploadProvider',
+String _$autoUploadOnHash() => r'e591db100a354cbdd87d595304f06d2ef7357360';
+
+/// See also [AutoUploadOn].
+@ProviderFor(AutoUploadOn)
+final autoUploadOnProvider =
+    AutoDisposeNotifierProvider<AutoUploadOn, bool>.internal(
+  AutoUploadOn.new,
+  name: r'autoUploadOnProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$autoUploadHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$autoUploadOnHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AutoUpload = AutoDisposeNotifier<bool>;
-String _$fakeDeviceHash() => r'fcfb88da54b9bd770e0cb620aeee7639b46477e7';
+typedef _$AutoUploadOn = AutoDisposeNotifier<bool>;
 
-/// See also [FakeDevice].
-@ProviderFor(FakeDevice)
-final fakeDeviceProvider =
-    AutoDisposeNotifierProvider<FakeDevice, bool>.internal(
-  FakeDevice.new,
-  name: r'fakeDeviceProvider',
+String _$fakeDeviceOnHash() => r'9700c2836d6e522fd88b398821ba59d32fb44f02';
+
+/// See also [FakeDeviceOn].
+@ProviderFor(FakeDeviceOn)
+final fakeDeviceOnProvider =
+    AutoDisposeNotifierProvider<FakeDeviceOn, bool>.internal(
+  FakeDeviceOn.new,
+  name: r'fakeDeviceOnProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeDeviceHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeDeviceOnHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$FakeDevice = AutoDisposeNotifier<bool>;
+typedef _$FakeDeviceOn = AutoDisposeNotifier<bool>;
+
 String _$loggerLevelHash() => r'3dc7f79c8026e2c51232798edbcbfe4610ee5690';
 
 /// See also [_LoggerLevel].
@@ -163,18 +166,20 @@ final _loggerLevelProvider =
 );
 
 typedef _$LoggerLevel = AutoDisposeNotifier<Level>;
-String _$showDotsHash() => r'926013d9f59edad396fd6eddc3a2534dbc1444f3';
 
-/// See also [ShowDots].
-@ProviderFor(ShowDots)
-final showDotsProvider = AutoDisposeNotifierProvider<ShowDots, bool>.internal(
-  ShowDots.new,
-  name: r'showDotsProvider',
+String _$showDotsOnHash() => r'c4f4e9ceb739f2ea7ae6099db62fee955fd479b3';
+
+/// See also [ShowDotsOn].
+@ProviderFor(ShowDotsOn)
+final showDotsOnProvider =
+    AutoDisposeNotifierProvider<ShowDotsOn, bool>.internal(
+  ShowDotsOn.new,
+  name: r'showDotsOnProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$showDotsHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$showDotsOnHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ShowDots = AutoDisposeNotifier<bool>;
+typedef _$ShowDotsOn = AutoDisposeNotifier<bool>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

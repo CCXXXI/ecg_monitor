@@ -60,7 +60,7 @@ class Chart extends ConsumerWidget {
     final gridColor = ref.watch(gridColorProvider);
     final horizontalLineType = ref.watch(horizontalLineTypeProvider);
     final verticalLineType = ref.watch(verticalLineTypeProvider);
-    final showDots = ref.watch(showDotsProvider);
+    final showDotsOn = ref.watch(showDotsOnProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
@@ -137,7 +137,7 @@ class Chart extends ConsumerWidget {
           LineChartBarData(
             spots: points,
             color: lineColor,
-            dotData: FlDotData(show: showDots),
+            dotData: FlDotData(show: showDotsOn),
           ),
         ],
       ),

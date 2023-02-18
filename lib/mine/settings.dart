@@ -110,26 +110,24 @@ class VerticalLineType extends _$VerticalLineType {
 }
 
 @riverpod
-class AutoUpload extends _$AutoUpload {
+class AutoUploadOn extends _$AutoUploadOn {
   @override
-  bool build() => prefs.getBool(str.autoUpload) ?? true;
+  bool build() => prefs.getBool(key.autoUploadOn) ?? true;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.autoUpload, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.autoUploadOn, on);
   }
 }
 
 @riverpod
-class FakeDevice extends _$FakeDevice {
+class FakeDeviceOn extends _$FakeDeviceOn {
   @override
-  bool build() => prefs.getBool(str.fakeDevice) ?? false;
+  bool build() => prefs.getBool(key.fakeDeviceOn) ?? false;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.fakeDevice, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.fakeDeviceOn, on);
   }
 }
 
@@ -151,14 +149,13 @@ class _LoggerLevel extends _$LoggerLevel {
 }
 
 @riverpod
-class ShowDots extends _$ShowDots {
+class ShowDotsOn extends _$ShowDotsOn {
   @override
-  bool build() => prefs.getBool(str.showDots) ?? false;
+  bool build() => prefs.getBool(key.showDotsOn) ?? false;
 
-  // ignore: avoid_positional_boolean_parameters
-  Future<void> set(bool value) async {
-    state = value;
-    await prefs.setBool(str.showDots, value);
+  Future<void> set({required bool on}) async {
+    state = on;
+    await prefs.setBool(key.showDotsOn, on);
   }
 }
 
@@ -180,12 +177,12 @@ class Settings extends ConsumerWidget {
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
 
     // analytics settings
-    final autoUpload = ref.watch(autoUploadProvider);
+    final autoUploadOn = ref.watch(autoUploadOnProvider);
 
     // devTools settings
-    final fakeDevice = ref.watch(fakeDeviceProvider);
+    final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
     final loggerLevel = ref.watch(_loggerLevelProvider);
-    final showDots = ref.watch(showDotsProvider);
+    final showDotsOn = ref.watch(showDotsOnProvider);
 
     final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
@@ -279,15 +276,17 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
-            value: autoUpload,
-            onChanged: ref.read(autoUploadProvider.notifier).set,
+            value: autoUploadOn,
+            onChanged: (on) async =>
+                ref.read(autoUploadOnProvider.notifier).set(on: on),
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.device_hub_outlined),
             title: const Text(str.fakeDevice),
-            value: fakeDevice,
-            onChanged: ref.read(fakeDeviceProvider.notifier).set,
+            value: fakeDeviceOn,
+            onChanged: (on) async =>
+                ref.read(fakeDeviceOnProvider.notifier).set(on: on),
           ),
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),
@@ -322,8 +321,9 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.linear_scale_outlined),
             title: const Text(str.showDots),
-            value: showDots,
-            onChanged: ref.read(showDotsProvider.notifier).set,
+            value: showDotsOn,
+            onChanged: (on) async =>
+                ref.read(showDotsOnProvider.notifier).set(on: on),
           ),
         ],
       ),
