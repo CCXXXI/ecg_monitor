@@ -3,11 +3,13 @@ import "package:go_router/go_router.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
+import "../database.dart";
 import "../device_manager/device_manager.dart";
 import "../home.dart";
 import "../mine/mine.dart";
 import "../mine/settings.dart";
 import "../monitor/monitor.dart";
+import "../utils/constants/strings.dart" as str;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
 final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
@@ -24,6 +26,10 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: "/monitor",
+          redirect: (context, state) =>
+              prefs.getString(str.deviceManager) == null
+                  ? "/device_manager"
+                  : null,
           builder: (context, state) => const Monitor(),
         ),
         GoRoute(
