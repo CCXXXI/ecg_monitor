@@ -212,7 +212,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.color_lens_outlined),
             title: const Text(str.backgroundColor),
             subtitle: Text("0x${backgroundColor.hex}"),
-            trailing: ColorIndicator(color: backgroundColor),
+            trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
             onTap: () async => ref
                 .read(backgroundColorProvider.notifier)
                 .set(await _pickColor(context, backgroundColor)),
@@ -221,7 +221,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.line_axis_outlined),
             title: const Text(str.lineColor),
             subtitle: Text("0x${lineColor.hex}"),
-            trailing: ColorIndicator(color: lineColor),
+            trailing: ColorIndicator(color: lineColor, hasBorder: true),
             onTap: () async => ref
                 .read(lineColorProvider.notifier)
                 .set(await _pickColor(context, lineColor)),
@@ -230,7 +230,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.grid_on_outlined),
             title: const Text(str.gridColor),
             subtitle: Text("0x${gridColor.hex}"),
-            trailing: ColorIndicator(color: gridColor),
+            trailing: ColorIndicator(color: gridColor, hasBorder: true),
             onTap: () async => ref
                 .read(gridColorProvider.notifier)
                 .set(await _pickColor(context, gridColor)),
