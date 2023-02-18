@@ -50,17 +50,17 @@ class Chart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.watch(_pointsProvider);
+    final settings = ref.watch(monitorSettingsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    final durationS = ref.watch(
-      isPortrait ? portraitDurationProvider : landscapeDurationProvider,
-    );
-    final backgroundColor = ref.watch(backgroundColorProvider);
-    final lineColor = ref.watch(lineColorProvider);
-    final gridColor = ref.watch(gridColorProvider);
-    final horizontalLineType = ref.watch(horizontalLineTypeProvider);
-    final verticalLineType = ref.watch(verticalLineTypeProvider);
-    final showDotsOn = ref.watch(showDotsOnProvider);
+    final durationS =
+        isPortrait ? settings.portraitDuration : settings.landscapeDuration;
+    final backgroundColor = settings.backgroundColor;
+    final lineColor = settings.lineColor;
+    final gridColor = settings.gridColor;
+    final horizontalLineType = settings.horizontalLineType;
+    final verticalLineType = settings.verticalLineType;
+    final showDots = settings.showDotsOn;
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
@@ -137,7 +137,7 @@ class Chart extends ConsumerWidget {
           LineChartBarData(
             spots: points,
             color: lineColor,
-            dotData: FlDotData(show: showDotsOn),
+            dotData: FlDotData(show: showDots),
           ),
         ],
       ),
