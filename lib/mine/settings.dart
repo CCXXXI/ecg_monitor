@@ -38,33 +38,33 @@ class LandscapeDuration extends _$LandscapeDuration {
 @riverpod
 class BackgroundColor extends _$BackgroundColor {
   @override
-  int build() => prefs.getInt(str.backgroundColor) ?? Colors.white.value;
+  int build() => prefs.getInt(key.backgroundColorHex) ?? Colors.white.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(str.backgroundColor, value);
+    await prefs.setInt(key.backgroundColorHex, value);
   }
 }
 
 @riverpod
 class LineColor extends _$LineColor {
   @override
-  int build() => prefs.getInt(str.lineColor) ?? Colors.red.value;
+  int build() => prefs.getInt(key.lineColorHex) ?? Colors.red.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(str.lineColor, value);
+    await prefs.setInt(key.lineColorHex, value);
   }
 }
 
 @riverpod
 class GridColor extends _$GridColor {
   @override
-  int build() => prefs.getInt(str.gridColor) ?? Colors.red.value;
+  int build() => prefs.getInt(key.gridColorHex) ?? Colors.red.value;
 
   Future<void> set(int value) async {
     state = value;
-    await prefs.setInt(str.gridColor, value);
+    await prefs.setInt(key.gridColorHex, value);
   }
 }
 
