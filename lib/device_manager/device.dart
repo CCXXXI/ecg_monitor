@@ -1,16 +1,16 @@
-import "dart:math";
-
 import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../mine/settings.dart";
+import "../database.dart";
 import "../utils/constants/strings.dart" as str;
 
 part "device.g.dart";
 
 abstract class Device {
+  String get id;
+
   String get name;
 
   String get model;
@@ -21,6 +21,8 @@ abstract class Device {
   Stream<int> get batteryStream;
 
   Stream<double> get ecgStream;
+
+  Stream<bool> get connectedStream;
 }
 
 class _FakeDevice implements Device {
@@ -32,7 +34,8 @@ class _FakeDevice implements Device {
     milliseconds: Duration.millisecondsPerSecond ~/ _sampleRateHz,
   );
 
-  final _random = Random();
+  @override
+  String get id => str.fakeDevice;
 
   @override
   String get name => str.fakeDevice;
@@ -41,16 +44,10 @@ class _FakeDevice implements Device {
   String get model => str.fakeDeviceModel;
 
   @override
-  Stream<int> get rssiStream => Stream.periodic(
-        aSecond,
-        (_) => -32 - _random.nextInt(20),
-      );
+  Stream<int> get rssiStream => Stream.value(-42);
 
   @override
-  Stream<int> get batteryStream => Stream.periodic(
-        aSecond,
-        (_) => 100,
-      );
+  Stream<int> get batteryStream => Stream.value(100);
 
   @override
   Stream<double> get ecgStream async* {
@@ -66,24 +63,61 @@ class _FakeDevice implements Device {
       (i) => data[i % data.length],
     );
   }
+
+  @override
+  Stream<bool> get connectedStream => Stream.periodic(
+        aSecond,
+        (_) => prefs.getBool(str.fakeDevice) ?? false,
+      );
 }
 
+final fakeDevice = _FakeDevice();
+
 @riverpod
-Device? device(DeviceRef ref) {
-  if (ref.watch(fakeDeviceProvider)) {
-    return _FakeDevice();
+class CurrentDevice extends _$CurrentDevice {
+  @override
+  Device? build() {
+    final id = prefs.getString(str.deviceManager);
+    if (id == fakeDevice.id) {
+      return fakeDevice;
+    }
+    return null;
   }
-  return null;
+
+  // ignore: use_setters_to_change_properties
+  Future<void> set(Device? device) async {
+    if (device == null) {
+      await prefs.remove(str.deviceManager);
+    } else {
+      await prefs.setString(str.deviceManager, device.id);
+    }
+    state = device;
+  }
 }
 
 final rssiProvider = StreamProvider.autoDispose<int>(
-  (ref) => ref.watch(deviceProvider)!.rssiStream,
+  (ref) => ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty(),
 );
 
 final batteryProvider = StreamProvider.autoDispose<int>(
-  (ref) => ref.watch(deviceProvider)!.batteryStream,
+  (ref) =>
+      ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty(),
+);
+
+final connectedProvider = StreamProvider.autoDispose<bool>(
+  (ref) =>
+      ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
 );
 
 final ecgProvider = StreamProvider.autoDispose<double>(
-  (ref) => ref.watch(deviceProvider)!.ecgStream,
+  (ref) {
+    final device = ref.watch(currentDeviceProvider);
+    final connected = ref.watch(connectedProvider).valueOrNull ?? false;
+
+    if (device == null || !connected) {
+      return const Stream.empty();
+    }
+
+    return device.ecgStream;
+  },
 );
