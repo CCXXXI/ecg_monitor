@@ -4,14 +4,14 @@ import "package:sentry_flutter/sentry_flutter.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
-import "utils/constants.dart";
+import "utils/constants/strings.dart" as str;
 import "utils/logger.dart";
 import "utils/router.dart";
 
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
-  await initConstants();
+  await str.initPackageInfo();
   await initPrefs();
   initLogger();
   await loadModel();
@@ -20,7 +20,7 @@ void main() async {
   await SentryFlutter.init(
     (options) {
       options
-        ..dsn = Strings.sentryDsn
+        ..dsn = str.sentryDsn
         ..tracesSampleRate = 1.0;
     },
     appRunner: () => runApp(const App()),
@@ -33,7 +33,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ProviderScope(
         child: MaterialApp.router(
-          title: Strings.appName,
+          title: str.appName,
           routerConfig: router,
           theme: ThemeData(useMaterial3: true),
         ),
