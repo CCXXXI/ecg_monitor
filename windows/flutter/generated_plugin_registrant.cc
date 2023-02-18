@@ -10,8 +10,8 @@
 #include <url_launcher_windows/url_launcher_windows.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  SentryFlutterPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("SentryFlutterPlugin"));
-  UrlLauncherWindowsRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("UrlLauncherWindows"));
+    SentryFlutterPluginRegisterWithRegistrar(
+        registry->GetRegistrarForPlugin("SentryFlutterPlugin"));
+    UrlLauncherWindowsRegisterWithRegistrar(
+        registry->GetRegistrarForPlugin("UrlLauncherWindows"));
 }
