@@ -116,7 +116,7 @@ class FakeDevice extends _$FakeDevice {
 }
 
 @riverpod
-class LoggerLevelIndex extends _$LoggerLevelIndex {
+class _LoggerLevelIndex extends _$LoggerLevelIndex {
   @override
   int build() => prefs.getInt(str.loggerLevel) ?? infoLevelIndex;
 
@@ -166,7 +166,7 @@ class Settings extends ConsumerWidget {
 
     // devTools settings
     final fakeDevice = ref.watch(fakeDeviceProvider);
-    final loggerLevelIndex = ref.watch(loggerLevelIndexProvider);
+    final loggerLevelIndex = ref.watch(_loggerLevelIndexProvider);
     final showDots = ref.watch(showDotsProvider);
 
     final loggerLevelName = loggerLevels[loggerLevelIndex].name;
@@ -285,7 +285,7 @@ class Settings extends ConsumerWidget {
               child: Slider.adaptive(
                 value: loggerLevelIndex.toDouble(),
                 onChanged: (value) async => ref
-                    .read(loggerLevelIndexProvider.notifier)
+                    .read(_loggerLevelIndexProvider.notifier)
                     .set(value.toInt()),
                 max: loggerLevels.length - 1,
                 divisions: loggerLevels.length - 1,
