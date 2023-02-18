@@ -130,12 +130,13 @@ class Chart extends ConsumerWidget {
           showTitles: true,
           reservedSize: 30,
           interval: interval,
-          getTitlesWidget: (value, meta) => SideTitleWidget(
-            axisSide: meta.axisSide,
-            child: Text(
-              DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
-            ),
-          ),
+          getTitlesWidget: (value, meta) =>
+              value == meta.max || value == meta.min
+                  ? const SizedBox.shrink()
+                  : SideTitleWidget(
+                      axisSide: meta.axisSide,
+                      child: Text(millisecondsToTimeString(value)),
+                    ),
         ),
       );
 
@@ -148,10 +149,11 @@ class Chart extends ConsumerWidget {
         ? _thickLineWidth
         : _thinLineWidth;
   }
-}
 
-extension on DateTime {
-  String toTimeString() => "${hour.toString().padLeft(2, "0")}"
-      ":${minute.toString().padLeft(2, "0")}"
-      ":${second.toString().padLeft(2, "0")}";
+  static String millisecondsToTimeString(double milliseconds) {
+    final dateTime = DateTime.fromMillisecondsSinceEpoch(milliseconds.toInt());
+    return "${dateTime.hour.toString().padLeft(2, "0")}"
+        ":${dateTime.minute.toString().padLeft(2, "0")}"
+        ":${dateTime.second.toString().padLeft(2, "0")}";
+  }
 }
