@@ -6,7 +6,7 @@ part of 'settings.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$portraitDurationHash() => r'3d0bfe636557974bc0d97fa4323b23a3b86b177a';
+String _$portraitDurationHash() => r'0f94c346668b39cb00f7838046c7d7e7d7529379';
 
 /// See also [PortraitDuration].
 @ProviderFor(PortraitDuration)
@@ -22,7 +22,8 @@ final portraitDurationProvider =
 );
 
 typedef _$PortraitDuration = AutoDisposeNotifier<double>;
-String _$landscapeDurationHash() => r'10fc1322e7ab43a58ecd3e034a901402849b8035';
+
+String _$landscapeDurationHash() => r'936876a43988528ab92fa0ead0c742eadcf805da';
 
 /// See also [LandscapeDuration].
 @ProviderFor(LandscapeDuration)
@@ -38,12 +39,13 @@ final landscapeDurationProvider =
 );
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
-String _$backgroundColorHash() => r'3b38f019531e73c1699ad74ae762dc3b11e50459';
+
+String _$backgroundColorHash() => r'63dd4ccb356a0df77080888e7d0fbe2330b38bd2';
 
 /// See also [BackgroundColor].
 @ProviderFor(BackgroundColor)
 final backgroundColorProvider =
-    AutoDisposeNotifierProvider<BackgroundColor, int>.internal(
+    AutoDisposeNotifierProvider<BackgroundColor, Color>.internal(
   BackgroundColor.new,
   name: r'backgroundColorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -53,12 +55,14 @@ final backgroundColorProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$BackgroundColor = AutoDisposeNotifier<int>;
-String _$lineColorHash() => r'04a85c65bdcc94b2b5fc87ee11c76a5f28347ca6';
+typedef _$BackgroundColor = AutoDisposeNotifier<Color>;
+
+String _$lineColorHash() => r'4f2a3cc65d125187457e6f759d357bde14adda5c';
 
 /// See also [LineColor].
 @ProviderFor(LineColor)
-final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
+final lineColorProvider =
+    AutoDisposeNotifierProvider<LineColor, Color>.internal(
   LineColor.new,
   name: r'lineColorProvider',
   debugGetCreateSourceHash:
@@ -67,12 +71,14 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$LineColor = AutoDisposeNotifier<int>;
-String _$gridColorHash() => r'f3b5062d51bd8fe8df0da110bc296b6930182a98';
+typedef _$LineColor = AutoDisposeNotifier<Color>;
+
+String _$gridColorHash() => r'1257f07d11cc7631c94ea91d831e0a94773228fc';
 
 /// See also [GridColor].
 @ProviderFor(GridColor)
-final gridColorProvider = AutoDisposeNotifierProvider<GridColor, int>.internal(
+final gridColorProvider =
+    AutoDisposeNotifierProvider<GridColor, Color>.internal(
   GridColor.new,
   name: r'gridColorProvider',
   debugGetCreateSourceHash:
@@ -81,7 +87,7 @@ final gridColorProvider = AutoDisposeNotifierProvider<GridColor, int>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$GridColor = AutoDisposeNotifier<int>;
+typedef _$GridColor = AutoDisposeNotifier<Color>;
 String _$horizontalLineTypeIndexHash() =>
     r'bf7aecbaf1180624f787e5e9da7638c5d69f7aea';
 
