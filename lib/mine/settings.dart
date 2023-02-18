@@ -239,7 +239,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.border_horizontal_outlined),
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
-              segments: lineTypeSegments,
+              segments: _lineTypeSegments,
               selected: {horizontalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(horizontalLineTypeIndexProvider.notifier)
@@ -250,7 +250,7 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.border_vertical_outlined),
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
-              segments: lineTypeSegments,
+              segments: _lineTypeSegments,
               selected: {verticalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(verticalLineTypeIndexProvider.notifier)
@@ -322,7 +322,7 @@ class Settings extends ConsumerWidget {
     return color.value;
   }
 
-  static const lineTypeSegments = [
+  static const _lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
       icon: Icon(Icons.visibility_off_outlined),
