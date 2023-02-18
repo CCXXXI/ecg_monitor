@@ -6,7 +6,7 @@ part of 'settings.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$portraitDurationHash() => r'90bc4c7a674771c36e31367573bc1455979fb61a';
+String _$portraitDurationHash() => r'3d0bfe636557974bc0d97fa4323b23a3b86b177a';
 
 /// See also [PortraitDuration].
 @ProviderFor(PortraitDuration)
@@ -23,7 +23,7 @@ final portraitDurationProvider =
 
 typedef _$PortraitDuration = AutoDisposeNotifier<double>;
 
-String _$landscapeDurationHash() => r'8687d81f5f4d75e08fb7e58fe5da21ebcfe70cd5';
+String _$landscapeDurationHash() => r'10fc1322e7ab43a58ecd3e034a901402849b8035';
 
 /// See also [LandscapeDuration].
 @ProviderFor(LandscapeDuration)
@@ -40,7 +40,7 @@ final landscapeDurationProvider =
 
 typedef _$LandscapeDuration = AutoDisposeNotifier<double>;
 
-String _$backgroundColorHash() => r'e1ca133482796e3b571637d9a9c1364b0a950af6';
+String _$backgroundColorHash() => r'3b38f019531e73c1699ad74ae762dc3b11e50459';
 
 /// See also [BackgroundColor].
 @ProviderFor(BackgroundColor)
@@ -57,7 +57,7 @@ final backgroundColorProvider =
 
 typedef _$BackgroundColor = AutoDisposeNotifier<int>;
 
-String _$lineColorHash() => r'8eca86ef42442d5d093593d6271449778ae479b1';
+String _$lineColorHash() => r'04a85c65bdcc94b2b5fc87ee11c76a5f28347ca6';
 
 /// See also [LineColor].
 @ProviderFor(LineColor)
@@ -72,7 +72,7 @@ final lineColorProvider = AutoDisposeNotifierProvider<LineColor, int>.internal(
 
 typedef _$LineColor = AutoDisposeNotifier<int>;
 
-String _$gridColorHash() => r'f7788d0df73e5940678f73525b39736854f9833d';
+String _$gridColorHash() => r'f3b5062d51bd8fe8df0da110bc296b6930182a98';
 
 /// See also [GridColor].
 @ProviderFor(GridColor)
@@ -86,9 +86,8 @@ final gridColorProvider = AutoDisposeNotifierProvider<GridColor, int>.internal(
 );
 
 typedef _$GridColor = AutoDisposeNotifier<int>;
-
 String _$horizontalLineTypeIndexHash() =>
-    r'd6fe0841354bf0b39b1b47248d3a41109362786f';
+    r'bf7aecbaf1180624f787e5e9da7638c5d69f7aea';
 
 /// See also [HorizontalLineTypeIndex].
 @ProviderFor(HorizontalLineTypeIndex)
@@ -104,9 +103,8 @@ final horizontalLineTypeIndexProvider =
 );
 
 typedef _$HorizontalLineTypeIndex = AutoDisposeNotifier<int>;
-
 String _$verticalLineTypeIndexHash() =>
-    r'36637e9ed45431c4f20e889364618d2efe057557';
+    r'0b3a54c0ae5058496a53523a5192b40bc2035b64';
 
 /// See also [VerticalLineTypeIndex].
 @ProviderFor(VerticalLineTypeIndex)
@@ -123,7 +121,7 @@ final verticalLineTypeIndexProvider =
 
 typedef _$VerticalLineTypeIndex = AutoDisposeNotifier<int>;
 
-String _$autoUploadHash() => r'62fd1bc0b9dde3f9c4d78dbc760bc0e868b609c2';
+String _$autoUploadHash() => r'bf0d8c7d291c5b1a8d47651975d93eb06fbbddec';
 
 /// See also [AutoUpload].
 @ProviderFor(AutoUpload)
@@ -139,7 +137,7 @@ final autoUploadProvider =
 
 typedef _$AutoUpload = AutoDisposeNotifier<bool>;
 
-String _$fakeDeviceHash() => r'c3a63ddf4d531d5d97008e8ca64e873ed2590744';
+String _$fakeDeviceHash() => r'fcfb88da54b9bd770e0cb620aeee7639b46477e7';
 
 /// See also [FakeDevice].
 @ProviderFor(FakeDevice)
@@ -155,14 +153,14 @@ final fakeDeviceProvider =
 
 typedef _$FakeDevice = AutoDisposeNotifier<bool>;
 
-String _$loggerLevelIndexHash() => r'87e6418344bd57a84c76d6f0686a8393ea9dec4b';
+String _$loggerLevelIndexHash() => r'e50fa0093f77ccfe21a55df5a0292802dc5754e5';
 
-/// See also [LoggerLevelIndex].
-@ProviderFor(LoggerLevelIndex)
-final loggerLevelIndexProvider =
-    AutoDisposeNotifierProvider<LoggerLevelIndex, int>.internal(
-  LoggerLevelIndex.new,
-  name: r'loggerLevelIndexProvider',
+/// See also [_LoggerLevelIndex].
+@ProviderFor(_LoggerLevelIndex)
+final _loggerLevelIndexProvider =
+    AutoDisposeNotifierProvider<_LoggerLevelIndex, int>.internal(
+  _LoggerLevelIndex.new,
+  name: r'_loggerLevelIndexProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$loggerLevelIndexHash,
@@ -172,7 +170,7 @@ final loggerLevelIndexProvider =
 
 typedef _$LoggerLevelIndex = AutoDisposeNotifier<int>;
 
-String _$showDotsHash() => r'61caf997b282d73d19b3f1722af7382eaa678e7f';
+String _$showDotsHash() => r'926013d9f59edad396fd6eddc3a2534dbc1444f3';
 
 /// See also [ShowDots].
 @ProviderFor(ShowDots)
