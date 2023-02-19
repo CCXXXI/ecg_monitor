@@ -85,7 +85,7 @@ class Chart extends ConsumerWidget {
             ? const SizedBox.shrink()
             : SideTitleWidget(
                 axisSide: meta.axisSide,
-                child: Text(value.toStringAsFixed(0)),
+                child: Text(value.toStringAsFixed(1)),
               ),
       ),
     );
