@@ -80,12 +80,12 @@ class Chart extends ConsumerWidget {
     final yTitles = AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,
-        reservedSize: 30,
+        reservedSize: 35,
         getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
             ? const SizedBox.shrink()
             : SideTitleWidget(
                 axisSide: meta.axisSide,
-                child: Text(value.toStringAsFixed(0)),
+                child: Text(value.toStringAsFixed(1)),
               ),
       ),
     );
