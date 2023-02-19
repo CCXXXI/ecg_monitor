@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.7.0...v1.8.0) (2023-02-19)
+
+### Features
+
+- **mine:** simplify SnackBar after model test ([087a96e](https://github.com/CCXXXI/ecg_monitor/commit/087a96ea261886e59f64eef67655939be6131522))
+
+### Bug Fixes
+
+- correct appName on web ([e86bd30](https://github.com/CCXXXI/ecg_monitor/commit/e86bd30f9f4322c8654893b3b3c262773edfc38a))
+
 ## [1.7.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.6.0...v1.7.0) (2023-02-18)
 
 ### Features
