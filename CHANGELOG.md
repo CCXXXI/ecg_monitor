@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.1](https://github.com/CCXXXI/ecg_monitor/compare/v1.8.0...v1.8.1) (2023-02-19)
+
+
+### Bug Fixes
+
+* more fraction digits for y-axis titles ([39cfcf7](https://github.com/CCXXXI/ecg_monitor/commit/39cfcf75189bce4cdba3588451d31202c23ee917))
+* more reserved size for y-axis titles ([cb504ba](https://github.com/CCXXXI/ecg_monitor/commit/cb504ba003e8ae64cc52735d629b60ea784d8e65))
+
 ## [1.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v1.7.0...v1.8.0) (2023-02-19)
 
 ### Features
