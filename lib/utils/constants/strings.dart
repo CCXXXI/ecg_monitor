@@ -46,7 +46,7 @@ const loggerLevel = "日志等级";
 const showDots = "显示数据点";
 
 const about = "关于";
-late final String appName;
+const appName = "心电监测";
 late final String version;
 const changelog = "更新日志";
 
@@ -56,6 +56,5 @@ const sentryDsn =
 
 Future<void> initPackageInfo() async {
   final packageInfo = await PackageInfo.fromPlatform();
-  appName = packageInfo.appName;
   version = "${packageInfo.version}+${packageInfo.buildNumber}";
 }
