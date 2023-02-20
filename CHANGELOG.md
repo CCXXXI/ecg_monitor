@@ -2,91 +2,83 @@
 
 ## [0.11.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.10.0...v0.11.0) (2023-02-19)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **device:** correct setting key
-* **monitor:** update keys of color settings
-* **monitor:** update key of landscapeDuration
-* **monitor:** update key of portraitDuration
-* **mine:** update key of LoggerLevel
-* **device:** update key of CurrentDevice
+- **device:** correct setting key
+- **monitor:** update keys of color settings
+- **monitor:** update key of landscapeDuration
+- **monitor:** update key of portraitDuration
+- **mine:** update key of LoggerLevel
+- **device:** update key of CurrentDevice
 
 ### Features
 
-* add border for ColorIndicator ([fffc376](https://github.com/CCXXXI/ecg_monitor/commit/fffc376444a82c5a8d74d192e6ab7188844cf6ad))
-* better icons for grids ([2bdefe7](https://github.com/CCXXXI/ecg_monitor/commit/2bdefe710173219600c4626a063a2516b607419e))
-* dark theme ([dd21d8b](https://github.com/CCXXXI/ecg_monitor/commit/dd21d8b9b9ceae1eb56a6c329bbe3beaceccb643))
-* **device:** connect & disconnect ([a8cae1d](https://github.com/CCXXXI/ecg_monitor/commit/a8cae1d41bc515b7bf328377ab18a931688d1462))
-* material 3 settings UI ([f955992](https://github.com/CCXXXI/ecg_monitor/commit/f955992d886f6bc1225d96b16416c1665a4e2176))
-* **mine:** show snackbar after model testing ([e3b0ed8](https://github.com/CCXXXI/ecg_monitor/commit/e3b0ed8849a10934d7f017bb135d3100c115e1ee))
-* **mine:** simplify SnackBar after model test ([84509c4](https://github.com/CCXXXI/ecg_monitor/commit/84509c454623373d3fa7c7a6c26ae6fa16545bd5))
-* monitor redirect to device manager if no device ([1a956ec](https://github.com/CCXXXI/ecg_monitor/commit/1a956ec091a133af7fc178e80dfdb001df876492))
-* **monitor:** 0.1 mV padding for y-axis ([6e5ed08](https://github.com/CCXXXI/ecg_monitor/commit/6e5ed0877290ba44af8436ce26fa8941c9377161))
-* **monitor:** better y-axis ([fd67283](https://github.com/CCXXXI/ecg_monitor/commit/fd6728351b9699358a1b544dda5aa908b90c6f3e))
-* **monitor:** hide border ([799a3ff](https://github.com/CCXXXI/ecg_monitor/commit/799a3fff05c3aa859e7c69c8713358009371fe45))
-* **monitor:** setting group ([5023d3d](https://github.com/CCXXXI/ecg_monitor/commit/5023d3dae2ce5c3ed8373589f0d3af365d01f03f))
-* **monitor:** update lineTypes ([a52f14d](https://github.com/CCXXXI/ecg_monitor/commit/a52f14d25f4fb7457714d5ee1d3a2b2e32eb9f86))
-* update lineColor icon ([67ea27c](https://github.com/CCXXXI/ecg_monitor/commit/67ea27c49bd6d7e0352d6af1ce2433261a89a7ec))
-
+- add border for ColorIndicator ([fffc376](https://github.com/CCXXXI/ecg_monitor/commit/fffc376444a82c5a8d74d192e6ab7188844cf6ad))
+- better icons for grids ([2bdefe7](https://github.com/CCXXXI/ecg_monitor/commit/2bdefe710173219600c4626a063a2516b607419e))
+- dark theme ([dd21d8b](https://github.com/CCXXXI/ecg_monitor/commit/dd21d8b9b9ceae1eb56a6c329bbe3beaceccb643))
+- **device:** connect & disconnect ([a8cae1d](https://github.com/CCXXXI/ecg_monitor/commit/a8cae1d41bc515b7bf328377ab18a931688d1462))
+- material 3 settings UI ([f955992](https://github.com/CCXXXI/ecg_monitor/commit/f955992d886f6bc1225d96b16416c1665a4e2176))
+- **mine:** show snackbar after model testing ([e3b0ed8](https://github.com/CCXXXI/ecg_monitor/commit/e3b0ed8849a10934d7f017bb135d3100c115e1ee))
+- **mine:** simplify SnackBar after model test ([84509c4](https://github.com/CCXXXI/ecg_monitor/commit/84509c454623373d3fa7c7a6c26ae6fa16545bd5))
+- monitor redirect to device manager if no device ([1a956ec](https://github.com/CCXXXI/ecg_monitor/commit/1a956ec091a133af7fc178e80dfdb001df876492))
+- **monitor:** 0.1 mV padding for y-axis ([6e5ed08](https://github.com/CCXXXI/ecg_monitor/commit/6e5ed0877290ba44af8436ce26fa8941c9377161))
+- **monitor:** better y-axis ([fd67283](https://github.com/CCXXXI/ecg_monitor/commit/fd6728351b9699358a1b544dda5aa908b90c6f3e))
+- **monitor:** hide border ([799a3ff](https://github.com/CCXXXI/ecg_monitor/commit/799a3fff05c3aa859e7c69c8713358009371fe45))
+- **monitor:** setting group ([5023d3d](https://github.com/CCXXXI/ecg_monitor/commit/5023d3dae2ce5c3ed8373589f0d3af365d01f03f))
+- **monitor:** update lineTypes ([a52f14d](https://github.com/CCXXXI/ecg_monitor/commit/a52f14d25f4fb7457714d5ee1d3a2b2e32eb9f86))
+- update lineColor icon ([67ea27c](https://github.com/CCXXXI/ecg_monitor/commit/67ea27c49bd6d7e0352d6af1ce2433261a89a7ec))
 
 ### Bug Fixes
 
-* **device:** correct setting key ([6274e27](https://github.com/CCXXXI/ecg_monitor/commit/6274e2739a7f4954cf470e51e933d0772ad2e2d7))
-* **monitor:** remove overlapping axis labels ([4f2ec9e](https://github.com/CCXXXI/ecg_monitor/commit/4f2ec9e0bbe0a6d09b04a5c65626f06dd075a702))
-* **monitor:** remove overlapping y-axis labels ([1fd78dc](https://github.com/CCXXXI/ecg_monitor/commit/1fd78dcb61299d97d902f5904104f40af8229bf7))
-
+- **device:** correct setting key ([6274e27](https://github.com/CCXXXI/ecg_monitor/commit/6274e2739a7f4954cf470e51e933d0772ad2e2d7))
+- **monitor:** remove overlapping axis labels ([4f2ec9e](https://github.com/CCXXXI/ecg_monitor/commit/4f2ec9e0bbe0a6d09b04a5c65626f06dd075a702))
+- **monitor:** remove overlapping y-axis labels ([1fd78dc](https://github.com/CCXXXI/ecg_monitor/commit/1fd78dcb61299d97d902f5904104f40af8229bf7))
 
 ### Tests
 
-* **monitor:** msToTimeString ([6a4ff5d](https://github.com/CCXXXI/ecg_monitor/commit/6a4ff5df155d000c3f4a6c4f201e5c9faec65dc3))
-
+- **monitor:** msToTimeString ([6a4ff5d](https://github.com/CCXXXI/ecg_monitor/commit/6a4ff5df155d000c3f4a6c4f201e5c9faec65dc3))
 
 ### Miscellaneous Chores
 
-* rerun build_runner ([cb83867](https://github.com/CCXXXI/ecg_monitor/commit/cb83867eb136ccb914ed625257d1e6a0bb331812))
-
+- rerun build_runner ([cb83867](https://github.com/CCXXXI/ecg_monitor/commit/cb83867eb136ccb914ed625257d1e6a0bb331812))
 
 ### Build System
 
-* add freezed ([f8a2e32](https://github.com/CCXXXI/ecg_monitor/commit/f8a2e325d21186731baf3bfd93ed3f6c2ece0fad))
-* flutter pub remove settings_ui ([ec8f88c](https://github.com/CCXXXI/ecg_monitor/commit/ec8f88c52d9d9f59091c7b46e1e6e7f6b8121698))
-* flutter pub upgrade ([ae25802](https://github.com/CCXXXI/ecg_monitor/commit/ae25802faa5ad13e6578f6d6143b78111c13abd4))
-
+- add freezed ([f8a2e32](https://github.com/CCXXXI/ecg_monitor/commit/f8a2e325d21186731baf3bfd93ed3f6c2ece0fad))
+- flutter pub remove settings_ui ([ec8f88c](https://github.com/CCXXXI/ecg_monitor/commit/ec8f88c52d9d9f59091c7b46e1e6e7f6b8121698))
+- flutter pub upgrade ([ae25802](https://github.com/CCXXXI/ecg_monitor/commit/ae25802faa5ad13e6578f6d6143b78111c13abd4))
 
 ### Code Refactoring
 
-* clean up strings ([6812d51](https://github.com/CCXXXI/ecg_monitor/commit/6812d51ec241f6ae0691d922e0dcae0c84b8d886))
-* **device:** make private ([ed506e3](https://github.com/CCXXXI/ecg_monitor/commit/ed506e3bd70fb468b742d8dbe3eb72509dcebae0))
-* **device:** more device infos ([aaafa3a](https://github.com/CCXXXI/ecg_monitor/commit/aaafa3a21b183586c5cb53cfa3ef9473da77b15f))
-* **device:** simplify fake device ([b132691](https://github.com/CCXXXI/ecg_monitor/commit/b132691f273b96bf40f0d92361b51a0133e7303e))
-* **device:** update key of CurrentDevice ([132f18a](https://github.com/CCXXXI/ecg_monitor/commit/132f18a08d52c4a4c354d2e88651f67f5b05e585))
-* **mine:** make lineTypeSegments private ([969ef9b](https://github.com/CCXXXI/ecg_monitor/commit/969ef9b712383f6e12894c0535e244258ae95450))
-* **mine:** make LoggerLevelIndex private ([af75155](https://github.com/CCXXXI/ecg_monitor/commit/af75155352daf9ea00da692fac0d9e7d0e255b04))
-* **mine:** update key of LoggerLevel ([23235c9](https://github.com/CCXXXI/ecg_monitor/commit/23235c97184ff1f402a4c913141ffdc7f0111cde))
-* **monitor:** combine settings ([5c458dd](https://github.com/CCXXXI/ecg_monitor/commit/5c458dd69fbafd834af295806b3c47179e65acc1))
-* **monitor:** inline _getTimeAxisTitles & rename to xTitles ([87f82d0](https://github.com/CCXXXI/ecg_monitor/commit/87f82d062273f69cfed027d65ccbe686a822038c))
-* **monitor:** inline intervals ([5ff6fef](https://github.com/CCXXXI/ecg_monitor/commit/5ff6fef9914b9ec017a62e93f9fa7111b70e30a5))
-* **monitor:** inlines ([0fca687](https://github.com/CCXXXI/ecg_monitor/commit/0fca68727365bb793ff6e285f00f364d1e905798))
-* **monitor:** update color types ([9cb2181](https://github.com/CCXXXI/ecg_monitor/commit/9cb218198d791fd4dc92583d53b90fec59465d36))
-* **monitor:** update key of landscapeDuration ([412f608](https://github.com/CCXXXI/ecg_monitor/commit/412f6088889e843b19a89646352d86f8722cbccf))
-* **monitor:** update key of portraitDuration ([5d3427c](https://github.com/CCXXXI/ecg_monitor/commit/5d3427cae5c610eb51c5827186218783bf10936c))
-* **monitor:** update keys of color settings ([271e28c](https://github.com/CCXXXI/ecg_monitor/commit/271e28c1b29aa8a7be0479ae1d1365e8aa7b09c3))
-* **monitor:** update param names ([fe20005](https://github.com/CCXXXI/ecg_monitor/commit/fe20005b00e671aaf190d3424379b5614c064338))
-* remove unnecessary paratheses ([d0f619a](https://github.com/CCXXXI/ecg_monitor/commit/d0f619a919cc1a76b605f62e3ace93b3a0ef64c8))
-* rename bool providers ([c1b34e6](https://github.com/CCXXXI/ecg_monitor/commit/c1b34e693f9a03816516769c6017bced16cec65f))
-* reorder classes ([f93a45b](https://github.com/CCXXXI/ecg_monitor/commit/f93a45b2c965ff06333548dda1e5149b16df863b))
-
+- clean up strings ([6812d51](https://github.com/CCXXXI/ecg_monitor/commit/6812d51ec241f6ae0691d922e0dcae0c84b8d886))
+- **device:** make private ([ed506e3](https://github.com/CCXXXI/ecg_monitor/commit/ed506e3bd70fb468b742d8dbe3eb72509dcebae0))
+- **device:** more device infos ([aaafa3a](https://github.com/CCXXXI/ecg_monitor/commit/aaafa3a21b183586c5cb53cfa3ef9473da77b15f))
+- **device:** simplify fake device ([b132691](https://github.com/CCXXXI/ecg_monitor/commit/b132691f273b96bf40f0d92361b51a0133e7303e))
+- **device:** update key of CurrentDevice ([132f18a](https://github.com/CCXXXI/ecg_monitor/commit/132f18a08d52c4a4c354d2e88651f67f5b05e585))
+- **mine:** make lineTypeSegments private ([969ef9b](https://github.com/CCXXXI/ecg_monitor/commit/969ef9b712383f6e12894c0535e244258ae95450))
+- **mine:** make LoggerLevelIndex private ([af75155](https://github.com/CCXXXI/ecg_monitor/commit/af75155352daf9ea00da692fac0d9e7d0e255b04))
+- **mine:** update key of LoggerLevel ([23235c9](https://github.com/CCXXXI/ecg_monitor/commit/23235c97184ff1f402a4c913141ffdc7f0111cde))
+- **monitor:** combine settings ([5c458dd](https://github.com/CCXXXI/ecg_monitor/commit/5c458dd69fbafd834af295806b3c47179e65acc1))
+- **monitor:** inline \_getTimeAxisTitles & rename to xTitles ([87f82d0](https://github.com/CCXXXI/ecg_monitor/commit/87f82d062273f69cfed027d65ccbe686a822038c))
+- **monitor:** inline intervals ([5ff6fef](https://github.com/CCXXXI/ecg_monitor/commit/5ff6fef9914b9ec017a62e93f9fa7111b70e30a5))
+- **monitor:** inlines ([0fca687](https://github.com/CCXXXI/ecg_monitor/commit/0fca68727365bb793ff6e285f00f364d1e905798))
+- **monitor:** update color types ([9cb2181](https://github.com/CCXXXI/ecg_monitor/commit/9cb218198d791fd4dc92583d53b90fec59465d36))
+- **monitor:** update key of landscapeDuration ([412f608](https://github.com/CCXXXI/ecg_monitor/commit/412f6088889e843b19a89646352d86f8722cbccf))
+- **monitor:** update key of portraitDuration ([5d3427c](https://github.com/CCXXXI/ecg_monitor/commit/5d3427cae5c610eb51c5827186218783bf10936c))
+- **monitor:** update keys of color settings ([271e28c](https://github.com/CCXXXI/ecg_monitor/commit/271e28c1b29aa8a7be0479ae1d1365e8aa7b09c3))
+- **monitor:** update param names ([fe20005](https://github.com/CCXXXI/ecg_monitor/commit/fe20005b00e671aaf190d3424379b5614c064338))
+- remove unnecessary paratheses ([d0f619a](https://github.com/CCXXXI/ecg_monitor/commit/d0f619a919cc1a76b605f62e3ace93b3a0ef64c8))
+- rename bool providers ([c1b34e6](https://github.com/CCXXXI/ecg_monitor/commit/c1b34e693f9a03816516769c6017bced16cec65f))
+- reorder classes ([f93a45b](https://github.com/CCXXXI/ecg_monitor/commit/f93a45b2c965ff06333548dda1e5149b16df863b))
 
 ### Documentation
 
-* improve docstring ([829eb69](https://github.com/CCXXXI/ecg_monitor/commit/829eb6947b8da8eb51a2485134c6062379f06d68))
-
+- improve docstring ([829eb69](https://github.com/CCXXXI/ecg_monitor/commit/829eb6947b8da8eb51a2485134c6062379f06d68))
 
 ### Continuous Integration
 
-* bump-minor-pre-major: true ([b10e85c](https://github.com/CCXXXI/ecg_monitor/commit/b10e85c32c6421d0fb1da85ae8bc60c99b09e408))
-* disable styler for "**/generated_plugin_registrant.cc" ([e494c4d](https://github.com/CCXXXI/ecg_monitor/commit/e494c4d4985f2f3aacc52f99b64ca7d710ab4c2e))
+- bump-minor-pre-major: true ([b10e85c](https://github.com/CCXXXI/ecg_monitor/commit/b10e85c32c6421d0fb1da85ae8bc60c99b09e408))
+- disable styler for "\*\*/generated_plugin_registrant.cc" ([e494c4d](https://github.com/CCXXXI/ecg_monitor/commit/e494c4d4985f2f3aacc52f99b64ca7d710ab4c2e))
 
 ## [0.10.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.1...v0.10.0) (2023-02-18)
 
