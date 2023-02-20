@@ -1,5 +1,65 @@
 # Changelog
 
+## [0.9.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.8.1...v0.9.0) (2023-02-20)
+
+
+### Features
+
+* **analytics:** model_stub for web ([419c374](https://github.com/CCXXXI/ecg_monitor/commit/419c3748a5b0a152e923ceea64677093db2d4ce2))
+* **analytics:** Placeholder ([6803231](https://github.com/CCXXXI/ecg_monitor/commit/68032312732522d0d98b52b8f7d962c0041cbc3c))
+* **mine:** changelog in about ([b945a10](https://github.com/CCXXXI/ecg_monitor/commit/b945a100132e946a8847af7b430482c0d005a7d8))
+* **mine:** feedback ([bf27d18](https://github.com/CCXXXI/ecg_monitor/commit/bf27d189d4fb8e99ccce96aa8a4115b1d1f1f0b5))
+* update AboutListTile ([8220546](https://github.com/CCXXXI/ecg_monitor/commit/8220546fb7778380b63d9d189b88e04abfb1165b))
+
+
+### Reverts
+
+* Revert "fix: update base href" ([31143df](https://github.com/CCXXXI/ecg_monitor/commit/31143df37cd9a4241cc338b4373aaad1dec3a653))
+
+
+### Tests
+
+* update constants test ([77a8f22](https://github.com/CCXXXI/ecg_monitor/commit/77a8f22adf714d467653cb66ccea2b76fb250e07))
+
+
+### Miscellaneous Chores
+
+* update app icon ([600755a](https://github.com/CCXXXI/ecg_monitor/commit/600755a6544acf0a0374dffe707174a168934568))
+* update app icon again ([138beed](https://github.com/CCXXXI/ecg_monitor/commit/138beeda6bd00bd9f9eb9b44e2744f3721579e8a))
+* update app icon, again ([ef06eca](https://github.com/CCXXXI/ecg_monitor/commit/ef06eca536f5bbb2bbbd626fdf7ab6dac21d49b2))
+
+
+### Build System
+
+* flutter pub add --dev build_web_compilers ([ec67f32](https://github.com/CCXXXI/ecg_monitor/commit/ec67f3245489e305719992bffbc37a6477db9e99))
+* flutter pub add --dev flutter_launcher_icons ([eb3d4d5](https://github.com/CCXXXI/ecg_monitor/commit/eb3d4d514f1aaad5229a6191241c8a11808ae3b1))
+* flutter pub add --dev flutter_native_splash ([f736880](https://github.com/CCXXXI/ecg_monitor/commit/f736880a68d0caf3bc9c5c8e1188d596f92f0773))
+* flutter pub add flutter_markdown ([d6ec7c3](https://github.com/CCXXXI/ecg_monitor/commit/d6ec7c362838a668c4182b5a32c2e6cc3261ffba))
+* flutter pub add url_launcher ([b967819](https://github.com/CCXXXI/ecg_monitor/commit/b967819faf38ede2daed9c62d2018b437200fbe8))
+* flutter pub remove flutter_native_splash ([0aabf33](https://github.com/CCXXXI/ecg_monitor/commit/0aabf339695ce2836f2432c53851c19cc6e18f79))
+
+
+### Continuous Integration
+
+* **build:** add permissions for deploy-pages ([0fb1a4f](https://github.com/CCXXXI/ecg_monitor/commit/0fb1a4f51a048b88aeadd9344c15f622915e80de))
+* **build:** build web ([817520b](https://github.com/CCXXXI/ecg_monitor/commit/817520b8708c4c03697198fda85d8ab0720faf80))
+* **build:** release artifacts ([c80cef0](https://github.com/CCXXXI/ecg_monitor/commit/c80cef0e4fdb158ebc92c945a7cced59b66e8ab2))
+* **build:** release-web ([e5f42f8](https://github.com/CCXXXI/ecg_monitor/commit/e5f42f8322e936adc515fc8fdffeee54d3d2aef7))
+* **build:** set base-href ([87cf500](https://github.com/CCXXXI/ecg_monitor/commit/87cf500ee46d4cf06bfee1e0d50e765fe3723f10))
+* cache: true ([e0cf1d8](https://github.com/CCXXXI/ecg_monitor/commit/e0cf1d864f5344279028da5b3282942d6432a58a))
+
+
+### Documentation
+
+* remove todos ([d9383b5](https://github.com/CCXXXI/ecg_monitor/commit/d9383b5830de77d55f3b59c418329295db4ce5a2))
+
+
+### Styles
+
+* dart fix --apply ([2c467ec](https://github.com/CCXXXI/ecg_monitor/commit/2c467ec60130fd755021f3ffa20aeb874f96901e))
+* reformat by astyle ([4cf2b55](https://github.com/CCXXXI/ecg_monitor/commit/4cf2b55c6da4f4c53b4f42cca91e0a445221b028))
+* restyle by bot ([cfbd3b5](https://github.com/CCXXXI/ecg_monitor/commit/cfbd3b5969d5bccbda335fed4455484bca4efb58))
+
 ## [0.8.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.8.0...v0.8.1) (2023-02-16)
 
 ### Documentation
