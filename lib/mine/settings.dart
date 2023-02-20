@@ -272,7 +272,7 @@ class Settings extends ConsumerWidget {
               },
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
-                  .set(selected.first),
+                  .set(selected.single),
             ),
           ),
           ListTile(
@@ -346,7 +346,7 @@ class Settings extends ConsumerWidget {
               selected: {monitorSettings.horizontalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
-                  .setHorizontalLineType(selected.first),
+                  .setHorizontalLineType(selected.single),
             ),
           ),
           ListTile(
@@ -357,7 +357,7 @@ class Settings extends ConsumerWidget {
               selected: {monitorSettings.verticalLineType},
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)
-                  .setVerticalLineType(selected.first),
+                  .setVerticalLineType(selected.single),
             ),
           ),
           const _SectionTitle(str.analytics),
