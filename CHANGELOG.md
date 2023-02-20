@@ -1,5 +1,49 @@
 # Changelog
 
+## [0.7.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.6.0...v0.7.0) (2023-02-13)
+
+### Features
+
+- **mine:** better color picker ([603ba77](https://github.com/CCXXXI/ecg_monitor/commit/603ba77b3d41ee76de524cca505f3063550e3d10))
+- **monitor:** background color ([4fac4df](https://github.com/CCXXXI/ecg_monitor/commit/4fac4df8fe10420ac8c713a232729f6b9ee2bf75))
+- **monitor:** correct grids interval ([d32b1ee](https://github.com/CCXXXI/ecg_monitor/commit/d32b1ee92aad8c003bcfbf000646f0f9418d85ed))
+- **monitor:** line color ([ecd133c](https://github.com/CCXXXI/ecg_monitor/commit/ecd133c742a7d4336a2f7d2659345a3db87cc328))
+- **monitor:** show dots ([7b926ae](https://github.com/CCXXXI/ecg_monitor/commit/7b926aedc07daefaf380d7d8e21871013480b29a))
+- **monitor:** show grids ([bae9322](https://github.com/CCXXXI/ecg_monitor/commit/bae932285d8a7cdc639a677fb3c8326d12130c51))
+- **monitor:** vertical mode: more infos & adaptive y-axis ([27fe20c](https://github.com/CCXXXI/ecg_monitor/commit/27fe20c6fa3af77e7c267e215f853795c84dfd02))
+- new logger ([d784765](https://github.com/CCXXXI/ecg_monitor/commit/d784765ac50a1f1e764e5f4ba8bddf0a32ef390b))
+
+### Bug Fixes
+
+- parentNavigatorKey ([4afe6d5](https://github.com/CCXXXI/ecg_monitor/commit/4afe6d57108aaae21f37f064a645d16b0bbf42b6))
+
+### Performance Improvements
+
+- **monitor:** clip data source ([4b75f94](https://github.com/CCXXXI/ecg_monitor/commit/4b75f94311176be999add26df06ab93b9a7b7e27))
+- **monitor:** reuse titles widget ([dc9cdf2](https://github.com/CCXXXI/ecg_monitor/commit/dc9cdf2cef850cb43bdc9f83c4379afb39396658))
+
+### Code Refactoring
+
+- extends to implements ([5e4bf27](https://github.com/CCXXXI/ecg_monitor/commit/5e4bf27c0b9f9580b98fc20fb994c64b9e9dcea9))
+- **home:** simplify index ([8841373](https://github.com/CCXXXI/ecg_monitor/commit/88413739d237f50be49bd57ca4b0146f1eb72297))
+- **monitor:** Chart in Monitor ([2ff5dfd](https://github.com/CCXXXI/ecg_monitor/commit/2ff5dfdb7b37670d752127fb822aba36030bd960))
+- **monitor:** Duration.zero ([51bdf2d](https://github.com/CCXXXI/ecg_monitor/commit/51bdf2d7dcc89b89f7c4f489b9c1c3a1d75276bb))
+- **monitor:** make points private ([0264fe3](https://github.com/CCXXXI/ecg_monitor/commit/0264fe3b569f7277c5889045f43254a0f7bdb7c5))
+- **monitor:** move monitor to subfolder ([eb23fb6](https://github.com/CCXXXI/ecg_monitor/commit/eb23fb6c6763d6f50b71d6065390dc0a43f2810a))
+- **monitor:** null as default value instead of 0 ([75c116e](https://github.com/CCXXXI/ecg_monitor/commit/75c116eed90dc3c9b1a0aaab8d8b88cc383b9f6d))
+- **monitor:** rename to chart ([6b68f43](https://github.com/CCXXXI/ecg_monitor/commit/6b68f43bebbcb63a4a76e386decfe363bfb7293d))
+- move router to utils/ ([525d3e3](https://github.com/CCXXXI/ecg_monitor/commit/525d3e32ffdf83310771b62b27778ee796f86571))
+- remove View suffix ([95a1d9c](https://github.com/CCXXXI/ecg_monitor/commit/95a1d9c7be9ece8f565428b403caa44ac881a658))
+- ShellRoute ([fbabb23](https://github.com/CCXXXI/ecg_monitor/commit/fbabb234a6abc582cda479213d9ae6c2d38b18a9))
+
+### Build System
+
+- flutter pub add logging ([338898f](https://github.com/CCXXXI/ecg_monitor/commit/338898f12cef49278797f0e04100faf9905972d7))
+- flutter pub remove logger_flutter_plus ([9f946cf](https://github.com/CCXXXI/ecg_monitor/commit/9f946cf8669ed311a33fc8cfb65192ae5de9f426))
+- flutter pub upgrade ([0ea942d](https://github.com/CCXXXI/ecg_monitor/commit/0ea942d083a67a88e802c8fb970fbda17dc555f4))
+- **monitor:** flutter pub add flex_color_picker ([03f0b87](https://github.com/CCXXXI/ecg_monitor/commit/03f0b87799161611a4b0d752164e2390016dca3b))
+- rerun build_runner ([3beabb7](https://github.com/CCXXXI/ecg_monitor/commit/3beabb782b706e4c29529a9bef673aa319a2448c))
+
 ## [0.6.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.5.0...v0.6.0) (2023-02-09)
 
 ### Features
