@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.1...v0.11.2) (2023-02-20)
+
+
+### Bug Fixes
+
+* **mine:** disable modelTest button on web ([#96](https://github.com/CCXXXI/ecg_monitor/issues/96)) ([9de1712](https://github.com/CCXXXI/ecg_monitor/commit/9de1712d8b2845ab9e6f88c986b5db27e29927af))
+
+
+### Documentation
+
+* add conventional commits badge ([4d567ae](https://github.com/CCXXXI/ecg_monitor/commit/4d567aeb4ec589aea752aa030d17c5565069f17a))
+
 ## [0.11.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.0...v0.11.1) (2023-02-19)
 
 ### Bug Fixes
