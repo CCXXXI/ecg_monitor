@@ -2,32 +2,27 @@
 
 ## [0.2.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.1.0...v0.2.0) (2022-12-26)
 
-
 ### Features
 
-* **analysis:** AnalysisView ([7f02172](https://github.com/CCXXXI/ecg_monitor/commit/7f02172a14762c65172d4114bbca28c86c43648a))
-* **device:** better DeviceView ([2a8ff3b](https://github.com/CCXXXI/ecg_monitor/commit/2a8ff3b30ce500e60792476913f2ad9e5fd3951b))
-
+- **analysis:** AnalysisView ([7f02172](https://github.com/CCXXXI/ecg_monitor/commit/7f02172a14762c65172d4114bbca28c86c43648a))
+- **device:** better DeviceView ([2a8ff3b](https://github.com/CCXXXI/ecg_monitor/commit/2a8ff3b30ce500e60792476913f2ad9e5fd3951b))
 
 ### Bug Fixes
 
-* **deps:** update kotlin monorepo to v1.8.0 ([a173796](https://github.com/CCXXXI/ecg_monitor/commit/a173796668ff93d460371f2b7efa8ddc890a805c))
-
+- **deps:** update kotlin monorepo to v1.8.0 ([a173796](https://github.com/CCXXXI/ecg_monitor/commit/a173796668ff93d460371f2b7efa8ddc890a805c))
 
 ### Reverts
 
-* Revert "ci: release-as: 0.1.0" ([e8b5473](https://github.com/CCXXXI/ecg_monitor/commit/e8b5473cd3cad6cab6c3f2c5abe665dce667d43a))
-
+- Revert "ci: release-as: 0.1.0" ([e8b5473](https://github.com/CCXXXI/ecg_monitor/commit/e8b5473cd3cad6cab6c3f2c5abe665dce667d43a))
 
 ### Continuous Integration
 
-* **build:** build web for every push ([9765b6b](https://github.com/CCXXXI/ecg_monitor/commit/9765b6b129ca1625fbdf1850eb4be8f48a167f0f))
-* **build:** no web ([dcbfeb5](https://github.com/CCXXXI/ecg_monitor/commit/dcbfeb54a8d4d6341aa02ce482c08d3161fdc775))
-
+- **build:** build web for every push ([9765b6b](https://github.com/CCXXXI/ecg_monitor/commit/9765b6b129ca1625fbdf1850eb4be8f48a167f0f))
+- **build:** no web ([dcbfeb5](https://github.com/CCXXXI/ecg_monitor/commit/dcbfeb54a8d4d6341aa02ce482c08d3161fdc775))
 
 ### Miscellaneous Chores
 
-* **deps:** upgrade ([612398c](https://github.com/CCXXXI/ecg_monitor/commit/612398c68fc3c79ee9c92dd4111b821f69a314bb))
+- **deps:** upgrade ([612398c](https://github.com/CCXXXI/ecg_monitor/commit/612398c68fc3c79ee9c92dd4111b821f69a314bb))
 
 ## 0.1.0 (2022-12-06)
 
