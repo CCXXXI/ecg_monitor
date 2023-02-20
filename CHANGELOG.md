@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.9.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.0...v0.9.1) (2023-02-20)
+## [0.9.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.0...v0.9.1) (2023-02-18)
 
 
 ### Continuous Integration
