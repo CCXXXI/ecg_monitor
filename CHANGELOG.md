@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.6.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.5.0...v0.6.0) (2023-02-09)
+
+### Features
+
+- **mine:** add auto-upload setting ([4579fe6](https://github.com/CCXXXI/ecg_monitor/commit/4579fe60f326d4f30523c05965bfa6f9fe717b32))
+- **monitor:** dynamic interval ([c443ead](https://github.com/CCXXXI/ecg_monitor/commit/c443ead459d50b6b591910f8257d76cceedcc0bf))
+- **monitor:** time as SideTitleWidget ([89c0c7b](https://github.com/CCXXXI/ecg_monitor/commit/89c0c7b90d402ddeb5fd87f97a480cc2383bb804))
+
+### Build System
+
+- flutter pub remove freezed_annotation freezed ([be22aee](https://github.com/CCXXXI/ecg_monitor/commit/be22aee1077ed9af77a45d924505266c8ce9aada))
+
+### Code Refactoring
+
+- **mine:** split setting providers ([8a8e8b5](https://github.com/CCXXXI/ecg_monitor/commit/8a8e8b52a0b553e72c2a868737e3cc6b0a8fec8e))
+- **monitor:** getIntervalMs ([b8ea0c4](https://github.com/CCXXXI/ecg_monitor/commit/b8ea0c483b0343480a5a7b510fbaadb2f42f94bc))
+- remove useless code ([69ef2a2](https://github.com/CCXXXI/ecg_monitor/commit/69ef2a21226c93f5b55e89be27d2a717a51f096d))
+
+### Tests
+
+- **monitor:** getIntervalMs ([c624804](https://github.com/CCXXXI/ecg_monitor/commit/c624804c83db3e95504d2bfb55eb307005e95602))
+
 ## [0.5.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.4.0...v0.5.0) (2023-02-07)
 
 ### Features
