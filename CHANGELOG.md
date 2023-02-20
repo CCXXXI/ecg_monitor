@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.8.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.8.0...v0.8.1) (2023-02-20)
+
+
+### Documentation
+
+* add todos ([8e670bf](https://github.com/CCXXXI/ecg_monitor/commit/8e670bf5173e2baa52c2c18a53a4fe34efe56454))
+
+
+### Styles
+
+* restyle release.yml ([d69a8b6](https://github.com/CCXXXI/ecg_monitor/commit/d69a8b6d1d5346b717807c9062db984cc8e75858))
+
+
+### Miscellaneous Chores
+
+* add build_runner files to git ([7255665](https://github.com/CCXXXI/ecg_monitor/commit/7255665fed3e90cc8740dcab38a655043a06625b))
+* apply gitignore ([0fa40db](https://github.com/CCXXXI/ecg_monitor/commit/0fa40db6ab67295a04ebd73a36cac02bc204bc3f))
+* gitignore generated files ([3b7103e](https://github.com/CCXXXI/ecg_monitor/commit/3b7103e45cd4df97f1ffa4526cee7d023469e80b))
+
+
+### Build System
+
+* downgrade gradle distribution ([ce9e73b](https://github.com/CCXXXI/ecg_monitor/commit/ce9e73b812c8a949484b5b95039214bdf0bdf7ad))
+* flutter pub add cupertino_icons ([05ab0e8](https://github.com/CCXXXI/ecg_monitor/commit/05ab0e8aa4d32b84e9c1f9ee3d416e9522a215f3))
+* flutter pub upgrade ([da81f22](https://github.com/CCXXXI/ecg_monitor/commit/da81f22e56b3547685712ef392884a554eca26e9))
+* tasks.preBuild.dependsOn(extractAARForNativeBuild) ([3f9e5ba](https://github.com/CCXXXI/ecg_monitor/commit/3f9e5ba9f9ef30bc0ed6f40e615d1280b310dab8))
+
+
+### Continuous Integration
+
+* add Gradle Build Action ([020cb33](https://github.com/CCXXXI/ecg_monitor/commit/020cb33b179cb4d637b176968c1460da0cbd785e))
+* arguments for Gradle Build Action ([e9baf7a](https://github.com/CCXXXI/ecg_monitor/commit/e9baf7a1280db37ec7b161ab42bbea6b5bc0004d))
+* **build:** apk & appbundle ([2783442](https://github.com/CCXXXI/ecg_monitor/commit/27834424f7a7707c09965205552250b3300fd975))
+* **build:** submodules: recursive ([4143982](https://github.com/CCXXXI/ecg_monitor/commit/4143982c5953ad10ed4e2fd9d35fb36bfd9df731))
+* **check:** dependency_validator ignore cupertino_icons ([5401137](https://github.com/CCXXXI/ecg_monitor/commit/5401137c592ed03bb62980eb9aa98846d7eb4750))
+* **check:** flutter pub run build_runner build ([3cbaad7](https://github.com/CCXXXI/ecg_monitor/commit/3cbaad7bf82087fe42932600bf8de85a8aaa3844))
+* chmod +x android/gradlew ([d690b20](https://github.com/CCXXXI/ecg_monitor/commit/d690b20a02b9756606ec5f6426673cc2d5ce9489))
+* continue-on-error ([0d1da95](https://github.com/CCXXXI/ecg_monitor/commit/0d1da95d6fd0e9297989447da58356d63da09977))
+* correct action directory ([c134b21](https://github.com/CCXXXI/ecg_monitor/commit/c134b21504c7d00fa991f146faaa0201581a64b0))
+* extract setup-flutter ([4439848](https://github.com/CCXXXI/ecg_monitor/commit/443984802d5821f4c56ca6f84ea046d98e35748a))
+* gradle wrapper ([99dd90f](https://github.com/CCXXXI/ecg_monitor/commit/99dd90fa970666626708e5002d40c1fabe2ecb76))
+* ls ([1a5d045](https://github.com/CCXXXI/ecg_monitor/commit/1a5d04551dc75c62f97238a45c7dfdd1d7d4917c))
+* no need for package-name ([bb0a17d](https://github.com/CCXXXI/ecg_monitor/commit/bb0a17d4e800bc2a9961a727ac68325ae9be7857))
+* no need to run build_runner ([691ff2e](https://github.com/CCXXXI/ecg_monitor/commit/691ff2e49c3aada3b283f0823d7598d035985a3d))
+* simplify setup-android ([3c18861](https://github.com/CCXXXI/ecg_monitor/commit/3c18861f2b3109fdd1312fecaf7c14beb3012a45))
+
 ## [0.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.7.0...v0.8.0) (2023-02-15)
 
 ### Features
