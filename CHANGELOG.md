@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.11.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.0...v0.11.1) (2023-02-20)
+
+
+### Bug Fixes
+
+* correct appName on web ([a6c7e2a](https://github.com/CCXXXI/ecg_monitor/commit/a6c7e2a99425c9798696742e12aaeeb69ce423fb))
+* more fraction digits for y-axis titles ([c1edba7](https://github.com/CCXXXI/ecg_monitor/commit/c1edba7b1a821fa83fa32ee6c22ce1849170c718))
+* more reserved size for y-axis titles ([9767fe4](https://github.com/CCXXXI/ecg_monitor/commit/9767fe4ed5ab41fc81780cfe77bff50a79fbf415))
+
+
+### Code Refactoring
+
+* dart fix --apply ([9d2a96d](https://github.com/CCXXXI/ecg_monitor/commit/9d2a96d40724517abf0b659ac29a5a9d0e863bb3))
+
 ## [0.11.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.10.0...v0.11.0) (2023-02-19)
 
 ### ⚠ BREAKING CHANGES
