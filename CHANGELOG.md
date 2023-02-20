@@ -2,10 +2,9 @@
 
 ## [1.8.2](https://github.com/CCXXXI/ecg_monitor/compare/v1.8.1...v1.8.2) (2023-02-20)
 
-
 ### Bug Fixes
 
-* **mine:** disable modelTest button on web ([#96](https://github.com/CCXXXI/ecg_monitor/issues/96)) ([c8b6324](https://github.com/CCXXXI/ecg_monitor/commit/c8b63241e99eb7f771c197399af9831c99f26793))
+- **mine:** disable modelTest button on web ([#96](https://github.com/CCXXXI/ecg_monitor/issues/96)) ([c8b6324](https://github.com/CCXXXI/ecg_monitor/commit/c8b63241e99eb7f771c197399af9831c99f26793))
 
 ## [1.8.1](https://github.com/CCXXXI/ecg_monitor/compare/v1.8.0...v1.8.1) (2023-02-19)
 
