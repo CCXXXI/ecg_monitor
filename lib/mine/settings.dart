@@ -379,6 +379,7 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),
             title: const Text(str.modelTest),
+            enabled: !kIsWeb, // meaningless on web
             onTap: () async {
               final res = await modelTest();
               if (context.mounted) {
