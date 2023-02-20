@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.7.0...v0.8.0) (2023-02-20)
+## [0.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.7.0...v0.8.0) (2023-02-15)
 
 
 ### Features
