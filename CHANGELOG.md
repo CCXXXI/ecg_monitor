@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.4.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.3.0...v0.4.0) (2023-01-31)
+
+### Features
+
+- basic monitor ([ce7fcef](https://github.com/CCXXXI/ecg_monitor/commit/ce7fcef659f8ac60d219b2fcffb3327372998b83))
+- better monitor style ([219c54d](https://github.com/CCXXXI/ecg_monitor/commit/219c54deef3675994431bf1e14f819ffd5425001))
+- **mine:** AboutListTile ([6c46e11](https://github.com/CCXXXI/ecg_monitor/commit/6c46e11599d2e86fdf39dd6f8a09685659de4f68))
+- **monitor:** interval: 1 ([ad6bc7f](https://github.com/CCXXXI/ecg_monitor/commit/ad6bc7fac3e38543b2c1443be8a58f9016424777))
+- **monitor:** roll right to left at beginning ([2c71348](https://github.com/CCXXXI/ecg_monitor/commit/2c713483942a60cd2076f2c3bd366177290844de))
+
+### Bug Fixes
+
+- **deps:** update dependency com.android.tools.build:gradle to v7.4.1 ([44b1d23](https://github.com/CCXXXI/ecg_monitor/commit/44b1d231eb5caac46c82b4339ffaa55e4f013a8a))
+- **deps:** update dependency org.pytorch:pytorch_android to v1.13.0 ([c8b67af](https://github.com/CCXXXI/ecg_monitor/commit/c8b67af668963116a6958187ddd77a4f92032a1d))
+- **deps:** update kotlin monorepo to v1.8.10 ([56c0bac](https://github.com/CCXXXI/ecg_monitor/commit/56c0bac41ef060eb069f3a0891c6fb597cbf7d8d))
+- **monitor:** clear monitor while route changing ([be830fe](https://github.com/CCXXXI/ecg_monitor/commit/be830fe426614bfeceb58854a5b9d80280b1929d))
+
+### Performance Improvements
+
+- improve monitor performance ([4dbf91e](https://github.com/CCXXXI/ecg_monitor/commit/4dbf91ef01616d52a4b0a62fbbb066e819680bff))
+
+### Code Refactoring
+
+- make AppOutput private ([17585e3](https://github.com/CCXXXI/ecg_monitor/commit/17585e393f65f9256d3de2267cd82403efb7763b))
+- reorder args ([5bb1d62](https://github.com/CCXXXI/ecg_monitor/commit/5bb1d6294f6bb670de7cd1b5a8e57bfa9ade5c2b))
+
+### Build System
+
+- flutter pub add fl_chart ([74f5f95](https://github.com/CCXXXI/ecg_monitor/commit/74f5f958bf0e79270665c6553c073dbc13cda356))
+- flutter pub add package_info_plus ([1ccdf51](https://github.com/CCXXXI/ecg_monitor/commit/1ccdf51272fe61f0a4edd76e9d56791f5e99e39d))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency gradle to v8 ([0142e39](https://github.com/CCXXXI/ecg_monitor/commit/0142e398050c278098ab34b2fb993128fe89a6eb))
+
 ## [0.3.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.2.0...v0.3.0) (2023-01-31)
 
 ### Features
