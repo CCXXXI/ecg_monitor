@@ -2,64 +2,58 @@
 
 ## [0.10.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.1...v0.10.0) (2023-02-18)
 
-
 ### Features
 
-* init sentry ([d593b35](https://github.com/CCXXXI/ecg_monitor/commit/d593b35af759656cc1da8c8ab567d275756ba3d3))
-* LoggingIntegration ([9754ad2](https://github.com/CCXXXI/ecg_monitor/commit/9754ad246699480644eae44de65cabf70bc70934))
-* sentry record ip ([49d6efb](https://github.com/CCXXXI/ecg_monitor/commit/49d6efbd8cc84e0054174339d9dec80885fc3989))
-* SentryNavigatorObserver ([070a1b8](https://github.com/CCXXXI/ecg_monitor/commit/070a1b888586b4e504e504f63006fa49d5624ddb))
-* SentryScreenshotWidget ([37c46fa](https://github.com/CCXXXI/ecg_monitor/commit/37c46fafe6229f3e36e0b491576b4deaa3cb60ef))
-
+- init sentry ([d593b35](https://github.com/CCXXXI/ecg_monitor/commit/d593b35af759656cc1da8c8ab567d275756ba3d3))
+- LoggingIntegration ([9754ad2](https://github.com/CCXXXI/ecg_monitor/commit/9754ad246699480644eae44de65cabf70bc70934))
+- sentry record ip ([49d6efb](https://github.com/CCXXXI/ecg_monitor/commit/49d6efbd8cc84e0054174339d9dec80885fc3989))
+- SentryNavigatorObserver ([070a1b8](https://github.com/CCXXXI/ecg_monitor/commit/070a1b888586b4e504e504f63006fa49d5624ddb))
+- SentryScreenshotWidget ([37c46fa](https://github.com/CCXXXI/ecg_monitor/commit/37c46fafe6229f3e36e0b491576b4deaa3cb60ef))
 
 ### Bug Fixes
 
-* add android.permission.INTERNET ([9a8c9f1](https://github.com/CCXXXI/ecg_monitor/commit/9a8c9f164b052b8259f17a08d86efc1ea574f2c9))
-
+- add android.permission.INTERNET ([9a8c9f1](https://github.com/CCXXXI/ecg_monitor/commit/9a8c9f164b052b8259f17a08d86efc1ea574f2c9))
 
 ### Continuous Integration
 
-* enable all lints ([6fc862a](https://github.com/CCXXXI/ecg_monitor/commit/6fc862a298c914ff9cc6896291aa698cdc482db1))
-* enable stricter type checks ([18b14f7](https://github.com/CCXXXI/ecg_monitor/commit/18b14f7782a6766a1ae71d63ba3355df100435d5))
-* remove always_specify_types ([2136a40](https://github.com/CCXXXI/ecg_monitor/commit/2136a40d3970bfb68945e40a4c21014abcf1a89e))
-* remove always_use_package_imports ([1640708](https://github.com/CCXXXI/ecg_monitor/commit/1640708a9f3ceaf94f50198672ce9239ba644bcc))
-* remove deprecated lints ([4c2c345](https://github.com/CCXXXI/ecg_monitor/commit/4c2c345628e135fe3608fa780ef6a93c4dfac0cd))
-* remove invalid_case_patterns ([6ff7a56](https://github.com/CCXXXI/ecg_monitor/commit/6ff7a56ba36ab721420e4d0a683d745782c91bda))
-* remove prefer_final_parameters ([4837722](https://github.com/CCXXXI/ecg_monitor/commit/4837722a25c343c4e5359d74bd3ff19dea9e5892))
-* remove prefer_single_quotes ([fffac7b](https://github.com/CCXXXI/ecg_monitor/commit/fffac7be29cf745068140ec753080ac1609b26fc))
-* remove public_member_api_docs ([f9d5e3e](https://github.com/CCXXXI/ecg_monitor/commit/f9d5e3ec273c239df59c02e23046220328bc8af7))
-* remove unnecessary_breaks ([caedb2a](https://github.com/CCXXXI/ecg_monitor/commit/caedb2a0c2edcf5f18f2a24e09562cdc041b5e86))
-* remove unnecessary_final ([6c36382](https://github.com/CCXXXI/ecg_monitor/commit/6c3638286f24b8a99f86744604dc06c84095317d))
-* reorder needs & if ([947eede](https://github.com/CCXXXI/ecg_monitor/commit/947eedef2325b16e071bf75ac66505709bb4a32f))
-* simplify lints with all_lint_rules_community ([bf5925d](https://github.com/CCXXXI/ecg_monitor/commit/bf5925d467e5314fe75e139a291af1a473d57ef4))
-
+- enable all lints ([6fc862a](https://github.com/CCXXXI/ecg_monitor/commit/6fc862a298c914ff9cc6896291aa698cdc482db1))
+- enable stricter type checks ([18b14f7](https://github.com/CCXXXI/ecg_monitor/commit/18b14f7782a6766a1ae71d63ba3355df100435d5))
+- remove always_specify_types ([2136a40](https://github.com/CCXXXI/ecg_monitor/commit/2136a40d3970bfb68945e40a4c21014abcf1a89e))
+- remove always_use_package_imports ([1640708](https://github.com/CCXXXI/ecg_monitor/commit/1640708a9f3ceaf94f50198672ce9239ba644bcc))
+- remove deprecated lints ([4c2c345](https://github.com/CCXXXI/ecg_monitor/commit/4c2c345628e135fe3608fa780ef6a93c4dfac0cd))
+- remove invalid_case_patterns ([6ff7a56](https://github.com/CCXXXI/ecg_monitor/commit/6ff7a56ba36ab721420e4d0a683d745782c91bda))
+- remove prefer_final_parameters ([4837722](https://github.com/CCXXXI/ecg_monitor/commit/4837722a25c343c4e5359d74bd3ff19dea9e5892))
+- remove prefer_single_quotes ([fffac7b](https://github.com/CCXXXI/ecg_monitor/commit/fffac7be29cf745068140ec753080ac1609b26fc))
+- remove public_member_api_docs ([f9d5e3e](https://github.com/CCXXXI/ecg_monitor/commit/f9d5e3ec273c239df59c02e23046220328bc8af7))
+- remove unnecessary_breaks ([caedb2a](https://github.com/CCXXXI/ecg_monitor/commit/caedb2a0c2edcf5f18f2a24e09562cdc041b5e86))
+- remove unnecessary_final ([6c36382](https://github.com/CCXXXI/ecg_monitor/commit/6c3638286f24b8a99f86744604dc06c84095317d))
+- reorder needs & if ([947eede](https://github.com/CCXXXI/ecg_monitor/commit/947eedef2325b16e071bf75ac66505709bb4a32f))
+- simplify lints with all_lint_rules_community ([bf5925d](https://github.com/CCXXXI/ecg_monitor/commit/bf5925d467e5314fe75e139a291af1a473d57ef4))
 
 ### Code Refactoring
 
-* dart fix --apply ([cd2fbd7](https://github.com/CCXXXI/ecg_monitor/commit/cd2fbd71c8cf06dd70eec120d59750306cd55d7f))
-* fix avoid_classes_with_only_static_members ([ad4194e](https://github.com/CCXXXI/ecg_monitor/commit/ad4194e9b967f76e1cbb7986c215a207a0f33dc4))
-* fix avoid_positional_boolean_parameters ([eda12cf](https://github.com/CCXXXI/ecg_monitor/commit/eda12cfd1feec09fad7651712d16e63d0a9ee3a1))
-* fix cascade_invocations ([db2a942](https://github.com/CCXXXI/ecg_monitor/commit/db2a9428d0034837a22b1dac2a78fd24c2c7eb94))
-* fix dangling_library_doc_comments ([4569cd5](https://github.com/CCXXXI/ecg_monitor/commit/4569cd5ffb89a45f8b1d2e3c0f3c9b5f5b45e88b))
-* fix discarded_futures & unawaited_futures ([0ef497e](https://github.com/CCXXXI/ecg_monitor/commit/0ef497e03a0dc209325abfd5947a477e18e682a9))
-* fix omit_local_variable_types ([702008c](https://github.com/CCXXXI/ecg_monitor/commit/702008c110004423f2bd9be3185d7f11d99a381b))
-* fix sort_pub_dependencies ([3db11c7](https://github.com/CCXXXI/ecg_monitor/commit/3db11c7148a036d4e500ebb3aba34d0145cc98f5))
-* move ProviderScope to App ([e4febf9](https://github.com/CCXXXI/ecg_monitor/commit/e4febf9b697bbbb43ad0464b374a3fce7e9fc708))
-* omit types ([b5c43e5](https://github.com/CCXXXI/ecg_monitor/commit/b5c43e56dfe086feb941c868c9b1d1168c3ccf1f))
-
+- dart fix --apply ([cd2fbd7](https://github.com/CCXXXI/ecg_monitor/commit/cd2fbd71c8cf06dd70eec120d59750306cd55d7f))
+- fix avoid_classes_with_only_static_members ([ad4194e](https://github.com/CCXXXI/ecg_monitor/commit/ad4194e9b967f76e1cbb7986c215a207a0f33dc4))
+- fix avoid_positional_boolean_parameters ([eda12cf](https://github.com/CCXXXI/ecg_monitor/commit/eda12cfd1feec09fad7651712d16e63d0a9ee3a1))
+- fix cascade_invocations ([db2a942](https://github.com/CCXXXI/ecg_monitor/commit/db2a9428d0034837a22b1dac2a78fd24c2c7eb94))
+- fix dangling_library_doc_comments ([4569cd5](https://github.com/CCXXXI/ecg_monitor/commit/4569cd5ffb89a45f8b1d2e3c0f3c9b5f5b45e88b))
+- fix discarded_futures & unawaited_futures ([0ef497e](https://github.com/CCXXXI/ecg_monitor/commit/0ef497e03a0dc209325abfd5947a477e18e682a9))
+- fix omit_local_variable_types ([702008c](https://github.com/CCXXXI/ecg_monitor/commit/702008c110004423f2bd9be3185d7f11d99a381b))
+- fix sort_pub_dependencies ([3db11c7](https://github.com/CCXXXI/ecg_monitor/commit/3db11c7148a036d4e500ebb3aba34d0145cc98f5))
+- move ProviderScope to App ([e4febf9](https://github.com/CCXXXI/ecg_monitor/commit/e4febf9b697bbbb43ad0464b374a3fce7e9fc708))
+- omit types ([b5c43e5](https://github.com/CCXXXI/ecg_monitor/commit/b5c43e56dfe086feb941c868c9b1d1168c3ccf1f))
 
 ### Build System
 
-* flutter pub add dev:all_lint_rules_community ([9941b9a](https://github.com/CCXXXI/ecg_monitor/commit/9941b9a79d3114f890a6f1ae349a65c1fa1e3426))
-* flutter pub add sentry_flutter ([d849a8d](https://github.com/CCXXXI/ecg_monitor/commit/d849a8d159430d0ad911319d93968b752f74d86a))
-* flutter pub add sentry_logging ([d65609c](https://github.com/CCXXXI/ecg_monitor/commit/d65609c8f60ae699bb2344fdf0190886f254b662))
-* flutter pub remove flutter_lints ([e527727](https://github.com/CCXXXI/ecg_monitor/commit/e5277278156ff9a22d8a756baa6b577e67666088))
-* sdk: "&gt;=2.19.0 &lt;3.0.0" ([b920767](https://github.com/CCXXXI/ecg_monitor/commit/b9207674041399a14880431b76876b75c821267a))
-
+- flutter pub add dev:all_lint_rules_community ([9941b9a](https://github.com/CCXXXI/ecg_monitor/commit/9941b9a79d3114f890a6f1ae349a65c1fa1e3426))
+- flutter pub add sentry_flutter ([d849a8d](https://github.com/CCXXXI/ecg_monitor/commit/d849a8d159430d0ad911319d93968b752f74d86a))
+- flutter pub add sentry_logging ([d65609c](https://github.com/CCXXXI/ecg_monitor/commit/d65609c8f60ae699bb2344fdf0190886f254b662))
+- flutter pub remove flutter_lints ([e527727](https://github.com/CCXXXI/ecg_monitor/commit/e5277278156ff9a22d8a756baa6b577e67666088))
+- sdk: "&gt;=2.19.0 &lt;3.0.0" ([b920767](https://github.com/CCXXXI/ecg_monitor/commit/b9207674041399a14880431b76876b75c821267a))
 
 ### Styles
 
-* reformat by astyle ([ae1ce4b](https://github.com/CCXXXI/ecg_monitor/commit/ae1ce4b676fe165a58a8c476d00fc766708d65c6))
+- reformat by astyle ([ae1ce4b](https://github.com/CCXXXI/ecg_monitor/commit/ae1ce4b676fe165a58a8c476d00fc766708d65c6))
 
 ## [0.9.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.0...v0.9.1) (2023-02-18)
 
