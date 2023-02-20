@@ -2,64 +2,58 @@
 
 ## [0.3.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.2.0...v0.3.0) (2023-01-31)
 
-
 ### Features
 
-* **home:** NavigationBar instead of SalomonBottomBar ([5559503](https://github.com/CCXXXI/ecg_monitor/commit/555950360d2c3a5a5dbb79d7b5ddca9c0f50d9d6))
-* log ([51db36f](https://github.com/CCXXXI/ecg_monitor/commit/51db36ff89b6f639a7998ce9500320c64b1350a4))
-* logging system ([fcf5a3c](https://github.com/CCXXXI/ecg_monitor/commit/fcf5a3c2cbbc3f2f8ab36660fa4544219583ab0f))
-* **mine:** SettingsView ([19f1263](https://github.com/CCXXXI/ecg_monitor/commit/19f1263f0325ed16d838f1e075690b7d5b112348))
-* model test ([fa8dc7c](https://github.com/CCXXXI/ecg_monitor/commit/fa8dc7c945f71b56f23867076b1fa4d03b33cc75))
-* use material 3 UI design ([5ac628f](https://github.com/CCXXXI/ecg_monitor/commit/5ac628fa494c3daca3f7d4dbcc2c962e096217d7))
-
+- **home:** NavigationBar instead of SalomonBottomBar ([5559503](https://github.com/CCXXXI/ecg_monitor/commit/555950360d2c3a5a5dbb79d7b5ddca9c0f50d9d6))
+- log ([51db36f](https://github.com/CCXXXI/ecg_monitor/commit/51db36ff89b6f639a7998ce9500320c64b1350a4))
+- logging system ([fcf5a3c](https://github.com/CCXXXI/ecg_monitor/commit/fcf5a3c2cbbc3f2f8ab36660fa4544219583ab0f))
+- **mine:** SettingsView ([19f1263](https://github.com/CCXXXI/ecg_monitor/commit/19f1263f0325ed16d838f1e075690b7d5b112348))
+- model test ([fa8dc7c](https://github.com/CCXXXI/ecg_monitor/commit/fa8dc7c945f71b56f23867076b1fa4d03b33cc75))
+- use material 3 UI design ([5ac628f](https://github.com/CCXXXI/ecg_monitor/commit/5ac628fa494c3daca3f7d4dbcc2c962e096217d7))
 
 ### Bug Fixes
 
-* **deps:** update dependency com.android.tools.build:gradle to v7.4.0 ([f65a9cc](https://github.com/CCXXXI/ecg_monitor/commit/f65a9cc4fbf1d41f3deafd4870c60df39a550ba4))
-
+- **deps:** update dependency com.android.tools.build:gradle to v7.4.0 ([f65a9cc](https://github.com/CCXXXI/ecg_monitor/commit/f65a9cc4fbf1d41f3deafd4870c60df39a550ba4))
 
 ### Miscellaneous Chores
 
-* add debug assets ([e4e6508](https://github.com/CCXXXI/ecg_monitor/commit/e4e6508a99242f11997630e4566e65ea6653d905))
-* add model as asset ([fc4d37a](https://github.com/CCXXXI/ecg_monitor/commit/fc4d37a2ed8250bbb1207fbf08f9eb2a71c07d42))
-* add model as submodule ([0980ecf](https://github.com/CCXXXI/ecg_monitor/commit/0980ecf392d27c95f037ca3ea89222c765cdd5fd))
-* update android gitignore ([58d38c4](https://github.com/CCXXXI/ecg_monitor/commit/58d38c494e8760997b10c76b7d464969f1f5b796))
-* update submodule ([98e6a6b](https://github.com/CCXXXI/ecg_monitor/commit/98e6a6b4ff1c0e7342bfedebdcc9b0e90d74a508))
-* update submodule ([7642272](https://github.com/CCXXXI/ecg_monitor/commit/7642272dde5bc5e88aba5fba5ff82781aa341ff4))
-* update submodule ([a0daaf7](https://github.com/CCXXXI/ecg_monitor/commit/a0daaf756085e747a90e687a2ebfdb5d619f0640))
-
+- add debug assets ([e4e6508](https://github.com/CCXXXI/ecg_monitor/commit/e4e6508a99242f11997630e4566e65ea6653d905))
+- add model as asset ([fc4d37a](https://github.com/CCXXXI/ecg_monitor/commit/fc4d37a2ed8250bbb1207fbf08f9eb2a71c07d42))
+- add model as submodule ([0980ecf](https://github.com/CCXXXI/ecg_monitor/commit/0980ecf392d27c95f037ca3ea89222c765cdd5fd))
+- update android gitignore ([58d38c4](https://github.com/CCXXXI/ecg_monitor/commit/58d38c494e8760997b10c76b7d464969f1f5b796))
+- update submodule ([98e6a6b](https://github.com/CCXXXI/ecg_monitor/commit/98e6a6b4ff1c0e7342bfedebdcc9b0e90d74a508))
+- update submodule ([7642272](https://github.com/CCXXXI/ecg_monitor/commit/7642272dde5bc5e88aba5fba5ff82781aa341ff4))
+- update submodule ([a0daaf7](https://github.com/CCXXXI/ecg_monitor/commit/a0daaf756085e747a90e687a2ebfdb5d619f0640))
 
 ### Code Refactoring
 
-* **analytics:** rename analysis to analytics ([c29cc4e](https://github.com/CCXXXI/ecg_monitor/commit/c29cc4e7f510d8d4b11588b9d4bf3ac74bb4acf3))
-* **home:** inline pages ([7c3fc33](https://github.com/CCXXXI/ecg_monitor/commit/7c3fc331cb852cdd82d4ce59261f76313e227701))
-* implement forward ([f1118ba](https://github.com/CCXXXI/ecg_monitor/commit/f1118ba94668594d32811aa893f43777a6e8eb48))
-* load model ([a7e299b](https://github.com/CCXXXI/ecg_monitor/commit/a7e299beff58d4bb0dd214c71d5817c9d39a12e0))
-
+- **analytics:** rename analysis to analytics ([c29cc4e](https://github.com/CCXXXI/ecg_monitor/commit/c29cc4e7f510d8d4b11588b9d4bf3ac74bb4acf3))
+- **home:** inline pages ([7c3fc33](https://github.com/CCXXXI/ecg_monitor/commit/7c3fc331cb852cdd82d4ce59261f76313e227701))
+- implement forward ([f1118ba](https://github.com/CCXXXI/ecg_monitor/commit/f1118ba94668594d32811aa893f43777a6e8eb48))
+- load model ([a7e299b](https://github.com/CCXXXI/ecg_monitor/commit/a7e299beff58d4bb0dd214c71d5817c9d39a12e0))
 
 ### Styles
 
-* {super.key} ([167d84b](https://github.com/CCXXXI/ecg_monitor/commit/167d84b824c5e9188416388040457197f2c707f5))
-
+- {super.key} ([167d84b](https://github.com/CCXXXI/ecg_monitor/commit/167d84b824c5e9188416388040457197f2c707f5))
 
 ### Build System
 
-* build cpp for android ([ed1f0e1](https://github.com/CCXXXI/ecg_monitor/commit/ed1f0e1753f07dd19a279d3dbb2e1b052fbc6ec3))
-* disable sanitizer ([8bbf5fd](https://github.com/CCXXXI/ecg_monitor/commit/8bbf5fdaed86c890e10fe80d48450cfe3ea56ffa))
-* fix linker error ([80cf641](https://github.com/CCXXXI/ecg_monitor/commit/80cf641eba4fd5286d27084e86fe8c2db99d05ab))
-* flutter pub add ffi ([5f51a5e](https://github.com/CCXXXI/ecg_monitor/commit/5f51a5ec5515fb200473cb56ac55ccb354e5429c))
-* flutter pub add go_router ([4ae2ca2](https://github.com/CCXXXI/ecg_monitor/commit/4ae2ca25727584f26f8bb15b9032dda08e9c45ec))
-* flutter pub add logger logger_flutter_plus ([fc69e95](https://github.com/CCXXXI/ecg_monitor/commit/fc69e9543bec92e05ff9976a2eb552027562fdf6))
-* flutter pub add path ([cd0a08a](https://github.com/CCXXXI/ecg_monitor/commit/cd0a08af3fc0898863b032110b05d965ec7335df))
-* flutter pub add path_provider ([a6c295a](https://github.com/CCXXXI/ecg_monitor/commit/a6c295a6d0ee8eca760ffacced65d2d8733b4902))
-* flutter pub add settings_ui ([7249517](https://github.com/CCXXXI/ecg_monitor/commit/724951711dbe9cfd87e1753c6ddd98d80111fd62))
-* flutter pub remove logger ([7722084](https://github.com/CCXXXI/ecg_monitor/commit/7722084349696747b7ff6095ffcbe6b8032f3284))
-* flutter pub remove salomon_bottom_bar ([4c472e0](https://github.com/CCXXXI/ecg_monitor/commit/4c472e00ca42c4d6d9dba9f0f879fa3354e2986e))
-* flutter pub upgrade ([5cf4050](https://github.com/CCXXXI/ecg_monitor/commit/5cf4050b05c9df50d2ced3e5e4563bc20dd92076))
-* hpp to cpp ([1916e7b](https://github.com/CCXXXI/ecg_monitor/commit/1916e7bad8edaee56ce478abe0238fa9fd0a58e3))
-* no Werror ([01b7d9e](https://github.com/CCXXXI/ecg_monitor/commit/01b7d9e991c8ad1864c33f38a540d7f0e6769e8c))
-* set(CMAKE_CXX_STANDARD 20) ([1480961](https://github.com/CCXXXI/ecg_monitor/commit/1480961253da6ce6f04fbc1b06a778f3f8e14495))
-* upgrade flutter ([92585dd](https://github.com/CCXXXI/ecg_monitor/commit/92585dd9c2f7343e34ca404c0651cbd6484de772))
+- build cpp for android ([ed1f0e1](https://github.com/CCXXXI/ecg_monitor/commit/ed1f0e1753f07dd19a279d3dbb2e1b052fbc6ec3))
+- disable sanitizer ([8bbf5fd](https://github.com/CCXXXI/ecg_monitor/commit/8bbf5fdaed86c890e10fe80d48450cfe3ea56ffa))
+- fix linker error ([80cf641](https://github.com/CCXXXI/ecg_monitor/commit/80cf641eba4fd5286d27084e86fe8c2db99d05ab))
+- flutter pub add ffi ([5f51a5e](https://github.com/CCXXXI/ecg_monitor/commit/5f51a5ec5515fb200473cb56ac55ccb354e5429c))
+- flutter pub add go_router ([4ae2ca2](https://github.com/CCXXXI/ecg_monitor/commit/4ae2ca25727584f26f8bb15b9032dda08e9c45ec))
+- flutter pub add logger logger_flutter_plus ([fc69e95](https://github.com/CCXXXI/ecg_monitor/commit/fc69e9543bec92e05ff9976a2eb552027562fdf6))
+- flutter pub add path ([cd0a08a](https://github.com/CCXXXI/ecg_monitor/commit/cd0a08af3fc0898863b032110b05d965ec7335df))
+- flutter pub add path_provider ([a6c295a](https://github.com/CCXXXI/ecg_monitor/commit/a6c295a6d0ee8eca760ffacced65d2d8733b4902))
+- flutter pub add settings_ui ([7249517](https://github.com/CCXXXI/ecg_monitor/commit/724951711dbe9cfd87e1753c6ddd98d80111fd62))
+- flutter pub remove logger ([7722084](https://github.com/CCXXXI/ecg_monitor/commit/7722084349696747b7ff6095ffcbe6b8032f3284))
+- flutter pub remove salomon_bottom_bar ([4c472e0](https://github.com/CCXXXI/ecg_monitor/commit/4c472e00ca42c4d6d9dba9f0f879fa3354e2986e))
+- flutter pub upgrade ([5cf4050](https://github.com/CCXXXI/ecg_monitor/commit/5cf4050b05c9df50d2ced3e5e4563bc20dd92076))
+- hpp to cpp ([1916e7b](https://github.com/CCXXXI/ecg_monitor/commit/1916e7bad8edaee56ce478abe0238fa9fd0a58e3))
+- no Werror ([01b7d9e](https://github.com/CCXXXI/ecg_monitor/commit/01b7d9e991c8ad1864c33f38a540d7f0e6769e8c))
+- set(CMAKE_CXX_STANDARD 20) ([1480961](https://github.com/CCXXXI/ecg_monitor/commit/1480961253da6ce6f04fbc1b06a778f3f8e14495))
+- upgrade flutter ([92585dd](https://github.com/CCXXXI/ecg_monitor/commit/92585dd9c2f7343e34ca404c0651cbd6484de772))
 
 ## [0.2.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.1.0...v0.2.0) (2022-12-26)
 
