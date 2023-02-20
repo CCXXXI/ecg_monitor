@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.8.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.7.0...v0.8.0) (2023-02-20)
+
+
+### Features
+
+* **monitor:** grids settings ([8f557d3](https://github.com/CCXXXI/ecg_monitor/commit/8f557d35b0c6e51c1aa58d1bb38659d6e0f3f1f7))
+* move showDots setting to devtools ([e17adba](https://github.com/CCXXXI/ecg_monitor/commit/e17adba347f59233924e88d582cb6e09d2a1ec52))
+* outlined icons ([2a9ad4d](https://github.com/CCXXXI/ecg_monitor/commit/2a9ad4dfdd5a9c3e19fd06f2bc4c68809a619477))
+
+
+### Code Refactoring
+
+* **monitor:** simplify float literal ([4e4dc32](https://github.com/CCXXXI/ecg_monitor/commit/4e4dc3232b251f711e7e05a6bb3ee28e2cc25f59))
+* **monitor:** visibleForTesting ([a72e5bc](https://github.com/CCXXXI/ecg_monitor/commit/a72e5bc9265b6dedaccc51671bd3baf923421504))
+* static ([824491c](https://github.com/CCXXXI/ecg_monitor/commit/824491cce591602cb87934679596da2afe70f4f7))
+
 ## [0.7.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.6.0...v0.7.0) (2023-02-13)
 
 ### Features
