@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.9.0...v0.9.1) (2023-02-20)
+
+
+### Continuous Integration
+
+* permissions for release-web only ([fe90208](https://github.com/CCXXXI/ecg_monitor/commit/fe90208e33bce06e8660cb60bc6eadc8ac7551c3))
+
 ## [0.9.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.8.1...v0.9.0) (2023-02-17)
 
 ### Features
