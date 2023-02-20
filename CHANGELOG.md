@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.5.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.4.0...v0.5.0) (2023-02-20)
+
+
+### Features
+
+* Column to ListView ([0f13193](https://github.com/CCXXXI/ecg_monitor/commit/0f13193007ee48d28374e6dd21fa1659953261b7))
+* device infos ([1bef541](https://github.com/CCXXXI/ecg_monitor/commit/1bef541cf6d7c682834b6ec0d34d49dcec71f8e2))
+* **device:** fake device ([5957a31](https://github.com/CCXXXI/ecg_monitor/commit/5957a31142fb72719ac146216b61fa3269d97502))
+* **mine:** better slider labels ([60ede45](https://github.com/CCXXXI/ecg_monitor/commit/60ede454543319227575c0fc2ecb646c39187ead))
+* **mine:** fake device setting ([f4eb65d](https://github.com/CCXXXI/ecg_monitor/commit/f4eb65d3c9213460acc68a79063c76d0377b8d27))
+* **mine:** isThreeLine for ListTile ([f8188de](https://github.com/CCXXXI/ecg_monitor/commit/f8188deb256397b21b141197504fe41c2aa2d76a))
+* **monitor:** better y axis in landscape ([fcbe072](https://github.com/CCXXXI/ecg_monitor/commit/fcbe0726a9ccda6ad6e830da376a067de1a728b2))
+* **monitor:** duration settings ([8ffa1ec](https://github.com/CCXXXI/ecg_monitor/commit/8ffa1ec8bd2c07cd3da23db794c86da55cb8367e))
+* **monitor:** TimeAxisTitles ([45ceed4](https://github.com/CCXXXI/ecg_monitor/commit/45ceed4c9649bc0f3d566713c3606ef8131428d9))
+
+
+### Build System
+
+* add freezed ([d70ea8a](https://github.com/CCXXXI/ecg_monitor/commit/d70ea8ac32f02a4ddd637cddcf545792529877c9))
+* flutter pub add quiver ([075b424](https://github.com/CCXXXI/ecg_monitor/commit/075b424bbc00bf45e550a74508551beca91e2f9f))
+* flutter pub add shared_preferences ([773c3bd](https://github.com/CCXXXI/ecg_monitor/commit/773c3bd664625fa1e00090fc7f46a4cd4ecb1427))
+* flutter pub upgrade ([fd88d21](https://github.com/CCXXXI/ecg_monitor/commit/fd88d210d94ed4a7c7e6eebe14cdd88566f9b329))
+
+
+### Code Refactoring
+
+* **home:** rename params ([81d875a](https://github.com/CCXXXI/ecg_monitor/commit/81d875ac124f777f218b5d065937f6f69b9e8a2d))
+* **model:** simplify type annotation ([6e2d74e](https://github.com/CCXXXI/ecg_monitor/commit/6e2d74e4a28fe6ff2e9f01fc1186f29ad2d1ab2f))
+* rename ([1084dc6](https://github.com/CCXXXI/ecg_monitor/commit/1084dc63751835e2e3c21416664067475a694f68))
+* rename & move device.dart ([ba3d24f](https://github.com/CCXXXI/ecg_monitor/commit/ba3d24f9acdf599409b3c79fb662cc47eb51099d))
+* rename models ([ddf03fc](https://github.com/CCXXXI/ecg_monitor/commit/ddf03fc9541e145d7cf4a52ed6da2cca91c5715c))
+* shared preferences ([37548fb](https://github.com/CCXXXI/ecg_monitor/commit/37548fb4242c2d699f4cb0d14c7db0b086b69468))
+* simplify ref.read ([2a7cbf4](https://github.com/CCXXXI/ecg_monitor/commit/2a7cbf4ffe8dba9aca944ef525c92475d8f474ee))
+
 ## [0.4.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.3.0...v0.4.0) (2023-01-31)
 
 ### Features
