@@ -240,9 +240,9 @@ class Settings extends ConsumerWidget {
     final lineColor = monitorSettings.lineColor;
     final gridColor = monitorSettings.gridColor;
 
-    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
-    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
-    final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)}Hz";
+    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
+    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
+    final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)} Hz";
 
     // analytics settings
     final autoUploadOn = ref.watch(autoUploadOnProvider);
