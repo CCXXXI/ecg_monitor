@@ -1,4 +1,7 @@
+import "dart:math";
+
 import "package:ecg_monitor/monitor/chart.dart";
+import "package:fl_chart/fl_chart.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
@@ -14,6 +17,7 @@ void main() {
         expect(Chart.getIntervalMs(i, isPortrait: true), 2000);
       }
     });
+
     test("landscape", () {
       const maxIntervalCount = Chart.maxIntervalCountLandscape;
 
@@ -26,6 +30,7 @@ void main() {
       }
     });
   });
+
   group("msToTimeString", () {
     test("0ms", () => expect(Chart.msToTimeString(0), endsWith(":00:00")));
     test("1ms", () => expect(Chart.msToTimeString(1), endsWith(":00:00")));
@@ -33,5 +38,16 @@ void main() {
     test("1s", () => expect(Chart.msToTimeString(1000), endsWith(":00:01")));
     test("59s", () => expect(Chart.msToTimeString(59000), endsWith(":00:59")));
     test("1m", () => expect(Chart.msToTimeString(60000), endsWith(":01:00")));
+  });
+
+  group("normalizedDistance", () {
+    const a = FlSpot.zero;
+    const b = FlSpot(0, .1);
+    const c = FlSpot(40, 0);
+    const d = FlSpot(40, .1);
+
+    test("a to b", () => expect(Chart.normalizedDistance(a, b), 1));
+    test("a to c", () => expect(Chart.normalizedDistance(a, c), 1));
+    test("a to d", () => expect(Chart.normalizedDistance(a, d), sqrt2));
   });
 }
