@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.14.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.13.1...v0.14.0) (2023-02-21)
+
+
+### Features
+
+* **monitor:** update default settings ([20e6c4f](https://github.com/CCXXXI/ecg_monitor/commit/20e6c4fa0a45eed0d3be61d7d71e616afd06c84b))
+
+
+### Bug Fixes
+
+* **monitor:** prevent curve over shooting ([c2aa6b8](https://github.com/CCXXXI/ecg_monitor/commit/c2aa6b84f67d0d80054b2efa345496cf9e97ac7b))
+
 ## [0.13.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.13.0...v0.13.1) (2023-02-21)
 
 ### Bug Fixes
