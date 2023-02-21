@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.13.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.12.0...v0.13.0) (2023-02-21)
+
+
+### Features
+
+* **monitor:** add min distance setting ([f97e903](https://github.com/CCXXXI/ecg_monitor/commit/f97e9031f0f45355e157fdab163b4380489ef591))
+* **monitor:** better dot painter ([8bebc85](https://github.com/CCXXXI/ecg_monitor/commit/8bebc853372e9a358c4aeb1db727c046d6cd127f))
+
+
+### Performance Improvements
+
+* **monitor:** limit min distance of points ([dfe731b](https://github.com/CCXXXI/ecg_monitor/commit/dfe731b0e45974d95efaf3fc004b1459b75afa7a))
+
+
+### Tests
+
+* **monitor:** normalizedDistance ([27c627a](https://github.com/CCXXXI/ecg_monitor/commit/27c627a2dfec5db41d56ceb2b0c708bf287b959a))
+
+
+### Code Refactoring
+
+* **monitor:** remove unnecessary code ([ef567c6](https://github.com/CCXXXI/ecg_monitor/commit/ef567c62c4049900b3873d297dd2b3b2701cfaa5))
+* **monitor:** simplify setting groups ([be3ccd3](https://github.com/CCXXXI/ecg_monitor/commit/be3ccd38c62e5e2a9cf95f6450f59248b3486d4b))
+
 ## [0.12.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.2...v0.12.0) (2023-02-21)
 
 ### Features
