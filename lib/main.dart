@@ -30,7 +30,8 @@ void main() async {
         ..sendDefaultPii = true;
     },
     appRunner: () => runApp(
-        const SentryScreenshotWidget(child: ProviderScope(child: App()))),
+      const SentryScreenshotWidget(child: ProviderScope(child: App())),
+    ),
   );
 }
 
