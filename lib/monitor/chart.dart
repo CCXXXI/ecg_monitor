@@ -22,6 +22,8 @@ var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
+  static const _minDistance = 1;
+
   static var _previousRefreshTimeMs = 0.0;
   static final _buffer = Queue<FlSpot>();
 
@@ -32,9 +34,18 @@ class _Points extends _$Points {
   }
 
   void add(double y) {
-    // add new point
+    // get point
     final x = DateTime.now().millisecondsSinceEpoch.toDouble();
-    _buffer.addLast(FlSpot(x, y));
+    final point = FlSpot(x, y);
+
+    // ignore if too close to the previous point
+    if (_buffer.isNotEmpty &&
+        Chart.normalizedDistance(_buffer.last, point) < _minDistance) {
+      return;
+    }
+
+    // add new point
+    _buffer.addLast(point);
 
     // remove outdated points
     while (_buffer.first.x < x - _maxDurationMs) {
@@ -59,10 +70,10 @@ class Chart extends ConsumerWidget {
   @visibleForTesting
   static const maxIntervalCountLandscape = 10;
 
-  static const _largeHorizontalInterval = .5;
-  static const _smallHorizontalInterval = .1;
-  static const _largeVerticalInterval = 200.0;
-  static const _smallVerticalInterval = 40.0;
+  static const _smallXInterval = 40.0;
+  static const _largeXInterval = _smallXInterval * 5;
+  static const _smallYInterval = .1;
+  static const _largeYInterval = _smallYInterval * 5;
 
   static const _thickLineWidth = 1.0;
   static const _thinLineWidth = .5;
@@ -117,10 +128,10 @@ class Chart extends ConsumerWidget {
         maxX: points.isEmpty ? null : points.last.x,
         minY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(min) - _smallHorizontalInterval,
+            : points.map((p) => p.y).reduce(min) - _smallYInterval,
         maxY: points.isEmpty
             ? null
-            : points.map((p) => p.y).reduce(max) + _smallHorizontalInterval,
+            : points.map((p) => p.y).reduce(max) + _smallYInterval,
         backgroundColor: settings.backgroundColor,
         titlesData: FlTitlesData(
           topTitles: xTitles,
@@ -134,11 +145,11 @@ class Chart extends ConsumerWidget {
           drawHorizontalLine: drawHorizontalLine,
           drawVerticalLine: drawVerticalLine,
           horizontalInterval: horizontalLineType == LineType.full
-              ? _smallHorizontalInterval
-              : _largeHorizontalInterval,
+              ? _smallYInterval
+              : _largeYInterval,
           verticalInterval: verticalLineType == LineType.full
-              ? _smallVerticalInterval
-              : _largeVerticalInterval,
+              ? _smallXInterval
+              : _largeXInterval,
           getDrawingHorizontalLine: (value) => FlLine(
             color: settings.gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
@@ -169,10 +180,8 @@ class Chart extends ConsumerWidget {
   }
 
   static double _getStrokeWidth(double value, {required bool isHorizontal}) {
-    final largeInterval =
-        isHorizontal ? _largeHorizontalInterval : _largeVerticalInterval;
-    final smallInterval =
-        isHorizontal ? _smallHorizontalInterval : _smallVerticalInterval;
+    final largeInterval = isHorizontal ? _largeYInterval : _largeXInterval;
+    final smallInterval = isHorizontal ? _smallYInterval : _smallXInterval;
     return value % largeInterval < smallInterval / 2
         ? _thickLineWidth
         : _thinLineWidth;
@@ -184,5 +193,12 @@ class Chart extends ConsumerWidget {
     return "${dateTime.hour.toString().padLeft(2, "0")}"
         ":${dateTime.minute.toString().padLeft(2, "0")}"
         ":${dateTime.second.toString().padLeft(2, "0")}";
+  }
+
+  @visibleForTesting
+  static double normalizedDistance(FlSpot a, FlSpot b) {
+    final dx = (b.x - a.x) / Chart._smallXInterval;
+    final dy = (b.y - a.y) / Chart._smallYInterval;
+    return sqrt(dx * dx + dy * dy);
   }
 }
