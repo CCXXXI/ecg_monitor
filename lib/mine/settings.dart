@@ -35,7 +35,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   static const professional = MonitorSettingGroup(
     portraitDuration: 5,
     landscapeDuration: 10,
-    refreshRateHz: 20,
+    refreshRateHz: 30,
     minDistance: 1,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
@@ -46,10 +46,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   );
 
   static final simple = professional.copyWith(
-    backgroundColor: Colors.black,
-    lineColor: const Color(0xff00ff00),
-    gridColor: Colors.white,
-    horizontalLineType: LineType.hide,
+    horizontalLineType: LineType.simple,
     verticalLineType: LineType.hide,
   );
 
@@ -61,7 +58,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
 class MonitorSettings extends _$MonitorSettings {
   @override
   MonitorSettingGroup build() {
-    var s = MonitorSettingGroup.professional;
+    var s = MonitorSettingGroup.simple;
 
     final portraitDuration = prefs.getDouble(key.portraitDuration);
     if (portraitDuration != null) {
