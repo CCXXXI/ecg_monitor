@@ -17,19 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MonitorSettingGroup {
   double get portraitDuration => throw _privateConstructorUsedError;
-
   double get landscapeDuration => throw _privateConstructorUsedError;
 
+  double get refreshRateHz => throw _privateConstructorUsedError;
+
   Color get backgroundColor => throw _privateConstructorUsedError;
-
   Color get lineColor => throw _privateConstructorUsedError;
-
   Color get gridColor => throw _privateConstructorUsedError;
-
   LineType get horizontalLineType => throw _privateConstructorUsedError;
-
   LineType get verticalLineType => throw _privateConstructorUsedError;
-
   bool get showDotsOn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -42,11 +38,11 @@ abstract class $MonitorSettingGroupCopyWith<$Res> {
   factory $MonitorSettingGroupCopyWith(
           MonitorSettingGroup value, $Res Function(MonitorSettingGroup) then) =
       _$MonitorSettingGroupCopyWithImpl<$Res, MonitorSettingGroup>;
-
   @useResult
   $Res call(
       {double portraitDuration,
       double landscapeDuration,
+      double refreshRateHz,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -62,7 +58,6 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -71,6 +66,7 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
+    Object? refreshRateHz = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -86,6 +82,10 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
+              as double,
+      refreshRateHz: null == refreshRateHz
+          ? _value.refreshRateHz
+          : refreshRateHz // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -121,12 +121,12 @@ abstract class _$$_MonitorSettingGroupCopyWith<$Res>
   factory _$$_MonitorSettingGroupCopyWith(_$_MonitorSettingGroup value,
           $Res Function(_$_MonitorSettingGroup) then) =
       __$$_MonitorSettingGroupCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
       {double portraitDuration,
       double landscapeDuration,
+      double refreshRateHz,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -148,6 +148,7 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
+    Object? refreshRateHz = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -163,6 +164,10 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
+              as double,
+      refreshRateHz: null == refreshRateHz
+          ? _value.refreshRateHz
+          : refreshRateHz // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -200,6 +205,7 @@ class _$_MonitorSettingGroup
   const _$_MonitorSettingGroup(
       {required this.portraitDuration,
       required this.landscapeDuration,
+      required this.refreshRateHz,
       required this.backgroundColor,
       required this.lineColor,
       required this.gridColor,
@@ -211,6 +217,8 @@ class _$_MonitorSettingGroup
   final double portraitDuration;
   @override
   final double landscapeDuration;
+  @override
+  final double refreshRateHz;
   @override
   final Color backgroundColor;
   @override
@@ -226,7 +234,7 @@ class _$_MonitorSettingGroup
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDotsOn: $showDotsOn)';
+    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDotsOn: $showDotsOn)';
   }
 
   @override
@@ -236,6 +244,7 @@ class _$_MonitorSettingGroup
       ..add(DiagnosticsProperty('type', 'MonitorSettingGroup'))
       ..add(DiagnosticsProperty('portraitDuration', portraitDuration))
       ..add(DiagnosticsProperty('landscapeDuration', landscapeDuration))
+      ..add(DiagnosticsProperty('refreshRateHz', refreshRateHz))
       ..add(DiagnosticsProperty('backgroundColor', backgroundColor))
       ..add(DiagnosticsProperty('lineColor', lineColor))
       ..add(DiagnosticsProperty('gridColor', gridColor))
@@ -253,6 +262,8 @@ class _$_MonitorSettingGroup
                 other.portraitDuration == portraitDuration) &&
             (identical(other.landscapeDuration, landscapeDuration) ||
                 other.landscapeDuration == landscapeDuration) &&
+            (identical(other.refreshRateHz, refreshRateHz) ||
+                other.refreshRateHz == refreshRateHz) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.lineColor, lineColor) ||
@@ -272,6 +283,7 @@ class _$_MonitorSettingGroup
       runtimeType,
       portraitDuration,
       landscapeDuration,
+      refreshRateHz,
       backgroundColor,
       lineColor,
       gridColor,
@@ -291,6 +303,7 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
   const factory _MonitorSettingGroup(
       {required final double portraitDuration,
       required final double landscapeDuration,
+      required final double refreshRateHz,
       required final Color backgroundColor,
       required final Color lineColor,
       required final Color gridColor,
@@ -303,6 +316,9 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
 
   @override
   double get landscapeDuration;
+
+  @override
+  double get refreshRateHz;
 
   @override
   Color get backgroundColor;
@@ -318,10 +334,8 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
 
   @override
   LineType get verticalLineType;
-
   @override
   bool get showDotsOn;
-
   @override
   @JsonKey(ignore: true)
   _$$_MonitorSettingGroupCopyWith<_$_MonitorSettingGroup> get copyWith =>

@@ -12,12 +12,16 @@ import "../mine/settings.dart";
 
 part "chart.g.dart";
 
+@riverpod
+double refreshInterval(RefreshIntervalRef ref) {
+  final rateHz = ref.watch(monitorSettingsProvider).refreshRateHz;
+  return Duration.millisecondsPerSecond / rateHz;
+}
+
 var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
-  static const _refreshIntervalMs = 20;
-
   static var _previousRefreshTimeMs = 0.0;
   static final _buffer = Queue<FlSpot>();
 
@@ -38,7 +42,8 @@ class _Points extends _$Points {
     }
 
     // refresh UI
-    if (x >= _previousRefreshTimeMs + _refreshIntervalMs) {
+    final intervalMs = ref.watch(refreshIntervalProvider);
+    if (x >= _previousRefreshTimeMs + intervalMs) {
       _previousRefreshTimeMs = x;
       state = _buffer.toList();
     }

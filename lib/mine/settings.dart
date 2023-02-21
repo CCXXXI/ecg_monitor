@@ -22,6 +22,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   const factory MonitorSettingGroup({
     required double portraitDuration,
     required double landscapeDuration,
+    required double refreshRateHz,
     required Color backgroundColor,
     required Color lineColor,
     required Color gridColor,
@@ -33,6 +34,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   static const professional = MonitorSettingGroup(
     portraitDuration: 5,
     landscapeDuration: 10,
+    refreshRateHz: 20,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     gridColor: Color(0xffff0000),
@@ -44,6 +46,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   static const simple = MonitorSettingGroup(
     portraitDuration: 5,
     landscapeDuration: 10,
+    refreshRateHz: 20,
     backgroundColor: Colors.black,
     lineColor: Color(0xff00ff00),
     gridColor: Colors.white,
@@ -56,6 +59,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   static const custom = MonitorSettingGroup(
     portraitDuration: 5,
     landscapeDuration: 10,
+    refreshRateHz: 20,
     backgroundColor: Colors.black,
     lineColor: Colors.green,
     gridColor: Colors.white,
@@ -79,6 +83,11 @@ class MonitorSettings extends _$MonitorSettings {
     final landscapeDuration = prefs.getDouble(key.landscapeDuration);
     if (landscapeDuration != null) {
       s = s.copyWith(landscapeDuration: landscapeDuration);
+    }
+
+    final refreshRateHz = prefs.getDouble(key.refreshRateHz);
+    if (refreshRateHz != null) {
+      s = s.copyWith(refreshRateHz: refreshRateHz);
     }
 
     final backgroundColorHex = prefs.getInt(key.backgroundColorHex);
@@ -138,6 +147,11 @@ class MonitorSettings extends _$MonitorSettings {
   Future<void> setLandscapeDuration(double duration) async {
     state = state.copyWith(landscapeDuration: duration);
     await prefs.setDouble(key.landscapeDuration, duration);
+  }
+
+  Future<void> setRefreshRateHz(double refreshRateHz) async {
+    state = state.copyWith(refreshRateHz: refreshRateHz);
+    await prefs.setDouble(key.refreshRateHz, refreshRateHz);
   }
 
   Future<void> setBackgroundColor(Color color) async {
@@ -221,12 +235,14 @@ class Settings extends ConsumerWidget {
     final monitorSettings = ref.watch(monitorSettingsProvider);
     final portraitDuration = monitorSettings.portraitDuration;
     final landscapeDuration = monitorSettings.landscapeDuration;
+    final refreshRateHz = monitorSettings.refreshRateHz;
     final backgroundColor = monitorSettings.backgroundColor;
     final lineColor = monitorSettings.lineColor;
     final gridColor = monitorSettings.gridColor;
 
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)}s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)}s";
+    final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)}Hz";
 
     // analytics settings
     final autoUploadOn = ref.watch(autoUploadOnProvider);
@@ -310,6 +326,23 @@ class Settings extends ConsumerWidget {
                 max: 20,
                 divisions: 9,
                 label: landscapeDurationString,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.speed_outlined),
+            title: const Text(str.refreshRate),
+            subtitle: Text(refreshRateHzString),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: refreshRateHz,
+                onChanged:
+                    ref.read(monitorSettingsProvider.notifier).setRefreshRateHz,
+                min: 10,
+                max: 60,
+                divisions: 10,
+                label: refreshRateHzString,
               ),
             ),
           ),
