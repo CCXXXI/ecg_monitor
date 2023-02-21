@@ -29,7 +29,9 @@ void main() async {
         ..addIntegration(LoggingIntegration())
         ..sendDefaultPii = true;
     },
-    appRunner: () => runApp(const App()),
+    appRunner: () => runApp(
+      const SentryScreenshotWidget(child: ProviderScope(child: App())),
+    ),
   );
 }
 
@@ -37,14 +39,10 @@ class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) => SentryScreenshotWidget(
-        child: ProviderScope(
-          child: MaterialApp.router(
-            title: str.appName,
-            routerConfig: router,
-            theme: ThemeData.light(useMaterial3: true),
-            darkTheme: ThemeData.dark(useMaterial3: true),
-          ),
-        ),
+  Widget build(BuildContext context) => MaterialApp.router(
+        title: str.appName,
+        routerConfig: router,
+        theme: ThemeData.light(useMaterial3: true),
+        darkTheme: ThemeData.dark(useMaterial3: true),
       );
 }

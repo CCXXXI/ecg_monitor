@@ -1,4 +1,5 @@
 import "dart:async";
+import "dart:collection";
 import "dart:math";
 
 import "package:fl_chart/fl_chart.dart";
@@ -11,10 +12,19 @@ import "../mine/settings.dart";
 
 part "chart.g.dart";
 
+@riverpod
+double _refreshInterval(_RefreshIntervalRef ref) {
+  final rateHz = ref.watch(monitorSettingsProvider).refreshRateHz;
+  return Duration.millisecondsPerSecond / rateHz;
+}
+
 var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
+  static var _previousRefreshTimeMs = 0.0;
+  static final _buffer = Queue<FlSpot>();
+
   @override
   List<FlSpot> build() {
     unawaited(ref.watch(ecgProvider.stream).forEach(add));
@@ -22,11 +32,21 @@ class _Points extends _$Points {
   }
 
   void add(double y) {
+    // add new point
     final x = DateTime.now().millisecondsSinceEpoch.toDouble();
-    while (state.isNotEmpty && state.first.x < x - _maxDurationMs) {
-      state.removeAt(0);
+    _buffer.addLast(FlSpot(x, y));
+
+    // remove outdated points
+    while (_buffer.first.x < x - _maxDurationMs) {
+      _buffer.removeFirst();
     }
-    state = [...state, FlSpot(x, y)];
+
+    // refresh UI
+    final intervalMs = ref.watch(_refreshIntervalProvider);
+    if (x >= _previousRefreshTimeMs + intervalMs) {
+      _previousRefreshTimeMs = x;
+      state = _buffer.toList();
+    }
   }
 }
 

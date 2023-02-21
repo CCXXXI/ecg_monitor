@@ -6,7 +6,7 @@ part of 'settings.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$monitorSettingsHash() => r'8c788e380804c6d3d677e33e6eb4c7714ae6333e';
+String _$monitorSettingsHash() => r'a13a299c6d3391fce59b64033e83ee109affa993';
 
 /// See also [MonitorSettings].
 @ProviderFor(MonitorSettings)
@@ -22,7 +22,6 @@ final monitorSettingsProvider =
 );
 
 typedef _$MonitorSettings = AutoDisposeNotifier<MonitorSettingGroup>;
-
 String _$autoUploadOnHash() => r'e591db100a354cbdd87d595304f06d2ef7357360';
 
 /// See also [AutoUploadOn].
@@ -53,7 +52,7 @@ final fakeDeviceOnProvider =
 );
 
 typedef _$FakeDeviceOn = AutoDisposeNotifier<bool>;
-String _$loggerLevelHash() => r'3dc7f79c8026e2c51232798edbcbfe4610ee5690';
+String _$loggerLevelHash() => r'd45834a329b8245628eb85b4c01d64dc75a62362';
 
 /// See also [_LoggerLevel].
 @ProviderFor(_LoggerLevel)
