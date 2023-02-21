@@ -19,6 +19,9 @@ mixin _$MonitorSettingGroup {
   double get portraitDuration => throw _privateConstructorUsedError;
   double get landscapeDuration => throw _privateConstructorUsedError;
   double get refreshRateHz => throw _privateConstructorUsedError;
+
+  double get minDistance => throw _privateConstructorUsedError;
+
   Color get backgroundColor => throw _privateConstructorUsedError;
   Color get lineColor => throw _privateConstructorUsedError;
   Color get gridColor => throw _privateConstructorUsedError;
@@ -41,6 +44,7 @@ abstract class $MonitorSettingGroupCopyWith<$Res> {
       {double portraitDuration,
       double landscapeDuration,
       double refreshRateHz,
+      double minDistance,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -65,6 +69,7 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
     Object? refreshRateHz = null,
+    Object? minDistance = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -84,6 +89,10 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
       refreshRateHz: null == refreshRateHz
           ? _value.refreshRateHz
           : refreshRateHz // ignore: cast_nullable_to_non_nullable
+              as double,
+      minDistance: null == minDistance
+          ? _value.minDistance
+          : minDistance // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -125,6 +134,7 @@ abstract class _$$_MonitorSettingGroupCopyWith<$Res>
       {double portraitDuration,
       double landscapeDuration,
       double refreshRateHz,
+      double minDistance,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -147,6 +157,7 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
     Object? refreshRateHz = null,
+    Object? minDistance = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -166,6 +177,10 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
       refreshRateHz: null == refreshRateHz
           ? _value.refreshRateHz
           : refreshRateHz // ignore: cast_nullable_to_non_nullable
+              as double,
+      minDistance: null == minDistance
+          ? _value.minDistance
+          : minDistance // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -204,6 +219,7 @@ class _$_MonitorSettingGroup
       {required this.portraitDuration,
       required this.landscapeDuration,
       required this.refreshRateHz,
+      required this.minDistance,
       required this.backgroundColor,
       required this.lineColor,
       required this.gridColor,
@@ -217,6 +233,8 @@ class _$_MonitorSettingGroup
   final double landscapeDuration;
   @override
   final double refreshRateHz;
+  @override
+  final double minDistance;
   @override
   final Color backgroundColor;
   @override
@@ -232,7 +250,7 @@ class _$_MonitorSettingGroup
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDotsOn: $showDotsOn)';
+    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDotsOn: $showDotsOn)';
   }
 
   @override
@@ -243,6 +261,7 @@ class _$_MonitorSettingGroup
       ..add(DiagnosticsProperty('portraitDuration', portraitDuration))
       ..add(DiagnosticsProperty('landscapeDuration', landscapeDuration))
       ..add(DiagnosticsProperty('refreshRateHz', refreshRateHz))
+      ..add(DiagnosticsProperty('minDistance', minDistance))
       ..add(DiagnosticsProperty('backgroundColor', backgroundColor))
       ..add(DiagnosticsProperty('lineColor', lineColor))
       ..add(DiagnosticsProperty('gridColor', gridColor))
@@ -262,6 +281,8 @@ class _$_MonitorSettingGroup
                 other.landscapeDuration == landscapeDuration) &&
             (identical(other.refreshRateHz, refreshRateHz) ||
                 other.refreshRateHz == refreshRateHz) &&
+            (identical(other.minDistance, minDistance) ||
+                other.minDistance == minDistance) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.lineColor, lineColor) ||
@@ -282,6 +303,7 @@ class _$_MonitorSettingGroup
       portraitDuration,
       landscapeDuration,
       refreshRateHz,
+      minDistance,
       backgroundColor,
       lineColor,
       gridColor,
@@ -302,6 +324,7 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
       {required final double portraitDuration,
       required final double landscapeDuration,
       required final double refreshRateHz,
+      required final double minDistance,
       required final Color backgroundColor,
       required final Color lineColor,
       required final Color gridColor,
@@ -311,18 +334,28 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
 
   @override
   double get portraitDuration;
+
   @override
   double get landscapeDuration;
+
   @override
   double get refreshRateHz;
+
+  @override
+  double get minDistance;
+
   @override
   Color get backgroundColor;
+
   @override
   Color get lineColor;
+
   @override
   Color get gridColor;
+
   @override
   LineType get horizontalLineType;
+
   @override
   LineType get verticalLineType;
   @override

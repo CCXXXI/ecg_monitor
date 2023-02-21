@@ -3,6 +3,7 @@ const loggerLevelIndex = "loggerLevelIndex";
 const portraitDuration = "portraitDuration";
 const landscapeDuration = "landscapeDuration";
 const refreshRateHz = "refreshRateHz";
+const minDistance = "minDistance";
 const backgroundColorHex = "backgroundColorHex";
 const lineColorHex = "lineColorHex";
 const gridColorHex = "gridColorHex";

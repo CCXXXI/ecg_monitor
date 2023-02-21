@@ -22,8 +22,6 @@ var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
-  static const _minDistance = 1;
-
   static var _previousRefreshTimeMs = 0.0;
   static final _buffer = Queue<FlSpot>();
 
@@ -39,8 +37,9 @@ class _Points extends _$Points {
     final point = FlSpot(x, y);
 
     // ignore if too close to the previous point
+    final minDistance = ref.watch(monitorSettingsProvider).minDistance;
     if (_buffer.isNotEmpty &&
-        Chart.normalizedDistance(_buffer.last, point) < _minDistance) {
+        Chart.normalizedDistance(_buffer.last, point) < minDistance) {
       return;
     }
 

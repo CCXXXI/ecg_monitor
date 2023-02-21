@@ -23,6 +23,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     required double portraitDuration,
     required double landscapeDuration,
     required double refreshRateHz,
+    required double minDistance,
     required Color backgroundColor,
     required Color lineColor,
     required Color gridColor,
@@ -35,6 +36,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     portraitDuration: 5,
     landscapeDuration: 10,
     refreshRateHz: 20,
+    minDistance: 1,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     gridColor: Color(0xffff0000),
@@ -47,6 +49,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     portraitDuration: 5,
     landscapeDuration: 10,
     refreshRateHz: 20,
+    minDistance: 1,
     backgroundColor: Colors.black,
     lineColor: Color(0xff00ff00),
     gridColor: Colors.white,
@@ -60,6 +63,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     portraitDuration: 5,
     landscapeDuration: 10,
     refreshRateHz: 20,
+    minDistance: 1,
     backgroundColor: Colors.black,
     lineColor: Colors.green,
     gridColor: Colors.white,
@@ -88,6 +92,11 @@ class MonitorSettings extends _$MonitorSettings {
     final refreshRateHz = prefs.getDouble(key.refreshRateHz);
     if (refreshRateHz != null) {
       s = s.copyWith(refreshRateHz: refreshRateHz);
+    }
+
+    final minDistance = prefs.getDouble(key.minDistance);
+    if (minDistance != null) {
+      s = s.copyWith(minDistance: minDistance);
     }
 
     final backgroundColorHex = prefs.getInt(key.backgroundColorHex);
@@ -131,6 +140,8 @@ class MonitorSettings extends _$MonitorSettings {
     state = s;
     await prefs.setDouble(key.portraitDuration, s.portraitDuration);
     await prefs.setDouble(key.landscapeDuration, s.landscapeDuration);
+    await prefs.setDouble(key.refreshRateHz, s.refreshRateHz);
+    await prefs.setDouble(key.minDistance, s.minDistance);
     await prefs.setInt(key.backgroundColorHex, s.backgroundColor.value);
     await prefs.setInt(key.lineColorHex, s.lineColor.value);
     await prefs.setInt(key.gridColorHex, s.gridColor.value);
@@ -152,6 +163,11 @@ class MonitorSettings extends _$MonitorSettings {
   Future<void> setRefreshRateHz(double refreshRateHz) async {
     state = state.copyWith(refreshRateHz: refreshRateHz);
     await prefs.setDouble(key.refreshRateHz, refreshRateHz);
+  }
+
+  Future<void> setMinDistance(double minDistance) async {
+    state = state.copyWith(minDistance: minDistance);
+    await prefs.setDouble(key.minDistance, minDistance);
   }
 
   Future<void> setBackgroundColor(Color color) async {
@@ -236,6 +252,7 @@ class Settings extends ConsumerWidget {
     final portraitDuration = monitorSettings.portraitDuration;
     final landscapeDuration = monitorSettings.landscapeDuration;
     final refreshRateHz = monitorSettings.refreshRateHz;
+    final minDistance = monitorSettings.minDistance;
     final backgroundColor = monitorSettings.backgroundColor;
     final lineColor = monitorSettings.lineColor;
     final gridColor = monitorSettings.gridColor;
@@ -243,6 +260,7 @@ class Settings extends ConsumerWidget {
     final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
     final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)} Hz";
+    final minDistanceString = minDistance.toStringAsFixed(1);
 
     // analytics settings
     final autoUploadOn = ref.watch(autoUploadOnProvider);
@@ -343,6 +361,22 @@ class Settings extends ConsumerWidget {
                 max: 60,
                 divisions: 10,
                 label: refreshRateHzString,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.timeline_outlined),
+            title: const Text(str.minDistance),
+            subtitle: Text(minDistanceString),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: minDistance,
+                onChanged:
+                    ref.read(monitorSettingsProvider.notifier).setMinDistance,
+                max: 5,
+                divisions: 10,
+                label: minDistanceString,
               ),
             ),
           ),
