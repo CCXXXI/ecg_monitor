@@ -162,6 +162,7 @@ class Chart extends ConsumerWidget {
           LineChartBarData(
             spots: points,
             color: settings.lineColor,
+            preventCurveOverShooting: true,
             dotData: FlDotData(
               show: settings.showDotsOn,
               getDotPainter: (spot, xPercentage, bar, index) =>
