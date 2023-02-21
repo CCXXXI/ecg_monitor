@@ -316,7 +316,6 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.color_lens_outlined),
             title: const Text(str.backgroundColor),
-            subtitle: Text("0x${backgroundColor.hex}"),
             trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
             onTap: () async => ref
                 .read(monitorSettingsProvider.notifier)
@@ -325,7 +324,6 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.show_chart_outlined),
             title: const Text(str.lineColor),
-            subtitle: Text("0x${lineColor.hex}"),
             trailing: ColorIndicator(color: lineColor, hasBorder: true),
             onTap: () async => ref
                 .read(monitorSettingsProvider.notifier)
@@ -334,7 +332,6 @@ class Settings extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.grid_on_outlined),
             title: const Text(str.gridColor),
-            subtitle: Text("0x${gridColor.hex}"),
             trailing: ColorIndicator(color: gridColor, hasBorder: true),
             onTap: () async => ref
                 .read(monitorSettingsProvider.notifier)
