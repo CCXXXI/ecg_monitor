@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 
+import "heart_rate.dart";
 import "real_time_chart.dart";
 
 class RealTime extends StatelessWidget {
@@ -13,7 +14,7 @@ class RealTime extends StatelessWidget {
     if (isPortrait) {
       return Column(
         children: const [
-          Expanded(child: Placeholder()),
+          Expanded(child: HeartRate()),
           Expanded(child: RealTimeChart()),
           Expanded(child: Placeholder()),
         ],
