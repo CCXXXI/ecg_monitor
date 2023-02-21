@@ -11,7 +11,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.5
   ffi: ^2.0.1
-  fl_chart: ^0.60.0
+  fl_chart: ^0.61.0
   flex_color_picker: ^3.1.0
   flutter:
     sdk: flutter
