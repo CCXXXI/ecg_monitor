@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.13.0...v0.13.1) (2023-02-21)
+
+### Bug Fixes
+
+- update strings ([#143](https://github.com/CCXXXI/ecg_monitor/issues/143)) ([ca130ab](https://github.com/CCXXXI/ecg_monitor/commit/ca130ab4bedbe6a52283d3b4552540dac7a5818c))
+
 ## [0.13.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.12.0...v0.13.0) (2023-02-21)
 
 ### Features
