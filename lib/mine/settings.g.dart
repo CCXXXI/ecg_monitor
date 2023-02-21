@@ -52,7 +52,6 @@ final fakeDeviceOnProvider =
 );
 
 typedef _$FakeDeviceOn = AutoDisposeNotifier<bool>;
-
 String _$loggerLevelHash() => r'd45834a329b8245628eb85b4c01d64dc75a62362';
 
 /// See also [_LoggerLevel].

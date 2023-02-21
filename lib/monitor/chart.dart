@@ -13,7 +13,7 @@ import "../mine/settings.dart";
 part "chart.g.dart";
 
 @riverpod
-double refreshInterval(RefreshIntervalRef ref) {
+double _refreshInterval(_RefreshIntervalRef ref) {
   final rateHz = ref.watch(monitorSettingsProvider).refreshRateHz;
   return Duration.millisecondsPerSecond / rateHz;
 }
@@ -42,7 +42,7 @@ class _Points extends _$Points {
     }
 
     // refresh UI
-    final intervalMs = ref.watch(refreshIntervalProvider);
+    final intervalMs = ref.watch(_refreshIntervalProvider);
     if (x >= _previousRefreshTimeMs + intervalMs) {
       _previousRefreshTimeMs = x;
       state = _buffer.toList();

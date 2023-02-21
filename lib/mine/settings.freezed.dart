@@ -18,9 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MonitorSettingGroup {
   double get portraitDuration => throw _privateConstructorUsedError;
   double get landscapeDuration => throw _privateConstructorUsedError;
-
   double get refreshRateHz => throw _privateConstructorUsedError;
-
   Color get backgroundColor => throw _privateConstructorUsedError;
   Color get lineColor => throw _privateConstructorUsedError;
   Color get gridColor => throw _privateConstructorUsedError;
@@ -313,25 +311,18 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
 
   @override
   double get portraitDuration;
-
   @override
   double get landscapeDuration;
-
   @override
   double get refreshRateHz;
-
   @override
   Color get backgroundColor;
-
   @override
   Color get lineColor;
-
   @override
   Color get gridColor;
-
   @override
   LineType get horizontalLineType;
-
   @override
   LineType get verticalLineType;
   @override

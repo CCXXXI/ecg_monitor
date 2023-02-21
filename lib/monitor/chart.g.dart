@@ -6,7 +6,7 @@ part of 'chart.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'38d041c9e29bb773e4830e7cda6dd2863c7e9b9d';
+String _$pointsHash() => r'ce80b37cd3081cad7c6d2ced23f5357ca237263b';
 
 /// See also [_Points].
 @ProviderFor(_Points)
@@ -22,13 +22,13 @@ final _pointsProvider =
 
 typedef _$Points = AutoDisposeNotifier<List<FlSpot>>;
 
-String _$refreshIntervalHash() => r'3da7684d1376fc8f00e10cf1eed5cea32b1beb0b';
+String _$refreshIntervalHash() => r'c80440bc0086babe229d7676cee864254afbafc8';
 
-/// See also [refreshInterval].
-@ProviderFor(refreshInterval)
-final refreshIntervalProvider = AutoDisposeProvider<double>.internal(
-  refreshInterval,
-  name: r'refreshIntervalProvider',
+/// See also [_refreshInterval].
+@ProviderFor(_refreshInterval)
+final _refreshIntervalProvider = AutoDisposeProvider<double>.internal(
+  _refreshInterval,
+  name: r'_refreshIntervalProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$refreshIntervalHash,
@@ -36,5 +36,5 @@ final refreshIntervalProvider = AutoDisposeProvider<double>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef RefreshIntervalRef = AutoDisposeProviderRef<double>;
+typedef _RefreshIntervalRef = AutoDisposeProviderRef<double>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
