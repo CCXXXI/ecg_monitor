@@ -208,6 +208,8 @@ class _LoggerLevel extends _$LoggerLevel {
     final index = loggerLevels.indexOf(level);
     await prefs.setInt(key.loggerLevelIndex, index);
   }
+
+  Future<void> setIndex(int index) async => set(loggerLevels[index]);
 }
 
 class Settings extends ConsumerWidget {
@@ -399,7 +401,7 @@ class Settings extends ConsumerWidget {
                 value: loggerLevelIndex.toDouble(),
                 onChanged: (value) async => ref
                     .read(_loggerLevelProvider.notifier)
-                    .set(loggerLevels[value.toInt()]),
+                    .setIndex(value.toInt()),
                 max: loggerLevels.length - 1,
                 divisions: loggerLevels.length - 1,
                 label: loggerLevel.name,
