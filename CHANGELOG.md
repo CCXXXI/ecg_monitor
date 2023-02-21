@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.12.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.2...v0.12.0) (2023-02-21)
+
+### Features
+
+- **mine:** add spaces between numbers and units ([e523c01](https://github.com/CCXXXI/ecg_monitor/commit/e523c0120e7c04d566552cfe3205114b43ff37fc))
+- **mine:** update setting titles & subtitles ([1663c96](https://github.com/CCXXXI/ecg_monitor/commit/1663c965de3795acb3a1097ab2248b3d65ffd709))
+- **monitor:** add refresh rate setting ([eda813c](https://github.com/CCXXXI/ecg_monitor/commit/eda813c6f2844268b3c26b0fc72d0c514a7a27c6))
+
+### Performance Improvements
+
+- [ImgBot] Optimize images ([#134](https://github.com/CCXXXI/ecg_monitor/issues/134)) ([9885ae2](https://github.com/CCXXXI/ecg_monitor/commit/9885ae25feb5681896242016a369061c575de708))
+- **monitor:** slow down UI refresh ([97ca177](https://github.com/CCXXXI/ecg_monitor/commit/97ca177ca7d0cfbf3b337b35d26fbe9a17dfe969))
+
+### Code Refactoring
+
+- **mine:** add setIndex for \_LoggerLevel ([71ec345](https://github.com/CCXXXI/ecg_monitor/commit/71ec3456c65cfb17b87524f7f1ecd42c442dd8ed))
+- **mine:** selected.first -&gt; selected.single ([6401b80](https://github.com/CCXXXI/ecg_monitor/commit/6401b80ae71d04fb8aa0bb0aa2837e5599dae7e7))
+- **monitor:** make refreshInterval private ([766ff6e](https://github.com/CCXXXI/ecg_monitor/commit/766ff6eaec72c7cb98323edea61ef18a6ae8efed))
+- move ProviderScope out of App ([c08e844](https://github.com/CCXXXI/ecg_monitor/commit/c08e844bf80b57f92e69394b32be538482ec7c66))
+
+### Tests
+
+- add tests for App ([0345fac](https://github.com/CCXXXI/ecg_monitor/commit/0345facc65426a813c80ef73a122067e611c2d61))
+
+### Styles
+
+- add trailing comma ([54a3d80](https://github.com/CCXXXI/ecg_monitor/commit/54a3d808d7f1c19e3f260cd28a35226acd77b38e))
+
 ## [0.11.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.11.1...v0.11.2) (2023-02-20)
 
 ### Bug Fixes
