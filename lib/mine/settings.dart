@@ -45,32 +45,16 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     showDotsOn: false,
   );
 
-  static const simple = MonitorSettingGroup(
-    portraitDuration: 5,
-    landscapeDuration: 10,
-    refreshRateHz: 20,
-    minDistance: 1,
+  static final simple = professional.copyWith(
     backgroundColor: Colors.black,
-    lineColor: Color(0xff00ff00),
+    lineColor: const Color(0xff00ff00),
     gridColor: Colors.white,
     horizontalLineType: LineType.hide,
     verticalLineType: LineType.hide,
-    showDotsOn: false,
   );
 
   /// For [ButtonSegment.value] only.
-  static const custom = MonitorSettingGroup(
-    portraitDuration: 5,
-    landscapeDuration: 10,
-    refreshRateHz: 20,
-    minDistance: 1,
-    backgroundColor: Colors.black,
-    lineColor: Colors.green,
-    gridColor: Colors.white,
-    horizontalLineType: LineType.hide,
-    verticalLineType: LineType.hide,
-    showDotsOn: true,
-  );
+  static final custom = simple.copyWith(showDotsOn: true);
 }
 
 @riverpod
@@ -281,21 +265,21 @@ class Settings extends ConsumerWidget {
             leading: const Icon(Icons.monitor_heart_outlined),
             title: const Text(str.style),
             trailing: SegmentedButton(
-              segments: const [
-                ButtonSegment(
+              segments: [
+                const ButtonSegment(
                   value: MonitorSettingGroup.professional,
                   icon: Icon(Icons.grid_on_outlined),
                   label: Text(str.professional),
                 ),
                 ButtonSegment(
                   value: MonitorSettingGroup.simple,
-                  icon: Icon(Icons.square_outlined),
-                  label: Text(str.simple),
+                  icon: const Icon(Icons.square_outlined),
+                  label: const Text(str.simple),
                 ),
                 ButtonSegment(
                   value: MonitorSettingGroup.custom,
-                  icon: Icon(Icons.tune_outlined),
-                  label: Text(str.custom),
+                  icon: const Icon(Icons.tune_outlined),
+                  label: const Text(str.custom),
                   enabled: false,
                 ),
               ],
