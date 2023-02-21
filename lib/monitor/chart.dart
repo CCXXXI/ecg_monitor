@@ -197,8 +197,8 @@ class Chart extends ConsumerWidget {
 
   @visibleForTesting
   static double normalizedDistance(FlSpot a, FlSpot b) {
-    final dx = (b.x - a.x) / Chart._smallXInterval;
-    final dy = (b.y - a.y) / Chart._smallYInterval;
+    final dx = (b.x - a.x) / _smallXInterval;
+    final dy = (b.y - a.y) / _smallYInterval;
     return sqrt(dx * dx + dy * dy);
   }
 }
