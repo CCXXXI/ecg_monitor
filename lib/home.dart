@@ -10,7 +10,7 @@ final _logger = Logger("home");
 class Home extends ConsumerWidget {
   const Home(this._child, {super.key});
 
-  static const _routes = ["/monitor", "/analytics", "/device_manager", "/mine"];
+  static const _routes = ["/monitor", "/analytics", "/device_manager", "/me"];
 
   final Widget _child;
 
@@ -42,7 +42,7 @@ class Home extends ConsumerWidget {
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outlined),
-            label: str.mine,
+            label: str.me,
           ),
         ],
       ),
