@@ -10,3 +10,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/ccxxxi/ecg_monitor)](https://github.com/CCXXXI/ecg_monitor/releases)
 
 Yet another electrocardiogram monitor app.
+
+## Submodules
+
+- [CCXXXI/ecg_model](https://github.com/CCXXXI/ecg_model)
