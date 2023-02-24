@@ -5,8 +5,8 @@ import "package:url_launcher/url_launcher.dart";
 import "../utils/constants/strings.dart" as str;
 import "../utils/constants/urls.dart" as urls;
 
-class Mine extends StatelessWidget {
-  const Mine({super.key});
+class Me extends StatelessWidget {
+  const Me({super.key});
 
   @override
   Widget build(BuildContext context) => ListView(
@@ -29,7 +29,7 @@ class Mine extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.settings_outlined),
             title: const Text(str.settings),
-            onTap: () => context.push("/mine/settings"),
+            onTap: () => context.push("/me/settings"),
           ),
           AboutListTile(
             icon: const Icon(Icons.info_outlined),

@@ -18,6 +18,6 @@ void main() {
     expect(find.text(str.monitor), findsOneWidget);
     expect(find.text(str.analytics), findsOneWidget);
     expect(find.text(str.deviceManager), findsOneWidget);
-    expect(find.text(str.mine), findsOneWidget);
+    expect(find.text(str.me), findsOneWidget);
   });
 }

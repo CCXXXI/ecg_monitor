@@ -6,8 +6,8 @@ import "../analytics/analytics.dart";
 import "../database.dart";
 import "../device_manager/device_manager.dart";
 import "../home.dart";
-import "../mine/mine.dart";
-import "../mine/settings.dart";
+import "../me/me.dart";
+import "../me/settings.dart";
 import "../monitor/monitor.dart";
 import "../utils/constants/keys.dart" as key;
 
@@ -41,13 +41,13 @@ final router = GoRouter(
           builder: (context, state) => const DeviceManager(),
         ),
         GoRoute(
-          path: "/mine",
-          builder: (context, state) => const Mine(),
+          path: "/me",
+          builder: (context, state) => const Me(),
         ),
       ],
     ),
     GoRoute(
-      path: "/mine/settings",
+      path: "/me/settings",
       builder: (context, state) => const Settings(),
       parentNavigatorKey: _rootKey,
     ),
