@@ -21,8 +21,8 @@ class ChartSettingsData with _$ChartSettingsData {
   }) = _ChartSettingsData;
 
   static final simple = ChartSettingsData(
-    portraitDuration: 5,
-    landscapeDuration: 10,
+    portraitDuration: 3,
+    landscapeDuration: 6,
     refreshRateHz: 30,
     minDistance: 1,
     backgroundColor: Colors.white,
