@@ -491,4 +491,40 @@ final _realTimeChartSettingsSetterProvider =
 );
 
 typedef _$RealTimeChartSettingsSetter = AutoDisposeNotifier<void>;
+
+String _$historyChartSettingsHash() =>
+    r'db3a231ad6fe334fc10a6494296a8e8900d9ab50';
+
+/// See also [HistoryChartSettings].
+@ProviderFor(HistoryChartSettings)
+final historyChartSettingsProvider = AutoDisposeNotifierProvider<
+    HistoryChartSettings, ChartSettingsData>.internal(
+  HistoryChartSettings.new,
+  name: r'historyChartSettingsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$historyChartSettingsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$HistoryChartSettings = AutoDisposeNotifier<ChartSettingsData>;
+
+String _$historyChartSettingsSetterHash() =>
+    r'def1991a82de1503317d25e2506c23b0b1296c79';
+
+/// See also [_HistoryChartSettingsSetter].
+@ProviderFor(_HistoryChartSettingsSetter)
+final _historyChartSettingsSetterProvider =
+    AutoDisposeNotifierProvider<_HistoryChartSettingsSetter, void>.internal(
+  _HistoryChartSettingsSetter.new,
+  name: r'_historyChartSettingsSetterProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$historyChartSettingsSetterHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$HistoryChartSettingsSetter = AutoDisposeNotifier<void>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

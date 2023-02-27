@@ -114,6 +114,32 @@ class Settings extends ConsumerWidget {
             ),
           ),
           const _SectionTitle(str.history),
+          _ChartSettings(
+            chartSettingsData: ref.watch(historyChartSettingsProvider),
+            onChartSettingsChanged:
+                ref.read(historyChartSettingsProvider.notifier).set,
+            portraitDuration: ref.watch(historyPortraitDurationProvider),
+            onPortraitDurationChanged:
+                ref.read(historyPortraitDurationProvider.notifier).set,
+            landscapeDuration: ref.watch(historyLandscapeDurationProvider),
+            onLandscapeDurationChanged:
+                ref.read(historyLandscapeDurationProvider.notifier).set,
+            backgroundColor: ref.watch(historyBackgroundColorProvider),
+            onBackgroundColorChanged:
+                ref.read(historyBackgroundColorProvider.notifier).set,
+            lineColor: ref.watch(historyLineColorProvider),
+            onLineColorChanged: ref.read(historyLineColorProvider.notifier).set,
+            gridColor: ref.watch(historyGridColorProvider),
+            onGridColorChanged: ref.read(historyGridColorProvider.notifier).set,
+            horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
+            onHorizontalLineTypeChanged:
+                ref.read(historyHorizontalLineTypeProvider.notifier).set,
+            verticalLineType: ref.watch(historyVerticalLineTypeProvider),
+            onVerticalLineTypeChanged:
+                ref.read(historyVerticalLineTypeProvider.notifier).set,
+            showDots: ref.watch(historyShowDotsProvider),
+            onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
+          ),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
@@ -245,14 +271,14 @@ class _ChartSettings extends StatelessWidget {
           trailing: SegmentedButton(
             segments: [
               ButtonSegment(
-                value: ChartSettingsData.professional,
-                icon: const Icon(Icons.grid_on_outlined),
-                label: const Text(str.professional),
-              ),
-              ButtonSegment(
                 value: ChartSettingsData.simple,
                 icon: const Icon(Icons.square_outlined),
                 label: const Text(str.simple),
+              ),
+              ButtonSegment(
+                value: ChartSettingsData.professional,
+                icon: const Icon(Icons.grid_on_outlined),
+                label: const Text(str.professional),
               ),
               ButtonSegment(
                 value: ChartSettingsData.custom,
@@ -354,6 +380,7 @@ class _ChartSettings extends StatelessWidget {
           value: showDots,
           onChanged: onShowDotsChanged,
         ),
+        const Divider(),
       ],
     );
   }

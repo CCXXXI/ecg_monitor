@@ -161,6 +161,93 @@ final historyAutoUploadProvider = _boolProvider(
   "$history.$autoUpload",
   true,
 );
+
+final historyPortraitDurationProvider = _doubleProvider(
+  "$history.$portraitDuration",
+  ChartSettingsData.professional.portraitDuration,
+);
+final historyLandscapeDurationProvider = _doubleProvider(
+  "$history.$landscapeDuration",
+  ChartSettingsData.professional.landscapeDuration,
+);
+final historyBackgroundColorProvider = _colorProvider(
+  "$history.$backgroundColor",
+  ChartSettingsData.professional.backgroundColor,
+);
+final historyLineColorProvider = _colorProvider(
+  "$history.$lineColor",
+  ChartSettingsData.professional.lineColor,
+);
+final historyGridColorProvider = _colorProvider(
+  "$history.$gridColor",
+  ChartSettingsData.professional.gridColor,
+);
+final historyHorizontalLineTypeProvider = _lineTypeProvider(
+  "$history.$horizontalLineType",
+  ChartSettingsData.professional.horizontalLineType,
+);
+final historyVerticalLineTypeProvider = _lineTypeProvider(
+  "$history.$verticalLineType",
+  ChartSettingsData.professional.verticalLineType,
+);
+final historyShowDotsProvider = _boolProvider(
+  "$history.$showDots",
+  ChartSettingsData.professional.showDots,
+);
+
+@riverpod
+class HistoryChartSettings extends _$HistoryChartSettings {
+  @override
+  ChartSettingsData build() => ChartSettingsData(
+        portraitDuration: ref.watch(historyPortraitDurationProvider),
+        landscapeDuration: ref.watch(historyLandscapeDurationProvider),
+        backgroundColor: ref.watch(historyBackgroundColorProvider),
+        lineColor: ref.watch(historyLineColorProvider),
+        gridColor: ref.watch(historyGridColorProvider),
+        horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
+        verticalLineType: ref.watch(historyVerticalLineTypeProvider),
+        showDots: ref.watch(historyShowDotsProvider),
+      );
+
+  Future<void> set(ChartSettingsData chartSettingsData) async {
+    await ref
+        .read(_historyChartSettingsSetterProvider.notifier)
+        .set(chartSettingsData);
+  }
+}
+
+@riverpod
+class _HistoryChartSettingsSetter extends _$HistoryChartSettingsSetter {
+  @override
+  void build() {}
+
+  Future<void> set(ChartSettingsData chartSettingsData) async {
+    await ref
+        .read(historyPortraitDurationProvider.notifier)
+        .set(chartSettingsData.portraitDuration);
+    await ref
+        .read(historyLandscapeDurationProvider.notifier)
+        .set(chartSettingsData.landscapeDuration);
+    await ref
+        .read(historyBackgroundColorProvider.notifier)
+        .set(chartSettingsData.backgroundColor);
+    await ref
+        .read(historyLineColorProvider.notifier)
+        .set(chartSettingsData.lineColor);
+    await ref
+        .read(historyGridColorProvider.notifier)
+        .set(chartSettingsData.gridColor);
+    await ref
+        .read(historyHorizontalLineTypeProvider.notifier)
+        .set(chartSettingsData.horizontalLineType);
+    await ref
+        .read(historyVerticalLineTypeProvider.notifier)
+        .set(chartSettingsData.verticalLineType);
+    await ref
+        .read(historyShowDotsProvider.notifier)
+        .set(chartSettingsData.showDots);
+  }
+}
 // endregion
 
 // region analytics settings

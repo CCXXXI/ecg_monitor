@@ -2,8 +2,8 @@ import "package:package_info_plus/package_info_plus.dart";
 
 const realTime = "实时心电";
 const style = "样式";
-const professional = "专业";
 const simple = "简洁";
+const professional = "专业";
 const custom = "自定义";
 const portraitDuration = "竖屏数据范围";
 const landscapeDuration = "横屏数据范围";
