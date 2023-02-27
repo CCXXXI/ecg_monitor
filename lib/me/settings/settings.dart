@@ -9,7 +9,6 @@ import "../../database.dart";
 import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart" as str;
 import "../../utils/logger.dart";
-import "../model_test.dart";
 import "data_types.dart";
 import "providers.dart";
 
@@ -240,19 +239,6 @@ class Settings extends ConsumerWidget {
             title: const Text(str.fakeDevice),
             value: ref.watch(fakeDeviceOnProvider),
             onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
-          ),
-          ListTile(
-            leading: const Icon(Icons.compare_arrows_outlined),
-            title: const Text(str.modelTest),
-            enabled: !kIsWeb, // meaningless on web
-            onTap: () async {
-              final res = await modelTest();
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(res ? str.pass : str.fail)),
-                );
-              }
-            },
           ),
           ListTile(
             leading: const Icon(Icons.developer_mode_outlined),
