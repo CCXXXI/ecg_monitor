@@ -19,8 +19,8 @@ part "settings.g.dart";
 enum LineType { hide, simple, full }
 
 @freezed
-class MonitorSettingGroup with _$MonitorSettingGroup {
-  const factory MonitorSettingGroup({
+class ChartSettingsData with _$ChartSettingsData {
+  const factory ChartSettingsData({
     required double portraitDuration,
     required double landscapeDuration,
     required double refreshRateHz,
@@ -31,9 +31,9 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     required LineType horizontalLineType,
     required LineType verticalLineType,
     required bool showDots,
-  }) = _MonitorSettingGroup;
+  }) = _ChartSettingsData;
 
-  static const professional = MonitorSettingGroup(
+  static const professional = ChartSettingsData(
     portraitDuration: 5,
     landscapeDuration: 10,
     refreshRateHz: 30,
@@ -58,8 +58,8 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
 @riverpod
 class MonitorSettings extends _$MonitorSettings {
   @override
-  MonitorSettingGroup build() {
-    var s = MonitorSettingGroup.simple;
+  ChartSettingsData build() {
+    var s = ChartSettingsData.simple;
 
     final portraitDuration = prefs.getDouble(key.portraitDuration);
     if (portraitDuration != null) {
@@ -118,7 +118,7 @@ class MonitorSettings extends _$MonitorSettings {
     return s;
   }
 
-  Future<void> set(MonitorSettingGroup s) async {
+  Future<void> set(ChartSettingsData s) async {
     state = s;
     await prefs.setDouble(key.portraitDuration, s.portraitDuration);
     await prefs.setDouble(key.landscapeDuration, s.landscapeDuration);
@@ -239,28 +239,28 @@ class Settings extends ConsumerWidget {
             trailing: SegmentedButton(
               segments: [
                 const ButtonSegment(
-                  value: MonitorSettingGroup.professional,
+                  value: ChartSettingsData.professional,
                   icon: Icon(Icons.grid_on_outlined),
                   label: Text(str.professional),
                 ),
                 ButtonSegment(
-                  value: MonitorSettingGroup.simple,
+                  value: ChartSettingsData.simple,
                   icon: const Icon(Icons.square_outlined),
                   label: const Text(str.simple),
                 ),
                 ButtonSegment(
-                  value: MonitorSettingGroup.custom,
+                  value: ChartSettingsData.custom,
                   icon: const Icon(Icons.tune_outlined),
                   label: const Text(str.custom),
                   enabled: false,
                 ),
               ],
               selected: {
-                if (monitorSettings == MonitorSettingGroup.professional ||
-                    monitorSettings == MonitorSettingGroup.simple)
+                if (monitorSettings == ChartSettingsData.professional ||
+                    monitorSettings == ChartSettingsData.simple)
                   monitorSettings
                 else
-                  MonitorSettingGroup.custom
+                  ChartSettingsData.custom
               },
               onSelectionChanged: (selected) async => ref
                   .read(monitorSettingsProvider.notifier)

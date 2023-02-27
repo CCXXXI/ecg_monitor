@@ -15,28 +15,38 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MonitorSettingGroup {
+mixin _$ChartSettingsData {
   double get portraitDuration => throw _privateConstructorUsedError;
+
   double get landscapeDuration => throw _privateConstructorUsedError;
+
   double get refreshRateHz => throw _privateConstructorUsedError;
+
   double get minDistance => throw _privateConstructorUsedError;
+
   Color get backgroundColor => throw _privateConstructorUsedError;
+
   Color get lineColor => throw _privateConstructorUsedError;
+
   Color get gridColor => throw _privateConstructorUsedError;
+
   LineType get horizontalLineType => throw _privateConstructorUsedError;
+
   LineType get verticalLineType => throw _privateConstructorUsedError;
+
   bool get showDots => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MonitorSettingGroupCopyWith<MonitorSettingGroup> get copyWith =>
+  $ChartSettingsDataCopyWith<ChartSettingsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MonitorSettingGroupCopyWith<$Res> {
-  factory $MonitorSettingGroupCopyWith(
-          MonitorSettingGroup value, $Res Function(MonitorSettingGroup) then) =
-      _$MonitorSettingGroupCopyWithImpl<$Res, MonitorSettingGroup>;
+abstract class $ChartSettingsDataCopyWith<$Res> {
+  factory $ChartSettingsDataCopyWith(
+          ChartSettingsData value, $Res Function(ChartSettingsData) then) =
+      _$ChartSettingsDataCopyWithImpl<$Res, ChartSettingsData>;
+
   @useResult
   $Res call(
       {double portraitDuration,
@@ -52,12 +62,13 @@ abstract class $MonitorSettingGroupCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
-    implements $MonitorSettingGroupCopyWith<$Res> {
-  _$MonitorSettingGroupCopyWithImpl(this._value, this._then);
+class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
+    implements $ChartSettingsDataCopyWith<$Res> {
+  _$ChartSettingsDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -121,11 +132,12 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
 }
 
 /// @nodoc
-abstract class _$$_MonitorSettingGroupCopyWith<$Res>
-    implements $MonitorSettingGroupCopyWith<$Res> {
-  factory _$$_MonitorSettingGroupCopyWith(_$_MonitorSettingGroup value,
-          $Res Function(_$_MonitorSettingGroup) then) =
-      __$$_MonitorSettingGroupCopyWithImpl<$Res>;
+abstract class _$$_ChartSettingsDataCopyWith<$Res>
+    implements $ChartSettingsDataCopyWith<$Res> {
+  factory _$$_ChartSettingsDataCopyWith(_$_ChartSettingsData value,
+          $Res Function(_$_ChartSettingsData) then) =
+      __$$_ChartSettingsDataCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -142,11 +154,11 @@ abstract class _$$_MonitorSettingGroupCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MonitorSettingGroupCopyWithImpl<$Res>
-    extends _$MonitorSettingGroupCopyWithImpl<$Res, _$_MonitorSettingGroup>
-    implements _$$_MonitorSettingGroupCopyWith<$Res> {
-  __$$_MonitorSettingGroupCopyWithImpl(_$_MonitorSettingGroup _value,
-      $Res Function(_$_MonitorSettingGroup) _then)
+class __$$_ChartSettingsDataCopyWithImpl<$Res>
+    extends _$ChartSettingsDataCopyWithImpl<$Res, _$_ChartSettingsData>
+    implements _$$_ChartSettingsDataCopyWith<$Res> {
+  __$$_ChartSettingsDataCopyWithImpl(
+      _$_ChartSettingsData _value, $Res Function(_$_ChartSettingsData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -163,7 +175,7 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
     Object? verticalLineType = null,
     Object? showDots = null,
   }) {
-    return _then(_$_MonitorSettingGroup(
+    return _then(_$_ChartSettingsData(
       portraitDuration: null == portraitDuration
           ? _value.portraitDuration
           : portraitDuration // ignore: cast_nullable_to_non_nullable
@@ -210,10 +222,10 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MonitorSettingGroup
+class _$_ChartSettingsData
     with DiagnosticableTreeMixin
-    implements _MonitorSettingGroup {
-  const _$_MonitorSettingGroup(
+    implements _ChartSettingsData {
+  const _$_ChartSettingsData(
       {required this.portraitDuration,
       required this.landscapeDuration,
       required this.refreshRateHz,
@@ -248,14 +260,14 @@ class _$_MonitorSettingGroup
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
+    return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'MonitorSettingGroup'))
+      ..add(DiagnosticsProperty('type', 'ChartSettingsData'))
       ..add(DiagnosticsProperty('portraitDuration', portraitDuration))
       ..add(DiagnosticsProperty('landscapeDuration', landscapeDuration))
       ..add(DiagnosticsProperty('refreshRateHz', refreshRateHz))
@@ -272,7 +284,7 @@ class _$_MonitorSettingGroup
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MonitorSettingGroup &&
+            other is _$_ChartSettingsData &&
             (identical(other.portraitDuration, portraitDuration) ||
                 other.portraitDuration == portraitDuration) &&
             (identical(other.landscapeDuration, landscapeDuration) ||
@@ -312,13 +324,13 @@ class _$_MonitorSettingGroup
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MonitorSettingGroupCopyWith<_$_MonitorSettingGroup> get copyWith =>
-      __$$_MonitorSettingGroupCopyWithImpl<_$_MonitorSettingGroup>(
+  _$$_ChartSettingsDataCopyWith<_$_ChartSettingsData> get copyWith =>
+      __$$_ChartSettingsDataCopyWithImpl<_$_ChartSettingsData>(
           this, _$identity);
 }
 
-abstract class _MonitorSettingGroup implements MonitorSettingGroup {
-  const factory _MonitorSettingGroup(
+abstract class _ChartSettingsData implements ChartSettingsData {
+  const factory _ChartSettingsData(
       {required final double portraitDuration,
       required final double landscapeDuration,
       required final double refreshRateHz,
@@ -328,7 +340,7 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
       required final Color gridColor,
       required final LineType horizontalLineType,
       required final LineType verticalLineType,
-      required final bool showDots}) = _$_MonitorSettingGroup;
+      required final bool showDots}) = _$_ChartSettingsData;
 
   @override
   double get portraitDuration;
@@ -348,10 +360,12 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
   LineType get horizontalLineType;
   @override
   LineType get verticalLineType;
+
   @override
   bool get showDots;
+
   @override
   @JsonKey(ignore: true)
-  _$$_MonitorSettingGroupCopyWith<_$_MonitorSettingGroup> get copyWith =>
+  _$$_ChartSettingsDataCopyWith<_$_ChartSettingsData> get copyWith =>
       throw _privateConstructorUsedError;
 }
