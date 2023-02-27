@@ -17,23 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChartSettingsData {
   double get portraitDuration => throw _privateConstructorUsedError;
-
   double get landscapeDuration => throw _privateConstructorUsedError;
-
   double get refreshRateHz => throw _privateConstructorUsedError;
-
   double get minDistance => throw _privateConstructorUsedError;
-
   Color get backgroundColor => throw _privateConstructorUsedError;
-
   Color get lineColor => throw _privateConstructorUsedError;
-
   Color get gridColor => throw _privateConstructorUsedError;
-
   LineType get horizontalLineType => throw _privateConstructorUsedError;
-
   LineType get verticalLineType => throw _privateConstructorUsedError;
-
   bool get showDots => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -46,7 +37,6 @@ abstract class $ChartSettingsDataCopyWith<$Res> {
   factory $ChartSettingsDataCopyWith(
           ChartSettingsData value, $Res Function(ChartSettingsData) then) =
       _$ChartSettingsDataCopyWithImpl<$Res, ChartSettingsData>;
-
   @useResult
   $Res call(
       {double portraitDuration,
@@ -68,7 +58,6 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -137,7 +126,6 @@ abstract class _$$_ChartSettingsDataCopyWith<$Res>
   factory _$$_ChartSettingsDataCopyWith(_$_ChartSettingsData value,
           $Res Function(_$_ChartSettingsData) then) =
       __$$_ChartSettingsDataCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -325,34 +313,24 @@ abstract class _ChartSettingsData implements ChartSettingsData {
 
   @override
   double get portraitDuration;
-
   @override
   double get landscapeDuration;
-
   @override
   double get refreshRateHz;
-
   @override
   double get minDistance;
-
   @override
   Color get backgroundColor;
-
   @override
   Color get lineColor;
-
   @override
   Color get gridColor;
-
   @override
   LineType get horizontalLineType;
-
   @override
   LineType get verticalLineType;
-
   @override
   bool get showDots;
-
   @override
   @JsonKey(ignore: true)
   _$$_ChartSettingsDataCopyWith<_$_ChartSettingsData> get copyWith =>

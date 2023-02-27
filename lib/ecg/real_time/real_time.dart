@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "../chart.dart";
+import "real_time_chart.dart";
 
 class RealTime extends StatelessWidget {
   const RealTime({super.key});
@@ -14,12 +14,12 @@ class RealTime extends StatelessWidget {
       return Column(
         children: const [
           Expanded(child: Placeholder()),
-          Expanded(child: Chart()),
+          Expanded(child: RealTimeChart()),
           Expanded(child: Placeholder()),
         ],
       );
     } else {
-      return const Chart();
+      return const RealTimeChart();
     }
   }
 }

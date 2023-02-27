@@ -1,0 +1,98 @@
+import "dart:async";
+import "dart:collection";
+import "dart:math";
+
+import "package:fl_chart/fl_chart.dart";
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:riverpod_annotation/riverpod_annotation.dart";
+
+import "../../device_manager/device.dart";
+import "../../me/settings/providers.dart";
+import "../chart.dart";
+
+part "real_time_chart.g.dart";
+
+@riverpod
+double _refreshInterval(_RefreshIntervalRef ref) {
+  final rateHz = ref.watch(realTimeRefreshRateHzProvider);
+  return Duration.millisecondsPerSecond / rateHz;
+}
+
+var _maxDurationMs = .0;
+
+@riverpod
+class _Points extends _$Points {
+  static var _previousRefreshTimeMs = 0.0;
+  static final _buffer = Queue<FlSpot>();
+
+  @override
+  List<FlSpot> build() {
+    unawaited(ref.watch(ecgProvider.stream).forEach(add));
+    return const [];
+  }
+
+  void add(double y) {
+    // get point
+    final x = DateTime.now().millisecondsSinceEpoch.toDouble();
+    final point = FlSpot(x, y);
+
+    // ignore if too close to the previous point
+    final minDistance = ref.watch(realTimeMinDistanceProvider);
+    if (_buffer.isNotEmpty &&
+        RealTimeChart.normalizedDistance(_buffer.last, point) < minDistance) {
+      return;
+    }
+
+    // add new point
+    _buffer.addLast(point);
+
+    // remove outdated points
+    while (_buffer.first.x < x - _maxDurationMs) {
+      _buffer.removeFirst();
+    }
+
+    // refresh UI
+    final intervalMs = ref.watch(_refreshIntervalProvider);
+    if (x >= _previousRefreshTimeMs + intervalMs) {
+      _previousRefreshTimeMs = x;
+      state = _buffer.toList();
+    }
+  }
+}
+
+class RealTimeChart extends ConsumerWidget {
+  const RealTimeChart({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
+    final durationS = ref.watch(
+      isPortrait
+          ? realTimePortraitDurationProvider
+          : realTimeLandscapeDurationProvider,
+    );
+
+    _maxDurationMs = durationS * Duration.millisecondsPerSecond;
+
+    return Chart(
+      points: ref.watch(_pointsProvider),
+      durationS: durationS,
+      backgroundColor: ref.watch(realTimeBackgroundColorProvider),
+      lineColor: ref.watch(realTimeLineColorProvider),
+      gridColor: ref.watch(realTimeGridColorProvider),
+      horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
+      verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
+      showDots: ref.watch(realTimeShowDotsProvider),
+    );
+  }
+
+  @visibleForTesting
+  static double normalizedDistance(FlSpot a, FlSpot b) {
+    final dx = (b.x - a.x) / Chart.smallXInterval;
+    final dy = (b.y - a.y) / Chart.smallYInterval;
+    return sqrt(dx * dx + dy * dy);
+  }
+}

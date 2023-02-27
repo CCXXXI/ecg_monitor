@@ -239,15 +239,15 @@ class _DoubleProvider extends AutoDisposeNotifierProviderImpl<_Double, double> {
   }
 }
 
-String _$colorHash() => r'b2dfaf6b1c78d1a692beabc288b68bea808d861d';
+String _$colorHash() => r'2c9db7411a82d57ed9d70edb7d43786d09f7f78a';
 
 abstract class _$Color extends BuildlessAutoDisposeNotifier<Color> {
   late final String key;
-  late final Color defaultValue;
+  late final Color defaultColor;
 
   Color build(
     String key,
-    Color defaultValue,
+    Color defaultColor,
   );
 }
 
@@ -263,11 +263,11 @@ class _ColorFamily extends Family<Color> {
   /// See also [_Color].
   _ColorProvider call(
     String key,
-    Color defaultValue,
+    Color defaultColor,
   ) {
     return _ColorProvider(
       key,
-      defaultValue,
+      defaultColor,
     );
   }
 
@@ -277,7 +277,7 @@ class _ColorFamily extends Family<Color> {
   ) {
     return call(
       provider.key,
-      provider.defaultValue,
+      provider.defaultColor,
     );
   }
 
@@ -301,11 +301,11 @@ class _ColorProvider extends AutoDisposeNotifierProviderImpl<_Color, Color> {
   /// See also [_Color].
   _ColorProvider(
     this.key,
-    this.defaultValue,
+    this.defaultColor,
   ) : super.internal(
           () => _Color()
             ..key = key
-            ..defaultValue = defaultValue,
+            ..defaultColor = defaultColor,
           from: _colorProvider,
           name: r'_colorProvider',
           debugGetCreateSourceHash:
@@ -317,20 +317,20 @@ class _ColorProvider extends AutoDisposeNotifierProviderImpl<_Color, Color> {
         );
 
   final String key;
-  final Color defaultValue;
+  final Color defaultColor;
 
   @override
   bool operator ==(Object other) {
     return other is _ColorProvider &&
         other.key == key &&
-        other.defaultValue == defaultValue;
+        other.defaultColor == defaultColor;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, key.hashCode);
-    hash = _SystemHash.combine(hash, defaultValue.hashCode);
+    hash = _SystemHash.combine(hash, defaultColor.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -341,7 +341,7 @@ class _ColorProvider extends AutoDisposeNotifierProviderImpl<_Color, Color> {
   ) {
     return notifier.build(
       key,
-      defaultValue,
+      defaultColor,
     );
   }
 }
@@ -475,7 +475,10 @@ typedef _$RealTimeChartSettings = AutoDisposeNotifier<ChartSettingsData>;
 String _$realTimeChartSettingsSetterHash() =>
     r'56fc031db1dc5186184c55fc3723c5c49d094894';
 
-/// See also [_RealTimeChartSettingsSetter].
+/// [RealTimeChartSettings.ref] is invalidated when any of the settings changes.
+/// So we need to use a separate provider to set the settings.
+///
+/// Copied from [_RealTimeChartSettingsSetter].
 @ProviderFor(_RealTimeChartSettingsSetter)
 final _realTimeChartSettingsSetterProvider =
     AutoDisposeNotifierProvider<_RealTimeChartSettingsSetter, void>.internal(
