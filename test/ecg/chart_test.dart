@@ -1,6 +1,6 @@
 import "dart:math";
 
-import "package:ecg_monitor/real_time/chart.dart";
+import "package:ecg_monitor/ecg/chart.dart";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter_test/flutter_test.dart";
 

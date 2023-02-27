@@ -5,11 +5,11 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "../analytics/analytics.dart";
 import "../database.dart";
 import "../device_manager/device_manager.dart";
-import "../history/history.dart";
+import "../ecg/history/history.dart";
+import "../ecg/real_time/real_time.dart";
 import "../home.dart";
 import "../me/me.dart";
 import "../me/settings.dart";
-import "../real_time/real_time.dart";
 import "../utils/constants/keys.dart" as key;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");

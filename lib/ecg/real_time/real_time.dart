@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "chart.dart";
+import "../chart.dart";
 
 class RealTime extends StatelessWidget {
   const RealTime({super.key});
