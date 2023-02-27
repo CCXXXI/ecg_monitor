@@ -52,7 +52,8 @@ class _FakeDevice implements Device {
 
   @override
   Stream<double> get ecgStream async* {
-    final dataRaw = await rootBundle.loadString("assets/debug/input.txt");
+    final dataRaw =
+        await rootBundle.loadString("assets/debug/107_leadII_10min.txt");
     final data = dataRaw
         .split("\n")
         .where((line) => line.isNotEmpty)
