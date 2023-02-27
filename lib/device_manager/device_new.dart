@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 
-import "../me/settings.dart";
+import "../me/settings/settings.dart";
 import "../utils/constants/strings.dart" as str;
 import "device.dart";
 

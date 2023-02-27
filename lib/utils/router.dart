@@ -9,7 +9,7 @@ import "../ecg/history/history.dart";
 import "../ecg/real_time/real_time.dart";
 import "../home.dart";
 import "../me/me.dart";
-import "../me/settings.dart";
+import "../me/settings/settings.dart";
 import "../utils/constants/keys.dart" as key;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");

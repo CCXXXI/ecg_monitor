@@ -6,11 +6,11 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../database.dart";
-import "../utils/constants/keys.dart" as key;
-import "../utils/constants/strings.dart" as str;
-import "../utils/logger.dart";
-import "model_test.dart";
+import "../../database.dart";
+import "../../utils/constants/keys.dart" as key;
+import "../../utils/constants/strings.dart" as str;
+import "../../utils/logger.dart";
+import "../model_test.dart";
 
 part "settings.freezed.dart";
 part "settings.g.dart";

@@ -22,8 +22,7 @@ final monitorSettingsProvider =
 );
 
 typedef _$MonitorSettings = AutoDisposeNotifier<MonitorSettingGroup>;
-
-String _$autoUploadOnHash() => r'893072d52c02e2a7c35f680572a04565e57ccf3a';
+String _$autoUploadOnHash() => r'1bea856b1cc047c2c990f62b434b336262af73a3';
 
 /// Copied from Dart SDK
 class _SystemHash {
