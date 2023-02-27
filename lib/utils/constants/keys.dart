@@ -1,8 +1,4 @@
 const realTime = "realTime";
-const history = "history";
-const analytics = "analytics";
-const currentDeviceId = "currentDeviceId";
-const loggerLevelIndex = "loggerLevelIndex";
 const portraitDuration = "portraitDuration";
 const landscapeDuration = "landscapeDuration";
 const refreshRateHz = "refreshRateHz";
@@ -12,6 +8,15 @@ const lineColor = "lineColor";
 const gridColor = "gridColor";
 const horizontalLineType = "horizontalLineType";
 const verticalLineType = "verticalLineType";
-const autoUpload = "autoUpload";
-const fakeDeviceOn = "fakeDeviceOn";
 const showDots = "showDots";
+
+const history = "history";
+const autoUpload = "autoUpload";
+
+const analytics = "analytics";
+
+const currentDeviceId = "currentDeviceId";
+
+const showDevTools = "showDevTools";
+const fakeDeviceOn = "fakeDeviceOn";
+const loggerLevelIndex = "loggerLevelIndex";

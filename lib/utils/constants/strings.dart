@@ -40,6 +40,7 @@ const feedback = "反馈";
 const settings = "设置";
 
 const devTools = "开发者工具";
+const showDevTools = "显示开发者工具";
 const fakeDevice = "模拟设备";
 const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";

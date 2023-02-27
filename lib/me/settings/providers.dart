@@ -258,6 +258,10 @@ final analyticsAutoUploadProvider = _boolProvider(
 // endregion
 
 // region devTools settings
+final showDevToolsProvider = _boolProvider(
+  showDevTools,
+  false,
+);
 final fakeDeviceOnProvider = _boolProvider(
   fakeDeviceOn,
   false,

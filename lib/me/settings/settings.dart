@@ -47,6 +47,7 @@ class Settings extends ConsumerWidget {
     final realTimeMinDistanceString = realTimeMinDistance.toStringAsFixed(1);
 
     // devTools settings
+    final showDevTools = ref.watch(showDevToolsProvider);
     final loggerLevel = ref.watch(_loggerLevelProvider);
     final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
@@ -82,6 +83,7 @@ class Settings extends ConsumerWidget {
                 ref.read(realTimeVerticalLineTypeProvider.notifier).set,
             showDots: ref.watch(realTimeShowDotsProvider),
             onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
+            showDevTools: showDevTools,
           ),
           ListTile(
             leading: const Icon(Icons.speed_outlined),
@@ -139,6 +141,7 @@ class Settings extends ConsumerWidget {
                 ref.read(historyVerticalLineTypeProvider.notifier).set,
             showDots: ref.watch(historyShowDotsProvider),
             onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
+            showDevTools: showDevTools,
           ),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
@@ -155,28 +158,36 @@ class Settings extends ConsumerWidget {
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(
-            secondary: const Icon(Icons.device_hub_outlined),
-            title: const Text(str.fakeDevice),
-            value: ref.watch(fakeDeviceOnProvider),
-            onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
+            secondary: const Icon(Icons.developer_mode_outlined),
+            title: const Text(str.showDevTools),
+            value: ref.watch(showDevToolsProvider),
+            onChanged: ref.read(showDevToolsProvider.notifier).set,
           ),
-          ListTile(
-            leading: const Icon(Icons.developer_mode_outlined),
-            title: const Text(str.loggerLevel),
-            subtitle: Text(loggerLevel.name),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: loggerLevelIndex.toDouble(),
-                onChanged: (value) async => ref
-                    .read(_loggerLevelProvider.notifier)
-                    .setIndex(value.toInt()),
-                max: loggerLevels.length - 1,
-                divisions: loggerLevels.length - 1,
-                label: loggerLevel.name,
+          if (showDevTools)
+            SwitchListTile.adaptive(
+              secondary: const Icon(Icons.device_hub_outlined),
+              title: const Text(str.fakeDevice),
+              value: ref.watch(fakeDeviceOnProvider),
+              onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
+            ),
+          if (showDevTools)
+            ListTile(
+              leading: const Icon(Icons.text_snippet_outlined),
+              title: const Text(str.loggerLevel),
+              subtitle: Text(loggerLevel.name),
+              trailing: SizedBox(
+                width: 200,
+                child: Slider.adaptive(
+                  value: loggerLevelIndex.toDouble(),
+                  onChanged: (value) async => ref
+                      .read(_loggerLevelProvider.notifier)
+                      .setIndex(value.toInt()),
+                  max: loggerLevels.length - 1,
+                  divisions: loggerLevels.length - 1,
+                  label: loggerLevel.name,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
@@ -229,6 +240,7 @@ class _ChartSettings extends StatelessWidget {
     required this.onVerticalLineTypeChanged,
     required this.showDots,
     required this.onShowDotsChanged,
+    required this.showDevTools,
   });
 
   final ChartSettingsData chartSettingsData;
@@ -257,6 +269,8 @@ class _ChartSettings extends StatelessWidget {
 
   final bool showDots;
   final void Function(bool) onShowDotsChanged;
+
+  final bool showDevTools;
 
   @override
   Widget build(BuildContext context) {
@@ -374,12 +388,13 @@ class _ChartSettings extends StatelessWidget {
                 onVerticalLineTypeChanged(selected.single),
           ),
         ),
-        SwitchListTile.adaptive(
-          secondary: const Icon(Icons.linear_scale_outlined),
-          title: const Text(str.showDots),
-          value: showDots,
-          onChanged: onShowDotsChanged,
-        ),
+        if (showDevTools)
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.linear_scale_outlined),
+            title: const Text(str.showDots),
+            value: showDots,
+            onChanged: onShowDotsChanged,
+          ),
         const Divider(),
       ],
     );
