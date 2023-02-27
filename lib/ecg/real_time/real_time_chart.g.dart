@@ -21,7 +21,6 @@ final _pointsProvider =
 );
 
 typedef _$Points = AutoDisposeNotifier<List<FlSpot>>;
-
 String _$refreshIntervalHash() => r'773cbd91949094503b63c614551cef772768a4d6';
 
 /// See also [_refreshInterval].

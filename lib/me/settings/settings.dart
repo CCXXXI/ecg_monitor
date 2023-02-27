@@ -30,7 +30,7 @@ class _LoggerLevel extends _$LoggerLevel {
     await prefs.setInt(key.loggerLevelIndex, index);
   }
 
-  Future<void> setIndex(int index) async => set(loggerLevels[index]);
+  Future<void> setIndex(int index) => set(loggerLevels[index]);
 }
 
 class Settings extends ConsumerWidget {
@@ -39,21 +39,9 @@ class Settings extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // realTime settings
-    final realTimePortraitDuration =
-        ref.watch(realTimePortraitDurationProvider);
-    final realTimeLandscapeDuration =
-        ref.watch(realTimeLandscapeDurationProvider);
     final realTimeRefreshRateHz = ref.watch(refreshRateHzProvider);
     final realTimeMinDistance = ref.watch(minDistanceProvider);
-    final realTimeBackgroundColor = ref.watch(realTimeBackgroundColorProvider);
-    final realTimeGridColor = ref.watch(realTimeGridColorProvider);
-    final realTimeLineColor = ref.watch(realTimeLineColorProvider);
-    final realTimeChartSettings = ref.watch(realTimeChartSettingsProvider);
 
-    final realTimePortraitDurationString =
-        "${realTimePortraitDuration.toStringAsFixed(0)} s";
-    final realTimeLandscapeDurationString =
-        "${realTimeLandscapeDuration.toStringAsFixed(0)} s";
     final realTimeRefreshRateHzString =
         "${realTimeRefreshRateHz.toStringAsFixed(0)} Hz";
     final realTimeMinDistanceString = realTimeMinDistance.toStringAsFixed(1);
@@ -67,126 +55,33 @@ class Settings extends ConsumerWidget {
       body: ListView(
         children: [
           const _SectionTitle(str.realTime),
-          ListTile(
-            leading: const Icon(Icons.monitor_heart_outlined),
-            title: const Text(str.style),
-            trailing: SegmentedButton(
-              segments: [
-                ButtonSegment(
-                  value: ChartSettingsData.professional,
-                  icon: const Icon(Icons.grid_on_outlined),
-                  label: const Text(str.professional),
-                ),
-                ButtonSegment(
-                  value: ChartSettingsData.simple,
-                  icon: const Icon(Icons.square_outlined),
-                  label: const Text(str.simple),
-                ),
-                ButtonSegment(
-                  value: ChartSettingsData.custom,
-                  icon: const Icon(Icons.tune_outlined),
-                  label: const Text(str.custom),
-                  enabled: false,
-                ),
-              ],
-              selected: {
-                if (realTimeChartSettings == ChartSettingsData.professional ||
-                    realTimeChartSettings == ChartSettingsData.simple)
-                  realTimeChartSettings
-                else
-                  ChartSettingsData.custom
-              },
-              onSelectionChanged: (selected) async => ref
-                  .read(realTimeChartSettingsProvider.notifier)
-                  .set(selected.single),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.stay_primary_portrait_outlined),
-            title: const Text(str.portraitDuration),
-            subtitle: Text("${str.recent} $realTimePortraitDurationString"),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: realTimePortraitDuration,
-                onChanged:
-                    ref.read(realTimePortraitDurationProvider.notifier).set,
-                min: 1,
-                max: 10,
-                divisions: 9,
-                label: realTimePortraitDurationString,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.stay_primary_landscape_outlined),
-            title: const Text(str.landscapeDuration),
-            subtitle: Text("${str.recent} $realTimeLandscapeDurationString"),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: realTimeLandscapeDuration,
-                onChanged:
-                    ref.read(realTimeLandscapeDurationProvider.notifier).set,
-                min: 2,
-                max: 20,
-                divisions: 9,
-                label: realTimeLandscapeDurationString,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.color_lens_outlined),
-            title: const Text(str.backgroundColor),
-            trailing:
-                ColorIndicator(color: realTimeBackgroundColor, hasBorder: true),
-            onTap: () async => ref
-                .read(realTimeBackgroundColorProvider.notifier)
-                .set(await _pickColor(context, realTimeBackgroundColor)),
-          ),
-          ListTile(
-            leading: const Icon(Icons.show_chart_outlined),
-            title: const Text(str.lineColor),
-            trailing: ColorIndicator(color: realTimeLineColor, hasBorder: true),
-            onTap: () async => ref
-                .read(realTimeLineColorProvider.notifier)
-                .set(await _pickColor(context, realTimeLineColor)),
-          ),
-          ListTile(
-            leading: const Icon(Icons.grid_on_outlined),
-            title: const Text(str.gridColor),
-            trailing: ColorIndicator(color: realTimeGridColor, hasBorder: true),
-            onTap: () async => ref
-                .read(realTimeGridColorProvider.notifier)
-                .set(await _pickColor(context, realTimeGridColor)),
-          ),
-          ListTile(
-            leading: const Icon(Icons.border_horizontal_outlined),
-            title: const Text(str.horizontalLine),
-            trailing: SegmentedButton(
-              segments: _lineTypeSegments,
-              selected: {ref.watch(realTimeHorizontalLineTypeProvider)},
-              onSelectionChanged: (selected) async => ref
-                  .read(realTimeHorizontalLineTypeProvider.notifier)
-                  .set(selected.single),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.border_vertical_outlined),
-            title: const Text(str.verticalLine),
-            trailing: SegmentedButton(
-              segments: _lineTypeSegments,
-              selected: {ref.watch(realTimeVerticalLineTypeProvider)},
-              onSelectionChanged: (selected) async => ref
-                  .read(realTimeVerticalLineTypeProvider.notifier)
-                  .set(selected.single),
-            ),
-          ),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.linear_scale_outlined),
-            title: const Text(str.showDots),
-            value: ref.watch(realTimeShowDotsProvider),
-            onChanged: ref.read(realTimeShowDotsProvider.notifier).set,
+          _ChartSettings(
+            chartSettingsData: ref.watch(realTimeChartSettingsProvider),
+            onChartSettingsChanged:
+                ref.read(realTimeChartSettingsProvider.notifier).set,
+            portraitDuration: ref.watch(realTimePortraitDurationProvider),
+            onPortraitDurationChanged:
+                ref.read(realTimePortraitDurationProvider.notifier).set,
+            landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
+            onLandscapeDurationChanged:
+                ref.read(realTimeLandscapeDurationProvider.notifier).set,
+            backgroundColor: ref.watch(realTimeBackgroundColorProvider),
+            onBackgroundColorChanged:
+                ref.read(realTimeBackgroundColorProvider.notifier).set,
+            lineColor: ref.watch(realTimeLineColorProvider),
+            onLineColorChanged:
+                ref.read(realTimeLineColorProvider.notifier).set,
+            gridColor: ref.watch(realTimeGridColorProvider),
+            onGridColorChanged:
+                ref.read(realTimeGridColorProvider.notifier).set,
+            horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
+            onHorizontalLineTypeChanged:
+                ref.read(realTimeHorizontalLineTypeProvider.notifier).set,
+            verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
+            onVerticalLineTypeChanged:
+                ref.read(realTimeVerticalLineTypeProvider.notifier).set,
+            showDots: ref.watch(realTimeShowDotsProvider),
+            onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
           ),
           ListTile(
             leading: const Icon(Icons.speed_outlined),
@@ -260,11 +155,213 @@ class Settings extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle(this.title);
+
+  static const _padding =
+      EdgeInsetsDirectional.only(top: 24, bottom: 10, start: 24, end: 24);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    final textStyle = Theme.of(context).textTheme.labelLarge;
+
+    return Padding(
+      padding: _padding,
+      child: Text(title, style: textStyle!.copyWith(color: color)),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty("title", title));
+  }
+}
+
+class _ChartSettings extends StatelessWidget {
+  const _ChartSettings({
+    required this.chartSettingsData,
+    required this.onChartSettingsChanged,
+    required this.portraitDuration,
+    required this.onPortraitDurationChanged,
+    required this.landscapeDuration,
+    required this.onLandscapeDurationChanged,
+    required this.backgroundColor,
+    required this.onBackgroundColorChanged,
+    required this.lineColor,
+    required this.onLineColorChanged,
+    required this.gridColor,
+    required this.onGridColorChanged,
+    required this.horizontalLineType,
+    required this.onHorizontalLineTypeChanged,
+    required this.verticalLineType,
+    required this.onVerticalLineTypeChanged,
+    required this.showDots,
+    required this.onShowDotsChanged,
+  });
+
+  final ChartSettingsData chartSettingsData;
+  final void Function(ChartSettingsData) onChartSettingsChanged;
+
+  final double portraitDuration;
+  final void Function(double) onPortraitDurationChanged;
+
+  final double landscapeDuration;
+  final void Function(double) onLandscapeDurationChanged;
+
+  final Color backgroundColor;
+  final void Function(Color) onBackgroundColorChanged;
+
+  final Color lineColor;
+  final void Function(Color) onLineColorChanged;
+
+  final Color gridColor;
+  final void Function(Color) onGridColorChanged;
+
+  final LineType horizontalLineType;
+  final void Function(LineType) onHorizontalLineTypeChanged;
+
+  final LineType verticalLineType;
+  final void Function(LineType) onVerticalLineTypeChanged;
+
+  final bool showDots;
+  final void Function(bool) onShowDotsChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
+    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
+
+    return Column(
+      children: [
+        ListTile(
+          leading: const Icon(Icons.monitor_heart_outlined),
+          title: const Text(str.style),
+          trailing: SegmentedButton(
+            segments: [
+              ButtonSegment(
+                value: ChartSettingsData.professional,
+                icon: const Icon(Icons.grid_on_outlined),
+                label: const Text(str.professional),
+              ),
+              ButtonSegment(
+                value: ChartSettingsData.simple,
+                icon: const Icon(Icons.square_outlined),
+                label: const Text(str.simple),
+              ),
+              ButtonSegment(
+                value: ChartSettingsData.custom,
+                icon: const Icon(Icons.tune_outlined),
+                label: const Text(str.custom),
+                enabled: false,
+              ),
+            ],
+            selected: {
+              if (chartSettingsData == ChartSettingsData.professional ||
+                  chartSettingsData == ChartSettingsData.simple)
+                chartSettingsData
+              else
+                ChartSettingsData.custom
+            },
+            onSelectionChanged: (selected) =>
+                onChartSettingsChanged(selected.single),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.stay_primary_portrait_outlined),
+          title: const Text(str.portraitDuration),
+          subtitle: Text(portraitDurationString),
+          trailing: SizedBox(
+            width: 200,
+            child: Slider.adaptive(
+              value: portraitDuration,
+              onChanged: onPortraitDurationChanged,
+              min: 1,
+              max: 10,
+              divisions: 9,
+              label: portraitDurationString,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.stay_primary_landscape_outlined),
+          title: const Text(str.landscapeDuration),
+          subtitle: Text(landscapeDurationString),
+          trailing: SizedBox(
+            width: 200,
+            child: Slider.adaptive(
+              value: landscapeDuration,
+              onChanged: onLandscapeDurationChanged,
+              min: 2,
+              max: 20,
+              divisions: 9,
+              label: landscapeDurationString,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.color_lens_outlined),
+          title: const Text(str.backgroundColor),
+          trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
+          onTap: () async => onBackgroundColorChanged(
+            await _pickColor(context, backgroundColor),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.show_chart_outlined),
+          title: const Text(str.lineColor),
+          trailing: ColorIndicator(color: lineColor, hasBorder: true),
+          onTap: () async => onLineColorChanged(
+            await _pickColor(context, lineColor),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.grid_on_outlined),
+          title: const Text(str.gridColor),
+          trailing: ColorIndicator(color: gridColor, hasBorder: true),
+          onTap: () async => onGridColorChanged(
+            await _pickColor(context, gridColor),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.border_horizontal_outlined),
+          title: const Text(str.horizontalLine),
+          trailing: SegmentedButton(
+            segments: _lineTypeSegments,
+            selected: {horizontalLineType},
+            onSelectionChanged: (selected) =>
+                onHorizontalLineTypeChanged(selected.single),
+          ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.border_vertical_outlined),
+          title: const Text(str.verticalLine),
+          trailing: SegmentedButton(
+            segments: _lineTypeSegments,
+            selected: {verticalLineType},
+            onSelectionChanged: (selected) =>
+                onVerticalLineTypeChanged(selected.single),
+          ),
+        ),
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.linear_scale_outlined),
+          title: const Text(str.showDots),
+          value: showDots,
+          onChanged: onShowDotsChanged,
+        ),
+      ],
+    );
+  }
 
   static Future<Color> _pickColor(
     BuildContext context,
     Color initialColor,
-  ) async =>
+  ) =>
       showColorPickerDialog(
         context,
         initialColor,
@@ -294,30 +391,78 @@ class Settings extends ConsumerWidget {
       label: Text(str.lineTypeFull),
     ),
   ];
-}
-
-class _SectionTitle extends StatelessWidget {
-  const _SectionTitle(this.title);
-
-  static const _padding =
-      EdgeInsetsDirectional.only(top: 24, bottom: 10, start: 24, end: 24);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
-    final textStyle = Theme.of(context).textTheme.labelLarge;
-
-    return Padding(
-      padding: _padding,
-      child: Text(title, style: textStyle!.copyWith(color: color)),
-    );
-  }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty("title", title));
+    properties
+      ..add(
+        DiagnosticsProperty<ChartSettingsData>(
+          "chartSettingsData",
+          chartSettingsData,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<void Function(ChartSettingsData)>.has(
+          "onChartSettingsChanged",
+          onChartSettingsChanged,
+        ),
+      )
+      ..add(DoubleProperty("portraitDuration", portraitDuration))
+      ..add(
+        ObjectFlagProperty<void Function(double)>.has(
+          "onPortraitDurationChanged",
+          onPortraitDurationChanged,
+        ),
+      )
+      ..add(DoubleProperty("landscapeDuration", landscapeDuration))
+      ..add(
+        ObjectFlagProperty<void Function(double)>.has(
+          "onLandscapeDurationChanged",
+          onLandscapeDurationChanged,
+        ),
+      )
+      ..add(ColorProperty("backgroundColor", backgroundColor))
+      ..add(
+        ObjectFlagProperty<void Function(Color)>.has(
+          "onBackgroundColorChanged",
+          onBackgroundColorChanged,
+        ),
+      )
+      ..add(ColorProperty("lineColor", lineColor))
+      ..add(
+        ObjectFlagProperty<void Function(Color)>.has(
+          "onLineColorChanged",
+          onLineColorChanged,
+        ),
+      )
+      ..add(ColorProperty("gridColor", gridColor))
+      ..add(
+        ObjectFlagProperty<void Function(Color)>.has(
+          "onGridColorChanged",
+          onGridColorChanged,
+        ),
+      )
+      ..add(EnumProperty<LineType>("horizontalLineType", horizontalLineType))
+      ..add(
+        ObjectFlagProperty<void Function(LineType)>.has(
+          "onHorizontalLineTypeChanged",
+          onHorizontalLineTypeChanged,
+        ),
+      )
+      ..add(EnumProperty<LineType>("verticalLineType", verticalLineType))
+      ..add(
+        ObjectFlagProperty<void Function(LineType)>.has(
+          "onVerticalLineTypeChanged",
+          onVerticalLineTypeChanged,
+        ),
+      )
+      ..add(DiagnosticsProperty<bool>("showDots", showDots))
+      ..add(
+        ObjectFlagProperty<void Function(bool)>.has(
+          "onShowDotsChanged",
+          onShowDotsChanged,
+        ),
+      );
   }
 }

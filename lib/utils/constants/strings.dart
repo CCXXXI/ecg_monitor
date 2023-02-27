@@ -7,7 +7,6 @@ const simple = "简洁";
 const custom = "自定义";
 const portraitDuration = "竖屏数据范围";
 const landscapeDuration = "横屏数据范围";
-const recent = "最近";
 const refreshRate = "刷新率";
 const minDistance = "最小点间距";
 const backgroundColor = "背景颜色";
