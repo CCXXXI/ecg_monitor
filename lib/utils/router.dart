@@ -5,10 +5,11 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "../analytics/analytics.dart";
 import "../database.dart";
 import "../device_manager/device_manager.dart";
+import "../ecg/history/history.dart";
+import "../ecg/real_time/real_time.dart";
 import "../home.dart";
 import "../me/me.dart";
-import "../me/settings.dart";
-import "../monitor/monitor.dart";
+import "../me/settings/settings.dart";
 import "../utils/constants/keys.dart" as key;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
@@ -16,7 +17,7 @@ final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
 
 final router = GoRouter(
   navigatorKey: _rootKey,
-  initialLocation: "/monitor",
+  initialLocation: "/real_time",
   debugLogDiagnostics: true,
   observers: [SentryNavigatorObserver()],
   routes: [
@@ -25,12 +26,16 @@ final router = GoRouter(
       builder: (context, state, child) => Home(child),
       routes: [
         GoRoute(
-          path: "/monitor",
+          path: "/real_time",
           redirect: (context, state) =>
               prefs.getString(key.currentDeviceId) == null
                   ? "/device_manager"
                   : null,
-          builder: (context, state) => const Monitor(),
+          builder: (context, state) => const RealTime(),
+        ),
+        GoRoute(
+          path: "/history",
+          builder: (context, state) => const History(),
         ),
         GoRoute(
           path: "/analytics",

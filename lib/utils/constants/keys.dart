@@ -1,14 +1,22 @@
-const currentDeviceId = "currentDeviceId";
-const loggerLevelIndex = "loggerLevelIndex";
+const realTime = "realTime";
 const portraitDuration = "portraitDuration";
 const landscapeDuration = "landscapeDuration";
 const refreshRateHz = "refreshRateHz";
 const minDistance = "minDistance";
-const backgroundColorHex = "backgroundColorHex";
-const lineColorHex = "lineColorHex";
-const gridColorHex = "gridColorHex";
-const horizontalLineTypeIndex = "horizontalLineTypeIndex";
-const verticalLineTypeIndex = "verticalLineTypeIndex";
-const autoUploadOn = "autoUploadOn";
+const backgroundColor = "backgroundColor";
+const lineColor = "lineColor";
+const gridColor = "gridColor";
+const horizontalLineType = "horizontalLineType";
+const verticalLineType = "verticalLineType";
+const showDots = "showDots";
+
+const history = "history";
+const autoUpload = "autoUpload";
+
+const analytics = "analytics";
+
+const currentDeviceId = "currentDeviceId";
+
+const showDevTools = "showDevTools";
 const fakeDeviceOn = "fakeDeviceOn";
-const showDotsOn = "showDotsOn";
+const loggerLevelIndex = "loggerLevelIndex";

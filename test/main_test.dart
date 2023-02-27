@@ -15,7 +15,7 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: App()));
 
     expect(find.text(str.appName), findsOneWidget);
-    expect(find.text(str.monitor), findsOneWidget);
+    expect(find.text(str.realTime), findsOneWidget);
     expect(find.text(str.analytics), findsOneWidget);
     expect(find.text(str.deviceManager), findsOneWidget);
     expect(find.text(str.me), findsOneWidget);

@@ -1,13 +1,12 @@
 import "package:package_info_plus/package_info_plus.dart";
 
-const monitor = "实时监测";
+const realTime = "实时心电";
 const style = "样式";
-const professional = "专业";
 const simple = "简洁";
+const professional = "专业";
 const custom = "自定义";
 const portraitDuration = "竖屏数据范围";
 const landscapeDuration = "横屏数据范围";
-const recent = "最近";
 const refreshRate = "刷新率";
 const minDistance = "最小点间距";
 const backgroundColor = "背景颜色";
@@ -19,8 +18,10 @@ const lineTypeHide = "隐藏";
 const lineTypeSimple = "简化";
 const lineTypeFull = "完整";
 
-const analytics = "历史报告";
+const history = "历史心电";
 const autoUpload = "自动上传";
+
+const analytics = "分析报告";
 
 const deviceManager = "设备管理";
 const bluetoothConnected = "蓝牙已连接";
@@ -39,6 +40,7 @@ const feedback = "反馈";
 const settings = "设置";
 
 const devTools = "开发者工具";
+const showDevTools = "显示开发者工具";
 const fakeDevice = "模拟设备";
 const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";

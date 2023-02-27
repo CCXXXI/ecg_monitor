@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chart.dart';
+part of 'real_time_chart.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'a0dc417c926124f568cab1f9463d865151dc5442';
+String _$pointsHash() => r'91c1bee98503c288f56f6ad45af9be91515a1e96';
 
 /// See also [_Points].
 @ProviderFor(_Points)
@@ -21,7 +21,7 @@ final _pointsProvider =
 );
 
 typedef _$Points = AutoDisposeNotifier<List<FlSpot>>;
-String _$refreshIntervalHash() => r'bdd01296f8442a7554339cf347e8e754edd7950b';
+String _$refreshIntervalHash() => r'773cbd91949094503b63c614551cef772768a4d6';
 
 /// See also [_refreshInterval].
 @ProviderFor(_refreshInterval)
