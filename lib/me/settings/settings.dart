@@ -184,17 +184,6 @@ class MonitorSettings extends _$MonitorSettings {
 }
 
 @riverpod
-class FakeDeviceOn extends _$FakeDeviceOn {
-  @override
-  bool build() => prefs.getBool(key.fakeDeviceOn) ?? false;
-
-  Future<void> set({required bool on}) async {
-    state = on;
-    await prefs.setBool(key.fakeDeviceOn, on);
-  }
-}
-
-@riverpod
 class _LoggerLevel extends _$LoggerLevel {
   @override
   Level build() {
@@ -234,7 +223,6 @@ class Settings extends ConsumerWidget {
     final minDistanceString = minDistance.toStringAsFixed(1);
 
     // devTools settings
-    final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
     final loggerLevel = ref.watch(_loggerLevelProvider);
     final showDots = monitorSettings.showDots;
 
@@ -412,9 +400,8 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.device_hub_outlined),
             title: const Text(str.fakeDevice),
-            value: fakeDeviceOn,
-            onChanged: (on) async =>
-                ref.read(fakeDeviceOnProvider.notifier).set(on: on),
+            value: ref.watch(fakeDeviceOnProvider),
+            onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
           ),
           ListTile(
             leading: const Icon(Icons.compare_arrows_outlined),

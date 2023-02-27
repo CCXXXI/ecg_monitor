@@ -21,3 +21,5 @@ class _Bool extends _$Bool {
 final historyAutoUploadProvider = _boolProvider("$history.$autoUpload", true);
 final analyticsAutoUploadProvider =
     _boolProvider("$analytics.$autoUpload", true);
+
+final fakeDeviceOnProvider = _boolProvider(fakeDeviceOn, false);

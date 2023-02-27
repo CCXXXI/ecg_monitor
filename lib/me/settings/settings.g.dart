@@ -22,21 +22,6 @@ final monitorSettingsProvider =
 );
 
 typedef _$MonitorSettings = AutoDisposeNotifier<MonitorSettingGroup>;
-String _$fakeDeviceOnHash() => r'9700c2836d6e522fd88b398821ba59d32fb44f02';
-
-/// See also [FakeDeviceOn].
-@ProviderFor(FakeDeviceOn)
-final fakeDeviceOnProvider =
-    AutoDisposeNotifierProvider<FakeDeviceOn, bool>.internal(
-  FakeDeviceOn.new,
-  name: r'fakeDeviceOnProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeDeviceOnHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$FakeDeviceOn = AutoDisposeNotifier<bool>;
 String _$loggerLevelHash() => r'd45834a329b8245628eb85b4c01d64dc75a62362';
 
 /// See also [_LoggerLevel].
