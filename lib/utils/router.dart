@@ -5,6 +5,7 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "../analytics/analytics.dart";
 import "../database.dart";
 import "../device_manager/device_manager.dart";
+import "../history/history.dart";
 import "../home.dart";
 import "../me/me.dart";
 import "../me/settings.dart";
@@ -31,6 +32,10 @@ final router = GoRouter(
                   ? "/device_manager"
                   : null,
           builder: (context, state) => const Monitor(),
+        ),
+        GoRoute(
+          path: "/history",
+          builder: (context, state) => const History(),
         ),
         GoRoute(
           path: "/analytics",

@@ -19,8 +19,10 @@ const lineTypeHide = "隐藏";
 const lineTypeSimple = "简化";
 const lineTypeFull = "完整";
 
-const analytics = "分析报告";
+const history = "历史心电";
 const autoUpload = "自动上传";
+
+const analytics = "分析报告";
 
 const deviceManager = "设备管理";
 const bluetoothConnected = "蓝牙已连接";
