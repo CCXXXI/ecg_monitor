@@ -2,68 +2,62 @@
 
 ## [0.15.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.14.0...v0.15.0) (2023-02-27)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **settings:** The keys are updated so the settings are restored to default.
-* **settings:** update bool setting keys
-* **settings:** Restore the default autoUpload setting.
+- **settings:** The keys are updated so the settings are restored to default.
+- **settings:** update bool setting keys
+- **settings:** Restore the default autoUpload setting.
 
 ### Features
 
-* **history:** add history page ([4cc7138](https://github.com/CCXXXI/ecg_monitor/commit/4cc7138fee3f92bdac4fc0806587b3bebbc6beec))
-* **history:** add history settings ([515c55a](https://github.com/CCXXXI/ecg_monitor/commit/515c55ac060672953720d362d516199a8fe6c0cf))
-* reorder settings ([648a3ce](https://github.com/CCXXXI/ecg_monitor/commit/648a3cef30516874e813f421f61a605f6e7c36f4))
-* **settings:** add history auto upload setting ([6a422ad](https://github.com/CCXXXI/ecg_monitor/commit/6a422ada1acbf7f7a7a60fceae07a54b10627d4f))
-* **settings:** add showDevTools settings ([3d38735](https://github.com/CCXXXI/ecg_monitor/commit/3d387358c0b3d1159453daf9d15c54aaddfbbe3a))
-* **settings:** move showDots to realTime section ([ece5f66](https://github.com/CCXXXI/ecg_monitor/commit/ece5f666bb4f09610af50a0e5f69bb58e1830561))
-* **settings:** remove modelTest ([40f7d64](https://github.com/CCXXXI/ecg_monitor/commit/40f7d648feba3a6e33e77d05f226328c304ac9dd))
-* update min distance setting ([443c64e](https://github.com/CCXXXI/ecg_monitor/commit/443c64e0c2b1ce08af2932ce68e7eff6b9467dda))
-* use 107_leadII_10min.txt as data source ([c8ec45e](https://github.com/CCXXXI/ecg_monitor/commit/c8ec45e5287f95ea042ab872fc26f6c0ee9dc792))
-
+- **history:** add history page ([4cc7138](https://github.com/CCXXXI/ecg_monitor/commit/4cc7138fee3f92bdac4fc0806587b3bebbc6beec))
+- **history:** add history settings ([515c55a](https://github.com/CCXXXI/ecg_monitor/commit/515c55ac060672953720d362d516199a8fe6c0cf))
+- reorder settings ([648a3ce](https://github.com/CCXXXI/ecg_monitor/commit/648a3cef30516874e813f421f61a605f6e7c36f4))
+- **settings:** add history auto upload setting ([6a422ad](https://github.com/CCXXXI/ecg_monitor/commit/6a422ada1acbf7f7a7a60fceae07a54b10627d4f))
+- **settings:** add showDevTools settings ([3d38735](https://github.com/CCXXXI/ecg_monitor/commit/3d387358c0b3d1159453daf9d15c54aaddfbbe3a))
+- **settings:** move showDots to realTime section ([ece5f66](https://github.com/CCXXXI/ecg_monitor/commit/ece5f666bb4f09610af50a0e5f69bb58e1830561))
+- **settings:** remove modelTest ([40f7d64](https://github.com/CCXXXI/ecg_monitor/commit/40f7d648feba3a6e33e77d05f226328c304ac9dd))
+- update min distance setting ([443c64e](https://github.com/CCXXXI/ecg_monitor/commit/443c64e0c2b1ce08af2932ce68e7eff6b9467dda))
+- use 107_leadII_10min.txt as data source ([c8ec45e](https://github.com/CCXXXI/ecg_monitor/commit/c8ec45e5287f95ea042ab872fc26f6c0ee9dc792))
 
 ### Bug Fixes
 
-* **deps:** update dependency fl_chart to ^0.61.0 ([#149](https://github.com/CCXXXI/ecg_monitor/issues/149)) ([b2b9d7e](https://github.com/CCXXXI/ecg_monitor/commit/b2b9d7e1bfd5795340b965fef4029a6391a58345))
-* sync fake device data ([1f758fd](https://github.com/CCXXXI/ecg_monitor/commit/1f758fdd7d7cd4472bb4ba1bd6df85ae015ec9d7))
-* update strings ([f2a75b8](https://github.com/CCXXXI/ecg_monitor/commit/f2a75b8676f171e6b1dd9ce716bd0c9ec5edad13))
-
+- **deps:** update dependency fl_chart to ^0.61.0 ([#149](https://github.com/CCXXXI/ecg_monitor/issues/149)) ([b2b9d7e](https://github.com/CCXXXI/ecg_monitor/commit/b2b9d7e1bfd5795340b965fef4029a6391a58345))
+- sync fake device data ([1f758fd](https://github.com/CCXXXI/ecg_monitor/commit/1f758fdd7d7cd4472bb4ba1bd6df85ae015ec9d7))
+- update strings ([f2a75b8](https://github.com/CCXXXI/ecg_monitor/commit/f2a75b8676f171e6b1dd9ce716bd0c9ec5edad13))
 
 ### Performance Improvements
 
-* smaller default duration ([27877dc](https://github.com/CCXXXI/ecg_monitor/commit/27877dc20b33e064de09d364fa833e97d28b646a))
-
+- smaller default duration ([27877dc](https://github.com/CCXXXI/ecg_monitor/commit/27877dc20b33e064de09d364fa833e97d28b646a))
 
 ### Documentation
 
-* add submodules ([#158](https://github.com/CCXXXI/ecg_monitor/issues/158)) ([d94fe93](https://github.com/CCXXXI/ecg_monitor/commit/d94fe93c6652544cf4dd4c1250bbe362ff6a3191))
-
+- add submodules ([#158](https://github.com/CCXXXI/ecg_monitor/issues/158)) ([d94fe93](https://github.com/CCXXXI/ecg_monitor/commit/d94fe93c6652544cf4dd4c1250bbe362ff6a3191))
 
 ### Miscellaneous Chores
 
-* **deps:** update dependency flutter_launcher_icons to ^0.12.0 ([#156](https://github.com/CCXXXI/ecg_monitor/issues/156)) ([7055b75](https://github.com/CCXXXI/ecg_monitor/commit/7055b7565bb8105144cc67147e7b31ef950edae5))
-* **deps:** update dependency gradle to v7.6.1 ([#153](https://github.com/CCXXXI/ecg_monitor/issues/153)) ([158c202](https://github.com/CCXXXI/ecg_monitor/commit/158c202511e7799cb39a65d1bebe0d59cc896779))
-* update & apply .gitignore ([#152](https://github.com/CCXXXI/ecg_monitor/issues/152)) ([1c7ab93](https://github.com/CCXXXI/ecg_monitor/commit/1c7ab93ba9221cb95645cf4e635699b063021b6e))
-
+- **deps:** update dependency flutter_launcher_icons to ^0.12.0 ([#156](https://github.com/CCXXXI/ecg_monitor/issues/156)) ([7055b75](https://github.com/CCXXXI/ecg_monitor/commit/7055b7565bb8105144cc67147e7b31ef950edae5))
+- **deps:** update dependency gradle to v7.6.1 ([#153](https://github.com/CCXXXI/ecg_monitor/issues/153)) ([158c202](https://github.com/CCXXXI/ecg_monitor/commit/158c202511e7799cb39a65d1bebe0d59cc896779))
+- update & apply .gitignore ([#152](https://github.com/CCXXXI/ecg_monitor/issues/152)) ([1c7ab93](https://github.com/CCXXXI/ecg_monitor/commit/1c7ab93ba9221cb95645cf4e635699b063021b6e))
 
 ### Code Refactoring
 
-* ecg directory ([306ff97](https://github.com/CCXXXI/ecg_monitor/commit/306ff9723284c8dcb4c4f4ebd05c967118b4401b))
-* **me:** rename mine to me ([#155](https://github.com/CCXXXI/ecg_monitor/issues/155)) ([d89ef7d](https://github.com/CCXXXI/ecg_monitor/commit/d89ef7ddb64c67c17299c81ff1e5db8f9ff3d0b6))
-* move constants_test.dart to utils/ ([13d4001](https://github.com/CCXXXI/ecg_monitor/commit/13d400145d37d1e18e183d396dc6a2b8b793263b))
-* **realtime:** RealTimeChart ([91655eb](https://github.com/CCXXXI/ecg_monitor/commit/91655eb0cd5442836b5995ee2f4919b306cf05bd))
-* **realTime:** rename monitor to realTime ([a9e98db](https://github.com/CCXXXI/ecg_monitor/commit/a9e98db050af288d15f244a4a98e750c971ae593))
-* **settings:** add DiagnosticsProperty ([f3fb9dd](https://github.com/CCXXXI/ecg_monitor/commit/f3fb9dd239e70ba39bf9c28577a41f6f6fbdd201))
-* **settings:** extract ChartSettings ([5f45f8a](https://github.com/CCXXXI/ecg_monitor/commit/5f45f8a71109bccc292269f7fc9e99f096f83629))
-* **settings:** extract pref providers ([728c559](https://github.com/CCXXXI/ecg_monitor/commit/728c559151b7b171283beef9f8558166d7598e68))
-* **settings:** make _SectionTitle.padding private ([3207075](https://github.com/CCXXXI/ecg_monitor/commit/3207075b201f22868298a4201f5645fd20bb51ed))
-* **settings:** move fakeDeviceOnProvider to pref_providers.dart ([d5a80e3](https://github.com/CCXXXI/ecg_monitor/commit/d5a80e3dc610457008f75129e2a3adbbba07de8e))
-* **settings:** move settings to subfolder ([7add24d](https://github.com/CCXXXI/ecg_monitor/commit/7add24df778a0763bbf95d5443607b2c60519e34))
-* **settings:** rename MonitorSettingGroup to ChartSettingsData ([63f573a](https://github.com/CCXXXI/ecg_monitor/commit/63f573ac05685744580277e3aeddffefcc40208e))
-* **settings:** rename pref_providers.dart to providers.dart ([fc7dbdc](https://github.com/CCXXXI/ecg_monitor/commit/fc7dbdcee567646e5a97d43906e86d62073410a7))
-* **settings:** split real time chart settings ([ef35c49](https://github.com/CCXXXI/ecg_monitor/commit/ef35c498cd05ce76fe2780b67b520a918aa6187a))
-* **settings:** update autoUpload key ([247c40d](https://github.com/CCXXXI/ecg_monitor/commit/247c40d00274afb54acd3e658151862160febfc8))
-* **settings:** update bool setting keys ([879ca78](https://github.com/CCXXXI/ecg_monitor/commit/879ca78be0eb9c39995b12f3c2941fd5538f1035))
+- ecg directory ([306ff97](https://github.com/CCXXXI/ecg_monitor/commit/306ff9723284c8dcb4c4f4ebd05c967118b4401b))
+- **me:** rename mine to me ([#155](https://github.com/CCXXXI/ecg_monitor/issues/155)) ([d89ef7d](https://github.com/CCXXXI/ecg_monitor/commit/d89ef7ddb64c67c17299c81ff1e5db8f9ff3d0b6))
+- move constants_test.dart to utils/ ([13d4001](https://github.com/CCXXXI/ecg_monitor/commit/13d400145d37d1e18e183d396dc6a2b8b793263b))
+- **realtime:** RealTimeChart ([91655eb](https://github.com/CCXXXI/ecg_monitor/commit/91655eb0cd5442836b5995ee2f4919b306cf05bd))
+- **realTime:** rename monitor to realTime ([a9e98db](https://github.com/CCXXXI/ecg_monitor/commit/a9e98db050af288d15f244a4a98e750c971ae593))
+- **settings:** add DiagnosticsProperty ([f3fb9dd](https://github.com/CCXXXI/ecg_monitor/commit/f3fb9dd239e70ba39bf9c28577a41f6f6fbdd201))
+- **settings:** extract ChartSettings ([5f45f8a](https://github.com/CCXXXI/ecg_monitor/commit/5f45f8a71109bccc292269f7fc9e99f096f83629))
+- **settings:** extract pref providers ([728c559](https://github.com/CCXXXI/ecg_monitor/commit/728c559151b7b171283beef9f8558166d7598e68))
+- **settings:** make \_SectionTitle.padding private ([3207075](https://github.com/CCXXXI/ecg_monitor/commit/3207075b201f22868298a4201f5645fd20bb51ed))
+- **settings:** move fakeDeviceOnProvider to pref_providers.dart ([d5a80e3](https://github.com/CCXXXI/ecg_monitor/commit/d5a80e3dc610457008f75129e2a3adbbba07de8e))
+- **settings:** move settings to subfolder ([7add24d](https://github.com/CCXXXI/ecg_monitor/commit/7add24df778a0763bbf95d5443607b2c60519e34))
+- **settings:** rename MonitorSettingGroup to ChartSettingsData ([63f573a](https://github.com/CCXXXI/ecg_monitor/commit/63f573ac05685744580277e3aeddffefcc40208e))
+- **settings:** rename pref_providers.dart to providers.dart ([fc7dbdc](https://github.com/CCXXXI/ecg_monitor/commit/fc7dbdcee567646e5a97d43906e86d62073410a7))
+- **settings:** split real time chart settings ([ef35c49](https://github.com/CCXXXI/ecg_monitor/commit/ef35c498cd05ce76fe2780b67b520a918aa6187a))
+- **settings:** update autoUpload key ([247c40d](https://github.com/CCXXXI/ecg_monitor/commit/247c40d00274afb54acd3e658151862160febfc8))
+- **settings:** update bool setting keys ([879ca78](https://github.com/CCXXXI/ecg_monitor/commit/879ca78be0eb9c39995b12f3c2941fd5538f1035))
 
 ## [0.14.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.13.1...v0.14.0) (2023-02-21)
 
