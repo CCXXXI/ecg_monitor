@@ -1,6 +1,6 @@
 import "package:package_info_plus/package_info_plus.dart";
 
-const monitor = "实时心电";
+const realTime = "实时心电";
 const style = "样式";
 const professional = "专业";
 const simple = "简洁";

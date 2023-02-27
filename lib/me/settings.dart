@@ -257,7 +257,7 @@ class Settings extends ConsumerWidget {
       appBar: AppBar(title: const Text(str.settings)),
       body: ListView(
         children: [
-          const _SectionTitle(str.monitor),
+          const _SectionTitle(str.realTime),
           ListTile(
             leading: const Icon(Icons.monitor_heart_outlined),
             title: const Text(str.style),

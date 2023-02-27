@@ -11,7 +11,7 @@ class Home extends ConsumerWidget {
   const Home(this._child, {super.key});
 
   static const _routes = [
-    "/monitor",
+    "/real_time",
     "/history",
     "/analytics",
     "/device_manager",
@@ -36,7 +36,7 @@ class Home extends ConsumerWidget {
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.monitor_heart_outlined),
-            label: str.monitor,
+            label: str.realTime,
           ),
           NavigationDestination(
             icon: Icon(Icons.history_outlined),

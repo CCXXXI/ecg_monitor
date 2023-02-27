@@ -9,7 +9,7 @@ import "../history/history.dart";
 import "../home.dart";
 import "../me/me.dart";
 import "../me/settings.dart";
-import "../monitor/monitor.dart";
+import "../real_time/real_time.dart";
 import "../utils/constants/keys.dart" as key;
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
@@ -17,7 +17,7 @@ final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
 
 final router = GoRouter(
   navigatorKey: _rootKey,
-  initialLocation: "/monitor",
+  initialLocation: "/real_time",
   debugLogDiagnostics: true,
   observers: [SentryNavigatorObserver()],
   routes: [
@@ -26,12 +26,12 @@ final router = GoRouter(
       builder: (context, state, child) => Home(child),
       routes: [
         GoRoute(
-          path: "/monitor",
+          path: "/real_time",
           redirect: (context, state) =>
               prefs.getString(key.currentDeviceId) == null
                   ? "/device_manager"
                   : null,
-          builder: (context, state) => const Monitor(),
+          builder: (context, state) => const RealTime(),
         ),
         GoRoute(
           path: "/history",

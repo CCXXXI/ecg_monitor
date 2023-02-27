@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 
 import "chart.dart";
 
-class Monitor extends StatelessWidget {
-  const Monitor({super.key});
+class RealTime extends StatelessWidget {
+  const RealTime({super.key});
 
   @override
   Widget build(BuildContext context) {
