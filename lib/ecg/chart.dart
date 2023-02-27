@@ -8,13 +8,14 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../device_manager/device.dart";
-import "../me/settings/settings.dart";
+import "../me/settings/data_types.dart";
+import "../me/settings/providers.dart";
 
 part "chart.g.dart";
 
 @riverpod
 double _refreshInterval(_RefreshIntervalRef ref) {
-  final rateHz = ref.watch(monitorSettingsProvider).refreshRateHz;
+  final rateHz = ref.watch(realTimeRefreshRateHzProvider);
   return Duration.millisecondsPerSecond / rateHz;
 }
 
@@ -37,7 +38,7 @@ class _Points extends _$Points {
     final point = FlSpot(x, y);
 
     // ignore if too close to the previous point
-    final minDistance = ref.watch(monitorSettingsProvider).minDistance;
+    final minDistance = ref.watch(realTimeMinDistanceProvider);
     if (_buffer.isNotEmpty &&
         Chart.normalizedDistance(_buffer.last, point) < minDistance) {
       return;
@@ -80,13 +81,17 @@ class Chart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final points = ref.watch(_pointsProvider);
-    final settings = ref.watch(monitorSettingsProvider);
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
-    final durationS =
-        isPortrait ? settings.portraitDuration : settings.landscapeDuration;
-    final horizontalLineType = settings.horizontalLineType;
-    final verticalLineType = settings.verticalLineType;
+    final durationS = ref.watch(
+      isPortrait
+          ? realTimePortraitDurationProvider
+          : realTimeLandscapeDurationProvider,
+    );
+    final backgroundColor = ref.watch(realTimeBackgroundColorProvider);
+    final gridColor = ref.watch(realTimeGridColorProvider);
+    final horizontalLineType = ref.watch(realTimeHorizontalLineTypeProvider);
+    final verticalLineType = ref.watch(realTimeVerticalLineTypeProvider);
 
     final durationMs = durationS * Duration.millisecondsPerSecond;
     _maxDurationMs = durationMs;
@@ -131,7 +136,7 @@ class Chart extends ConsumerWidget {
         maxY: points.isEmpty
             ? null
             : points.map((p) => p.y).reduce(max) + _smallYInterval,
-        backgroundColor: settings.backgroundColor,
+        backgroundColor: backgroundColor,
         titlesData: FlTitlesData(
           topTitles: xTitles,
           bottomTitles: xTitles,
@@ -150,23 +155,23 @@ class Chart extends ConsumerWidget {
               ? _smallXInterval
               : _largeXInterval,
           getDrawingHorizontalLine: (value) => FlLine(
-            color: settings.gridColor,
+            color: gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: true),
           ),
           getDrawingVerticalLine: (value) => FlLine(
-            color: settings.gridColor,
+            color: gridColor,
             strokeWidth: _getStrokeWidth(value, isHorizontal: false),
           ),
         ),
         lineBarsData: [
           LineChartBarData(
             spots: points,
-            color: settings.lineColor,
+            color: ref.watch(realTimeLineColorProvider),
             preventCurveOverShooting: true,
             dotData: FlDotData(
-              show: settings.showDots,
+              show: ref.watch(realTimeShowDotsProvider),
               getDotPainter: (spot, xPercentage, bar, index) =>
-                  FlDotSquarePainter(color: settings.backgroundColor),
+                  FlDotSquarePainter(color: backgroundColor),
             ),
           ),
         ],

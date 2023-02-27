@@ -2,7 +2,6 @@ import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -11,177 +10,10 @@ import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart" as str;
 import "../../utils/logger.dart";
 import "../model_test.dart";
+import "data_types.dart";
 import "providers.dart";
 
-part "settings.freezed.dart";
 part "settings.g.dart";
-
-enum LineType { hide, simple, full }
-
-@freezed
-class ChartSettingsData with _$ChartSettingsData {
-  const factory ChartSettingsData({
-    required double portraitDuration,
-    required double landscapeDuration,
-    required double refreshRateHz,
-    required double minDistance,
-    required Color backgroundColor,
-    required Color lineColor,
-    required Color gridColor,
-    required LineType horizontalLineType,
-    required LineType verticalLineType,
-    required bool showDots,
-  }) = _ChartSettingsData;
-
-  static const professional = ChartSettingsData(
-    portraitDuration: 5,
-    landscapeDuration: 10,
-    refreshRateHz: 30,
-    minDistance: 1,
-    backgroundColor: Colors.white,
-    lineColor: Colors.black,
-    gridColor: Color(0xffff0000),
-    horizontalLineType: LineType.full,
-    verticalLineType: LineType.full,
-    showDots: false,
-  );
-
-  static final simple = professional.copyWith(
-    horizontalLineType: LineType.simple,
-    verticalLineType: LineType.hide,
-  );
-
-  /// For [ButtonSegment.value] only.
-  static final custom = simple.copyWith(showDots: true);
-}
-
-@riverpod
-class MonitorSettings extends _$MonitorSettings {
-  @override
-  ChartSettingsData build() {
-    var s = ChartSettingsData.simple;
-
-    final portraitDuration = prefs.getDouble(key.portraitDuration);
-    if (portraitDuration != null) {
-      s = s.copyWith(portraitDuration: portraitDuration);
-    }
-
-    final landscapeDuration = prefs.getDouble(key.landscapeDuration);
-    if (landscapeDuration != null) {
-      s = s.copyWith(landscapeDuration: landscapeDuration);
-    }
-
-    final refreshRateHz = prefs.getDouble(key.refreshRateHz);
-    if (refreshRateHz != null) {
-      s = s.copyWith(refreshRateHz: refreshRateHz);
-    }
-
-    final minDistance = prefs.getDouble(key.minDistance);
-    if (minDistance != null) {
-      s = s.copyWith(minDistance: minDistance);
-    }
-
-    final backgroundColorHex = prefs.getInt(key.backgroundColorHex);
-    if (backgroundColorHex != null) {
-      s = s.copyWith(backgroundColor: Color(backgroundColorHex));
-    }
-
-    final lineColorHex = prefs.getInt(key.lineColorHex);
-    if (lineColorHex != null) {
-      s = s.copyWith(lineColor: Color(lineColorHex));
-    }
-
-    final gridColorHex = prefs.getInt(key.gridColorHex);
-    if (gridColorHex != null) {
-      s = s.copyWith(gridColor: Color(gridColorHex));
-    }
-
-    final horizontalLineTypeIndex = prefs.getInt(key.horizontalLineTypeIndex);
-    if (horizontalLineTypeIndex != null) {
-      s = s.copyWith(
-        horizontalLineType: LineType.values[horizontalLineTypeIndex],
-      );
-    }
-
-    final verticalLineTypeIndex = prefs.getInt(key.verticalLineTypeIndex);
-    if (verticalLineTypeIndex != null) {
-      s = s.copyWith(
-        verticalLineType: LineType.values[verticalLineTypeIndex],
-      );
-    }
-
-    final showDots = prefs.getBool(key.showDots);
-    if (showDots != null) {
-      s = s.copyWith(showDots: showDots);
-    }
-
-    return s;
-  }
-
-  Future<void> set(ChartSettingsData s) async {
-    state = s;
-    await prefs.setDouble(key.portraitDuration, s.portraitDuration);
-    await prefs.setDouble(key.landscapeDuration, s.landscapeDuration);
-    await prefs.setDouble(key.refreshRateHz, s.refreshRateHz);
-    await prefs.setDouble(key.minDistance, s.minDistance);
-    await prefs.setInt(key.backgroundColorHex, s.backgroundColor.value);
-    await prefs.setInt(key.lineColorHex, s.lineColor.value);
-    await prefs.setInt(key.gridColorHex, s.gridColor.value);
-    await prefs.setInt(key.horizontalLineTypeIndex, s.horizontalLineType.index);
-    await prefs.setInt(key.verticalLineTypeIndex, s.verticalLineType.index);
-    await prefs.setBool(key.showDots, s.showDots);
-  }
-
-  Future<void> setPortraitDuration(double duration) async {
-    state = state.copyWith(portraitDuration: duration);
-    await prefs.setDouble(key.portraitDuration, duration);
-  }
-
-  Future<void> setLandscapeDuration(double duration) async {
-    state = state.copyWith(landscapeDuration: duration);
-    await prefs.setDouble(key.landscapeDuration, duration);
-  }
-
-  Future<void> setRefreshRateHz(double refreshRateHz) async {
-    state = state.copyWith(refreshRateHz: refreshRateHz);
-    await prefs.setDouble(key.refreshRateHz, refreshRateHz);
-  }
-
-  Future<void> setMinDistance(double minDistance) async {
-    state = state.copyWith(minDistance: minDistance);
-    await prefs.setDouble(key.minDistance, minDistance);
-  }
-
-  Future<void> setBackgroundColor(Color color) async {
-    state = state.copyWith(backgroundColor: color);
-    await prefs.setInt(key.backgroundColorHex, color.value);
-  }
-
-  Future<void> setLineColor(Color color) async {
-    state = state.copyWith(lineColor: color);
-    await prefs.setInt(key.lineColorHex, color.value);
-  }
-
-  Future<void> setGridColor(Color color) async {
-    state = state.copyWith(gridColor: color);
-    await prefs.setInt(key.gridColorHex, color.value);
-  }
-
-  Future<void> setHorizontalLineType(LineType type) async {
-    state = state.copyWith(horizontalLineType: type);
-    await prefs.setInt(key.horizontalLineTypeIndex, type.index);
-  }
-
-  Future<void> setVerticalLineType(LineType type) async {
-    state = state.copyWith(verticalLineType: type);
-    await prefs.setInt(key.verticalLineTypeIndex, type.index);
-  }
-
-  Future<void> setShowDots({required bool on}) async {
-    state = state.copyWith(showDots: on);
-    await prefs.setBool(key.showDots, on);
-  }
-}
 
 @riverpod
 class _LoggerLevel extends _$LoggerLevel {
@@ -207,25 +39,28 @@ class Settings extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // monitor settings
-    final monitorSettings = ref.watch(monitorSettingsProvider);
-    final portraitDuration = monitorSettings.portraitDuration;
-    final landscapeDuration = monitorSettings.landscapeDuration;
-    final refreshRateHz = monitorSettings.refreshRateHz;
-    final minDistance = monitorSettings.minDistance;
-    final backgroundColor = monitorSettings.backgroundColor;
-    final lineColor = monitorSettings.lineColor;
-    final gridColor = monitorSettings.gridColor;
+    // realTime settings
+    final realTimePortraitDuration =
+        ref.watch(realTimePortraitDurationProvider);
+    final realTimeLandscapeDuration =
+        ref.watch(realTimeLandscapeDurationProvider);
+    final realTimeRefreshRateHz = ref.watch(realTimeRefreshRateHzProvider);
+    final realTimeMinDistance = ref.watch(realTimeMinDistanceProvider);
+    final realTimeBackgroundColor = ref.watch(realTimeBackgroundColorProvider);
+    final realTimeGridColor = ref.watch(realTimeGridColorProvider);
+    final realTimeLineColor = ref.watch(realTimeLineColorProvider);
+    final realTimeChartSettings = ref.watch(realTimeChartSettingsProvider);
 
-    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
-    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
-    final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)} Hz";
-    final minDistanceString = minDistance.toStringAsFixed(1);
+    final realTimePortraitDurationString =
+        "${realTimePortraitDuration.toStringAsFixed(0)} s";
+    final realTimeLandscapeDurationString =
+        "${realTimeLandscapeDuration.toStringAsFixed(0)} s";
+    final realTimeRefreshRateHzString =
+        "${realTimeRefreshRateHz.toStringAsFixed(0)} Hz";
+    final realTimeMinDistanceString = realTimeMinDistance.toStringAsFixed(1);
 
     // devTools settings
     final loggerLevel = ref.watch(_loggerLevelProvider);
-    final showDots = monitorSettings.showDots;
-
     final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
     return Scaffold(
@@ -238,10 +73,10 @@ class Settings extends ConsumerWidget {
             title: const Text(str.style),
             trailing: SegmentedButton(
               segments: [
-                const ButtonSegment(
+                ButtonSegment(
                   value: ChartSettingsData.professional,
-                  icon: Icon(Icons.grid_on_outlined),
-                  label: Text(str.professional),
+                  icon: const Icon(Icons.grid_on_outlined),
+                  label: const Text(str.professional),
                 ),
                 ButtonSegment(
                   value: ChartSettingsData.simple,
@@ -256,119 +91,116 @@ class Settings extends ConsumerWidget {
                 ),
               ],
               selected: {
-                if (monitorSettings == ChartSettingsData.professional ||
-                    monitorSettings == ChartSettingsData.simple)
-                  monitorSettings
+                if (realTimeChartSettings == ChartSettingsData.professional ||
+                    realTimeChartSettings == ChartSettingsData.simple)
+                  realTimeChartSettings
                 else
                   ChartSettingsData.custom
               },
               onSelectionChanged: (selected) async => ref
-                  .read(monitorSettingsProvider.notifier)
+                  .read(realTimeChartSettingsProvider.notifier)
                   .set(selected.single),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.stay_primary_portrait_outlined),
             title: const Text(str.portraitDuration),
-            subtitle: Text("${str.recent} $portraitDurationString"),
+            subtitle: Text("${str.recent} $realTimePortraitDurationString"),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
-                value: portraitDuration,
-                onChanged: ref
-                    .read(monitorSettingsProvider.notifier)
-                    .setPortraitDuration,
+                value: realTimePortraitDuration,
+                onChanged:
+                    ref.read(realTimePortraitDurationProvider.notifier).set,
                 min: 1,
                 max: 10,
                 divisions: 9,
-                label: portraitDurationString,
+                label: realTimePortraitDurationString,
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.stay_primary_landscape_outlined),
             title: const Text(str.landscapeDuration),
-            subtitle: Text("${str.recent} $landscapeDurationString"),
+            subtitle: Text("${str.recent} $realTimeLandscapeDurationString"),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
-                value: landscapeDuration,
-                onChanged: ref
-                    .read(monitorSettingsProvider.notifier)
-                    .setLandscapeDuration,
+                value: realTimeLandscapeDuration,
+                onChanged:
+                    ref.read(realTimeLandscapeDurationProvider.notifier).set,
                 min: 2,
                 max: 20,
                 divisions: 9,
-                label: landscapeDurationString,
+                label: realTimeLandscapeDurationString,
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.speed_outlined),
             title: const Text(str.refreshRate),
-            subtitle: Text(refreshRateHzString),
+            subtitle: Text(realTimeRefreshRateHzString),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
-                value: refreshRateHz,
-                onChanged:
-                    ref.read(monitorSettingsProvider.notifier).setRefreshRateHz,
+                value: realTimeRefreshRateHz,
+                onChanged: ref.read(realTimeRefreshRateHzProvider.notifier).set,
                 min: 10,
                 max: 60,
                 divisions: 10,
-                label: refreshRateHzString,
+                label: realTimeRefreshRateHzString,
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.timeline_outlined),
             title: const Text(str.minDistance),
-            subtitle: Text(minDistanceString),
+            subtitle: Text(realTimeMinDistanceString),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
-                value: minDistance,
-                onChanged:
-                    ref.read(monitorSettingsProvider.notifier).setMinDistance,
+                value: realTimeMinDistance,
+                onChanged: ref.read(realTimeMinDistanceProvider.notifier).set,
                 max: 5,
                 divisions: 10,
-                label: minDistanceString,
+                label: realTimeMinDistanceString,
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.color_lens_outlined),
             title: const Text(str.backgroundColor),
-            trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
+            trailing:
+                ColorIndicator(color: realTimeBackgroundColor, hasBorder: true),
             onTap: () async => ref
-                .read(monitorSettingsProvider.notifier)
-                .setBackgroundColor(await _pickColor(context, backgroundColor)),
+                .read(realTimeBackgroundColorProvider.notifier)
+                .set(await _pickColor(context, realTimeBackgroundColor)),
           ),
           ListTile(
             leading: const Icon(Icons.show_chart_outlined),
             title: const Text(str.lineColor),
-            trailing: ColorIndicator(color: lineColor, hasBorder: true),
+            trailing: ColorIndicator(color: realTimeLineColor, hasBorder: true),
             onTap: () async => ref
-                .read(monitorSettingsProvider.notifier)
-                .setLineColor(await _pickColor(context, lineColor)),
+                .read(realTimeLineColorProvider.notifier)
+                .set(await _pickColor(context, realTimeLineColor)),
           ),
           ListTile(
             leading: const Icon(Icons.grid_on_outlined),
             title: const Text(str.gridColor),
-            trailing: ColorIndicator(color: gridColor, hasBorder: true),
+            trailing: ColorIndicator(color: realTimeGridColor, hasBorder: true),
             onTap: () async => ref
-                .read(monitorSettingsProvider.notifier)
-                .setGridColor(await _pickColor(context, gridColor)),
+                .read(realTimeGridColorProvider.notifier)
+                .set(await _pickColor(context, realTimeGridColor)),
           ),
           ListTile(
             leading: const Icon(Icons.border_horizontal_outlined),
             title: const Text(str.horizontalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {monitorSettings.horizontalLineType},
+              selected: {ref.watch(realTimeHorizontalLineTypeProvider)},
               onSelectionChanged: (selected) async => ref
-                  .read(monitorSettingsProvider.notifier)
-                  .setHorizontalLineType(selected.single),
+                  .read(realTimeHorizontalLineTypeProvider.notifier)
+                  .set(selected.single),
             ),
           ),
           ListTile(
@@ -376,10 +208,10 @@ class Settings extends ConsumerWidget {
             title: const Text(str.verticalLine),
             trailing: SegmentedButton(
               segments: _lineTypeSegments,
-              selected: {monitorSettings.verticalLineType},
+              selected: {ref.watch(realTimeVerticalLineTypeProvider)},
               onSelectionChanged: (selected) async => ref
-                  .read(monitorSettingsProvider.notifier)
-                  .setVerticalLineType(selected.single),
+                  .read(realTimeVerticalLineTypeProvider.notifier)
+                  .set(selected.single),
             ),
           ),
           const _SectionTitle(str.history),
@@ -436,9 +268,8 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.linear_scale_outlined),
             title: const Text(str.showDots),
-            value: showDots,
-            onChanged: (on) async =>
-                ref.read(monitorSettingsProvider.notifier).setShowDots(on: on),
+            value: ref.watch(realTimeShowDotsProvider),
+            onChanged: ref.read(realTimeShowDotsProvider.notifier).set,
           ),
         ],
       ),

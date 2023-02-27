@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'settings.dart';
+part of 'data_types.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -222,9 +222,7 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChartSettingsData
-    with DiagnosticableTreeMixin
-    implements _ChartSettingsData {
+class _$_ChartSettingsData implements _ChartSettingsData {
   const _$_ChartSettingsData(
       {required this.portraitDuration,
       required this.landscapeDuration,
@@ -259,25 +257,8 @@ class _$_ChartSettingsData
   final bool showDots;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ChartSettingsData'))
-      ..add(DiagnosticsProperty('portraitDuration', portraitDuration))
-      ..add(DiagnosticsProperty('landscapeDuration', landscapeDuration))
-      ..add(DiagnosticsProperty('refreshRateHz', refreshRateHz))
-      ..add(DiagnosticsProperty('minDistance', minDistance))
-      ..add(DiagnosticsProperty('backgroundColor', backgroundColor))
-      ..add(DiagnosticsProperty('lineColor', lineColor))
-      ..add(DiagnosticsProperty('gridColor', gridColor))
-      ..add(DiagnosticsProperty('horizontalLineType', horizontalLineType))
-      ..add(DiagnosticsProperty('verticalLineType', verticalLineType))
-      ..add(DiagnosticsProperty('showDots', showDots));
   }
 
   @override
@@ -344,20 +325,28 @@ abstract class _ChartSettingsData implements ChartSettingsData {
 
   @override
   double get portraitDuration;
+
   @override
   double get landscapeDuration;
+
   @override
   double get refreshRateHz;
+
   @override
   double get minDistance;
+
   @override
   Color get backgroundColor;
+
   @override
   Color get lineColor;
+
   @override
   Color get gridColor;
+
   @override
   LineType get horizontalLineType;
+
   @override
   LineType get verticalLineType;
 
