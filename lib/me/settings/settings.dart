@@ -394,12 +394,19 @@ class Settings extends ConsumerWidget {
                   .setVerticalLineType(selected.single),
             ),
           ),
+          const _SectionTitle(str.history),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.cloud_upload_outlined),
+            title: const Text(str.autoUpload),
+            value: ref.watch(historyAutoUploadProvider),
+            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
+          ),
           const _SectionTitle(str.analytics),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
-            value: ref.watch(autoUploadProvider),
-            onChanged: ref.read(autoUploadProvider.notifier).set,
+            value: ref.watch(analyticsAutoUploadProvider),
+            onChanged: ref.read(analyticsAutoUploadProvider.notifier).set,
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(
