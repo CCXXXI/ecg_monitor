@@ -30,7 +30,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     required Color gridColor,
     required LineType horizontalLineType,
     required LineType verticalLineType,
-    required bool showDotsOn,
+    required bool showDots,
   }) = _MonitorSettingGroup;
 
   static const professional = MonitorSettingGroup(
@@ -43,7 +43,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
     gridColor: Color(0xffff0000),
     horizontalLineType: LineType.full,
     verticalLineType: LineType.full,
-    showDotsOn: false,
+    showDots: false,
   );
 
   static final simple = professional.copyWith(
@@ -52,7 +52,7 @@ class MonitorSettingGroup with _$MonitorSettingGroup {
   );
 
   /// For [ButtonSegment.value] only.
-  static final custom = simple.copyWith(showDotsOn: true);
+  static final custom = simple.copyWith(showDots: true);
 }
 
 @riverpod
@@ -110,9 +110,9 @@ class MonitorSettings extends _$MonitorSettings {
       );
     }
 
-    final showDotsOn = prefs.getBool(key.showDotsOn);
-    if (showDotsOn != null) {
-      s = s.copyWith(showDotsOn: showDotsOn);
+    final showDots = prefs.getBool(key.showDots);
+    if (showDots != null) {
+      s = s.copyWith(showDots: showDots);
     }
 
     return s;
@@ -129,7 +129,7 @@ class MonitorSettings extends _$MonitorSettings {
     await prefs.setInt(key.gridColorHex, s.gridColor.value);
     await prefs.setInt(key.horizontalLineTypeIndex, s.horizontalLineType.index);
     await prefs.setInt(key.verticalLineTypeIndex, s.verticalLineType.index);
-    await prefs.setBool(key.showDotsOn, s.showDotsOn);
+    await prefs.setBool(key.showDots, s.showDots);
   }
 
   Future<void> setPortraitDuration(double duration) async {
@@ -178,8 +178,8 @@ class MonitorSettings extends _$MonitorSettings {
   }
 
   Future<void> setShowDots({required bool on}) async {
-    state = state.copyWith(showDotsOn: on);
-    await prefs.setBool(key.showDotsOn, on);
+    state = state.copyWith(showDots: on);
+    await prefs.setBool(key.showDots, on);
   }
 }
 
@@ -236,7 +236,7 @@ class Settings extends ConsumerWidget {
     // devTools settings
     final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
     final loggerLevel = ref.watch(_loggerLevelProvider);
-    final showDotsOn = monitorSettings.showDotsOn;
+    final showDots = monitorSettings.showDots;
 
     final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
@@ -442,7 +442,7 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.linear_scale_outlined),
             title: const Text(str.showDots),
-            value: showDotsOn,
+            value: showDots,
             onChanged: (on) async =>
                 ref.read(monitorSettingsProvider.notifier).setShowDots(on: on),
           ),

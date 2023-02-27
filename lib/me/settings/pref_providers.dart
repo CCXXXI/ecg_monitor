@@ -18,4 +18,4 @@ class _Bool extends _$Bool {
   }
 }
 
-final autoUploadProvider = _boolProvider("$analytics.$autoUploadOn", true);
+final autoUploadProvider = _boolProvider("$analytics.$autoUpload", true);

@@ -25,7 +25,7 @@ mixin _$MonitorSettingGroup {
   Color get gridColor => throw _privateConstructorUsedError;
   LineType get horizontalLineType => throw _privateConstructorUsedError;
   LineType get verticalLineType => throw _privateConstructorUsedError;
-  bool get showDotsOn => throw _privateConstructorUsedError;
+  bool get showDots => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MonitorSettingGroupCopyWith<MonitorSettingGroup> get copyWith =>
@@ -48,7 +48,7 @@ abstract class $MonitorSettingGroupCopyWith<$Res> {
       Color gridColor,
       LineType horizontalLineType,
       LineType verticalLineType,
-      bool showDotsOn});
+      bool showDots});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
     Object? gridColor = null,
     Object? horizontalLineType = null,
     Object? verticalLineType = null,
-    Object? showDotsOn = null,
+    Object? showDots = null,
   }) {
     return _then(_value.copyWith(
       portraitDuration: null == portraitDuration
@@ -112,9 +112,9 @@ class _$MonitorSettingGroupCopyWithImpl<$Res, $Val extends MonitorSettingGroup>
           ? _value.verticalLineType
           : verticalLineType // ignore: cast_nullable_to_non_nullable
               as LineType,
-      showDotsOn: null == showDotsOn
-          ? _value.showDotsOn
-          : showDotsOn // ignore: cast_nullable_to_non_nullable
+      showDots: null == showDots
+          ? _value.showDots
+          : showDots // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -138,7 +138,7 @@ abstract class _$$_MonitorSettingGroupCopyWith<$Res>
       Color gridColor,
       LineType horizontalLineType,
       LineType verticalLineType,
-      bool showDotsOn});
+      bool showDots});
 }
 
 /// @nodoc
@@ -161,7 +161,7 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
     Object? gridColor = null,
     Object? horizontalLineType = null,
     Object? verticalLineType = null,
-    Object? showDotsOn = null,
+    Object? showDots = null,
   }) {
     return _then(_$_MonitorSettingGroup(
       portraitDuration: null == portraitDuration
@@ -200,9 +200,9 @@ class __$$_MonitorSettingGroupCopyWithImpl<$Res>
           ? _value.verticalLineType
           : verticalLineType // ignore: cast_nullable_to_non_nullable
               as LineType,
-      showDotsOn: null == showDotsOn
-          ? _value.showDotsOn
-          : showDotsOn // ignore: cast_nullable_to_non_nullable
+      showDots: null == showDots
+          ? _value.showDots
+          : showDots // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -223,7 +223,7 @@ class _$_MonitorSettingGroup
       required this.gridColor,
       required this.horizontalLineType,
       required this.verticalLineType,
-      required this.showDotsOn});
+      required this.showDots});
 
   @override
   final double portraitDuration;
@@ -244,11 +244,11 @@ class _$_MonitorSettingGroup
   @override
   final LineType verticalLineType;
   @override
-  final bool showDotsOn;
+  final bool showDots;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDotsOn: $showDotsOn)';
+    return 'MonitorSettingGroup(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
   }
 
   @override
@@ -265,7 +265,7 @@ class _$_MonitorSettingGroup
       ..add(DiagnosticsProperty('gridColor', gridColor))
       ..add(DiagnosticsProperty('horizontalLineType', horizontalLineType))
       ..add(DiagnosticsProperty('verticalLineType', verticalLineType))
-      ..add(DiagnosticsProperty('showDotsOn', showDotsOn));
+      ..add(DiagnosticsProperty('showDots', showDots));
   }
 
   @override
@@ -291,8 +291,8 @@ class _$_MonitorSettingGroup
                 other.horizontalLineType == horizontalLineType) &&
             (identical(other.verticalLineType, verticalLineType) ||
                 other.verticalLineType == verticalLineType) &&
-            (identical(other.showDotsOn, showDotsOn) ||
-                other.showDotsOn == showDotsOn));
+            (identical(other.showDots, showDots) ||
+                other.showDots == showDots));
   }
 
   @override
@@ -307,7 +307,7 @@ class _$_MonitorSettingGroup
       gridColor,
       horizontalLineType,
       verticalLineType,
-      showDotsOn);
+      showDots);
 
   @JsonKey(ignore: true)
   @override
@@ -328,7 +328,7 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
       required final Color gridColor,
       required final LineType horizontalLineType,
       required final LineType verticalLineType,
-      required final bool showDotsOn}) = _$_MonitorSettingGroup;
+      required final bool showDots}) = _$_MonitorSettingGroup;
 
   @override
   double get portraitDuration;
@@ -349,7 +349,7 @@ abstract class _MonitorSettingGroup implements MonitorSettingGroup {
   @override
   LineType get verticalLineType;
   @override
-  bool get showDotsOn;
+  bool get showDots;
   @override
   @JsonKey(ignore: true)
   _$$_MonitorSettingGroupCopyWith<_$_MonitorSettingGroup> get copyWith =>

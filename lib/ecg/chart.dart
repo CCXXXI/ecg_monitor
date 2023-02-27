@@ -164,7 +164,7 @@ class Chart extends ConsumerWidget {
             color: settings.lineColor,
             preventCurveOverShooting: true,
             dotData: FlDotData(
-              show: settings.showDotsOn,
+              show: settings.showDots,
               getDotPainter: (spot, xPercentage, bar, index) =>
                   FlDotSquarePainter(color: settings.backgroundColor),
             ),
