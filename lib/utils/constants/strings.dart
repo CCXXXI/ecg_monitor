@@ -1,6 +1,6 @@
 import "package:package_info_plus/package_info_plus.dart";
 
-const monitor = "实时监测";
+const monitor = "实时心电";
 const style = "样式";
 const professional = "专业";
 const simple = "简洁";
@@ -19,7 +19,7 @@ const lineTypeHide = "隐藏";
 const lineTypeSimple = "简化";
 const lineTypeFull = "完整";
 
-const analytics = "历史报告";
+const analytics = "分析报告";
 const autoUpload = "自动上传";
 
 const deviceManager = "设备管理";
