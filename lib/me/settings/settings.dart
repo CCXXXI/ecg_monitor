@@ -160,7 +160,6 @@ class Settings extends ConsumerWidget {
               child: Slider.adaptive(
                 value: realTimeMinDistance,
                 onChanged: ref.read(realTimeMinDistanceProvider.notifier).set,
-                max: 5,
                 divisions: 10,
                 label: realTimeMinDistanceString,
               ),

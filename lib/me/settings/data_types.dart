@@ -24,7 +24,7 @@ class ChartSettingsData with _$ChartSettingsData {
     portraitDuration: 3,
     landscapeDuration: 6,
     refreshRateHz: 30,
-    minDistance: 1,
+    minDistance: .5,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     // Color(Colors.red.value) != Colors.red
