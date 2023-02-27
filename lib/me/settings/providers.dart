@@ -3,7 +3,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "../../database.dart";
 import "../../utils/constants/keys.dart";
 
-part "pref_providers.g.dart";
+part "providers.g.dart";
 
 @riverpod
 class _Bool extends _$Bool {

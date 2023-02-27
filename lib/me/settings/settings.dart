@@ -11,7 +11,7 @@ import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart" as str;
 import "../../utils/logger.dart";
 import "../model_test.dart";
-import "pref_providers.dart";
+import "providers.dart";
 
 part "settings.freezed.dart";
 part "settings.g.dart";
