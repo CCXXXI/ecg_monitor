@@ -184,12 +184,14 @@ class MonitorSettings extends _$MonitorSettings {
 
 @riverpod
 class AutoUploadOn extends _$AutoUploadOn {
+  String get _fullKey => "$prefix.${key.autoUploadOn}";
+
   @override
-  bool build() => prefs.getBool(key.autoUploadOn) ?? true;
+  bool build(String prefix) => prefs.getBool(_fullKey) ?? true;
 
   Future<void> set({required bool on}) async {
     state = on;
-    await prefs.setBool(key.autoUploadOn, on);
+    await prefs.setBool(_fullKey, on);
   }
 }
 
@@ -242,9 +244,6 @@ class Settings extends ConsumerWidget {
     final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
     final refreshRateHzString = "${refreshRateHz.toStringAsFixed(0)} Hz";
     final minDistanceString = minDistance.toStringAsFixed(1);
-
-    // analytics settings
-    final autoUploadOn = ref.watch(autoUploadOnProvider);
 
     // devTools settings
     final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
@@ -411,9 +410,10 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
-            value: autoUploadOn,
-            onChanged: (on) async =>
-                ref.read(autoUploadOnProvider.notifier).set(on: on),
+            value: ref.watch(autoUploadOnProvider(key.analytics)),
+            onChanged: (on) async => ref
+                .read(autoUploadOnProvider(key.analytics).notifier)
+                .set(on: on),
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(

@@ -22,21 +22,124 @@ final monitorSettingsProvider =
 );
 
 typedef _$MonitorSettings = AutoDisposeNotifier<MonitorSettingGroup>;
-String _$autoUploadOnHash() => r'e591db100a354cbdd87d595304f06d2ef7357360';
+
+String _$autoUploadOnHash() => r'893072d52c02e2a7c35f680572a04565e57ccf3a';
+
+/// Copied from Dart SDK
+class _SystemHash {
+  _SystemHash._();
+
+  static int combine(int hash, int value) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + value);
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
+    return hash ^ (hash >> 6);
+  }
+
+  static int finish(int hash) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
+    // ignore: parameter_assignments
+    hash = hash ^ (hash >> 11);
+    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  }
+}
+
+abstract class _$AutoUploadOn extends BuildlessAutoDisposeNotifier<bool> {
+  late final String prefix;
+
+  bool build(
+    String prefix,
+  );
+}
 
 /// See also [AutoUploadOn].
 @ProviderFor(AutoUploadOn)
-final autoUploadOnProvider =
-    AutoDisposeNotifierProvider<AutoUploadOn, bool>.internal(
-  AutoUploadOn.new,
-  name: r'autoUploadOnProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$autoUploadOnHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const autoUploadOnProvider = AutoUploadOnFamily();
 
-typedef _$AutoUploadOn = AutoDisposeNotifier<bool>;
+/// See also [AutoUploadOn].
+class AutoUploadOnFamily extends Family<bool> {
+  /// See also [AutoUploadOn].
+  const AutoUploadOnFamily();
+
+  /// See also [AutoUploadOn].
+  AutoUploadOnProvider call(
+    String prefix,
+  ) {
+    return AutoUploadOnProvider(
+      prefix,
+    );
+  }
+
+  @override
+  AutoUploadOnProvider getProviderOverride(
+    covariant AutoUploadOnProvider provider,
+  ) {
+    return call(
+      provider.prefix,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'autoUploadOnProvider';
+}
+
+/// See also [AutoUploadOn].
+class AutoUploadOnProvider
+    extends AutoDisposeNotifierProviderImpl<AutoUploadOn, bool> {
+  /// See also [AutoUploadOn].
+  AutoUploadOnProvider(
+    this.prefix,
+  ) : super.internal(
+          () => AutoUploadOn()..prefix = prefix,
+          from: autoUploadOnProvider,
+          name: r'autoUploadOnProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$autoUploadOnHash,
+          dependencies: AutoUploadOnFamily._dependencies,
+          allTransitiveDependencies:
+              AutoUploadOnFamily._allTransitiveDependencies,
+        );
+
+  final String prefix;
+
+  @override
+  bool operator ==(Object other) {
+    return other is AutoUploadOnProvider && other.prefix == prefix;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, prefix.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+
+  @override
+  bool runNotifierBuild(
+    covariant AutoUploadOn notifier,
+  ) {
+    return notifier.build(
+      prefix,
+    );
+  }
+}
+
 String _$fakeDeviceOnHash() => r'9700c2836d6e522fd88b398821ba59d32fb44f02';
 
 /// See also [FakeDeviceOn].

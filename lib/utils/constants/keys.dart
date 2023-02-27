@@ -1,3 +1,5 @@
+const history = "history";
+const analytics = "analytics";
 const currentDeviceId = "currentDeviceId";
 const loggerLevelIndex = "loggerLevelIndex";
 const portraitDuration = "portraitDuration";
