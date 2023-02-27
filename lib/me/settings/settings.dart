@@ -11,6 +11,7 @@ import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart" as str;
 import "../../utils/logger.dart";
 import "../model_test.dart";
+import "pref_providers.dart";
 
 part "settings.freezed.dart";
 part "settings.g.dart";
@@ -179,19 +180,6 @@ class MonitorSettings extends _$MonitorSettings {
   Future<void> setShowDots({required bool on}) async {
     state = state.copyWith(showDotsOn: on);
     await prefs.setBool(key.showDotsOn, on);
-  }
-}
-
-@riverpod
-class AutoUploadOn extends _$AutoUploadOn {
-  String get _fullKey => "$prefix.${key.autoUploadOn}";
-
-  @override
-  bool build(String prefix) => prefs.getBool(_fullKey) ?? true;
-
-  Future<void> set({required bool on}) async {
-    state = on;
-    await prefs.setBool(_fullKey, on);
   }
 }
 
@@ -410,10 +398,8 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
-            value: ref.watch(autoUploadOnProvider(key.analytics)),
-            onChanged: (on) async => ref
-                .read(autoUploadOnProvider(key.analytics).notifier)
-                .set(on: on),
+            value: ref.watch(autoUploadProvider),
+            onChanged: ref.read(autoUploadProvider.notifier).set,
           ),
           const _SectionTitle(str.devTools),
           SwitchListTile.adaptive(
