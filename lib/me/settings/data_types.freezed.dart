@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChartSettingsData {
   double get portraitDuration => throw _privateConstructorUsedError;
   double get landscapeDuration => throw _privateConstructorUsedError;
-  double get refreshRateHz => throw _privateConstructorUsedError;
-  double get minDistance => throw _privateConstructorUsedError;
   Color get backgroundColor => throw _privateConstructorUsedError;
   Color get lineColor => throw _privateConstructorUsedError;
   Color get gridColor => throw _privateConstructorUsedError;
@@ -41,8 +39,6 @@ abstract class $ChartSettingsDataCopyWith<$Res> {
   $Res call(
       {double portraitDuration,
       double landscapeDuration,
-      double refreshRateHz,
-      double minDistance,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -66,8 +62,6 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
-    Object? refreshRateHz = null,
-    Object? minDistance = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -83,14 +77,6 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
-              as double,
-      refreshRateHz: null == refreshRateHz
-          ? _value.refreshRateHz
-          : refreshRateHz // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -131,8 +117,6 @@ abstract class _$$_ChartSettingsDataCopyWith<$Res>
   $Res call(
       {double portraitDuration,
       double landscapeDuration,
-      double refreshRateHz,
-      double minDistance,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -154,8 +138,6 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
-    Object? refreshRateHz = null,
-    Object? minDistance = null,
     Object? backgroundColor = null,
     Object? lineColor = null,
     Object? gridColor = null,
@@ -171,14 +153,6 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
-              as double,
-      refreshRateHz: null == refreshRateHz
-          ? _value.refreshRateHz
-          : refreshRateHz // ignore: cast_nullable_to_non_nullable
-              as double,
-      minDistance: null == minDistance
-          ? _value.minDistance
-          : minDistance // ignore: cast_nullable_to_non_nullable
               as double,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
@@ -214,8 +188,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
   const _$_ChartSettingsData(
       {required this.portraitDuration,
       required this.landscapeDuration,
-      required this.refreshRateHz,
-      required this.minDistance,
       required this.backgroundColor,
       required this.lineColor,
       required this.gridColor,
@@ -227,10 +199,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
   final double portraitDuration;
   @override
   final double landscapeDuration;
-  @override
-  final double refreshRateHz;
-  @override
-  final double minDistance;
   @override
   final Color backgroundColor;
   @override
@@ -246,7 +214,7 @@ class _$_ChartSettingsData implements _ChartSettingsData {
 
   @override
   String toString() {
-    return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, refreshRateHz: $refreshRateHz, minDistance: $minDistance, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
+    return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
   }
 
   @override
@@ -258,10 +226,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
                 other.portraitDuration == portraitDuration) &&
             (identical(other.landscapeDuration, landscapeDuration) ||
                 other.landscapeDuration == landscapeDuration) &&
-            (identical(other.refreshRateHz, refreshRateHz) ||
-                other.refreshRateHz == refreshRateHz) &&
-            (identical(other.minDistance, minDistance) ||
-                other.minDistance == minDistance) &&
             (identical(other.backgroundColor, backgroundColor) ||
                 other.backgroundColor == backgroundColor) &&
             (identical(other.lineColor, lineColor) ||
@@ -281,8 +245,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
       runtimeType,
       portraitDuration,
       landscapeDuration,
-      refreshRateHz,
-      minDistance,
       backgroundColor,
       lineColor,
       gridColor,
@@ -302,8 +264,6 @@ abstract class _ChartSettingsData implements ChartSettingsData {
   const factory _ChartSettingsData(
       {required final double portraitDuration,
       required final double landscapeDuration,
-      required final double refreshRateHz,
-      required final double minDistance,
       required final Color backgroundColor,
       required final Color lineColor,
       required final Color gridColor,
@@ -315,10 +275,6 @@ abstract class _ChartSettingsData implements ChartSettingsData {
   double get portraitDuration;
   @override
   double get landscapeDuration;
-  @override
-  double get refreshRateHz;
-  @override
-  double get minDistance;
   @override
   Color get backgroundColor;
   @override

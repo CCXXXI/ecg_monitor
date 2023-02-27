@@ -15,7 +15,7 @@ part "real_time_chart.g.dart";
 
 @riverpod
 double _refreshInterval(_RefreshIntervalRef ref) {
-  final rateHz = ref.watch(realTimeRefreshRateHzProvider);
+  final rateHz = ref.watch(refreshRateHzProvider);
   return Duration.millisecondsPerSecond / rateHz;
 }
 
@@ -34,7 +34,7 @@ class _Points extends _$Points {
 
   void add(FlSpot point) {
     // ignore if too close to the previous point
-    final minDistance = ref.watch(realTimeMinDistanceProvider);
+    final minDistance = ref.watch(minDistanceProvider);
     if (_buffer.isNotEmpty &&
         RealTimeChart.normalizedDistance(_buffer.last, point) < minDistance) {
       return;

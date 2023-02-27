@@ -10,8 +10,6 @@ class ChartSettingsData with _$ChartSettingsData {
   const factory ChartSettingsData({
     required double portraitDuration,
     required double landscapeDuration,
-    required double refreshRateHz,
-    required double minDistance,
     required Color backgroundColor,
     required Color lineColor,
     required Color gridColor,
@@ -23,8 +21,6 @@ class ChartSettingsData with _$ChartSettingsData {
   static final simple = ChartSettingsData(
     portraitDuration: 3,
     landscapeDuration: 6,
-    refreshRateHz: 30,
-    minDistance: .5,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     // Color(Colors.red.value) != Colors.red

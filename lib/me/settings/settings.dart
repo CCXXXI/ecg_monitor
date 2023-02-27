@@ -43,8 +43,8 @@ class Settings extends ConsumerWidget {
         ref.watch(realTimePortraitDurationProvider);
     final realTimeLandscapeDuration =
         ref.watch(realTimeLandscapeDurationProvider);
-    final realTimeRefreshRateHz = ref.watch(realTimeRefreshRateHzProvider);
-    final realTimeMinDistance = ref.watch(realTimeMinDistanceProvider);
+    final realTimeRefreshRateHz = ref.watch(refreshRateHzProvider);
+    final realTimeMinDistance = ref.watch(minDistanceProvider);
     final realTimeBackgroundColor = ref.watch(realTimeBackgroundColorProvider);
     final realTimeGridColor = ref.watch(realTimeGridColorProvider);
     final realTimeLineColor = ref.watch(realTimeLineColorProvider);
@@ -136,36 +136,6 @@ class Settings extends ConsumerWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.speed_outlined),
-            title: const Text(str.refreshRate),
-            subtitle: Text(realTimeRefreshRateHzString),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: realTimeRefreshRateHz,
-                onChanged: ref.read(realTimeRefreshRateHzProvider.notifier).set,
-                min: 10,
-                max: 60,
-                divisions: 10,
-                label: realTimeRefreshRateHzString,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.timeline_outlined),
-            title: const Text(str.minDistance),
-            subtitle: Text(realTimeMinDistanceString),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: realTimeMinDistance,
-                onChanged: ref.read(realTimeMinDistanceProvider.notifier).set,
-                divisions: 10,
-                label: realTimeMinDistanceString,
-              ),
-            ),
-          ),
-          ListTile(
             leading: const Icon(Icons.color_lens_outlined),
             title: const Text(str.backgroundColor),
             trailing:
@@ -217,6 +187,36 @@ class Settings extends ConsumerWidget {
             title: const Text(str.showDots),
             value: ref.watch(realTimeShowDotsProvider),
             onChanged: ref.read(realTimeShowDotsProvider.notifier).set,
+          ),
+          ListTile(
+            leading: const Icon(Icons.speed_outlined),
+            title: const Text(str.refreshRate),
+            subtitle: Text(realTimeRefreshRateHzString),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: realTimeRefreshRateHz,
+                onChanged: ref.read(refreshRateHzProvider.notifier).set,
+                min: 10,
+                max: 60,
+                divisions: 10,
+                label: realTimeRefreshRateHzString,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.timeline_outlined),
+            title: const Text(str.minDistance),
+            subtitle: Text(realTimeMinDistanceString),
+            trailing: SizedBox(
+              width: 200,
+              child: Slider.adaptive(
+                value: realTimeMinDistance,
+                onChanged: ref.read(minDistanceProvider.notifier).set,
+                divisions: 10,
+                label: realTimeMinDistanceString,
+              ),
+            ),
           ),
           const _SectionTitle(str.history),
           SwitchListTile.adaptive(

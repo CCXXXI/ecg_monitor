@@ -65,14 +65,6 @@ final realTimeLandscapeDurationProvider = _doubleProvider(
   "$realTime.$landscapeDuration",
   ChartSettingsData.simple.landscapeDuration,
 );
-final realTimeRefreshRateHzProvider = _doubleProvider(
-  "$realTime.$refreshRateHz",
-  ChartSettingsData.simple.refreshRateHz,
-);
-final realTimeMinDistanceProvider = _doubleProvider(
-  "$realTime.$minDistance",
-  ChartSettingsData.simple.minDistance,
-);
 final realTimeBackgroundColorProvider = _colorProvider(
   "$realTime.$backgroundColor",
   ChartSettingsData.simple.backgroundColor,
@@ -104,8 +96,6 @@ class RealTimeChartSettings extends _$RealTimeChartSettings {
   ChartSettingsData build() => ChartSettingsData(
         portraitDuration: ref.watch(realTimePortraitDurationProvider),
         landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
-        refreshRateHz: ref.watch(realTimeRefreshRateHzProvider),
-        minDistance: ref.watch(realTimeMinDistanceProvider),
         backgroundColor: ref.watch(realTimeBackgroundColorProvider),
         lineColor: ref.watch(realTimeLineColorProvider),
         gridColor: ref.watch(realTimeGridColorProvider),
@@ -136,12 +126,6 @@ class _RealTimeChartSettingsSetter extends _$RealTimeChartSettingsSetter {
         .read(realTimeLandscapeDurationProvider.notifier)
         .set(chartSettingsData.landscapeDuration);
     await ref
-        .read(realTimeRefreshRateHzProvider.notifier)
-        .set(chartSettingsData.refreshRateHz);
-    await ref
-        .read(realTimeMinDistanceProvider.notifier)
-        .set(chartSettingsData.minDistance);
-    await ref
         .read(realTimeBackgroundColorProvider.notifier)
         .set(chartSettingsData.backgroundColor);
     await ref
@@ -161,6 +145,15 @@ class _RealTimeChartSettingsSetter extends _$RealTimeChartSettingsSetter {
         .set(chartSettingsData.showDots);
   }
 }
+
+final refreshRateHzProvider = _doubleProvider(
+  refreshRateHz,
+  30,
+);
+final minDistanceProvider = _doubleProvider(
+  minDistance,
+  .5,
+);
 // endregion
 
 // region history settings

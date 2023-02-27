@@ -455,7 +455,7 @@ class _LineTypeProvider
 }
 
 String _$realTimeChartSettingsHash() =>
-    r'f3c7afa77cf75a161730f0fe59aad995fd33a4a3';
+    r'0559a8f4195504fc74d2982a6f706376c8cce6c3';
 
 /// See also [RealTimeChartSettings].
 @ProviderFor(RealTimeChartSettings)
@@ -471,9 +471,8 @@ final realTimeChartSettingsProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$RealTimeChartSettings = AutoDisposeNotifier<ChartSettingsData>;
-
 String _$realTimeChartSettingsSetterHash() =>
-    r'56fc031db1dc5186184c55fc3723c5c49d094894';
+    r'c4c90b2a9dd39777b42a93b245523553b84b7694';
 
 /// [RealTimeChartSettings.ref] is invalidated when any of the settings changes.
 /// So we need to use a separate provider to set the settings.
