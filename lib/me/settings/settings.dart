@@ -505,6 +505,7 @@ class _ChartSettings extends StatelessWidget {
           "onShowDotsChanged",
           onShowDotsChanged,
         ),
-      );
+      )
+      ..add(DiagnosticsProperty<bool>("showDevTools", showDevTools));
   }
 }
