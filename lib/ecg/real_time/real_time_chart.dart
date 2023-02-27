@@ -32,11 +32,7 @@ class _Points extends _$Points {
     return const [];
   }
 
-  void add(double y) {
-    // get point
-    final x = DateTime.now().millisecondsSinceEpoch.toDouble();
-    final point = FlSpot(x, y);
-
+  void add(FlSpot point) {
     // ignore if too close to the previous point
     final minDistance = ref.watch(realTimeMinDistanceProvider);
     if (_buffer.isNotEmpty &&
@@ -48,14 +44,14 @@ class _Points extends _$Points {
     _buffer.addLast(point);
 
     // remove outdated points
-    while (_buffer.first.x < x - _maxDurationMs) {
+    while (_buffer.first.x < point.x - _maxDurationMs) {
       _buffer.removeFirst();
     }
 
     // refresh UI
     final intervalMs = ref.watch(_refreshIntervalProvider);
-    if (x >= _previousRefreshTimeMs + intervalMs) {
-      _previousRefreshTimeMs = x;
+    if (point.x >= _previousRefreshTimeMs + intervalMs) {
+      _previousRefreshTimeMs = point.x;
       state = _buffer.toList();
     }
   }

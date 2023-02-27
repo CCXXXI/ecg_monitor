@@ -1,3 +1,4 @@
+import "package:fl_chart/fl_chart.dart";
 import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:quiver/time.dart";
@@ -21,7 +22,7 @@ abstract class Device {
 
   Stream<int> get batteryStream;
 
-  Stream<double> get ecgStream;
+  Stream<FlSpot> get ecgStream;
 
   Stream<bool> get connectedStream;
 }
@@ -51,7 +52,7 @@ class _FakeDevice implements Device {
   Stream<int> get batteryStream => Stream.value(100);
 
   @override
-  Stream<double> get ecgStream async* {
+  Stream<FlSpot> get ecgStream async* {
     final dataRaw =
         await rootBundle.loadString("assets/debug/107_leadII_10min.txt");
     final data = dataRaw
@@ -62,7 +63,11 @@ class _FakeDevice implements Device {
 
     yield* Stream.periodic(
       _tick,
-      (i) => data[i % data.length],
+      (_) {
+        final x = DateTime.now().millisecondsSinceEpoch.toDouble();
+        final y = data[x ~/ _tick.inMilliseconds % data.length];
+        return FlSpot(x, y);
+      },
     );
   }
 
@@ -111,7 +116,7 @@ final connectedProvider = StreamProvider.autoDispose<bool>(
       ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
 );
 
-final ecgProvider = StreamProvider.autoDispose<double>(
+final ecgProvider = StreamProvider.autoDispose<FlSpot>(
   (ref) {
     final device = ref.watch(currentDeviceProvider);
     final connected = ref.watch(connectedProvider).valueOrNull ?? false;
