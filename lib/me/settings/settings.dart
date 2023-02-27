@@ -314,7 +314,7 @@ class Settings extends ConsumerWidget {
 class _SectionTitle extends StatelessWidget {
   const _SectionTitle(this.title);
 
-  static const padding =
+  static const _padding =
       EdgeInsetsDirectional.only(top: 24, bottom: 10, start: 24, end: 24);
 
   final String title;
@@ -325,7 +325,7 @@ class _SectionTitle extends StatelessWidget {
     final textStyle = Theme.of(context).textTheme.labelLarge;
 
     return Padding(
-      padding: padding,
+      padding: _padding,
       child: Text(title, style: textStyle!.copyWith(color: color)),
     );
   }
