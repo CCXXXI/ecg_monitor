@@ -214,6 +214,12 @@ class Settings extends ConsumerWidget {
                   .set(selected.single),
             ),
           ),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.linear_scale_outlined),
+            title: const Text(str.showDots),
+            value: ref.watch(realTimeShowDotsProvider),
+            onChanged: ref.read(realTimeShowDotsProvider.notifier).set,
+          ),
           const _SectionTitle(str.history),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
@@ -264,12 +270,6 @@ class Settings extends ConsumerWidget {
                 label: loggerLevel.name,
               ),
             ),
-          ),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.linear_scale_outlined),
-            title: const Text(str.showDots),
-            value: ref.watch(realTimeShowDotsProvider),
-            onChanged: ref.read(realTimeShowDotsProvider.notifier).set,
           ),
         ],
       ),
