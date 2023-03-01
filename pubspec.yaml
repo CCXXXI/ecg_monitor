@@ -38,7 +38,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.3.2
-  riverpod_generator: ^1.0.6
+  riverpod_generator: ^2.0.0
 
 flutter:
   uses-material-design: true
