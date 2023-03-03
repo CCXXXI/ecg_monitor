@@ -1,10 +1,10 @@
 import "dart:ffi";
-import "dart:io";
 
 import "package:ffi/ffi.dart";
 import "package:flutter/services.dart";
 import "package:path/path.dart";
 import "package:path_provider/path_provider.dart";
+import "package:universal_io/io.dart";
 
 final _lib = Platform.isAndroid
     ? DynamicLibrary.open("libecg_model.so")
