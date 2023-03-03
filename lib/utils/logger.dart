@@ -1,4 +1,4 @@
-import "package:flutter_ume_kit_console/console/console_print.dart";
+import "package:flutter_ume_kit_console/flutter_ume_kit_console.dart";
 import "package:logging/logging.dart";
 
 import "../database.dart";

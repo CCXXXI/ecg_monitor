@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:flutter_ume/core/ui/root_widget.dart";
+import "package:flutter_ume/flutter_ume.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
