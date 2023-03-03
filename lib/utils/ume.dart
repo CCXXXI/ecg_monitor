@@ -1,4 +1,5 @@
-import "package:flutter_ume/core/plugin_manager.dart";
+import "package:flutter/foundation.dart";
+import "package:flutter_ume/flutter_ume.dart";
 import "package:flutter_ume_kit_console/console/console_panel.dart";
 import "package:flutter_ume_kit_device/components/cpu_info/cpu_info_page.dart";
 import "package:flutter_ume_kit_device/components/device_info/device_info_panel.dart";
@@ -12,19 +13,29 @@ import "package:flutter_ume_kit_ui/components/touch_indicator/touch_indicator.da
 import "package:flutter_ume_kit_ui/components/widget_detail_inspector/widget_detail_inspector.dart";
 import "package:flutter_ume_kit_ui/components/widget_info_inspector/widget_info_inspector.dart";
 
+/// Plugins that are always available.
+final _pluginsAlwaysOn = <Pluggable>[
+  AlignRuler(),
+  const ColorPicker(),
+  const ColorSucker(),
+  Console(),
+  CpuInfoPage(),
+  const DeviceInfoPanel(),
+  Performance(),
+];
+
+/// Plugins that are only available in debug mode.
+final _pluginsDebugOnly = <Pluggable>[
+  const MemoryInfoPage(),
+  const ShowCode(),
+  const TouchIndicator(),
+  const WidgetDetailInspector(),
+  const WidgetInfoInspector(),
+];
+
 void initUme() {
   PluginManager.instance.registerAll([
-    AlignRuler(),
-    const ColorPicker(),
-    const ColorSucker(),
-    Console(),
-    CpuInfoPage(),
-    const DeviceInfoPanel(),
-    const MemoryInfoPage(),
-    Performance(),
-    const ShowCode(),
-    const TouchIndicator(),
-    const WidgetDetailInspector(),
-    const WidgetInfoInspector(),
+    ..._pluginsAlwaysOn,
+    if (kDebugMode) ..._pluginsDebugOnly,
   ]);
 }
