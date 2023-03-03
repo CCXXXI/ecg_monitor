@@ -42,6 +42,8 @@ const settings = "设置";
 
 const devTools = "开发者工具";
 const showDevTools = "显示开发者工具";
+const devToolsDesc = "部分工具仅在 Debug 构建中可用";
+const currentBuildMode = "当前构建模式：";
 const fakeDevice = "模拟设备";
 const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";
@@ -53,6 +55,11 @@ const showDots = "显示数据点";
 const about = "关于";
 const appName = "心电监测";
 late final String version;
+const buildMode = kReleaseMode
+    ? "Release"
+    : kProfileMode
+        ? "Profile"
+        : "Debug";
 const changelog = "更新日志";
 
 const sentryDsn =
@@ -60,18 +67,6 @@ const sentryDsn =
     "/4504697112625152";
 
 Future<void> initPackageInfo() async {
-  late String buildType;
-  if (kReleaseMode) {
-    buildType = "Release";
-  } else if (kProfileMode) {
-    buildType = "Profile";
-  } else if (kDebugMode) {
-    buildType = "Debug";
-  } else {
-    buildType = "Unknown";
-    assert(false, "This should never happen!");
-  }
-
   final info = await PackageInfo.fromPlatform();
-  version = "${info.version}+${info.buildNumber} $buildType Build";
+  version = "${info.version}+${info.buildNumber} $buildMode Build";
 }

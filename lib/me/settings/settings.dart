@@ -160,7 +160,14 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.developer_mode_outlined),
             title: const Text(str.showDevTools),
-            value: ref.watch(showDevToolsProvider),
+            subtitle: showDevTools
+                ? const Text(
+                    "${str.devToolsDesc}\n"
+                    "${str.currentBuildMode}${str.buildMode}",
+                  )
+                : null,
+            isThreeLine: showDevTools,
+            value: showDevTools,
             onChanged: ref.read(showDevToolsProvider.notifier).set,
           ),
           if (showDevTools)
