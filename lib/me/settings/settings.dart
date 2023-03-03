@@ -1,8 +1,11 @@
+import "dart:io";
+
 import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
+import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../database.dart";
@@ -169,11 +172,7 @@ class Settings extends ConsumerWidget {
             isThreeLine: showDevTools,
             value: showDevTools,
             onChanged: (on) async {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(str.restartNeeded),
-                ),
-              );
+              _showRestartSnackBar(context);
               await ref.read(showDevToolsProvider.notifier).set(on);
             },
           ),
@@ -203,6 +202,23 @@ class Settings extends ConsumerWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  static void _showRestartSnackBar(BuildContext context) {
+    // See https://pub.dev/packages/restart_app.
+    final restartActionAvailable = Platform.isAndroid || kIsWeb;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text(str.restartNeeded),
+        action: restartActionAvailable
+            ? const SnackBarAction(
+                label: str.restart,
+                onPressed: Restart.restartApp,
+              )
+            : null,
       ),
     );
   }
