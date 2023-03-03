@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.15.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.0...v0.15.1) (2023-03-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v7.4.2 ([#161](https://github.com/CCXXXI/ecg_monitor/issues/161)) ([8e4dbb4](https://github.com/CCXXXI/ecg_monitor/commit/8e4dbb4962e9cba1648e11c37547fc8551878cb4))
+
+
+### Continuous Integration
+
+* rename release to release-please ([92f1056](https://github.com/CCXXXI/ecg_monitor/commit/92f1056c6a3a84d38bf51417f2a07b194e6ce2dc))
+* sentry ([d3c2603](https://github.com/CCXXXI/ecg_monitor/commit/d3c260343cc39ab2cbc5914a462b30cbcebcb7d3))
+* tag name check for release ([ff14812](https://github.com/CCXXXI/ecg_monitor/commit/ff1481231425edc5eaab2c4535abe5d0a709d583))
+
 ## [0.15.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.14.0...v0.15.0) (2023-02-27)
 
 ### ⚠ BREAKING CHANGES
