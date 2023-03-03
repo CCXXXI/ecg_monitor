@@ -63,7 +63,7 @@ jobs:
 
   release:
     needs: [ check-ref, build-apk, build-appbundle ]
-    if: needs.check-ref.outputs.is_version
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
@@ -78,14 +78,14 @@ jobs:
       pages: write
       id-token: write
     needs: [ check-ref, build-web ]
-    if: needs.check-ref.outputs.is_version
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v1
 
   sentry:
     needs: [ check-ref, build-web ]
-    if: needs.check-ref.outputs.is_version
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
