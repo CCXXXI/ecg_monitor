@@ -2,13 +2,12 @@
 
 ## [0.15.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.1...v0.15.2) (2023-03-03)
 
-
 ### Continuous Integration
 
-* **build:** correct bool comparison ([f1b18d2](https://github.com/CCXXXI/ecg_monitor/commit/f1b18d2f1a7fe100a9901d7571dac7c4f4f40b5a))
-* **build:** correct ref check ([701883f](https://github.com/CCXXXI/ecg_monitor/commit/701883f417009880b2bd2cc6d18d6c290f19df36))
-* **build:** merge all release files to same artifact ([f75e988](https://github.com/CCXXXI/ecg_monitor/commit/f75e988b4c02eb96260f4811b4c0585b6fa1aab5))
-* **build:** release more files ([74bdd0f](https://github.com/CCXXXI/ecg_monitor/commit/74bdd0fb1a30eff32aca9413ac129676b391690c))
+- **build:** correct bool comparison ([f1b18d2](https://github.com/CCXXXI/ecg_monitor/commit/f1b18d2f1a7fe100a9901d7571dac7c4f4f40b5a))
+- **build:** correct ref check ([701883f](https://github.com/CCXXXI/ecg_monitor/commit/701883f417009880b2bd2cc6d18d6c290f19df36))
+- **build:** merge all release files to same artifact ([f75e988](https://github.com/CCXXXI/ecg_monitor/commit/f75e988b4c02eb96260f4811b4c0585b6fa1aab5))
+- **build:** release more files ([74bdd0f](https://github.com/CCXXXI/ecg_monitor/commit/74bdd0fb1a30eff32aca9413ac129676b391690c))
 
 ## [0.15.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.0...v0.15.1) (2023-03-03)
 
