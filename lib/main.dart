@@ -14,10 +14,10 @@ import "utils/ume.dart";
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
-  await str.initPackageInfo();
   await initPrefs();
   initUme();
   initLogger();
+  await str.initPackageInfo();
   await loadModel();
 
   // init Sentry & run app

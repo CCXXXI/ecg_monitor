@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
 const realTime = "实时心电";
@@ -59,6 +60,18 @@ const sentryDsn =
     "/4504697112625152";
 
 Future<void> initPackageInfo() async {
-  final packageInfo = await PackageInfo.fromPlatform();
-  version = "${packageInfo.version}+${packageInfo.buildNumber}";
+  late String buildType;
+  if (kReleaseMode) {
+    buildType = "Release";
+  } else if (kProfileMode) {
+    buildType = "Profile";
+  } else if (kDebugMode) {
+    buildType = "Debug";
+  } else {
+    buildType = "Unknown";
+    assert(false, "This should never happen!");
+  }
+
+  final info = await PackageInfo.fromPlatform();
+  version = "${info.version}+${info.buildNumber} $buildType Build";
 }
