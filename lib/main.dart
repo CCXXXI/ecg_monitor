@@ -29,14 +29,28 @@ void main() async {
         ..addIntegration(LoggingIntegration())
         ..sendDefaultPii = true;
     },
-    appRunner: () => runApp(
-      const SentryScreenshotWidget(child: ProviderScope(child: App())),
-    ),
+    appRunner: () => runApp(const App()),
   );
 }
 
+/// The root widget of the app.
+/// Wrap [AppCore] with multiple Widgets to provide additional functionality.
 class App extends StatelessWidget {
   const App({super.key});
+
+  @override
+  Widget build(BuildContext context) => const SentryScreenshotWidget(
+        child: ProviderScope(
+          child: AppCore(),
+        ),
+      );
+}
+
+/// The core widget of the app.
+/// With no additional functionality for testing purposes.
+@visibleForTesting
+class AppCore extends StatelessWidget {
+  const AppCore({super.key});
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
