@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: apk
-          path: build/app/outputs/flutter-apk
+          path: build/app/outputs/flutter-apk/
 
   build-appbundle:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: build/app/outputs/bundle/
 
   release:
     needs: [ build-apk, build-appbundle ]
@@ -46,9 +46,7 @@ jobs:
           name: appbundle
       - uses: softprops/action-gh-release@v1
         with:
-          files: |
-            *.apk
-            *.aab
+          files: '**'
 
   build-web:
     runs-on: ubuntu-latest
