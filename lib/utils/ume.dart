@@ -14,7 +14,7 @@ import "package:flutter_ume_kit_ui/components/widget_detail_inspector/widget_det
 import "package:flutter_ume_kit_ui/components/widget_info_inspector/widget_info_inspector.dart";
 
 import "../database.dart";
-import 'constants/keys.dart' as key;
+import "constants/keys.dart" as key;
 
 /// Plugins that are always available.
 final _pluginsAlwaysOn = <Pluggable>[
