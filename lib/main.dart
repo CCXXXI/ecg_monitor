@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_ume/core/ui/root_widget.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
@@ -8,12 +9,14 @@ import "database.dart";
 import "utils/constants/strings.dart" as str;
 import "utils/logger.dart";
 import "utils/router.dart";
+import "utils/ume.dart";
 
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
   await str.initPackageInfo();
   await initPrefs();
+  initUme();
   initLogger();
   await loadModel();
 
@@ -40,8 +43,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const SentryScreenshotWidget(
-        child: ProviderScope(
-          child: AppCore(),
+        child: UMEWidget(
+          child: ProviderScope(
+            child: AppCore(),
+          ),
         ),
       );
 }
