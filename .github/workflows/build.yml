@@ -16,8 +16,8 @@ jobs:
       - run: flutter build apk --split-per-abi
       - uses: actions/upload-artifact@v3
         with:
-          name: apk
-          path: build/app/outputs/flutter-apk
+          name: release
+          path: build/app/outputs/flutter-apk/
 
   build-appbundle:
     runs-on: ubuntu-latest
@@ -30,25 +30,8 @@ jobs:
       - run: flutter build appbundle
       - uses: actions/upload-artifact@v3
         with:
-          name: appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
-
-  release:
-    needs: [ build-apk, build-appbundle ]
-    if: startsWith(github.ref, 'refs/tags/v[0-9]+.[0-9]+.[0-9]+')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: apk
-      - uses: actions/download-artifact@v3
-        with:
-          name: appbundle
-      - uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            *.apk
-            *.aab
+          name: release
+          path: build/app/outputs/bundle/
 
   build-web:
     runs-on: ubuntu-latest
@@ -65,19 +48,44 @@ jobs:
           name: source-maps
           path: build/web/main.dart.js.map
 
+  check-ref:
+    runs-on: ubuntu-latest
+    outputs:
+      is_version: ${{ steps.check-ref.outputs.is_version }}
+    steps:
+      - id: check-ref
+        run: |
+          if [[ $GITHUB_REF =~ ^refs/tags/v[0-9]+.[0-9]+.[0-9]+$ ]]; then
+              echo "is_version=true" >> $GITHUB_OUTPUT
+          else
+              echo "is_version=false" >> $GITHUB_OUTPUT
+          fi
+
+  release:
+    needs: [ check-ref, build-apk, build-appbundle ]
+    if: needs.check-ref.outputs.is_version == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: release
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: '**'
+
   release-web:
     permissions:
       pages: write
       id-token: write
-    needs: build-web
-    if: startsWith(github.ref, 'refs/tags/v[0-9]+.[0-9]+.[0-9]+')
+    needs: [ check-ref, build-web ]
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/deploy-pages@v1
 
   sentry:
-    needs: build-web
-    if: startsWith(github.ref, 'refs/tags/v[0-9]+.[0-9]+.[0-9]+')
+    needs: [ check-ref, build-web ]
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
