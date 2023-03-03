@@ -168,7 +168,14 @@ class Settings extends ConsumerWidget {
                 : null,
             isThreeLine: showDevTools,
             value: showDevTools,
-            onChanged: ref.read(showDevToolsProvider.notifier).set,
+            onChanged: (on) async {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(str.restartNeeded),
+                ),
+              );
+              await ref.read(showDevToolsProvider.notifier).set(on);
+            },
           ),
           if (showDevTools)
             SwitchListTile.adaptive(

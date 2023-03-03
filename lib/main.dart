@@ -6,6 +6,7 @@ import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
+import "utils/constants/keys.dart" as key;
 import "utils/constants/strings.dart" as str;
 import "utils/logger.dart";
 import "utils/router.dart";
@@ -42,9 +43,10 @@ class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context) => const SentryScreenshotWidget(
+  Widget build(BuildContext context) => SentryScreenshotWidget(
         child: UMEWidget(
-          child: ProviderScope(
+          enable: prefs.getBool(key.showDevTools) ?? false,
+          child: const ProviderScope(
             child: AppCore(),
           ),
         ),

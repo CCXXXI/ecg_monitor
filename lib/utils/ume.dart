@@ -13,6 +13,9 @@ import "package:flutter_ume_kit_ui/components/touch_indicator/touch_indicator.da
 import "package:flutter_ume_kit_ui/components/widget_detail_inspector/widget_detail_inspector.dart";
 import "package:flutter_ume_kit_ui/components/widget_info_inspector/widget_info_inspector.dart";
 
+import "../database.dart";
+import 'constants/keys.dart' as key;
+
 /// Plugins that are always available.
 final _pluginsAlwaysOn = <Pluggable>[
   AlignRuler(),
@@ -34,6 +37,11 @@ final _pluginsDebugOnly = <Pluggable>[
 ];
 
 void initUme() {
+  final showDevTools = prefs.getBool(key.showDevTools) ?? false;
+  if (!showDevTools) {
+    return;
+  }
+
   PluginManager.instance.registerAll([
     ..._pluginsAlwaysOn,
     if (kDebugMode) ..._pluginsDebugOnly,
