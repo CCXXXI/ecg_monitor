@@ -29,6 +29,7 @@ dependencies:
   path: ^1.8.2
   path_provider: ^2.0.12
   quiver: ^3.2.1
+  restart_app: ^1.1.2
   riverpod_annotation: ^1.0.6
   sentry_flutter: ^6.20.1
   sentry_logging: ^6.20.1
