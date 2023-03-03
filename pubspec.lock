@@ -387,11 +387,12 @@ packages:
   flutter_ume_kit_console:
     dependency: "direct main"
     description:
-      name: flutter_ume_kit_console
-      sha256: cc0c9d38a45eb3567f8e026a045b1927d2f0fae467f8c509fbb1f9712bbc97ef
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
+      path: "kits/flutter_ume_kit_console"
+      ref: c5bdfdad514f08a7728781d1272355a91360a963
+      resolved-ref: c5bdfdad514f08a7728781d1272355a91360a963
+      url: "https://github.com/CCXXXI/flutter_ume.git"
+    source: git
+    version: "1.1.0"
   flutter_ume_kit_device:
     dependency: "direct main"
     description:
