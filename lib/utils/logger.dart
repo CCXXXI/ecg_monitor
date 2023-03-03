@@ -1,3 +1,4 @@
+import "package:flutter_ume_kit_console/console/console_print.dart";
 import "package:logging/logging.dart";
 
 import "../database.dart";
@@ -8,6 +9,12 @@ final loggerLevels = Level.LEVELS.toList(growable: false)
 final infoLevelIndex = loggerLevels.indexOf(Level.INFO);
 
 void initLogger() {
+  // set logger level
   final index = prefs.getInt(key.loggerLevelIndex) ?? infoLevelIndex;
   Logger.root.level = loggerLevels[index];
+
+  // add listener
+  Logger.root.onRecord.listen((record) {
+    consolePrint(record.message);
+  });
 }
