@@ -16,7 +16,7 @@ jobs:
       - run: flutter build apk --split-per-abi
       - uses: actions/upload-artifact@v3
         with:
-          name: apk
+          name: release
           path: build/app/outputs/flutter-apk/
 
   build-appbundle:
@@ -30,7 +30,7 @@ jobs:
       - run: flutter build appbundle
       - uses: actions/upload-artifact@v3
         with:
-          name: appbundle
+          name: release
           path: build/app/outputs/bundle/
 
   build-web:
@@ -68,10 +68,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: apk
-      - uses: actions/download-artifact@v3
-        with:
-          name: appbundle
+          name: release
       - uses: softprops/action-gh-release@v1
         with:
           files: '**'
