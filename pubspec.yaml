@@ -49,14 +49,6 @@ dev_dependencies:
   freezed: ^2.3.2
   riverpod_generator: ^1.0.6
 
-# todo: remove this when https://github.com/bytedance/flutter_ume/pull/108 is merged
-dependency_overrides:
-  flutter_ume_kit_console:
-    git:
-      url: https://github.com/CCXXXI/flutter_ume.git
-      ref: c5bdfdad514f08a7728781d1272355a91360a963
-      path: kits/flutter_ume_kit_console
-
 flutter:
   uses-material-design: true
   assets:
