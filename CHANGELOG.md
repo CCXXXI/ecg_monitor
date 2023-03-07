@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.17.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.16.0...v0.17.0) (2023-03-07)
+
+### Features
+
+- **settings:** add analytics.autoGenerate setting ([094c940](https://github.com/CCXXXI/ecg_monitor/commit/094c94020a3ffd72ba721823c99b508c13d32ecf))
+- **settings:** reorder settings ([cd02420](https://github.com/CCXXXI/ecg_monitor/commit/cd02420f20ec74c47d971d8150cd489b15f20864))
+- **settings:** update strings ([9ba26c6](https://github.com/CCXXXI/ecg_monitor/commit/9ba26c61e0250b0e74bf0a6e5bb2129156ab5987))
+
+### Code Refactoring
+
+- **settings:** move Divider out of \_ChartSettings ([8ec58fe](https://github.com/CCXXXI/ecg_monitor/commit/8ec58fed2f6305ece8319a225bfebe5c5be980dd))
+
 ## [0.16.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.2...v0.16.0) (2023-03-07)
 
 ### Features
