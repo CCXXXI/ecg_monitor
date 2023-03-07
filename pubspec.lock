@@ -61,10 +61,10 @@ packages:
     dependency: transitive
     description:
       name: basics
-      sha256: "10bee70798e97453532c68cc3fb3653be801879a5010104122daeca8e9f1f30c"
+      sha256: "41ff8aded84ae174d1df5cce0bcac3ab9070caac9f7da35fd2cc638dfee6163f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.0"
+    version: "0.10.0"
   bazel_worker:
     dependency: transitive
     description:
@@ -827,26 +827,26 @@ packages:
     dependency: transitive
     description:
       name: sentry
-      sha256: "1128b2b3801b6176d2e0f27800658c43788ddba2799704c9743a083b2c81a8fc"
+      sha256: a1529c545fcbc899e5dcc7c94ff1c6ad0c334dfc99a3cda366b1da98af7c5678
       url: "https://pub.dev"
     source: hosted
-    version: "6.21.0"
+    version: "6.22.0"
   sentry_flutter:
     dependency: "direct main"
     description:
       name: sentry_flutter
-      sha256: "56d12444ce0ee6d903ca5434da1b89c711af144a846aa5c7e8f32002d86127db"
+      sha256: cab07e99a8f27af94f399cabceaff6968011660505b30a0e2286728a81bc476c
       url: "https://pub.dev"
     source: hosted
-    version: "6.21.0"
+    version: "6.22.0"
   sentry_logging:
     dependency: "direct main"
     description:
       name: sentry_logging
-      sha256: "194c06ffd49c761e2b4cbfe9a1b26bf3b26b9881d04980cf947a54d7432325fc"
+      sha256: edd5107cef54b510b5339e85a3cdc0dee4259183e882ee25a653542734dfc90b
       url: "https://pub.dev"
     source: hosted
-    version: "6.21.0"
+    version: "6.22.0"
   share:
     dependency: transitive
     description:
