@@ -5,6 +5,7 @@ import "dart:math";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../device_manager/device.dart";
@@ -12,6 +13,8 @@ import "../../me/settings/providers.dart";
 import "../chart.dart";
 
 part "real_time_chart.g.dart";
+
+final _logger = Logger("RealTimeChart");
 
 @riverpod
 double _refreshInterval(_RefreshIntervalRef ref) {
@@ -33,10 +36,11 @@ class _Points extends _$Points {
   }
 
   void add(FlSpot point) {
+    _logger.finest(point);
+
     // ignore if too close to the previous point
     final minDistance = ref.watch(minDistanceProvider);
-    if (_buffer.isNotEmpty &&
-        RealTimeChart.normalizedDistance(_buffer.last, point) < minDistance) {
+    if (_buffer.isNotEmpty && distance(_buffer.last, point) < minDistance) {
       return;
     }
 
@@ -84,11 +88,12 @@ class RealTimeChart extends ConsumerWidget {
       showDots: ref.watch(realTimeShowDotsProvider),
     );
   }
+}
 
-  @visibleForTesting
-  static double normalizedDistance(FlSpot a, FlSpot b) {
-    final dx = (b.x - a.x) / Chart.smallXInterval;
-    final dy = (b.y - a.y) / Chart.smallYInterval;
-    return sqrt(dx * dx + dy * dy);
-  }
+/// Returns the normalized distance between two points.
+@visibleForTesting
+double distance(FlSpot a, FlSpot b) {
+  final dx = (b.x - a.x) / Chart.smallXInterval;
+  final dy = (b.y - a.y) / Chart.smallYInterval;
+  return sqrt(dx * dx + dy * dy);
 }
