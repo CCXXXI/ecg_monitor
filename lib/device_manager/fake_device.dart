@@ -26,6 +26,12 @@ class _FakeDevice implements Device {
   String get model => str.fakeDeviceModel;
 
   @override
+  Stream<bool> get connectedStream => Stream.periodic(
+        aSecond,
+        (_) => prefs.getBool(key.fakeDeviceOn) ?? false,
+      );
+
+  @override
   Stream<int> get rssiStream => Stream.value(-42);
 
   @override
@@ -50,12 +56,6 @@ class _FakeDevice implements Device {
       yield FlSpot(x, y);
     }
   }
-
-  @override
-  Stream<bool> get connectedStream => Stream.periodic(
-        aSecond,
-        (_) => prefs.getBool(key.fakeDeviceOn) ?? false,
-      );
 }
 
 final fakeDevice = _FakeDevice();

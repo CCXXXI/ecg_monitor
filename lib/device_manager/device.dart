@@ -15,14 +15,14 @@ abstract class Device {
 
   String get model;
 
+  Stream<bool> get connectedStream;
+
   /// Received Signal Strength Indication
   Stream<int> get rssiStream;
 
   Stream<int> get batteryStream;
 
   Stream<FlSpot> get ecgStream;
-
-  Stream<bool> get connectedStream;
 }
 
 @riverpod
