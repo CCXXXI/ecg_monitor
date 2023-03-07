@@ -119,6 +119,13 @@ class Settings extends ConsumerWidget {
             ),
           ),
           const _SectionTitle(str.history),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.cloud_upload_outlined),
+            title: const Text(str.autoUpload),
+            value: ref.watch(historyAutoUploadProvider),
+            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
+          ),
+          const Divider(),
           _ChartSettings(
             chartSettingsData: ref.watch(historyChartSettingsProvider),
             onChartSettingsChanged:
@@ -145,13 +152,6 @@ class Settings extends ConsumerWidget {
             showDots: ref.watch(historyShowDotsProvider),
             onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
             showDevTools: showDevTools,
-          ),
-          const Divider(),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.cloud_upload_outlined),
-            title: const Text(str.autoUpload),
-            value: ref.watch(historyAutoUploadProvider),
-            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
           ),
           const _SectionTitle(str.analytics),
           SwitchListTile.adaptive(
