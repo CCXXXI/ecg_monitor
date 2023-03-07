@@ -1,20 +1,24 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_ume/flutter_ume.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
+import "utils/constants/keys.dart" as key;
 import "utils/constants/strings.dart" as str;
 import "utils/logger.dart";
 import "utils/router.dart";
+import "utils/ume.dart";
 
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
-  await str.initPackageInfo();
   await initPrefs();
+  initUme();
   initLogger();
+  await str.initPackageInfo();
   await loadModel();
 
   // init Sentry & run app
@@ -29,14 +33,31 @@ void main() async {
         ..addIntegration(LoggingIntegration())
         ..sendDefaultPii = true;
     },
-    appRunner: () => runApp(
-      const SentryScreenshotWidget(child: ProviderScope(child: App())),
-    ),
+    appRunner: () => runApp(const App()),
   );
 }
 
+/// The root widget of the app.
+/// Wrap [AppCore] with multiple Widgets to provide additional functionality.
 class App extends StatelessWidget {
   const App({super.key});
+
+  @override
+  Widget build(BuildContext context) => SentryScreenshotWidget(
+        child: UMEWidget(
+          enable: prefs.getBool(key.showDevTools) ?? false,
+          child: const ProviderScope(
+            child: AppCore(),
+          ),
+        ),
+      );
+}
+
+/// The core widget of the app.
+/// With no additional functionality for testing purposes.
+@visibleForTesting
+class AppCore extends StatelessWidget {
+  const AppCore({super.key});
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(

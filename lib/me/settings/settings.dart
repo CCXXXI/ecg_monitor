@@ -3,7 +3,9 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
+import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
+import "package:universal_io/io.dart";
 
 import "../../database.dart";
 import "../../utils/constants/keys.dart" as key;
@@ -160,8 +162,18 @@ class Settings extends ConsumerWidget {
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.developer_mode_outlined),
             title: const Text(str.showDevTools),
-            value: ref.watch(showDevToolsProvider),
-            onChanged: ref.read(showDevToolsProvider.notifier).set,
+            subtitle: showDevTools
+                ? const Text(
+                    "${str.devToolsDesc}\n"
+                    "${str.currentBuildMode}${str.buildMode}",
+                  )
+                : null,
+            isThreeLine: showDevTools,
+            value: showDevTools,
+            onChanged: (on) async {
+              _showRestartSnackBar(context);
+              await ref.read(showDevToolsProvider.notifier).set(on);
+            },
           ),
           if (showDevTools)
             SwitchListTile.adaptive(
@@ -189,6 +201,23 @@ class Settings extends ConsumerWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  static void _showRestartSnackBar(BuildContext context) {
+    // See https://pub.dev/packages/restart_app.
+    final restartActionAvailable = Platform.isAndroid || kIsWeb;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text(str.restartNeeded),
+        action: restartActionAvailable
+            ? const SnackBarAction(
+                label: str.restart,
+                onPressed: Restart.restartApp,
+              )
+            : null,
       ),
     );
   }

@@ -12,7 +12,7 @@ void main() {
   });
 
   testWidgets("App", (tester) async {
-    await tester.pumpWidget(const ProviderScope(child: App()));
+    await tester.pumpWidget(const ProviderScope(child: AppCore()));
 
     expect(find.text(str.appName), findsOneWidget);
     expect(find.text(str.realTime), findsOneWidget);

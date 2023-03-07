@@ -5,7 +5,7 @@ import "package:logging/logging.dart";
 
 import "utils/constants/strings.dart" as str;
 
-final _logger = Logger("home");
+final _logger = Logger("Home");
 
 class Home extends ConsumerWidget {
   const Home(this._child, {super.key});
