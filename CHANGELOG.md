@@ -1,5 +1,62 @@
 # Changelog
 
+## [0.16.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.2...v0.16.0) (2023-03-07)
+
+
+### Features
+
+* add restart action ([1b94e8d](https://github.com/CCXXXI/ecg_monitor/commit/1b94e8d82d8df1473d6460f1d08d1dcf30e2278b))
+* add ume plugins ([eb3efaf](https://github.com/CCXXXI/ecg_monitor/commit/eb3efaf035f10a302ebf13c5037f6a083ceabd56))
+* **me:** add build type to about ([4d4b127](https://github.com/CCXXXI/ecg_monitor/commit/4d4b127737c9047f9641abc032fe4df707af18dc))
+* **settings:** add desc for devTools ([eede45b](https://github.com/CCXXXI/ecg_monitor/commit/eede45badbf995661df922b993b8990d9c351ad9))
+* **settings:** enable ume iff show dev tools ([e2f36a5](https://github.com/CCXXXI/ecg_monitor/commit/e2f36a5136fc5c5b02c1c3fe1e02606b27d19da3))
+* **ume:** log to console ([4870b7a](https://github.com/CCXXXI/ecg_monitor/commit/4870b7aa6babfbba5eb37068c78fa8233d1d67da))
+
+
+### Bug Fixes
+
+* **ume:** disable some plugins in release mode ([9058450](https://github.com/CCXXXI/ecg_monitor/commit/905845082fbc3876a3d2c0fd40c12d87b779eb42))
+* universal_io ([0562e4c](https://github.com/CCXXXI/ecg_monitor/commit/0562e4c58622c2efdc00b612258569fae1f6b04e))
+
+
+### Reverts
+
+* Revert "build: flutter pub remove flutter_launcher_icons" ([427118e](https://github.com/CCXXXI/ecg_monitor/commit/427118e8c09b321799409ea986c754b793e21149))
+* Revert "build: override dependency" ([f9bd357](https://github.com/CCXXXI/ecg_monitor/commit/f9bd3579c2a9105499ea1af8199172fdd6beb1d9))
+* Revert "docs: add comment for flutter_launcher_icons" ([688270a](https://github.com/CCXXXI/ecg_monitor/commit/688270a992857219486c100ccc4ed0d0657b739e))
+
+
+### Documentation
+
+* add comment for flutter_launcher_icons ([b03f64d](https://github.com/CCXXXI/ecg_monitor/commit/b03f64d49b333d410a5b875cb05dfb9199d6c1ef))
+
+
+### Code Refactoring
+
+* dart fix ([5e1e0c9](https://github.com/CCXXXI/ecg_monitor/commit/5e1e0c9b6109979be7f13618f3861742a1660bc0))
+* **logger:** update home logger name ([31de3a2](https://github.com/CCXXXI/ecg_monitor/commit/31de3a2790a8c70f8e73e31094913c1fb361cedf))
+* **main:** extract AppCore ([2fdf551](https://github.com/CCXXXI/ecg_monitor/commit/2fdf5515e76a2f14b5a937ee93025ed3c337fcc0))
+* simplify imports ([9f8e735](https://github.com/CCXXXI/ecg_monitor/commit/9f8e735019d3d0747fc45c017168fc7af42bb953))
+
+
+### Miscellaneous Chores
+
+* save idea config ([2c5263d](https://github.com/CCXXXI/ecg_monitor/commit/2c5263dfd1db0d782aa2f4cfdacecc5339e69f81))
+
+
+### Build System
+
+* add ume packages ([a050dec](https://github.com/CCXXXI/ecg_monitor/commit/a050decdcd4ada80532019478f3a9755d9e309fc))
+* flutter pub add restart_app ([c2dba73](https://github.com/CCXXXI/ecg_monitor/commit/c2dba737963c5df9a4d2351e42100985d2834b78))
+* flutter pub add universal_io ([21cecfb](https://github.com/CCXXXI/ecg_monitor/commit/21cecfb0aba187558f60bef53fe7a5b4d41b3400))
+* flutter pub get ([cbb6f35](https://github.com/CCXXXI/ecg_monitor/commit/cbb6f3517aeaae972a0e78b364b2221f8fa3d0ad))
+* flutter pub remove flutter_launcher_icons ([b2a3e6f](https://github.com/CCXXXI/ecg_monitor/commit/b2a3e6f2ae1d8516e81e6751a5d120cadee2b31e))
+* flutter pub remove flutter_ume_kit_dio ([9b5ef2c](https://github.com/CCXXXI/ecg_monitor/commit/9b5ef2c41f4c243b9417f7121a51543b2a98423c))
+* flutter pub upgrade ([f324aac](https://github.com/CCXXXI/ecg_monitor/commit/f324aac56631e33740e4987fa3261fa6e497d8d8))
+* flutter pub upgrade ([1feb8ac](https://github.com/CCXXXI/ecg_monitor/commit/1feb8acc76463c3faddc1d3ed1b1d4c77be0c1f1))
+* override dependency ([0cf896a](https://github.com/CCXXXI/ecg_monitor/commit/0cf896aa43d5f9d01fa0f97f66c5197975d7a525))
+* override ume dependencies ([aace266](https://github.com/CCXXXI/ecg_monitor/commit/aace2665dcc1b89a73f96868e2190e23aff8bce3))
+
 ## [0.15.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.1...v0.15.2) (2023-03-03)
 
 ### Continuous Integration
