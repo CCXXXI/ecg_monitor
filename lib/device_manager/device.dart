@@ -61,14 +61,14 @@ class _FakeDevice implements Device {
         .map(double.parse)
         .toList(growable: false);
 
-    yield* Stream.periodic(
-      _tick,
-      (_) {
-        final x = DateTime.now().millisecondsSinceEpoch.toDouble();
-        final y = data[x ~/ _tick.inMilliseconds % data.length];
-        return FlSpot(x, y);
-      },
-    );
+    for (var t = DateTime.now();; t = t.add(_tick)) {
+      await Future<void>.delayed(t.difference(DateTime.now()));
+
+      final x = t.millisecondsSinceEpoch.toDouble();
+      final y = data[x ~/ _tick.inMilliseconds % data.length];
+
+      yield FlSpot(x, y);
+    }
   }
 
   @override
