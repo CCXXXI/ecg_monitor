@@ -85,7 +85,7 @@ class RealTimeChart extends ConsumerWidget {
   }
 }
 
-/// Normalized distance between two points.
+/// Returns the normalized distance between two points.
 @visibleForTesting
 double distance(FlSpot a, FlSpot b) {
   final dx = (b.x - a.x) / Chart.smallXInterval;
