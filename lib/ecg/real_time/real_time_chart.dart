@@ -35,8 +35,7 @@ class _Points extends _$Points {
   void add(FlSpot point) {
     // ignore if too close to the previous point
     final minDistance = ref.watch(minDistanceProvider);
-    if (_buffer.isNotEmpty &&
-        RealTimeChart.normalizedDistance(_buffer.last, point) < minDistance) {
+    if (_buffer.isNotEmpty && distance(_buffer.last, point) < minDistance) {
       return;
     }
 
@@ -84,11 +83,12 @@ class RealTimeChart extends ConsumerWidget {
       showDots: ref.watch(realTimeShowDotsProvider),
     );
   }
+}
 
-  @visibleForTesting
-  static double normalizedDistance(FlSpot a, FlSpot b) {
-    final dx = (b.x - a.x) / Chart.smallXInterval;
-    final dy = (b.y - a.y) / Chart.smallYInterval;
-    return sqrt(dx * dx + dy * dy);
-  }
+/// Normalized distance between two points.
+@visibleForTesting
+double distance(FlSpot a, FlSpot b) {
+  final dx = (b.x - a.x) / Chart.smallXInterval;
+  final dy = (b.y - a.y) / Chart.smallYInterval;
+  return sqrt(dx * dx + dy * dy);
 }
