@@ -23,6 +23,7 @@ const history = "历史心电";
 const autoUpload = "自动上传";
 
 const analytics = "分析报告";
+const autoGenerate = "自动生成";
 
 const deviceManager = "设备管理";
 const bluetoothConnected = "蓝牙已连接";

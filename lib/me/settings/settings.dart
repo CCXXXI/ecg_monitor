@@ -155,6 +155,12 @@ class Settings extends ConsumerWidget {
           ),
           const _SectionTitle(str.analytics),
           SwitchListTile.adaptive(
+            secondary: const Icon(Icons.analytics_outlined),
+            title: const Text(str.autoGenerate),
+            value: ref.watch(analyticsAutoGenerateProvider),
+            onChanged: ref.read(analyticsAutoGenerateProvider.notifier).set,
+          ),
+          SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
             value: ref.watch(analyticsAutoUploadProvider),
