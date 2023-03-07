@@ -87,6 +87,7 @@ class Settings extends ConsumerWidget {
             onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
             showDevTools: showDevTools,
           ),
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.speed_outlined),
             title: const Text(str.refreshRate),
@@ -145,6 +146,7 @@ class Settings extends ConsumerWidget {
             onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
             showDevTools: showDevTools,
           ),
+          const Divider(),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
@@ -424,7 +426,6 @@ class _ChartSettings extends StatelessWidget {
             value: showDots,
             onChanged: onShowDotsChanged,
           ),
-        const Divider(),
       ],
     );
   }
