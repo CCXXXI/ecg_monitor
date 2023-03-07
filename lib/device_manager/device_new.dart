@@ -4,6 +4,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "../me/settings/providers.dart";
 import "../utils/constants/strings.dart" as str;
 import "device.dart";
+import "fake_device.dart";
 
 class DeviceNew extends ConsumerWidget {
   const DeviceNew({super.key});
