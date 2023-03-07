@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.17.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.0...v0.17.1) (2023-03-07)
+
+### Bug Fixes
+
+- **device:** correct FakeDevice.ecgStream ([79f1248](https://github.com/CCXXXI/ecg_monitor/commit/79f1248a29c3eb99989c12122d11966f2155ae09))
+
+### Documentation
+
+- **realtime:** improve docstring ([4435386](https://github.com/CCXXXI/ecg_monitor/commit/4435386ccd5c953592681de80cf4b3055547b54e))
+
+### Code Refactoring
+
+- **device:** reorder fields ([fef0669](https://github.com/CCXXXI/ecg_monitor/commit/fef0669526e7d97e09f5b66189fd2c5216de4f09))
+- **device:** separate fakeDevice ([fadebb1](https://github.com/CCXXXI/ecg_monitor/commit/fadebb199fee08318b608672c3acab890516adf6))
+- **realtime:** extract & rename distance ([c1cffa7](https://github.com/CCXXXI/ecg_monitor/commit/c1cffa7c40f5d5e1683a4309d2413bbe9be5ff75))
+- **realtime:** log for Points.add ([ef51501](https://github.com/CCXXXI/ecg_monitor/commit/ef5150195190980563cff9934d5a1488524000c7))
+
+### Tests
+
+- **device:** add test for fake device ([ff4bcdd](https://github.com/CCXXXI/ecg_monitor/commit/ff4bcdd5ec633eaca24c7052c61379f425c32216))
+
 ## [0.17.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.16.0...v0.17.0) (2023-03-07)
 
 ### Features
