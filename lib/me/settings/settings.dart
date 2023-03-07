@@ -87,6 +87,7 @@ class Settings extends ConsumerWidget {
             onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
             showDevTools: showDevTools,
           ),
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.speed_outlined),
             title: const Text(str.refreshRate),
@@ -118,6 +119,13 @@ class Settings extends ConsumerWidget {
             ),
           ),
           const _SectionTitle(str.history),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.cloud_upload_outlined),
+            title: const Text(str.autoUpload),
+            value: ref.watch(historyAutoUploadProvider),
+            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
+          ),
+          const Divider(),
           _ChartSettings(
             chartSettingsData: ref.watch(historyChartSettingsProvider),
             onChartSettingsChanged:
@@ -145,13 +153,13 @@ class Settings extends ConsumerWidget {
             onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
             showDevTools: showDevTools,
           ),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.cloud_upload_outlined),
-            title: const Text(str.autoUpload),
-            value: ref.watch(historyAutoUploadProvider),
-            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
-          ),
           const _SectionTitle(str.analytics),
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.analytics_outlined),
+            title: const Text(str.autoGenerate),
+            value: ref.watch(analyticsAutoGenerateProvider),
+            onChanged: ref.read(analyticsAutoGenerateProvider.notifier).set,
+          ),
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.cloud_upload_outlined),
             title: const Text(str.autoUpload),
@@ -424,7 +432,6 @@ class _ChartSettings extends StatelessWidget {
             value: showDots,
             onChanged: onShowDotsChanged,
           ),
-        const Divider(),
       ],
     );
   }

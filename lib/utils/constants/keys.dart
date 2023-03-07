@@ -14,6 +14,7 @@ const history = "history";
 const autoUpload = "autoUpload";
 
 const analytics = "analytics";
+const autoGenerate = "autoGenerate";
 
 const currentDeviceId = "currentDeviceId";
 
