@@ -49,6 +49,18 @@ dev_dependencies:
   freezed: ^2.3.2
   riverpod_generator: ^1.0.6
 
+dependency_overrides:
+  flutter_ume_kit_console:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume.git
+      ref: 10ad492bb9b7e1fdccc1ea3fdf73a3ce78e9af40
+      path: kits/flutter_ume_kit_console
+  flutter_ume_kit_ui:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume.git
+      ref: 10ad492bb9b7e1fdccc1ea3fdf73a3ce78e9af40
+      path: kits/flutter_ume_kit_ui
+
 flutter:
   uses-material-design: true
   assets:
