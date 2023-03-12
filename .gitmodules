@@ -1,3 +1,6 @@
-[submodule "ios/Cpp"]
-	path = ios/Cpp
-	url = https://github.com/CCXXXI/ecg_model
+[submodule "ios/Classes/ecg_model_cpp"]
+	path = ios/Classes/ecg_model_cpp
+	url = https://github.com/CCXXXI/ecg_model_cpp.git
+[submodule "ios/Classes/PanTompkinsQRS"]
+	path = ios/Classes/PanTompkinsQRS
+	url = https://github.com/CCXXXI/PanTompkinsQRS.git
