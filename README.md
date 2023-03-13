@@ -11,6 +11,9 @@
 
 Yet another electrocardiogram monitor app.
 
-## Submodules
+## Related Repositories
 
-- [CCXXXI/ecg_model](https://github.com/CCXXXI/ecg_model)
+![repositories](https://raw.githubusercontent.com/CCXXXI/thesis/main/assets/repositories.drawio.svg#gh-light-mode-only)
+![repositories](https://raw.githubusercontent.com/CCXXXI/thesis/main/assets/repositories.drawio.dark.svg#gh-dark-mode-only)
+
+The repository names are hyperlinks. See the [original image](https://raw.githubusercontent.com/CCXXXI/thesis/main/assets/repositories.drawio.svg).
