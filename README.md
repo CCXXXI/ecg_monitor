@@ -11,7 +11,7 @@
 
 Yet another electrocardiogram monitor app.
 
-## Submodules
+## Related Repositories
 
 ![repositories](https://raw.githubusercontent.com/CCXXXI/thesis/main/assets/repositories.drawio.svg#gh-light-mode-only)
 ![repositories](https://raw.githubusercontent.com/CCXXXI/thesis/main/assets/repositories.drawio.dark.svg#gh-dark-mode-only)
