@@ -6,7 +6,7 @@ part of 'real_time_chart.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'336f7cb91b4dae2f901be0635d655aa63edc71ce';
+String _$pointsHash() => r'69dfa402ae0ef93f7a8050a49b15cdc783696468';
 
 /// Copied from Dart SDK
 class _SystemHash {
