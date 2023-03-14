@@ -374,8 +374,8 @@ class _ChartSettings extends StatelessWidget {
             child: Slider.adaptive(
               value: landscapeDuration,
               onChanged: onLandscapeDurationChanged,
-              min: 2,
-              max: 20,
+              min: 1,
+              max: 10,
               divisions: 9,
               label: landscapeDurationString,
             ),
