@@ -31,7 +31,11 @@ class _Points extends _$Points {
 
   @override
   List<FlSpot> build() {
-    unawaited(ref.watch(ecgProvider.stream).forEach(add));
+    unawaited(
+      ref
+          .watch(ecgProvider.stream)
+          .forEach((data) => add(FlSpot(data.time, data.leadII))),
+    );
     return const [];
   }
 

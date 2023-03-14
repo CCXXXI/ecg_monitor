@@ -1,8 +1,7 @@
-import "package:fl_chart/fl_chart.dart";
-import "package:flutter/services.dart";
 import "package:quiver/time.dart";
 
 import "../database.dart";
+import "../utils/constants/data.dart";
 import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart" as str;
 import "device.dart";
@@ -38,22 +37,14 @@ class _FakeDevice implements Device {
   Stream<int> get batteryStream => Stream.value(100);
 
   @override
-  Stream<FlSpot> get ecgStream async* {
-    final dataRaw =
-        await rootBundle.loadString("assets/debug/107_leadII_10min.txt");
-    final data = dataRaw
-        .split("\n")
-        .where((line) => line.isNotEmpty)
-        .map(double.parse)
-        .toList(growable: false);
-
+  Stream<EcgData> get ecgStream async* {
     for (var t = DateTime.now();; t = t.add(_tick)) {
       await Future<void>.delayed(t.difference(DateTime.now()));
 
       final x = t.millisecondsSinceEpoch.toDouble();
-      final y = data[x ~/ _tick.inMilliseconds % data.length];
+      final i = x ~/ _tick.inMilliseconds % leadI.length;
 
-      yield FlSpot(x, y);
+      yield EcgData(time: x, leadI: leadI[i], leadII: leadII[i]);
     }
   }
 }

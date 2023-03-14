@@ -1,4 +1,3 @@
-import "package:fl_chart/fl_chart.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -38,7 +37,7 @@ abstract class Device {
 
   Stream<int> get batteryStream;
 
-  Stream<FlSpot> get ecgStream;
+  Stream<EcgData> get ecgStream;
 }
 
 @riverpod
@@ -77,7 +76,7 @@ final connectedProvider = StreamProvider.autoDispose<bool>(
       ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
 );
 
-final ecgProvider = StreamProvider.autoDispose<FlSpot>(
+final ecgProvider = StreamProvider.autoDispose<EcgData>(
   (ref) {
     final device = ref.watch(currentDeviceProvider);
     final connected = ref.watch(connectedProvider).valueOrNull ?? false;
