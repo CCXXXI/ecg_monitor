@@ -67,3 +67,9 @@ flutter:
     - assets/images/
     - assets/model.pt
     - assets/debug/
+
+ffigen:
+  output: 'lib/utils/generated_bindings.dart'
+  headers:
+    entry-points:
+      - 'ios/Classes/PanTompkinsQRS/src/panTompkins.h'
