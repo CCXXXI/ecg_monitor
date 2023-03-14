@@ -1,5 +1,88 @@
 # Changelog
 
+## [0.18.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.1...v0.18.0) (2023-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **settings:** landscapeDuration cannot be larger than 10.
+
+### Features
+
+* add PanTompkinsQRS license to about ([6d5c825](https://github.com/CCXXXI/ecg_monitor/commit/6d5c825ed5fd5a047e48e54c28e7e96e40232ce1))
+* **chart:** add title ([2362194](https://github.com/CCXXXI/ecg_monitor/commit/2362194cb4fed84e442817c800cbd1af6fcc93f1))
+* **real_time:** show fake heart rate ([349905d](https://github.com/CCXXXI/ecg_monitor/commit/349905dfc5d50309f4967a9fb32b620c7368466a))
+* **realtime:** 3-lead data ([46f673b](https://github.com/CCXXXI/ecg_monitor/commit/46f673bc11859cdb1035198892c8beb7af69b934))
+* **realtime:** 3-lead UI ([d185ecc](https://github.com/CCXXXI/ecg_monitor/commit/d185ecc1dbe0709ed6e494aa7defe3c61a4fde60))
+* **realtime:** show heart rate ([3a97223](https://github.com/CCXXXI/ecg_monitor/commit/3a972235ec7704cbca4812d855f385f9fb5cf21a))
+* **realtime:** show heartRateDetecting notice ([b034b9b](https://github.com/CCXXXI/ecg_monitor/commit/b034b9b4743ce4222778896149d1d137be07c66c))
+* **settings:** landscapeDuration is 1~10 now ([0ee66fb](https://github.com/CCXXXI/ecg_monitor/commit/0ee66fbc2eed69e8a7b498af59077cc7dfa6e0f0))
+* **settings:** set default landscapeDuration to 2 ([5bd98ff](https://github.com/CCXXXI/ecg_monitor/commit/5bd98ff9939caeb1a242661f9b4b2f0246a23874))
+
+
+### Bug Fixes
+
+* disable heart rate on web ([75bde8e](https://github.com/CCXXXI/ecg_monitor/commit/75bde8e2efe0968901b3ece99eebc2da4b1a91b1))
+
+
+### Documentation
+
+* **readme:** Submodules -&gt; Related Repositories ([521e858](https://github.com/CCXXXI/ecg_monitor/commit/521e858bf5db67611c1165d8372f7685584c2344))
+* **readme:** update submodules desc ([3b7197e](https://github.com/CCXXXI/ecg_monitor/commit/3b7197ee9162b0a1ecda1e0b1f552b70a24843bd))
+
+
+### Build System
+
+* add PanTompkinsQRS to CMakeLists.txt ([6f7acb3](https://github.com/CCXXXI/ecg_monitor/commit/6f7acb3ee5f942f2a5343e5f7dff089ff855f0ae))
+* correct CMakeLists.txt ([09e6aba](https://github.com/CCXXXI/ecg_monitor/commit/09e6aba79a17cf31a1329d8a459612aa03102a89))
+* flutter pub add dev:ffigen ffi ([4cb1da0](https://github.com/CCXXXI/ecg_monitor/commit/4cb1da03eb35bc24fa990e20731022f088d60a6a))
+
+
+### Miscellaneous Chores
+
+* save IDEA config ([cc6ad35](https://github.com/CCXXXI/ecg_monitor/commit/cc6ad35dd7d001410ecb09a96c943c0727805fec))
+* update IDEA config ([1b2d034](https://github.com/CCXXXI/ecg_monitor/commit/1b2d034f29be180f2eb283f959c63b8d20fea2bc))
+* update input data ([0834783](https://github.com/CCXXXI/ecg_monitor/commit/0834783fb2c0ca0c67b1891cee36015a05afae3a))
+* update PanTompkinsQRS ([7f58f27](https://github.com/CCXXXI/ecg_monitor/commit/7f58f27b45cb28714d52ea287cfb5ae0f26c29fb))
+* update PanTompkinsQRS ([20b5b12](https://github.com/CCXXXI/ecg_monitor/commit/20b5b1250936d1e2c939a3920419a6df89c09d6d))
+* update submodule ([c4210a6](https://github.com/CCXXXI/ecg_monitor/commit/c4210a622e71bb563710ed49a86777412f13fbbf))
+* update submodules again ([#196](https://github.com/CCXXXI/ecg_monitor/issues/196)) ([c3826d9](https://github.com/CCXXXI/ecg_monitor/commit/c3826d9b109fcf7d3121d61cd729194637af7fa3))
+
+
+### Tests
+
+* add test for license ([403ec37](https://github.com/CCXXXI/ecg_monitor/commit/403ec37d00eeeea05165e4827e0ab2fbdf092ae6))
+* **device:** initData before tests ([e34c602](https://github.com/CCXXXI/ecg_monitor/commit/e34c6028edc25c8b7739f03062dc8ad177e54e99))
+
+
+### Styles
+
+* restyle by prettier-yaml ([28e0dfe](https://github.com/CCXXXI/ecg_monitor/commit/28e0dfe5f1e53b3d1589a2ec5a330b7163c55407))
+
+
+### Continuous Integration
+
+* **build:** checkout submodules ([395a951](https://github.com/CCXXXI/ecg_monitor/commit/395a951d59ca981540adc307b72f11d15521d230))
+* **check:** checkout submodules ([f9984bf](https://github.com/CCXXXI/ecg_monitor/commit/f9984bfc72a37615fbd505eaa0e83dc9cfb384c0))
+* **check:** ignore generated_bindings ([f68e86b](https://github.com/CCXXXI/ecg_monitor/commit/f68e86b1c673a1bfebb855ce61684c00d004c9c5))
+* **coverage:** add codecov token ([#197](https://github.com/CCXXXI/ecg_monitor/issues/197)) ([8d96f8a](https://github.com/CCXXXI/ecg_monitor/commit/8d96f8a787949317c808b0bcde8b6c87e29cda20))
+* **restyled:** update restyled config ([#192](https://github.com/CCXXXI/ecg_monitor/issues/192)) ([e9bb6ec](https://github.com/CCXXXI/ecg_monitor/commit/e9bb6ec1b98445d782eecff512ad31156b43b1c6))
+* update renovate.json ([afc71f1](https://github.com/CCXXXI/ecg_monitor/commit/afc71f1f87d4d99f35cd28356c2c6bdf898446ae))
+
+
+### Code Refactoring
+
+* 3-leads ([c0d2966](https://github.com/CCXXXI/ecg_monitor/commit/c0d29667f8c31288254bc0e5b313b8faa2598ee1))
+* add EcgData ([01cd7b5](https://github.com/CCXXXI/ecg_monitor/commit/01cd7b5f7481b333f795fbe446d0b115b7df8169))
+* correct import ([37a9da8](https://github.com/CCXXXI/ecg_monitor/commit/37a9da85f76f54012bbc4ec75f1e00ffa52272a8))
+* flutter pub run ffigen ([a60378c](https://github.com/CCXXXI/ecg_monitor/commit/a60378c30282cc9b491f0d8a5fc5ba8e70071ce8)), closes [#178](https://github.com/CCXXXI/ecg_monitor/issues/178)
+* **heart-rate:** improve ffigen config ([26ca85a](https://github.com/CCXXXI/ecg_monitor/commit/26ca85a5a7c80e43135bbbecaae00dd99e06c2a5))
+* move & add submodules ([394403e](https://github.com/CCXXXI/ecg_monitor/commit/394403e7c6f151daaa24d7637f900fc258c174f3))
+* move heart rate to subfolder ([ef802b8](https://github.com/CCXXXI/ecg_monitor/commit/ef802b820409824e749041768889b2a64d714d33))
+* move real time chart to subfolder ([1d3e086](https://github.com/CCXXXI/ecg_monitor/commit/1d3e08654f6f5aee4fdf328f9b576a4180491771))
+* **real_time:** HeartRate widget ([e820a5f](https://github.com/CCXXXI/ecg_monitor/commit/e820a5fecad0c5be409384786246f8ef9c12f31b))
+* **realtime:** extract add & addPoint ([9afb48e](https://github.com/CCXXXI/ecg_monitor/commit/9afb48e01413a5e286317b849a6035d2a95f6e16))
+
 ## [0.17.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.0...v0.17.1) (2023-03-07)
 
 ### Bug Fixes
