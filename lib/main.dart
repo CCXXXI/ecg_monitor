@@ -6,8 +6,10 @@ import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
+import "utils/constants/data.dart";
 import "utils/constants/keys.dart" as key;
 import "utils/constants/strings.dart" as str;
+import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
 import "utils/ume.dart";
@@ -20,6 +22,8 @@ void main() async {
   initLogger();
   await str.initPackageInfo();
   await loadModel();
+  await initData();
+  initLicense();
 
   // init Sentry & run app
   Sentry.configureScope(

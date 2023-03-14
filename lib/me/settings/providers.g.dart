@@ -491,7 +491,6 @@ final _realTimeChartSettingsSetterProvider =
 );
 
 typedef _$RealTimeChartSettingsSetter = AutoDisposeNotifier<void>;
-
 String _$historyChartSettingsHash() =>
     r'db3a231ad6fe334fc10a6494296a8e8900d9ab50';
 
@@ -509,7 +508,6 @@ final historyChartSettingsProvider = AutoDisposeNotifierProvider<
 );
 
 typedef _$HistoryChartSettings = AutoDisposeNotifier<ChartSettingsData>;
-
 String _$historyChartSettingsSetterHash() =>
     r'def1991a82de1503317d25e2506c23b0b1296c79';
 

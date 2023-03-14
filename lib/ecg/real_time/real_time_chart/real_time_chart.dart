@@ -8,9 +8,9 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../device_manager/device.dart";
-import "../../me/settings/providers.dart";
-import "../chart.dart";
+import "../../../device_manager/device.dart";
+import "../../../me/settings/providers.dart";
+import "../../chart.dart";
 
 part "real_time_chart.g.dart";
 
@@ -26,16 +26,20 @@ var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
-  static var _previousRefreshTimeMs = 0.0;
-  static final _buffer = Queue<FlSpot>();
+  var _previousRefreshTimeMs = 0.0;
+  final _buffer = Queue<FlSpot>();
 
   @override
-  List<FlSpot> build() {
-    unawaited(ref.watch(ecgProvider.stream).forEach(add));
+  List<FlSpot> build(int index) {
+    unawaited(ref.watch(ecgProvider.stream).forEach(_add));
     return const [];
   }
 
-  void add(FlSpot point) {
+  void _add(EcgData data) => _addPoint(
+        FlSpot(data.time, [data.leadI, data.leadII, data.leadIII][index]),
+      );
+
+  void _addPoint(FlSpot point) {
     _logger.finest(point);
 
     // ignore if too close to the previous point
@@ -77,8 +81,10 @@ class RealTimeChart extends ConsumerWidget {
 
     _maxDurationMs = durationS * Duration.millisecondsPerSecond;
 
-    return Chart(
-      points: ref.watch(_pointsProvider),
+    return Chart3Lead(
+      pointsI: ref.watch(_pointsProvider(0)),
+      pointsII: ref.watch(_pointsProvider(1)),
+      pointsIII: ref.watch(_pointsProvider(2)),
       durationS: durationS,
       backgroundColor: ref.watch(realTimeBackgroundColorProvider),
       lineColor: ref.watch(realTimeLineColorProvider),

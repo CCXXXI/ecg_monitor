@@ -9,6 +9,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ios/Classes/PanTompkinsQRS" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ios/Classes/PanTompkinsQRS/assets/ecg_data" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ios/Classes/ecg_model_cpp" vcs="Git" />
   </component>
 </project>

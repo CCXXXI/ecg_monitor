@@ -8,6 +8,7 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - "**/generated_bindings.dart"
   errors:
     included_file_warning: ignore
 
