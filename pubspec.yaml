@@ -67,3 +67,4 @@ flutter:
     - assets/images/
     - assets/model.pt
     - ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/
+    - ios/Classes/PanTompkinsQRS/LICENSE
