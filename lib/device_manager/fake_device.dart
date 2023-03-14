@@ -7,14 +7,6 @@ import "../utils/constants/strings.dart" as str;
 import "device.dart";
 
 class _FakeDevice implements Device {
-  /// 采样频率
-  static const _sampleRateHz = 250;
-
-  /// 采样周期
-  static const _tick = Duration(
-    milliseconds: Duration.millisecondsPerSecond ~/ _sampleRateHz,
-  );
-
   @override
   String get id => str.fakeDevice;
 
@@ -23,6 +15,14 @@ class _FakeDevice implements Device {
 
   @override
   String get model => str.fakeDeviceModel;
+
+  @override
+  int get fs => 125;
+
+  /// 采样周期
+  Duration get _tick => Duration(
+        milliseconds: Duration.millisecondsPerSecond ~/ fs,
+      );
 
   @override
   Stream<bool> get connectedStream => Stream.periodic(

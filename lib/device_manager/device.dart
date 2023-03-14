@@ -30,6 +30,9 @@ abstract class Device {
 
   String get model;
 
+  /// Sampling Frequency
+  int get fs;
+
   Stream<bool> get connectedStream;
 
   /// Received Signal Strength Indication
