@@ -8,9 +8,9 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../device_manager/device.dart";
-import "../../me/settings/providers.dart";
-import "../chart.dart";
+import "../../../device_manager/device.dart";
+import "../../../me/settings/providers.dart";
+import "../../chart.dart";
 
 part "real_time_chart.g.dart";
 
