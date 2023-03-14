@@ -1,12 +1,28 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
 import "../utils/constants/keys.dart" as key;
 import "fake_device.dart";
 
+part "device.freezed.dart";
 part "device.g.dart";
+
+@freezed
+class EcgData with _$EcgData {
+  const factory EcgData({
+    required double time,
+    required double leadI,
+    required double leadII,
+  }) = _EcgData;
+
+  const EcgData._();
+
+  // See: https://en.wikipedia.org/wiki/Einthoven%27s_triangle
+  double get leadIII => leadII - leadI;
+}
 
 abstract class Device {
   String get id;

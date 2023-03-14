@@ -6,7 +6,7 @@ part of 'settings.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loggerLevelHash() => r'd45834a329b8245628eb85b4c01d64dc75a62362';
+String _$loggerLevelHash() => r'ebaf55b5293d9c79705651a69fc8855f7b1e8077';
 
 /// See also [_LoggerLevel].
 @ProviderFor(_LoggerLevel)
