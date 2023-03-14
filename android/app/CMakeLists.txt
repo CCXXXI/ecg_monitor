@@ -4,6 +4,10 @@ project(ecg_monitor)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+### PanTompkinsQRS ###
+# Add source files.
+add_library(PanTompkinsQRS SHARED ../../ios/Classes/PanTompkinsQRS/src/panTompkins.cpp)
+
 ### ecg_model ###
 # Add source files.
 add_library(ecg_model SHARED ../../ios/Classes/ecg_model_cpp/src/forward.cpp)
