@@ -26,15 +26,15 @@ var _maxDurationMs = .0;
 
 @riverpod
 class _Points extends _$Points {
-  static var _previousRefreshTimeMs = 0.0;
-  static final _buffer = Queue<FlSpot>();
+  var _previousRefreshTimeMs = 0.0;
+  final _buffer = Queue<FlSpot>();
 
   @override
-  List<FlSpot> build() {
+  List<FlSpot> build(int index) {
     unawaited(
-      ref
-          .watch(ecgProvider.stream)
-          .forEach((data) => add(FlSpot(data.time, data.leadII))),
+      ref.watch(ecgProvider.stream).forEach(
+            (d) => add(FlSpot(d.time, [d.leadI, d.leadII, d.leadIII][index])),
+          ),
     );
     return const [];
   }
@@ -82,9 +82,9 @@ class RealTimeChart extends ConsumerWidget {
     _maxDurationMs = durationS * Duration.millisecondsPerSecond;
 
     return Chart3Lead(
-      pointsI: ref.watch(_pointsProvider),
-      pointsII: ref.watch(_pointsProvider),
-      pointsIII: ref.watch(_pointsProvider),
+      pointsI: ref.watch(_pointsProvider(0)),
+      pointsII: ref.watch(_pointsProvider(1)),
+      pointsIII: ref.watch(_pointsProvider(2)),
       durationS: durationS,
       backgroundColor: ref.watch(realTimeBackgroundColorProvider),
       lineColor: ref.watch(realTimeLineColorProvider),
