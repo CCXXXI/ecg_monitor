@@ -6,7 +6,7 @@ part of 'real_time_chart.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'e0a394c8fe1c69da2a86afe07aae905d654b4431';
+String _$pointsHash() => r'339507004d0e107cbe29672ed4c831f5142ccf9a';
 
 /// See also [_Points].
 @ProviderFor(_Points)

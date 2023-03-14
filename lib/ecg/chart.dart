@@ -8,6 +8,7 @@ import "../me/settings/data_types.dart";
 
 class Chart extends StatelessWidget {
   const Chart({
+    required this.title,
     required this.points,
     required this.durationS,
     required this.backgroundColor,
@@ -19,6 +20,7 @@ class Chart extends StatelessWidget {
     super.key,
   });
 
+  final String title;
   final List<FlSpot> points;
   final double durationS;
   final Color backgroundColor;
@@ -78,57 +80,64 @@ class Chart extends StatelessWidget {
       ),
     );
 
-    return LineChart(
-      swapAnimationDuration: Duration.zero, // disable animation
-      LineChartData(
-        minX: points.isEmpty ? null : points.last.x - durationMs,
-        maxX: points.isEmpty ? null : points.last.x,
-        minY: points.isEmpty
-            ? null
-            : points.map((p) => p.y).reduce(min) - smallYInterval,
-        maxY: points.isEmpty
-            ? null
-            : points.map((p) => p.y).reduce(max) + smallYInterval,
-        backgroundColor: backgroundColor,
-        titlesData: FlTitlesData(
-          topTitles: xTitles,
-          bottomTitles: xTitles,
-          leftTitles: yTitles,
-          rightTitles: yTitles,
-        ),
-        borderData: FlBorderData(show: false),
-        gridData: FlGridData(
-          show: drawHorizontalLine || drawVerticalLine,
-          drawHorizontalLine: drawHorizontalLine,
-          drawVerticalLine: drawVerticalLine,
-          horizontalInterval: horizontalLineType == LineType.full
-              ? smallYInterval
-              : _largeYInterval,
-          verticalInterval: verticalLineType == LineType.full
-              ? smallXInterval
-              : _largeXInterval,
-          getDrawingHorizontalLine: (value) => FlLine(
-            color: gridColor,
-            strokeWidth: _getStrokeWidth(value, isHorizontal: true),
-          ),
-          getDrawingVerticalLine: (value) => FlLine(
-            color: gridColor,
-            strokeWidth: _getStrokeWidth(value, isHorizontal: false),
-          ),
-        ),
-        lineBarsData: [
-          LineChartBarData(
-            spots: points,
-            color: lineColor,
-            preventCurveOverShooting: true,
-            dotData: FlDotData(
-              show: showDots,
-              getDotPainter: (spot, xPercentage, bar, index) =>
-                  FlDotSquarePainter(color: backgroundColor),
+    return Column(
+      children: [
+        Text(title),
+        Expanded(
+          child: LineChart(
+            swapAnimationDuration: Duration.zero, // disable animation
+            LineChartData(
+              minX: points.isEmpty ? null : points.last.x - durationMs,
+              maxX: points.isEmpty ? null : points.last.x,
+              minY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(min) - smallYInterval,
+              maxY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(max) + smallYInterval,
+              backgroundColor: backgroundColor,
+              titlesData: FlTitlesData(
+                topTitles: xTitles,
+                bottomTitles: xTitles,
+                leftTitles: yTitles,
+                rightTitles: yTitles,
+              ),
+              borderData: FlBorderData(show: false),
+              gridData: FlGridData(
+                show: drawHorizontalLine || drawVerticalLine,
+                drawHorizontalLine: drawHorizontalLine,
+                drawVerticalLine: drawVerticalLine,
+                horizontalInterval: horizontalLineType == LineType.full
+                    ? smallYInterval
+                    : _largeYInterval,
+                verticalInterval: verticalLineType == LineType.full
+                    ? smallXInterval
+                    : _largeXInterval,
+                getDrawingHorizontalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: _getStrokeWidth(value, isHorizontal: true),
+                ),
+                getDrawingVerticalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: _getStrokeWidth(value, isHorizontal: false),
+                ),
+              ),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: points,
+                  color: lineColor,
+                  preventCurveOverShooting: true,
+                  dotData: FlDotData(
+                    show: showDots,
+                    getDotPainter: (spot, xPercentage, bar, index) =>
+                        FlDotSquarePainter(color: backgroundColor),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

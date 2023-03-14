@@ -10,6 +10,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../device_manager/device.dart";
 import "../../me/settings/providers.dart";
+import '../../utils/constants/strings.dart' as str;
 import "../chart.dart";
 
 part "real_time_chart.g.dart";
@@ -82,6 +83,7 @@ class RealTimeChart extends ConsumerWidget {
     _maxDurationMs = durationS * Duration.millisecondsPerSecond;
 
     return Chart(
+      title: str.leadII,
       points: ref.watch(_pointsProvider),
       durationS: durationS,
       backgroundColor: ref.watch(realTimeBackgroundColorProvider),

@@ -3,6 +3,9 @@ import "package:package_info_plus/package_info_plus.dart";
 
 const realTime = "实时心电";
 const heartRateUnit = "次/分";
+const leadI = "I 导联";
+const leadII = "II 导联";
+const leadIII = "III 导联";
 const style = "显示风格";
 const simple = "简洁";
 const professional = "专业";
