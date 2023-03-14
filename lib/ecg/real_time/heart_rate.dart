@@ -74,6 +74,22 @@ class HeartRate extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rate = ref.watch(_heartRateProvider);
 
+    if (rate == 0) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(flex: 2),
+          const CircularProgressIndicator(),
+          const Spacer(),
+          Text(
+            str.heartRateDetecting,
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          const Spacer(flex: 2),
+        ],
+      );
+    }
+
     return Center(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -81,13 +97,10 @@ class HeartRate extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.baseline,
         children: [
           const Icon(Icons.favorite, size: 48, color: Colors.red),
-          if (rate == 0)
-            const CircularProgressIndicator()
-          else
-            Text(
-              rate.toString(),
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
+          Text(
+            rate.toString(),
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
           Text(
             str.heartRateUnit,
             style: Theme.of(context).textTheme.headlineLarge,
