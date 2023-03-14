@@ -4,6 +4,7 @@ import "package:package_info_plus/package_info_plus.dart";
 const realTime = "实时心电";
 const heartRateUnit = "次/分";
 const heartRateDetecting = "正在检测心率";
+const heartRateNotAvailableOnWeb = "Web 端不支持心率检测";
 const leadI = "I 导联";
 const leadII = "II 导联";
 const leadIII = "III 导联";
