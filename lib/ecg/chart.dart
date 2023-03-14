@@ -5,6 +5,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 
 import "../me/settings/data_types.dart";
+import "../utils/constants/strings.dart" as str;
 
 class Chart extends StatelessWidget {
   const Chart({
@@ -53,7 +54,7 @@ class Chart extends StatelessWidget {
     final drawHorizontalLine = horizontalLineType != LineType.hide;
     final drawVerticalLine = verticalLineType != LineType.hide;
 
-    final xTitles = AxisTitles(
+    final bottomTitles = AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,
         reservedSize: 30,
@@ -62,12 +63,12 @@ class Chart extends StatelessWidget {
             ? const SizedBox.shrink()
             : SideTitleWidget(
                 axisSide: meta.axisSide,
-                child: Text(Chart.msToTimeString(value)),
+                child: Text(msToTimeString(value)),
               ),
       ),
     );
 
-    final yTitles = AxisTitles(
+    final leftTitles = AxisTitles(
       sideTitles: SideTitles(
         showTitles: true,
         reservedSize: 35,
@@ -97,10 +98,10 @@ class Chart extends StatelessWidget {
                   : points.map((p) => p.y).reduce(max) + smallYInterval,
               backgroundColor: backgroundColor,
               titlesData: FlTitlesData(
-                topTitles: xTitles,
-                bottomTitles: xTitles,
-                leftTitles: yTitles,
-                rightTitles: yTitles,
+                topTitles: AxisTitles(),
+                bottomTitles: bottomTitles,
+                leftTitles: leftTitles,
+                rightTitles: AxisTitles(),
               ),
               borderData: FlBorderData(show: false),
               gridData: FlGridData(
@@ -170,7 +171,78 @@ class Chart extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
+      ..add(StringProperty("title", title))
       ..add(IterableProperty<FlSpot>("points", points))
+      ..add(DoubleProperty("durationS", durationS))
+      ..add(ColorProperty("backgroundColor", backgroundColor))
+      ..add(ColorProperty("lineColor", lineColor))
+      ..add(ColorProperty("gridColor", gridColor))
+      ..add(EnumProperty<LineType>("horizontalLineType", horizontalLineType))
+      ..add(EnumProperty<LineType>("verticalLineType", verticalLineType))
+      ..add(DiagnosticsProperty<bool>("showDots", showDots));
+  }
+}
+
+class Chart3Lead extends StatelessWidget {
+  const Chart3Lead({
+    required this.pointsI,
+    required this.pointsII,
+    required this.pointsIII,
+    required this.durationS,
+    required this.backgroundColor,
+    required this.lineColor,
+    required this.gridColor,
+    required this.horizontalLineType,
+    required this.verticalLineType,
+    required this.showDots,
+    super.key,
+  });
+
+  static const _titles = [str.leadI, str.leadII, str.leadIII];
+
+  final List<FlSpot> pointsI;
+  final List<FlSpot> pointsII;
+  final List<FlSpot> pointsIII;
+  final double durationS;
+  final Color backgroundColor;
+  final Color lineColor;
+  final Color gridColor;
+  final LineType horizontalLineType;
+  final LineType verticalLineType;
+  final bool showDots;
+
+  @override
+  Widget build(BuildContext context) {
+    final children = [
+      for (var i = 0; i < 3; i++)
+        Expanded(
+          child: Chart(
+            title: _titles[i],
+            points: [pointsI, pointsII, pointsIII][i],
+            durationS: durationS,
+            backgroundColor: backgroundColor,
+            lineColor: lineColor,
+            gridColor: gridColor,
+            horizontalLineType: horizontalLineType,
+            verticalLineType: verticalLineType,
+            showDots: showDots,
+          ),
+        )
+    ];
+
+    final isPortrait =
+        MediaQuery.of(context).orientation == Orientation.portrait;
+
+    return isPortrait ? Column(children: children) : Row(children: children);
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IterableProperty<FlSpot>("pointsI", pointsI))
+      ..add(IterableProperty<FlSpot>("pointsII", pointsII))
+      ..add(IterableProperty<FlSpot>("pointsIII", pointsIII))
       ..add(DoubleProperty("durationS", durationS))
       ..add(ColorProperty("backgroundColor", backgroundColor))
       ..add(ColorProperty("lineColor", lineColor))
