@@ -16,7 +16,7 @@ part "heart_rate.g.dart";
 
 final _logger = Logger("HeartRate");
 
-final _lib = NativeLibrary(DynamicLibrary.open("libPanTompkinsQRS.so"));
+final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 
 @riverpod
 class _HeartRate extends _$HeartRate {
