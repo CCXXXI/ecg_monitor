@@ -31,15 +31,15 @@ class _Points extends _$Points {
 
   @override
   List<FlSpot> build(int index) {
-    unawaited(
-      ref.watch(ecgProvider.stream).forEach(
-            (d) => add(FlSpot(d.time, [d.leadI, d.leadII, d.leadIII][index])),
-          ),
-    );
+    unawaited(ref.watch(ecgProvider.stream).forEach(_add));
     return const [];
   }
 
-  void add(FlSpot point) {
+  void _add(EcgData data) => _addPoint(
+        FlSpot(data.time, [data.leadI, data.leadII, data.leadIII][index]),
+      );
+
+  void _addPoint(FlSpot point) {
     _logger.finest(point);
 
     // ignore if too close to the previous point
