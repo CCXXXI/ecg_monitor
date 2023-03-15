@@ -111,8 +111,8 @@ class _HeartRate extends _$HeartRate {
   }
 }
 
-class HeartRate extends ConsumerWidget {
-  const HeartRate({super.key});
+class HeartRateWidget extends ConsumerWidget {
+  const HeartRateWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
