@@ -20,6 +20,7 @@ final _logger = Logger("HeartRate");
 
 final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 
+@visibleForTesting
 @freezed
 class HeartRateData with _$HeartRateData {
   const factory HeartRateData({
