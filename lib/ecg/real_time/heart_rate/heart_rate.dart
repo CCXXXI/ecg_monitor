@@ -25,8 +25,8 @@ class _HeartRate extends _$HeartRate {
   // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
   static final _learningPhase = aSecond * 2;
 
-  /// Duration used in heart rate calculation.
-  static final _calculationDuration = aSecond * 10;
+  // Count of QRSs to calculate heart rate.
+  static const _qrsCount = 5;
 
   static final _start = DateTime.now();
   static final _qrsBuffer = Queue<DateTime>();
@@ -56,12 +56,12 @@ class _HeartRate extends _$HeartRate {
     _qrsBuffer.addLast(data.time);
 
     // Remove outdated QRSs.
-    while (data.time.difference(_qrsBuffer.first) > _calculationDuration) {
+    if (_qrsBuffer.length > _qrsCount) {
       _qrsBuffer.removeFirst();
     }
 
     // Too few QRSs to calculate heart rate.
-    if (_qrsBuffer.length < 2) {
+    if (_qrsBuffer.length < _qrsCount) {
       return;
     }
 
