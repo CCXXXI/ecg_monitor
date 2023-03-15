@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.5
+  dio: ^5.0.2
   ffi: ^2.0.1
   fl_chart: ^0.61.0
   flex_color_picker: ^3.1.0
@@ -17,17 +18,23 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.1.1
   flutter_ume: ^1.1.1
-  flutter_ume_kit_console: ^1.0.0
+  flutter_ume_kit_clean_local_data: ^1.0.0
+  flutter_ume_kit_console: ^1.1.0
+  flutter_ume_kit_designer_check: ^1.0.0
   flutter_ume_kit_device: ^1.0.0
+  flutter_ume_kit_dio: ^1.0.1+2
   flutter_ume_kit_perf: ^1.0.0
+  flutter_ume_kit_shared_preferences: ^1.0.0
   flutter_ume_kit_show_code: ^1.0.0+1
-  flutter_ume_kit_ui: ^1.1.0
+  flutter_ume_kit_slow_animation: ^1.0.0
+  flutter_ume_kit_ui: ^1.1.1
   freezed_annotation: ^2.2.0
   go_router: ^6.0.1
   logging: ^1.1.1
   package_info_plus: ^3.0.2
   path: ^1.8.2
   path_provider: ^2.0.12
+  pretty_dio_logger: ^1.3.1
   quiver: ^3.2.1
   restart_app: ^1.1.2
   riverpod_annotation: ^1.0.6
@@ -50,15 +57,41 @@ dev_dependencies:
   riverpod_generator: ^1.0.6
 
 dependency_overrides:
+  flutter_ume_kit_clean_local_data:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_clean_local_data
   flutter_ume_kit_console:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git
-      ref: 10ad492bb9b7e1fdccc1ea3fdf73a3ce78e9af40
       path: kits/flutter_ume_kit_console
+  flutter_ume_kit_designer_check:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_designer_check
+  flutter_ume_kit_dio:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_dio
+  flutter_ume_kit_perf:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume.git
+      path: kits/flutter_ume_kit_perf
+  flutter_ume_kit_shared_preferences:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_shared_preferences
+  flutter_ume_kit_show_code:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume.git
+      path: kits/flutter_ume_kit_show_code
+  flutter_ume_kit_slow_animation:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_slow_animation
   flutter_ume_kit_ui:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git
-      ref: 10ad492bb9b7e1fdccc1ea3fdf73a3ce78e9af40
       path: kits/flutter_ume_kit_ui
 
 flutter:
