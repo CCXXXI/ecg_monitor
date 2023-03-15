@@ -6,6 +6,7 @@ import "package:flutter_ume_kit_designer_check/flutter_ume_kit_designer_check.da
 import "package:flutter_ume_kit_device/flutter_ume_kit_device.dart";
 import "package:flutter_ume_kit_dio/flutter_ume_kit_dio.dart";
 import "package:flutter_ume_kit_perf/flutter_ume_kit_perf.dart";
+import "package:flutter_ume_kit_shared_preferences/flutter_ume_kit_shared_preferences.dart";
 import "package:flutter_ume_kit_show_code/flutter_ume_kit_show_code.dart";
 import "package:flutter_ume_kit_ui/flutter_ume_kit_ui.dart";
 
@@ -25,6 +26,7 @@ final _pluginsAlwaysOn = <Pluggable>[
   const DeviceInfoPanel(),
   DioInspector(dio: dio),
   Performance(),
+  SharedPreferencesInspector(),
 ];
 
 /// Plugins that are only available in debug mode.
