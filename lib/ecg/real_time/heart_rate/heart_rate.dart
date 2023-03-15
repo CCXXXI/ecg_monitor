@@ -4,6 +4,7 @@ import "dart:ffi";
 
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -12,11 +13,28 @@ import "../../../device_manager/device.dart";
 import "../../../utils/constants/strings.dart" as str;
 import "generated_bindings.dart";
 
+part "heart_rate.freezed.dart";
 part "heart_rate.g.dart";
 
 final _logger = Logger("HeartRate");
 
 final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
+
+@freezed
+class HeartRateData with _$HeartRateData {
+  const factory HeartRateData({
+    /// If available, the heart rate in beats per minute.
+    @Default(0) int rate,
+
+    /// If unavailable, the progress of the calculation. (0.0 - 1.0)
+    @Default(0) double progress,
+  }) = _HeartRateData;
+
+  const HeartRateData._();
+
+  /// Available or not.
+  bool get available => rate > 0;
+}
 
 @riverpod
 class _HeartRate extends _$HeartRate {
@@ -25,6 +43,8 @@ class _HeartRate extends _$HeartRate {
   // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
   static final _learningPhase = aSecond * 2;
 
+  static const _learningProgressWeight = .5;
+
   // Count of QRSs to calculate heart rate.
   static const _qrsCount = 5;
 
@@ -32,20 +52,33 @@ class _HeartRate extends _$HeartRate {
   static final _qrsBuffer = Queue<DateTime>();
 
   @override
-  int build() {
+  HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
     unawaited(ref.watch(ecgProvider.stream).forEach(_add));
-    return 0;
+    return const HeartRateData();
   }
 
   void _add(EcgData data) {
+    // Determine if it's in the learning phase.
+    final timeSinceStart = DateTime.now().difference(_start);
+    final isLearning = timeSinceStart < _learningPhase;
+
+    // Update progress if it's in the learning phase.
+    if (isLearning) {
+      final learningProgress =
+          timeSinceStart.inMilliseconds / _learningPhase.inMilliseconds;
+      state = HeartRateData(
+        progress: _learningProgressWeight * learningProgress,
+      );
+    }
+
     // Ignore if it's not a QRS.
     if (!_lib.panTompkins(data.leadI)) {
       return;
     }
 
     // Ignore if it's in the learning phase.
-    if (DateTime.now().difference(_start) < _learningPhase) {
+    if (isLearning) {
       _logger.fine("QRS: ${data.time} (learning phase)");
       return;
     }
@@ -62,6 +95,10 @@ class _HeartRate extends _$HeartRate {
 
     // Too few QRSs to calculate heart rate.
     if (_qrsBuffer.length < _qrsCount) {
+      final calculatingProgress = _qrsBuffer.length / _qrsCount;
+      final progress = _learningProgressWeight +
+          (1 - _learningProgressWeight) * calculatingProgress;
+      state = HeartRateData(progress: progress);
       return;
     }
 
@@ -70,7 +107,7 @@ class _HeartRate extends _$HeartRate {
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
     final beats = _qrsBuffer.length - 1;
     final bpm = beats / minutes;
-    state = bpm.round();
+    state = HeartRateData(rate: bpm.round());
   }
 }
 
@@ -81,18 +118,14 @@ class HeartRate extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rate = ref.watch(_heartRateProvider);
 
-    if (rate == 0) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+    if (!rate.available) {
+      return Column(
         children: [
-          const Spacer(flex: 2),
-          const CircularProgressIndicator(),
-          const Spacer(),
+          LinearProgressIndicator(value: rate.progress),
           Text(
             str.heartRateDetecting,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
-          const Spacer(flex: 2),
         ],
       );
     }
@@ -105,7 +138,7 @@ class HeartRate extends ConsumerWidget {
         children: [
           const Icon(Icons.favorite, size: 48, color: Colors.red),
           Text(
-            rate.toString(),
+            rate.rate.toString(),
             style: Theme.of(context).textTheme.displayLarge,
           ),
           Text(
