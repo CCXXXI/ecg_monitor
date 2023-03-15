@@ -8,6 +8,7 @@ import "package:flutter_ume_kit_dio/flutter_ume_kit_dio.dart";
 import "package:flutter_ume_kit_perf/flutter_ume_kit_perf.dart";
 import "package:flutter_ume_kit_shared_preferences/flutter_ume_kit_shared_preferences.dart";
 import "package:flutter_ume_kit_show_code/flutter_ume_kit_show_code.dart";
+import "package:flutter_ume_kit_slow_animation/flutter_ume_kit_slow_animation.dart";
 import "package:flutter_ume_kit_ui/flutter_ume_kit_ui.dart";
 
 import "../database.dart";
@@ -27,6 +28,7 @@ final _pluginsAlwaysOn = <Pluggable>[
   DioInspector(dio: dio),
   Performance(),
   SharedPreferencesInspector(),
+  const SlowAnimation(),
 ];
 
 /// Plugins that are only available in debug mode.
