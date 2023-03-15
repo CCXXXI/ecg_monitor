@@ -13,10 +13,10 @@ packages:
     dependency: "direct dev"
     description:
       name: all_lint_rules_community
-      sha256: "4e7e9d66ac83bff50fb692e5f879f408ea7ea1840cc33ba0a02ece9fca35ef66"
+      sha256: d993fb58745c753a1a937a066bc403410dbf6dd5cdfb79f3c0da334e5cb8c8c8
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.25"
+    version: "0.0.26"
   analyzer:
     dependency: transitive
     description:
