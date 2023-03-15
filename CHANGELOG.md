@@ -2,42 +2,38 @@
 
 ## [0.19.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.18.0...v0.19.0) (2023-03-15)
 
-
 ### Features
 
-* **dio:** add PrettyDioLogger ([1dc73f0](https://github.com/CCXXXI/ecg_monitor/commit/1dc73f01207c40da9bad5dafaaa2ce4166aa74ed))
-* **settings:** add network test ([91500f8](https://github.com/CCXXXI/ecg_monitor/commit/91500f84c8bbaeb4a121ddba365ff38b6e06da6d))
-* **settings:** update test url ([e58634f](https://github.com/CCXXXI/ecg_monitor/commit/e58634fee35eee68c6d132b0c173986ac1d67ba1))
-* **ume:** add DataCleanPanel ([9c64d61](https://github.com/CCXXXI/ecg_monitor/commit/9c64d612920cfeb8891e0b38490fb72ca701ada2))
-* **ume:** add DesignerCheck ([d4d720e](https://github.com/CCXXXI/ecg_monitor/commit/d4d720e024ef8095dda8059dc2d50de874a682e8))
-* **ume:** add DioInspector ([570993b](https://github.com/CCXXXI/ecg_monitor/commit/570993bda803edf3911332c94233699255c4b4bf))
-* **ume:** add SharedPreferencesInspector ([fc35af6](https://github.com/CCXXXI/ecg_monitor/commit/fc35af60c5eab10d08a7a688ed73d9b23998c852))
-* **ume:** add SlowAnimation ([a61f65c](https://github.com/CCXXXI/ecg_monitor/commit/a61f65ccd45a4bf88716367e2b6be5a5668526de))
-
+- **dio:** add PrettyDioLogger ([1dc73f0](https://github.com/CCXXXI/ecg_monitor/commit/1dc73f01207c40da9bad5dafaaa2ce4166aa74ed))
+- **settings:** add network test ([91500f8](https://github.com/CCXXXI/ecg_monitor/commit/91500f84c8bbaeb4a121ddba365ff38b6e06da6d))
+- **settings:** update test url ([e58634f](https://github.com/CCXXXI/ecg_monitor/commit/e58634fee35eee68c6d132b0c173986ac1d67ba1))
+- **ume:** add DataCleanPanel ([9c64d61](https://github.com/CCXXXI/ecg_monitor/commit/9c64d612920cfeb8891e0b38490fb72ca701ada2))
+- **ume:** add DesignerCheck ([d4d720e](https://github.com/CCXXXI/ecg_monitor/commit/d4d720e024ef8095dda8059dc2d50de874a682e8))
+- **ume:** add DioInspector ([570993b](https://github.com/CCXXXI/ecg_monitor/commit/570993bda803edf3911332c94233699255c4b4bf))
+- **ume:** add SharedPreferencesInspector ([fc35af6](https://github.com/CCXXXI/ecg_monitor/commit/fc35af60c5eab10d08a7a688ed73d9b23998c852))
+- **ume:** add SlowAnimation ([a61f65c](https://github.com/CCXXXI/ecg_monitor/commit/a61f65ccd45a4bf88716367e2b6be5a5668526de))
 
 ### Code Refactoring
 
-* **settings:** reorder classes ([5aa2fed](https://github.com/CCXXXI/ecg_monitor/commit/5aa2fed791e1df2b1d2839d1096ea1458ebec1f0))
-
+- **settings:** reorder classes ([5aa2fed](https://github.com/CCXXXI/ecg_monitor/commit/5aa2fed791e1df2b1d2839d1096ea1458ebec1f0))
 
 ### Documentation
 
-* **ume:** remove useless comment ([2e6541f](https://github.com/CCXXXI/ecg_monitor/commit/2e6541fb1d166fa7202ce83dd594e69595ebcedc))
-
+- **ume:** remove useless comment ([2e6541f](https://github.com/CCXXXI/ecg_monitor/commit/2e6541fb1d166fa7202ce83dd594e69595ebcedc))
 
 ### Build System
 
-* add & override flutter_ume_kit_clean_local_data ([d797b5d](https://github.com/CCXXXI/ecg_monitor/commit/d797b5def260faabb593e158509bfac2c82a6121))
-* add & override flutter_ume_kit_designer_check ([7148a92](https://github.com/CCXXXI/ecg_monitor/commit/7148a920373acbdf34687ce35fc15ed3c383ba6c))
-* add & override flutter_ume_kit_shared_preferences ([e5930a3](https://github.com/CCXXXI/ecg_monitor/commit/e5930a37ebd62ae6d76e5790c17b19db7cfb1f50))
-* add & override flutter_ume_kit_slow_animation ([b3100dd](https://github.com/CCXXXI/ecg_monitor/commit/b3100ddf3b15143d1ef8b85d2e00eb84dd4117e5))
-* flutter pub add dio ([9b68334](https://github.com/CCXXXI/ecg_monitor/commit/9b68334f948eb1807775ee209058567c50b6cbe5))
-* flutter pub add flutter_ume_kit_dio ([e06044a](https://github.com/CCXXXI/ecg_monitor/commit/e06044a49cc3740cf598f1430c6d7274f6c481cc))
-* flutter pub add pretty_dio_logger ([3c0d85b](https://github.com/CCXXXI/ecg_monitor/commit/3c0d85b4b9af6bfe59d54e7094434a2bc458b763))
-* override flutter_ume_kit_dio ([b58ca0b](https://github.com/CCXXXI/ecg_monitor/commit/b58ca0bf85ec7667439da8e79ffff5761f11194f))
-* override flutter_ume_kit_perf & flutter_ume_kit_show_code ([fb026a1](https://github.com/CCXXXI/ecg_monitor/commit/fb026a113e0bd9cd14e9cdb8b7960761599936a9))
-* remove git ref in overrides ([30a136d](https://github.com/CCXXXI/ecg_monitor/commit/30a136dd8a7df8009670a711f507205d62fb68f9))
-* upgrade dependencies ([9d93c50](https://github.com/CCXXXI/ecg_monitor/commit/9d93c506cf95fd0500543df0c1891e2562cdbab5))
+- add & override flutter_ume_kit_clean_local_data ([d797b5d](https://github.com/CCXXXI/ecg_monitor/commit/d797b5def260faabb593e158509bfac2c82a6121))
+- add & override flutter_ume_kit_designer_check ([7148a92](https://github.com/CCXXXI/ecg_monitor/commit/7148a920373acbdf34687ce35fc15ed3c383ba6c))
+- add & override flutter_ume_kit_shared_preferences ([e5930a3](https://github.com/CCXXXI/ecg_monitor/commit/e5930a37ebd62ae6d76e5790c17b19db7cfb1f50))
+- add & override flutter_ume_kit_slow_animation ([b3100dd](https://github.com/CCXXXI/ecg_monitor/commit/b3100ddf3b15143d1ef8b85d2e00eb84dd4117e5))
+- flutter pub add dio ([9b68334](https://github.com/CCXXXI/ecg_monitor/commit/9b68334f948eb1807775ee209058567c50b6cbe5))
+- flutter pub add flutter_ume_kit_dio ([e06044a](https://github.com/CCXXXI/ecg_monitor/commit/e06044a49cc3740cf598f1430c6d7274f6c481cc))
+- flutter pub add pretty_dio_logger ([3c0d85b](https://github.com/CCXXXI/ecg_monitor/commit/3c0d85b4b9af6bfe59d54e7094434a2bc458b763))
+- override flutter_ume_kit_dio ([b58ca0b](https://github.com/CCXXXI/ecg_monitor/commit/b58ca0bf85ec7667439da8e79ffff5761f11194f))
+- override flutter_ume_kit_perf & flutter_ume_kit_show_code ([fb026a1](https://github.com/CCXXXI/ecg_monitor/commit/fb026a113e0bd9cd14e9cdb8b7960761599936a9))
+- remove git ref in overrides ([30a136d](https://github.com/CCXXXI/ecg_monitor/commit/30a136dd8a7df8009670a711f507205d62fb68f9))
+- upgrade dependencies ([9d93c50](https://github.com/CCXXXI/ecg_monitor/commit/9d93c506cf95fd0500543df0c1891e2562cdbab5))
 
 ## [0.18.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.1...v0.18.0) (2023-03-14)
 
