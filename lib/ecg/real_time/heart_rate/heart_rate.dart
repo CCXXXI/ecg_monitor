@@ -109,7 +109,7 @@ class HeartRate extends ConsumerWidget {
             style: Theme.of(context).textTheme.displayLarge,
           ),
           Text(
-            str.heartRateUnit,
+            str.bpm,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
         ],
