@@ -41,12 +41,17 @@ class _HeartRate extends _$HeartRate {
   // At the beginning of the QRS detection,
   // a 2 seconds learning phase is needed.
   // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
-  static final _learningPhase = aSecond * 2;
+  // It seems that 2s is too short for the learning phase.
+  // So, we use 4s.
+  static final _learningPhase = aSecond * 4;
 
-  static const _learningProgressWeight = .5;
+  static const _learningProgressWeight = .7;
+
+  // Count of beats to calculate heart rate.
+  static const _beatCount = 1;
 
   // Count of QRSs to calculate heart rate.
-  static const _qrsCount = 5;
+  static const _qrsCount = _beatCount + 1;
 
   final _start = DateTime.now();
   final _qrsBuffer = Queue<DateTime>();
@@ -107,8 +112,8 @@ class _HeartRate extends _$HeartRate {
     // Calculate heart rate.
     final duration = _qrsBuffer.last.difference(_qrsBuffer.first);
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
-    final beats = _qrsBuffer.length - 1;
-    final bpm = beats / minutes;
+    final bpm = _beatCount / minutes;
+    _logger.finer("Heart rate: $bpm bpm");
     state = _HeartRateData(rate: bpm.round());
   }
 }
