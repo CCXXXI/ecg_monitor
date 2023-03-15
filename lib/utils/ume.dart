@@ -1,5 +1,6 @@
 import "package:flutter/foundation.dart";
 import "package:flutter_ume/flutter_ume.dart";
+import "package:flutter_ume_kit_clean_local_data/clean_local_data.dart";
 import "package:flutter_ume_kit_console/flutter_ume_kit_console.dart";
 import "package:flutter_ume_kit_designer_check/flutter_ume_kit_designer_check.dart";
 import "package:flutter_ume_kit_device/flutter_ume_kit_device.dart";
@@ -19,6 +20,7 @@ final _pluginsAlwaysOn = <Pluggable>[
   const ColorSucker(),
   Console(),
   CpuInfoPage(),
+  const DataCleanPanel(),
   const DesignerCheck(),
   const DeviceInfoPanel(),
   DioInspector(dio: dio),
