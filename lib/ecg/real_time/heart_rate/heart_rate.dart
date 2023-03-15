@@ -116,12 +116,12 @@ class HeartRate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final rate = ref.watch(_heartRateProvider);
+    final data = ref.watch(_heartRateProvider);
 
-    if (!rate.available) {
+    if (!data.available) {
       return Column(
         children: [
-          LinearProgressIndicator(value: rate.progress),
+          LinearProgressIndicator(value: data.progress),
           Text(
             str.heartRateDetecting,
             style: Theme.of(context).textTheme.headlineLarge,
@@ -138,7 +138,7 @@ class HeartRate extends ConsumerWidget {
         children: [
           const Icon(Icons.favorite, size: 48, color: Colors.red),
           Text(
-            rate.rate.toString(),
+            data.rate.toString(),
             style: Theme.of(context).textTheme.displayLarge,
           ),
           Text(
