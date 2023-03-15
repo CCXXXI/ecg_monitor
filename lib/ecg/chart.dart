@@ -127,6 +127,7 @@ class Chart extends StatelessWidget {
                 LineChartBarData(
                   spots: points,
                   color: lineColor,
+                  barWidth: .5,
                   preventCurveOverShooting: true,
                   dotData: FlDotData(
                     show: showDots,
