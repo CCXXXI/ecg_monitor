@@ -21,16 +21,16 @@ final _logger = Logger("HeartRate");
 final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 
 @freezed
-class _HeartRateData with _$_HeartRateData {
-  const factory _HeartRateData({
+class HeartRateData with _$HeartRateData {
+  const factory HeartRateData({
     /// If available, the heart rate in beats per minute.
     @Default(0) int rate,
 
     /// If unavailable, the progress of the calculation. (0.0 - 1.0)
     @Default(0) double progress,
-  }) = __HeartRateData;
+  }) = _HeartRateData;
 
-  const _HeartRateData._();
+  const HeartRateData._();
 
   /// Available or not.
   bool get available => rate > 0;
@@ -57,10 +57,10 @@ class _HeartRate extends _$HeartRate {
   final _qrsBuffer = Queue<DateTime>();
 
   @override
-  _HeartRateData build() {
+  HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
     unawaited(ref.watch(ecgProvider.stream).forEach(_add));
-    return const _HeartRateData();
+    return const HeartRateData();
   }
 
   void _add(EcgData data) {
@@ -72,7 +72,7 @@ class _HeartRate extends _$HeartRate {
     if (isLearning) {
       final learningProgress =
           timeSinceStart.inMilliseconds / _learningPhase.inMilliseconds;
-      state = _HeartRateData(
+      state = HeartRateData(
         progress: _learningProgressWeight * learningProgress,
       );
     }
@@ -105,7 +105,7 @@ class _HeartRate extends _$HeartRate {
       final calculatingProgress = _qrsBuffer.length / _qrsCount;
       final progress = _learningProgressWeight +
           (1 - _learningProgressWeight) * calculatingProgress;
-      state = _HeartRateData(progress: progress);
+      state = HeartRateData(progress: progress);
       return;
     }
 
@@ -114,7 +114,7 @@ class _HeartRate extends _$HeartRate {
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
     final bpm = _beatCount / minutes;
     _logger.finer("Heart rate: $bpm bpm");
-    state = _HeartRateData(rate: bpm.round());
+    state = HeartRateData(rate: bpm.round());
   }
 }
 

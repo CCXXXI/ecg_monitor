@@ -6,12 +6,12 @@ part of 'heart_rate.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$heartRateHash() => r'6eff6d58ff50f47f70548ab91b5fbbefa485c8dc';
+String _$heartRateHash() => r'2a22d5308ea2734aa9191a23b997c6d25e35fa32';
 
 /// See also [_HeartRate].
 @ProviderFor(_HeartRate)
 final _heartRateProvider =
-    AutoDisposeNotifierProvider<_HeartRate, _HeartRateData>.internal(
+    AutoDisposeNotifierProvider<_HeartRate, HeartRateData>.internal(
   _HeartRate.new,
   name: r'_heartRateProvider',
   debugGetCreateSourceHash:
@@ -20,5 +20,5 @@ final _heartRateProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$HeartRate = AutoDisposeNotifier<_HeartRateData>;
+typedef _$HeartRate = AutoDisposeNotifier<HeartRateData>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
