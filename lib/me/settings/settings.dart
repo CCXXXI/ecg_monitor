@@ -10,6 +10,8 @@ import "package:universal_io/io.dart";
 import "../../database.dart";
 import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart" as str;
+import "../../utils/constants/urls.dart" as url;
+import "../../utils/dio.dart";
 import "../../utils/logger.dart";
 import "data_types.dart";
 import "providers.dart";
@@ -523,6 +525,12 @@ class Settings extends ConsumerWidget {
                 ),
               ),
             ),
+          if (showDevTools)
+            ListTile(
+              leading: const Icon(Icons.network_check_outlined),
+              title: const Text(str.networkTest),
+              onTap: () async => dio.getUri<dynamic>(url.test),
+            )
         ],
       ),
     );
