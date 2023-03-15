@@ -19,6 +19,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   flutter_ume: ^1.1.1
   flutter_ume_kit_console: ^1.1.0
+  flutter_ume_kit_designer_check: ^1.0.0
   flutter_ume_kit_device: ^1.0.0
   flutter_ume_kit_dio: ^1.0.1+2
   flutter_ume_kit_perf: ^1.0.0
@@ -57,6 +58,10 @@ dependency_overrides:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git
       path: kits/flutter_ume_kit_console
+  flutter_ume_kit_designer_check:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_designer_check
   flutter_ume_kit_dio:
     git:
       url: https://github.com/CCXXXI/flutter_ume_kits.git
