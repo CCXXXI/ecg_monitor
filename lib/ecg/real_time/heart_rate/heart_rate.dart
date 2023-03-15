@@ -48,8 +48,8 @@ class _HeartRate extends _$HeartRate {
   // Count of QRSs to calculate heart rate.
   static const _qrsCount = 5;
 
-  static final _start = DateTime.now();
-  static final _qrsBuffer = Queue<DateTime>();
+  final _start = DateTime.now();
+  final _qrsBuffer = Queue<DateTime>();
 
   @override
   _HeartRateData build() {
@@ -92,6 +92,8 @@ class _HeartRate extends _$HeartRate {
     if (_qrsBuffer.length > _qrsCount) {
       _qrsBuffer.removeFirst();
     }
+
+    _logger.finer("QRS buffer: $_qrsBuffer");
 
     // Too few QRSs to calculate heart rate.
     if (_qrsBuffer.length < _qrsCount) {
