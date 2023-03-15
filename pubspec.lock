@@ -485,6 +485,15 @@ packages:
       url: "https://github.com/CCXXXI/flutter_ume.git"
     source: git
     version: "1.0.1"
+  flutter_ume_kit_shared_preferences:
+    dependency: "direct main"
+    description:
+      path: "packages/flutter_ume_kit_shared_preferences"
+      ref: HEAD
+      resolved-ref: f44eeb3231cc36306949729ff27b04694a9415c7
+      url: "https://github.com/CCXXXI/flutter_ume_kits.git"
+    source: git
+    version: "1.0.0"
   flutter_ume_kit_show_code:
     dependency: "direct main"
     description:

@@ -24,6 +24,7 @@ dependencies:
   flutter_ume_kit_device: ^1.0.0
   flutter_ume_kit_dio: ^1.0.1+2
   flutter_ume_kit_perf: ^1.0.0
+  flutter_ume_kit_shared_preferences: ^1.0.0
   flutter_ume_kit_show_code: ^1.0.0+1
   flutter_ume_kit_ui: ^1.1.1
   freezed_annotation: ^2.2.0
@@ -75,6 +76,10 @@ dependency_overrides:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git
       path: kits/flutter_ume_kit_perf
+  flutter_ume_kit_shared_preferences:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      path: packages/flutter_ume_kit_shared_preferences
   flutter_ume_kit_show_code:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git
