@@ -21,16 +21,16 @@ final _logger = Logger("HeartRate");
 final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 
 @freezed
-class HeartRateData with _$HeartRateData {
-  const factory HeartRateData({
+class _HeartRateData with _$_HeartRateData {
+  const factory _HeartRateData({
     /// If available, the heart rate in beats per minute.
     @Default(0) int rate,
 
     /// If unavailable, the progress of the calculation. (0.0 - 1.0)
     @Default(0) double progress,
-  }) = _HeartRateData;
+  }) = __HeartRateData;
 
-  const HeartRateData._();
+  const _HeartRateData._();
 
   /// Available or not.
   bool get available => rate > 0;
@@ -52,10 +52,10 @@ class _HeartRate extends _$HeartRate {
   static final _qrsBuffer = Queue<DateTime>();
 
   @override
-  HeartRateData build() {
+  _HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
     unawaited(ref.watch(ecgProvider.stream).forEach(_add));
-    return const HeartRateData();
+    return const _HeartRateData();
   }
 
   void _add(EcgData data) {
@@ -67,7 +67,7 @@ class _HeartRate extends _$HeartRate {
     if (isLearning) {
       final learningProgress =
           timeSinceStart.inMilliseconds / _learningPhase.inMilliseconds;
-      state = HeartRateData(
+      state = _HeartRateData(
         progress: _learningProgressWeight * learningProgress,
       );
     }
@@ -98,7 +98,7 @@ class _HeartRate extends _$HeartRate {
       final calculatingProgress = _qrsBuffer.length / _qrsCount;
       final progress = _learningProgressWeight +
           (1 - _learningProgressWeight) * calculatingProgress;
-      state = HeartRateData(progress: progress);
+      state = _HeartRateData(progress: progress);
       return;
     }
 
@@ -107,7 +107,7 @@ class _HeartRate extends _$HeartRate {
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
     final beats = _qrsBuffer.length - 1;
     final bpm = beats / minutes;
-    state = HeartRateData(rate: bpm.round());
+    state = _HeartRateData(rate: bpm.round());
   }
 }
 

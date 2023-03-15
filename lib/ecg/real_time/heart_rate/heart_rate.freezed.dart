@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HeartRateData {
+mixin _$_HeartRateData {
   /// If available, the heart rate in beats per minute.
   int get rate => throw _privateConstructorUsedError;
 
@@ -23,23 +23,23 @@ mixin _$HeartRateData {
   double get progress => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HeartRateDataCopyWith<HeartRateData> get copyWith =>
+  _$HeartRateDataCopyWith<_HeartRateData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HeartRateDataCopyWith<$Res> {
-  factory $HeartRateDataCopyWith(
-          HeartRateData value, $Res Function(HeartRateData) then) =
-      _$HeartRateDataCopyWithImpl<$Res, HeartRateData>;
+abstract class _$HeartRateDataCopyWith<$Res> {
+  factory _$HeartRateDataCopyWith(
+          _HeartRateData value, $Res Function(_HeartRateData) then) =
+      __$HeartRateDataCopyWithImpl<$Res, _HeartRateData>;
   @useResult
   $Res call({int rate, double progress});
 }
 
 /// @nodoc
-class _$HeartRateDataCopyWithImpl<$Res, $Val extends HeartRateData>
-    implements $HeartRateDataCopyWith<$Res> {
-  _$HeartRateDataCopyWithImpl(this._value, this._then);
+class __$HeartRateDataCopyWithImpl<$Res, $Val extends _HeartRateData>
+    implements _$HeartRateDataCopyWith<$Res> {
+  __$HeartRateDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,22 +66,22 @@ class _$HeartRateDataCopyWithImpl<$Res, $Val extends HeartRateData>
 }
 
 /// @nodoc
-abstract class _$$_HeartRateDataCopyWith<$Res>
-    implements $HeartRateDataCopyWith<$Res> {
-  factory _$$_HeartRateDataCopyWith(
-          _$_HeartRateData value, $Res Function(_$_HeartRateData) then) =
-      __$$_HeartRateDataCopyWithImpl<$Res>;
+abstract class _$$__HeartRateDataCopyWith<$Res>
+    implements _$HeartRateDataCopyWith<$Res> {
+  factory _$$__HeartRateDataCopyWith(
+          _$__HeartRateData value, $Res Function(_$__HeartRateData) then) =
+      __$$__HeartRateDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int rate, double progress});
 }
 
 /// @nodoc
-class __$$_HeartRateDataCopyWithImpl<$Res>
-    extends _$HeartRateDataCopyWithImpl<$Res, _$_HeartRateData>
-    implements _$$_HeartRateDataCopyWith<$Res> {
-  __$$_HeartRateDataCopyWithImpl(
-      _$_HeartRateData _value, $Res Function(_$_HeartRateData) _then)
+class __$$__HeartRateDataCopyWithImpl<$Res>
+    extends __$HeartRateDataCopyWithImpl<$Res, _$__HeartRateData>
+    implements _$$__HeartRateDataCopyWith<$Res> {
+  __$$__HeartRateDataCopyWithImpl(
+      _$__HeartRateData _value, $Res Function(_$__HeartRateData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +90,7 @@ class __$$_HeartRateDataCopyWithImpl<$Res>
     Object? rate = null,
     Object? progress = null,
   }) {
-    return _then(_$_HeartRateData(
+    return _then(_$__HeartRateData(
       rate: null == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
@@ -105,8 +105,8 @@ class __$$_HeartRateDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HeartRateData extends _HeartRateData {
-  const _$_HeartRateData({this.rate = 0, this.progress = 0}) : super._();
+class _$__HeartRateData extends __HeartRateData {
+  const _$__HeartRateData({this.rate = 0, this.progress = 0}) : super._();
 
   /// If available, the heart rate in beats per minute.
   @override
@@ -120,14 +120,14 @@ class _$_HeartRateData extends _HeartRateData {
 
   @override
   String toString() {
-    return 'HeartRateData(rate: $rate, progress: $progress)';
+    return '_HeartRateData(rate: $rate, progress: $progress)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HeartRateData &&
+            other is _$__HeartRateData &&
             (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.progress, progress) ||
                 other.progress == progress));
@@ -139,14 +139,14 @@ class _$_HeartRateData extends _HeartRateData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HeartRateDataCopyWith<_$_HeartRateData> get copyWith =>
-      __$$_HeartRateDataCopyWithImpl<_$_HeartRateData>(this, _$identity);
+  _$$__HeartRateDataCopyWith<_$__HeartRateData> get copyWith =>
+      __$$__HeartRateDataCopyWithImpl<_$__HeartRateData>(this, _$identity);
 }
 
-abstract class _HeartRateData extends HeartRateData {
-  const factory _HeartRateData({final int rate, final double progress}) =
-      _$_HeartRateData;
-  const _HeartRateData._() : super._();
+abstract class __HeartRateData extends _HeartRateData {
+  const factory __HeartRateData({final int rate, final double progress}) =
+      _$__HeartRateData;
+  const __HeartRateData._() : super._();
 
   @override
 
@@ -158,6 +158,6 @@ abstract class _HeartRateData extends HeartRateData {
   double get progress;
   @override
   @JsonKey(ignore: true)
-  _$$_HeartRateDataCopyWith<_$_HeartRateData> get copyWith =>
+  _$$__HeartRateDataCopyWith<_$__HeartRateData> get copyWith =>
       throw _privateConstructorUsedError;
 }
