@@ -404,10 +404,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_ume
-      sha256: "42e1863f6014d9801bf93e2f2dc2cae26ad1724678f7a94954502ba5c73bc547"
+      sha256: "54a5cb93173426f3727f66b5a52032f8537ec6efd8a3e7a70bfb801e6581f015"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   flutter_ume_kit_console:
     dependency: "direct main"
     description:
@@ -436,19 +436,21 @@ packages:
   flutter_ume_kit_perf:
     dependency: "direct main"
     description:
-      name: flutter_ume_kit_perf
-      sha256: "33653e402f3fc967de8bf70537b0adbc0bf873c7ce678b12776c97977a6e4a18"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
+      path: "kits/flutter_ume_kit_perf"
+      ref: e76c5a7b066812f91c17bf74a1f27e00c1924fbb
+      resolved-ref: e76c5a7b066812f91c17bf74a1f27e00c1924fbb
+      url: "https://github.com/CCXXXI/flutter_ume.git"
+    source: git
+    version: "1.0.1"
   flutter_ume_kit_show_code:
     dependency: "direct main"
     description:
-      name: flutter_ume_kit_show_code
-      sha256: "47ee1ec1fb0e7bbda8580a8e9c7be43f591993a2294ef794551211ea9f9da1f7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0+1"
+      path: "kits/flutter_ume_kit_show_code"
+      ref: e76c5a7b066812f91c17bf74a1f27e00c1924fbb
+      resolved-ref: e76c5a7b066812f91c17bf74a1f27e00c1924fbb
+      url: "https://github.com/CCXXXI/flutter_ume.git"
+    source: git
+    version: "1.0.1"
   flutter_ume_kit_ui:
     dependency: "direct main"
     description:
@@ -1168,10 +1170,10 @@ packages:
     dependency: transitive
     description:
       name: vm_service
-      sha256: "35ef1bbae978d7158e09c98dcdfe8673b58a30eb53e82833cc027e0aab2d5213"
+      sha256: e7fb6c2282f7631712b69c19d1bff82f3767eea33a2321c14fa59ad67ea391c7
       url: "https://pub.dev"
     source: hosted
-    version: "7.5.0"
+    version: "9.4.0"
   watcher:
     dependency: transitive
     description:
