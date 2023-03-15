@@ -56,6 +56,11 @@ dependency_overrides:
       url: https://github.com/CCXXXI/flutter_ume.git
       ref: 10ad492bb9b7e1fdccc1ea3fdf73a3ce78e9af40
       path: kits/flutter_ume_kit_console
+  flutter_ume_kit_dio:
+    git:
+      url: https://github.com/CCXXXI/flutter_ume_kits.git
+      ref: 3334e5b99046f7e89d36ffa2ea1b25b0694e15af
+      path: packages/flutter_ume_kit_dio
   flutter_ume_kit_perf:
     git:
       url: https://github.com/CCXXXI/flutter_ume.git

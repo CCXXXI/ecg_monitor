@@ -285,10 +285,10 @@ packages:
     dependency: transitive
     description:
       name: dio
-      sha256: "7d328c4d898a61efc3cd93655a0955858e29a0aa647f0f9e02d59b3bb275e2e8"
+      sha256: "2644a9e0965a7aa3deb09cb8ce4081db4450c178f472818c8cd34216a3070d7b"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.6"
+    version: "5.0.2"
   equatable:
     dependency: transitive
     description:
@@ -428,11 +428,12 @@ packages:
   flutter_ume_kit_dio:
     dependency: "direct main"
     description:
-      name: flutter_ume_kit_dio
-      sha256: "7dc54af4403608f03a055a00aab02ab2d8a6e9db23205f88fb60f2b17933a635"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1+2"
+      path: "packages/flutter_ume_kit_dio"
+      ref: "3334e5b99046f7e89d36ffa2ea1b25b0694e15af"
+      resolved-ref: "3334e5b99046f7e89d36ffa2ea1b25b0694e15af"
+      url: "https://github.com/CCXXXI/flutter_ume_kits.git"
+    source: git
+    version: "2.0.0+3"
   flutter_ume_kit_perf:
     dependency: "direct main"
     description:
