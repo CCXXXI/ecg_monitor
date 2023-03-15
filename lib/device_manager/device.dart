@@ -12,8 +12,12 @@ part "device.g.dart";
 @freezed
 class EcgData with _$EcgData {
   const factory EcgData({
-    required double time,
+    required DateTime time,
+
+    /// mV
     required double leadI,
+
+    /// mV
     required double leadII,
   }) = _EcgData;
 

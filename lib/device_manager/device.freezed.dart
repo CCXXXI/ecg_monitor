@@ -16,8 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EcgData {
-  double get time => throw _privateConstructorUsedError;
+  DateTime get time => throw _privateConstructorUsedError;
+
+  /// mV
   double get leadI => throw _privateConstructorUsedError;
+
+  /// mV
   double get leadII => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +33,7 @@ abstract class $EcgDataCopyWith<$Res> {
   factory $EcgDataCopyWith(EcgData value, $Res Function(EcgData) then) =
       _$EcgDataCopyWithImpl<$Res, EcgData>;
   @useResult
-  $Res call({double time, double leadI, double leadII});
+  $Res call({DateTime time, double leadI, double leadII});
 }
 
 /// @nodoc
@@ -53,7 +57,7 @@ class _$EcgDataCopyWithImpl<$Res, $Val extends EcgData>
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as double,
+              as DateTime,
       leadI: null == leadI
           ? _value.leadI
           : leadI // ignore: cast_nullable_to_non_nullable
@@ -73,7 +77,7 @@ abstract class _$$_EcgDataCopyWith<$Res> implements $EcgDataCopyWith<$Res> {
       __$$_EcgDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double time, double leadI, double leadII});
+  $Res call({DateTime time, double leadI, double leadII});
 }
 
 /// @nodoc
@@ -94,7 +98,7 @@ class __$$_EcgDataCopyWithImpl<$Res>
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
-              as double,
+              as DateTime,
       leadI: null == leadI
           ? _value.leadI
           : leadI // ignore: cast_nullable_to_non_nullable
@@ -115,9 +119,13 @@ class _$_EcgData extends _EcgData {
       : super._();
 
   @override
-  final double time;
+  final DateTime time;
+
+  /// mV
   @override
   final double leadI;
+
+  /// mV
   @override
   final double leadII;
 
@@ -148,16 +156,20 @@ class _$_EcgData extends _EcgData {
 
 abstract class _EcgData extends EcgData {
   const factory _EcgData(
-      {required final double time,
+      {required final DateTime time,
       required final double leadI,
       required final double leadII}) = _$_EcgData;
   const _EcgData._() : super._();
 
   @override
-  double get time;
+  DateTime get time;
   @override
+
+  /// mV
   double get leadI;
   @override
+
+  /// mV
   double get leadII;
   @override
   @JsonKey(ignore: true)
