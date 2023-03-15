@@ -265,6 +265,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.5"
+  data_size:
+    dependency: transitive
+    description:
+      name: data_size
+      sha256: "313435e60499954b432aff4d680e29271c56a415f549d874978791d25f5a436a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   dependency_validator:
     dependency: "direct dev"
     description:
@@ -424,6 +432,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+  flutter_ume_kit_clean_local_data:
+    dependency: "direct main"
+    description:
+      path: "packages/flutter_ume_kit_clean_local_data"
+      ref: HEAD
+      resolved-ref: f44eeb3231cc36306949729ff27b04694a9415c7
+      url: "https://github.com/CCXXXI/flutter_ume_kits.git"
+    source: git
+    version: "1.0.0"
   flutter_ume_kit_console:
     dependency: "direct main"
     description:
