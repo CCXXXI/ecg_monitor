@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.5
+  dio: ^5.0.2
   ffi: ^2.0.1
   fl_chart: ^0.61.0
   flex_color_picker: ^3.1.0
