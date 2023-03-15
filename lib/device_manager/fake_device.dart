@@ -39,12 +39,12 @@ class _FakeDevice implements Device {
   @override
   Stream<EcgData> get ecgStream async* {
     for (var t = DateTime.now();; t = t.add(_tick)) {
+      // Wait until the next tick.
       await Future<void>.delayed(t.difference(DateTime.now()));
 
-      final x = t.millisecondsSinceEpoch.toDouble();
-      final i = x ~/ _tick.inMilliseconds % leadI.length;
-
-      yield EcgData(time: x, leadI: leadI[i], leadII: leadII[i]);
+      // Yield the next fake ECG data.
+      final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % leadI.length;
+      yield EcgData(time: t, leadI: leadI[i], leadII: leadII[i]);
     }
   }
 }

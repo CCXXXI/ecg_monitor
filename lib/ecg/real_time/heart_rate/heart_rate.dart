@@ -20,10 +20,16 @@ final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 
 @riverpod
 class _HeartRate extends _$HeartRate {
-  static final _duration = aSecond * 10;
+  // At the beginning of the QRS detection,
+  // a 2 seconds learning phase is needed.
+  // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
+  static final _learningPhase = aSecond * 2;
+
+  /// Duration used in heart rate calculation.
+  static final _calculationDuration = aSecond * 10;
 
   static final _start = DateTime.now();
-  static final _qrsBuffer = Queue<double>();
+  static final _qrsBuffer = Queue<DateTime>();
 
   @override
   int build() {
@@ -38,10 +44,9 @@ class _HeartRate extends _$HeartRate {
       return;
     }
 
-    // At the beginning of the QRS detection,
-    // a 2 seconds learning phase is needed.
-    // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
-    if (DateTime.now().difference(_start) < aSecond * 2) {
+    // Ignore if it's in the learning phase.
+    if (DateTime.now().difference(_start) < _learningPhase) {
+      _logger.fine("QRS: ${data.time} (learning phase)");
       return;
     }
 
@@ -51,7 +56,7 @@ class _HeartRate extends _$HeartRate {
     _qrsBuffer.addLast(data.time);
 
     // Remove outdated QRSs.
-    while (_qrsBuffer.first < data.time - _duration.inMilliseconds) {
+    while (data.time.difference(_qrsBuffer.first) > _calculationDuration) {
       _qrsBuffer.removeFirst();
     }
 
@@ -61,9 +66,11 @@ class _HeartRate extends _$HeartRate {
     }
 
     // Calculate heart rate.
-    state = Duration.millisecondsPerMinute *
-        (_qrsBuffer.length - 1) ~/
-        (_qrsBuffer.last - _qrsBuffer.first);
+    final duration = _qrsBuffer.last.difference(_qrsBuffer.first);
+    final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
+    final beats = _qrsBuffer.length - 1;
+    final bpm = beats / minutes;
+    state = bpm.round();
   }
 }
 

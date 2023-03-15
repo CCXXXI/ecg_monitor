@@ -36,7 +36,10 @@ class _Points extends _$Points {
   }
 
   void _add(EcgData data) => _addPoint(
-        FlSpot(data.time, [data.leadI, data.leadII, data.leadIII][index]),
+        FlSpot(
+          data.time.millisecondsSinceEpoch.toDouble(),
+          [data.leadI, data.leadII, data.leadIII][index],
+        ),
       );
 
   void _addPoint(FlSpot point) {
