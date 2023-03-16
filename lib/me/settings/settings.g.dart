@@ -19,6 +19,11 @@ class _SectionTitle extends StatelessWidget {
         _context,
         title,
       );
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('title', title));
+  }
 }
 
 // **************************************************************************
