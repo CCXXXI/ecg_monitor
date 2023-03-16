@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  build-apk:
+  build-apk-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,13 +13,13 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build apk --split-per-abi
+      - run: flutter build apk --split-per-abi --release
       - uses: actions/upload-artifact@v3
         with:
           name: release
           path: build/app/outputs/flutter-apk/
 
-  build-appbundle:
+  build-apk-debug:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,7 +27,35 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build appbundle
+      - run: flutter build apk --split-per-abi --debug
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: build/app/outputs/flutter-apk/
+
+  build-appbundle-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build appbundle --release
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: build/app/outputs/bundle/
+
+  build-appbundle-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build appbundle --debug
       - uses: actions/upload-artifact@v3
         with:
           name: release
@@ -64,7 +92,7 @@ jobs:
           fi
 
   release:
-    needs: [ check-ref, build-apk, build-appbundle ]
+    needs: [ check-ref, build-apk-release, build-apk-debug, build-appbundle-release, build-appbundle-debug ]
     if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
