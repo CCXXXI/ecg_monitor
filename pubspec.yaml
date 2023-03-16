@@ -39,7 +39,7 @@ dependencies:
   restart_app: ^1.1.2
   riverpod_annotation: ^1.0.6
   sentry_flutter: ^7.0.0
-  sentry_logging: ^6.20.1
+  sentry_logging: ^7.0.0
   shared_preferences: ^2.0.17
   universal_io: ^2.2.0
   url_launcher: ^6.1.9
