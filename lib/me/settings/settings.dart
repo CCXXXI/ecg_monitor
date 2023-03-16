@@ -2,6 +2,7 @@ import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -37,30 +38,13 @@ class _LoggerLevel extends _$LoggerLevel {
   Future<void> setIndex(int index) => set(loggerLevels[index]);
 }
 
-class _SectionTitle extends StatelessWidget {
-  const _SectionTitle(this.title);
+@swidget
+Widget __sectionTitle(BuildContext context, String title) {
+  const padding = EdgeInsetsDirectional.fromSTEB(24, 24, 24, 10);
+  final color = Theme.of(context).colorScheme.primary;
+  final style = Theme.of(context).textTheme.labelLarge!.copyWith(color: color);
 
-  static const _padding =
-      EdgeInsetsDirectional.only(top: 24, bottom: 10, start: 24, end: 24);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
-    final textStyle = Theme.of(context).textTheme.labelLarge;
-
-    return Padding(
-      padding: _padding,
-      child: Text(title, style: textStyle!.copyWith(color: color)),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty("title", title));
-  }
+  return Padding(padding: padding, child: Text(title, style: style));
 }
 
 class _ChartSettings extends StatelessWidget {

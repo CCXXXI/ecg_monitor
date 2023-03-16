@@ -3,6 +3,25 @@
 part of 'settings.dart';
 
 // **************************************************************************
+// FunctionalWidgetGenerator
+// **************************************************************************
+
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle(
+    this.title, {
+    Key? key,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext _context) => __sectionTitle(
+        _context,
+        title,
+      );
+}
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
