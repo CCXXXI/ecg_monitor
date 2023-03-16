@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.20.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.0...v0.20.1) (2023-03-16)
+
+### Continuous Integration
+
+- **build:** also build debug version ([#210](https://github.com/CCXXXI/ecg_monitor/issues/210)) ([fd488f0](https://github.com/CCXXXI/ecg_monitor/commit/fd488f0d6befbf12dea70ea05480e13066462baf))
+
 ## [0.20.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.19.0...v0.20.0) (2023-03-16)
 
 ### Features
