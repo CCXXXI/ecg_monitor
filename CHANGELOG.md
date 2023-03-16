@@ -1,5 +1,47 @@
 # Changelog
 
+## [0.20.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.19.0...v0.20.0) (2023-03-16)
+
+### Features
+
+- **chart:** less barWidth ([ea1470f](https://github.com/CCXXXI/ecg_monitor/commit/ea1470f7863385d9f70e8736e3f7ad790b464a23))
+- **dio:** addSentry ([65a4b0d](https://github.com/CCXXXI/ecg_monitor/commit/65a4b0dee81bba5be07cf5bfb7534657f33b9f43))
+- **heart-rate:** 10s -&gt; 5 QRSs ([25fd505](https://github.com/CCXXXI/ecg_monitor/commit/25fd5055f5ba3caf0ea87b148d58869a8cd3f374))
+- **heart-rate:** show progress ([9f44033](https://github.com/CCXXXI/ecg_monitor/commit/9f440331aa46eb41b727f1d81ac1683ca8e4f206)), closes [#199](https://github.com/CCXXXI/ecg_monitor/issues/199)
+
+### Bug Fixes
+
+- **deps:** update dependency sentry_flutter to v7 ([#206](https://github.com/CCXXXI/ecg_monitor/issues/206)) ([c460f33](https://github.com/CCXXXI/ecg_monitor/commit/c460f334f3b06af73832033f4d2fd7d0f924385b))
+- **deps:** update dependency sentry_logging to v7 ([#207](https://github.com/CCXXXI/ecg_monitor/issues/207)) ([de73885](https://github.com/CCXXXI/ecg_monitor/commit/de73885d44e1ff933d4843bafa8cb95ae8225cb7))
+- **heart-rate:** 4s learning & 1 beat ([b6bf0cf](https://github.com/CCXXXI/ecg_monitor/commit/b6bf0cff7cf78ffd30ea89f1679c22a74b58731e))
+- **heart-rate:** reset start time & buffer when rebuild ([12e75cf](https://github.com/CCXXXI/ecg_monitor/commit/12e75cfb0aaf19d25a337b3c94be15c267f97538))
+- **heart-rate:** update PanTompkinsQRS ([91c80eb](https://github.com/CCXXXI/ecg_monitor/commit/91c80ebdfb5f30be39a41f9f5c39d60f4ad76852))
+
+### Reverts
+
+- make HeartRateData public again ([6e2c8b9](https://github.com/CCXXXI/ecg_monitor/commit/6e2c8b9a0948a2e036ec576a28624b3e1c07a792))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.26 ([#205](https://github.com/CCXXXI/ecg_monitor/issues/205)) ([5063487](https://github.com/CCXXXI/ecg_monitor/commit/5063487ae55ff3742537d31c7681dfd04fa8cc38))
+
+### Code Refactoring
+
+- **heart-rate:** make HeartRateData private ([3b7d055](https://github.com/CCXXXI/ecg_monitor/commit/3b7d0555b567188fc968cfc2210549200afa1b55))
+- **heart-rate:** make HeartRateData visible for testing ([a4f9286](https://github.com/CCXXXI/ecg_monitor/commit/a4f9286b06e2b2ad826e05e06901356d580d2734))
+- **heart-rate:** rename HeartRate to HeartRateWidget ([6595ccb](https://github.com/CCXXXI/ecg_monitor/commit/6595ccbc3dc4265f08f0dc60e42ca25cb1939c17))
+- **heart-rate:** rename heartRateUnit to bpm ([5ff4d2a](https://github.com/CCXXXI/ecg_monitor/commit/5ff4d2aaad8a89e732799e5390ec4482a83b41e0))
+- **heart-rate:** rename rate to data ([19024b9](https://github.com/CCXXXI/ecg_monitor/commit/19024b989b895033f39ccf325fc35c6b1a44bb44))
+- use DateTime instead of double for EcgData.time ([#202](https://github.com/CCXXXI/ecg_monitor/issues/202)) ([843d723](https://github.com/CCXXXI/ecg_monitor/commit/843d72341a9371af0c2d7f4d5fc3a00630b7c88f))
+
+### Tests
+
+- **heart-rate:** add test for HeartRateData ([98b1eff](https://github.com/CCXXXI/ecg_monitor/commit/98b1eff7ad8385d9c1296d85773b7958ca92d600))
+
+### Build System
+
+- flutter pub add sentry_dio ([11fe38c](https://github.com/CCXXXI/ecg_monitor/commit/11fe38c422f274e719658f979a671339f9e8da3b))
+
 ## [0.19.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.18.0...v0.19.0) (2023-03-15)
 
 ### Features
