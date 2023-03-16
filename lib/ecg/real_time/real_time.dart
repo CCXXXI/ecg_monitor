@@ -15,7 +15,7 @@ class RealTime extends StatelessWidget {
     if (isPortrait) {
       return Column(
         children: const [
-          Expanded(child: HeartRate()),
+          Expanded(child: HeartRateWidget()),
           Expanded(flex: 5, child: RealTimeChart()),
         ],
       );

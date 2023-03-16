@@ -38,7 +38,7 @@ dependencies:
   quiver: ^3.2.1
   restart_app: ^1.1.2
   riverpod_annotation: ^1.0.6
-  sentry_flutter: ^6.20.1
+  sentry_flutter: ^7.0.0
   sentry_logging: ^7.0.0
   shared_preferences: ^2.0.17
   universal_io: ^2.2.0
