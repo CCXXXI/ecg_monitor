@@ -29,6 +29,7 @@ dependencies:
   flutter_ume_kit_slow_animation: ^1.0.0
   flutter_ume_kit_ui: ^1.1.1
   freezed_annotation: ^2.2.0
+  functional_widget_annotation: ^0.10.0
   go_router: ^6.0.1
   logging: ^1.1.1
   package_info_plus: ^3.0.2
@@ -55,6 +56,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.3.2
+  functional_widget: ^0.10.1
   riverpod_generator: ^1.0.6
 
 dependency_overrides:
