@@ -14,6 +14,7 @@ jobs:
       - uses: ./.github/actions/setup-android
 
       - run: flutter build apk --split-per-abi
+      - run: flutter build apk --split-per-abi --debug
       - uses: actions/upload-artifact@v3
         with:
           name: release
@@ -28,6 +29,7 @@ jobs:
       - uses: ./.github/actions/setup-android
 
       - run: flutter build appbundle
+      - run: flutter build appbundle --debug
       - uses: actions/upload-artifact@v3
         with:
           name: release
