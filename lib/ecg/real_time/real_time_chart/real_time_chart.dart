@@ -8,7 +8,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../../device_manager/device.dart";
+import "../../../device_manager/device/device.dart";
 import "../../../me/settings/providers.dart";
 import "../../chart.dart";
 

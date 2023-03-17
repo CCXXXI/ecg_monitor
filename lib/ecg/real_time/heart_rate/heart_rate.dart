@@ -9,7 +9,7 @@ import "package:logging/logging.dart";
 import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../../device_manager/device.dart";
+import "../../../device_manager/device/device.dart";
 import "../../../utils/constants/strings.dart" as str;
 import "generated_bindings.dart";
 
