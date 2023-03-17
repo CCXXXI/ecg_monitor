@@ -149,6 +149,20 @@ class _ChartSettings extends StatelessWidget {
   }
 }
 
+class Settings extends ConsumerWidget {
+  const Settings({Key? key}) : super(key: key);
+
+  @override
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      _settings(
+        _context,
+        _ref,
+      );
+}
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************

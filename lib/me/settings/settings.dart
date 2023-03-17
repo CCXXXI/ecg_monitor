@@ -225,204 +225,193 @@ Widget __chartSettings(
   );
 }
 
-class Settings extends ConsumerWidget {
-  const Settings({super.key});
+@cwidget
+Widget _settings(BuildContext context, WidgetRef ref) {
+  // realTime settings
+  final realTimeRefreshRateHz = ref.watch(refreshRateHzProvider);
+  final realTimeMinDistance = ref.watch(minDistanceProvider);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // realTime settings
-    final realTimeRefreshRateHz = ref.watch(refreshRateHzProvider);
-    final realTimeMinDistance = ref.watch(minDistanceProvider);
+  final realTimeRefreshRateHzString =
+      "${realTimeRefreshRateHz.toStringAsFixed(0)} Hz";
+  final realTimeMinDistanceString = realTimeMinDistance.toStringAsFixed(1);
 
-    final realTimeRefreshRateHzString =
-        "${realTimeRefreshRateHz.toStringAsFixed(0)} Hz";
-    final realTimeMinDistanceString = realTimeMinDistance.toStringAsFixed(1);
+  // devTools settings
+  final showDevTools = ref.watch(showDevToolsProvider);
+  final loggerLevel = ref.watch(_loggerLevelProvider);
+  final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
-    // devTools settings
-    final showDevTools = ref.watch(showDevToolsProvider);
-    final loggerLevel = ref.watch(_loggerLevelProvider);
-    final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
-
-    return Scaffold(
-      appBar: AppBar(title: const Text(str.settings)),
-      body: ListView(
-        children: [
-          const _SectionTitle(str.realTime),
-          _ChartSettings(
-            chartSettingsData: ref.watch(realTimeChartSettingsProvider),
-            onChartSettingsChanged:
-                ref.read(realTimeChartSettingsProvider.notifier).set,
-            portraitDuration: ref.watch(realTimePortraitDurationProvider),
-            onPortraitDurationChanged:
-                ref.read(realTimePortraitDurationProvider.notifier).set,
-            landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
-            onLandscapeDurationChanged:
-                ref.read(realTimeLandscapeDurationProvider.notifier).set,
-            backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-            onBackgroundColorChanged:
-                ref.read(realTimeBackgroundColorProvider.notifier).set,
-            lineColor: ref.watch(realTimeLineColorProvider),
-            onLineColorChanged:
-                ref.read(realTimeLineColorProvider.notifier).set,
-            gridColor: ref.watch(realTimeGridColorProvider),
-            onGridColorChanged:
-                ref.read(realTimeGridColorProvider.notifier).set,
-            horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
-            onHorizontalLineTypeChanged:
-                ref.read(realTimeHorizontalLineTypeProvider.notifier).set,
-            verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
-            onVerticalLineTypeChanged:
-                ref.read(realTimeVerticalLineTypeProvider.notifier).set,
-            showDots: ref.watch(realTimeShowDotsProvider),
-            onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
-            showDevTools: showDevTools,
+  return Scaffold(
+    appBar: AppBar(title: const Text(str.settings)),
+    body: ListView(
+      children: [
+        const _SectionTitle(str.realTime),
+        _ChartSettings(
+          chartSettingsData: ref.watch(realTimeChartSettingsProvider),
+          onChartSettingsChanged:
+              ref.read(realTimeChartSettingsProvider.notifier).set,
+          portraitDuration: ref.watch(realTimePortraitDurationProvider),
+          onPortraitDurationChanged:
+              ref.read(realTimePortraitDurationProvider.notifier).set,
+          landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
+          onLandscapeDurationChanged:
+              ref.read(realTimeLandscapeDurationProvider.notifier).set,
+          backgroundColor: ref.watch(realTimeBackgroundColorProvider),
+          onBackgroundColorChanged:
+              ref.read(realTimeBackgroundColorProvider.notifier).set,
+          lineColor: ref.watch(realTimeLineColorProvider),
+          onLineColorChanged: ref.read(realTimeLineColorProvider.notifier).set,
+          gridColor: ref.watch(realTimeGridColorProvider),
+          onGridColorChanged: ref.read(realTimeGridColorProvider.notifier).set,
+          horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
+          onHorizontalLineTypeChanged:
+              ref.read(realTimeHorizontalLineTypeProvider.notifier).set,
+          verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
+          onVerticalLineTypeChanged:
+              ref.read(realTimeVerticalLineTypeProvider.notifier).set,
+          showDots: ref.watch(realTimeShowDotsProvider),
+          onShowDotsChanged: ref.read(realTimeShowDotsProvider.notifier).set,
+          showDevTools: showDevTools,
+        ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(Icons.speed_outlined),
+          title: const Text(str.refreshRate),
+          subtitle: Text(realTimeRefreshRateHzString),
+          trailing: SizedBox(
+            width: 200,
+            child: Slider.adaptive(
+              value: realTimeRefreshRateHz,
+              onChanged: ref.read(refreshRateHzProvider.notifier).set,
+              min: 10,
+              max: 60,
+              divisions: 10,
+              label: realTimeRefreshRateHzString,
+            ),
           ),
-          const Divider(),
+        ),
+        ListTile(
+          leading: const Icon(Icons.timeline_outlined),
+          title: const Text(str.minDistance),
+          subtitle: Text(realTimeMinDistanceString),
+          trailing: SizedBox(
+            width: 200,
+            child: Slider.adaptive(
+              value: realTimeMinDistance,
+              onChanged: ref.read(minDistanceProvider.notifier).set,
+              divisions: 10,
+              label: realTimeMinDistanceString,
+            ),
+          ),
+        ),
+        const _SectionTitle(str.history),
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.cloud_upload_outlined),
+          title: const Text(str.autoUpload),
+          value: ref.watch(historyAutoUploadProvider),
+          onChanged: ref.read(historyAutoUploadProvider.notifier).set,
+        ),
+        const Divider(),
+        _ChartSettings(
+          chartSettingsData: ref.watch(historyChartSettingsProvider),
+          onChartSettingsChanged:
+              ref.read(historyChartSettingsProvider.notifier).set,
+          portraitDuration: ref.watch(historyPortraitDurationProvider),
+          onPortraitDurationChanged:
+              ref.read(historyPortraitDurationProvider.notifier).set,
+          landscapeDuration: ref.watch(historyLandscapeDurationProvider),
+          onLandscapeDurationChanged:
+              ref.read(historyLandscapeDurationProvider.notifier).set,
+          backgroundColor: ref.watch(historyBackgroundColorProvider),
+          onBackgroundColorChanged:
+              ref.read(historyBackgroundColorProvider.notifier).set,
+          lineColor: ref.watch(historyLineColorProvider),
+          onLineColorChanged: ref.read(historyLineColorProvider.notifier).set,
+          gridColor: ref.watch(historyGridColorProvider),
+          onGridColorChanged: ref.read(historyGridColorProvider.notifier).set,
+          horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
+          onHorizontalLineTypeChanged:
+              ref.read(historyHorizontalLineTypeProvider.notifier).set,
+          verticalLineType: ref.watch(historyVerticalLineTypeProvider),
+          onVerticalLineTypeChanged:
+              ref.read(historyVerticalLineTypeProvider.notifier).set,
+          showDots: ref.watch(historyShowDotsProvider),
+          onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
+          showDevTools: showDevTools,
+        ),
+        const _SectionTitle(str.analytics),
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.analytics_outlined),
+          title: const Text(str.autoGenerate),
+          value: ref.watch(analyticsAutoGenerateProvider),
+          onChanged: ref.read(analyticsAutoGenerateProvider.notifier).set,
+        ),
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.cloud_upload_outlined),
+          title: const Text(str.autoUpload),
+          value: ref.watch(analyticsAutoUploadProvider),
+          onChanged: ref.read(analyticsAutoUploadProvider.notifier).set,
+        ),
+        const _SectionTitle(str.devTools),
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.developer_mode_outlined),
+          title: const Text(str.showDevTools),
+          subtitle: showDevTools
+              ? const Text(
+                  "${str.devToolsDesc}\n"
+                  "${str.currentBuildMode}${str.buildMode}",
+                )
+              : null,
+          isThreeLine: showDevTools,
+          value: showDevTools,
+          onChanged: (on) async {
+            final restartActionAvailable = Platform.isAndroid || kIsWeb;
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: const Text(str.restartNeeded),
+                action: restartActionAvailable
+                    ? const SnackBarAction(
+                        label: str.restart,
+                        onPressed: Restart.restartApp,
+                      )
+                    : null,
+              ),
+            );
+            await ref.read(showDevToolsProvider.notifier).set(on);
+          },
+        ),
+        if (showDevTools)
+          SwitchListTile.adaptive(
+            secondary: const Icon(Icons.device_hub_outlined),
+            title: const Text(str.fakeDevice),
+            value: ref.watch(fakeDeviceOnProvider),
+            onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
+          ),
+        if (showDevTools)
           ListTile(
-            leading: const Icon(Icons.speed_outlined),
-            title: const Text(str.refreshRate),
-            subtitle: Text(realTimeRefreshRateHzString),
+            leading: const Icon(Icons.text_snippet_outlined),
+            title: const Text(str.loggerLevel),
+            subtitle: Text(loggerLevel.name),
             trailing: SizedBox(
               width: 200,
               child: Slider.adaptive(
-                value: realTimeRefreshRateHz,
-                onChanged: ref.read(refreshRateHzProvider.notifier).set,
-                min: 10,
-                max: 60,
-                divisions: 10,
-                label: realTimeRefreshRateHzString,
+                value: loggerLevelIndex.toDouble(),
+                onChanged: (value) async => ref
+                    .read(_loggerLevelProvider.notifier)
+                    .setIndex(value.toInt()),
+                max: loggerLevels.length - 1,
+                divisions: loggerLevels.length - 1,
+                label: loggerLevel.name,
               ),
             ),
           ),
+        if (showDevTools)
           ListTile(
-            leading: const Icon(Icons.timeline_outlined),
-            title: const Text(str.minDistance),
-            subtitle: Text(realTimeMinDistanceString),
-            trailing: SizedBox(
-              width: 200,
-              child: Slider.adaptive(
-                value: realTimeMinDistance,
-                onChanged: ref.read(minDistanceProvider.notifier).set,
-                divisions: 10,
-                label: realTimeMinDistanceString,
-              ),
-            ),
-          ),
-          const _SectionTitle(str.history),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.cloud_upload_outlined),
-            title: const Text(str.autoUpload),
-            value: ref.watch(historyAutoUploadProvider),
-            onChanged: ref.read(historyAutoUploadProvider.notifier).set,
-          ),
-          const Divider(),
-          _ChartSettings(
-            chartSettingsData: ref.watch(historyChartSettingsProvider),
-            onChartSettingsChanged:
-                ref.read(historyChartSettingsProvider.notifier).set,
-            portraitDuration: ref.watch(historyPortraitDurationProvider),
-            onPortraitDurationChanged:
-                ref.read(historyPortraitDurationProvider.notifier).set,
-            landscapeDuration: ref.watch(historyLandscapeDurationProvider),
-            onLandscapeDurationChanged:
-                ref.read(historyLandscapeDurationProvider.notifier).set,
-            backgroundColor: ref.watch(historyBackgroundColorProvider),
-            onBackgroundColorChanged:
-                ref.read(historyBackgroundColorProvider.notifier).set,
-            lineColor: ref.watch(historyLineColorProvider),
-            onLineColorChanged: ref.read(historyLineColorProvider.notifier).set,
-            gridColor: ref.watch(historyGridColorProvider),
-            onGridColorChanged: ref.read(historyGridColorProvider.notifier).set,
-            horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
-            onHorizontalLineTypeChanged:
-                ref.read(historyHorizontalLineTypeProvider.notifier).set,
-            verticalLineType: ref.watch(historyVerticalLineTypeProvider),
-            onVerticalLineTypeChanged:
-                ref.read(historyVerticalLineTypeProvider.notifier).set,
-            showDots: ref.watch(historyShowDotsProvider),
-            onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
-            showDevTools: showDevTools,
-          ),
-          const _SectionTitle(str.analytics),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.analytics_outlined),
-            title: const Text(str.autoGenerate),
-            value: ref.watch(analyticsAutoGenerateProvider),
-            onChanged: ref.read(analyticsAutoGenerateProvider.notifier).set,
-          ),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.cloud_upload_outlined),
-            title: const Text(str.autoUpload),
-            value: ref.watch(analyticsAutoUploadProvider),
-            onChanged: ref.read(analyticsAutoUploadProvider.notifier).set,
-          ),
-          const _SectionTitle(str.devTools),
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.developer_mode_outlined),
-            title: const Text(str.showDevTools),
-            subtitle: showDevTools
-                ? const Text(
-                    "${str.devToolsDesc}\n"
-                    "${str.currentBuildMode}${str.buildMode}",
-                  )
-                : null,
-            isThreeLine: showDevTools,
-            value: showDevTools,
-            onChanged: (on) async {
-              _showRestartSnackBar(context);
-              await ref.read(showDevToolsProvider.notifier).set(on);
-            },
-          ),
-          if (showDevTools)
-            SwitchListTile.adaptive(
-              secondary: const Icon(Icons.device_hub_outlined),
-              title: const Text(str.fakeDevice),
-              value: ref.watch(fakeDeviceOnProvider),
-              onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
-            ),
-          if (showDevTools)
-            ListTile(
-              leading: const Icon(Icons.text_snippet_outlined),
-              title: const Text(str.loggerLevel),
-              subtitle: Text(loggerLevel.name),
-              trailing: SizedBox(
-                width: 200,
-                child: Slider.adaptive(
-                  value: loggerLevelIndex.toDouble(),
-                  onChanged: (value) async => ref
-                      .read(_loggerLevelProvider.notifier)
-                      .setIndex(value.toInt()),
-                  max: loggerLevels.length - 1,
-                  divisions: loggerLevels.length - 1,
-                  label: loggerLevel.name,
-                ),
-              ),
-            ),
-          if (showDevTools)
-            ListTile(
-              leading: const Icon(Icons.network_check_outlined),
-              title: const Text(str.networkTest),
-              onTap: () async => dio.getUri<dynamic>(url.test),
-            )
-        ],
-      ),
-    );
-  }
-
-  static void _showRestartSnackBar(BuildContext context) {
-    // See https://pub.dev/packages/restart_app.
-    final restartActionAvailable = Platform.isAndroid || kIsWeb;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text(str.restartNeeded),
-        action: restartActionAvailable
-            ? const SnackBarAction(
-                label: str.restart,
-                onPressed: Restart.restartApp,
-              )
-            : null,
-      ),
-    );
-  }
+            leading: const Icon(Icons.network_check_outlined),
+            title: const Text(str.networkTest),
+            onTap: () async => dio.getUri<dynamic>(url.test),
+          )
+      ],
+    ),
+  );
 }
