@@ -1,31 +1,30 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../me/settings/providers.dart";
 import "../utils/constants/strings.dart" as str;
 import "device.dart";
 import "fake_device.dart";
 
-class DeviceNew extends ConsumerWidget {
-  const DeviceNew({super.key});
+part "device_new.g.dart";
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
+@cwidget
+Widget _deviceNew(BuildContext context, WidgetRef ref) {
+  final fakeDeviceOn = ref.watch(fakeDeviceOnProvider);
 
-    return Column(
-      children: [
-        const ListTile(
-          leading: CircularProgressIndicator(),
-          title: Text(str.bluetoothSearching),
-        ),
-        const Divider(),
-        Expanded(
-          child: fakeDeviceOn ? const _DeviceList() : const _NoDevice(),
-        )
-      ],
-    );
-  }
+  return Column(
+    children: [
+      const ListTile(
+        leading: CircularProgressIndicator(),
+        title: Text(str.bluetoothSearching),
+      ),
+      const Divider(),
+      Expanded(
+        child: fakeDeviceOn ? const _DeviceList() : const _NoDevice(),
+      )
+    ],
+  );
 }
 
 class _DeviceList extends ConsumerWidget {
