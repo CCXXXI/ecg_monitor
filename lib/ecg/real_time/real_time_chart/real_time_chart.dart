@@ -98,7 +98,7 @@ Widget _realTimeChart(BuildContext context, WidgetRef ref) {
 /// Returns the normalized distance between two points.
 @visibleForTesting
 double distance(FlSpot a, FlSpot b) {
-  final dx = (b.x - a.x) / Chart.smallXInterval;
-  final dy = (b.y - a.y) / Chart.smallYInterval;
+  final dx = (b.x - a.x) / smallXInterval;
+  final dy = (b.y - a.y) / smallYInterval;
   return sqrt(dx * dx + dy * dy);
 }
