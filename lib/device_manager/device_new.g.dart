@@ -19,3 +19,17 @@ class DeviceNew extends ConsumerWidget {
         _ref,
       );
 }
+
+class _DeviceList extends ConsumerWidget {
+  const _DeviceList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      __deviceList(
+        _context,
+        _ref,
+      );
+}

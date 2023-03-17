@@ -27,24 +27,20 @@ Widget _deviceNew(BuildContext context, WidgetRef ref) {
   );
 }
 
-class _DeviceList extends ConsumerWidget {
-  const _DeviceList();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => ListView(
-        children: [
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.bluetooth_searching_outlined),
-              title: const Text(str.fakeDevice),
-              subtitle: const Text(str.fakeDeviceModel),
-              onTap: () async =>
-                  ref.read(currentDeviceProvider.notifier).set(fakeDevice),
-            ),
+@cwidget
+Widget __deviceList(BuildContext context, WidgetRef ref) => ListView(
+      children: [
+        Card(
+          child: ListTile(
+            leading: const Icon(Icons.bluetooth_searching_outlined),
+            title: const Text(str.fakeDevice),
+            subtitle: const Text(str.fakeDeviceModel),
+            onTap: () async =>
+                ref.read(currentDeviceProvider.notifier).set(fakeDevice),
           ),
-        ],
-      );
-}
+        ),
+      ],
+    );
 
 class _NoDevice extends StatelessWidget {
   const _NoDevice();
