@@ -3,9 +3,12 @@ import "dart:math";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../me/settings/data_types.dart";
 import "../utils/constants/strings.dart" as str;
+
+part "chart.g.dart";
 
 class Chart extends StatelessWidget {
   const Chart({
@@ -184,72 +187,38 @@ class Chart extends StatelessWidget {
   }
 }
 
-class Chart3Lead extends StatelessWidget {
-  const Chart3Lead({
-    required this.pointsI,
-    required this.pointsII,
-    required this.pointsIII,
-    required this.durationS,
-    required this.backgroundColor,
-    required this.lineColor,
-    required this.gridColor,
-    required this.horizontalLineType,
-    required this.verticalLineType,
-    required this.showDots,
-    super.key,
-  });
+@swidget
+Widget _chart3Lead(
+  BuildContext context, {
+  required List<FlSpot> pointsI,
+  required List<FlSpot> pointsII,
+  required List<FlSpot> pointsIII,
+  required double durationS,
+  required Color backgroundColor,
+  required Color lineColor,
+  required Color gridColor,
+  required LineType horizontalLineType,
+  required LineType verticalLineType,
+  required bool showDots,
+}) {
+  final children = [
+    for (var i = 0; i < 3; i++)
+      Expanded(
+        child: Chart(
+          title: [str.leadI, str.leadII, str.leadIII][i],
+          points: [pointsI, pointsII, pointsIII][i],
+          durationS: durationS,
+          backgroundColor: backgroundColor,
+          lineColor: lineColor,
+          gridColor: gridColor,
+          horizontalLineType: horizontalLineType,
+          verticalLineType: verticalLineType,
+          showDots: showDots,
+        ),
+      )
+  ];
 
-  static const _titles = [str.leadI, str.leadII, str.leadIII];
+  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  final List<FlSpot> pointsI;
-  final List<FlSpot> pointsII;
-  final List<FlSpot> pointsIII;
-  final double durationS;
-  final Color backgroundColor;
-  final Color lineColor;
-  final Color gridColor;
-  final LineType horizontalLineType;
-  final LineType verticalLineType;
-  final bool showDots;
-
-  @override
-  Widget build(BuildContext context) {
-    final children = [
-      for (var i = 0; i < 3; i++)
-        Expanded(
-          child: Chart(
-            title: _titles[i],
-            points: [pointsI, pointsII, pointsIII][i],
-            durationS: durationS,
-            backgroundColor: backgroundColor,
-            lineColor: lineColor,
-            gridColor: gridColor,
-            horizontalLineType: horizontalLineType,
-            verticalLineType: verticalLineType,
-            showDots: showDots,
-          ),
-        )
-    ];
-
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-
-    return isPortrait ? Column(children: children) : Row(children: children);
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(IterableProperty<FlSpot>("pointsI", pointsI))
-      ..add(IterableProperty<FlSpot>("pointsII", pointsII))
-      ..add(IterableProperty<FlSpot>("pointsIII", pointsIII))
-      ..add(DoubleProperty("durationS", durationS))
-      ..add(ColorProperty("backgroundColor", backgroundColor))
-      ..add(ColorProperty("lineColor", lineColor))
-      ..add(ColorProperty("gridColor", gridColor))
-      ..add(EnumProperty<LineType>("horizontalLineType", horizontalLineType))
-      ..add(EnumProperty<LineType>("verticalLineType", verticalLineType))
-      ..add(DiagnosticsProperty<bool>("showDots", showDots));
-  }
+  return isPortrait ? Column(children: children) : Row(children: children);
 }
