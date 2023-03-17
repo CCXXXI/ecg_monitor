@@ -1,11 +1,10 @@
 import "package:flutter/material.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../../../utils/constants/strings.dart" as str;
 
-class HeartRateWidget extends StatelessWidget {
-  const HeartRateWidget({super.key});
+part "heart_rate_stub.g.dart";
 
-  @override
-  Widget build(BuildContext context) =>
-      const Text(str.heartRateNotAvailableOnWeb);
-}
+@swidget
+Widget _heartRateWidget(BuildContext context) =>
+    const Text(str.heartRateNotAvailableOnWeb);
