@@ -16,3 +16,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext _context) => _app(_context);
 }
+
+/// The core widget of the app.
+/// With no additional functionality for testing purposes.
+class AppCore extends StatelessWidget {
+  /// The core widget of the app.
+  /// With no additional functionality for testing purposes.
+  const AppCore({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext _context) => _appCore(_context);
+}

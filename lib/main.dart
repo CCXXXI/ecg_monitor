@@ -58,15 +58,10 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 
 /// The core widget of the app.
 /// With no additional functionality for testing purposes.
-@visibleForTesting
-class AppCore extends StatelessWidget {
-  const AppCore({super.key});
-
-  @override
-  Widget build(BuildContext context) => MaterialApp.router(
-        title: str.appName,
-        routerConfig: router,
-        theme: ThemeData.light(useMaterial3: true),
-        darkTheme: ThemeData.dark(useMaterial3: true),
-      );
-}
+@swidget
+Widget _appCore(BuildContext context) => MaterialApp.router(
+      title: str.appName,
+      routerConfig: router,
+      theme: ThemeData.light(useMaterial3: true),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+    );
