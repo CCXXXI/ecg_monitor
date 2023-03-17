@@ -47,190 +47,30 @@ Widget __sectionTitle(BuildContext context, String title) {
   return Padding(padding: padding, child: Text(title, style: style));
 }
 
-class _ChartSettings extends StatelessWidget {
-  const _ChartSettings({
-    required this.chartSettingsData,
-    required this.onChartSettingsChanged,
-    required this.portraitDuration,
-    required this.onPortraitDurationChanged,
-    required this.landscapeDuration,
-    required this.onLandscapeDurationChanged,
-    required this.backgroundColor,
-    required this.onBackgroundColorChanged,
-    required this.lineColor,
-    required this.onLineColorChanged,
-    required this.gridColor,
-    required this.onGridColorChanged,
-    required this.horizontalLineType,
-    required this.onHorizontalLineTypeChanged,
-    required this.verticalLineType,
-    required this.onVerticalLineTypeChanged,
-    required this.showDots,
-    required this.onShowDotsChanged,
-    required this.showDevTools,
-  });
-
-  final ChartSettingsData chartSettingsData;
-  final void Function(ChartSettingsData) onChartSettingsChanged;
-
-  final double portraitDuration;
-  final void Function(double) onPortraitDurationChanged;
-
-  final double landscapeDuration;
-  final void Function(double) onLandscapeDurationChanged;
-
-  final Color backgroundColor;
-  final void Function(Color) onBackgroundColorChanged;
-
-  final Color lineColor;
-  final void Function(Color) onLineColorChanged;
-
-  final Color gridColor;
-  final void Function(Color) onGridColorChanged;
-
-  final LineType horizontalLineType;
-  final void Function(LineType) onHorizontalLineTypeChanged;
-
-  final LineType verticalLineType;
-  final void Function(LineType) onVerticalLineTypeChanged;
-
-  final bool showDots;
-  final void Function(bool) onShowDotsChanged;
-
-  final bool showDevTools;
-
-  @override
-  Widget build(BuildContext context) {
-    final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
-    final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
-
-    return Column(
-      children: [
-        ListTile(
-          leading: const Icon(Icons.monitor_heart_outlined),
-          title: const Text(str.style),
-          trailing: SegmentedButton(
-            segments: [
-              ButtonSegment(
-                value: ChartSettingsData.simple,
-                icon: const Icon(Icons.square_outlined),
-                label: const Text(str.simple),
-              ),
-              ButtonSegment(
-                value: ChartSettingsData.professional,
-                icon: const Icon(Icons.grid_on_outlined),
-                label: const Text(str.professional),
-              ),
-              ButtonSegment(
-                value: ChartSettingsData.custom,
-                icon: const Icon(Icons.tune_outlined),
-                label: const Text(str.custom),
-                enabled: false,
-              ),
-            ],
-            selected: {
-              if (chartSettingsData == ChartSettingsData.professional ||
-                  chartSettingsData == ChartSettingsData.simple)
-                chartSettingsData
-              else
-                ChartSettingsData.custom
-            },
-            onSelectionChanged: (selected) =>
-                onChartSettingsChanged(selected.single),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.stay_primary_portrait_outlined),
-          title: const Text(str.portraitDuration),
-          subtitle: Text(portraitDurationString),
-          trailing: SizedBox(
-            width: 200,
-            child: Slider.adaptive(
-              value: portraitDuration,
-              onChanged: onPortraitDurationChanged,
-              min: 1,
-              max: 10,
-              divisions: 9,
-              label: portraitDurationString,
-            ),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.stay_primary_landscape_outlined),
-          title: const Text(str.landscapeDuration),
-          subtitle: Text(landscapeDurationString),
-          trailing: SizedBox(
-            width: 200,
-            child: Slider.adaptive(
-              value: landscapeDuration,
-              onChanged: onLandscapeDurationChanged,
-              min: 1,
-              max: 10,
-              divisions: 9,
-              label: landscapeDurationString,
-            ),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.color_lens_outlined),
-          title: const Text(str.backgroundColor),
-          trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
-          onTap: () async => onBackgroundColorChanged(
-            await _pickColor(context, backgroundColor),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.show_chart_outlined),
-          title: const Text(str.lineColor),
-          trailing: ColorIndicator(color: lineColor, hasBorder: true),
-          onTap: () async => onLineColorChanged(
-            await _pickColor(context, lineColor),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.grid_on_outlined),
-          title: const Text(str.gridColor),
-          trailing: ColorIndicator(color: gridColor, hasBorder: true),
-          onTap: () async => onGridColorChanged(
-            await _pickColor(context, gridColor),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.border_horizontal_outlined),
-          title: const Text(str.horizontalLine),
-          trailing: SegmentedButton(
-            segments: _lineTypeSegments,
-            selected: {horizontalLineType},
-            onSelectionChanged: (selected) =>
-                onHorizontalLineTypeChanged(selected.single),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.border_vertical_outlined),
-          title: const Text(str.verticalLine),
-          trailing: SegmentedButton(
-            segments: _lineTypeSegments,
-            selected: {verticalLineType},
-            onSelectionChanged: (selected) =>
-                onVerticalLineTypeChanged(selected.single),
-          ),
-        ),
-        if (showDevTools)
-          SwitchListTile.adaptive(
-            secondary: const Icon(Icons.linear_scale_outlined),
-            title: const Text(str.showDots),
-            value: showDots,
-            onChanged: onShowDotsChanged,
-          ),
-      ],
-    );
-  }
-
-  static Future<Color> _pickColor(
-    BuildContext context,
-    Color initialColor,
-  ) =>
-      showColorPickerDialog(
+@swidget
+Widget __chartSettings(
+  BuildContext context, {
+  required ChartSettingsData chartSettingsData,
+  required void Function(ChartSettingsData) onChartSettingsChanged,
+  required double portraitDuration,
+  required void Function(double) onPortraitDurationChanged,
+  required double landscapeDuration,
+  required void Function(double) onLandscapeDurationChanged,
+  required Color backgroundColor,
+  required void Function(Color) onBackgroundColorChanged,
+  required Color lineColor,
+  required void Function(Color) onLineColorChanged,
+  required Color gridColor,
+  required void Function(Color) onGridColorChanged,
+  required LineType horizontalLineType,
+  required void Function(LineType) onHorizontalLineTypeChanged,
+  required LineType verticalLineType,
+  required void Function(LineType) onVerticalLineTypeChanged,
+  required bool showDots,
+  required void Function(bool) onShowDotsChanged,
+  required bool showDevTools,
+}) {
+  Future<Color> pickColor(Color initialColor) async => showColorPickerDialog(
         context,
         initialColor,
         enableShadesSelection: false,
@@ -242,7 +82,7 @@ class _ChartSettings extends StatelessWidget {
         },
       );
 
-  static const _lineTypeSegments = [
+  const lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
       icon: Icon(Icons.visibility_off_outlined),
@@ -260,80 +100,129 @@ class _ChartSettings extends StatelessWidget {
     ),
   ];
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(
-        DiagnosticsProperty<ChartSettingsData>(
-          "chartSettingsData",
-          chartSettingsData,
+  final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
+  final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
+
+  return Column(
+    children: [
+      ListTile(
+        leading: const Icon(Icons.monitor_heart_outlined),
+        title: const Text(str.style),
+        trailing: SegmentedButton(
+          segments: [
+            ButtonSegment(
+              value: ChartSettingsData.simple,
+              icon: const Icon(Icons.square_outlined),
+              label: const Text(str.simple),
+            ),
+            ButtonSegment(
+              value: ChartSettingsData.professional,
+              icon: const Icon(Icons.grid_on_outlined),
+              label: const Text(str.professional),
+            ),
+            ButtonSegment(
+              value: ChartSettingsData.custom,
+              icon: const Icon(Icons.tune_outlined),
+              label: const Text(str.custom),
+              enabled: false,
+            ),
+          ],
+          selected: {
+            if (chartSettingsData == ChartSettingsData.professional ||
+                chartSettingsData == ChartSettingsData.simple)
+              chartSettingsData
+            else
+              ChartSettingsData.custom
+          },
+          onSelectionChanged: (selected) =>
+              onChartSettingsChanged(selected.single),
         ),
-      )
-      ..add(
-        ObjectFlagProperty<void Function(ChartSettingsData)>.has(
-          "onChartSettingsChanged",
-          onChartSettingsChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.stay_primary_portrait_outlined),
+        title: const Text(str.portraitDuration),
+        subtitle: Text(portraitDurationString),
+        trailing: SizedBox(
+          width: 200,
+          child: Slider.adaptive(
+            value: portraitDuration,
+            onChanged: onPortraitDurationChanged,
+            min: 1,
+            max: 10,
+            divisions: 9,
+            label: portraitDurationString,
+          ),
         ),
-      )
-      ..add(DoubleProperty("portraitDuration", portraitDuration))
-      ..add(
-        ObjectFlagProperty<void Function(double)>.has(
-          "onPortraitDurationChanged",
-          onPortraitDurationChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.stay_primary_landscape_outlined),
+        title: const Text(str.landscapeDuration),
+        subtitle: Text(landscapeDurationString),
+        trailing: SizedBox(
+          width: 200,
+          child: Slider.adaptive(
+            value: landscapeDuration,
+            onChanged: onLandscapeDurationChanged,
+            min: 1,
+            max: 10,
+            divisions: 9,
+            label: landscapeDurationString,
+          ),
         ),
-      )
-      ..add(DoubleProperty("landscapeDuration", landscapeDuration))
-      ..add(
-        ObjectFlagProperty<void Function(double)>.has(
-          "onLandscapeDurationChanged",
-          onLandscapeDurationChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.color_lens_outlined),
+        title: const Text(str.backgroundColor),
+        trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
+        onTap: () async => onBackgroundColorChanged(
+          await pickColor(backgroundColor),
         ),
-      )
-      ..add(ColorProperty("backgroundColor", backgroundColor))
-      ..add(
-        ObjectFlagProperty<void Function(Color)>.has(
-          "onBackgroundColorChanged",
-          onBackgroundColorChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.show_chart_outlined),
+        title: const Text(str.lineColor),
+        trailing: ColorIndicator(color: lineColor, hasBorder: true),
+        onTap: () async => onLineColorChanged(
+          await pickColor(lineColor),
         ),
-      )
-      ..add(ColorProperty("lineColor", lineColor))
-      ..add(
-        ObjectFlagProperty<void Function(Color)>.has(
-          "onLineColorChanged",
-          onLineColorChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.grid_on_outlined),
+        title: const Text(str.gridColor),
+        trailing: ColorIndicator(color: gridColor, hasBorder: true),
+        onTap: () async => onGridColorChanged(
+          await pickColor(gridColor),
         ),
-      )
-      ..add(ColorProperty("gridColor", gridColor))
-      ..add(
-        ObjectFlagProperty<void Function(Color)>.has(
-          "onGridColorChanged",
-          onGridColorChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.border_horizontal_outlined),
+        title: const Text(str.horizontalLine),
+        trailing: SegmentedButton(
+          segments: lineTypeSegments,
+          selected: {horizontalLineType},
+          onSelectionChanged: (selected) =>
+              onHorizontalLineTypeChanged(selected.single),
         ),
-      )
-      ..add(EnumProperty<LineType>("horizontalLineType", horizontalLineType))
-      ..add(
-        ObjectFlagProperty<void Function(LineType)>.has(
-          "onHorizontalLineTypeChanged",
-          onHorizontalLineTypeChanged,
+      ),
+      ListTile(
+        leading: const Icon(Icons.border_vertical_outlined),
+        title: const Text(str.verticalLine),
+        trailing: SegmentedButton(
+          segments: lineTypeSegments,
+          selected: {verticalLineType},
+          onSelectionChanged: (selected) =>
+              onVerticalLineTypeChanged(selected.single),
         ),
-      )
-      ..add(EnumProperty<LineType>("verticalLineType", verticalLineType))
-      ..add(
-        ObjectFlagProperty<void Function(LineType)>.has(
-          "onVerticalLineTypeChanged",
-          onVerticalLineTypeChanged,
+      ),
+      if (showDevTools)
+        SwitchListTile.adaptive(
+          secondary: const Icon(Icons.linear_scale_outlined),
+          title: const Text(str.showDots),
+          value: showDots,
+          onChanged: onShowDotsChanged,
         ),
-      )
-      ..add(DiagnosticsProperty<bool>("showDots", showDots))
-      ..add(
-        ObjectFlagProperty<void Function(bool)>.has(
-          "onShowDotsChanged",
-          onShowDotsChanged,
-        ),
-      )
-      ..add(DiagnosticsProperty<bool>("showDevTools", showDevTools));
-  }
+    ],
+  );
 }
 
 class Settings extends ConsumerWidget {
