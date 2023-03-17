@@ -2,53 +2,48 @@
 
 ## [0.20.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.1...v0.20.2) (2023-03-17)
 
-
 ### Bug Fixes
 
-* **home:** import foundation ([5be1281](https://github.com/CCXXXI/ecg_monitor/commit/5be1281d91931ff5453cfbaf22a32c3a70d4ff07))
-
+- **home:** import foundation ([5be1281](https://github.com/CCXXXI/ecg_monitor/commit/5be1281d91931ff5453cfbaf22a32c3a70d4ff07))
 
 ### Reverts
 
-* Revert "refactor(device): move device.dart to device/" ([f9a7c9b](https://github.com/CCXXXI/ecg_monitor/commit/f9a7c9b05835b5926b45ff0cf030d893b8603860))
-
+- Revert "refactor(device): move device.dart to device/" ([f9a7c9b](https://github.com/CCXXXI/ecg_monitor/commit/f9a7c9b05835b5926b45ff0cf030d893b8603860))
 
 ### Miscellaneous Chores
 
-* **deps:** update dependency all_lint_rules_community to ^0.0.27 ([#213](https://github.com/CCXXXI/ecg_monitor/issues/213)) ([0d45998](https://github.com/CCXXXI/ecg_monitor/commit/0d45998a0066d30caaf0a5bf5efa066001c0b644))
-
+- **deps:** update dependency all_lint_rules_community to ^0.0.27 ([#213](https://github.com/CCXXXI/ecg_monitor/issues/213)) ([0d45998](https://github.com/CCXXXI/ecg_monitor/commit/0d45998a0066d30caaf0a5bf5efa066001c0b644))
 
 ### Build System
 
-* add functional_widget ([2466780](https://github.com/CCXXXI/ecg_monitor/commit/2466780bca7d87350b817c9dcb879f5ae5193d14))
-* flutter pub upgrade ([1813592](https://github.com/CCXXXI/ecg_monitor/commit/1813592efdf6ae708528b808b32932d895810f0c))
-
+- add functional_widget ([2466780](https://github.com/CCXXXI/ecg_monitor/commit/2466780bca7d87350b817c9dcb879f5ae5193d14))
+- flutter pub upgrade ([1813592](https://github.com/CCXXXI/ecg_monitor/commit/1813592efdf6ae708528b808b32932d895810f0c))
 
 ### Code Refactoring
 
-* **analytics:** make Analytics swidget ([687483c](https://github.com/CCXXXI/ecg_monitor/commit/687483c8462aa3c09595ef7534b2d4c0a1da8a0b))
-* **chart:** make Chart swidget ([d9d33ad](https://github.com/CCXXXI/ecg_monitor/commit/d9d33ad5015a8c37872c6c08779e43d0a89d2b07))
-* **chart:** make Chart3Lead swidget ([fa29ed5](https://github.com/CCXXXI/ecg_monitor/commit/fa29ed5b1600224db02bf647f88ef0fa245f1366))
-* **device:** make DeviceList cwidget ([8fa144d](https://github.com/CCXXXI/ecg_monitor/commit/8fa144dd5a96380fb0c0b5d23386e774579673d0))
-* **device:** make DeviceManager cwidget ([24123d2](https://github.com/CCXXXI/ecg_monitor/commit/24123d2be894d25605a1bd88dcf56c0abc4dce00))
-* **device:** make DeviceNew cwidget ([9237485](https://github.com/CCXXXI/ecg_monitor/commit/9237485b66dc9cfae0fa59f6f7c2407f3a7e702f))
-* **device:** make NoDevice swidget ([6a128cf](https://github.com/CCXXXI/ecg_monitor/commit/6a128cfd205042be4dace138ee16167b9b1691cc))
-* **device:** move device.dart to device/ ([e99b8a1](https://github.com/CCXXXI/ecg_monitor/commit/e99b8a19d767d8eb2bd58c36dd7dedc89aeb5250))
-* enable debugFillProperties for functional_widget ([b81662a](https://github.com/CCXXXI/ecg_monitor/commit/b81662a090672394ab36a5faeb341e964db33b32))
-* **heart-rate:** make HeartRateWidget (stub ver) swidget ([8af1fd4](https://github.com/CCXXXI/ecg_monitor/commit/8af1fd4dd6124844a55fa7020b0a244984bba39c))
-* **heart-rate:** make HeartRateWidget cwidget ([3319f1c](https://github.com/CCXXXI/ecg_monitor/commit/3319f1c529c1210cb2f905529ffba291613a4dba))
-* **heart-rate:** remove unused context param ([f5d88b2](https://github.com/CCXXXI/ecg_monitor/commit/f5d88b27374af59cfd10bbca6e9202a2c24ac47c))
-* **history:** make History swidget ([eed1b05](https://github.com/CCXXXI/ecg_monitor/commit/eed1b059c9fb34c2af42608ac80bea53d1fe0d67))
-* **home:** make Home cwidget ([712b4e3](https://github.com/CCXXXI/ecg_monitor/commit/712b4e3a782d3d439869aabe2aaa1d71e17d5beb))
-* **main:** make App swidget ([3a1f804](https://github.com/CCXXXI/ecg_monitor/commit/3a1f804f2f758d9e3dd635c90f4f7f0591b9e1a1))
-* **main:** make AppCore swidget ([98636ea](https://github.com/CCXXXI/ecg_monitor/commit/98636eaad1fe6895ef6eee6c640314766c14464b))
-* **main:** reorder ([969ff06](https://github.com/CCXXXI/ecg_monitor/commit/969ff065eb19915684eeada2fe7f958fd90701af))
-* **me:** make Me swidget ([3f506bd](https://github.com/CCXXXI/ecg_monitor/commit/3f506bdc726374e2e5a6b41dd5e07ba0d5daf606))
-* **real-time:** make RealTime swidget ([a2a4a7a](https://github.com/CCXXXI/ecg_monitor/commit/a2a4a7a568cf9f96994c11fe37bde720c942c9df))
-* **real-time:** make RealTimeChart cwidget ([ba07dc0](https://github.com/CCXXXI/ecg_monitor/commit/ba07dc06755dd3b9557e3c3bac333cdd92239ab0))
-* **settings:** make ChartSettings swidget ([617b8c9](https://github.com/CCXXXI/ecg_monitor/commit/617b8c9bdd18d412f706a1c15a280e68b23947e4))
-* **settings:** make SectionTitle swidget ([def213d](https://github.com/CCXXXI/ecg_monitor/commit/def213d6648ca8c0e0091000a29922172bb53b2c))
-* **settings:** make Settings cwidget ([b197d68](https://github.com/CCXXXI/ecg_monitor/commit/b197d68fcebb96386616e5878f24c44403e5f7f1))
+- **analytics:** make Analytics swidget ([687483c](https://github.com/CCXXXI/ecg_monitor/commit/687483c8462aa3c09595ef7534b2d4c0a1da8a0b))
+- **chart:** make Chart swidget ([d9d33ad](https://github.com/CCXXXI/ecg_monitor/commit/d9d33ad5015a8c37872c6c08779e43d0a89d2b07))
+- **chart:** make Chart3Lead swidget ([fa29ed5](https://github.com/CCXXXI/ecg_monitor/commit/fa29ed5b1600224db02bf647f88ef0fa245f1366))
+- **device:** make DeviceList cwidget ([8fa144d](https://github.com/CCXXXI/ecg_monitor/commit/8fa144dd5a96380fb0c0b5d23386e774579673d0))
+- **device:** make DeviceManager cwidget ([24123d2](https://github.com/CCXXXI/ecg_monitor/commit/24123d2be894d25605a1bd88dcf56c0abc4dce00))
+- **device:** make DeviceNew cwidget ([9237485](https://github.com/CCXXXI/ecg_monitor/commit/9237485b66dc9cfae0fa59f6f7c2407f3a7e702f))
+- **device:** make NoDevice swidget ([6a128cf](https://github.com/CCXXXI/ecg_monitor/commit/6a128cfd205042be4dace138ee16167b9b1691cc))
+- **device:** move device.dart to device/ ([e99b8a1](https://github.com/CCXXXI/ecg_monitor/commit/e99b8a19d767d8eb2bd58c36dd7dedc89aeb5250))
+- enable debugFillProperties for functional_widget ([b81662a](https://github.com/CCXXXI/ecg_monitor/commit/b81662a090672394ab36a5faeb341e964db33b32))
+- **heart-rate:** make HeartRateWidget (stub ver) swidget ([8af1fd4](https://github.com/CCXXXI/ecg_monitor/commit/8af1fd4dd6124844a55fa7020b0a244984bba39c))
+- **heart-rate:** make HeartRateWidget cwidget ([3319f1c](https://github.com/CCXXXI/ecg_monitor/commit/3319f1c529c1210cb2f905529ffba291613a4dba))
+- **heart-rate:** remove unused context param ([f5d88b2](https://github.com/CCXXXI/ecg_monitor/commit/f5d88b27374af59cfd10bbca6e9202a2c24ac47c))
+- **history:** make History swidget ([eed1b05](https://github.com/CCXXXI/ecg_monitor/commit/eed1b059c9fb34c2af42608ac80bea53d1fe0d67))
+- **home:** make Home cwidget ([712b4e3](https://github.com/CCXXXI/ecg_monitor/commit/712b4e3a782d3d439869aabe2aaa1d71e17d5beb))
+- **main:** make App swidget ([3a1f804](https://github.com/CCXXXI/ecg_monitor/commit/3a1f804f2f758d9e3dd635c90f4f7f0591b9e1a1))
+- **main:** make AppCore swidget ([98636ea](https://github.com/CCXXXI/ecg_monitor/commit/98636eaad1fe6895ef6eee6c640314766c14464b))
+- **main:** reorder ([969ff06](https://github.com/CCXXXI/ecg_monitor/commit/969ff065eb19915684eeada2fe7f958fd90701af))
+- **me:** make Me swidget ([3f506bd](https://github.com/CCXXXI/ecg_monitor/commit/3f506bdc726374e2e5a6b41dd5e07ba0d5daf606))
+- **real-time:** make RealTime swidget ([a2a4a7a](https://github.com/CCXXXI/ecg_monitor/commit/a2a4a7a568cf9f96994c11fe37bde720c942c9df))
+- **real-time:** make RealTimeChart cwidget ([ba07dc0](https://github.com/CCXXXI/ecg_monitor/commit/ba07dc06755dd3b9557e3c3bac333cdd92239ab0))
+- **settings:** make ChartSettings swidget ([617b8c9](https://github.com/CCXXXI/ecg_monitor/commit/617b8c9bdd18d412f706a1c15a280e68b23947e4))
+- **settings:** make SectionTitle swidget ([def213d](https://github.com/CCXXXI/ecg_monitor/commit/def213d6648ca8c0e0091000a29922172bb53b2c))
+- **settings:** make Settings cwidget ([b197d68](https://github.com/CCXXXI/ecg_monitor/commit/b197d68fcebb96386616e5878f24c44403e5f7f1))
 
 ## [0.20.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.0...v0.20.1) (2023-03-16)
 
