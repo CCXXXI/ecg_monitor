@@ -42,14 +42,10 @@ Widget __deviceList(BuildContext context, WidgetRef ref) => ListView(
       ],
     );
 
-class _NoDevice extends StatelessWidget {
-  const _NoDevice();
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Text(
-          str.noDeviceFound,
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-      );
-}
+@swidget
+Widget __noDevice(BuildContext context) => Center(
+      child: Text(
+        str.noDeviceFound,
+        style: Theme.of(context).textTheme.headlineLarge,
+      ),
+    );

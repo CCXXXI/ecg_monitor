@@ -33,3 +33,10 @@ class _DeviceList extends ConsumerWidget {
         _ref,
       );
 }
+
+class _NoDevice extends StatelessWidget {
+  const _NoDevice({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext _context) => __noDevice(_context);
+}
