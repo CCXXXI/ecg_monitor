@@ -6,5 +6,4 @@ import "../../../utils/constants/strings.dart" as str;
 part "heart_rate_stub.g.dart";
 
 @swidget
-Widget _heartRateWidget(BuildContext context) =>
-    const Text(str.heartRateNotAvailableOnWeb);
+Widget _heartRateWidget() => const Text(str.heartRateNotAvailableOnWeb);

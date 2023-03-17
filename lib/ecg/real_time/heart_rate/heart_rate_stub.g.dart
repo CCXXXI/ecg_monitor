@@ -10,5 +10,5 @@ class HeartRateWidget extends StatelessWidget {
   const HeartRateWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext _context) => _heartRateWidget(_context);
+  Widget build(BuildContext _context) => _heartRateWidget();
 }
