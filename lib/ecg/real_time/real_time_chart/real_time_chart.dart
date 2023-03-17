@@ -5,6 +5,7 @@ import "dart:math";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -68,35 +69,30 @@ class _Points extends _$Points {
   }
 }
 
-class RealTimeChart extends ConsumerWidget {
-  const RealTimeChart({super.key});
+@cwidget
+Widget _realTimeChart(BuildContext context, WidgetRef ref) {
+  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
+  final durationS = ref.watch(
+    isPortrait
+        ? realTimePortraitDurationProvider
+        : realTimeLandscapeDurationProvider,
+  );
 
-    final durationS = ref.watch(
-      isPortrait
-          ? realTimePortraitDurationProvider
-          : realTimeLandscapeDurationProvider,
-    );
+  _maxDurationMs = durationS * Duration.millisecondsPerSecond;
 
-    _maxDurationMs = durationS * Duration.millisecondsPerSecond;
-
-    return Chart3Lead(
-      pointsI: ref.watch(_pointsProvider(0)),
-      pointsII: ref.watch(_pointsProvider(1)),
-      pointsIII: ref.watch(_pointsProvider(2)),
-      durationS: durationS,
-      backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-      lineColor: ref.watch(realTimeLineColorProvider),
-      gridColor: ref.watch(realTimeGridColorProvider),
-      horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
-      verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
-      showDots: ref.watch(realTimeShowDotsProvider),
-    );
-  }
+  return Chart3Lead(
+    pointsI: ref.watch(_pointsProvider(0)),
+    pointsII: ref.watch(_pointsProvider(1)),
+    pointsIII: ref.watch(_pointsProvider(2)),
+    durationS: durationS,
+    backgroundColor: ref.watch(realTimeBackgroundColorProvider),
+    lineColor: ref.watch(realTimeLineColorProvider),
+    gridColor: ref.watch(realTimeGridColorProvider),
+    horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
+    verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
+    showDots: ref.watch(realTimeShowDotsProvider),
+  );
 }
 
 /// Returns the normalized distance between two points.
