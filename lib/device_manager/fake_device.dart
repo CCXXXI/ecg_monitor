@@ -4,7 +4,7 @@ import "../database.dart";
 import "../utils/constants/data.dart";
 import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart" as str;
-import "device/device.dart";
+import "device.dart";
 
 class _FakeDevice implements Device {
   @override

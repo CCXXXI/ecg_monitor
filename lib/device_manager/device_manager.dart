@@ -3,7 +3,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../utils/constants/strings.dart" as str;
-import "device/device.dart";
+import "device.dart";
 import "device_new.dart";
 
 part "device_manager.g.dart";

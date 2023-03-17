@@ -4,7 +4,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../me/settings/providers.dart";
 import "../utils/constants/strings.dart" as str;
-import "device/device.dart";
+import "device.dart";
 import "fake_device.dart";
 
 part "device_new.g.dart";
