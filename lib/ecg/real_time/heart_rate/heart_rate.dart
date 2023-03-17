@@ -5,6 +5,7 @@ import "dart:ffi";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -119,42 +120,38 @@ class _HeartRate extends _$HeartRate {
   }
 }
 
-class HeartRateWidget extends ConsumerWidget {
-  const HeartRateWidget({super.key});
+@cwidget
+Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
+  final data = ref.watch(_heartRateProvider);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(_heartRateProvider);
-
-    if (!data.available) {
-      return Column(
-        children: [
-          LinearProgressIndicator(value: data.progress),
-          Text(
-            str.heartRateDetecting,
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-        ],
-      );
-    }
-
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        textBaseline: TextBaseline.ideographic,
-        crossAxisAlignment: CrossAxisAlignment.baseline,
-        children: [
-          const Icon(Icons.favorite, size: 48, color: Colors.red),
-          Text(
-            data.rate.toString(),
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-          Text(
-            str.bpm,
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-        ],
-      ),
+  if (!data.available) {
+    return Column(
+      children: [
+        LinearProgressIndicator(value: data.progress),
+        Text(
+          str.heartRateDetecting,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ],
     );
   }
+
+  return Center(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      textBaseline: TextBaseline.ideographic,
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      children: [
+        const Icon(Icons.favorite, size: 48, color: Colors.red),
+        Text(
+          data.rate.toString(),
+          style: Theme.of(context).textTheme.displayLarge,
+        ),
+        Text(
+          str.bpm,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+      ],
+    ),
+  );
 }

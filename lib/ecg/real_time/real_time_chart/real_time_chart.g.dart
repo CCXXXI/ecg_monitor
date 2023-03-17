@@ -3,6 +3,24 @@
 part of 'real_time_chart.dart';
 
 // **************************************************************************
+// FunctionalWidgetGenerator
+// **************************************************************************
+
+class RealTimeChart extends ConsumerWidget {
+  const RealTimeChart({Key? key}) : super(key: key);
+
+  @override
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      _realTimeChart(
+        _context,
+        _ref,
+      );
+}
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 

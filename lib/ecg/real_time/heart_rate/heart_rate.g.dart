@@ -3,6 +3,24 @@
 part of 'heart_rate.dart';
 
 // **************************************************************************
+// FunctionalWidgetGenerator
+// **************************************************************************
+
+class HeartRateWidget extends ConsumerWidget {
+  const HeartRateWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      _heartRateWidget(
+        _context,
+        _ref,
+      );
+}
+
+// **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
