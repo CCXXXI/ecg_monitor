@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
+import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
-class History extends StatelessWidget {
-  const History({super.key});
+part "history.g.dart";
 
-  @override
-  Widget build(BuildContext context) => const Placeholder();
-}
+@swidget
+Widget history() => const Placeholder();
