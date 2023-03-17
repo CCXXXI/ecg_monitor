@@ -17,6 +17,28 @@ import "utils/ume.dart";
 
 part "main.g.dart";
 
+/// The root widget of the app.
+/// Wrap [AppCore] with multiple Widgets to provide additional functionality.
+@swidget
+Widget _app(BuildContext context) => SentryScreenshotWidget(
+      child: UMEWidget(
+        enable: prefs.getBool(key.showDevTools) ?? false,
+        child: const ProviderScope(
+          child: AppCore(),
+        ),
+      ),
+    );
+
+/// The core widget of the app.
+/// With no additional functionality for testing purposes.
+@swidget
+Widget _appCore(BuildContext context) => MaterialApp.router(
+      title: str.appName,
+      routerConfig: router,
+      theme: ThemeData.light(useMaterial3: true),
+      darkTheme: ThemeData.dark(useMaterial3: true),
+    );
+
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,25 +65,3 @@ void main() async {
     appRunner: () => runApp(const App()),
   );
 }
-
-/// The root widget of the app.
-/// Wrap [AppCore] with multiple Widgets to provide additional functionality.
-@swidget
-Widget _app(BuildContext context) => SentryScreenshotWidget(
-      child: UMEWidget(
-        enable: prefs.getBool(key.showDevTools) ?? false,
-        child: const ProviderScope(
-          child: AppCore(),
-        ),
-      ),
-    );
-
-/// The core widget of the app.
-/// With no additional functionality for testing purposes.
-@swidget
-Widget _appCore(BuildContext context) => MaterialApp.router(
-      title: str.appName,
-      routerConfig: router,
-      theme: ThemeData.light(useMaterial3: true),
-      darkTheme: ThemeData.dark(useMaterial3: true),
-    );
