@@ -16,6 +16,8 @@ dependencies:
   flex_color_picker: ^3.1.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_riverpod: ^2.1.1
   flutter_ume: ^1.1.1
   flutter_ume_kit_clean_local_data: ^1.0.0
