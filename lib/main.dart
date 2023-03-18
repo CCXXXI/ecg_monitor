@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_ume/flutter_ume.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
@@ -37,6 +38,18 @@ Widget _appCore(BuildContext context) => MaterialApp.router(
       routerConfig: router,
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale.fromSubtags(
+          languageCode: "zh",
+          scriptCode: "Hans",
+          countryCode: "CN",
+        )
+      ],
     );
 
 void main() async {
