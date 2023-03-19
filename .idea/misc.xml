@@ -4,6 +4,7 @@
     <type id="android" />
   </component>
   <component name="PWA">
+    <option name="enabled" value="true" />
     <option name="wasEnabledAtLeastOnce" value="true" />
   </component>
 </project>
