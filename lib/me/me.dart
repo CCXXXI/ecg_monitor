@@ -5,7 +5,7 @@ import "package:url_launcher/url_launcher.dart";
 
 import "../generated/l10n.dart";
 import "../utils/constants/strings.dart";
-import "../utils/constants/urls.dart" as urls;
+import "../utils/constants/urls.dart";
 
 part "me.g.dart";
 
@@ -24,7 +24,7 @@ Widget _me(BuildContext context) {
       ListTile(
         leading: const Icon(Icons.feedback_outlined),
         title: Text(s.feedback),
-        onTap: () async => launchUrl(urls.issues),
+        onTap: () async => launchUrl(issuesUrl),
       ),
       const ListTile(
         leading: Icon(Icons.help_outlined),
@@ -40,7 +40,7 @@ Widget _me(BuildContext context) {
         applicationVersion: appVersion,
         aboutBoxChildren: [
           OutlinedButton(
-            onPressed: () async => launchUrl(urls.changelog),
+            onPressed: () async => launchUrl(changelogUrl),
             child: Text(s.changelog),
           ),
         ],

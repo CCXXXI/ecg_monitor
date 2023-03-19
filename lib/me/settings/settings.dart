@@ -11,7 +11,7 @@ import "package:universal_io/io.dart";
 import "../../database.dart";
 import "../../generated/l10n.dart";
 import "../../utils/constants/strings.dart";
-import "../../utils/constants/urls.dart" as url;
+import "../../utils/constants/urls.dart";
 import "../../utils/dio.dart";
 import "../../utils/logger.dart";
 import "data_types.dart";
@@ -413,7 +413,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           ListTile(
             leading: const Icon(Icons.network_check_outlined),
             title: Text(s.networkTest),
-            onTap: () async => dio.getUri<dynamic>(url.test),
+            onTap: () async => dio.getUri<dynamic>(testUrl),
           )
       ],
     ),
