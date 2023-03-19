@@ -12,8 +12,8 @@ import "../../database.dart";
 import "../../generated/l10n.dart";
 import "../../utils/dio.dart";
 import "../../utils/logger.dart";
-import '../../utils/strings.dart';
-import '../../utils/urls.dart';
+import "../../utils/strings.dart";
+import "../../utils/urls.dart";
 import "data_types.dart";
 import "providers.dart";
 

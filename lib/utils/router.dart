@@ -10,7 +10,7 @@ import "../ecg/real_time/real_time.dart";
 import "../home.dart";
 import "../me/me.dart";
 import "../me/settings/settings.dart";
-import 'strings.dart';
+import "strings.dart";
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
 final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");

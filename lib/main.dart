@@ -13,7 +13,7 @@ import "utils/ecg_data.dart";
 import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
-import 'utils/strings.dart';
+import "utils/strings.dart";
 import "utils/ume.dart";
 
 part "main.g.dart";
