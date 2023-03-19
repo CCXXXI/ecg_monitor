@@ -1,9 +1,9 @@
 import "package:quiver/time.dart";
 
 import "../database.dart";
-import "../utils/constants/data.dart";
 import "../utils/constants/keys.dart" as key;
 import "../utils/constants/strings.dart";
+import "../utils/ecg_data.dart";
 import "device.dart";
 
 class _FakeDevice implements Device {
