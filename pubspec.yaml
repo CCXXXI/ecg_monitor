@@ -107,3 +107,6 @@ flutter:
     - assets/model.pt
     - ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/
     - ios/Classes/PanTompkinsQRS/LICENSE
+
+flutter_intl:
+  enabled: true
