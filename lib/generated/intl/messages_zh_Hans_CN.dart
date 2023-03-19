@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "devToolsDesc":
             MessageLookupByLibrary.simpleMessage("部分工具仅在 Debug 构建中可用"),
         "deviceManager": MessageLookupByLibrary.simpleMessage("设备管理"),
+        "deviceNotConnected": MessageLookupByLibrary.simpleMessage("设备未连接"),
         "disconnectDevice": MessageLookupByLibrary.simpleMessage("解绑设备"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("模拟设备"),
         "feedback": MessageLookupByLibrary.simpleMessage("反馈"),

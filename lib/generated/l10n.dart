@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -65,6 +66,16 @@ class S {
     return Intl.message(
       'Real time',
       name: 'realTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Device not connected`
+  String get deviceNotConnected {
+    return Intl.message(
+      'Device not connected',
+      name: 'deviceNotConnected',
       desc: '',
       args: [],
     );

@@ -2,6 +2,7 @@
   "@@locale": "en_latn_US",
   "appName": "ECG Monitor",
   "realTime": "Real time",
+  "deviceNotConnected": "Device not connected",
   "bpm": "BPM",
   "heartRateDetecting": "Heart rate detecting ...",
   "heartRateNotAvailableOnWeb": "Heart rate is not available on web",

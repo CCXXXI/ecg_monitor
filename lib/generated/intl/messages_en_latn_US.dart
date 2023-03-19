@@ -51,6 +51,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "devToolsDesc": MessageLookupByLibrary.simpleMessage(
             "Some tools are only available in debug mode"),
         "deviceManager": MessageLookupByLibrary.simpleMessage("Device manager"),
+        "deviceNotConnected":
+            MessageLookupByLibrary.simpleMessage("Device not connected"),
         "disconnectDevice":
             MessageLookupByLibrary.simpleMessage("Disconnect device"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("Fake device"),

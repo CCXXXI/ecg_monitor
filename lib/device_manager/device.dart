@@ -80,7 +80,7 @@ final batteryProvider = StreamProvider.autoDispose<int>(
 
 final connectedProvider = StreamProvider.autoDispose<bool>(
   (ref) =>
-      ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
+      ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false),
 );
 
 final ecgProvider = StreamProvider.autoDispose<EcgData>(

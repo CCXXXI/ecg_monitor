@@ -2,6 +2,7 @@
   "@@locale": "zh_Hans_CN",
   "appName": "心电监测",
   "realTime": "实时心电",
+  "deviceNotConnected": "设备未连接",
   "bpm": "次/分",
   "heartRateDetecting": "正在检测心率……",
   "heartRateNotAvailableOnWeb": "Web 端不支持心率检测",
