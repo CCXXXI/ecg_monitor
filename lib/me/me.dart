@@ -37,6 +37,7 @@ Widget _me(BuildContext context) {
       ),
       AboutListTile(
         icon: const Icon(Icons.info_outlined),
+        applicationName: s.appName,
         applicationVersion: appVersion,
         aboutBoxChildren: [
           OutlinedButton(
