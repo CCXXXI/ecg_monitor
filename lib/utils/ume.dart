@@ -12,7 +12,7 @@ import "package:flutter_ume_kit_slow_animation/flutter_ume_kit_slow_animation.da
 import "package:flutter_ume_kit_ui/flutter_ume_kit_ui.dart";
 
 import "../database.dart";
-import "constants/keys.dart" as key;
+import "constants/strings.dart";
 import "dio.dart";
 
 /// Plugins that are always available.
@@ -41,7 +41,7 @@ final _pluginsDebugOnly = <Pluggable>[
 ];
 
 void initUme() {
-  final showDevTools = prefs.getBool(key.showDevTools) ?? false;
+  final showDevTools = prefs.getBool(K.showDevTools) ?? false;
   if (!showDevTools) {
     return;
   }

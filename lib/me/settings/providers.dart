@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../database.dart";
-import "../../utils/constants/keys.dart";
+import "../../utils/constants/strings.dart";
 import "data_types.dart";
 
 part "providers.g.dart";
@@ -58,35 +58,35 @@ class _LineType extends _$LineType {
 
 // region realTime settings
 final realTimePortraitDurationProvider = _doubleProvider(
-  "$realTime.$portraitDuration",
+  "${K.realTime}.${K.portraitDuration}",
   ChartSettingsData.simple.portraitDuration,
 );
 final realTimeLandscapeDurationProvider = _doubleProvider(
-  "$realTime.$landscapeDuration",
+  "${K.realTime}.${K.landscapeDuration}",
   ChartSettingsData.simple.landscapeDuration,
 );
 final realTimeBackgroundColorProvider = _colorProvider(
-  "$realTime.$backgroundColor",
+  "${K.realTime}.${K.backgroundColor}",
   ChartSettingsData.simple.backgroundColor,
 );
 final realTimeLineColorProvider = _colorProvider(
-  "$realTime.$lineColor",
+  "${K.realTime}.${K.lineColor}",
   ChartSettingsData.simple.lineColor,
 );
 final realTimeGridColorProvider = _colorProvider(
-  "$realTime.$gridColor",
+  "${K.realTime}.${K.gridColor}",
   ChartSettingsData.simple.gridColor,
 );
 final realTimeHorizontalLineTypeProvider = _lineTypeProvider(
-  "$realTime.$horizontalLineType",
+  "${K.realTime}.${K.horizontalLineType}",
   ChartSettingsData.simple.horizontalLineType,
 );
 final realTimeVerticalLineTypeProvider = _lineTypeProvider(
-  "$realTime.$verticalLineType",
+  "${K.realTime}.${K.verticalLineType}",
   ChartSettingsData.simple.verticalLineType,
 );
 final realTimeShowDotsProvider = _boolProvider(
-  "$realTime.$showDots",
+  "${K.realTime}.${K.showDots}",
   ChartSettingsData.simple.showDots,
 );
 
@@ -147,51 +147,51 @@ class _RealTimeChartSettingsSetter extends _$RealTimeChartSettingsSetter {
 }
 
 final refreshRateHzProvider = _doubleProvider(
-  refreshRateHz,
+  K.refreshRateHz,
   30,
 );
 final minDistanceProvider = _doubleProvider(
-  minDistance,
+  K.minDistance,
   .5,
 );
 // endregion
 
 // region history settings
 final historyAutoUploadProvider = _boolProvider(
-  "$history.$autoUpload",
+  "${K.history}.${K.autoUpload}",
   true,
 );
 
 final historyPortraitDurationProvider = _doubleProvider(
-  "$history.$portraitDuration",
+  "${K.history}.${K.portraitDuration}",
   ChartSettingsData.professional.portraitDuration,
 );
 final historyLandscapeDurationProvider = _doubleProvider(
-  "$history.$landscapeDuration",
+  "${K.history}.${K.landscapeDuration}",
   ChartSettingsData.professional.landscapeDuration,
 );
 final historyBackgroundColorProvider = _colorProvider(
-  "$history.$backgroundColor",
+  "${K.history}.${K.backgroundColor}",
   ChartSettingsData.professional.backgroundColor,
 );
 final historyLineColorProvider = _colorProvider(
-  "$history.$lineColor",
+  "${K.history}.${K.lineColor}",
   ChartSettingsData.professional.lineColor,
 );
 final historyGridColorProvider = _colorProvider(
-  "$history.$gridColor",
+  "${K.history}.${K.gridColor}",
   ChartSettingsData.professional.gridColor,
 );
 final historyHorizontalLineTypeProvider = _lineTypeProvider(
-  "$history.$horizontalLineType",
+  "${K.history}.${K.horizontalLineType}",
   ChartSettingsData.professional.horizontalLineType,
 );
 final historyVerticalLineTypeProvider = _lineTypeProvider(
-  "$history.$verticalLineType",
+  "${K.history}.${K.verticalLineType}",
   ChartSettingsData.professional.verticalLineType,
 );
 final historyShowDotsProvider = _boolProvider(
-  "$history.$showDots",
+  "${K.history}.${K.showDots}",
   ChartSettingsData.professional.showDots,
 );
 
@@ -252,22 +252,22 @@ class _HistoryChartSettingsSetter extends _$HistoryChartSettingsSetter {
 
 // region analytics settings
 final analyticsAutoGenerateProvider = _boolProvider(
-  "$analytics.$autoGenerate",
+  "${K.analytics}.${K.autoGenerate}",
   true,
 );
 final analyticsAutoUploadProvider = _boolProvider(
-  "$analytics.$autoUpload",
+  "${K.analytics}.${K.autoUpload}",
   true,
 );
 // endregion
 
 // region devTools settings
 final showDevToolsProvider = _boolProvider(
-  showDevTools,
+  K.showDevTools,
   false,
 );
 final fakeDeviceOnProvider = _boolProvider(
-  fakeDeviceOn,
+  K.fakeDeviceOn,
   false,
 );
 // endregion

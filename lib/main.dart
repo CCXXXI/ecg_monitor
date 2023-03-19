@@ -9,7 +9,6 @@ import "package:sentry_logging/sentry_logging.dart";
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
 import "generated/l10n.dart";
-import "utils/constants/keys.dart" as key;
 import "utils/constants/strings.dart";
 import "utils/ecg_data.dart";
 import "utils/license.dart";
@@ -24,7 +23,7 @@ part "main.g.dart";
 @swidget
 Widget _app(BuildContext context) => SentryScreenshotWidget(
       child: UMEWidget(
-        enable: prefs.getBool(key.showDevTools) ?? false,
+        enable: prefs.getBool(K.showDevTools) ?? false,
         child: const ProviderScope(
           child: AppCore(),
         ),

@@ -10,7 +10,6 @@ import "package:universal_io/io.dart";
 
 import "../../database.dart";
 import "../../generated/l10n.dart";
-import "../../utils/constants/keys.dart" as key;
 import "../../utils/constants/strings.dart";
 import "../../utils/constants/urls.dart" as url;
 import "../../utils/dio.dart";
@@ -24,7 +23,7 @@ part "settings.g.dart";
 class _LoggerLevel extends _$LoggerLevel {
   @override
   Level build() {
-    final index = prefs.getInt(key.loggerLevelIndex) ?? infoLevelIndex;
+    final index = prefs.getInt(K.loggerLevelIndex) ?? infoLevelIndex;
     return loggerLevels[index];
   }
 
@@ -33,7 +32,7 @@ class _LoggerLevel extends _$LoggerLevel {
     Logger.root.level = level;
 
     final index = loggerLevels.indexOf(level);
-    await prefs.setInt(key.loggerLevelIndex, index);
+    await prefs.setInt(K.loggerLevelIndex, index);
   }
 
   Future<void> setIndex(int index) => set(loggerLevels[index]);

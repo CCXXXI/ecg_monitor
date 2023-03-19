@@ -10,7 +10,7 @@ import "../ecg/real_time/real_time.dart";
 import "../home.dart";
 import "../me/me.dart";
 import "../me/settings/settings.dart";
-import "../utils/constants/keys.dart" as key;
+import "../utils/constants/strings.dart";
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
 final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
@@ -28,7 +28,7 @@ final router = GoRouter(
         GoRoute(
           path: "/real_time",
           redirect: (context, state) =>
-              prefs.getString(key.currentDeviceId) == null
+              prefs.getString(K.currentDeviceId) == null
                   ? "/device_manager"
                   : null,
           builder: (context, state) => const RealTime(),

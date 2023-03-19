@@ -22,3 +22,30 @@ Future<void> initPackageInfo() async {
   final info = await PackageInfo.fromPlatform();
   appVersion = "${info.version}+${info.buildNumber} $buildMode Build";
 }
+
+/// Keys used to store data in the shared preferences.
+class K {
+  static const realTime = "realTime";
+  static const portraitDuration = "portraitDuration";
+  static const landscapeDuration = "landscapeDuration";
+  static const refreshRateHz = "refreshRateHz";
+  static const minDistance = "minDistance";
+  static const backgroundColor = "backgroundColor";
+  static const lineColor = "lineColor";
+  static const gridColor = "gridColor";
+  static const horizontalLineType = "horizontalLineType";
+  static const verticalLineType = "verticalLineType";
+  static const showDots = "showDots";
+
+  static const history = "history";
+  static const autoUpload = "autoUpload";
+
+  static const analytics = "analytics";
+  static const autoGenerate = "autoGenerate";
+
+  static const currentDeviceId = "currentDeviceId";
+
+  static const showDevTools = "showDevTools";
+  static const fakeDeviceOn = "fakeDeviceOn";
+  static const loggerLevelIndex = "loggerLevelIndex";
+}
