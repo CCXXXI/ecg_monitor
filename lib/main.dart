@@ -44,6 +44,13 @@ Widget _appCore(BuildContext context) => MaterialApp.router(
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
+        // en-Latn-US
+        Locale.fromSubtags(
+          languageCode: "en",
+          scriptCode: "Latn",
+          countryCode: "US",
+        ),
+        // zh-Hans-CN
         Locale.fromSubtags(
           languageCode: "zh",
           scriptCode: "Hans",
