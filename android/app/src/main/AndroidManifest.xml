@@ -2,7 +2,7 @@
           package="io.github.ccxxxi.ecg_monitor">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-            android:label="心电监测"
+            android:label="@string/appName"
             android:name="${applicationName}"
             android:icon="@mipmap/ic_launcher">
         <activity
