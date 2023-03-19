@@ -16,7 +16,12 @@ Widget _realTime(BuildContext context, WidgetRef ref) {
 
   final deviceAvailable = ref.watch(connectedProvider).value ?? false;
   if (!deviceAvailable) {
-    return Center(child: Text(s.deviceNotConnected));
+    return Center(
+      child: Text(
+        s.deviceNotConnected,
+        style: Theme.of(context).textTheme.headlineLarge,
+      ),
+    );
   }
 
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
