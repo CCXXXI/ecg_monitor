@@ -5,8 +5,8 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
+import "../generated/l10n.dart";
 import "../me/settings/data_types.dart";
-import "../utils/constants/strings.dart" as str;
 
 part "chart.g.dart";
 
@@ -172,11 +172,13 @@ Widget _chart3Lead(
   required LineType verticalLineType,
   required bool showDots,
 }) {
+  final s = S.of(context);
+
   final children = [
     for (var i = 0; i < 3; i++)
       Expanded(
         child: _Chart(
-          title: [str.leadI, str.leadII, str.leadIII][i],
+          title: [s.leadI, s.leadII, s.leadIII][i],
           points: [pointsI, pointsII, pointsIII][i],
           durationS: durationS,
           backgroundColor: backgroundColor,

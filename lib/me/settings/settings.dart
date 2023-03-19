@@ -9,8 +9,9 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "package:universal_io/io.dart";
 
 import "../../database.dart";
+import "../../generated/l10n.dart";
 import "../../utils/constants/keys.dart" as key;
-import "../../utils/constants/strings.dart" as str;
+import "../../utils/constants/strings.dart";
 import "../../utils/constants/urls.dart" as url;
 import "../../utils/dio.dart";
 import "../../utils/logger.dart";
@@ -70,6 +71,8 @@ Widget __chartSettings(
   required void Function(bool) onShowDotsChanged,
   required bool showDevTools,
 }) {
+  final s = S.of(context);
+
   Future<Color> pickColor(Color initialColor) async => showColorPickerDialog(
         context,
         initialColor,
@@ -82,21 +85,21 @@ Widget __chartSettings(
         },
       );
 
-  const lineTypeSegments = [
+  final lineTypeSegments = [
     ButtonSegment(
       value: LineType.hide,
-      icon: Icon(Icons.visibility_off_outlined),
-      label: Text(str.lineTypeHide),
+      icon: const Icon(Icons.visibility_off_outlined),
+      label: Text(s.lineTypeHide),
     ),
     ButtonSegment(
       value: LineType.simple,
-      icon: Icon(Icons.grid_3x3_outlined),
-      label: Text(str.lineTypeSimple),
+      icon: const Icon(Icons.grid_3x3_outlined),
+      label: Text(s.lineTypeSimple),
     ),
     ButtonSegment(
       value: LineType.full,
-      icon: Icon(Icons.grid_4x4_outlined),
-      label: Text(str.lineTypeFull),
+      icon: const Icon(Icons.grid_4x4_outlined),
+      label: Text(s.lineTypeFull),
     ),
   ];
 
@@ -107,23 +110,23 @@ Widget __chartSettings(
     children: [
       ListTile(
         leading: const Icon(Icons.monitor_heart_outlined),
-        title: const Text(str.style),
+        title: Text(s.style),
         trailing: SegmentedButton(
           segments: [
             ButtonSegment(
               value: ChartSettingsData.simple,
               icon: const Icon(Icons.square_outlined),
-              label: const Text(str.simple),
+              label: Text(s.simple),
             ),
             ButtonSegment(
               value: ChartSettingsData.professional,
               icon: const Icon(Icons.grid_on_outlined),
-              label: const Text(str.professional),
+              label: Text(s.professional),
             ),
             ButtonSegment(
               value: ChartSettingsData.custom,
               icon: const Icon(Icons.tune_outlined),
-              label: const Text(str.custom),
+              label: Text(s.custom),
               enabled: false,
             ),
           ],
@@ -140,7 +143,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.stay_primary_portrait_outlined),
-        title: const Text(str.portraitDuration),
+        title: Text(s.portraitDuration),
         subtitle: Text(portraitDurationString),
         trailing: SizedBox(
           width: 200,
@@ -156,7 +159,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.stay_primary_landscape_outlined),
-        title: const Text(str.landscapeDuration),
+        title: Text(s.landscapeDuration),
         subtitle: Text(landscapeDurationString),
         trailing: SizedBox(
           width: 200,
@@ -172,7 +175,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.color_lens_outlined),
-        title: const Text(str.backgroundColor),
+        title: Text(s.backgroundColor),
         trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
         onTap: () async => onBackgroundColorChanged(
           await pickColor(backgroundColor),
@@ -180,7 +183,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.show_chart_outlined),
-        title: const Text(str.lineColor),
+        title: Text(s.lineColor),
         trailing: ColorIndicator(color: lineColor, hasBorder: true),
         onTap: () async => onLineColorChanged(
           await pickColor(lineColor),
@@ -188,7 +191,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.grid_on_outlined),
-        title: const Text(str.gridColor),
+        title: Text(s.gridColor),
         trailing: ColorIndicator(color: gridColor, hasBorder: true),
         onTap: () async => onGridColorChanged(
           await pickColor(gridColor),
@@ -196,7 +199,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.border_horizontal_outlined),
-        title: const Text(str.horizontalLine),
+        title: Text(s.horizontalLines),
         trailing: SegmentedButton(
           segments: lineTypeSegments,
           selected: {horizontalLineType},
@@ -206,7 +209,7 @@ Widget __chartSettings(
       ),
       ListTile(
         leading: const Icon(Icons.border_vertical_outlined),
-        title: const Text(str.verticalLine),
+        title: Text(s.verticalLines),
         trailing: SegmentedButton(
           segments: lineTypeSegments,
           selected: {verticalLineType},
@@ -217,7 +220,7 @@ Widget __chartSettings(
       if (showDevTools)
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.linear_scale_outlined),
-          title: const Text(str.showDots),
+          title: Text(s.showDots),
           value: showDots,
           onChanged: onShowDotsChanged,
         ),
@@ -227,6 +230,8 @@ Widget __chartSettings(
 
 @cwidget
 Widget _settings(BuildContext context, WidgetRef ref) {
+  final s = S.of(context);
+
   // realTime settings
   final realTimeRefreshRateHz = ref.watch(refreshRateHzProvider);
   final realTimeMinDistance = ref.watch(minDistanceProvider);
@@ -241,10 +246,10 @@ Widget _settings(BuildContext context, WidgetRef ref) {
   final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
   return Scaffold(
-    appBar: AppBar(title: const Text(str.settings)),
+    appBar: AppBar(title: Text(s.settings)),
     body: ListView(
       children: [
-        const _SectionTitle(str.realTime),
+        _SectionTitle(s.realTime),
         _ChartSettings(
           chartSettingsData: ref.watch(realTimeChartSettingsProvider),
           onChartSettingsChanged:
@@ -275,7 +280,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
         const Divider(),
         ListTile(
           leading: const Icon(Icons.speed_outlined),
-          title: const Text(str.refreshRate),
+          title: Text(s.refreshRate),
           subtitle: Text(realTimeRefreshRateHzString),
           trailing: SizedBox(
             width: 200,
@@ -291,7 +296,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
         ),
         ListTile(
           leading: const Icon(Icons.timeline_outlined),
-          title: const Text(str.minDistance),
+          title: Text(s.minDistance),
           subtitle: Text(realTimeMinDistanceString),
           trailing: SizedBox(
             width: 200,
@@ -303,10 +308,10 @@ Widget _settings(BuildContext context, WidgetRef ref) {
             ),
           ),
         ),
-        const _SectionTitle(str.history),
+        _SectionTitle(s.history),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.cloud_upload_outlined),
-          title: const Text(str.autoUpload),
+          title: Text(s.autoUpload),
           value: ref.watch(historyAutoUploadProvider),
           onChanged: ref.read(historyAutoUploadProvider.notifier).set,
         ),
@@ -338,27 +343,27 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
           showDevTools: showDevTools,
         ),
-        const _SectionTitle(str.analytics),
+        _SectionTitle(s.analytics),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.analytics_outlined),
-          title: const Text(str.autoGenerate),
+          title: Text(s.autoGenerate),
           value: ref.watch(analyticsAutoGenerateProvider),
           onChanged: ref.read(analyticsAutoGenerateProvider.notifier).set,
         ),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.cloud_upload_outlined),
-          title: const Text(str.autoUpload),
+          title: Text(s.autoUpload),
           value: ref.watch(analyticsAutoUploadProvider),
           onChanged: ref.read(analyticsAutoUploadProvider.notifier).set,
         ),
-        const _SectionTitle(str.devTools),
+        _SectionTitle(s.devTools),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.developer_mode_outlined),
-          title: const Text(str.showDevTools),
+          title: Text(s.showDevTools),
           subtitle: showDevTools
-              ? const Text(
-                  "${str.devToolsDesc}\n"
-                  "${str.currentBuildMode}${str.buildMode}",
+              ? Text(
+                  "${s.devToolsDesc}\n"
+                  "${s.currentBuildMode(buildMode)}",
                 )
               : null,
           isThreeLine: showDevTools,
@@ -368,10 +373,10 @@ Widget _settings(BuildContext context, WidgetRef ref) {
 
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: const Text(str.restartNeeded),
+                content: Text(s.restartNeeded),
                 action: restartActionAvailable
-                    ? const SnackBarAction(
-                        label: str.restart,
+                    ? SnackBarAction(
+                        label: s.restart,
                         onPressed: Restart.restartApp,
                       )
                     : null,
@@ -383,14 +388,14 @@ Widget _settings(BuildContext context, WidgetRef ref) {
         if (showDevTools)
           SwitchListTile.adaptive(
             secondary: const Icon(Icons.device_hub_outlined),
-            title: const Text(str.fakeDevice),
+            title: Text(s.fakeDevice),
             value: ref.watch(fakeDeviceOnProvider),
             onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
           ),
         if (showDevTools)
           ListTile(
             leading: const Icon(Icons.text_snippet_outlined),
-            title: const Text(str.loggerLevel),
+            title: Text(s.loggerLevel),
             subtitle: Text(loggerLevel.name),
             trailing: SizedBox(
               width: 200,
@@ -408,7 +413,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
         if (showDevTools)
           ListTile(
             leading: const Icon(Icons.network_check_outlined),
-            title: const Text(str.networkTest),
+            title: Text(s.networkTest),
             onTap: () async => dio.getUri<dynamic>(url.test),
           )
       ],

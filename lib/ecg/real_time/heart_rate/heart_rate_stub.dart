@@ -1,9 +1,13 @@
 import "package:flutter/material.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
-import "../../../utils/constants/strings.dart" as str;
+import "../../../generated/l10n.dart";
 
 part "heart_rate_stub.g.dart";
 
 @swidget
-Widget _heartRateWidget() => const Text(str.heartRateNotAvailableOnWeb);
+Widget _heartRateWidget(BuildContext context) {
+  final s = S.of(context);
+
+  return Text(s.heartRateNotAvailableOnWeb);
+}

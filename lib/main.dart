@@ -11,7 +11,7 @@ import "database.dart";
 import "generated/l10n.dart";
 import "utils/constants/data.dart";
 import "utils/constants/keys.dart" as key;
-import "utils/constants/strings.dart" as str;
+import "utils/constants/strings.dart";
 import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
@@ -35,7 +35,7 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 /// With no additional functionality for testing purposes.
 @swidget
 Widget _appCore(BuildContext context) => MaterialApp.router(
-      title: str.appName,
+      title: fallbackAppName,
       routerConfig: router,
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
@@ -54,7 +54,7 @@ void main() async {
   await initPrefs();
   initUme();
   initLogger();
-  await str.initPackageInfo();
+  await initPackageInfo();
   await loadModel();
   await initData();
   initLicense();
@@ -66,7 +66,7 @@ void main() async {
   await SentryFlutter.init(
     (options) {
       options
-        ..dsn = str.sentryDsn
+        ..dsn = sentryDsn
         ..tracesSampleRate = 1.0
         ..addIntegration(LoggingIntegration())
         ..sendDefaultPii = true;

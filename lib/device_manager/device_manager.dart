@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
-import "../utils/constants/strings.dart" as str;
+import "../generated/l10n.dart";
 import "device.dart";
 import "device_new.dart";
 
@@ -10,6 +10,8 @@ part "device_manager.g.dart";
 
 @cwidget
 Widget _deviceManager(BuildContext context, WidgetRef ref) {
+  final s = S.of(context);
+
   final device = ref.watch(currentDeviceProvider);
 
   if (device == null) {
@@ -30,17 +32,15 @@ Widget _deviceManager(BuildContext context, WidgetRef ref) {
       if (connected)
         ListTile(
           leading: const Icon(Icons.bluetooth_connected_outlined),
-          title: const Text(str.bluetoothConnected),
+          title: Text(s.bluetoothConnected),
           subtitle: rssi.whenOrNull(
-            data: (r) => Text(
-              "${str.bluetoothRssi} $r ${str.bluetoothRssiUnit}",
-            ),
+            data: (r) => Text(s.bluetoothRssi(r)),
           ),
         )
       else
-        const ListTile(
-          leading: Icon(Icons.bluetooth_disabled_outlined),
-          title: Text(str.bluetoothDisconnected),
+        ListTile(
+          leading: const Icon(Icons.bluetooth_disabled_outlined),
+          title: Text(s.bluetoothDisconnected),
         ),
       if (connected)
         ListTile(
@@ -61,15 +61,15 @@ Widget _deviceManager(BuildContext context, WidgetRef ref) {
           ),
           title: Text(
             battery.when(
-              loading: () => str.batteryUnknown,
-              error: (e, s) => str.batteryUnknown,
-              data: (b) => "${str.battery} $b%",
+              loading: () => s.batteryUnknown,
+              error: (err, stack) => s.batteryUnknown,
+              data: (b) => "${s.battery} $b%",
             ),
           ),
         ),
       ListTile(
         leading: const Icon(Icons.close_outlined),
-        title: const Text(str.disconnectDevice),
+        title: Text(s.disconnectDevice),
         onTap: () async => ref.read(currentDeviceProvider.notifier).set(null),
       ),
     ],

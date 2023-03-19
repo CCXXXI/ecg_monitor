@@ -11,7 +11,7 @@ import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../../device_manager/device.dart";
-import "../../../utils/constants/strings.dart" as str;
+import "../../../generated/l10n.dart";
 import "generated_bindings.dart";
 
 part "heart_rate.freezed.dart";
@@ -122,6 +122,8 @@ class _HeartRate extends _$HeartRate {
 
 @cwidget
 Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
+  final s = S.of(context);
+
   final data = ref.watch(_heartRateProvider);
 
   if (!data.available) {
@@ -129,7 +131,7 @@ Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
       children: [
         LinearProgressIndicator(value: data.progress),
         Text(
-          str.heartRateDetecting,
+          s.heartRateDetecting,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ],
@@ -148,7 +150,7 @@ Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
           style: Theme.of(context).textTheme.displayLarge,
         ),
         Text(
-          str.bpm,
+          s.bpm,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ],
