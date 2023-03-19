@@ -54,7 +54,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "disconnectDevice":
             MessageLookupByLibrary.simpleMessage("Disconnect device"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("Fake device"),
-        "fakeDeviceModel": MessageLookupByLibrary.simpleMessage("Fake-Device"),
         "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
         "gridColor": MessageLookupByLibrary.simpleMessage("Grid color"),
         "heartRateDetecting":

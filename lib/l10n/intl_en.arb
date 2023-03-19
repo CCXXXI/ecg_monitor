@@ -47,7 +47,6 @@
   "restartNeeded": "Restart needed",
   "restart": "Restart",
   "fakeDevice": "Fake device",
-  "fakeDeviceModel": "Fake-Device",
   "loggerLevel": "Logger level",
   "networkTest": "Network test",
   "showDots": "Show dots",

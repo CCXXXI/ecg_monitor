@@ -520,16 +520,6 @@ class S {
     );
   }
 
-  /// `Fake-Device`
-  String get fakeDeviceModel {
-    return Intl.message(
-      'Fake-Device',
-      name: 'fakeDeviceModel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Logger level`
   String get loggerLevel {
     return Intl.message(

@@ -49,7 +49,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "deviceManager": MessageLookupByLibrary.simpleMessage("设备管理"),
         "disconnectDevice": MessageLookupByLibrary.simpleMessage("解绑设备"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("模拟设备"),
-        "fakeDeviceModel": MessageLookupByLibrary.simpleMessage("Fake-Device"),
         "feedback": MessageLookupByLibrary.simpleMessage("反馈"),
         "gridColor": MessageLookupByLibrary.simpleMessage("网格颜色"),
         "heartRateDetecting": MessageLookupByLibrary.simpleMessage("正在检测心率……"),
