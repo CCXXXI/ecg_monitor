@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
+import "package:go_router/go_router.dart";
 
 import "../../device_manager/device.dart";
 import "../../generated/l10n.dart";
@@ -16,11 +17,19 @@ Widget _realTime(BuildContext context, WidgetRef ref) {
 
   final deviceAvailable = ref.watch(connectedProvider).value ?? false;
   if (!deviceAvailable) {
-    return Center(
-      child: Text(
-        s.deviceNotConnected,
-        style: Theme.of(context).textTheme.headlineLarge,
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          s.deviceNotConnected,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+        const SizedBox(height: 16),
+        OutlinedButton(
+          child: Text(s.deviceManager),
+          onPressed: () => context.go("/device_manager"),
+        ),
+      ],
     );
   }
 
