@@ -12,8 +12,8 @@ import "package:flutter_ume_kit_slow_animation/flutter_ume_kit_slow_animation.da
 import "package:flutter_ume_kit_ui/flutter_ume_kit_ui.dart";
 
 import "../database.dart";
-import "constants/strings.dart";
 import "dio.dart";
+import 'strings.dart';
 
 /// Plugins that are always available.
 final _pluginsAlwaysOn = <Pluggable>[

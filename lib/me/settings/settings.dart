@@ -10,10 +10,10 @@ import "package:universal_io/io.dart";
 
 import "../../database.dart";
 import "../../generated/l10n.dart";
-import "../../utils/constants/strings.dart";
-import "../../utils/constants/urls.dart";
 import "../../utils/dio.dart";
 import "../../utils/logger.dart";
+import '../../utils/strings.dart';
+import '../../utils/urls.dart';
 import "data_types.dart";
 import "providers.dart";
 

@@ -1,7 +1,7 @@
 import "package:ecg_monitor/database.dart";
 import "package:ecg_monitor/device_manager/fake_device.dart";
-import "package:ecg_monitor/utils/constants/strings.dart";
 import "package:ecg_monitor/utils/ecg_data.dart";
+import 'package:ecg_monitor/utils/strings.dart';
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:shared_preferences/shared_preferences.dart";

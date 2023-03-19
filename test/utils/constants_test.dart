@@ -1,4 +1,4 @@
-import "package:ecg_monitor/utils/constants/urls.dart";
+import 'package:ecg_monitor/utils/urls.dart';
 import "package:flutter_test/flutter_test.dart";
 
 const expectedIssuesUrl = "https://github.com/CCXXXI/ecg_monitor/issues";

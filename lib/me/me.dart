@@ -4,8 +4,8 @@ import "package:go_router/go_router.dart";
 import "package:url_launcher/url_launcher.dart";
 
 import "../generated/l10n.dart";
-import "../utils/constants/strings.dart";
-import "../utils/constants/urls.dart";
+import '../utils/strings.dart';
+import '../utils/urls.dart';
 
 part "me.g.dart";
 

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../database.dart";
-import "../../utils/constants/strings.dart";
+import '../../utils/strings.dart';
 import "data_types.dart";
 
 part "providers.g.dart";

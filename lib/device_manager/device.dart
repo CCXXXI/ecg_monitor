@@ -3,7 +3,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
-import "../utils/constants/strings.dart";
+import '../utils/strings.dart';
 import "fake_device.dart";
 
 part "device.freezed.dart";
