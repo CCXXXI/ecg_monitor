@@ -8,6 +8,7 @@ import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
+import "generated/l10n.dart";
 import "utils/constants/data.dart";
 import "utils/constants/keys.dart" as key;
 import "utils/constants/strings.dart" as str;
@@ -39,24 +40,12 @@ Widget _appCore(BuildContext context) => MaterialApp.router(
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
       localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
-        // en-Latn-US
-        Locale.fromSubtags(
-          languageCode: "en",
-          scriptCode: "Latn",
-          countryCode: "US",
-        ),
-        // zh-Hans-CN
-        Locale.fromSubtags(
-          languageCode: "zh",
-          scriptCode: "Hans",
-          countryCode: "CN",
-        )
-      ],
+      supportedLocales: S.delegate.supportedLocales,
     );
 
 void main() async {
