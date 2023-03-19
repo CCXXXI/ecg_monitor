@@ -111,7 +111,7 @@ jobs:
     if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v2
 
   sentry:
     needs: [ check-ref, build-web ]
