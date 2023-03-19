@@ -151,20 +151,20 @@ class S {
     );
   }
 
-  /// `simple`
+  /// `simp.`
   String get simple {
     return Intl.message(
-      'simple',
+      'simp.',
       name: 'simple',
       desc: '',
       args: [],
     );
   }
 
-  /// `professional`
+  /// `prof.`
   String get professional {
     return Intl.message(
-      'professional',
+      'prof.',
       name: 'professional',
       desc: '',
       args: [],
@@ -181,20 +181,20 @@ class S {
     );
   }
 
-  /// `Portrait duration`
+  /// `Port. duration`
   String get portraitDuration {
     return Intl.message(
-      'Portrait duration',
+      'Port. duration',
       name: 'portraitDuration',
       desc: '',
       args: [],
     );
   }
 
-  /// `Landscape duration`
+  /// `Land. duration`
   String get landscapeDuration {
     return Intl.message(
-      'Landscape duration',
+      'Land. duration',
       name: 'landscapeDuration',
       desc: '',
       args: [],
@@ -251,20 +251,20 @@ class S {
     );
   }
 
-  /// `Horizontal lines`
+  /// `Hor. lines`
   String get horizontalLines {
     return Intl.message(
-      'Horizontal lines',
+      'Hor. lines',
       name: 'horizontalLines',
       desc: '',
       args: [],
     );
   }
 
-  /// `Vertical lines`
+  /// `Ver. lines`
   String get verticalLines {
     return Intl.message(
-      'Vertical lines',
+      'Ver. lines',
       name: 'verticalLines',
       desc: '',
       args: [],
@@ -281,10 +281,10 @@ class S {
     );
   }
 
-  /// `simple`
+  /// `simp.`
   String get lineTypeSimple {
     return Intl.message(
-      'simple',
+      'simp.',
       name: 'lineTypeSimple',
       desc: '',
       args: [],
@@ -341,10 +341,10 @@ class S {
     );
   }
 
-  /// `Device manager`
+  /// `Device`
   String get deviceManager {
     return Intl.message(
-      'Device manager',
+      'Device',
       name: 'deviceManager',
       desc: '',
       args: [],

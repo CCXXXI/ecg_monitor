@@ -50,7 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "devTools": MessageLookupByLibrary.simpleMessage("Dev tools"),
         "devToolsDesc": MessageLookupByLibrary.simpleMessage(
             "Some tools are only available in debug mode"),
-        "deviceManager": MessageLookupByLibrary.simpleMessage("Device manager"),
+        "deviceManager": MessageLookupByLibrary.simpleMessage("Device"),
         "deviceNotConnected":
             MessageLookupByLibrary.simpleMessage("Device not connected"),
         "disconnectDevice":
@@ -63,17 +63,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "heartRateNotAvailableOnWeb": MessageLookupByLibrary.simpleMessage(
             "Heart rate is not available on web"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
-        "horizontalLines":
-            MessageLookupByLibrary.simpleMessage("Horizontal lines"),
+        "horizontalLines": MessageLookupByLibrary.simpleMessage("Hor. lines"),
         "landscapeDuration":
-            MessageLookupByLibrary.simpleMessage("Landscape duration"),
+            MessageLookupByLibrary.simpleMessage("Land. duration"),
         "leadI": MessageLookupByLibrary.simpleMessage("Lead I"),
         "leadII": MessageLookupByLibrary.simpleMessage("Lead II"),
         "leadIII": MessageLookupByLibrary.simpleMessage("Lead III"),
         "lineColor": MessageLookupByLibrary.simpleMessage("Line color"),
         "lineTypeFull": MessageLookupByLibrary.simpleMessage("full"),
         "lineTypeHide": MessageLookupByLibrary.simpleMessage("hide"),
-        "lineTypeSimple": MessageLookupByLibrary.simpleMessage("simple"),
+        "lineTypeSimple": MessageLookupByLibrary.simpleMessage("simp."),
         "loggerLevel": MessageLookupByLibrary.simpleMessage("Logger level"),
         "me": MessageLookupByLibrary.simpleMessage("Me"),
         "minDistance": MessageLookupByLibrary.simpleMessage("Min distance"),
@@ -81,8 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noDeviceFound":
             MessageLookupByLibrary.simpleMessage("No device found"),
         "portraitDuration":
-            MessageLookupByLibrary.simpleMessage("Portrait duration"),
-        "professional": MessageLookupByLibrary.simpleMessage("professional"),
+            MessageLookupByLibrary.simpleMessage("Port. duration"),
+        "professional": MessageLookupByLibrary.simpleMessage("prof."),
         "realTime": MessageLookupByLibrary.simpleMessage("Real time"),
         "refreshRate": MessageLookupByLibrary.simpleMessage("Refresh rate"),
         "restart": MessageLookupByLibrary.simpleMessage("Restart"),
@@ -90,8 +89,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "showDevTools": MessageLookupByLibrary.simpleMessage("Show dev tools"),
         "showDots": MessageLookupByLibrary.simpleMessage("Show dots"),
-        "simple": MessageLookupByLibrary.simpleMessage("simple"),
+        "simple": MessageLookupByLibrary.simpleMessage("simp."),
         "style": MessageLookupByLibrary.simpleMessage("Style"),
-        "verticalLines": MessageLookupByLibrary.simpleMessage("Vertical lines")
+        "verticalLines": MessageLookupByLibrary.simpleMessage("Ver. lines")
       };
 }
