@@ -20,7 +20,7 @@ class ChartSettingsData with _$ChartSettingsData {
 
   static final simple = ChartSettingsData(
     portraitDuration: 3,
-    landscapeDuration: 6,
+    landscapeDuration: 2,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     // Color(Colors.red.value) != Colors.red

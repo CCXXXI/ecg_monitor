@@ -251,6 +251,10 @@ class _HistoryChartSettingsSetter extends _$HistoryChartSettingsSetter {
 // endregion
 
 // region analytics settings
+final analyticsAutoGenerateProvider = _boolProvider(
+  "$analytics.$autoGenerate",
+  true,
+);
 final analyticsAutoUploadProvider = _boolProvider(
   "$analytics.$autoUpload",
   true,

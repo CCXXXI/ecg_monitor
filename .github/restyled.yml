@@ -1,0 +1,5 @@
+auto: true
+commit_template: "style: restyle by ${restyler.name}"
+exclude:
+  # generated files
+  - "**/generated_plugin_registrant.cc"

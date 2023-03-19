@@ -1,17 +1,23 @@
 cmake_minimum_required(VERSION 3.18)
-project(ecg_model)
+project(ecg_monitor)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(ecg_model SHARED ../../ios/Cpp/src/forward.cpp)
+### PanTompkinsQRS ###
+# Add source files.
+add_library(PanTompkinsQRS SHARED ../../ios/Classes/PanTompkinsQRS/src/panTompkins.cpp)
 
-set(build_DIR ../../build/app)
+### ecg_model ###
+# Add source files.
+add_library(ecg_model SHARED ../../ios/Classes/ecg_model_cpp/src/forward.cpp)
 
-file(GLOB PYTORCH_INCLUDE_DIRS "${build_DIR}/pytorch_android*.aar/headers")
+# Find and include pytorch headers.
+file(GLOB PYTORCH_INCLUDE_DIRS "../../build/app/pytorch_android*.aar/headers")
 target_include_directories(ecg_model PUBLIC ${PYTORCH_INCLUDE_DIRS})
 
-file(GLOB PYTORCH_LINK_DIRS "${build_DIR}/pytorch_android*.aar/jni/${ANDROID_ABI}")
+# Find and link pytorch libraries.
+file(GLOB PYTORCH_LINK_DIRS "../../build/app/pytorch_android*.aar/jni/${ANDROID_ABI}")
 find_library(PYTORCH_LIBRARY pytorch_jni
   PATHS ${PYTORCH_LINK_DIRS}
   NO_CMAKE_FIND_ROOT_PATH)

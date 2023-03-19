@@ -1,0 +1,9 @@
+# flutter pub run ffigen --config ffigen_PanTompkinsQRS.yml
+name: "PanTompkinsQRS"
+description: "Bindings to PanTompkinsQRS"
+output: "lib/ecg/real_time/heart_rate/generated_bindings.dart"
+headers:
+  entry-points:
+    - "ios/Classes/PanTompkinsQRS/src/panTompkins.h"
+  include-directives:
+    - "ios/Classes/PanTompkinsQRS/src/panTompkins.h"

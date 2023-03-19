@@ -1,10 +1,17 @@
+import "package:flutter/foundation.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
 const realTime = "实时心电";
-const style = "样式";
+const bpm = "次/分";
+const heartRateDetecting = "正在检测心率";
+const heartRateNotAvailableOnWeb = "Web 端不支持心率检测";
+const leadI = "I 导联";
+const leadII = "II 导联";
+const leadIII = "III 导联";
+const style = "显示风格";
 const simple = "简洁";
 const professional = "专业";
-const custom = "自定义";
+const custom = "自定";
 const portraitDuration = "竖屏数据范围";
 const landscapeDuration = "横屏数据范围";
 const refreshRate = "刷新率";
@@ -22,6 +29,7 @@ const history = "历史心电";
 const autoUpload = "自动上传";
 
 const analytics = "分析报告";
+const autoGenerate = "自动生成";
 
 const deviceManager = "设备管理";
 const bluetoothConnected = "蓝牙已连接";
@@ -41,17 +49,27 @@ const settings = "设置";
 
 const devTools = "开发者工具";
 const showDevTools = "显示开发者工具";
+const devToolsDesc = "部分工具仅在 Debug 构建中可用";
+const currentBuildMode = "当前构建模式：";
+const restartNeeded = "需要重启应用";
+const restart = "重启";
 const fakeDevice = "模拟设备";
 const fakeDeviceModel = "Fake-Device";
 const modelTest = "模型测试";
 const pass = "通过";
 const fail = "失败";
 const loggerLevel = "日志等级";
+const networkTest = "网络测试";
 const showDots = "显示数据点";
 
 const about = "关于";
 const appName = "心电监测";
 late final String version;
+const buildMode = kReleaseMode
+    ? "Release"
+    : kProfileMode
+        ? "Profile"
+        : "Debug";
 const changelog = "更新日志";
 
 const sentryDsn =
@@ -59,6 +77,6 @@ const sentryDsn =
     "/4504697112625152";
 
 Future<void> initPackageInfo() async {
-  final packageInfo = await PackageInfo.fromPlatform();
-  version = "${packageInfo.version}+${packageInfo.buildNumber}";
+  final info = await PackageInfo.fromPlatform();
+  version = "${info.version}+${info.buildNumber} $buildMode Build";
 }

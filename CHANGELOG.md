@@ -1,5 +1,311 @@
 # Changelog
 
+## [0.20.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.1...v0.20.2) (2023-03-17)
+
+### Bug Fixes
+
+- **home:** import foundation ([5be1281](https://github.com/CCXXXI/ecg_monitor/commit/5be1281d91931ff5453cfbaf22a32c3a70d4ff07))
+
+### Reverts
+
+- Revert "refactor(device): move device.dart to device/" ([f9a7c9b](https://github.com/CCXXXI/ecg_monitor/commit/f9a7c9b05835b5926b45ff0cf030d893b8603860))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.27 ([#213](https://github.com/CCXXXI/ecg_monitor/issues/213)) ([0d45998](https://github.com/CCXXXI/ecg_monitor/commit/0d45998a0066d30caaf0a5bf5efa066001c0b644))
+
+### Build System
+
+- add functional_widget ([2466780](https://github.com/CCXXXI/ecg_monitor/commit/2466780bca7d87350b817c9dcb879f5ae5193d14))
+- flutter pub upgrade ([1813592](https://github.com/CCXXXI/ecg_monitor/commit/1813592efdf6ae708528b808b32932d895810f0c))
+
+### Code Refactoring
+
+- **analytics:** make Analytics swidget ([687483c](https://github.com/CCXXXI/ecg_monitor/commit/687483c8462aa3c09595ef7534b2d4c0a1da8a0b))
+- **chart:** make Chart swidget ([d9d33ad](https://github.com/CCXXXI/ecg_monitor/commit/d9d33ad5015a8c37872c6c08779e43d0a89d2b07))
+- **chart:** make Chart3Lead swidget ([fa29ed5](https://github.com/CCXXXI/ecg_monitor/commit/fa29ed5b1600224db02bf647f88ef0fa245f1366))
+- **device:** make DeviceList cwidget ([8fa144d](https://github.com/CCXXXI/ecg_monitor/commit/8fa144dd5a96380fb0c0b5d23386e774579673d0))
+- **device:** make DeviceManager cwidget ([24123d2](https://github.com/CCXXXI/ecg_monitor/commit/24123d2be894d25605a1bd88dcf56c0abc4dce00))
+- **device:** make DeviceNew cwidget ([9237485](https://github.com/CCXXXI/ecg_monitor/commit/9237485b66dc9cfae0fa59f6f7c2407f3a7e702f))
+- **device:** make NoDevice swidget ([6a128cf](https://github.com/CCXXXI/ecg_monitor/commit/6a128cfd205042be4dace138ee16167b9b1691cc))
+- **device:** move device.dart to device/ ([e99b8a1](https://github.com/CCXXXI/ecg_monitor/commit/e99b8a19d767d8eb2bd58c36dd7dedc89aeb5250))
+- enable debugFillProperties for functional_widget ([b81662a](https://github.com/CCXXXI/ecg_monitor/commit/b81662a090672394ab36a5faeb341e964db33b32))
+- **heart-rate:** make HeartRateWidget (stub ver) swidget ([8af1fd4](https://github.com/CCXXXI/ecg_monitor/commit/8af1fd4dd6124844a55fa7020b0a244984bba39c))
+- **heart-rate:** make HeartRateWidget cwidget ([3319f1c](https://github.com/CCXXXI/ecg_monitor/commit/3319f1c529c1210cb2f905529ffba291613a4dba))
+- **heart-rate:** remove unused context param ([f5d88b2](https://github.com/CCXXXI/ecg_monitor/commit/f5d88b27374af59cfd10bbca6e9202a2c24ac47c))
+- **history:** make History swidget ([eed1b05](https://github.com/CCXXXI/ecg_monitor/commit/eed1b059c9fb34c2af42608ac80bea53d1fe0d67))
+- **home:** make Home cwidget ([712b4e3](https://github.com/CCXXXI/ecg_monitor/commit/712b4e3a782d3d439869aabe2aaa1d71e17d5beb))
+- **main:** make App swidget ([3a1f804](https://github.com/CCXXXI/ecg_monitor/commit/3a1f804f2f758d9e3dd635c90f4f7f0591b9e1a1))
+- **main:** make AppCore swidget ([98636ea](https://github.com/CCXXXI/ecg_monitor/commit/98636eaad1fe6895ef6eee6c640314766c14464b))
+- **main:** reorder ([969ff06](https://github.com/CCXXXI/ecg_monitor/commit/969ff065eb19915684eeada2fe7f958fd90701af))
+- **me:** make Me swidget ([3f506bd](https://github.com/CCXXXI/ecg_monitor/commit/3f506bdc726374e2e5a6b41dd5e07ba0d5daf606))
+- **real-time:** make RealTime swidget ([a2a4a7a](https://github.com/CCXXXI/ecg_monitor/commit/a2a4a7a568cf9f96994c11fe37bde720c942c9df))
+- **real-time:** make RealTimeChart cwidget ([ba07dc0](https://github.com/CCXXXI/ecg_monitor/commit/ba07dc06755dd3b9557e3c3bac333cdd92239ab0))
+- **settings:** make ChartSettings swidget ([617b8c9](https://github.com/CCXXXI/ecg_monitor/commit/617b8c9bdd18d412f706a1c15a280e68b23947e4))
+- **settings:** make SectionTitle swidget ([def213d](https://github.com/CCXXXI/ecg_monitor/commit/def213d6648ca8c0e0091000a29922172bb53b2c))
+- **settings:** make Settings cwidget ([b197d68](https://github.com/CCXXXI/ecg_monitor/commit/b197d68fcebb96386616e5878f24c44403e5f7f1))
+
+## [0.20.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.0...v0.20.1) (2023-03-16)
+
+### Continuous Integration
+
+- **build:** also build debug version ([#210](https://github.com/CCXXXI/ecg_monitor/issues/210)) ([fd488f0](https://github.com/CCXXXI/ecg_monitor/commit/fd488f0d6befbf12dea70ea05480e13066462baf))
+
+## [0.20.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.19.0...v0.20.0) (2023-03-16)
+
+### Features
+
+- **chart:** less barWidth ([ea1470f](https://github.com/CCXXXI/ecg_monitor/commit/ea1470f7863385d9f70e8736e3f7ad790b464a23))
+- **dio:** addSentry ([65a4b0d](https://github.com/CCXXXI/ecg_monitor/commit/65a4b0dee81bba5be07cf5bfb7534657f33b9f43))
+- **heart-rate:** 10s -&gt; 5 QRSs ([25fd505](https://github.com/CCXXXI/ecg_monitor/commit/25fd5055f5ba3caf0ea87b148d58869a8cd3f374))
+- **heart-rate:** show progress ([9f44033](https://github.com/CCXXXI/ecg_monitor/commit/9f440331aa46eb41b727f1d81ac1683ca8e4f206)), closes [#199](https://github.com/CCXXXI/ecg_monitor/issues/199)
+
+### Bug Fixes
+
+- **deps:** update dependency sentry_flutter to v7 ([#206](https://github.com/CCXXXI/ecg_monitor/issues/206)) ([c460f33](https://github.com/CCXXXI/ecg_monitor/commit/c460f334f3b06af73832033f4d2fd7d0f924385b))
+- **deps:** update dependency sentry_logging to v7 ([#207](https://github.com/CCXXXI/ecg_monitor/issues/207)) ([de73885](https://github.com/CCXXXI/ecg_monitor/commit/de73885d44e1ff933d4843bafa8cb95ae8225cb7))
+- **heart-rate:** 4s learning & 1 beat ([b6bf0cf](https://github.com/CCXXXI/ecg_monitor/commit/b6bf0cff7cf78ffd30ea89f1679c22a74b58731e))
+- **heart-rate:** reset start time & buffer when rebuild ([12e75cf](https://github.com/CCXXXI/ecg_monitor/commit/12e75cfb0aaf19d25a337b3c94be15c267f97538))
+- **heart-rate:** update PanTompkinsQRS ([91c80eb](https://github.com/CCXXXI/ecg_monitor/commit/91c80ebdfb5f30be39a41f9f5c39d60f4ad76852))
+
+### Reverts
+
+- make HeartRateData public again ([6e2c8b9](https://github.com/CCXXXI/ecg_monitor/commit/6e2c8b9a0948a2e036ec576a28624b3e1c07a792))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.26 ([#205](https://github.com/CCXXXI/ecg_monitor/issues/205)) ([5063487](https://github.com/CCXXXI/ecg_monitor/commit/5063487ae55ff3742537d31c7681dfd04fa8cc38))
+
+### Code Refactoring
+
+- **heart-rate:** make HeartRateData private ([3b7d055](https://github.com/CCXXXI/ecg_monitor/commit/3b7d0555b567188fc968cfc2210549200afa1b55))
+- **heart-rate:** make HeartRateData visible for testing ([a4f9286](https://github.com/CCXXXI/ecg_monitor/commit/a4f9286b06e2b2ad826e05e06901356d580d2734))
+- **heart-rate:** rename HeartRate to HeartRateWidget ([6595ccb](https://github.com/CCXXXI/ecg_monitor/commit/6595ccbc3dc4265f08f0dc60e42ca25cb1939c17))
+- **heart-rate:** rename heartRateUnit to bpm ([5ff4d2a](https://github.com/CCXXXI/ecg_monitor/commit/5ff4d2aaad8a89e732799e5390ec4482a83b41e0))
+- **heart-rate:** rename rate to data ([19024b9](https://github.com/CCXXXI/ecg_monitor/commit/19024b989b895033f39ccf325fc35c6b1a44bb44))
+- use DateTime instead of double for EcgData.time ([#202](https://github.com/CCXXXI/ecg_monitor/issues/202)) ([843d723](https://github.com/CCXXXI/ecg_monitor/commit/843d72341a9371af0c2d7f4d5fc3a00630b7c88f))
+
+### Tests
+
+- **heart-rate:** add test for HeartRateData ([98b1eff](https://github.com/CCXXXI/ecg_monitor/commit/98b1eff7ad8385d9c1296d85773b7958ca92d600))
+
+### Build System
+
+- flutter pub add sentry_dio ([11fe38c](https://github.com/CCXXXI/ecg_monitor/commit/11fe38c422f274e719658f979a671339f9e8da3b))
+
+## [0.19.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.18.0...v0.19.0) (2023-03-15)
+
+### Features
+
+- **dio:** add PrettyDioLogger ([1dc73f0](https://github.com/CCXXXI/ecg_monitor/commit/1dc73f01207c40da9bad5dafaaa2ce4166aa74ed))
+- **settings:** add network test ([91500f8](https://github.com/CCXXXI/ecg_monitor/commit/91500f84c8bbaeb4a121ddba365ff38b6e06da6d))
+- **settings:** update test url ([e58634f](https://github.com/CCXXXI/ecg_monitor/commit/e58634fee35eee68c6d132b0c173986ac1d67ba1))
+- **ume:** add DataCleanPanel ([9c64d61](https://github.com/CCXXXI/ecg_monitor/commit/9c64d612920cfeb8891e0b38490fb72ca701ada2))
+- **ume:** add DesignerCheck ([d4d720e](https://github.com/CCXXXI/ecg_monitor/commit/d4d720e024ef8095dda8059dc2d50de874a682e8))
+- **ume:** add DioInspector ([570993b](https://github.com/CCXXXI/ecg_monitor/commit/570993bda803edf3911332c94233699255c4b4bf))
+- **ume:** add SharedPreferencesInspector ([fc35af6](https://github.com/CCXXXI/ecg_monitor/commit/fc35af60c5eab10d08a7a688ed73d9b23998c852))
+- **ume:** add SlowAnimation ([a61f65c](https://github.com/CCXXXI/ecg_monitor/commit/a61f65ccd45a4bf88716367e2b6be5a5668526de))
+
+### Code Refactoring
+
+- **settings:** reorder classes ([5aa2fed](https://github.com/CCXXXI/ecg_monitor/commit/5aa2fed791e1df2b1d2839d1096ea1458ebec1f0))
+
+### Documentation
+
+- **ume:** remove useless comment ([2e6541f](https://github.com/CCXXXI/ecg_monitor/commit/2e6541fb1d166fa7202ce83dd594e69595ebcedc))
+
+### Build System
+
+- add & override flutter_ume_kit_clean_local_data ([d797b5d](https://github.com/CCXXXI/ecg_monitor/commit/d797b5def260faabb593e158509bfac2c82a6121))
+- add & override flutter_ume_kit_designer_check ([7148a92](https://github.com/CCXXXI/ecg_monitor/commit/7148a920373acbdf34687ce35fc15ed3c383ba6c))
+- add & override flutter_ume_kit_shared_preferences ([e5930a3](https://github.com/CCXXXI/ecg_monitor/commit/e5930a37ebd62ae6d76e5790c17b19db7cfb1f50))
+- add & override flutter_ume_kit_slow_animation ([b3100dd](https://github.com/CCXXXI/ecg_monitor/commit/b3100ddf3b15143d1ef8b85d2e00eb84dd4117e5))
+- flutter pub add dio ([9b68334](https://github.com/CCXXXI/ecg_monitor/commit/9b68334f948eb1807775ee209058567c50b6cbe5))
+- flutter pub add flutter_ume_kit_dio ([e06044a](https://github.com/CCXXXI/ecg_monitor/commit/e06044a49cc3740cf598f1430c6d7274f6c481cc))
+- flutter pub add pretty_dio_logger ([3c0d85b](https://github.com/CCXXXI/ecg_monitor/commit/3c0d85b4b9af6bfe59d54e7094434a2bc458b763))
+- override flutter_ume_kit_dio ([b58ca0b](https://github.com/CCXXXI/ecg_monitor/commit/b58ca0bf85ec7667439da8e79ffff5761f11194f))
+- override flutter_ume_kit_perf & flutter_ume_kit_show_code ([fb026a1](https://github.com/CCXXXI/ecg_monitor/commit/fb026a113e0bd9cd14e9cdb8b7960761599936a9))
+- remove git ref in overrides ([30a136d](https://github.com/CCXXXI/ecg_monitor/commit/30a136dd8a7df8009670a711f507205d62fb68f9))
+- upgrade dependencies ([9d93c50](https://github.com/CCXXXI/ecg_monitor/commit/9d93c506cf95fd0500543df0c1891e2562cdbab5))
+
+## [0.18.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.1...v0.18.0) (2023-03-14)
+
+### ⚠ BREAKING CHANGES
+
+- **settings:** landscapeDuration cannot be larger than 10.
+
+### Features
+
+- add PanTompkinsQRS license to about ([6d5c825](https://github.com/CCXXXI/ecg_monitor/commit/6d5c825ed5fd5a047e48e54c28e7e96e40232ce1))
+- **chart:** add title ([2362194](https://github.com/CCXXXI/ecg_monitor/commit/2362194cb4fed84e442817c800cbd1af6fcc93f1))
+- **real_time:** show fake heart rate ([349905d](https://github.com/CCXXXI/ecg_monitor/commit/349905dfc5d50309f4967a9fb32b620c7368466a))
+- **realtime:** 3-lead data ([46f673b](https://github.com/CCXXXI/ecg_monitor/commit/46f673bc11859cdb1035198892c8beb7af69b934))
+- **realtime:** 3-lead UI ([d185ecc](https://github.com/CCXXXI/ecg_monitor/commit/d185ecc1dbe0709ed6e494aa7defe3c61a4fde60))
+- **realtime:** show heart rate ([3a97223](https://github.com/CCXXXI/ecg_monitor/commit/3a972235ec7704cbca4812d855f385f9fb5cf21a))
+- **realtime:** show heartRateDetecting notice ([b034b9b](https://github.com/CCXXXI/ecg_monitor/commit/b034b9b4743ce4222778896149d1d137be07c66c))
+- **settings:** landscapeDuration is 1~10 now ([0ee66fb](https://github.com/CCXXXI/ecg_monitor/commit/0ee66fbc2eed69e8a7b498af59077cc7dfa6e0f0))
+- **settings:** set default landscapeDuration to 2 ([5bd98ff](https://github.com/CCXXXI/ecg_monitor/commit/5bd98ff9939caeb1a242661f9b4b2f0246a23874))
+
+### Bug Fixes
+
+- disable heart rate on web ([75bde8e](https://github.com/CCXXXI/ecg_monitor/commit/75bde8e2efe0968901b3ece99eebc2da4b1a91b1))
+
+### Documentation
+
+- **readme:** Submodules -&gt; Related Repositories ([521e858](https://github.com/CCXXXI/ecg_monitor/commit/521e858bf5db67611c1165d8372f7685584c2344))
+- **readme:** update submodules desc ([3b7197e](https://github.com/CCXXXI/ecg_monitor/commit/3b7197ee9162b0a1ecda1e0b1f552b70a24843bd))
+
+### Build System
+
+- add PanTompkinsQRS to CMakeLists.txt ([6f7acb3](https://github.com/CCXXXI/ecg_monitor/commit/6f7acb3ee5f942f2a5343e5f7dff089ff855f0ae))
+- correct CMakeLists.txt ([09e6aba](https://github.com/CCXXXI/ecg_monitor/commit/09e6aba79a17cf31a1329d8a459612aa03102a89))
+- flutter pub add dev:ffigen ffi ([4cb1da0](https://github.com/CCXXXI/ecg_monitor/commit/4cb1da03eb35bc24fa990e20731022f088d60a6a))
+
+### Miscellaneous Chores
+
+- save IDEA config ([cc6ad35](https://github.com/CCXXXI/ecg_monitor/commit/cc6ad35dd7d001410ecb09a96c943c0727805fec))
+- update IDEA config ([1b2d034](https://github.com/CCXXXI/ecg_monitor/commit/1b2d034f29be180f2eb283f959c63b8d20fea2bc))
+- update input data ([0834783](https://github.com/CCXXXI/ecg_monitor/commit/0834783fb2c0ca0c67b1891cee36015a05afae3a))
+- update PanTompkinsQRS ([7f58f27](https://github.com/CCXXXI/ecg_monitor/commit/7f58f27b45cb28714d52ea287cfb5ae0f26c29fb))
+- update PanTompkinsQRS ([20b5b12](https://github.com/CCXXXI/ecg_monitor/commit/20b5b1250936d1e2c939a3920419a6df89c09d6d))
+- update submodule ([c4210a6](https://github.com/CCXXXI/ecg_monitor/commit/c4210a622e71bb563710ed49a86777412f13fbbf))
+- update submodules again ([#196](https://github.com/CCXXXI/ecg_monitor/issues/196)) ([c3826d9](https://github.com/CCXXXI/ecg_monitor/commit/c3826d9b109fcf7d3121d61cd729194637af7fa3))
+
+### Tests
+
+- add test for license ([403ec37](https://github.com/CCXXXI/ecg_monitor/commit/403ec37d00eeeea05165e4827e0ab2fbdf092ae6))
+- **device:** initData before tests ([e34c602](https://github.com/CCXXXI/ecg_monitor/commit/e34c6028edc25c8b7739f03062dc8ad177e54e99))
+
+### Styles
+
+- restyle by prettier-yaml ([28e0dfe](https://github.com/CCXXXI/ecg_monitor/commit/28e0dfe5f1e53b3d1589a2ec5a330b7163c55407))
+
+### Continuous Integration
+
+- **build:** checkout submodules ([395a951](https://github.com/CCXXXI/ecg_monitor/commit/395a951d59ca981540adc307b72f11d15521d230))
+- **check:** checkout submodules ([f9984bf](https://github.com/CCXXXI/ecg_monitor/commit/f9984bfc72a37615fbd505eaa0e83dc9cfb384c0))
+- **check:** ignore generated_bindings ([f68e86b](https://github.com/CCXXXI/ecg_monitor/commit/f68e86b1c673a1bfebb855ce61684c00d004c9c5))
+- **coverage:** add codecov token ([#197](https://github.com/CCXXXI/ecg_monitor/issues/197)) ([8d96f8a](https://github.com/CCXXXI/ecg_monitor/commit/8d96f8a787949317c808b0bcde8b6c87e29cda20))
+- **restyled:** update restyled config ([#192](https://github.com/CCXXXI/ecg_monitor/issues/192)) ([e9bb6ec](https://github.com/CCXXXI/ecg_monitor/commit/e9bb6ec1b98445d782eecff512ad31156b43b1c6))
+- update renovate.json ([afc71f1](https://github.com/CCXXXI/ecg_monitor/commit/afc71f1f87d4d99f35cd28356c2c6bdf898446ae))
+
+### Code Refactoring
+
+- 3-leads ([c0d2966](https://github.com/CCXXXI/ecg_monitor/commit/c0d29667f8c31288254bc0e5b313b8faa2598ee1))
+- add EcgData ([01cd7b5](https://github.com/CCXXXI/ecg_monitor/commit/01cd7b5f7481b333f795fbe446d0b115b7df8169))
+- correct import ([37a9da8](https://github.com/CCXXXI/ecg_monitor/commit/37a9da85f76f54012bbc4ec75f1e00ffa52272a8))
+- flutter pub run ffigen ([a60378c](https://github.com/CCXXXI/ecg_monitor/commit/a60378c30282cc9b491f0d8a5fc5ba8e70071ce8)), closes [#178](https://github.com/CCXXXI/ecg_monitor/issues/178)
+- **heart-rate:** improve ffigen config ([26ca85a](https://github.com/CCXXXI/ecg_monitor/commit/26ca85a5a7c80e43135bbbecaae00dd99e06c2a5))
+- move & add submodules ([394403e](https://github.com/CCXXXI/ecg_monitor/commit/394403e7c6f151daaa24d7637f900fc258c174f3))
+- move heart rate to subfolder ([ef802b8](https://github.com/CCXXXI/ecg_monitor/commit/ef802b820409824e749041768889b2a64d714d33))
+- move real time chart to subfolder ([1d3e086](https://github.com/CCXXXI/ecg_monitor/commit/1d3e08654f6f5aee4fdf328f9b576a4180491771))
+- **real_time:** HeartRate widget ([e820a5f](https://github.com/CCXXXI/ecg_monitor/commit/e820a5fecad0c5be409384786246f8ef9c12f31b))
+- **realtime:** extract add & addPoint ([9afb48e](https://github.com/CCXXXI/ecg_monitor/commit/9afb48e01413a5e286317b849a6035d2a95f6e16))
+
+## [0.17.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.17.0...v0.17.1) (2023-03-07)
+
+### Bug Fixes
+
+- **device:** correct FakeDevice.ecgStream ([79f1248](https://github.com/CCXXXI/ecg_monitor/commit/79f1248a29c3eb99989c12122d11966f2155ae09))
+
+### Documentation
+
+- **realtime:** improve docstring ([4435386](https://github.com/CCXXXI/ecg_monitor/commit/4435386ccd5c953592681de80cf4b3055547b54e))
+
+### Code Refactoring
+
+- **device:** reorder fields ([fef0669](https://github.com/CCXXXI/ecg_monitor/commit/fef0669526e7d97e09f5b66189fd2c5216de4f09))
+- **device:** separate fakeDevice ([fadebb1](https://github.com/CCXXXI/ecg_monitor/commit/fadebb199fee08318b608672c3acab890516adf6))
+- **realtime:** extract & rename distance ([c1cffa7](https://github.com/CCXXXI/ecg_monitor/commit/c1cffa7c40f5d5e1683a4309d2413bbe9be5ff75))
+- **realtime:** log for Points.add ([ef51501](https://github.com/CCXXXI/ecg_monitor/commit/ef5150195190980563cff9934d5a1488524000c7))
+
+### Tests
+
+- **device:** add test for fake device ([ff4bcdd](https://github.com/CCXXXI/ecg_monitor/commit/ff4bcdd5ec633eaca24c7052c61379f425c32216))
+
+## [0.17.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.16.0...v0.17.0) (2023-03-07)
+
+### Features
+
+- **settings:** add analytics.autoGenerate setting ([094c940](https://github.com/CCXXXI/ecg_monitor/commit/094c94020a3ffd72ba721823c99b508c13d32ecf))
+- **settings:** reorder settings ([cd02420](https://github.com/CCXXXI/ecg_monitor/commit/cd02420f20ec74c47d971d8150cd489b15f20864))
+- **settings:** update strings ([9ba26c6](https://github.com/CCXXXI/ecg_monitor/commit/9ba26c61e0250b0e74bf0a6e5bb2129156ab5987))
+
+### Code Refactoring
+
+- **settings:** move Divider out of \_ChartSettings ([8ec58fe](https://github.com/CCXXXI/ecg_monitor/commit/8ec58fed2f6305ece8319a225bfebe5c5be980dd))
+
+## [0.16.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.2...v0.16.0) (2023-03-07)
+
+### Features
+
+- add restart action ([1b94e8d](https://github.com/CCXXXI/ecg_monitor/commit/1b94e8d82d8df1473d6460f1d08d1dcf30e2278b))
+- add ume plugins ([eb3efaf](https://github.com/CCXXXI/ecg_monitor/commit/eb3efaf035f10a302ebf13c5037f6a083ceabd56))
+- **me:** add build type to about ([4d4b127](https://github.com/CCXXXI/ecg_monitor/commit/4d4b127737c9047f9641abc032fe4df707af18dc))
+- **settings:** add desc for devTools ([eede45b](https://github.com/CCXXXI/ecg_monitor/commit/eede45badbf995661df922b993b8990d9c351ad9))
+- **settings:** enable ume iff show dev tools ([e2f36a5](https://github.com/CCXXXI/ecg_monitor/commit/e2f36a5136fc5c5b02c1c3fe1e02606b27d19da3))
+- **ume:** log to console ([4870b7a](https://github.com/CCXXXI/ecg_monitor/commit/4870b7aa6babfbba5eb37068c78fa8233d1d67da))
+
+### Bug Fixes
+
+- **ume:** disable some plugins in release mode ([9058450](https://github.com/CCXXXI/ecg_monitor/commit/905845082fbc3876a3d2c0fd40c12d87b779eb42))
+- universal_io ([0562e4c](https://github.com/CCXXXI/ecg_monitor/commit/0562e4c58622c2efdc00b612258569fae1f6b04e))
+
+### Reverts
+
+- Revert "build: flutter pub remove flutter_launcher_icons" ([427118e](https://github.com/CCXXXI/ecg_monitor/commit/427118e8c09b321799409ea986c754b793e21149))
+- Revert "build: override dependency" ([f9bd357](https://github.com/CCXXXI/ecg_monitor/commit/f9bd3579c2a9105499ea1af8199172fdd6beb1d9))
+- Revert "docs: add comment for flutter_launcher_icons" ([688270a](https://github.com/CCXXXI/ecg_monitor/commit/688270a992857219486c100ccc4ed0d0657b739e))
+
+### Documentation
+
+- add comment for flutter_launcher_icons ([b03f64d](https://github.com/CCXXXI/ecg_monitor/commit/b03f64d49b333d410a5b875cb05dfb9199d6c1ef))
+
+### Code Refactoring
+
+- dart fix ([5e1e0c9](https://github.com/CCXXXI/ecg_monitor/commit/5e1e0c9b6109979be7f13618f3861742a1660bc0))
+- **logger:** update home logger name ([31de3a2](https://github.com/CCXXXI/ecg_monitor/commit/31de3a2790a8c70f8e73e31094913c1fb361cedf))
+- **main:** extract AppCore ([2fdf551](https://github.com/CCXXXI/ecg_monitor/commit/2fdf5515e76a2f14b5a937ee93025ed3c337fcc0))
+- simplify imports ([9f8e735](https://github.com/CCXXXI/ecg_monitor/commit/9f8e735019d3d0747fc45c017168fc7af42bb953))
+
+### Miscellaneous Chores
+
+- save idea config ([2c5263d](https://github.com/CCXXXI/ecg_monitor/commit/2c5263dfd1db0d782aa2f4cfdacecc5339e69f81))
+
+### Build System
+
+- add ume packages ([a050dec](https://github.com/CCXXXI/ecg_monitor/commit/a050decdcd4ada80532019478f3a9755d9e309fc))
+- flutter pub add restart_app ([c2dba73](https://github.com/CCXXXI/ecg_monitor/commit/c2dba737963c5df9a4d2351e42100985d2834b78))
+- flutter pub add universal_io ([21cecfb](https://github.com/CCXXXI/ecg_monitor/commit/21cecfb0aba187558f60bef53fe7a5b4d41b3400))
+- flutter pub get ([cbb6f35](https://github.com/CCXXXI/ecg_monitor/commit/cbb6f3517aeaae972a0e78b364b2221f8fa3d0ad))
+- flutter pub remove flutter_launcher_icons ([b2a3e6f](https://github.com/CCXXXI/ecg_monitor/commit/b2a3e6f2ae1d8516e81e6751a5d120cadee2b31e))
+- flutter pub remove flutter_ume_kit_dio ([9b5ef2c](https://github.com/CCXXXI/ecg_monitor/commit/9b5ef2c41f4c243b9417f7121a51543b2a98423c))
+- flutter pub upgrade ([f324aac](https://github.com/CCXXXI/ecg_monitor/commit/f324aac56631e33740e4987fa3261fa6e497d8d8))
+- flutter pub upgrade ([1feb8ac](https://github.com/CCXXXI/ecg_monitor/commit/1feb8acc76463c3faddc1d3ed1b1d4c77be0c1f1))
+- override dependency ([0cf896a](https://github.com/CCXXXI/ecg_monitor/commit/0cf896aa43d5f9d01fa0f97f66c5197975d7a525))
+- override ume dependencies ([aace266](https://github.com/CCXXXI/ecg_monitor/commit/aace2665dcc1b89a73f96868e2190e23aff8bce3))
+
+## [0.15.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.1...v0.15.2) (2023-03-03)
+
+### Continuous Integration
+
+- **build:** correct bool comparison ([f1b18d2](https://github.com/CCXXXI/ecg_monitor/commit/f1b18d2f1a7fe100a9901d7571dac7c4f4f40b5a))
+- **build:** correct ref check ([701883f](https://github.com/CCXXXI/ecg_monitor/commit/701883f417009880b2bd2cc6d18d6c290f19df36))
+- **build:** merge all release files to same artifact ([f75e988](https://github.com/CCXXXI/ecg_monitor/commit/f75e988b4c02eb96260f4811b4c0585b6fa1aab5))
+- **build:** release more files ([74bdd0f](https://github.com/CCXXXI/ecg_monitor/commit/74bdd0fb1a30eff32aca9413ac129676b391690c))
+
+## [0.15.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.15.0...v0.15.1) (2023-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency com.android.tools.build:gradle to v7.4.2 ([#161](https://github.com/CCXXXI/ecg_monitor/issues/161)) ([8e4dbb4](https://github.com/CCXXXI/ecg_monitor/commit/8e4dbb4962e9cba1648e11c37547fc8551878cb4))
+
+### Continuous Integration
+
+- rename release to release-please ([92f1056](https://github.com/CCXXXI/ecg_monitor/commit/92f1056c6a3a84d38bf51417f2a07b194e6ce2dc))
+- sentry ([d3c2603](https://github.com/CCXXXI/ecg_monitor/commit/d3c260343cc39ab2cbc5914a462b30cbcebcb7d3))
+- tag name check for release ([ff14812](https://github.com/CCXXXI/ecg_monitor/commit/ff1481231425edc5eaab2c4535abe5d0a709d583))
+
 ## [0.15.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.14.0...v0.15.0) (2023-02-27)
 
 ### ⚠ BREAKING CHANGES

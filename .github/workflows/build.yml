@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  build-apk:
+  build-apk-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,13 +13,13 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build apk --split-per-abi
+      - run: flutter build apk --split-per-abi --release
       - uses: actions/upload-artifact@v3
         with:
-          name: apk
-          path: build/app/outputs/flutter-apk
+          name: release
+          path: build/app/outputs/flutter-apk/
 
-  build-appbundle:
+  build-apk-debug:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,46 +27,107 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build appbundle
+      - run: flutter build apk --split-per-abi --debug
       - uses: actions/upload-artifact@v3
         with:
-          name: appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
+          name: release
+          path: build/app/outputs/flutter-apk/
 
-  release:
-    needs: [ build-apk, build-appbundle ]
-    if: startsWith(github.ref, 'refs/tags/')
+  build-appbundle-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/checkout@v3
         with:
-          name: apk
-      - uses: actions/download-artifact@v3
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build appbundle --release
+      - uses: actions/upload-artifact@v3
         with:
-          name: appbundle
-      - uses: softprops/action-gh-release@v1
+          name: release
+          path: build/app/outputs/bundle/
+
+  build-appbundle-debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
         with:
-          files: |
-            *.apk
-            *.aab
+          submodules: recursive
+      - uses: ./.github/actions/setup-android
+
+      - run: flutter build appbundle --debug
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: build/app/outputs/bundle/
 
   build-web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: ./.github/actions/setup-flutter
 
       - run: flutter build web --source-maps --base-href /ecg_monitor/
       - uses: actions/upload-pages-artifact@v1
         with:
           path: build/web
+      - uses: actions/upload-artifact@v3
+        with:
+          name: source-maps
+          path: build/web/main.dart.js.map
+
+  check-ref:
+    runs-on: ubuntu-latest
+    outputs:
+      is_version: ${{ steps.check-ref.outputs.is_version }}
+    steps:
+      - id: check-ref
+        run: |
+          if [[ $GITHUB_REF =~ ^refs/tags/v[0-9]+.[0-9]+.[0-9]+$ ]]; then
+              echo "is_version=true" >> $GITHUB_OUTPUT
+          else
+              echo "is_version=false" >> $GITHUB_OUTPUT
+          fi
+
+  release:
+    needs: [ check-ref, build-apk-release, build-apk-debug, build-appbundle-release, build-appbundle-debug ]
+    if: needs.check-ref.outputs.is_version == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: release
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: '**'
 
   release-web:
     permissions:
       pages: write
       id-token: write
-    needs: build-web
-    if: startsWith(github.ref, 'refs/tags/')
+    needs: [ check-ref, build-web ]
+    if: needs.check-ref.outputs.is_version == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/deploy-pages@v1
+      - uses: actions/deploy-pages@v2
+
+  sentry:
+    needs: [ check-ref, build-web ]
+    if: needs.check-ref.outputs.is_version == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: source-maps
+      - uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ccxxxi
+          SENTRY_PROJECT: ecg_monitor
+        with:
+          environment: production
+          sourcemaps: main.dart.js.map
+          version: ${{ github.ref }}
