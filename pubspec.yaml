@@ -60,7 +60,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.3.2
   functional_widget: ^0.10.1
-  riverpod_generator: ^1.0.6
+  riverpod_generator: ^2.0.0
 
 dependency_overrides:
   flutter_ume_kit_clean_local_data:
