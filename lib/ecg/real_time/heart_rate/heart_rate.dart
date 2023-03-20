@@ -43,9 +43,9 @@ class _HeartRate extends _$HeartRate {
   // At the beginning of the QRS detection,
   // a 2 seconds learning phase is needed.
   // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
-  // It seems that 2s is too short for the learning phase.
-  // So, we use 4s.
-  static final _learningPhase = aSecond * 4;
+  // Note: 2s is not enough according to our test.
+  // At least 3s is needed.
+  static final _learningPhase = aSecond * 3;
 
   static const _learningProgressWeight = .7;
 
