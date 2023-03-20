@@ -1,5 +1,5 @@
-import "package:ecg_monitor/database.dart";
 import "package:ecg_monitor/device_manager/fake_device.dart";
+import "package:ecg_monitor/utils/database.dart";
 import "package:ecg_monitor/utils/ecg_data.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";

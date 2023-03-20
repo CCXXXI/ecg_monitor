@@ -1,6 +1,6 @@
-import "package:ecg_monitor/database.dart";
 import "package:ecg_monitor/generated/l10n.dart";
 import "package:ecg_monitor/main.dart";
+import "package:ecg_monitor/utils/database.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:shared_preferences/shared_preferences.dart";

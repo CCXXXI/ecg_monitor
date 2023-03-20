@@ -1,7 +1,7 @@
 import "package:flutter_ume_kit_console/flutter_ume_kit_console.dart";
 import "package:logging/logging.dart";
 
-import "../database.dart";
+import "database.dart";
 import "strings.dart";
 
 final loggerLevels = Level.LEVELS.toList(growable: false)

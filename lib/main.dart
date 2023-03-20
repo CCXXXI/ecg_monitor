@@ -7,8 +7,8 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model.dart";
-import "database.dart";
 import "generated/l10n.dart";
+import "utils/database.dart";
 import "utils/ecg_data.dart";
 import "utils/license.dart";
 import "utils/logger.dart";

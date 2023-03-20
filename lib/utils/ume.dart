@@ -11,7 +11,7 @@ import "package:flutter_ume_kit_show_code/flutter_ume_kit_show_code.dart";
 import "package:flutter_ume_kit_slow_animation/flutter_ume_kit_slow_animation.dart";
 import "package:flutter_ume_kit_ui/flutter_ume_kit_ui.dart";
 
-import "../database.dart";
+import "database.dart";
 import "dio.dart";
 import "strings.dart";
 

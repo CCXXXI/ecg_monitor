@@ -9,8 +9,8 @@ import "package:logging/logging.dart";
 import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../database.dart";
 import "../../generated/l10n.dart";
+import "../../utils/database.dart";
 import "../../utils/dio.dart";
 import "../../utils/logger.dart";
 import "../../utils/strings.dart";
