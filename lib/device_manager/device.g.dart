@@ -20,6 +20,20 @@ final rssiProvider = AutoDisposeStreamProvider<int>.internal(
 );
 
 typedef RssiRef = AutoDisposeStreamProviderRef<int>;
+String _$batteryHash() => r'd011c05bf7bb23f1a99136fa9e2a1262b02d61d4';
+
+/// See also [battery].
+@ProviderFor(battery)
+final batteryProvider = AutoDisposeStreamProvider<int>.internal(
+  battery,
+  name: r'batteryProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$batteryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef BatteryRef = AutoDisposeStreamProviderRef<int>;
 String _$currentDeviceHash() => r'7703f30584c43d9e1723f63fb0159d7d89aaa179';
 
 /// See also [CurrentDevice].

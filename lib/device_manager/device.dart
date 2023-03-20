@@ -72,10 +72,9 @@ class CurrentDevice extends _$CurrentDevice {
 Stream<int> rssi(RssiRef ref) =>
     ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty();
 
-final batteryProvider = StreamProvider.autoDispose<int>(
-  (ref) =>
-      ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty(),
-);
+@riverpod
+Stream<int> battery(BatteryRef ref) =>
+    ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
 
 final connectedProvider = StreamProvider.autoDispose<bool>(
   (ref) =>
