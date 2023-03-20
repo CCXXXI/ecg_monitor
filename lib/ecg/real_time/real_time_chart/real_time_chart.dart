@@ -32,7 +32,7 @@ class _Points extends _$Points {
 
   @override
   List<FlSpot> build(int index) {
-    unawaited(ref.watch(ecgProvider.stream).forEach(_add));
+    unawaited(ref.watch(ecgProvider.future).then(_add));
     return const [];
   }
 

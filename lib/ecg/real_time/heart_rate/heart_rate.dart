@@ -61,7 +61,7 @@ class _HeartRate extends _$HeartRate {
   @override
   HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
-    unawaited(ref.watch(ecgProvider.stream).forEach(_add));
+    unawaited(ref.watch(ecgProvider.future).then(_add));
     return const HeartRateData();
   }
 
