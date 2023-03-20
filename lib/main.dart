@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_ume/flutter_ume.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
@@ -7,12 +8,12 @@ import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
 import "database.dart";
-import "utils/constants/data.dart";
-import "utils/constants/keys.dart" as key;
-import "utils/constants/strings.dart" as str;
+import "generated/l10n.dart";
+import "utils/ecg_data.dart";
 import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
+import "utils/strings.dart";
 import "utils/ume.dart";
 
 part "main.g.dart";
@@ -22,7 +23,7 @@ part "main.g.dart";
 @swidget
 Widget _app(BuildContext context) => SentryScreenshotWidget(
       child: UMEWidget(
-        enable: prefs.getBool(key.showDevTools) ?? false,
+        enable: prefs.getBool(K.showDevTools) ?? false,
         child: const ProviderScope(
           child: AppCore(),
         ),
@@ -33,10 +34,17 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 /// With no additional functionality for testing purposes.
 @swidget
 Widget _appCore(BuildContext context) => MaterialApp.router(
-      title: str.appName,
+      title: fallbackAppName,
       routerConfig: router,
       theme: ThemeData.light(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
     );
 
 void main() async {
@@ -45,7 +53,7 @@ void main() async {
   await initPrefs();
   initUme();
   initLogger();
-  await str.initPackageInfo();
+  await initPackageInfo();
   await loadModel();
   await initData();
   initLicense();
@@ -57,7 +65,7 @@ void main() async {
   await SentryFlutter.init(
     (options) {
       options
-        ..dsn = str.sentryDsn
+        ..dsn = sentryDsn
         ..tracesSampleRate = 1.0
         ..addIntegration(LoggingIntegration())
         ..sendDefaultPii = true;

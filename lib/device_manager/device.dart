@@ -3,7 +3,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../database.dart";
-import "../utils/constants/keys.dart" as key;
+import "../utils/strings.dart";
 import "fake_device.dart";
 
 part "device.freezed.dart";
@@ -51,7 +51,7 @@ abstract class Device {
 class CurrentDevice extends _$CurrentDevice {
   @override
   Device? build() {
-    final id = prefs.getString(key.currentDeviceId);
+    final id = prefs.getString(K.currentDeviceId);
     if (id == fakeDevice.id) {
       return fakeDevice;
     }
@@ -61,9 +61,9 @@ class CurrentDevice extends _$CurrentDevice {
   // ignore: use_setters_to_change_properties
   Future<void> set(Device? device) async {
     if (device == null) {
-      await prefs.remove(key.currentDeviceId);
+      await prefs.remove(K.currentDeviceId);
     } else {
-      await prefs.setString(key.currentDeviceId, device.id);
+      await prefs.setString(K.currentDeviceId, device.id);
     }
     state = device;
   }
@@ -80,7 +80,7 @@ final batteryProvider = StreamProvider.autoDispose<int>(
 
 final connectedProvider = StreamProvider.autoDispose<bool>(
   (ref) =>
-      ref.watch(currentDeviceProvider)?.connectedStream ?? const Stream.empty(),
+      ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false),
 );
 
 final ecgProvider = StreamProvider.autoDispose<EcgData>(

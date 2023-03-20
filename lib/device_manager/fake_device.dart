@@ -1,20 +1,19 @@
 import "package:quiver/time.dart";
 
 import "../database.dart";
-import "../utils/constants/data.dart";
-import "../utils/constants/keys.dart" as key;
-import "../utils/constants/strings.dart" as str;
+import "../utils/ecg_data.dart";
+import "../utils/strings.dart";
 import "device.dart";
 
 class _FakeDevice implements Device {
   @override
-  String get id => str.fakeDevice;
+  String get id => fakeDeviceId;
 
   @override
-  String get name => str.fakeDevice;
+  String get name => fakeDeviceId;
 
   @override
-  String get model => str.fakeDeviceModel;
+  String get model => fakeDeviceId;
 
   @override
   int get fs => 125;
@@ -27,7 +26,7 @@ class _FakeDevice implements Device {
   @override
   Stream<bool> get connectedStream => Stream.periodic(
         aSecond,
-        (_) => prefs.getBool(key.fakeDeviceOn) ?? false,
+        (_) => prefs.getBool(K.fakeDeviceOn) ?? false,
       );
 
   @override

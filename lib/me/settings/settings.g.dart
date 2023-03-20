@@ -167,7 +167,7 @@ class Settings extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loggerLevelHash() => r'ebaf55b5293d9c79705651a69fc8855f7b1e8077';
+String _$loggerLevelHash() => r'96f217b5a75f18911f0b818a32be5b41d9afebd9';
 
 /// See also [_LoggerLevel].
 @ProviderFor(_LoggerLevel)

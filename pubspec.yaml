@@ -16,6 +16,8 @@ dependencies:
   flex_color_picker: ^3.1.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_riverpod: ^2.1.1
   flutter_ume: ^1.1.1
   flutter_ume_kit_clean_local_data: ^1.0.0
@@ -31,6 +33,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   functional_widget_annotation: ^0.10.0
   go_router: ^6.0.1
+  intl: ^0.17.0
   logging: ^1.1.1
   package_info_plus: ^3.0.2
   path: ^1.8.2
@@ -104,3 +107,6 @@ flutter:
     - assets/model.pt
     - ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/
     - ios/Classes/PanTompkinsQRS/LICENSE
+
+flutter_intl:
+  enabled: true
