@@ -43,7 +43,7 @@ class _Points extends _$Points {
       );
 
   void _addPoint(FlSpot point) {
-    _logger.finest(point);
+    _logger.finest("add point $point to chart $index");
 
     // ignore if too close to the previous point
     final minDistance = ref.watch(minDistanceProvider);
