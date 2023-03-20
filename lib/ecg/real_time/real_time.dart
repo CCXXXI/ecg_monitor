@@ -15,7 +15,7 @@ part "real_time.g.dart";
 Widget _realTime(BuildContext context, WidgetRef ref) {
   final s = S.of(context);
 
-  final deviceAvailable = ref.watch(connectedProvider).value ?? false;
+  final deviceAvailable = ref.watch(connectedProvider).value ?? true;
   if (!deviceAvailable) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
