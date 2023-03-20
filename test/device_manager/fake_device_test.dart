@@ -1,6 +1,6 @@
 import "package:ecg_monitor/device_manager/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
-import "package:ecg_monitor/utils/ecg_data.dart";
+import "package:ecg_monitor/utils/debug_data.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
@@ -11,7 +11,7 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({K.fakeDeviceOn: true});
     await initPrefs();
-    await initData();
+    await initDebugData();
   });
 
   group("basic info", () {

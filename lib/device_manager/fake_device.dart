@@ -1,7 +1,7 @@
 import "package:logging/logging.dart";
 
 import "../utils/database.dart";
-import "../utils/ecg_data.dart";
+import "../utils/debug_data.dart";
 import "../utils/strings.dart";
 import "device.dart";
 

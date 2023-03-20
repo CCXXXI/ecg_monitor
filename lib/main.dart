@@ -9,7 +9,7 @@ import "package:sentry_logging/sentry_logging.dart";
 import "analytics/model.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
-import "utils/ecg_data.dart";
+import "utils/debug_data.dart";
 import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
@@ -55,7 +55,7 @@ void main() async {
   initLogger();
   await initPackageInfo();
   await loadModel();
-  await initData();
+  await initDebugData();
   initLicense();
 
   // init Sentry & run app

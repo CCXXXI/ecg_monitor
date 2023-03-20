@@ -14,7 +14,7 @@ const _dataPath = "ios/Classes/PanTompkinsQRS/assets/ecg_data/assets";
 late final List<double> leadI;
 late final List<double> leadII;
 
-Future<void> initData() async {
+Future<void> initDebugData() async {
   leadI = await _loadTxt("$_dataPath/lead I.txt");
   leadII = await _loadTxt("$_dataPath/lead II.txt");
 
