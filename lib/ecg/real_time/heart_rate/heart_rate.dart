@@ -1,4 +1,3 @@
-import "dart:async";
 import "dart:collection";
 import "dart:ffi";
 
@@ -61,7 +60,7 @@ class _HeartRate extends _$HeartRate {
   @override
   HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
-    unawaited(ref.watch(ecgProvider.future).then(_add));
+    ref.listen(ecgProvider.future, (previous, next) async => next.then(_add));
     return const HeartRateData();
   }
 

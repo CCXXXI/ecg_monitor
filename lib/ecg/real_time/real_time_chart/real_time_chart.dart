@@ -1,4 +1,3 @@
-import "dart:async";
 import "dart:collection";
 import "dart:math";
 
@@ -32,7 +31,7 @@ class _Points extends _$Points {
 
   @override
   List<FlSpot> build(int index) {
-    unawaited(ref.watch(ecgProvider.future).then(_add));
+    ref.listen(ecgProvider.future, (previous, next) async => next.then(_add));
     return const [];
   }
 
