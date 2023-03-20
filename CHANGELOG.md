@@ -2,64 +2,56 @@
 
 ## [0.21.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.2...v0.21.0) (2023-03-20)
 
-
 ### Features
 
-* full l10n support ([3ef13b8](https://github.com/CCXXXI/ecg_monitor/commit/3ef13b853d4d503f827a14b7aac13dcd6abd1e5e))
-* l10n for appName ([2db6545](https://github.com/CCXXXI/ecg_monitor/commit/2db65454f3c3efb47b02cfd6d06b2ce3e143fc23))
-* l10n for zh-Hans-CN ([fecbd2a](https://github.com/CCXXXI/ecg_monitor/commit/fecbd2aa16ef1f62021f51f4e68494c7563d8b93))
-* partial l10n for en-Latn-US ([e1a391e](https://github.com/CCXXXI/ecg_monitor/commit/e1a391e3ba56ce2de36e02d6d08511272a996ac2))
-* **real-time:** larger font ([885b76b](https://github.com/CCXXXI/ecg_monitor/commit/885b76b7a309f453411c3ca73cbe76d024c62427))
-* **real-time:** show device manger button if device not available ([fc08cc4](https://github.com/CCXXXI/ecg_monitor/commit/fc08cc4bf42204ee03527d03b0e3eb95791c1735))
-
+- full l10n support ([3ef13b8](https://github.com/CCXXXI/ecg_monitor/commit/3ef13b853d4d503f827a14b7aac13dcd6abd1e5e))
+- l10n for appName ([2db6545](https://github.com/CCXXXI/ecg_monitor/commit/2db65454f3c3efb47b02cfd6d06b2ce3e143fc23))
+- l10n for zh-Hans-CN ([fecbd2a](https://github.com/CCXXXI/ecg_monitor/commit/fecbd2aa16ef1f62021f51f4e68494c7563d8b93))
+- partial l10n for en-Latn-US ([e1a391e](https://github.com/CCXXXI/ecg_monitor/commit/e1a391e3ba56ce2de36e02d6d08511272a996ac2))
+- **real-time:** larger font ([885b76b](https://github.com/CCXXXI/ecg_monitor/commit/885b76b7a309f453411c3ca73cbe76d024c62427))
+- **real-time:** show device manger button if device not available ([fc08cc4](https://github.com/CCXXXI/ecg_monitor/commit/fc08cc4bf42204ee03527d03b0e3eb95791c1735))
 
 ### Bug Fixes
 
-* **me:** l10n app name ([42b4f84](https://github.com/CCXXXI/ecg_monitor/commit/42b4f843325fb7864c8350b826659e9f43863b40))
-* **real-time:** correct connected device check ([fd1fd22](https://github.com/CCXXXI/ecg_monitor/commit/fd1fd22071120dcd30f4311b15e71d629e5f873e))
-* rerun build_runner ([55b38cb](https://github.com/CCXXXI/ecg_monitor/commit/55b38cb4505cb62f7fe95e2a299e53c0aa21be40))
-* shorten en strings ([67f7336](https://github.com/CCXXXI/ecg_monitor/commit/67f7336f69b6f49c8497c6e7cdc2a7d497cb1393))
-
+- **me:** l10n app name ([42b4f84](https://github.com/CCXXXI/ecg_monitor/commit/42b4f843325fb7864c8350b826659e9f43863b40))
+- **real-time:** correct connected device check ([fd1fd22](https://github.com/CCXXXI/ecg_monitor/commit/fd1fd22071120dcd30f4311b15e71d629e5f873e))
+- rerun build_runner ([55b38cb](https://github.com/CCXXXI/ecg_monitor/commit/55b38cb4505cb62f7fe95e2a299e53c0aa21be40))
+- shorten en strings ([67f7336](https://github.com/CCXXXI/ecg_monitor/commit/67f7336f69b6f49c8497c6e7cdc2a7d497cb1393))
 
 ### Build System
 
-* flutter pub add flutter_localizations --sdk=flutter ([9dbb972](https://github.com/CCXXXI/ecg_monitor/commit/9dbb97275336176cbf80cf2559063b661dfcb583))
-* flutter pub add intl ([1018c5f](https://github.com/CCXXXI/ecg_monitor/commit/1018c5fd65e6570cd002d4a153adbf181f440ca5))
-
+- flutter pub add flutter_localizations --sdk=flutter ([9dbb972](https://github.com/CCXXXI/ecg_monitor/commit/9dbb97275336176cbf80cf2559063b661dfcb583))
+- flutter pub add intl ([1018c5f](https://github.com/CCXXXI/ecg_monitor/commit/1018c5fd65e6570cd002d4a153adbf181f440ca5))
 
 ### Continuous Integration
 
-* **check:** ignore generated files ([f9a5d7d](https://github.com/CCXXXI/ecg_monitor/commit/f9a5d7db81d6117bcc333877d3966836eacb7d5a))
-
+- **check:** ignore generated files ([f9a5d7d](https://github.com/CCXXXI/ecg_monitor/commit/f9a5d7db81d6117bcc333877d3966836eacb7d5a))
 
 ### Miscellaneous Chores
 
-* add en arb ([6ba0f72](https://github.com/CCXXXI/ecg_monitor/commit/6ba0f72fef591c733c5478243f728d605995fa43))
-* add zh arb ([fd6c6d5](https://github.com/CCXXXI/ecg_monitor/commit/fd6c6d59d0e6f0f1e01ea9ab256fe2b9c7805094))
-* **deps:** update actions/deploy-pages action to v2 ([#216](https://github.com/CCXXXI/ecg_monitor/issues/216)) ([a41cd76](https://github.com/CCXXXI/ecg_monitor/commit/a41cd76c5be494cb4becb129ef1b153b0e89142c))
-* initialize Flutter Intl ([78f09d8](https://github.com/CCXXXI/ecg_monitor/commit/78f09d8def0a2a1f9691a9d1b551fb135363a3f7))
-* save IDEA setting ([8fdcf90](https://github.com/CCXXXI/ecg_monitor/commit/8fdcf901792bd8f841751b919412516ae4f3d1a0))
-* update IDEA config ([7a14b53](https://github.com/CCXXXI/ecg_monitor/commit/7a14b53b421a6e7596113578f28c2b071bca6361))
-* update l10n ([f040902](https://github.com/CCXXXI/ecg_monitor/commit/f040902e84021463369fa3582d868960506a2a6d))
-
+- add en arb ([6ba0f72](https://github.com/CCXXXI/ecg_monitor/commit/6ba0f72fef591c733c5478243f728d605995fa43))
+- add zh arb ([fd6c6d5](https://github.com/CCXXXI/ecg_monitor/commit/fd6c6d59d0e6f0f1e01ea9ab256fe2b9c7805094))
+- **deps:** update actions/deploy-pages action to v2 ([#216](https://github.com/CCXXXI/ecg_monitor/issues/216)) ([a41cd76](https://github.com/CCXXXI/ecg_monitor/commit/a41cd76c5be494cb4becb129ef1b153b0e89142c))
+- initialize Flutter Intl ([78f09d8](https://github.com/CCXXXI/ecg_monitor/commit/78f09d8def0a2a1f9691a9d1b551fb135363a3f7))
+- save IDEA setting ([8fdcf90](https://github.com/CCXXXI/ecg_monitor/commit/8fdcf901792bd8f841751b919412516ae4f3d1a0))
+- update IDEA config ([7a14b53](https://github.com/CCXXXI/ecg_monitor/commit/7a14b53b421a6e7596113578f28c2b071bca6361))
+- update l10n ([f040902](https://github.com/CCXXXI/ecg_monitor/commit/f040902e84021463369fa3582d868960506a2a6d))
 
 ### Code Refactoring
 
-* **main:** simplify l10n ([56f956e](https://github.com/CCXXXI/ecg_monitor/commit/56f956e49de7656ecc52ea56525bf04ef435238b))
-* merge keys.dart to strings.dart ([7a1317c](https://github.com/CCXXXI/ecg_monitor/commit/7a1317cb7da77d033620f70ef83ea1befc02ab1e))
-* move data.dart ([8b93233](https://github.com/CCXXXI/ecg_monitor/commit/8b93233f308cb91e92d6de5c0b3418b0093912e3))
-* move utils/constants/ to utils/ ([42171e2](https://github.com/CCXXXI/ecg_monitor/commit/42171e268dab258286855d8d40e9782ab52c8cc9))
-* simplify urls ([e960d5d](https://github.com/CCXXXI/ecg_monitor/commit/e960d5dfbf1235a9e04cbf3668de80caa4d3be13))
-
+- **main:** simplify l10n ([56f956e](https://github.com/CCXXXI/ecg_monitor/commit/56f956e49de7656ecc52ea56525bf04ef435238b))
+- merge keys.dart to strings.dart ([7a1317c](https://github.com/CCXXXI/ecg_monitor/commit/7a1317cb7da77d033620f70ef83ea1befc02ab1e))
+- move data.dart ([8b93233](https://github.com/CCXXXI/ecg_monitor/commit/8b93233f308cb91e92d6de5c0b3418b0093912e3))
+- move utils/constants/ to utils/ ([42171e2](https://github.com/CCXXXI/ecg_monitor/commit/42171e268dab258286855d8d40e9782ab52c8cc9))
+- simplify urls ([e960d5d](https://github.com/CCXXXI/ecg_monitor/commit/e960d5dfbf1235a9e04cbf3668de80caa4d3be13))
 
 ### Styles
 
-* dart fix --apply ([ec68485](https://github.com/CCXXXI/ecg_monitor/commit/ec6848525380b1801e70c3b31ad2a12f49a5218d))
-
+- dart fix --apply ([ec68485](https://github.com/CCXXXI/ecg_monitor/commit/ec6848525380b1801e70c3b31ad2a12f49a5218d))
 
 ### Tests
 
-* **main:** fix test ([e2ca98b](https://github.com/CCXXXI/ecg_monitor/commit/e2ca98bf52366bb82469ce8580af686d71d16fd0))
+- **main:** fix test ([e2ca98b](https://github.com/CCXXXI/ecg_monitor/commit/e2ca98bf52366bb82469ce8580af686d71d16fd0))
 
 ## [0.20.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.1...v0.20.2) (2023-03-17)
 
