@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.22.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.21.0...v0.22.0) (2023-03-20)
+
+### Features
+
+- **heart-rate:** smoother progress ([568bd27](https://github.com/CCXXXI/ecg_monitor/commit/568bd27c3d7ddb25f9a67b1fa25e67914d1e27d1))
+
+### Bug Fixes
+
+- **heart-rate:** correct device check ([a8145d1](https://github.com/CCXXXI/ecg_monitor/commit/a8145d1cdda72d5e58ed381d344e27c537600c1e))
+
+### Performance Improvements
+
+- **heart-rate:** shorten learning phase ([7d08f57](https://github.com/CCXXXI/ecg_monitor/commit/7d08f57a1d56c1bb8ee3cf8eaa886bb512fd2200))
+
+### Miscellaneous Chores
+
+- update PanTompkinsQRS submodule ([0899689](https://github.com/CCXXXI/ecg_monitor/commit/0899689a2349f410b6910f35b38294ae994dbcb9))
+
 ## [0.21.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.20.2...v0.21.0) (2023-03-20)
 
 ### Features
