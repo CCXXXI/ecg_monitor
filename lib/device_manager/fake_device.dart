@@ -1,5 +1,4 @@
 import "package:logging/logging.dart";
-import "package:quiver/time.dart";
 
 import "../database.dart";
 import "../utils/ecg_data.dart";
@@ -28,7 +27,7 @@ class _FakeDevice implements Device {
 
   @override
   Stream<bool> get connectedStream => Stream.periodic(
-        aSecond,
+        _tick,
         (_) => prefs.getBool(K.fakeDeviceOn) ?? false,
       );
 

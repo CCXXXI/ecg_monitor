@@ -81,13 +81,5 @@ Stream<bool> connected(ConnectedRef ref) =>
     ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
 
 @riverpod
-Stream<EcgData> ecg(EcgRef ref) {
-  final device = ref.watch(currentDeviceProvider);
-  final connected = ref.watch(connectedProvider).value ?? false;
-
-  if (device == null || !connected) {
-    return const Stream.empty();
-  }
-
-  return device.ecgStream;
-}
+Stream<EcgData> ecg(EcgRef ref) =>
+    ref.watch(currentDeviceProvider)?.ecgStream ?? const Stream.empty();
