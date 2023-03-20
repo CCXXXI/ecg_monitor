@@ -1,9 +1,12 @@
+import "package:logging/logging.dart";
 import "package:quiver/time.dart";
 
 import "../database.dart";
 import "../utils/ecg_data.dart";
 import "../utils/strings.dart";
 import "device.dart";
+
+final _logger = Logger("FakeDevice");
 
 class _FakeDevice implements Device {
   @override
@@ -43,6 +46,7 @@ class _FakeDevice implements Device {
 
       // Yield the next fake ECG data.
       final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % leadI.length;
+      _logger.finest("yield t=$t, i=$i");
       yield EcgData(time: t, leadI: leadI[i], leadII: leadII[i]);
     }
   }
