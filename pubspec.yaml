@@ -34,6 +34,8 @@ dependencies:
   functional_widget_annotation: ^0.10.0
   go_router: ^6.0.1
   intl: ^0.17.0
+  isar: ^3.0.5
+  isar_flutter_libs: ^3.0.5
   logging: ^1.1.1
   package_info_plus: ^3.0.2
   path: ^1.8.2
@@ -58,6 +60,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.3.2
   functional_widget: ^0.10.1
+  isar_generator: ^3.0.5
   riverpod_generator: ^2.0.0
 
 dependency_overrides:
