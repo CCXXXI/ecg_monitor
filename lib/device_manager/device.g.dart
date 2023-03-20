@@ -6,6 +6,20 @@ part of 'device.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$rssiHash() => r'8ee600f40887629b80da91c83a7ea016f4499386';
+
+/// See also [rssi].
+@ProviderFor(rssi)
+final rssiProvider = AutoDisposeStreamProvider<int>.internal(
+  rssi,
+  name: r'rssiProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$rssiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RssiRef = AutoDisposeStreamProviderRef<int>;
 String _$currentDeviceHash() => r'7703f30584c43d9e1723f63fb0159d7d89aaa179';
 
 /// See also [CurrentDevice].
