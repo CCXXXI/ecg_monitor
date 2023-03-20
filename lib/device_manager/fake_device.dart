@@ -43,6 +43,12 @@ class _FakeDevice implements Device {
       // Wait until the next tick.
       await Future<void>.delayed(t.difference(DateTime.now()));
 
+      // Do not yield data if the fake device is off.
+      final fakeDeviceOn = prefs.getBool(K.fakeDeviceOn) ?? false;
+      if (!fakeDeviceOn) {
+        continue;
+      }
+
       // Yield the next fake ECG data.
       final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % leadI.length;
       _logger.finest("yield t=$t, i=$i");
