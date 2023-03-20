@@ -48,6 +48,20 @@ final connectedProvider = AutoDisposeStreamProvider<bool>.internal(
 );
 
 typedef ConnectedRef = AutoDisposeStreamProviderRef<bool>;
+String _$ecgHash() => r'7852c88327c6f9401ae28b7fa1d652a39c1207ec';
+
+/// See also [ecg].
+@ProviderFor(ecg)
+final ecgProvider = AutoDisposeStreamProvider<EcgData>.internal(
+  ecg,
+  name: r'ecgProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$ecgHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef EcgRef = AutoDisposeStreamProviderRef<EcgData>;
 String _$currentDeviceHash() => r'7703f30584c43d9e1723f63fb0159d7d89aaa179';
 
 /// See also [CurrentDevice].

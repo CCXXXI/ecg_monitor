@@ -80,15 +80,14 @@ Stream<int> battery(BatteryRef ref) =>
 Stream<bool> connected(ConnectedRef ref) =>
     ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
 
-final ecgProvider = StreamProvider.autoDispose<EcgData>(
-  (ref) {
-    final device = ref.watch(currentDeviceProvider);
-    final connected = ref.watch(connectedProvider).valueOrNull ?? false;
+@riverpod
+Stream<EcgData> ecg(EcgRef ref) {
+  final device = ref.watch(currentDeviceProvider);
+  final connected = ref.watch(connectedProvider).value ?? false;
 
-    if (device == null || !connected) {
-      return const Stream.empty();
-    }
+  if (device == null || !connected) {
+    return const Stream.empty();
+  }
 
-    return device.ecgStream;
-  },
-);
+  return device.ecgStream;
+}
