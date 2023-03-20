@@ -9,7 +9,7 @@ import "package:sentry_logging/sentry_logging.dart";
 import "analytics/model.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
-import "utils/debug_data.dart";
+import "utils/debug/data.dart";
 import "utils/license.dart";
 import "utils/logger.dart";
 import "utils/router.dart";
