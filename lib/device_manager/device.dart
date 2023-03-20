@@ -76,10 +76,9 @@ Stream<int> rssi(RssiRef ref) =>
 Stream<int> battery(BatteryRef ref) =>
     ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
 
-final connectedProvider = StreamProvider.autoDispose<bool>(
-  (ref) =>
-      ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false),
-);
+@riverpod
+Stream<bool> connected(ConnectedRef ref) =>
+    ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
 
 final ecgProvider = StreamProvider.autoDispose<EcgData>(
   (ref) {

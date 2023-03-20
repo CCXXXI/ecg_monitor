@@ -34,6 +34,20 @@ final batteryProvider = AutoDisposeStreamProvider<int>.internal(
 );
 
 typedef BatteryRef = AutoDisposeStreamProviderRef<int>;
+String _$connectedHash() => r'e990b890af88dd40d385cac4f977f64e29fb3f6c';
+
+/// See also [connected].
+@ProviderFor(connected)
+final connectedProvider = AutoDisposeStreamProvider<bool>.internal(
+  connected,
+  name: r'connectedProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$connectedHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ConnectedRef = AutoDisposeStreamProviderRef<bool>;
 String _$currentDeviceHash() => r'7703f30584c43d9e1723f63fb0159d7d89aaa179';
 
 /// See also [CurrentDevice].
