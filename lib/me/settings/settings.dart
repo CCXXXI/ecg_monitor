@@ -11,8 +11,8 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../generated/l10n.dart";
 import "../../utils/database.dart";
+import "../../utils/debug/logger.dart";
 import "../../utils/dio.dart";
-import "../../utils/logger.dart";
 import "../../utils/strings.dart";
 import "../../utils/urls.dart";
 import "data_types.dart";
