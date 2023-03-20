@@ -25,17 +25,17 @@ final _lib = PanTompkinsQRS(DynamicLibrary.open("libPanTompkinsQRS.so"));
 @freezed
 class HeartRateData with _$HeartRateData {
   const factory HeartRateData({
-    /// If available, the heart rate in beats per minute.
+    /// If ready, the heart rate in beats per minute.
     @Default(0) int rate,
 
-    /// If unavailable, the progress of the calculation. (0.0 - 1.0)
+    /// If not ready, the progress of the calculation. (0.0 - 1.0)
     @Default(0) double progress,
   }) = _HeartRateData;
 
   const HeartRateData._();
 
-  /// Available or not.
-  bool get available => rate > 0;
+  /// Whether the heart rate is ready.
+  bool get ready => rate > 0;
 }
 
 @riverpod
@@ -43,11 +43,9 @@ class _HeartRate extends _$HeartRate {
   // At the beginning of the QRS detection,
   // a 2 seconds learning phase is needed.
   // See: https://en.wikipedia.org/wiki/Pan%E2%80%93Tompkins_algorithm#Thresholds.
-  // It seems that 2s is too short for the learning phase.
-  // So, we use 4s.
-  static final _learningPhase = aSecond * 4;
-
-  static const _learningProgressWeight = .7;
+  // Note: 2s is not enough according to our test.
+  // At least 3s is needed.
+  static final _learningPhase = aSecond * 3;
 
   // Count of beats to calculate heart rate.
   static const _beatCount = 1;
@@ -55,7 +53,9 @@ class _HeartRate extends _$HeartRate {
   // Count of QRSs to calculate heart rate.
   static const _qrsCount = _beatCount + 1;
 
-  final _start = DateTime.now();
+  static final _waitingDuration = _learningPhase + aSecond * _qrsCount;
+
+  final _stopwatch = Stopwatch()..start();
   final _qrsBuffer = Queue<DateTime>();
 
   @override
@@ -66,17 +66,12 @@ class _HeartRate extends _$HeartRate {
   }
 
   void _add(EcgData data) {
-    // Determine if it's in the learning phase.
-    final timeSinceStart = DateTime.now().difference(_start);
-    final isLearning = timeSinceStart < _learningPhase;
-
-    // Update progress if it's in the learning phase.
-    if (isLearning) {
-      final learningProgress =
-          timeSinceStart.inMilliseconds / _learningPhase.inMilliseconds;
-      state = HeartRateData(
-        progress: _learningProgressWeight * learningProgress,
-      );
+    // Update progress if the data is not ready yet.
+    final progress =
+        _stopwatch.elapsedMilliseconds / _waitingDuration.inMilliseconds;
+    final ready = progress >= 1;
+    if (!ready) {
+      state = HeartRateData(progress: progress);
     }
 
     // Ignore if it's not a QRS.
@@ -85,7 +80,7 @@ class _HeartRate extends _$HeartRate {
     }
 
     // Ignore if it's in the learning phase.
-    if (isLearning) {
+    if (_stopwatch.elapsed < _learningPhase) {
       _logger.fine("QRS: ${data.time} (learning phase)");
       return;
     }
@@ -104,10 +99,6 @@ class _HeartRate extends _$HeartRate {
 
     // Too few QRSs to calculate heart rate.
     if (_qrsBuffer.length < _qrsCount) {
-      final calculatingProgress = _qrsBuffer.length / _qrsCount;
-      final progress = _learningProgressWeight +
-          (1 - _learningProgressWeight) * calculatingProgress;
-      state = HeartRateData(progress: progress);
       return;
     }
 
@@ -116,7 +107,9 @@ class _HeartRate extends _$HeartRate {
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
     final bpm = _beatCount / minutes;
     _logger.finer("Heart rate: $bpm bpm");
-    state = HeartRateData(rate: bpm.round());
+    if (ready) {
+      state = HeartRateData(rate: bpm.round());
+    }
   }
 }
 
@@ -126,7 +119,7 @@ Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
 
   final data = ref.watch(_heartRateProvider);
 
-  if (!data.available) {
+  if (!data.ready) {
     return Column(
       children: [
         LinearProgressIndicator(value: data.progress),

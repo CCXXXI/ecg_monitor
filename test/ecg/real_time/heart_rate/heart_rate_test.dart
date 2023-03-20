@@ -5,11 +5,11 @@ void main() {
   group("HeartRateData", () {
     test(
       "available",
-      () => expect(const HeartRateData(rate: 60).available, isTrue),
+      () => expect(const HeartRateData(rate: 60).ready, isTrue),
     );
     test(
       "not available",
-      () => expect(const HeartRateData(progress: .5).available, isFalse),
+      () => expect(const HeartRateData(progress: .5).ready, isFalse),
     );
   });
 }
