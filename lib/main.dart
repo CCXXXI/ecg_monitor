@@ -11,10 +11,10 @@ import "generated/l10n.dart";
 import "utils/database.dart";
 import "utils/debug/data.dart";
 import "utils/debug/logger.dart";
+import "utils/debug/ume.dart";
 import "utils/license.dart";
 import "utils/router.dart";
 import "utils/strings.dart";
-import "utils/ume.dart";
 
 part "main.g.dart";
 
