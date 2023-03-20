@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HeartRateData {
-  /// If available, the heart rate in beats per minute.
+  /// If ready, the heart rate in beats per minute.
   int get rate => throw _privateConstructorUsedError;
 
-  /// If unavailable, the progress of the calculation. (0.0 - 1.0)
+  /// If not ready, the progress of the calculation. (0.0 - 1.0)
   double get progress => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -108,12 +108,12 @@ class __$$_HeartRateDataCopyWithImpl<$Res>
 class _$_HeartRateData extends _HeartRateData {
   const _$_HeartRateData({this.rate = 0, this.progress = 0}) : super._();
 
-  /// If available, the heart rate in beats per minute.
+  /// If ready, the heart rate in beats per minute.
   @override
   @JsonKey()
   final int rate;
 
-  /// If unavailable, the progress of the calculation. (0.0 - 1.0)
+  /// If not ready, the progress of the calculation. (0.0 - 1.0)
   @override
   @JsonKey()
   final double progress;
@@ -150,11 +150,11 @@ abstract class _HeartRateData extends HeartRateData {
 
   @override
 
-  /// If available, the heart rate in beats per minute.
+  /// If ready, the heart rate in beats per minute.
   int get rate;
   @override
 
-  /// If unavailable, the progress of the calculation. (0.0 - 1.0)
+  /// If not ready, the progress of the calculation. (0.0 - 1.0)
   double get progress;
   @override
   @JsonKey(ignore: true)
