@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.22.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.0...v0.22.1) (2023-03-20)
+
+
+### Bug Fixes
+
+* correct ecg stream watchers ([91bed2f](https://github.com/CCXXXI/ecg_monitor/commit/91bed2f50805eb7d5d86ed391b6b6548f607f7f8))
+* **deps:** update dependency riverpod_annotation to v2 ([#165](https://github.com/CCXXXI/ecg_monitor/issues/165)) ([ad1edce](https://github.com/CCXXXI/ecg_monitor/commit/ad1edce349f33b527f354890bac32ab90bfd2e69))
+* **fake-device:** do not yield data if the fake device is off ([cc58190](https://github.com/CCXXXI/ecg_monitor/commit/cc58190591cb3e63591d54adb8af18595a5c6f5e))
+
+
+### Performance Improvements
+
+* **fake-device:** boot up faster ([9b56e58](https://github.com/CCXXXI/ecg_monitor/commit/9b56e58dfad6d432384406e68750e1d02f98d23c))
+* **heart-rate:** less waiting time ([4b05903](https://github.com/CCXXXI/ecg_monitor/commit/4b059032a1ac30a0431fb4a11ac00b713eb7e461))
+
+
+### Build System
+
+* flutter pub get ([eebeb4c](https://github.com/CCXXXI/ecg_monitor/commit/eebeb4c2cb637faec8fe29437630e1cbc4810780))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency riverpod_generator to v2 ([#218](https://github.com/CCXXXI/ecg_monitor/issues/218)) ([6213e58](https://github.com/CCXXXI/ecg_monitor/commit/6213e58a29e9629c8fe8522b8542cf44a164badb))
+* save generated files ([49fd45d](https://github.com/CCXXXI/ecg_monitor/commit/49fd45dbd8c00b36dabd1b783d8a8a4442dedfe0))
+* save generated files again ([778e521](https://github.com/CCXXXI/ecg_monitor/commit/778e52157520a8242389a9edf5e960faff70d4ad))
+
+
+### Code Refactoring
+
+* **device:** remove unused import ([2ae2320](https://github.com/CCXXXI/ecg_monitor/commit/2ae232032b76842f84678a6f3380d9aa5e12f79c))
+* **device:** simplify battery ([344ab67](https://github.com/CCXXXI/ecg_monitor/commit/344ab67abd95a4b28ce1af296265e0a5962966c7))
+* **device:** simplify connected ([392fd6f](https://github.com/CCXXXI/ecg_monitor/commit/392fd6ff9872dcae77dcc2d5417da1a56a7e1cda))
+* **device:** simplify ecg stream ([88adcbf](https://github.com/CCXXXI/ecg_monitor/commit/88adcbf9c63587b019a2284f0357216fbd47710a))
+* **device:** simplify rssi ([3779e8a](https://github.com/CCXXXI/ecg_monitor/commit/3779e8ab3ce6bfbed7b348153d59ba695fb57e46))
+* **fake-device:** add logger ([042edc2](https://github.com/CCXXXI/ecg_monitor/commit/042edc22901359e9fd8bcb297193b79bd2febda6))
+* **real-time:** better logger ([b1dc51a](https://github.com/CCXXXI/ecg_monitor/commit/b1dc51a5079f307498335c129cdb08e827e693fb))
+* stream -&gt; future ([bdef837](https://github.com/CCXXXI/ecg_monitor/commit/bdef837e1aa40100101fc0c393fe8c3ffb7c176a))
+
 ## [0.22.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.21.0...v0.22.0) (2023-03-20)
 
 ### Features
