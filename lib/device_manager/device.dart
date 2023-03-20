@@ -1,4 +1,3 @@
-import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -69,29 +68,18 @@ class CurrentDevice extends _$CurrentDevice {
   }
 }
 
-final rssiProvider = StreamProvider.autoDispose<int>(
-  (ref) => ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty(),
-);
+@riverpod
+Stream<int> rssi(RssiRef ref) =>
+    ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty();
 
-final batteryProvider = StreamProvider.autoDispose<int>(
-  (ref) =>
-      ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty(),
-);
+@riverpod
+Stream<int> battery(BatteryRef ref) =>
+    ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
 
-final connectedProvider = StreamProvider.autoDispose<bool>(
-  (ref) =>
-      ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false),
-);
+@riverpod
+Stream<bool> connected(ConnectedRef ref) =>
+    ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
 
-final ecgProvider = StreamProvider.autoDispose<EcgData>(
-  (ref) {
-    final device = ref.watch(currentDeviceProvider);
-    final connected = ref.watch(connectedProvider).valueOrNull ?? false;
-
-    if (device == null || !connected) {
-      return const Stream.empty();
-    }
-
-    return device.ecgStream;
-  },
-);
+@riverpod
+Stream<EcgData> ecg(EcgRef ref) =>
+    ref.watch(currentDeviceProvider)?.ecgStream ?? const Stream.empty();

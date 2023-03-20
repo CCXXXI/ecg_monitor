@@ -1,4 +1,3 @@
-import "dart:async";
 import "dart:collection";
 import "dart:ffi";
 
@@ -53,7 +52,7 @@ class _HeartRate extends _$HeartRate {
   // Count of QRSs to calculate heart rate.
   static const _qrsCount = _beatCount + 1;
 
-  static final _waitingDuration = _learningPhase + aSecond * _qrsCount;
+  static final _waitingDuration = _learningPhase + aSecond * 1.5;
 
   final _stopwatch = Stopwatch()..start();
   final _qrsBuffer = Queue<DateTime>();
@@ -61,16 +60,15 @@ class _HeartRate extends _$HeartRate {
   @override
   HeartRateData build() {
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
-    unawaited(ref.watch(ecgProvider.stream).forEach(_add));
+    ref.listen(ecgProvider.future, (previous, next) async => next.then(_add));
     return const HeartRateData();
   }
 
   void _add(EcgData data) {
     // Update progress if the data is not ready yet.
-    final progress =
-        _stopwatch.elapsedMilliseconds / _waitingDuration.inMilliseconds;
-    final ready = progress >= 1;
-    if (!ready) {
+    if (!state.ready) {
+      final progress =
+          _stopwatch.elapsedMilliseconds / _waitingDuration.inMilliseconds;
       state = HeartRateData(progress: progress);
     }
 
@@ -107,9 +105,7 @@ class _HeartRate extends _$HeartRate {
     final minutes = duration.inMilliseconds / aMinute.inMilliseconds;
     final bpm = _beatCount / minutes;
     _logger.finer("Heart rate: $bpm bpm");
-    if (ready) {
-      state = HeartRateData(rate: bpm.round());
-    }
+    state = HeartRateData(rate: bpm.round());
   }
 }
 

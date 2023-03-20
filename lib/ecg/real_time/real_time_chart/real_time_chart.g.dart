@@ -24,7 +24,22 @@ class RealTimeChart extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pointsHash() => r'64f2d68d48f8b73be4758f59dbd11e5c4075e058';
+String _$refreshIntervalHash() => r'773cbd91949094503b63c614551cef772768a4d6';
+
+/// See also [_refreshInterval].
+@ProviderFor(_refreshInterval)
+final _refreshIntervalProvider = AutoDisposeProvider<double>.internal(
+  _refreshInterval,
+  name: r'_refreshIntervalProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$refreshIntervalHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _RefreshIntervalRef = AutoDisposeProviderRef<double>;
+String _$pointsHash() => r'066118bd8f2357592b09f0e5118a9499db69ec73';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -139,20 +154,4 @@ class _PointsProvider
     );
   }
 }
-
-String _$refreshIntervalHash() => r'773cbd91949094503b63c614551cef772768a4d6';
-
-/// See also [_refreshInterval].
-@ProviderFor(_refreshInterval)
-final _refreshIntervalProvider = AutoDisposeProvider<double>.internal(
-  _refreshInterval,
-  name: r'_refreshIntervalProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$refreshIntervalHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _RefreshIntervalRef = AutoDisposeProviderRef<double>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

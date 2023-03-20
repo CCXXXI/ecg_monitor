@@ -1,9 +1,11 @@
-import "package:quiver/time.dart";
+import "package:logging/logging.dart";
 
 import "../database.dart";
 import "../utils/ecg_data.dart";
 import "../utils/strings.dart";
 import "device.dart";
+
+final _logger = Logger("FakeDevice");
 
 class _FakeDevice implements Device {
   @override
@@ -25,7 +27,7 @@ class _FakeDevice implements Device {
 
   @override
   Stream<bool> get connectedStream => Stream.periodic(
-        aSecond,
+        _tick,
         (_) => prefs.getBool(K.fakeDeviceOn) ?? false,
       );
 
@@ -41,8 +43,15 @@ class _FakeDevice implements Device {
       // Wait until the next tick.
       await Future<void>.delayed(t.difference(DateTime.now()));
 
+      // Do not yield data if the fake device is off.
+      final fakeDeviceOn = prefs.getBool(K.fakeDeviceOn) ?? false;
+      if (!fakeDeviceOn) {
+        continue;
+      }
+
       // Yield the next fake ECG data.
       final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % leadI.length;
+      _logger.finest("yield t=$t, i=$i");
       yield EcgData(time: t, leadI: leadI[i], leadII: leadII[i]);
     }
   }
