@@ -6,7 +6,7 @@ part of 'home.dart';
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class Home extends ConsumerWidget {
+class Home extends StatelessWidget {
   const Home(
     this.child, {
     Key? key,
@@ -15,13 +15,8 @@ class Home extends ConsumerWidget {
   final Widget child;
 
   @override
-  Widget build(
-    BuildContext _context,
-    WidgetRef _ref,
-  ) =>
-      _home(
+  Widget build(BuildContext _context) => _home(
         _context,
-        _ref,
         child,
       );
   @override
