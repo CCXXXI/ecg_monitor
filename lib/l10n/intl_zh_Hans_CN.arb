@@ -5,7 +5,6 @@
   "deviceNotConnected": "设备未连接",
   "bpm": "次/分",
   "heartRateDetecting": "正在检测心率……",
-  "heartRateNotAvailableOnWeb": "Web 端不支持心率检测",
   "leadI": "I 导联",
   "leadII": "II 导联",
   "leadIII": "III 导联",

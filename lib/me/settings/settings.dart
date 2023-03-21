@@ -368,7 +368,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           isThreeLine: showDevTools,
           value: showDevTools,
           onChanged: (on) async {
-            final restartActionAvailable = Platform.isAndroid || kIsWeb;
+            final restartActionAvailable = Platform.isAndroid;
 
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

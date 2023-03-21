@@ -60,8 +60,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "gridColor": MessageLookupByLibrary.simpleMessage("Grid color"),
         "heartRateDetecting":
             MessageLookupByLibrary.simpleMessage("Heart rate detecting ..."),
-        "heartRateNotAvailableOnWeb": MessageLookupByLibrary.simpleMessage(
-            "Heart rate is not available on web"),
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "horizontalLines": MessageLookupByLibrary.simpleMessage("Hor. lines"),
         "landscapeDuration":

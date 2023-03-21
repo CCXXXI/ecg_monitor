@@ -5,7 +5,6 @@
   "deviceNotConnected": "Device not connected",
   "bpm": "BPM",
   "heartRateDetecting": "Heart rate detecting ...",
-  "heartRateNotAvailableOnWeb": "Heart rate is not available on web",
   "leadI": "Lead I",
   "leadII": "Lead II",
   "leadIII": "Lead III",

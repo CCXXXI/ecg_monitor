@@ -53,8 +53,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "feedback": MessageLookupByLibrary.simpleMessage("反馈"),
         "gridColor": MessageLookupByLibrary.simpleMessage("网格颜色"),
         "heartRateDetecting": MessageLookupByLibrary.simpleMessage("正在检测心率……"),
-        "heartRateNotAvailableOnWeb":
-            MessageLookupByLibrary.simpleMessage("Web 端不支持心率检测"),
         "history": MessageLookupByLibrary.simpleMessage("历史心电"),
         "horizontalLines": MessageLookupByLibrary.simpleMessage("水平网格线"),
         "landscapeDuration": MessageLookupByLibrary.simpleMessage("横屏数据范围"),
