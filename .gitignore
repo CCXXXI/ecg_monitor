@@ -1,5 +1,39 @@
-# Created by https://www.toptal.com/developers/gitignore/api/intellij,flutter
-# Edit at https://www.toptal.com/developers/gitignore?templates=intellij,flutter
+# Created by https://www.toptal.com/developers/gitignore/api/c++,flutter,intellij
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,flutter,intellij
+
+### C++ ###
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
 
 ### Flutter ###
 # Flutter/Dart/Pub related
@@ -178,4 +212,4 @@ fabric.properties
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
-# End of https://www.toptal.com/developers/gitignore/api/intellij,flutter
+# End of https://www.toptal.com/developers/gitignore/api/c++,flutter,intellij

@@ -24,7 +24,7 @@ class HeartRateWidget extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$heartRateHash() => r'ab861f83f0d4c581995db7c0bb6c6be3f14aa9cb';
+String _$heartRateHash() => r'ca1d87284debe4f6fc2fd288bbdbd40613fbd4a7';
 
 /// See also [_HeartRate].
 @ProviderFor(_HeartRate)

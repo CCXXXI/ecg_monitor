@@ -48,7 +48,7 @@ final connectedProvider = AutoDisposeStreamProvider<bool>.internal(
 );
 
 typedef ConnectedRef = AutoDisposeStreamProviderRef<bool>;
-String _$ecgHash() => r'7852c88327c6f9401ae28b7fa1d652a39c1207ec';
+String _$ecgHash() => r'9b693b804614294fe010d8c1507cad41e4d86695';
 
 /// See also [ecg].
 @ProviderFor(ecg)

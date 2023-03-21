@@ -1,6 +1,5 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:go_router/go_router.dart";
 import "package:logging/logging.dart";
@@ -19,8 +18,8 @@ const _routes = [
   "/me",
 ];
 
-@cwidget
-Widget _home(BuildContext context, WidgetRef ref, Widget child) {
+@swidget
+Widget _home(BuildContext context, Widget child) {
   final s = S.of(context);
 
   final route = GoRouterState.of(context).location;
