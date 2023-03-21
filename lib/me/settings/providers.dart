@@ -33,6 +33,18 @@ class _Double extends _$Double {
 }
 
 @riverpod
+class _Duration extends _$Duration {
+  @override
+  Duration build(String key, Duration defaultValue) =>
+      Duration(milliseconds: prefs.getInt(key) ?? defaultValue.inMilliseconds);
+
+  Future<void> set(Duration duration) async {
+    state = duration;
+    await prefs.setInt(key, duration.inMilliseconds);
+  }
+}
+
+@riverpod
 class _Color extends _$Color {
   @override
   Color build(String key, Color defaultColor) =>
@@ -57,11 +69,11 @@ class _LineType extends _$LineType {
 }
 
 // region realTime settings
-final realTimePortraitDurationProvider = _doubleProvider(
+final realTimePortraitDurationProvider = _durationProvider(
   "${K.realTime}.${K.portraitDuration}",
   ChartSettingsData.simple.portraitDuration,
 );
-final realTimeLandscapeDurationProvider = _doubleProvider(
+final realTimeLandscapeDurationProvider = _durationProvider(
   "${K.realTime}.${K.landscapeDuration}",
   ChartSettingsData.simple.landscapeDuration,
 );
@@ -162,11 +174,11 @@ final historyAutoUploadProvider = _boolProvider(
   true,
 );
 
-final historyPortraitDurationProvider = _doubleProvider(
+final historyPortraitDurationProvider = _durationProvider(
   "${K.history}.${K.portraitDuration}",
   ChartSettingsData.professional.portraitDuration,
 );
-final historyLandscapeDurationProvider = _doubleProvider(
+final historyLandscapeDurationProvider = _durationProvider(
   "${K.history}.${K.landscapeDuration}",
   ChartSettingsData.professional.landscapeDuration,
 );

@@ -54,13 +54,13 @@ class _ChartSettings extends StatelessWidget {
 
   final void Function(ChartSettingsData) onChartSettingsChanged;
 
-  final double portraitDuration;
+  final Duration portraitDuration;
 
-  final void Function(double) onPortraitDurationChanged;
+  final void Function(Duration) onPortraitDurationChanged;
 
-  final double landscapeDuration;
+  final Duration landscapeDuration;
 
-  final void Function(double) onLandscapeDurationChanged;
+  final void Function(Duration) onLandscapeDurationChanged;
 
   final Color backgroundColor;
 
@@ -118,11 +118,13 @@ class _ChartSettings extends StatelessWidget {
         'chartSettingsData', chartSettingsData));
     properties.add(DiagnosticsProperty<void Function(ChartSettingsData)>(
         'onChartSettingsChanged', onChartSettingsChanged));
-    properties.add(DoubleProperty('portraitDuration', portraitDuration));
-    properties.add(DiagnosticsProperty<void Function(double)>(
+    properties.add(
+        DiagnosticsProperty<Duration>('portraitDuration', portraitDuration));
+    properties.add(DiagnosticsProperty<void Function(Duration)>(
         'onPortraitDurationChanged', onPortraitDurationChanged));
-    properties.add(DoubleProperty('landscapeDuration', landscapeDuration));
-    properties.add(DiagnosticsProperty<void Function(double)>(
+    properties.add(
+        DiagnosticsProperty<Duration>('landscapeDuration', landscapeDuration));
+    properties.add(DiagnosticsProperty<void Function(Duration)>(
         'onLandscapeDurationChanged', onLandscapeDurationChanged));
     properties
         .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));

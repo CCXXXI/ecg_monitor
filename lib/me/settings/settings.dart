@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
+import "package:quiver/time.dart";
 import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -53,10 +54,10 @@ Widget __chartSettings(
   BuildContext context, {
   required ChartSettingsData chartSettingsData,
   required void Function(ChartSettingsData) onChartSettingsChanged,
-  required double portraitDuration,
-  required void Function(double) onPortraitDurationChanged,
-  required double landscapeDuration,
-  required void Function(double) onLandscapeDurationChanged,
+  required Duration portraitDuration,
+  required void Function(Duration) onPortraitDurationChanged,
+  required Duration landscapeDuration,
+  required void Function(Duration) onLandscapeDurationChanged,
   required Color backgroundColor,
   required void Function(Color) onBackgroundColorChanged,
   required Color lineColor,
@@ -103,8 +104,8 @@ Widget __chartSettings(
     ),
   ];
 
-  final portraitDurationString = "${portraitDuration.toStringAsFixed(0)} s";
-  final landscapeDurationString = "${landscapeDuration.toStringAsFixed(0)} s";
+  final portraitDurationString = "${portraitDuration.inSeconds} s";
+  final landscapeDurationString = "${landscapeDuration.inSeconds} s";
 
   return Column(
     children: [
@@ -148,8 +149,8 @@ Widget __chartSettings(
         trailing: SizedBox(
           width: 200,
           child: Slider.adaptive(
-            value: portraitDuration,
-            onChanged: onPortraitDurationChanged,
+            value: portraitDuration.inSeconds.toDouble(),
+            onChanged: (s) => onPortraitDurationChanged(aSecond * s.toInt()),
             min: 1,
             max: 10,
             divisions: 9,
@@ -164,8 +165,8 @@ Widget __chartSettings(
         trailing: SizedBox(
           width: 200,
           child: Slider.adaptive(
-            value: landscapeDuration,
-            onChanged: onLandscapeDurationChanged,
+            value: landscapeDuration.inSeconds.toDouble(),
+            onChanged: (s) => onLandscapeDurationChanged(aSecond * s.toInt()),
             min: 1,
             max: 10,
             divisions: 9,

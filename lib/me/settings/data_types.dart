@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:quiver/time.dart";
 
 part "data_types.freezed.dart";
 
@@ -8,8 +9,8 @@ enum LineType { hide, simple, full }
 @freezed
 class ChartSettingsData with _$ChartSettingsData {
   const factory ChartSettingsData({
-    required double portraitDuration,
-    required double landscapeDuration,
+    required Duration portraitDuration,
+    required Duration landscapeDuration,
     required Color backgroundColor,
     required Color lineColor,
     required Color gridColor,
@@ -19,8 +20,8 @@ class ChartSettingsData with _$ChartSettingsData {
   }) = _ChartSettingsData;
 
   static final simple = ChartSettingsData(
-    portraitDuration: 3,
-    landscapeDuration: 2,
+    portraitDuration: aSecond * 3,
+    landscapeDuration: aSecond * 2,
     backgroundColor: Colors.white,
     lineColor: Colors.black,
     // Color(Colors.red.value) != Colors.red
