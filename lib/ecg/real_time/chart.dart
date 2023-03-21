@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
+import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../device_manager/device.dart";
@@ -87,6 +88,7 @@ Widget _realTimeChart(BuildContext context, WidgetRef ref) {
         ? realTimePortraitDurationProvider
         : realTimeLandscapeDurationProvider,
   );
+  final duration = aSecond * durationS;
 
   _maxDurationMs = durationS * Duration.millisecondsPerSecond;
 
@@ -94,7 +96,7 @@ Widget _realTimeChart(BuildContext context, WidgetRef ref) {
     pointsI: ref.watch(_pointsProvider(0)),
     pointsII: ref.watch(_pointsProvider(1)),
     pointsIII: ref.watch(_pointsProvider(2)),
-    durationS: durationS,
+    duration: duration,
     backgroundColor: ref.watch(realTimeBackgroundColorProvider),
     lineColor: ref.watch(realTimeLineColorProvider),
     gridColor: ref.watch(realTimeGridColorProvider),

@@ -20,12 +20,10 @@ const smallYInterval = .1;
 const maxIntervalCountLandscape = 10;
 
 @visibleForTesting
-double getIntervalMs(double durationS, {required bool isPortrait}) {
+Duration getInterval(Duration duration, {required bool isPortrait}) {
   final intervalCount =
       isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
-  final intervalS = (durationS / intervalCount).ceilToDouble();
-  final intervalMs = intervalS * Duration.millisecondsPerSecond;
-  return intervalMs;
+  return Duration(seconds: (duration.inSeconds / intervalCount).ceil());
 }
 
 @visibleForTesting
@@ -41,7 +39,7 @@ Widget __chart(
   BuildContext context, {
   required String title,
   required List<FlSpot> points,
-  required double durationS,
+  required Duration duration,
   required Color backgroundColor,
   required Color lineColor,
   required Color gridColor,
@@ -65,7 +63,6 @@ Widget __chart(
 
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  final durationMs = durationS * Duration.millisecondsPerSecond;
   final drawHorizontalLine = horizontalLineType != LineType.hide;
   final drawVerticalLine = verticalLineType != LineType.hide;
 
@@ -73,7 +70,9 @@ Widget __chart(
     sideTitles: SideTitles(
       showTitles: true,
       reservedSize: 30,
-      interval: getIntervalMs(durationS, isPortrait: isPortrait),
+      interval: getInterval(duration, isPortrait: isPortrait)
+          .inMilliseconds
+          .toDouble(),
       getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
           ? const SizedBox.shrink()
           : SideTitleWidget(
@@ -103,7 +102,8 @@ Widget __chart(
         child: LineChart(
           swapAnimationDuration: Duration.zero, // disable animation
           LineChartData(
-            minX: points.isEmpty ? null : points.last.x - durationMs,
+            minX:
+                points.isEmpty ? null : points.last.x - duration.inMilliseconds,
             maxX: points.isEmpty ? null : points.last.x,
             minY: points.isEmpty
                 ? null
@@ -164,7 +164,7 @@ Widget _chart3Lead(
   required List<FlSpot> pointsI,
   required List<FlSpot> pointsII,
   required List<FlSpot> pointsIII,
-  required double durationS,
+  required Duration duration,
   required Color backgroundColor,
   required Color lineColor,
   required Color gridColor,
@@ -180,7 +180,7 @@ Widget _chart3Lead(
         child: _Chart(
           title: [s.leadI, s.leadII, s.leadIII][i],
           points: [pointsI, pointsII, pointsIII][i],
-          durationS: durationS,
+          duration: duration,
           backgroundColor: backgroundColor,
           lineColor: lineColor,
           gridColor: gridColor,
