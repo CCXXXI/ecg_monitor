@@ -6,7 +6,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
-import "analytics/model_stub.dart" if (dart.library.io) "analytics/model.dart";
+import "analytics/model.dart";
 import "database.dart";
 import "generated/l10n.dart";
 import "utils/ecg_data.dart";

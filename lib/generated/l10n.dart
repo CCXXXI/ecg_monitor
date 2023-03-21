@@ -100,16 +100,6 @@ class S {
     );
   }
 
-  /// `Heart rate is not available on web`
-  String get heartRateNotAvailableOnWeb {
-    return Intl.message(
-      'Heart rate is not available on web',
-      name: 'heartRateNotAvailableOnWeb',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Lead I`
   String get leadI {
     return Intl.message(
