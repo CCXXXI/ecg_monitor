@@ -6,6 +6,13 @@ part of 'real_time.dart';
 // FunctionalWidgetGenerator
 // **************************************************************************
 
+class _DeviceNotAvailable extends StatelessWidget {
+  const _DeviceNotAvailable({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext _context) => __deviceNotAvailable(_context);
+}
+
 class RealTime extends ConsumerWidget {
   const RealTime({Key? key}) : super(key: key);
 

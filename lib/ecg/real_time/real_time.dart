@@ -10,26 +10,31 @@ import "real_time_chart/real_time_chart.dart";
 
 part "real_time.g.dart";
 
-@cwidget
-Widget _realTime(BuildContext context, WidgetRef ref) {
+@swidget
+Widget __deviceNotAvailable(BuildContext context) {
   final s = S.of(context);
 
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Text(
+        s.deviceNotConnected,
+        style: Theme.of(context).textTheme.headlineLarge,
+      ),
+      const SizedBox(height: 16),
+      OutlinedButton(
+        child: Text(s.deviceManager),
+        onPressed: () => context.go("/device_manager"),
+      ),
+    ],
+  );
+}
+
+@cwidget
+Widget _realTime(BuildContext context, WidgetRef ref) {
   final deviceAvailable = ref.watch(connectedProvider).value ?? true;
   if (!deviceAvailable) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          s.deviceNotConnected,
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
-        const SizedBox(height: 16),
-        OutlinedButton(
-          child: Text(s.deviceManager),
-          onPressed: () => context.go("/device_manager"),
-        ),
-      ],
-    );
+    return const _DeviceNotAvailable();
   }
 
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
