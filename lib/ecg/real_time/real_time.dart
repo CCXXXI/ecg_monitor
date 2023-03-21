@@ -17,11 +17,13 @@ Widget __deviceNotAvailable(BuildContext context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Text(
-        s.deviceNotConnected,
-        style: Theme.of(context).textTheme.headlineLarge,
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32),
+        child: Text(
+          s.deviceNotConnected,
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
       ),
-      const SizedBox(height: 16),
       OutlinedButton(
         child: Text(s.deviceManager),
         onPressed: () => context.go("/device_manager"),
