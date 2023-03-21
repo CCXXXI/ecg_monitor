@@ -5,8 +5,8 @@ import "package:go_router/go_router.dart";
 
 import "../../device_manager/device.dart";
 import "../../generated/l10n.dart";
+import "chart.dart";
 import "heart_rate/heart_rate.dart";
-import "real_time_chart/real_time_chart.dart";
 
 part "real_time.g.dart";
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'real_time_chart.dart';
+part of 'chart.dart';
 
 // **************************************************************************
 // FunctionalWidgetGenerator

@@ -8,11 +8,11 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../../device_manager/device.dart";
-import "../../../me/settings/providers.dart";
-import "../../chart.dart";
+import "../../device_manager/device.dart";
+import "../../me/settings/providers.dart";
+import "../chart.dart";
 
-part "real_time_chart.g.dart";
+part "chart.g.dart";
 
 final _logger = Logger("RealTimeChart");
 
