@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.22.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.1...v0.22.2) (2023-03-21)
+
+### Continuous Integration
+
+- **build:** no web ([d5de724](https://github.com/CCXXXI/ecg_monitor/commit/d5de7240bb8678531ef8d2347d89f259477c8cb0))
+
+### Code Refactoring
+
+- dart:io instead of universal_io ([47b00e3](https://github.com/CCXXXI/ecg_monitor/commit/47b00e3bb1b81892f58a67b1e55f11358c830238))
+- remove web related code ([386ed2f](https://github.com/CCXXXI/ecg_monitor/commit/386ed2fd892b9dbccdf442f528a365d94230dbc9))
+
+### Build System
+
+- flutter pub remove build_web_compilers ([2228036](https://github.com/CCXXXI/ecg_monitor/commit/2228036b935d3f6e8eee170e2d97ac95bb5a39bb))
+- flutter pub remove universal_io ([09883b9](https://github.com/CCXXXI/ecg_monitor/commit/09883b948aa52e9dfdcdd11cacc15e60260e488c))
+
+### Miscellaneous Chores
+
+- simplify flutter_icons config ([48fd366](https://github.com/CCXXXI/ecg_monitor/commit/48fd366aaa647d62f10e4a5a2729a2b01e9d3f73))
+
 ## [0.22.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.0...v0.22.1) (2023-03-20)
 
 ### Bug Fixes
