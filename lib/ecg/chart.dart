@@ -193,5 +193,14 @@ Widget _chart3Lead(
 
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  return isPortrait ? Column(children: children) : Row(children: children);
+  if (isPortrait) {
+    return Column(
+      children: [
+        for (var i = 0; i < children.length * 2 - 1; i++)
+          i.isEven ? children[i ~/ 2] : const SizedBox(height: 32),
+      ],
+    );
+  } else {
+    return Row(children: children);
+  }
 }
