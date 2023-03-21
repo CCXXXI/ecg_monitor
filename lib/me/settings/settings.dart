@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -6,7 +8,6 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:restart_app/restart_app.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
-import "package:universal_io/io.dart";
 
 import "../../database.dart";
 import "../../generated/l10n.dart";
