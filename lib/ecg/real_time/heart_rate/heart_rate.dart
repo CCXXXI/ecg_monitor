@@ -59,8 +59,20 @@ class _HeartRate extends _$HeartRate {
 
   @override
   HeartRateData build() {
+    // Initialize the Pan-Tompkins library with the sampling frequency.
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
-    ref.listen(ecgProvider.future, (previous, next) async => next.then(_add));
+
+    // Listen to the ECG data.
+    final subscription = ref.listen(
+      ecgProvider.future,
+      (_, data) async => data.then(_add),
+    );
+
+    // Close the subscription when the provider is disposed.
+    // This will not be done automatically by Riverpod.
+    // So we have to do it manually here.
+    ref.onDispose(subscription.close);
+
     return const HeartRateData();
   }
 
