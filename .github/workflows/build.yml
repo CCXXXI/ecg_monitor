@@ -92,6 +92,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: mikefarah/yq@master
+        id: yq
+        with:
+          cmd: yq '.version' 'pubspec.yaml'
       - uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -99,4 +103,4 @@ jobs:
           SENTRY_PROJECT: ecg_monitor
         with:
           environment: production
-          version: ${{ github.ref }}
+          version: io.github.ccxxxi.ecg_monitor@${{ steps.yq.outputs.result }}
