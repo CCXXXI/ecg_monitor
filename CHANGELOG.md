@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.22.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.2...v0.22.3) (2023-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.pytorch:pytorch_android to v1.13.1 ([#230](https://github.com/CCXXXI/ecg_monitor/issues/230)) ([e36d321](https://github.com/CCXXXI/ecg_monitor/commit/e36d321f122baa0548c449b9fbd04dc6a29353b4))
+* **real-time:** close subscription on dispose ([#232](https://github.com/CCXXXI/ecg_monitor/issues/232)) ([42b43ff](https://github.com/CCXXXI/ecg_monitor/commit/42b43ffbbbd110597f86128a9f946ad6f069e156))
+
+
+### Build System
+
+* add isar ([9ad6ce2](https://github.com/CCXXXI/ecg_monitor/commit/9ad6ce23b03da81f5c2c9693918139f511174e97))
+
+
+### Tests
+
+* **database:** add test for EcgData &lt;-&gt; SamplePoint ([6be576a](https://github.com/CCXXXI/ecg_monitor/commit/6be576a3d7040ce8c08de068f87ced5ca7a71c61))
+
+
+### Miscellaneous Chores
+
+* save generated files ([e833fe9](https://github.com/CCXXXI/ecg_monitor/commit/e833fe94a8bba90292dadd4cb022bac58c2d8638))
+* update gitignore ([998394f](https://github.com/CCXXXI/ecg_monitor/commit/998394fe5e469306135d05262ca2ae801054b496))
+
+
+### Code Refactoring
+
+* **database:** add SamplePoint collection ([bbf3429](https://github.com/CCXXXI/ecg_monitor/commit/bbf3429ebb2990de10f13a1afd167508e8d395fa))
+* **database:** add SamplePoint.toEcgData ([5ffbc9b](https://github.com/CCXXXI/ecg_monitor/commit/5ffbc9b8d8efd6e1ffc3f6adb842b663b42894df))
+* **database:** make SamplePoint const ([fc1b473](https://github.com/CCXXXI/ecg_monitor/commit/fc1b473e0a427e04009c9489deb67745b625c35f))
+* **database:** save sample points ([d11f5cf](https://github.com/CCXXXI/ecg_monitor/commit/d11f5cf63fc16d88bcd73bb1bbf65f80d6cbc9df))
+* debug_data.dart to debug/data.dart ([62881ce](https://github.com/CCXXXI/ecg_monitor/commit/62881cee472c36cdf5b7583165a88e61ad85f2c3))
+* **home:** make Home swidget ([d5aaf5a](https://github.com/CCXXXI/ecg_monitor/commit/d5aaf5a0c8134f9162a6cde8fef58c8377d83f7a))
+* move database.dart to utils/ ([f86d291](https://github.com/CCXXXI/ecg_monitor/commit/f86d291c7170e4e54a4f6dea3560ba91fd3127b1))
+* move logger.dart to debug/ ([6ae597f](https://github.com/CCXXXI/ecg_monitor/commit/6ae597faed9ce26a3dc8cfca68ea30f02c9c59a6))
+* move ume.dart to debug/ ([7173523](https://github.com/CCXXXI/ecg_monitor/commit/7173523643f2ee902a987960d4461e4bae55c775))
+* rename ecg_data to debug_data ([7b4f1f1](https://github.com/CCXXXI/ecg_monitor/commit/7b4f1f1fa36453a448dff65ba58f660319798c5c))
+
+
+### Continuous Integration
+
+* **check:** ignore isar_flutter_libs dependency ([9508f02](https://github.com/CCXXXI/ecg_monitor/commit/9508f0210249b421a4d5be40ea59091460bafaf6))
+
 ## [0.22.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.1...v0.22.2) (2023-03-21)
 
 ### Continuous Integration
