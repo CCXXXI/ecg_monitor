@@ -4,13 +4,15 @@ import "package:ecg_monitor/utils/debug/data.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:isar/isar.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 void main() {
   setUpAll(() async {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({K.fakeDeviceOn: true});
-    await initPrefs();
+    await Isar.initializeIsarCore(download: true);
+    await initDatabase();
     await initDebugData();
   });
 

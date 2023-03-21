@@ -19,11 +19,18 @@ class App extends StatelessWidget {
 
 /// The core widget of the app.
 /// With no additional functionality for testing purposes.
-class AppCore extends StatelessWidget {
+class AppCore extends ConsumerWidget {
   /// The core widget of the app.
   /// With no additional functionality for testing purposes.
   const AppCore({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext _context) => _appCore(_context);
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      _appCore(
+        _context,
+        _ref,
+      );
 }

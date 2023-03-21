@@ -5,12 +5,6 @@ import "../device_manager/device.dart";
 
 part "database.g.dart";
 
-late final SharedPreferences prefs;
-
-Future<void> initPrefs() async {
-  prefs = await SharedPreferences.getInstance();
-}
-
 @collection
 class SamplePoint {
   const SamplePoint({
@@ -34,4 +28,12 @@ class SamplePoint {
   final Id millisecondsSinceEpoch;
   final double leadI;
   final double leadII;
+}
+
+late final SharedPreferences prefs;
+late final Isar isar;
+
+Future<void> initDatabase() async {
+  prefs = await SharedPreferences.getInstance();
+  isar = await Isar.open([SamplePointSchema]);
 }

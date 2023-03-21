@@ -7,6 +7,7 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model.dart";
+import "device_manager/device.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
 import "utils/debug/data.dart";
@@ -32,25 +33,34 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 
 /// The core widget of the app.
 /// With no additional functionality for testing purposes.
-@swidget
-Widget _appCore(BuildContext context) => MaterialApp.router(
-      title: fallbackAppName,
-      routerConfig: router,
-      theme: ThemeData.light(useMaterial3: true),
-      darkTheme: ThemeData.dark(useMaterial3: true),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-    );
+@cwidget
+Widget _appCore(BuildContext context, WidgetRef ref) {
+  ref.listen(
+    ecgProvider.future,
+    (previous, next) async => isar.writeTxn(
+      () async => isar.samplePoints.put(SamplePoint.fromEcgData(await next)),
+    ),
+  );
+
+  return MaterialApp.router(
+    title: fallbackAppName,
+    routerConfig: router,
+    theme: ThemeData.light(useMaterial3: true),
+    darkTheme: ThemeData.dark(useMaterial3: true),
+    localizationsDelegates: const [
+      S.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: S.delegate.supportedLocales,
+  );
+}
 
 void main() async {
   // initializations
   WidgetsFlutterBinding.ensureInitialized();
-  await initPrefs();
+  await initDatabase();
   initUme();
   initLogger();
   await initPackageInfo();
