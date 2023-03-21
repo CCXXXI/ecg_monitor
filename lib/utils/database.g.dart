@@ -100,9 +100,7 @@ List<IsarLinkBase<dynamic>> _samplePointGetLinks(SamplePoint object) {
 }
 
 void _samplePointAttach(
-    IsarCollection<dynamic> col, Id id, SamplePoint object) {
-  object.millisecondsSinceEpoch = id;
-}
+    IsarCollection<dynamic> col, Id id, SamplePoint object) {}
 
 extension SamplePointQueryWhereSort
     on QueryBuilder<SamplePoint, SamplePoint, QWhere> {

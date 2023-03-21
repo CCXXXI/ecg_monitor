@@ -13,7 +13,7 @@ Future<void> initPrefs() async {
 
 @collection
 class SamplePoint {
-  SamplePoint({
+  const SamplePoint({
     required this.millisecondsSinceEpoch,
     required this.leadI,
     required this.leadII,
@@ -25,7 +25,7 @@ class SamplePoint {
         leadII: data.leadII,
       );
 
-  Id millisecondsSinceEpoch;
-  double leadI;
-  double leadII;
+  final Id millisecondsSinceEpoch;
+  final double leadI;
+  final double leadII;
 }
