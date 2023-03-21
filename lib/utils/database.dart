@@ -25,6 +25,12 @@ class SamplePoint {
         leadII: data.leadII,
       );
 
+  EcgData toEcgData() => EcgData(
+        time: DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch),
+        leadI: leadI,
+        leadII: leadII,
+      );
+
   final Id millisecondsSinceEpoch;
   final double leadI;
   final double leadII;
