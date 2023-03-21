@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.22.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.3...v0.22.4) (2023-03-21)
+
+### Continuous Integration
+
+- **sentry:** correct version string ([#233](https://github.com/CCXXXI/ecg_monitor/issues/233)) ([0d7153d](https://github.com/CCXXXI/ecg_monitor/commit/0d7153d641236e23e0544d8b17bd273af6e2cdb4))
+
 ## [0.22.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.2...v0.22.3) (2023-03-21)
 
 ### Bug Fixes
