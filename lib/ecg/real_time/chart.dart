@@ -8,11 +8,11 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../../device_manager/device.dart";
-import "../../../me/settings/providers.dart";
-import "../../chart.dart";
+import "../../device_manager/device.dart";
+import "../../me/settings/providers.dart";
+import "../chart.dart";
 
-part "real_time_chart.g.dart";
+part "chart.g.dart";
 
 final _logger = Logger("RealTimeChart");
 
@@ -22,7 +22,7 @@ double _refreshInterval(_RefreshIntervalRef ref) {
   return Duration.millisecondsPerSecond / rateHz;
 }
 
-var _maxDurationMs = .0;
+var _duration = Duration.zero;
 
 @riverpod
 class _Points extends _$Points {
@@ -65,7 +65,7 @@ class _Points extends _$Points {
     _buffer.addLast(point);
 
     // remove outdated points
-    while (_buffer.first.x < point.x - _maxDurationMs) {
+    while (_buffer.first.x < point.x - _duration.inMilliseconds) {
       _buffer.removeFirst();
     }
 
@@ -82,19 +82,17 @@ class _Points extends _$Points {
 Widget _realTimeChart(BuildContext context, WidgetRef ref) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  final durationS = ref.watch(
+  _duration = ref.watch(
     isPortrait
         ? realTimePortraitDurationProvider
         : realTimeLandscapeDurationProvider,
   );
 
-  _maxDurationMs = durationS * Duration.millisecondsPerSecond;
-
   return Chart3Lead(
     pointsI: ref.watch(_pointsProvider(0)),
     pointsII: ref.watch(_pointsProvider(1)),
     pointsIII: ref.watch(_pointsProvider(2)),
-    durationS: durationS,
+    duration: _duration,
     backgroundColor: ref.watch(realTimeBackgroundColorProvider),
     lineColor: ref.watch(realTimeLineColorProvider),
     gridColor: ref.watch(realTimeGridColorProvider),

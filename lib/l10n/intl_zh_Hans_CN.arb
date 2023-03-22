@@ -51,5 +51,6 @@
   "networkTest": "网络测试",
   "showDots": "显示数据点",
   "about": "关于",
-  "changelog": "更新日志"
+  "changelog": "更新日志",
+  "noHistoryData": "所选时间没有数据"
 }

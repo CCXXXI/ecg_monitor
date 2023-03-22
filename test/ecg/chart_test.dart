@@ -1,5 +1,6 @@
 import "package:ecg_monitor/ecg/chart.dart";
 import "package:flutter_test/flutter_test.dart";
+import "package:quiver/time.dart";
 
 void main() {
   group("getIntervalMs", () {
@@ -7,11 +8,11 @@ void main() {
       const maxIntervalCount = maxIntervalCountPortrait;
 
       for (var i = 1.0; i <= maxIntervalCount; ++i) {
-        expect(getIntervalMs(i, isPortrait: true), 1000);
+        expect(getInterval(aSecond * i, isPortrait: true), aSecond);
       }
 
       for (var i = maxIntervalCount + 1.0; i <= maxIntervalCount * 2; ++i) {
-        expect(getIntervalMs(i, isPortrait: true), 2000);
+        expect(getInterval(aSecond * i, isPortrait: true), aSecond * 2);
       }
     });
 
@@ -19,21 +20,57 @@ void main() {
       const maxIntervalCount = maxIntervalCountLandscape;
 
       for (var i = 1.0; i <= maxIntervalCount; ++i) {
-        expect(getIntervalMs(i, isPortrait: false), 1000);
+        expect(getInterval(aSecond * i, isPortrait: false), aSecond);
       }
 
       for (var i = maxIntervalCount + 1.0; i <= maxIntervalCount * 2; ++i) {
-        expect(getIntervalMs(i, isPortrait: false), 2000);
+        expect(getInterval(aSecond * i, isPortrait: false), aSecond * 2);
       }
     });
   });
 
-  group("msToTimeString", () {
-    test("0ms", () => expect(msToTimeString(0), endsWith(":00:00")));
-    test("1ms", () => expect(msToTimeString(1), endsWith(":00:00")));
-    test("999ms", () => expect(msToTimeString(999), endsWith(":00:00")));
-    test("1s", () => expect(msToTimeString(1000), endsWith(":00:01")));
-    test("59s", () => expect(msToTimeString(59000), endsWith(":00:59")));
-    test("1m", () => expect(msToTimeString(60000), endsWith(":01:00")));
+  group("DateTimeToTimeString", () {
+    test(
+      "0ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(0).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "1ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(1).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "999ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(999).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "1s",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(1000).toTimeString(),
+        endsWith(":00:01"),
+      ),
+    );
+    test(
+      "59s",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(59000).toTimeString(),
+        endsWith(":00:59"),
+      ),
+    );
+    test(
+      "1m",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(60000).toTimeString(),
+        endsWith(":01:00"),
+      ),
+    );
   });
 }

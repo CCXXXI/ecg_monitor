@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ChartSettingsData {
-  double get portraitDuration => throw _privateConstructorUsedError;
-  double get landscapeDuration => throw _privateConstructorUsedError;
+  Duration get portraitDuration => throw _privateConstructorUsedError;
+  Duration get landscapeDuration => throw _privateConstructorUsedError;
   Color get backgroundColor => throw _privateConstructorUsedError;
   Color get lineColor => throw _privateConstructorUsedError;
   Color get gridColor => throw _privateConstructorUsedError;
@@ -37,8 +37,8 @@ abstract class $ChartSettingsDataCopyWith<$Res> {
       _$ChartSettingsDataCopyWithImpl<$Res, ChartSettingsData>;
   @useResult
   $Res call(
-      {double portraitDuration,
-      double landscapeDuration,
+      {Duration portraitDuration,
+      Duration landscapeDuration,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -73,11 +73,11 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
       portraitDuration: null == portraitDuration
           ? _value.portraitDuration
           : portraitDuration // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Duration,
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Duration,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ abstract class _$$_ChartSettingsDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {double portraitDuration,
-      double landscapeDuration,
+      {Duration portraitDuration,
+      Duration landscapeDuration,
       Color backgroundColor,
       Color lineColor,
       Color gridColor,
@@ -149,11 +149,11 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
       portraitDuration: null == portraitDuration
           ? _value.portraitDuration
           : portraitDuration // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Duration,
       landscapeDuration: null == landscapeDuration
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Duration,
       backgroundColor: null == backgroundColor
           ? _value.backgroundColor
           : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -196,9 +196,9 @@ class _$_ChartSettingsData implements _ChartSettingsData {
       required this.showDots});
 
   @override
-  final double portraitDuration;
+  final Duration portraitDuration;
   @override
-  final double landscapeDuration;
+  final Duration landscapeDuration;
   @override
   final Color backgroundColor;
   @override
@@ -262,8 +262,8 @@ class _$_ChartSettingsData implements _ChartSettingsData {
 
 abstract class _ChartSettingsData implements ChartSettingsData {
   const factory _ChartSettingsData(
-      {required final double portraitDuration,
-      required final double landscapeDuration,
+      {required final Duration portraitDuration,
+      required final Duration landscapeDuration,
       required final Color backgroundColor,
       required final Color lineColor,
       required final Color gridColor,
@@ -272,9 +272,9 @@ abstract class _ChartSettingsData implements ChartSettingsData {
       required final bool showDots}) = _$_ChartSettingsData;
 
   @override
-  double get portraitDuration;
+  Duration get portraitDuration;
   @override
-  double get landscapeDuration;
+  Duration get landscapeDuration;
   @override
   Color get backgroundColor;
   @override

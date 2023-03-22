@@ -239,6 +239,114 @@ class _DoubleProvider extends AutoDisposeNotifierProviderImpl<_Double, double> {
   }
 }
 
+String _$durationHash() => r'6b5d3d8ec3a5a5daf20351cdda8e9989bdaf1892';
+
+abstract class _$Duration extends BuildlessAutoDisposeNotifier<Duration> {
+  late final String key;
+  late final Duration defaultValue;
+
+  Duration build(
+    String key,
+    Duration defaultValue,
+  );
+}
+
+/// See also [_Duration].
+@ProviderFor(_Duration)
+const _durationProvider = _DurationFamily();
+
+/// See also [_Duration].
+class _DurationFamily extends Family<Duration> {
+  /// See also [_Duration].
+  const _DurationFamily();
+
+  /// See also [_Duration].
+  _DurationProvider call(
+    String key,
+    Duration defaultValue,
+  ) {
+    return _DurationProvider(
+      key,
+      defaultValue,
+    );
+  }
+
+  @override
+  _DurationProvider getProviderOverride(
+    covariant _DurationProvider provider,
+  ) {
+    return call(
+      provider.key,
+      provider.defaultValue,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'_durationProvider';
+}
+
+/// See also [_Duration].
+class _DurationProvider
+    extends AutoDisposeNotifierProviderImpl<_Duration, Duration> {
+  /// See also [_Duration].
+  _DurationProvider(
+    this.key,
+    this.defaultValue,
+  ) : super.internal(
+          () => _Duration()
+            ..key = key
+            ..defaultValue = defaultValue,
+          from: _durationProvider,
+          name: r'_durationProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$durationHash,
+          dependencies: _DurationFamily._dependencies,
+          allTransitiveDependencies: _DurationFamily._allTransitiveDependencies,
+        );
+
+  final String key;
+  final Duration defaultValue;
+
+  @override
+  bool operator ==(Object other) {
+    return other is _DurationProvider &&
+        other.key == key &&
+        other.defaultValue == defaultValue;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, key.hashCode);
+    hash = _SystemHash.combine(hash, defaultValue.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+
+  @override
+  Duration runNotifierBuild(
+    covariant _Duration notifier,
+  ) {
+    return notifier.build(
+      key,
+      defaultValue,
+    );
+  }
+}
+
 String _$colorHash() => r'2c9db7411a82d57ed9d70edb7d43786d09f7f78a';
 
 abstract class _$Color extends BuildlessAutoDisposeNotifier<Color> {

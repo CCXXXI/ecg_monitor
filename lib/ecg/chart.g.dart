@@ -11,7 +11,7 @@ class _Chart extends StatelessWidget {
     Key? key,
     required this.title,
     required this.points,
-    required this.durationS,
+    required this.duration,
     required this.backgroundColor,
     required this.lineColor,
     required this.gridColor,
@@ -24,7 +24,7 @@ class _Chart extends StatelessWidget {
 
   final List<FlSpot> points;
 
-  final double durationS;
+  final Duration duration;
 
   final Color backgroundColor;
 
@@ -43,7 +43,7 @@ class _Chart extends StatelessWidget {
         _context,
         title: title,
         points: points,
-        durationS: durationS,
+        duration: duration,
         backgroundColor: backgroundColor,
         lineColor: lineColor,
         gridColor: gridColor,
@@ -56,7 +56,7 @@ class _Chart extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('title', title));
     properties.add(DiagnosticsProperty<List<FlSpot>>('points', points));
-    properties.add(DoubleProperty('durationS', durationS));
+    properties.add(DiagnosticsProperty<Duration>('duration', duration));
     properties
         .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));
     properties.add(DiagnosticsProperty<Color>('lineColor', lineColor));
@@ -75,7 +75,7 @@ class Chart3Lead extends StatelessWidget {
     required this.pointsI,
     required this.pointsII,
     required this.pointsIII,
-    required this.durationS,
+    required this.duration,
     required this.backgroundColor,
     required this.lineColor,
     required this.gridColor,
@@ -90,7 +90,7 @@ class Chart3Lead extends StatelessWidget {
 
   final List<FlSpot> pointsIII;
 
-  final double durationS;
+  final Duration duration;
 
   final Color backgroundColor;
 
@@ -110,7 +110,7 @@ class Chart3Lead extends StatelessWidget {
         pointsI: pointsI,
         pointsII: pointsII,
         pointsIII: pointsIII,
-        durationS: durationS,
+        duration: duration,
         backgroundColor: backgroundColor,
         lineColor: lineColor,
         gridColor: gridColor,
@@ -124,7 +124,7 @@ class Chart3Lead extends StatelessWidget {
     properties.add(DiagnosticsProperty<List<FlSpot>>('pointsI', pointsI));
     properties.add(DiagnosticsProperty<List<FlSpot>>('pointsII', pointsII));
     properties.add(DiagnosticsProperty<List<FlSpot>>('pointsIII', pointsIII));
-    properties.add(DoubleProperty('durationS', durationS));
+    properties.add(DiagnosticsProperty<Duration>('duration', duration));
     properties
         .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));
     properties.add(DiagnosticsProperty<Color>('lineColor', lineColor));

@@ -51,5 +51,6 @@
   "networkTest": "Network test",
   "showDots": "Show dots",
   "about": "About",
-  "changelog": "Changelog"
+  "changelog": "Changelog",
+  "noHistoryData": "No data at the selected time"
 }

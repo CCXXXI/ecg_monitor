@@ -131,9 +131,13 @@ Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         LinearProgressIndicator(value: data.progress),
-        Text(
-          s.heartRateDetecting,
-          style: Theme.of(context).textTheme.headlineLarge,
+        Expanded(
+          child: Center(
+            child: Text(
+              s.heartRateDetecting,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ),
         ),
       ],
     );
