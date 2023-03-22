@@ -4,16 +4,24 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 
 part "start_provider.g.dart";
 
+DateTime? initialStart;
+
 @riverpod
 class Start extends _$Start {
   @override
-  DateTime build() => DateTime.now()
-      // Show the data from 10 s ago to avoid showing an empty chart by default.
-      .subtract(aSecond * 10)
-      // Align the time to seconds to avoid showing a partial second.
-      .copyWith(millisecond: 0, microsecond: 0);
+  DateTime build() =>
+      initialStart ??
+      DateTime.now()
+          // Show the data from 10 s ago to avoid an empty chart by default.
+          .subtract(aSecond * 10)
+          // Align the time to seconds to avoid showing a partial second.
+          .copyWith(millisecond: 0, microsecond: 0);
 
-  void set(TimeOfDay time) {
+  // Required by Riverpod.
+  // ignore: use_setters_to_change_properties
+  void set(DateTime dateTime) => state = dateTime;
+
+  void setTimeOfDay(TimeOfDay time) {
     // Combine [time] with today's date.
     final now = DateTime.now();
     var start = DateTime(now.year, now.month, now.day, time.hour, time.minute);

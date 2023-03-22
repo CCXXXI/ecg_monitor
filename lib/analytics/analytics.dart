@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
+import "package:go_router/go_router.dart";
 import "package:isar/isar.dart";
 
 import "../utils/database.dart";
@@ -17,6 +18,7 @@ Widget analytics(BuildContext context) => ListView(
           ListTile(
             title: Text(label.name),
             trailing: Text(_labelCount(label).toString()),
+            onTap: () => context.push("/label_details/${label.index}"),
           ),
       ],
     );

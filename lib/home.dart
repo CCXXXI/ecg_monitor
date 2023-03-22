@@ -34,7 +34,9 @@ Widget _home(BuildContext context, Widget child) {
   );
 
   final route = GoRouterState.of(context).location;
-  final index = _routes.indexOf(route);
+  // /history/1234567890 -> /history
+  final parentRoute = route.replaceFirst(RegExp(r"/\d+"), "");
+  final index = _routes.indexOf(parentRoute);
 
   _logger.fine("route=$route, index=$index");
 
