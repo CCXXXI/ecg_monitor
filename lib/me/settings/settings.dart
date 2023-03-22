@@ -171,8 +171,8 @@ Widget __chartSettings(
           child: Slider.adaptive(
             value: landscapeDuration.inMilliseconds.toDouble(),
             onChanged: (ms) => onLandscapeDurationChanged(aMillisecond * ms),
-            min: 500,
-            max: 4000,
+            min: 1000,
+            max: 8000,
             divisions: 7,
             label: landscapeDuration.toSecondsString(),
           ),
