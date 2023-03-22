@@ -49,7 +49,7 @@ Widget __sectionTitle(BuildContext context, String title) {
   return Padding(padding: padding, child: Text(title, style: style));
 }
 
-extension on Duration {
+extension DurationToSecondsString on Duration {
   String toSecondsString() {
     final seconds = inMilliseconds / Duration.millisecondsPerSecond;
     return "${seconds.toStringAsFixed(1)} s";
