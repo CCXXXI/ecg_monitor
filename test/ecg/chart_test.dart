@@ -29,12 +29,48 @@ void main() {
     });
   });
 
-  group("msToTimeString", () {
-    test("0ms", () => expect(msToTimeString(0), endsWith(":00:00")));
-    test("1ms", () => expect(msToTimeString(1), endsWith(":00:00")));
-    test("999ms", () => expect(msToTimeString(999), endsWith(":00:00")));
-    test("1s", () => expect(msToTimeString(1000), endsWith(":00:01")));
-    test("59s", () => expect(msToTimeString(59000), endsWith(":00:59")));
-    test("1m", () => expect(msToTimeString(60000), endsWith(":01:00")));
+  group("DateTimeToTimeString", () {
+    test(
+      "0ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(0).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "1ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(1).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "999ms",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(999).toTimeString(),
+        endsWith(":00:00"),
+      ),
+    );
+    test(
+      "1s",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(1000).toTimeString(),
+        endsWith(":00:01"),
+      ),
+    );
+    test(
+      "59s",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(59000).toTimeString(),
+        endsWith(":00:59"),
+      ),
+    );
+    test(
+      "1m",
+      () => expect(
+        DateTime.fromMillisecondsSinceEpoch(60000).toTimeString(),
+        endsWith(":01:00"),
+      ),
+    );
   });
 }

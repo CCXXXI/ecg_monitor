@@ -26,12 +26,10 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
   return Duration(seconds: (duration.inSeconds / intervalCount).ceil());
 }
 
-@visibleForTesting
-String msToTimeString(double milliseconds) {
-  final dateTime = DateTime.fromMillisecondsSinceEpoch(milliseconds.toInt());
-  return "${dateTime.hour.toString().padLeft(2, "0")}"
-      ":${dateTime.minute.toString().padLeft(2, "0")}"
-      ":${dateTime.second.toString().padLeft(2, "0")}";
+extension DateTimeToTimeString on DateTime {
+  String toTimeString() => "${hour.toString().padLeft(2, "0")}"
+      ":${minute.toString().padLeft(2, "0")}"
+      ":${second.toString().padLeft(2, "0")}";
 }
 
 @swidget
@@ -77,7 +75,10 @@ Widget __chart(
           ? const SizedBox.shrink()
           : SideTitleWidget(
               axisSide: meta.axisSide,
-              child: Text(msToTimeString(value)),
+              child: Text(
+                DateTime.fromMillisecondsSinceEpoch(value.toInt())
+                    .toTimeString(),
+              ),
             ),
     ),
   );
