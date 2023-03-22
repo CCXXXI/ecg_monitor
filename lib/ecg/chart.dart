@@ -64,7 +64,6 @@ Widget __chart(
         : thinGridLineWidth;
   }
 
-  final s = S.of(context);
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
   final drawHorizontalLine = horizontalLineType != LineType.hide;
@@ -167,7 +166,7 @@ Widget __chart(
                     label: VerticalLineLabel(
                       show: true,
                       alignment: Alignment.center,
-                      labelResolver: (_) => beat.label.name(s),
+                      labelResolver: (_) => beat.label.name,
                     ),
                   ),
               ],

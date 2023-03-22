@@ -50,7 +50,9 @@ enum Label {
   unknown,
   ;
 
-  String name(S s) {
+  String get name {
+    final s = S.current;
+
     switch (this) {
       case Label.sinusRhythm:
         return s.sinusRhythm;
