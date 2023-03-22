@@ -6,8 +6,9 @@ part "start_provider.g.dart";
 
 @riverpod
 class Start extends _$Start {
+  // Show the data from a minute ago as a default.
   @override
-  DateTime build() => DateTime.now();
+  DateTime build() => DateTime.now().subtract(aMinute);
 
   void set(TimeOfDay time) {
     // Combine [time] with today's date.
