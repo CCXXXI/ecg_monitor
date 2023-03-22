@@ -167,7 +167,7 @@ Widget __chart(
                     label: VerticalLineLabel(
                       show: true,
                       alignment: Alignment.center,
-                      labelResolver: (_) => beat.label.toS(s),
+                      labelResolver: (_) => beat.label.name(s),
                     ),
                   ),
               ],

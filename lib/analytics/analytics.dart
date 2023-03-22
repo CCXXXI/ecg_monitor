@@ -19,7 +19,7 @@ Widget analytics(BuildContext context) {
     children: [
       for (final label in Label.values)
         ListTile(
-          title: Text(label.toS(s)),
+          title: Text(label.name(s)),
           trailing: Text(_labelCount(label).toString()),
         ),
     ],
