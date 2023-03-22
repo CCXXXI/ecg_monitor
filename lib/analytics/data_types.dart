@@ -1,3 +1,7 @@
+import "package:freezed_annotation/freezed_annotation.dart";
+
+part "data_types.freezed.dart";
+
 enum Label {
   /// 窦性心律
   /// Sinus rhythm
@@ -42,4 +46,12 @@ enum Label {
   /// 未知
   /// Unknown
   unknown,
+}
+
+@freezed
+class BeatData with _$BeatData {
+  const factory BeatData({
+    required DateTime time,
+    required Label label,
+  }) = _BeatData;
 }
