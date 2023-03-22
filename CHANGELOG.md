@@ -2,31 +2,29 @@
 
 ## [0.23.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.4...v0.23.0) (2023-03-22)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **settings:** Duration settings are stored as int (ms) instead of double (s) now. Old settings must be cleared manually.
+- **settings:** Duration settings are stored as int (ms) instead of double (s) now. Old settings must be cleared manually.
 
 ### Features
 
-* **history:** align time to seconds ([363e724](https://github.com/CCXXXI/ecg_monitor/commit/363e72421d901e473746053cf554095080ff201f))
-* **history:** show 10s instead of 1min ago by default ([38ddddc](https://github.com/CCXXXI/ecg_monitor/commit/38ddddcda26595d37225e862d75e317ea9287639))
-* **history:** show 1min ago as default ([dd1e25c](https://github.com/CCXXXI/ecg_monitor/commit/dd1e25c3b5a6f9490e3429b838e4fa19334a38d5))
-* **history:** show controller on landscape ([1a31ce3](https://github.com/CCXXXI/ecg_monitor/commit/1a31ce346d961973e2a987a845efc2f117835741))
-* **history:** show history data ([d7462de](https://github.com/CCXXXI/ecg_monitor/commit/d7462deeab1847f5f37db4df8fb2d59954412327))
-* **history:** show notification if no data ([1cf990e](https://github.com/CCXXXI/ecg_monitor/commit/1cf990ee72e6996e94e06b7f69df363a1664808a))
-* **real-time:** add padding to deviceNotConnected message ([88f69aa](https://github.com/CCXXXI/ecg_monitor/commit/88f69aa6edfda6a0d9bfa08fd8444d09ecb1558a))
-* **real-time:** more space between widgets ([258ee4b](https://github.com/CCXXXI/ecg_monitor/commit/258ee4b73f054a574422f9842b2d52f71f77db7d))
-
+- **history:** align time to seconds ([363e724](https://github.com/CCXXXI/ecg_monitor/commit/363e72421d901e473746053cf554095080ff201f))
+- **history:** show 10s instead of 1min ago by default ([38ddddc](https://github.com/CCXXXI/ecg_monitor/commit/38ddddcda26595d37225e862d75e317ea9287639))
+- **history:** show 1min ago as default ([dd1e25c](https://github.com/CCXXXI/ecg_monitor/commit/dd1e25c3b5a6f9490e3429b838e4fa19334a38d5))
+- **history:** show controller on landscape ([1a31ce3](https://github.com/CCXXXI/ecg_monitor/commit/1a31ce346d961973e2a987a845efc2f117835741))
+- **history:** show history data ([d7462de](https://github.com/CCXXXI/ecg_monitor/commit/d7462deeab1847f5f37db4df8fb2d59954412327))
+- **history:** show notification if no data ([1cf990e](https://github.com/CCXXXI/ecg_monitor/commit/1cf990ee72e6996e94e06b7f69df363a1664808a))
+- **real-time:** add padding to deviceNotConnected message ([88f69aa](https://github.com/CCXXXI/ecg_monitor/commit/88f69aa6edfda6a0d9bfa08fd8444d09ecb1558a))
+- **real-time:** more space between widgets ([258ee4b](https://github.com/CCXXXI/ecg_monitor/commit/258ee4b73f054a574422f9842b2d52f71f77db7d))
 
 ### Code Refactoring
 
-* **chart:** double -&gt; Duration ([c1d5551](https://github.com/CCXXXI/ecg_monitor/commit/c1d5551f6cc643b6e44ed4654ff077d44838f92b))
-* **chart:** extract DateTimeToTimeString ([2ca8479](https://github.com/CCXXXI/ecg_monitor/commit/2ca8479f098934952437c23d37e67fd01991197a))
-* **real-time:** extract device_not_available.dart ([0e671c5](https://github.com/CCXXXI/ecg_monitor/commit/0e671c56b9163aaa5c2b4a78e2c35df097c5a37d))
-* **real-time:** extract DeviceNotAvailable ([171d9ac](https://github.com/CCXXXI/ecg_monitor/commit/171d9ac0e69511de754ae978ab2a4aca22481ada))
-* **real-time:** move real_time_chart.dart to real_time/chart.dart ([710eae8](https://github.com/CCXXXI/ecg_monitor/commit/710eae81a0fa069c2cfe28ef37bb6e7e27d439d5))
-* **settings:** double duration -&gt; Duration duration ([daedbc0](https://github.com/CCXXXI/ecg_monitor/commit/daedbc0454b98a8468f71cf9da3804526a89cbce))
+- **chart:** double -&gt; Duration ([c1d5551](https://github.com/CCXXXI/ecg_monitor/commit/c1d5551f6cc643b6e44ed4654ff077d44838f92b))
+- **chart:** extract DateTimeToTimeString ([2ca8479](https://github.com/CCXXXI/ecg_monitor/commit/2ca8479f098934952437c23d37e67fd01991197a))
+- **real-time:** extract device_not_available.dart ([0e671c5](https://github.com/CCXXXI/ecg_monitor/commit/0e671c56b9163aaa5c2b4a78e2c35df097c5a37d))
+- **real-time:** extract DeviceNotAvailable ([171d9ac](https://github.com/CCXXXI/ecg_monitor/commit/171d9ac0e69511de754ae978ab2a4aca22481ada))
+- **real-time:** move real_time_chart.dart to real_time/chart.dart ([710eae8](https://github.com/CCXXXI/ecg_monitor/commit/710eae81a0fa069c2cfe28ef37bb6e7e27d439d5))
+- **settings:** double duration -&gt; Duration duration ([daedbc0](https://github.com/CCXXXI/ecg_monitor/commit/daedbc0454b98a8468f71cf9da3804526a89cbce))
 
 ## [0.22.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.3...v0.22.4) (2023-03-21)
 
