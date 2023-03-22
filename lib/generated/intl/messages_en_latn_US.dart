@@ -29,6 +29,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("About"),
         "analytics": MessageLookupByLibrary.simpleMessage("Analytics"),
         "appName": MessageLookupByLibrary.simpleMessage("ECG Monitor"),
+        "atrialFibrillation":
+            MessageLookupByLibrary.simpleMessage("Atrial fibrillation"),
+        "atrialFlutter": MessageLookupByLibrary.simpleMessage("Atrial flutter"),
+        "atrialPrematureBeat":
+            MessageLookupByLibrary.simpleMessage("Atrial premature beat"),
+        "atrioventricularBlock":
+            MessageLookupByLibrary.simpleMessage("Atrioventricular block"),
         "autoGenerate": MessageLookupByLibrary.simpleMessage("Auto generate"),
         "autoUpload": MessageLookupByLibrary.simpleMessage("Auto upload"),
         "backgroundColor":
@@ -79,6 +86,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No device found"),
         "noHistoryData": MessageLookupByLibrary.simpleMessage(
             "No data at the selected time"),
+        "noise": MessageLookupByLibrary.simpleMessage("Noise"),
+        "paroxysmalSupraVentricularTachycardia":
+            MessageLookupByLibrary.simpleMessage(
+                "Paroxysmal supra-ventricular tachycardia"),
         "portraitDuration":
             MessageLookupByLibrary.simpleMessage("Port. duration"),
         "professional": MessageLookupByLibrary.simpleMessage("prof."),
@@ -90,7 +101,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "showDevTools": MessageLookupByLibrary.simpleMessage("Show dev tools"),
         "showDots": MessageLookupByLibrary.simpleMessage("Show dots"),
         "simple": MessageLookupByLibrary.simpleMessage("simp."),
+        "sinusRhythm": MessageLookupByLibrary.simpleMessage("Sinus rhythm"),
         "style": MessageLookupByLibrary.simpleMessage("Style"),
+        "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
+        "ventricularFlutterAndFibrillation":
+            MessageLookupByLibrary.simpleMessage(
+                "Ventricular flutter and fibrillation"),
+        "ventricularPreExcitation":
+            MessageLookupByLibrary.simpleMessage("Ventricular pre-excitation"),
+        "ventricularPrematureBeat":
+            MessageLookupByLibrary.simpleMessage("Ventricular premature beat"),
         "verticalLines": MessageLookupByLibrary.simpleMessage("Ver. lines")
       };
 }
