@@ -49,6 +49,13 @@ Widget __sectionTitle(BuildContext context, String title) {
   return Padding(padding: padding, child: Text(title, style: style));
 }
 
+extension DurationToSecondsString on Duration {
+  String toSecondsString() {
+    final seconds = inMilliseconds / Duration.millisecondsPerSecond;
+    return "${seconds.toStringAsFixed(1)} s";
+  }
+}
+
 @swidget
 Widget __chartSettings(
   BuildContext context, {
@@ -104,9 +111,6 @@ Widget __chartSettings(
     ),
   ];
 
-  final portraitDurationString = "${portraitDuration.inSeconds} s";
-  final landscapeDurationString = "${landscapeDuration.inSeconds} s";
-
   return Column(
     children: [
       ListTile(
@@ -145,32 +149,32 @@ Widget __chartSettings(
       ListTile(
         leading: const Icon(Icons.stay_primary_portrait_outlined),
         title: Text(s.portraitDuration),
-        subtitle: Text(portraitDurationString),
+        subtitle: Text(portraitDuration.toSecondsString()),
         trailing: SizedBox(
           width: 200,
           child: Slider.adaptive(
-            value: portraitDuration.inSeconds.toDouble(),
-            onChanged: (s) => onPortraitDurationChanged(aSecond * s.toInt()),
-            min: 1,
-            max: 10,
-            divisions: 9,
-            label: portraitDurationString,
+            value: portraitDuration.inMilliseconds.toDouble(),
+            onChanged: (ms) => onPortraitDurationChanged(aMillisecond * ms),
+            min: 500,
+            max: 4000,
+            divisions: 7,
+            label: portraitDuration.toSecondsString(),
           ),
         ),
       ),
       ListTile(
         leading: const Icon(Icons.stay_primary_landscape_outlined),
         title: Text(s.landscapeDuration),
-        subtitle: Text(landscapeDurationString),
+        subtitle: Text(landscapeDuration.toSecondsString()),
         trailing: SizedBox(
           width: 200,
           child: Slider.adaptive(
-            value: landscapeDuration.inSeconds.toDouble(),
-            onChanged: (s) => onLandscapeDurationChanged(aSecond * s.toInt()),
-            min: 1,
-            max: 10,
-            divisions: 9,
-            label: landscapeDurationString,
+            value: landscapeDuration.inMilliseconds.toDouble(),
+            onChanged: (ms) => onLandscapeDurationChanged(aMillisecond * ms),
+            min: 500,
+            max: 4000,
+            divisions: 7,
+            label: landscapeDuration.toSecondsString(),
           ),
         ),
       ),

@@ -48,15 +48,16 @@ Widget __chart(
   const largeXInterval = smallXInterval * 5;
   const largeYInterval = smallYInterval * 5;
 
-  const thickLineWidth = 1.0;
-  const thinLineWidth = .5;
+  const thickGridLineWidth = 1.0;
+  const thinGridLineWidth = thickGridLineWidth / 5;
+  const dataLineWidth = .5;
 
   double getStrokeWidth(double value, {required bool isHorizontal}) {
     final largeInterval = isHorizontal ? largeYInterval : largeXInterval;
     final smallInterval = isHorizontal ? smallYInterval : smallXInterval;
-    return value % largeInterval < smallInterval / 2
-        ? thickLineWidth
-        : thinLineWidth;
+    return (value.abs() + 1e-6) % largeInterval < smallInterval / 2
+        ? thickGridLineWidth
+        : thinGridLineWidth;
   }
 
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
@@ -143,7 +144,7 @@ Widget __chart(
               LineChartBarData(
                 spots: points,
                 color: lineColor,
-                barWidth: .5,
+                barWidth: dataLineWidth,
                 preventCurveOverShooting: true,
                 dotData: FlDotData(
                   show: showDots,
