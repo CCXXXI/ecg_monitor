@@ -7,17 +7,9 @@ import "controller.dart";
 part "history.g.dart";
 
 @swidget
-Widget history(BuildContext context) {
-  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-
-  if (isPortrait) {
-    return Column(
+Widget history() => Column(
       children: const [
         Expanded(child: HistoryChart()),
         HistoryController(),
       ],
     );
-  } else {
-    return const HistoryChart();
-  }
-}
