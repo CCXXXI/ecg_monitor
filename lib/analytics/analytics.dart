@@ -17,54 +17,11 @@ Widget analytics(BuildContext context) {
 
   return ListView(
     children: [
-      ListTile(
-        title: Text(s.sinusRhythm),
-        trailing: Text(_labelCount(Label.sinusRhythm).toString()),
-      ),
-      ListTile(
-        title: Text(s.atrialPrematureBeat),
-        trailing: Text(_labelCount(Label.atrialPrematureBeat).toString()),
-      ),
-      ListTile(
-        title: Text(s.atrialFlutter),
-        trailing: Text(_labelCount(Label.atrialFlutter).toString()),
-      ),
-      ListTile(
-        title: Text(s.atrialFibrillation),
-        trailing: Text(_labelCount(Label.atrialFibrillation).toString()),
-      ),
-      ListTile(
-        title: Text(s.ventricularPrematureBeat),
-        trailing: Text(_labelCount(Label.ventricularPrematureBeat).toString()),
-      ),
-      ListTile(
-        title: Text(s.paroxysmalSupraVentricularTachycardia),
-        trailing: Text(
-          _labelCount(Label.paroxysmalSupraVentricularTachycardia).toString(),
+      for (final label in Label.values)
+        ListTile(
+          title: Text(label.toS(s)),
+          trailing: Text(_labelCount(label).toString()),
         ),
-      ),
-      ListTile(
-        title: Text(s.ventricularPreExcitation),
-        trailing: Text(_labelCount(Label.ventricularPreExcitation).toString()),
-      ),
-      ListTile(
-        title: Text(s.ventricularFlutterAndFibrillation),
-        trailing: Text(
-          _labelCount(Label.ventricularFlutterAndFibrillation).toString(),
-        ),
-      ),
-      ListTile(
-        title: Text(s.atrioventricularBlock),
-        trailing: Text(_labelCount(Label.atrioventricularBlock).toString()),
-      ),
-      ListTile(
-        title: Text(s.noise),
-        trailing: Text(_labelCount(Label.noise).toString()),
-      ),
-      ListTile(
-        title: Text(s.unknown),
-        trailing: Text(_labelCount(Label.unknown).toString()),
-      ),
     ],
   );
 }
