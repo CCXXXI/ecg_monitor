@@ -133,4 +133,85 @@ class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
     return _SystemHash.finish(hash);
   }
 }
+
+String _$beatDataHash() => r'c2ecba9b98650bd33a90b829c6b76147329a8595';
+typedef _BeatDataRef = AutoDisposeProviderRef<List<BeatData>>;
+
+/// See also [_beatData].
+@ProviderFor(_beatData)
+const _beatDataProvider = _BeatDataFamily();
+
+/// See also [_beatData].
+class _BeatDataFamily extends Family<List<BeatData>> {
+  /// See also [_beatData].
+  const _BeatDataFamily();
+
+  /// See also [_beatData].
+  _BeatDataProvider call(
+    Duration duration,
+  ) {
+    return _BeatDataProvider(
+      duration,
+    );
+  }
+
+  @override
+  _BeatDataProvider getProviderOverride(
+    covariant _BeatDataProvider provider,
+  ) {
+    return call(
+      provider.duration,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'_beatDataProvider';
+}
+
+/// See also [_beatData].
+class _BeatDataProvider extends AutoDisposeProvider<List<BeatData>> {
+  /// See also [_beatData].
+  _BeatDataProvider(
+    this.duration,
+  ) : super.internal(
+          (ref) => _beatData(
+            ref,
+            duration,
+          ),
+          from: _beatDataProvider,
+          name: r'_beatDataProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$beatDataHash,
+          dependencies: _BeatDataFamily._dependencies,
+          allTransitiveDependencies: _BeatDataFamily._allTransitiveDependencies,
+        );
+
+  final Duration duration;
+
+  @override
+  bool operator ==(Object other) {
+    return other is _BeatDataProvider && other.duration == duration;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, duration.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
