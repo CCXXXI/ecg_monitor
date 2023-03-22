@@ -51,6 +51,7 @@ class Beat {
   final Id millisecondsSinceEpoch;
 
   @enumerated
+  @Index()
   final Label label;
 }
 

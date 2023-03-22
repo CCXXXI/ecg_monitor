@@ -510,7 +510,21 @@ const BeatSchema = CollectionSchema(
   deserialize: _beatDeserialize,
   deserializeProp: _beatDeserializeProp,
   idName: r'millisecondsSinceEpoch',
-  indexes: {},
+  indexes: {
+    r'label': IndexSchema(
+      id: 6902807635198700142,
+      name: r'label',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'label',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    )
+  },
   links: {},
   embeddedSchemas: {},
   getId: _beatGetId,
@@ -609,6 +623,14 @@ extension BeatQueryWhereSort on QueryBuilder<Beat, Beat, QWhere> {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
+
+  QueryBuilder<Beat, Beat, QAfterWhere> anyLabel() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'label'),
+      );
+    });
+  }
 }
 
 extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
@@ -682,6 +704,94 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
         lower: lowerMillisecondsSinceEpoch,
         includeLower: includeLower,
         upper: upperMillisecondsSinceEpoch,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualTo(Label label) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'label',
+        value: [label],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelNotEqualTo(Label label) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [],
+              upper: [label],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [label],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [label],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [],
+              upper: [label],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelGreaterThan(
+    Label label, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [label],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelLessThan(
+    Label label, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [],
+        upper: [label],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelBetween(
+    Label lowerLabel,
+    Label upperLabel, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [lowerLabel],
+        includeLower: includeLower,
+        upper: [upperLabel],
         includeUpper: includeUpper,
       ));
     });
