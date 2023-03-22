@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.24.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.23.0...v0.24.0) (2023-03-22)
+
+
+### Features
+
+* **chart:** better lines ([64ee6df](https://github.com/CCXXXI/ecg_monitor/commit/64ee6df5fbadade021d308714fa13db597fa5cae))
+* **settings:** update default durations ([22b019a](https://github.com/CCXXXI/ecg_monitor/commit/22b019ae7f6a14e2fa0cfb7ffa4e4f171d77ab62))
+
+
+### Tests
+
+* **settings:** add test for DurationToSecondsString ([42f3508](https://github.com/CCXXXI/ecg_monitor/commit/42f35086a1e469883e6942ca69516a591d928e6c))
+
 ## [0.23.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.22.4...v0.23.0) (2023-03-22)
 
 ### ⚠ BREAKING CHANGES
