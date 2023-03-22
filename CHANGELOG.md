@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.25.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.24.0...v0.25.0) (2023-03-22)
+
+### Features
+
+- **chart:** fullscreen when landscape ([f73b3c4](https://github.com/CCXXXI/ecg_monitor/commit/f73b3c4d7bbc034573827dc1adf792633f95445d))
+- **chart:** only one lead for landscape ([9bed933](https://github.com/CCXXXI/ecg_monitor/commit/9bed93313823f8b9f52705f37ffaeb12050be516))
+
+### Tests
+
+- **main:** correct test ([3988f5c](https://github.com/CCXXXI/ecg_monitor/commit/3988f5c429dacfd4aeade1adae1f0bee078c1c4e))
+
 ## [0.24.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.23.0...v0.24.0) (2023-03-22)
 
 ### Features
