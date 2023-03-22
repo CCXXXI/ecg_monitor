@@ -69,7 +69,7 @@ class _Chart extends StatelessWidget {
   }
 }
 
-class Chart3Lead extends StatelessWidget {
+class Chart3Lead extends ConsumerWidget {
   const Chart3Lead({
     Key? key,
     required this.pointsI,
@@ -105,8 +105,13 @@ class Chart3Lead extends StatelessWidget {
   final bool showDots;
 
   @override
-  Widget build(BuildContext _context) => _chart3Lead(
+  Widget build(
+    BuildContext _context,
+    WidgetRef _ref,
+  ) =>
+      _chart3Lead(
         _context,
+        _ref,
         pointsI: pointsI,
         pointsII: pointsII,
         pointsIII: pointsIII,

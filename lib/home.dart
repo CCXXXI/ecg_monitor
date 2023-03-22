@@ -1,5 +1,8 @@
+import "dart:async";
+
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:go_router/go_router.dart";
 import "package:logging/logging.dart";
@@ -21,6 +24,14 @@ const _routes = [
 @swidget
 Widget _home(BuildContext context, Widget child) {
   final s = S.of(context);
+  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+
+  // enable or disable fullscreen mode
+  unawaited(
+    SystemChrome.setEnabledSystemUIMode(
+      isPortrait ? SystemUiMode.edgeToEdge : SystemUiMode.immersive,
+    ),
+  );
 
   final route = GoRouterState.of(context).location;
   final index = _routes.indexOf(route);
@@ -28,7 +39,7 @@ Widget _home(BuildContext context, Widget child) {
   _logger.fine("route=$route, index=$index");
 
   return Scaffold(
-    appBar: AppBar(title: Text(s.appName)),
+    appBar: isPortrait ? AppBar(title: Text(s.appName)) : null,
     body: child,
     bottomNavigationBar: NavigationBar(
       selectedIndex: index,

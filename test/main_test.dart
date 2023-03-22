@@ -18,6 +18,6 @@ void main() {
 
     await tester.pumpWidget(const ProviderScope(child: AppCore()));
 
-    expect(find.text(s.appName), findsOneWidget);
+    expect(find.text(s.realTime), findsOneWidget);
   });
 }

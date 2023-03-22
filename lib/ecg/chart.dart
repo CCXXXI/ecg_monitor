@@ -3,6 +3,8 @@ import "dart:math";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
 import "../generated/l10n.dart";
@@ -99,7 +101,7 @@ Widget __chart(
 
   return Column(
     children: [
-      Text(title),
+      if (isPortrait) Text(title),
       Expanded(
         child: LineChart(
           swapAnimationDuration: Duration.zero, // disable animation
@@ -160,9 +162,12 @@ Widget __chart(
   );
 }
 
-@swidget
+final _landscapeIndexProvider = StateProvider<int>((ref) => 0);
+
+@cwidget
 Widget _chart3Lead(
-  BuildContext context, {
+  BuildContext context,
+  WidgetRef ref, {
   required List<FlSpot> pointsI,
   required List<FlSpot> pointsII,
   required List<FlSpot> pointsIII,
@@ -203,6 +208,26 @@ Widget _chart3Lead(
       ],
     );
   } else {
-    return Row(children: children);
+    final index = ref.watch(_landscapeIndexProvider);
+
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: SegmentedButton(
+            segments: [
+              ButtonSegment(value: 0, label: Text(s.leadI)),
+              ButtonSegment(value: 1, label: Text(s.leadII)),
+              ButtonSegment(value: 2, label: Text(s.leadIII)),
+            ],
+            selected: {index},
+            onSelectionChanged: (selected) => ref
+                .read(_landscapeIndexProvider.notifier)
+                .state = selected.single,
+          ),
+        ),
+        children[index],
+      ],
+    );
   }
 }
