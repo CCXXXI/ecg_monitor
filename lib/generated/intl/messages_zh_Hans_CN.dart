@@ -68,6 +68,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "minDistance": MessageLookupByLibrary.simpleMessage("最小点间距"),
         "networkTest": MessageLookupByLibrary.simpleMessage("网络测试"),
         "noDeviceFound": MessageLookupByLibrary.simpleMessage("未发现设备"),
+        "noHistoryData": MessageLookupByLibrary.simpleMessage("所选时间没有数据"),
         "portraitDuration": MessageLookupByLibrary.simpleMessage("竖屏数据范围"),
         "professional": MessageLookupByLibrary.simpleMessage("专业"),
         "realTime": MessageLookupByLibrary.simpleMessage("实时心电"),

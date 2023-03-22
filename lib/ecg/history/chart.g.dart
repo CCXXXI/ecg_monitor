@@ -20,6 +20,13 @@ class HistoryChart extends ConsumerWidget {
       );
 }
 
+class _NoData extends StatelessWidget {
+  const _NoData({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext _context) => __noData(_context);
+}
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
@@ -121,96 +128,6 @@ class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, duration.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-String _$pointsHash() => r'183e04448254aee72ebe19d0f9bb9ffd6fd106fe';
-typedef _PointsRef = AutoDisposeProviderRef<List<FlSpot>>;
-
-/// See also [_points].
-@ProviderFor(_points)
-const _pointsProvider = _PointsFamily();
-
-/// See also [_points].
-class _PointsFamily extends Family<List<FlSpot>> {
-  /// See also [_points].
-  const _PointsFamily();
-
-  /// See also [_points].
-  _PointsProvider call(
-    int index,
-    Duration duration,
-  ) {
-    return _PointsProvider(
-      index,
-      duration,
-    );
-  }
-
-  @override
-  _PointsProvider getProviderOverride(
-    covariant _PointsProvider provider,
-  ) {
-    return call(
-      provider.index,
-      provider.duration,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'_pointsProvider';
-}
-
-/// See also [_points].
-class _PointsProvider extends AutoDisposeProvider<List<FlSpot>> {
-  /// See also [_points].
-  _PointsProvider(
-    this.index,
-    this.duration,
-  ) : super.internal(
-          (ref) => _points(
-            ref,
-            index,
-            duration,
-          ),
-          from: _pointsProvider,
-          name: r'_pointsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pointsHash,
-          dependencies: _PointsFamily._dependencies,
-          allTransitiveDependencies: _PointsFamily._allTransitiveDependencies,
-        );
-
-  final int index;
-  final Duration duration;
-
-  @override
-  bool operator ==(Object other) {
-    return other is _PointsProvider &&
-        other.index == index &&
-        other.duration == duration;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, index.hashCode);
     hash = _SystemHash.combine(hash, duration.hashCode);
 
     return _SystemHash.finish(hash);

@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkTest": MessageLookupByLibrary.simpleMessage("Network test"),
         "noDeviceFound":
             MessageLookupByLibrary.simpleMessage("No device found"),
+        "noHistoryData": MessageLookupByLibrary.simpleMessage(
+            "No data at the selected time"),
         "portraitDuration":
             MessageLookupByLibrary.simpleMessage("Port. duration"),
         "professional": MessageLookupByLibrary.simpleMessage("prof."),

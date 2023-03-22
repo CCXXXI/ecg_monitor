@@ -569,6 +569,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No data at the selected time`
+  String get noHistoryData {
+    return Intl.message(
+      'No data at the selected time',
+      name: 'noHistoryData',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

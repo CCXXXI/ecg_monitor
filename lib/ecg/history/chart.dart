@@ -6,6 +6,7 @@ import "package:isar/isar.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../device_manager/device.dart";
+import "../../generated/l10n.dart";
 import "../../me/settings/providers.dart";
 import "../../utils/database.dart";
 import "../chart.dart";
@@ -29,20 +30,6 @@ List<EcgData> _ecgData(_EcgDataRef ref, Duration duration) {
   return data.map((d) => d.toEcgData()).toList();
 }
 
-@riverpod
-List<FlSpot> _points(_PointsRef ref, int index, Duration duration) {
-  final data = ref.watch(_ecgDataProvider(duration));
-
-  return data
-      .map(
-        (d) => FlSpot(
-          d.time.millisecondsSinceEpoch.toDouble(),
-          [d.leadI, d.leadII, d.leadIII][index],
-        ),
-      )
-      .toList();
-}
-
 @cwidget
 Widget _historyChart(BuildContext context, WidgetRef ref) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
@@ -53,10 +40,26 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
         : historyLandscapeDurationProvider,
   );
 
+  final data = ref.watch(_ecgDataProvider(duration));
+
+  if (data.isEmpty) {
+    return const _NoData();
+  }
+
+  final pointsI = <FlSpot>[];
+  final pointsII = <FlSpot>[];
+  final pointsIII = <FlSpot>[];
+  for (final d in data) {
+    final x = d.time.millisecondsSinceEpoch.toDouble();
+    pointsI.add(FlSpot(x, d.leadI));
+    pointsII.add(FlSpot(x, d.leadII));
+    pointsIII.add(FlSpot(x, d.leadIII));
+  }
+
   return Chart3Lead(
-    pointsI: ref.watch(_pointsProvider(0, duration)),
-    pointsII: ref.watch(_pointsProvider(1, duration)),
-    pointsIII: ref.watch(_pointsProvider(2, duration)),
+    pointsI: pointsI,
+    pointsII: pointsII,
+    pointsIII: pointsIII,
     duration: duration,
     backgroundColor: ref.watch(historyBackgroundColorProvider),
     lineColor: ref.watch(historyLineColorProvider),
@@ -64,5 +67,17 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
     horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
     verticalLineType: ref.watch(historyVerticalLineTypeProvider),
     showDots: ref.watch(historyShowDotsProvider),
+  );
+}
+
+@swidget
+Widget __noData(BuildContext context) {
+  final s = S.of(context);
+
+  return Center(
+    child: Text(
+      s.noHistoryData,
+      style: Theme.of(context).textTheme.headlineLarge,
+    ),
   );
 }
