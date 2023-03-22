@@ -6,9 +6,11 @@ part "start_provider.g.dart";
 
 @riverpod
 class Start extends _$Start {
-  // Show the data from a minute ago as a default.
+  // Show the data from a minute ago to avoid showing an empty chart by default.
+  // Align the time to seconds to avoid showing a partial second.
   @override
-  DateTime build() => DateTime.now().subtract(aMinute);
+  DateTime build() =>
+      DateTime.now().subtract(aMinute).copyWith(millisecond: 0, microsecond: 0);
 
   void set(TimeOfDay time) {
     // Combine [time] with today's date.
