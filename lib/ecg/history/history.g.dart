@@ -10,5 +10,5 @@ class History extends StatelessWidget {
   const History({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext _context) => history();
+  Widget build(BuildContext _context) => history(_context);
 }
