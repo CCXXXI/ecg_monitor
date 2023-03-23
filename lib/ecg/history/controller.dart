@@ -35,7 +35,7 @@ Widget _historyController(BuildContext context, WidgetRef ref) {
             initialTime: TimeOfDay.fromDateTime(start),
           );
           if (newStart != null) {
-            ref.read(startProvider.notifier).setTimeOfDay(newStart);
+            ref.read(startProvider.notifier).set(newStart);
           }
         },
       ),

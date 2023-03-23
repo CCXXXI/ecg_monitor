@@ -17,11 +17,7 @@ class Start extends _$Start {
           // Align the time to seconds to avoid showing a partial second.
           .copyWith(millisecond: 0, microsecond: 0);
 
-  // Required by Riverpod.
-  // ignore: use_setters_to_change_properties
-  void set(DateTime dateTime) => state = dateTime;
-
-  void setTimeOfDay(TimeOfDay time) {
+  void set(TimeOfDay time) {
     // Combine [time] with today's date.
     final now = DateTime.now();
     var start = DateTime(now.year, now.month, now.day, time.hour, time.minute);
