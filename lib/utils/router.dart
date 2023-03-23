@@ -37,8 +37,9 @@ final router = GoRouter(
           path: "/history/:msSinceEpoch",
           builder: (context, state) {
             final msSinceEpoch = state.params["msSinceEpoch"]!;
-            final initialTime =
-                DateTime.fromMillisecondsSinceEpoch(int.parse(msSinceEpoch));
+            final initialTime = DateTime.fromMillisecondsSinceEpoch(
+              int.parse(msSinceEpoch),
+            );
             return History(initialTime: initialTime);
           },
         ),
