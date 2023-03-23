@@ -21,9 +21,7 @@ Widget _labelDetails(BuildContext context, Label label) {
   final times = _labelTimes(label);
 
   return Scaffold(
-    appBar: AppBar(
-      title: Text(label.name),
-    ),
+    appBar: AppBar(title: Text(label.name)),
     body: ListView(
       children: [
         for (final time in times)
