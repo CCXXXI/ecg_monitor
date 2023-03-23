@@ -51,7 +51,7 @@ dependencies:
   url_launcher: ^6.1.9
 
 dev_dependencies:
-  all_lint_rules_community: ^0.0.27
+  all_lint_rules_community: ^0.0.28
   build_runner: ^2.3.3
   dependency_validator: ^3.2.2
   ffigen: ^7.2.7
