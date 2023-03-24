@@ -5,6 +5,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:isar/isar.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../analytics/data_types.dart";
 import "../../device_manager/device.dart";
 import "../../generated/l10n.dart";
 import "../../me/settings/providers.dart";
@@ -28,6 +29,22 @@ List<EcgData> _ecgData(_EcgDataRef ref, Duration duration) {
       .findAllSync();
 
   return data.map((d) => d.toEcgData()).toList();
+}
+
+@riverpod
+List<BeatData> _beatData(_BeatDataRef ref, Duration duration) {
+  final start = ref.watch(startProvider);
+  final end = start.add(duration);
+
+  final data = isar.beats
+      .where()
+      .millisecondsSinceEpochBetween(
+        start.millisecondsSinceEpoch,
+        end.millisecondsSinceEpoch,
+      )
+      .findAllSync();
+
+  return data.map((d) => d.toBeatData()).toList();
 }
 
 @cwidget
@@ -56,6 +73,8 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
     pointsIII.add(FlSpot(x, d.leadIII));
   }
 
+  final beats = ref.watch(_beatDataProvider(duration));
+
   return Chart3Lead(
     pointsI: pointsI,
     pointsII: pointsII,
@@ -67,6 +86,7 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
     horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
     verticalLineType: ref.watch(historyVerticalLineTypeProvider),
     showDots: ref.watch(historyShowDotsProvider),
+    beats: beats,
   );
 }
 

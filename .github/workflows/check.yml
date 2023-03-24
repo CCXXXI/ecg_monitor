@@ -22,6 +22,11 @@ jobs:
         with:
           submodules: recursive
       - uses: ./.github/actions/setup-flutter
+      - uses: actions/cache@v3
+        with:
+          path: "*isar.*"
+          key: ${{ runner.os }}-isar
+      - run: flutter test test/setup_isar.dart
 
       - run: flutter test --coverage
       - uses: codecov/codecov-action@v3

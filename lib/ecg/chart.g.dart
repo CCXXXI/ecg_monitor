@@ -18,6 +18,7 @@ class _Chart extends StatelessWidget {
     required this.horizontalLineType,
     required this.verticalLineType,
     required this.showDots,
+    required this.beats,
   }) : super(key: key);
 
   final String title;
@@ -38,6 +39,8 @@ class _Chart extends StatelessWidget {
 
   final bool showDots;
 
+  final List<BeatData> beats;
+
   @override
   Widget build(BuildContext _context) => __chart(
         _context,
@@ -50,6 +53,7 @@ class _Chart extends StatelessWidget {
         horizontalLineType: horizontalLineType,
         verticalLineType: verticalLineType,
         showDots: showDots,
+        beats: beats,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -66,6 +70,7 @@ class _Chart extends StatelessWidget {
     properties
         .add(EnumProperty<LineType>('verticalLineType', verticalLineType));
     properties.add(DiagnosticsProperty<bool>('showDots', showDots));
+    properties.add(DiagnosticsProperty<List<BeatData>>('beats', beats));
   }
 }
 
@@ -82,6 +87,7 @@ class Chart3Lead extends ConsumerWidget {
     required this.horizontalLineType,
     required this.verticalLineType,
     required this.showDots,
+    this.beats = const [],
   }) : super(key: key);
 
   final List<FlSpot> pointsI;
@@ -104,6 +110,8 @@ class Chart3Lead extends ConsumerWidget {
 
   final bool showDots;
 
+  final List<BeatData> beats;
+
   @override
   Widget build(
     BuildContext _context,
@@ -122,6 +130,7 @@ class Chart3Lead extends ConsumerWidget {
         horizontalLineType: horizontalLineType,
         verticalLineType: verticalLineType,
         showDots: showDots,
+        beats: beats,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -139,5 +148,6 @@ class Chart3Lead extends ConsumerWidget {
     properties
         .add(EnumProperty<LineType>('verticalLineType', verticalLineType));
     properties.add(DiagnosticsProperty<bool>('showDots', showDots));
+    properties.add(DiagnosticsProperty<List<BeatData>>('beats', beats));
   }
 }

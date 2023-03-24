@@ -579,6 +579,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Sinus rhythm`
+  String get sinusRhythm {
+    return Intl.message(
+      'Sinus rhythm',
+      name: 'sinusRhythm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Atrial premature beat`
+  String get atrialPrematureBeat {
+    return Intl.message(
+      'Atrial premature beat',
+      name: 'atrialPrematureBeat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Atrial flutter`
+  String get atrialFlutter {
+    return Intl.message(
+      'Atrial flutter',
+      name: 'atrialFlutter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Atrial fibrillation`
+  String get atrialFibrillation {
+    return Intl.message(
+      'Atrial fibrillation',
+      name: 'atrialFibrillation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ventricular premature beat`
+  String get ventricularPrematureBeat {
+    return Intl.message(
+      'Ventricular premature beat',
+      name: 'ventricularPrematureBeat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paroxysmal supra-ventricular tachycardia`
+  String get paroxysmalSupraVentricularTachycardia {
+    return Intl.message(
+      'Paroxysmal supra-ventricular tachycardia',
+      name: 'paroxysmalSupraVentricularTachycardia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ventricular pre-excitation`
+  String get ventricularPreExcitation {
+    return Intl.message(
+      'Ventricular pre-excitation',
+      name: 'ventricularPreExcitation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ventricular flutter and fibrillation`
+  String get ventricularFlutterAndFibrillation {
+    return Intl.message(
+      'Ventricular flutter and fibrillation',
+      name: 'ventricularFlutterAndFibrillation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Atrioventricular block`
+  String get atrioventricularBlock {
+    return Intl.message(
+      'Atrioventricular block',
+      name: 'atrioventricularBlock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Noise`
+  String get noise {
+    return Intl.message(
+      'Noise',
+      name: 'noise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get unknown {
+    return Intl.message(
+      'Unknown',
+      name: 'unknown',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

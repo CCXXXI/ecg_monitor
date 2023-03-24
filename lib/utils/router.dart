@@ -3,6 +3,8 @@ import "package:go_router/go_router.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
+import "../analytics/data_types.dart";
+import "../analytics/label_details.dart";
 import "../device_manager/device_manager.dart";
 import "../ecg/history/history.dart";
 import "../ecg/real_time/real_time.dart";
@@ -32,6 +34,16 @@ final router = GoRouter(
           builder: (context, state) => const History(),
         ),
         GoRoute(
+          path: "/history/:msSinceEpoch",
+          builder: (context, state) {
+            final msSinceEpoch = state.params["msSinceEpoch"]!;
+            final initialTime = DateTime.fromMillisecondsSinceEpoch(
+              int.parse(msSinceEpoch),
+            );
+            return History(initialTime: initialTime);
+          },
+        ),
+        GoRoute(
           path: "/analytics",
           builder: (context, state) => const Analytics(),
         ),
@@ -46,9 +58,18 @@ final router = GoRouter(
       ],
     ),
     GoRoute(
+      parentNavigatorKey: _rootKey,
       path: "/me/settings",
       builder: (context, state) => const Settings(),
+    ),
+    GoRoute(
       parentNavigatorKey: _rootKey,
+      path: "/analytics/label_details/:label_index",
+      builder: (context, state) {
+        final labelIndex = state.params["label_index"]!;
+        final label = Label.values[int.parse(labelIndex)];
+        return LabelDetails(label);
+      },
     ),
   ],
 );

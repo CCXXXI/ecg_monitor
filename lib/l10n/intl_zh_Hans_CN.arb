@@ -52,5 +52,16 @@
   "showDots": "显示数据点",
   "about": "关于",
   "changelog": "更新日志",
-  "noHistoryData": "所选时间没有数据"
+  "noHistoryData": "所选时间没有数据",
+  "sinusRhythm": "窦性心律",
+  "atrialPrematureBeat": "房性早搏",
+  "atrialFlutter": "心房扑动",
+  "atrialFibrillation": "心房颤动",
+  "ventricularPrematureBeat": "室性早搏",
+  "paroxysmalSupraVentricularTachycardia": "阵发性室上性心动过速",
+  "ventricularPreExcitation": "心室预激",
+  "ventricularFlutterAndFibrillation": "室扑室颤",
+  "atrioventricularBlock": "房室传导阻滞",
+  "noise": "噪声",
+  "unknown": "未知"
 }

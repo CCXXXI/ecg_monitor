@@ -10,5 +10,5 @@ class Analytics extends StatelessWidget {
   const Analytics({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext _context) => analytics();
+  Widget build(BuildContext _context) => analytics(_context);
 }

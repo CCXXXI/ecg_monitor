@@ -52,5 +52,16 @@
   "showDots": "Show dots",
   "about": "About",
   "changelog": "Changelog",
-  "noHistoryData": "No data at the selected time"
+  "noHistoryData": "No data at the selected time",
+  "sinusRhythm": "Sinus rhythm",
+  "atrialPrematureBeat": "Atrial premature beat",
+  "atrialFlutter": "Atrial flutter",
+  "atrialFibrillation": "Atrial fibrillation",
+  "ventricularPrematureBeat": "Ventricular premature beat",
+  "paroxysmalSupraVentricularTachycardia": "Paroxysmal supra-ventricular tachycardia",
+  "ventricularPreExcitation": "Ventricular pre-excitation",
+  "ventricularFlutterAndFibrillation": "Ventricular flutter and fibrillation",
+  "atrioventricularBlock": "Atrioventricular block",
+  "noise": "Noise",
+  "unknown": "Unknown"
 }

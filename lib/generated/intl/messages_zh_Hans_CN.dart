@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "about": MessageLookupByLibrary.simpleMessage("关于"),
         "analytics": MessageLookupByLibrary.simpleMessage("分析报告"),
         "appName": MessageLookupByLibrary.simpleMessage("心电监测"),
+        "atrialFibrillation": MessageLookupByLibrary.simpleMessage("心房颤动"),
+        "atrialFlutter": MessageLookupByLibrary.simpleMessage("心房扑动"),
+        "atrialPrematureBeat": MessageLookupByLibrary.simpleMessage("房性早搏"),
+        "atrioventricularBlock": MessageLookupByLibrary.simpleMessage("房室传导阻滞"),
         "autoGenerate": MessageLookupByLibrary.simpleMessage("自动生成"),
         "autoUpload": MessageLookupByLibrary.simpleMessage("自动上传"),
         "backgroundColor": MessageLookupByLibrary.simpleMessage("背景颜色"),
@@ -69,6 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "networkTest": MessageLookupByLibrary.simpleMessage("网络测试"),
         "noDeviceFound": MessageLookupByLibrary.simpleMessage("未发现设备"),
         "noHistoryData": MessageLookupByLibrary.simpleMessage("所选时间没有数据"),
+        "noise": MessageLookupByLibrary.simpleMessage("噪声"),
+        "paroxysmalSupraVentricularTachycardia":
+            MessageLookupByLibrary.simpleMessage("阵发性室上性心动过速"),
         "portraitDuration": MessageLookupByLibrary.simpleMessage("竖屏数据范围"),
         "professional": MessageLookupByLibrary.simpleMessage("专业"),
         "realTime": MessageLookupByLibrary.simpleMessage("实时心电"),
@@ -79,7 +86,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "showDevTools": MessageLookupByLibrary.simpleMessage("显示开发者工具"),
         "showDots": MessageLookupByLibrary.simpleMessage("显示数据点"),
         "simple": MessageLookupByLibrary.simpleMessage("简洁"),
+        "sinusRhythm": MessageLookupByLibrary.simpleMessage("窦性心律"),
         "style": MessageLookupByLibrary.simpleMessage("显示风格"),
+        "unknown": MessageLookupByLibrary.simpleMessage("未知"),
+        "ventricularFlutterAndFibrillation":
+            MessageLookupByLibrary.simpleMessage("室扑室颤"),
+        "ventricularPreExcitation":
+            MessageLookupByLibrary.simpleMessage("心室预激"),
+        "ventricularPrematureBeat":
+            MessageLookupByLibrary.simpleMessage("室性早搏"),
         "verticalLines": MessageLookupByLibrary.simpleMessage("垂直网格线")
       };
 }

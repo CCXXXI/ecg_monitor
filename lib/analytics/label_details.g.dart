@@ -1,31 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'history.dart';
+part of 'label_details.dart';
 
 // **************************************************************************
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class History extends ConsumerWidget {
-  const History({
+class LabelDetails extends StatelessWidget {
+  const LabelDetails(
+    this.label, {
     Key? key,
-    this.initialTime,
   }) : super(key: key);
 
-  final DateTime? initialTime;
+  final Label label;
 
   @override
-  Widget build(
-    BuildContext _context,
-    WidgetRef _ref,
-  ) =>
-      history(
-        _ref,
-        initialTime: initialTime,
+  Widget build(BuildContext _context) => _labelDetails(
+        _context,
+        label,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<DateTime?>('initialTime', initialTime));
+    properties.add(EnumProperty<Label>('label', label));
   }
 }

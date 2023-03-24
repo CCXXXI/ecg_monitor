@@ -7,6 +7,7 @@ import "package:flutter/services.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
+import "../analytics/data_types.dart";
 import "../generated/l10n.dart";
 import "../me/settings/data_types.dart";
 
@@ -46,6 +47,7 @@ Widget __chart(
   required LineType horizontalLineType,
   required LineType verticalLineType,
   required bool showDots,
+  required List<BeatData> beats,
 }) {
   const largeXInterval = smallXInterval * 5;
   const largeYInterval = smallYInterval * 5;
@@ -155,6 +157,20 @@ Widget __chart(
                 ),
               ),
             ],
+            extraLinesData: ExtraLinesData(
+              verticalLines: [
+                for (final beat in beats)
+                  VerticalLine(
+                    x: beat.time.millisecondsSinceEpoch.toDouble(),
+                    color: Colors.transparent,
+                    label: VerticalLineLabel(
+                      show: true,
+                      alignment: Alignment.center,
+                      labelResolver: (_) => beat.label.name,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
@@ -178,6 +194,7 @@ Widget _chart3Lead(
   required LineType horizontalLineType,
   required LineType verticalLineType,
   required bool showDots,
+  List<BeatData> beats = const [],
 }) {
   final s = S.of(context);
 
@@ -194,6 +211,7 @@ Widget _chart3Lead(
           horizontalLineType: horizontalLineType,
           verticalLineType: verticalLineType,
           showDots: showDots,
+          beats: beats,
         ),
       )
   ];
