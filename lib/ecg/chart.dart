@@ -30,9 +30,14 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
 }
 
 extension DateTimeToTimeString on DateTime {
-  String toTimeString() => "${hour.toString().padLeft(2, "0")}"
-      ":${minute.toString().padLeft(2, "0")}"
-      ":${second.toString().padLeft(2, "0")}";
+  String toTimeString() {
+    if (millisecond != 0) {
+      return "";
+    }
+    return "${hour.toString().padLeft(2, "0")}"
+        ":${minute.toString().padLeft(2, "0")}"
+        ":${second.toString().padLeft(2, "0")}";
+  }
 }
 
 @swidget
@@ -76,15 +81,12 @@ Widget __chart(
       interval: getInterval(duration, isPortrait: isPortrait)
           .inMilliseconds
           .toDouble(),
-      getTitlesWidget: (value, meta) => value == meta.max || value == meta.min
-          ? const SizedBox.shrink()
-          : SideTitleWidget(
-              axisSide: meta.axisSide,
-              child: Text(
-                DateTime.fromMillisecondsSinceEpoch(value.toInt())
-                    .toTimeString(),
-              ),
-            ),
+      getTitlesWidget: (value, meta) => SideTitleWidget(
+        axisSide: meta.axisSide,
+        child: Text(
+          DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+        ),
+      ),
     ),
   );
 

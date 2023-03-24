@@ -41,14 +41,14 @@ void main() {
       "1ms",
       () => expect(
         DateTime.fromMillisecondsSinceEpoch(1).toTimeString(),
-        endsWith(":00:00"),
+        isEmpty,
       ),
     );
     test(
       "999ms",
       () => expect(
         DateTime.fromMillisecondsSinceEpoch(999).toTimeString(),
-        endsWith(":00:00"),
+        isEmpty,
       ),
     );
     test(
