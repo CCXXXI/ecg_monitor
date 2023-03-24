@@ -1,5 +1,56 @@
 # Changelog
 
+## [0.26.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.25.0...v0.26.0) (2023-03-24)
+
+
+### Features
+
+* **analytics:** read counts from database ([725e80e](https://github.com/CCXXXI/ecg_monitor/commit/725e80e42a1cb72ce8d6a5d317faf6154b2dd0b2))
+* **analytics:** show counts ([ec39eea](https://github.com/CCXXXI/ecg_monitor/commit/ec39eea873338625b2a3609b21e692fa759c10e9))
+* **analytics:** show label details ([8f54e6d](https://github.com/CCXXXI/ecg_monitor/commit/8f54e6d03d7c37c96927df68e99f84b5fdae207e))
+* **history:** show labels ([b627576](https://github.com/CCXXXI/ecg_monitor/commit/b6275764ea1964f4bbfbfd4db347a6a72eec8574))
+
+
+### Performance Improvements
+
+* **database:** index label ([31cbebe](https://github.com/CCXXXI/ecg_monitor/commit/31cbebe023ba8d55b45049689050a9f1c6127096))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency all_lint_rules_community to ^0.0.28 ([#243](https://github.com/CCXXXI/ecg_monitor/issues/243)) ([6202e78](https://github.com/CCXXXI/ecg_monitor/commit/6202e784e78be2ec0b17b9893a744a8998bb08dc))
+
+
+### Styles
+
+* **label-details:** remove comma ([58ca8e3](https://github.com/CCXXXI/ecg_monitor/commit/58ca8e3247d5b2bfb78ae57e10166bbe0988f792))
+* **router:** add comma ([1cbddb4](https://github.com/CCXXXI/ecg_monitor/commit/1cbddb4f29d555d70ccc265844e48f63aa2ec2ca))
+
+
+### Code Refactoring
+
+* **analytics:** add BeatData type ([d4ccd35](https://github.com/CCXXXI/ecg_monitor/commit/d4ccd35b35c9ca3f1b082d5a42cf51e5c3f5a93f))
+* **analytics:** add Label type ([0e9731f](https://github.com/CCXXXI/ecg_monitor/commit/0e9731f26c76acfd07cb12668f91b735a9a76b0e))
+* **analytics:** simplify l10n ([329d696](https://github.com/CCXXXI/ecg_monitor/commit/329d696b60345cebc48ce7b9dfe9c3417d81f021))
+* **analytics:** simplify label strings ([b1b96cf](https://github.com/CCXXXI/ecg_monitor/commit/b1b96cf7e6577acf43a0f4d1c5e84aa096cfe1f2))
+* **analytics:** toS -&gt; name ([a5f3f4e](https://github.com/CCXXXI/ecg_monitor/commit/a5f3f4e080e21b97e8f5ec82c7ca25993cd34b89))
+* **database:** add Beat collection ([6ea7f5e](https://github.com/CCXXXI/ecg_monitor/commit/6ea7f5edb6b4bdc1251ad56841556d1b95101c8e))
+* **history:** remove unused method ([8837cf3](https://github.com/CCXXXI/ecg_monitor/commit/8837cf3d99e30f4a33f3f6402461fac8260b802a))
+* **router:** /label_details -&gt; /analytics/label_details ([ba274c7](https://github.com/CCXXXI/ecg_monitor/commit/ba274c7692240ad20a14f2321ec5317cdb95b64a))
+
+
+### Tests
+
+* **analytics:** add widget test ([eb67da1](https://github.com/CCXXXI/ecg_monitor/commit/eb67da1e5757bf54b67843417cc92c1fa8fa828d))
+* correct setup_isar ([384d43b](https://github.com/CCXXXI/ecg_monitor/commit/384d43b4018738653de740ed5edaf9de08c13c19))
+* setup isar ([ee53206](https://github.com/CCXXXI/ecg_monitor/commit/ee532069194a54043eec61d4c77be23bcc4167c9))
+
+
+### Continuous Integration
+
+* **coverage:** add cache ([f8d7beb](https://github.com/CCXXXI/ecg_monitor/commit/f8d7beb9fc973eded24f4356308fe6b65dc39a36))
+* **coverage:** add cache key ([d024ecd](https://github.com/CCXXXI/ecg_monitor/commit/d024ecd238f6705fc75e7cf311516038e0e4b5c7))
+
 ## [0.25.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.24.0...v0.25.0) (2023-03-22)
 
 ### Features
