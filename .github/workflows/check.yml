@@ -22,6 +22,7 @@ jobs:
         with:
           submodules: recursive
       - uses: ./.github/actions/setup-flutter
+      - run: flutter test test/setup_isar.dart
 
       - run: flutter test --coverage
       - uses: codecov/codecov-action@v3
