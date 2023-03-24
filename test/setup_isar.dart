@@ -5,5 +5,8 @@ import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
 
 void main() {
-  setUpAll(() async => Isar.initializeIsarCore(download: true));
+  test(
+    "Setup Isar",
+    () async => Isar.initializeIsarCore(download: true),
+  );
 }
