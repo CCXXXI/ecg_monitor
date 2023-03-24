@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.26.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.26.0...v0.26.1) (2023-03-24)
+
+
+### Bug Fixes
+
+* **chart:** show x label iff exact second ([2e5cf53](https://github.com/CCXXXI/ecg_monitor/commit/2e5cf53ec91b7d038347f36ec5e07952e2bf45b7))
+
+
+### Code Refactoring
+
+* **home:** simplify route location check ([#250](https://github.com/CCXXXI/ecg_monitor/issues/250)) ([4bc14ba](https://github.com/CCXXXI/ecg_monitor/commit/4bc14ba60b9fe0b3d234513b17876f5ffd65766c))
+
+
+### Tests
+
+* **chart:** correct test of DateTimeToTimeString ([2b2b53c](https://github.com/CCXXXI/ecg_monitor/commit/2b2b53c0ddead5efc32a89c7cf6b50324033235f))
+
 ## [0.26.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.25.0...v0.26.0) (2023-03-24)
 
 ### Features
