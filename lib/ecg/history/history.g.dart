@@ -7,12 +7,12 @@ part of 'history.dart';
 // **************************************************************************
 
 class History extends ConsumerWidget {
-  const History({
+  const History(
+    this.time, {
     Key? key,
-    this.initialTime,
   }) : super(key: key);
 
-  final DateTime? initialTime;
+  final DateTime time;
 
   @override
   Widget build(
@@ -21,11 +21,11 @@ class History extends ConsumerWidget {
   ) =>
       history(
         _ref,
-        initialTime: initialTime,
+        time,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<DateTime?>('initialTime', initialTime));
+    properties.add(DiagnosticsProperty<DateTime>('time', time));
   }
 }

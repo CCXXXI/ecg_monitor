@@ -30,17 +30,14 @@ final router = GoRouter(
           builder: (context, state) => const RealTime(),
         ),
         GoRoute(
+          name: "history",
           path: "/history",
-          builder: (context, state) => const History(),
-        ),
-        GoRoute(
-          path: "/history/:msSinceEpoch",
           builder: (context, state) {
-            final msSinceEpoch = state.params["msSinceEpoch"]!;
-            final initialTime = DateTime.fromMillisecondsSinceEpoch(
-              int.parse(msSinceEpoch),
-            );
-            return History(initialTime: initialTime);
+            final msSinceEpoch = state.queryParams["msSinceEpoch"];
+            final time = msSinceEpoch != null
+                ? DateTime.fromMillisecondsSinceEpoch(int.parse(msSinceEpoch))
+                : DateTime.now();
+            return History(time);
           },
         ),
         GoRoute(

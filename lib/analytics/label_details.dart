@@ -27,7 +27,12 @@ Widget _labelDetails(BuildContext context, Label label) {
         for (final time in times)
           ListTile(
             title: Text(time.toString()),
-            onTap: () => context.go("/history/${time.millisecondsSinceEpoch}"),
+            onTap: () => context.goNamed(
+              "history",
+              queryParams: {
+                "msSinceEpoch": time.millisecondsSinceEpoch.toString(),
+              },
+            ),
           ),
       ],
     ),

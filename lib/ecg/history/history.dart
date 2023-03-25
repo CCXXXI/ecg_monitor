@@ -11,13 +11,9 @@ import "start_provider.dart";
 part "history.g.dart";
 
 @cwidget
-Widget history(WidgetRef ref, {DateTime? initialTime}) {
-  if (initialTime != null) {
-    final start = initialTime
-        .subtract(aSecond * .25)
-        .copyWith(millisecond: 0, microsecond: 0);
-    initialStart = start;
-  }
+Widget history(WidgetRef ref, DateTime time) {
+  startTime =
+      time.subtract(aSecond * .25).copyWith(millisecond: 0, microsecond: 0);
 
   return Column(
     children: const [
