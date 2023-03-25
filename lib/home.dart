@@ -34,8 +34,7 @@ Widget _home(BuildContext context, Widget child) {
   );
 
   final route = GoRouterState.of(context).location;
-  // /history/1234567890 -> /history
-  final index = _routes.indexWhere(route.startsWith);
+  final index = _routes.indexOf(route);
 
   _logger.fine("route=$route, index=$index");
 
