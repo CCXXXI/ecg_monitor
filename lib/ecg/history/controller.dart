@@ -1,55 +1,67 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
+import "package:go_router/go_router.dart";
 import "package:quiver/time.dart";
 
+import "../../utils/time.dart";
 import "../chart.dart";
-import "start_provider.dart";
 
 part "controller.g.dart";
 
-@cwidget
-Widget _historyController(BuildContext context, WidgetRef ref) {
-  final start = ref.watch(startProvider);
+@swidget
+Widget _historyController(BuildContext context, DateTime time) {
+  void replay(Duration duration) => context.go(
+        "/history",
+        extra: time.subtract(duration),
+      );
+  void forward(Duration duration) => context.go(
+        "/history",
+        extra: time.add(duration),
+      );
+  void go(DateTime time) => context.go(
+        "/history",
+        extra: time,
+      );
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       IconButton(
         icon: const Icon(Icons.replay_30_outlined),
-        onPressed: () => ref.read(startProvider.notifier).replay(aSecond * 30),
+        onPressed: () => replay(aSecond * 30),
       ),
       IconButton(
         icon: const Icon(Icons.replay_5_outlined),
-        onPressed: () => ref.read(startProvider.notifier).replay(aSecond * 5),
+        onPressed: () => replay(aSecond * 5),
       ),
       IconButton(
         icon: const Icon(Icons.arrow_back_outlined),
-        onPressed: () => ref.read(startProvider.notifier).replay(aSecond),
+        onPressed: () => replay(aSecond),
       ),
       TextButton(
-        child: Text(start.toTimeString()),
+        child: Text(time.toTimeString(showMs: true)),
         onPressed: () async {
-          final newStart = await showTimePicker(
+          final newTime = await showTimePicker(
             context: context,
-            initialTime: TimeOfDay.fromDateTime(start),
+            initialTime: TimeOfDay.fromDateTime(time),
           );
-          if (newStart != null) {
-            ref.read(startProvider.notifier).set(newStart);
+          if (newTime != null) {
+            go(newTime.toLastPastDateTime());
           }
         },
       ),
       IconButton(
         icon: const Icon(Icons.arrow_forward_outlined),
-        onPressed: () => ref.read(startProvider.notifier).forward(aSecond),
+        onPressed: () => forward(aSecond),
       ),
       IconButton(
         icon: const Icon(Icons.forward_5_outlined),
-        onPressed: () => ref.read(startProvider.notifier).forward(aSecond * 5),
+        onPressed: () => forward(aSecond * 5),
       ),
       IconButton(
         icon: const Icon(Icons.forward_30_outlined),
-        onPressed: () => ref.read(startProvider.notifier).forward(aSecond * 30),
+        onPressed: () => forward(aSecond * 30),
       ),
     ],
   );

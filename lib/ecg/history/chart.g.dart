@@ -7,7 +7,12 @@ part of 'chart.dart';
 // **************************************************************************
 
 class HistoryChart extends ConsumerWidget {
-  const HistoryChart({Key? key}) : super(key: key);
+  const HistoryChart(
+    this.time, {
+    Key? key,
+  }) : super(key: key);
+
+  final DateTime time;
 
   @override
   Widget build(
@@ -17,7 +22,13 @@ class HistoryChart extends ConsumerWidget {
       _historyChart(
         _context,
         _ref,
+        time,
       );
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<DateTime>('time', time));
+  }
 }
 
 class _NoData extends StatelessWidget {
@@ -31,7 +42,7 @@ class _NoData extends StatelessWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ecgDataHash() => r'3c172186e8b182a703dffd3687df821b59912a60';
+String _$ecgDataHash() => r'9d011bd10614e1b09583477011eca3e05a0d4b3d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -67,9 +78,11 @@ class _EcgDataFamily extends Family<List<EcgData>> {
 
   /// See also [_ecgData].
   _EcgDataProvider call(
+    DateTime time,
     Duration duration,
   ) {
     return _EcgDataProvider(
+      time,
       duration,
     );
   }
@@ -79,6 +92,7 @@ class _EcgDataFamily extends Family<List<EcgData>> {
     covariant _EcgDataProvider provider,
   ) {
     return call(
+      provider.time,
       provider.duration,
     );
   }
@@ -102,10 +116,12 @@ class _EcgDataFamily extends Family<List<EcgData>> {
 class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
   /// See also [_ecgData].
   _EcgDataProvider(
+    this.time,
     this.duration,
   ) : super.internal(
           (ref) => _ecgData(
             ref,
+            time,
             duration,
           ),
           from: _ecgDataProvider,
@@ -118,23 +134,27 @@ class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
           allTransitiveDependencies: _EcgDataFamily._allTransitiveDependencies,
         );
 
+  final DateTime time;
   final Duration duration;
 
   @override
   bool operator ==(Object other) {
-    return other is _EcgDataProvider && other.duration == duration;
+    return other is _EcgDataProvider &&
+        other.time == time &&
+        other.duration == duration;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, time.hashCode);
     hash = _SystemHash.combine(hash, duration.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-String _$beatDataHash() => r'c2ecba9b98650bd33a90b829c6b76147329a8595';
+String _$beatDataHash() => r'7acfa41a6ae50e6dcbc4f72481ad4e048592e008';
 typedef _BeatDataRef = AutoDisposeProviderRef<List<BeatData>>;
 
 /// See also [_beatData].
@@ -148,9 +168,11 @@ class _BeatDataFamily extends Family<List<BeatData>> {
 
   /// See also [_beatData].
   _BeatDataProvider call(
+    DateTime time,
     Duration duration,
   ) {
     return _BeatDataProvider(
+      time,
       duration,
     );
   }
@@ -160,6 +182,7 @@ class _BeatDataFamily extends Family<List<BeatData>> {
     covariant _BeatDataProvider provider,
   ) {
     return call(
+      provider.time,
       provider.duration,
     );
   }
@@ -183,10 +206,12 @@ class _BeatDataFamily extends Family<List<BeatData>> {
 class _BeatDataProvider extends AutoDisposeProvider<List<BeatData>> {
   /// See also [_beatData].
   _BeatDataProvider(
+    this.time,
     this.duration,
   ) : super.internal(
           (ref) => _beatData(
             ref,
+            time,
             duration,
           ),
           from: _beatDataProvider,
@@ -199,16 +224,20 @@ class _BeatDataProvider extends AutoDisposeProvider<List<BeatData>> {
           allTransitiveDependencies: _BeatDataFamily._allTransitiveDependencies,
         );
 
+  final DateTime time;
   final Duration duration;
 
   @override
   bool operator ==(Object other) {
-    return other is _BeatDataProvider && other.duration == duration;
+    return other is _BeatDataProvider &&
+        other.time == time &&
+        other.duration == duration;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, time.hashCode);
     hash = _SystemHash.combine(hash, duration.hashCode);
 
     return _SystemHash.finish(hash);

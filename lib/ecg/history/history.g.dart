@@ -6,7 +6,7 @@ part of 'history.dart';
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class History extends ConsumerWidget {
+class History extends StatelessWidget {
   const History(
     this.time, {
     Key? key,
@@ -15,14 +15,7 @@ class History extends ConsumerWidget {
   final DateTime time;
 
   @override
-  Widget build(
-    BuildContext _context,
-    WidgetRef _ref,
-  ) =>
-      history(
-        _ref,
-        time,
-      );
+  Widget build(BuildContext _context) => history(time);
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

@@ -30,13 +30,15 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
 }
 
 extension DateTimeToTimeString on DateTime {
-  String toTimeString() {
-    if (millisecond != 0) {
+  String toTimeString({required bool showMs}) {
+    if (millisecond != 0 && !showMs) {
       return "";
     }
+    final msStr = showMs ? ".${millisecond.toString().padLeft(3, "0")}" : "";
     return "${hour.toString().padLeft(2, "0")}"
         ":${minute.toString().padLeft(2, "0")}"
-        ":${second.toString().padLeft(2, "0")}";
+        ":${second.toString().padLeft(2, "0")}"
+        "$msStr";
   }
 }
 
@@ -84,7 +86,8 @@ Widget __chart(
       getTitlesWidget: (value, meta) => SideTitleWidget(
         axisSide: meta.axisSide,
         child: Text(
-          DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+          DateTime.fromMillisecondsSinceEpoch(value.toInt())
+              .toTimeString(showMs: false),
         ),
       ),
     ),

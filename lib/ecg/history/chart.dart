@@ -1,4 +1,5 @@
 import "package:fl_chart/fl_chart.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
@@ -11,13 +12,12 @@ import "../../generated/l10n.dart";
 import "../../me/settings/providers.dart";
 import "../../utils/database.dart";
 import "../chart.dart";
-import "start_provider.dart";
 
 part "chart.g.dart";
 
 @riverpod
-List<EcgData> _ecgData(_EcgDataRef ref, Duration duration) {
-  final start = ref.watch(startProvider);
+List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
+  final start = time;
   final end = start.add(duration);
 
   final data = isar.samplePoints
@@ -32,8 +32,8 @@ List<EcgData> _ecgData(_EcgDataRef ref, Duration duration) {
 }
 
 @riverpod
-List<BeatData> _beatData(_BeatDataRef ref, Duration duration) {
-  final start = ref.watch(startProvider);
+List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) {
+  final start = time;
   final end = start.add(duration);
 
   final data = isar.beats
@@ -48,7 +48,7 @@ List<BeatData> _beatData(_BeatDataRef ref, Duration duration) {
 }
 
 @cwidget
-Widget _historyChart(BuildContext context, WidgetRef ref) {
+Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
   final duration = ref.watch(
@@ -57,7 +57,7 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
         : historyLandscapeDurationProvider,
   );
 
-  final data = ref.watch(_ecgDataProvider(duration));
+  final data = ref.watch(_ecgDataProvider(time, duration));
 
   if (data.isEmpty) {
     return const _NoData();
@@ -73,7 +73,7 @@ Widget _historyChart(BuildContext context, WidgetRef ref) {
     pointsIII.add(FlSpot(x, d.leadIII));
   }
 
-  final beats = ref.watch(_beatDataProvider(duration));
+  final beats = ref.watch(_beatDataProvider(time, duration));
 
   return Chart3Lead(
     pointsI: pointsI,
