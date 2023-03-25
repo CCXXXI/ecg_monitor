@@ -57,12 +57,8 @@ final router = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootKey,
-      path: "/analytics/label_details/:label_index",
-      builder: (context, state) {
-        final labelIndex = state.params["label_index"]!;
-        final label = Label.values[int.parse(labelIndex)];
-        return LabelDetails(label);
-      },
+      path: "/analytics/label_details",
+      builder: (context, state) => LabelDetails(state.extra! as Label),
     ),
   ],
 );

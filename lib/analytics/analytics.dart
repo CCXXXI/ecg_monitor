@@ -18,9 +18,7 @@ Widget analytics(BuildContext context) => ListView(
           ListTile(
             title: Text(label.name),
             trailing: Text(_labelCount(label).toString()),
-            onTap: () => context.push(
-              "/analytics/label_details/${label.index}",
-            ),
+            onTap: () => context.push("/analytics/label_details", extra: label),
           ),
       ],
     );
