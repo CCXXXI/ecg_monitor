@@ -30,7 +30,6 @@ final router = GoRouter(
           builder: (context, state) => const RealTime(),
         ),
         GoRoute(
-          name: "history",
           path: "/history",
           builder: (context, state) {
             final time = state.extra ?? DateTime.now();
