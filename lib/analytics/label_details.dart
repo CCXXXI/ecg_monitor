@@ -27,7 +27,9 @@ Widget _labelDetails(BuildContext context, Label label) {
         for (final time in times)
           ListTile(
             title: Text(time.toString()),
-            onTap: () => context.go("/history", extra: time),
+            onTap: () => context
+              ..pop()
+              ..go("/history", extra: time),
           ),
       ],
     ),
