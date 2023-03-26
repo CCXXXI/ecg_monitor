@@ -32,20 +32,11 @@ List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
 }
 
 @riverpod
-List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) {
-  final start = time.subtract(duration ~/ 2);
-  final end = time.add(duration ~/ 2);
-
-  final data = isar.beats
-      .where()
-      .millisecondsSinceEpochBetween(
-        start.millisecondsSinceEpoch,
-        end.millisecondsSinceEpoch,
-      )
-      .findAllSync();
-
-  return data.map((d) => d.toBeatData()).toList();
-}
+List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) =>
+    beatDataBetween(
+      time.subtract(duration ~/ 2),
+      time.add(duration ~/ 2),
+    );
 
 DateTime? _previousTime;
 
