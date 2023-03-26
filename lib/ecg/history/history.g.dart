@@ -15,7 +15,7 @@ class History extends StatelessWidget {
   final DateTime time;
 
   @override
-  Widget build(BuildContext _context) => history(time);
+  Widget build(BuildContext _context) => _history(time);
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

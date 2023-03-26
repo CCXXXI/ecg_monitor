@@ -8,7 +8,7 @@ import "controller.dart";
 part "history.g.dart";
 
 @swidget
-Widget history(DateTime time) => Column(
+Widget _history(DateTime time) => Column(
       children: [
         Expanded(child: HistoryChart(time)),
         HistoryController(time),
