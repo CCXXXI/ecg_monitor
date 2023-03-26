@@ -17,8 +17,8 @@ part "chart.g.dart";
 
 @riverpod
 List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
-  final start = time;
-  final end = start.add(duration);
+  final start = time.subtract(duration ~/ 2);
+  final end = time.add(duration ~/ 2);
 
   final data = isar.samplePoints
       .where()
@@ -33,8 +33,8 @@ List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
 
 @riverpod
 List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) {
-  final start = time;
-  final end = start.add(duration);
+  final start = time.subtract(duration ~/ 2);
+  final end = time.add(duration ~/ 2);
 
   final data = isar.beats
       .where()
