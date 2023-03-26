@@ -2,26 +2,22 @@
 
 ## [0.29.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.2...v0.29.3) (2023-03-26)
 
-
 ### Performance Improvements
 
-* **database:** make all database operations async ([6c9546e](https://github.com/CCXXXI/ecg_monitor/commit/6c9546ec296df3941c751044a43f910888d79a5d))
-
+- **database:** make all database operations async ([6c9546e](https://github.com/CCXXXI/ecg_monitor/commit/6c9546ec296df3941c751044a43f910888d79a5d))
 
 ### Reverts
 
-* Revert "feat(history): add SharedAxisTransition" ([0b4b0ee](https://github.com/CCXXXI/ecg_monitor/commit/0b4b0ee7a31eeae617fc11fd86bf532ebbd52e72))
-
+- Revert "feat(history): add SharedAxisTransition" ([0b4b0ee](https://github.com/CCXXXI/ecg_monitor/commit/0b4b0ee7a31eeae617fc11fd86bf532ebbd52e72))
 
 ### Code Refactoring
 
-* **database:** add logs ([37d819b](https://github.com/CCXXXI/ecg_monitor/commit/37d819b10690d16149ecaa190c1b4ca1fc6ec405))
-
+- **database:** add logs ([37d819b](https://github.com/CCXXXI/ecg_monitor/commit/37d819b10690d16149ecaa190c1b4ca1fc6ec405))
 
 ### Tests
 
-* **analytics:** add ProviderScope ([b42b73d](https://github.com/CCXXXI/ecg_monitor/commit/b42b73d8719cb58fac9bd9f203540e6a04c31a36))
-* **database:** await ([4edd099](https://github.com/CCXXXI/ecg_monitor/commit/4edd0999490d9ff8b8e6001c1d125cb2e350ec1f))
+- **analytics:** add ProviderScope ([b42b73d](https://github.com/CCXXXI/ecg_monitor/commit/b42b73d8719cb58fac9bd9f203540e6a04c31a36))
+- **database:** await ([4edd099](https://github.com/CCXXXI/ecg_monitor/commit/4edd0999490d9ff8b8e6001c1d125cb2e350ec1f))
 
 ## [0.29.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.1...v0.29.2) (2023-03-26)
 
