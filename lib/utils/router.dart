@@ -4,8 +4,6 @@ import "package:quiver/time.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
-import "../analytics/data_types.dart";
-import "../analytics/label_details.dart";
 import "../device_manager/device_manager.dart";
 import "../ecg/history/history.dart";
 import "../ecg/real_time/real_time.dart";
@@ -56,11 +54,6 @@ final router = GoRouter(
       parentNavigatorKey: _rootKey,
       path: "/me/settings",
       builder: (context, state) => const Settings(),
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootKey,
-      path: "/analytics/label_details",
-      builder: (context, state) => LabelDetails(state.extra! as Label),
     ),
   ],
 );
