@@ -69,17 +69,13 @@ Future<void> initDatabase() async {
 int labelCount(Label label) =>
     _isar.beats.where().labelEqualTo(label).countSync();
 
-List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
-  final data = _isar.samplePoints
-      .where()
-      .millisecondsSinceEpochBetween(
-        start.millisecondsSinceEpoch,
-        end.millisecondsSinceEpoch,
-      )
-      .findAllSync();
-
-  return data.map((d) => d.toEcgData()).toList();
-}
+List<DateTime> labelTimes(Label label) => _isar.beats
+    .where()
+    .labelEqualTo(label)
+    .millisecondsSinceEpochProperty()
+    .findAllSync()
+    .map(DateTime.fromMillisecondsSinceEpoch)
+    .toList();
 
 List<BeatData> beatDataBetween(DateTime start, DateTime end) {
   final data = _isar.beats
@@ -93,14 +89,18 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
   return data.map((d) => d.toBeatData()).toList();
 }
 
-List<DateTime> labelTimes(Label label) => _isar.beats
-    .where()
-    .labelEqualTo(label)
-    .millisecondsSinceEpochProperty()
-    .findAllSync()
-    .map(DateTime.fromMillisecondsSinceEpoch)
-    .toList();
-
 Future<void> writeEcgData(EcgData data) => _isar.writeTxn(
       () async => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
     );
+
+List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
+  final data = _isar.samplePoints
+      .where()
+      .millisecondsSinceEpochBetween(
+        start.millisecondsSinceEpoch,
+        end.millisecondsSinceEpoch,
+      )
+      .findAllSync();
+
+  return data.map((d) => d.toEcgData()).toList();
+}
