@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:isar/isar.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -6,6 +7,7 @@ import "../device_manager/device.dart";
 
 part "database.g.dart";
 
+@visibleForTesting
 @collection
 class SamplePoint {
   const SamplePoint({
@@ -31,6 +33,7 @@ class SamplePoint {
   final double leadII;
 }
 
+@visibleForTesting
 @collection
 class Beat {
   const Beat({
@@ -56,9 +59,62 @@ class Beat {
 }
 
 late final SharedPreferences prefs;
-late final Isar isar;
+late final Isar _isar;
 
 Future<void> initDatabase() async {
   prefs = await SharedPreferences.getInstance();
-  isar = await Isar.open([SamplePointSchema, BeatSchema]);
+  _isar = await Isar.open([SamplePointSchema, BeatSchema]);
+}
+
+// region Beat
+Future<void> writeBeatData(BeatData data) => _isar.writeTxn(
+      () async => _isar.beats.put(Beat.fromBeatData(data)),
+    );
+
+int labelCount(Label label) =>
+    _isar.beats.where().labelEqualTo(label).countSync();
+
+List<DateTime> labelTimes(Label label) => _isar.beats
+    .where()
+    .labelEqualTo(label)
+    .millisecondsSinceEpochProperty()
+    .findAllSync()
+    .map(DateTime.fromMillisecondsSinceEpoch)
+    .toList();
+
+List<BeatData> beatDataBetween(DateTime start, DateTime end) {
+  final data = _isar.beats
+      .where()
+      .millisecondsSinceEpochBetween(
+        start.millisecondsSinceEpoch,
+        end.millisecondsSinceEpoch,
+      )
+      .findAllSync();
+
+  return data.map((d) => d.toBeatData()).toList();
+}
+// endregion
+
+// region SamplePoint
+Future<void> writeEcgData(EcgData data) => _isar.writeTxn(
+      () async => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
+    );
+
+List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
+  final data = _isar.samplePoints
+      .where()
+      .millisecondsSinceEpochBetween(
+        start.millisecondsSinceEpoch,
+        end.millisecondsSinceEpoch,
+      )
+      .findAllSync();
+
+  return data.map((d) => d.toEcgData()).toList();
+}
+// endregion
+
+@visibleForTesting
+Future<void> clearDatabase() async {
+  await prefs.clear();
+  await _isar.writeTxn(() async => _isar.clear());
 }
