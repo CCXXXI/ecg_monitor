@@ -112,3 +112,9 @@ List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
   return data.map((d) => d.toEcgData()).toList();
 }
 // endregion
+
+@visibleForTesting
+Future<void> clearDatabase() async {
+  await prefs.clear();
+  await _isar.writeTxn(() async => _isar.clear());
+}
