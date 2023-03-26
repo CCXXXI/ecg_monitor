@@ -18,7 +18,7 @@ void main() {
 
   group("Settings", () {
     setUp(() async {
-      SharedPreferences.setMockInitialValues({});
+      SharedPreferences.setMockInitialValues({"showDevTools": true});
       await Isar.initializeIsarCore(download: true);
       await initDatabase();
     });
