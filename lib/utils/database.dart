@@ -56,18 +56,18 @@ class Beat {
 }
 
 late final SharedPreferences prefs;
-late final Isar isar;
+late final Isar _isar;
 
 Future<void> initDatabase() async {
   prefs = await SharedPreferences.getInstance();
-  isar = await Isar.open([SamplePointSchema, BeatSchema]);
+  _isar = await Isar.open([SamplePointSchema, BeatSchema]);
 }
 
 int labelCount(Label label) =>
-    isar.beats.where().labelEqualTo(label).countSync();
+    _isar.beats.where().labelEqualTo(label).countSync();
 
 List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
-  final data = isar.samplePoints
+  final data = _isar.samplePoints
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
@@ -79,7 +79,7 @@ List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
 }
 
 List<BeatData> beatDataBetween(DateTime start, DateTime end) {
-  final data = isar.beats
+  final data = _isar.beats
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
@@ -90,7 +90,7 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
   return data.map((d) => d.toBeatData()).toList();
 }
 
-List<DateTime> labelTimes(Label label) => isar.beats
+List<DateTime> labelTimes(Label label) => _isar.beats
     .where()
     .labelEqualTo(label)
     .millisecondsSinceEpochProperty()
@@ -98,6 +98,6 @@ List<DateTime> labelTimes(Label label) => isar.beats
     .map(DateTime.fromMillisecondsSinceEpoch)
     .toList();
 
-Future<void> writeEcgData(EcgData data) => isar.writeTxn(
-      () async => isar.samplePoints.put(SamplePoint.fromEcgData(data)),
+Future<void> writeEcgData(EcgData data) => _isar.writeTxn(
+      () async => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
     );
