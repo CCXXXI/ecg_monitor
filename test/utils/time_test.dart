@@ -1,8 +1,22 @@
 import "package:ecg_monitor/utils/time.dart";
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 
 void main() {
-  group("DateTimeToTimeString", () {
+  group("TimeOfDay.toLastPastDateTime", () {
+    test("past time", () {
+      const pastTime = TimeOfDay(hour: 0, minute: 0);
+      final dateTime = pastTime.toLastPastDateTime();
+      expect(dateTime.isBefore(DateTime.now()), isTrue);
+    });
+    test("future time", () {
+      const futureTime = TimeOfDay(hour: 23, minute: 59);
+      final dateTime = futureTime.toLastPastDateTime();
+      expect(dateTime.isBefore(DateTime.now()), isTrue);
+    });
+  });
+
+  group("DateTime.toTimeString", () {
     test(
       "0ms hide ms",
       () => expect(
