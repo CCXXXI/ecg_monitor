@@ -73,7 +73,7 @@ class _Points extends _$Points {
     final intervalMs = ref.watch(_refreshIntervalProvider);
     if (point.x >= _previousRefreshTimeMs + intervalMs) {
       _previousRefreshTimeMs = point.x;
-      state = _buffer.toList();
+      state = _buffer.toList(growable: false);
     }
   }
 }
