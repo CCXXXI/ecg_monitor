@@ -5,7 +5,6 @@ import "package:go_router/go_router.dart";
 import "package:quiver/time.dart";
 
 import "../../utils/time.dart";
-import "../chart.dart";
 
 part "controller.g.dart";
 
