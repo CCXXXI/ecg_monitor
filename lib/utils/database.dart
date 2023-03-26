@@ -93,6 +93,7 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
 List<DateTime> labelTimes(Label label) => isar.beats
     .where()
     .labelEqualTo(label)
+    .millisecondsSinceEpochProperty()
     .findAllSync()
-    .map((e) => e.toBeatData().time)
+    .map(DateTime.fromMillisecondsSinceEpoch)
     .toList();
