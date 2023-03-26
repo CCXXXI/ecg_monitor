@@ -62,3 +62,6 @@ Future<void> initDatabase() async {
   prefs = await SharedPreferences.getInstance();
   isar = await Isar.open([SamplePointSchema, BeatSchema]);
 }
+
+int labelCount(Label label) =>
+    isar.beats.where().labelEqualTo(label).countSync();
