@@ -22,7 +22,7 @@ class _FadeThroughTransitionPage<T> extends CustomTransitionPage<T> {
   }) : super(transitionsBuilder: _transitionsBuilder);
 
   static Widget _transitionsBuilder(
-    BuildContext context,
+    BuildContext _,
     Animation<double> animation,
     Animation<double> secondaryAnimation,
     Widget child,
