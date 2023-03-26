@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:quiver/time.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
@@ -32,7 +33,8 @@ final router = GoRouter(
         GoRoute(
           path: "/history",
           builder: (context, state) {
-            final time = state.extra ?? DateTime.now();
+            // Show 3 seconds ago by default to avoid showing an empty chart.
+            final time = state.extra ?? DateTime.now().subtract(aSecond * 3);
             return History(time as DateTime);
           },
         ),
