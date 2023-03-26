@@ -42,7 +42,7 @@ class _NoData extends StatelessWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ecgDataHash() => r'9d011bd10614e1b09583477011eca3e05a0d4b3d';
+String _$ecgDataHash() => r'23b17bb6a0759d81a1162d441eda326759321c16';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,7 +154,7 @@ class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
   }
 }
 
-String _$beatDataHash() => r'7acfa41a6ae50e6dcbc4f72481ad4e048592e008';
+String _$beatDataHash() => r'f5fe4d20675c758882b1a8225444daceb49c8eaf';
 typedef _BeatDataRef = AutoDisposeProviderRef<List<BeatData>>;
 
 /// See also [_beatData].
