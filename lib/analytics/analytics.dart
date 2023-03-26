@@ -13,19 +13,23 @@ int _labelCount(Label label) =>
     isar.beats.where().labelEqualTo(label).countSync();
 
 @swidget
-Widget analytics(BuildContext context) => ListView(
-      children: [
-        for (final label in Label.values)
-          OpenContainer(
-            closedColor: Colors.transparent,
-            closedElevation: 0,
-            closedBuilder: (_, __) => ListTile(
-              title: Text(label.name),
-              trailing: Text(_labelCount(label).toString()),
-            ),
-            openColor: Colors.transparent,
-            openBuilder: (_, __) => LabelDetails(label),
-            useRootNavigator: true,
+Widget analytics(BuildContext context) {
+  final backgroundColor = Theme.of(context).colorScheme.background;
+
+  return ListView(
+    children: [
+      for (final label in Label.values)
+        OpenContainer(
+          closedColor: backgroundColor,
+          closedElevation: 0,
+          closedBuilder: (_, __) => ListTile(
+            title: Text(label.name),
+            trailing: Text(_labelCount(label).toString()),
           ),
-      ],
-    );
+          openColor: backgroundColor,
+          openBuilder: (_, __) => LabelDetails(label),
+          useRootNavigator: true,
+        ),
+    ],
+  );
+}
