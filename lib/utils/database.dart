@@ -66,6 +66,7 @@ Future<void> initDatabase() async {
   _isar = await Isar.open([SamplePointSchema, BeatSchema]);
 }
 
+// region Beat
 int labelCount(Label label) =>
     _isar.beats.where().labelEqualTo(label).countSync();
 
@@ -88,7 +89,9 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
 
   return data.map((d) => d.toBeatData()).toList();
 }
+// endregion
 
+// region SamplePoint
 Future<void> writeEcgData(EcgData data) => _isar.writeTxn(
       () async => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
     );
@@ -104,3 +107,4 @@ List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
 
   return data.map((d) => d.toEcgData()).toList();
 }
+// endregion
