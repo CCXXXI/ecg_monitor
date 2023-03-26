@@ -10,6 +10,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "../analytics/data_types.dart";
 import "../generated/l10n.dart";
 import "../me/settings/data_types.dart";
+import "../utils/time.dart";
 
 part "chart.g.dart";
 
@@ -27,17 +28,6 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
   final intervalCount =
       isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
   return Duration(seconds: (duration.inSeconds / intervalCount).ceil());
-}
-
-extension DateTimeToTimeString on DateTime {
-  String toTimeString() {
-    if (millisecond != 0) {
-      return "";
-    }
-    return "${hour.toString().padLeft(2, "0")}"
-        ":${minute.toString().padLeft(2, "0")}"
-        ":${second.toString().padLeft(2, "0")}";
-  }
 }
 
 @swidget
@@ -84,7 +74,8 @@ Widget __chart(
       getTitlesWidget: (value, meta) => SideTitleWidget(
         axisSide: meta.axisSide,
         child: Text(
-          DateTime.fromMillisecondsSinceEpoch(value.toInt()).toTimeString(),
+          DateTime.fromMillisecondsSinceEpoch(value.toInt())
+              .toTimeString(showMs: false),
         ),
       ),
     ),

@@ -1,28 +1,16 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
-import "package:quiver/time.dart";
 
 import "chart.dart";
 import "controller.dart";
-import "start_provider.dart";
 
 part "history.g.dart";
 
-@cwidget
-Widget history(WidgetRef ref, {DateTime? initialTime}) {
-  if (initialTime != null) {
-    final start = initialTime
-        .subtract(aSecond * .25)
-        .copyWith(millisecond: 0, microsecond: 0);
-    initialStart = start;
-  }
-
-  return Column(
-    children: const [
-      Expanded(child: HistoryChart()),
-      HistoryController(),
-    ],
-  );
-}
+@swidget
+Widget _history(DateTime time) => Column(
+      children: [
+        Expanded(child: HistoryChart(time)),
+        HistoryController(time),
+      ],
+    );

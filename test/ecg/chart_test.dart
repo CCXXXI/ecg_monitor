@@ -28,49 +28,4 @@ void main() {
       }
     });
   });
-
-  group("DateTimeToTimeString", () {
-    test(
-      "0ms",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(0).toTimeString(),
-        endsWith(":00:00"),
-      ),
-    );
-    test(
-      "1ms",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(1).toTimeString(),
-        isEmpty,
-      ),
-    );
-    test(
-      "999ms",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(999).toTimeString(),
-        isEmpty,
-      ),
-    );
-    test(
-      "1s",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(1000).toTimeString(),
-        endsWith(":00:01"),
-      ),
-    );
-    test(
-      "59s",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(59000).toTimeString(),
-        endsWith(":00:59"),
-      ),
-    );
-    test(
-      "1m",
-      () => expect(
-        DateTime.fromMillisecondsSinceEpoch(60000).toTimeString(),
-        endsWith(":01:00"),
-      ),
-    );
-  });
 }

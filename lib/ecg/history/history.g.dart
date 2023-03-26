@@ -6,26 +6,19 @@ part of 'history.dart';
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class History extends ConsumerWidget {
-  const History({
+class History extends StatelessWidget {
+  const History(
+    this.time, {
     Key? key,
-    this.initialTime,
   }) : super(key: key);
 
-  final DateTime? initialTime;
+  final DateTime time;
 
   @override
-  Widget build(
-    BuildContext _context,
-    WidgetRef _ref,
-  ) =>
-      history(
-        _ref,
-        initialTime: initialTime,
-      );
+  Widget build(BuildContext _context) => _history(time);
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<DateTime?>('initialTime', initialTime));
+    properties.add(DiagnosticsProperty<DateTime>('time', time));
   }
 }

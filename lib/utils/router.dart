@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
+import "package:quiver/time.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
@@ -31,16 +32,10 @@ final router = GoRouter(
         ),
         GoRoute(
           path: "/history",
-          builder: (context, state) => const History(),
-        ),
-        GoRoute(
-          path: "/history/:msSinceEpoch",
           builder: (context, state) {
-            final msSinceEpoch = state.params["msSinceEpoch"]!;
-            final initialTime = DateTime.fromMillisecondsSinceEpoch(
-              int.parse(msSinceEpoch),
-            );
-            return History(initialTime: initialTime);
+            // Show 3 seconds ago by default to avoid showing an empty chart.
+            final time = state.extra ?? DateTime.now().subtract(aSecond * 3);
+            return History(time as DateTime);
           },
         ),
         GoRoute(
@@ -64,12 +59,8 @@ final router = GoRouter(
     ),
     GoRoute(
       parentNavigatorKey: _rootKey,
-      path: "/analytics/label_details/:label_index",
-      builder: (context, state) {
-        final labelIndex = state.params["label_index"]!;
-        final label = Label.values[int.parse(labelIndex)];
-        return LabelDetails(label);
-      },
+      path: "/analytics/label_details",
+      builder: (context, state) => LabelDetails(state.extra! as Label),
     ),
   ],
 );
