@@ -36,8 +36,6 @@ Future<List<BeatData>> _beatData(
       time.add(duration ~/ 2),
     );
 
-DateTime? _previousTime;
-
 @cwidget
 Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
@@ -69,10 +67,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     pointsIII.add(FlSpot(x, d.leadIII));
   }
 
-  // Determine the direction of the transition animation.
-  final reverse = _previousTime != null && time.isBefore(_previousTime!);
-  _previousTime = time;
-
   return Chart3Lead(
     pointsI: pointsI,
     pointsII: pointsII,
@@ -85,8 +79,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     verticalLineType: ref.watch(historyVerticalLineTypeProvider),
     showDots: ref.watch(historyShowDotsProvider),
     beats: beats,
-    lineChartKey: ValueKey(time),
-    reverse: reverse,
   );
 }
 
