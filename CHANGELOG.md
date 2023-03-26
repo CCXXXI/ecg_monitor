@@ -1,5 +1,34 @@
 # Changelog
 
+## [0.27.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.26.1...v0.27.0) (2023-03-26)
+
+
+### Features
+
+* **history:** show 3 seconds ago by default ([12ea8bd](https://github.com/CCXXXI/ecg_monitor/commit/12ea8bdf54c5dcce4cc08f6e71ffc0ea293a3da7))
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency all_lint_rules_community to ^0.0.29 ([#263](https://github.com/CCXXXI/ecg_monitor/issues/263)) ([7406d41](https://github.com/CCXXXI/ecg_monitor/commit/7406d414288bfc04606442d8ec16fd0937ddf19d))
+
+
+### Tests
+
+* **time:** add test for TimeOfDay.toLastPastDateTime ([e1e00cf](https://github.com/CCXXXI/ecg_monitor/commit/e1e00cfb09af0c40b33b9582e96d8b19132581a7))
+
+
+### Code Refactoring
+
+* **history:** make history stateless ([a93434e](https://github.com/CCXXXI/ecg_monitor/commit/a93434ea2cc94e7c58d2b0bd6ec28f91b76d1852))
+* **history:** make swidget function private ([61c2642](https://github.com/CCXXXI/ecg_monitor/commit/61c264210023651f115a0f2be7ebd170305489bf))
+* **history:** remove unused imports ([83a5164](https://github.com/CCXXXI/ecg_monitor/commit/83a5164c778ee88d839a94b7d528e85a2578da36))
+* move DateTimeToTimeString to utils/time.dart ([b1cba80](https://github.com/CCXXXI/ecg_monitor/commit/b1cba80ad054232d4ee893d40b6c968fa287d91a))
+* **router:** pass DateTime as extra instead of params ([bc0ba94](https://github.com/CCXXXI/ecg_monitor/commit/bc0ba945f287e4bd02314c4443cb5c47118fb314))
+* **router:** pass Label as extra instead of params ([894a14d](https://github.com/CCXXXI/ecg_monitor/commit/894a14dcd410e745aa2eef757f3489e7af9f787f))
+* **router:** path params to query params ([def7ec1](https://github.com/CCXXXI/ecg_monitor/commit/def7ec1bce93cadfabfb59f835b95ca6b2d2dea5))
+* **router:** remove unused name ([62e13b7](https://github.com/CCXXXI/ecg_monitor/commit/62e13b7b84e6f337ef343035431550cedd46916c))
+
 ## [0.26.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.26.0...v0.26.1) (2023-03-24)
 
 ### Bug Fixes
