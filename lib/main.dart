@@ -35,12 +35,7 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 /// With no additional functionality for testing purposes.
 @cwidget
 Widget _appCore(BuildContext context, WidgetRef ref) {
-  ref.listen(
-    ecgProvider.future,
-    (previous, next) async => isar.writeTxn(
-      () async => isar.samplePoints.put(SamplePoint.fromEcgData(await next)),
-    ),
-  );
+  ref.listen(ecgProvider.future, (_, data) async => data.then(writeEcgData));
 
   return MaterialApp.router(
     title: fallbackAppName,

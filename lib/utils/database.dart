@@ -97,3 +97,7 @@ List<DateTime> labelTimes(Label label) => isar.beats
     .findAllSync()
     .map(DateTime.fromMillisecondsSinceEpoch)
     .toList();
+
+Future<void> writeEcgData(EcgData data) => isar.writeTxn(
+      () async => isar.samplePoints.put(SamplePoint.fromEcgData(data)),
+    );
