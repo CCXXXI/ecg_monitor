@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.29.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.0...v0.29.1) (2023-03-26)
+
+### Performance Improvements
+
+- **database:** use property query ([4e184ba](https://github.com/CCXXXI/ecg_monitor/commit/4e184ba0d99abc9aff6b1d1eec667d8a5a907f66))
+
+### Miscellaneous Chores
+
+- save generated files ([b35cff9](https://github.com/CCXXXI/ecg_monitor/commit/b35cff92f22a19a6f190a8eeaef12e0f6ac9af9a))
+
+### Documentation
+
+- **database:** add regions ([27ab73a](https://github.com/CCXXXI/ecg_monitor/commit/27ab73ab40e5d76b470ca04d46cc54ee60f5cdf4))
+
+### Code Refactoring
+
+- **database:** add writeBeatData ([16b6b74](https://github.com/CCXXXI/ecg_monitor/commit/16b6b74b8fd16dd79ae5a38faff88e5f0dffcbdb))
+- **database:** make collections visible only for testing ([518bc2b](https://github.com/CCXXXI/ecg_monitor/commit/518bc2b1181f2cadce7af43f94c20443b2d78708))
+- **database:** make isar instance private ([339bb7b](https://github.com/CCXXXI/ecg_monitor/commit/339bb7bca8ff147569ca20c5a96c6a8e9887c948))
+- **database:** move beatDataBetween to database.dart ([19e20fa](https://github.com/CCXXXI/ecg_monitor/commit/19e20fa34fb8ae6373cf84aab29f1bea6621be52))
+- **database:** move ecgDataBetween to database.dart ([9724929](https://github.com/CCXXXI/ecg_monitor/commit/9724929f6959eeeff9800eba5ca76b4c67b323e2))
+- **database:** move labelCount to database.dart ([851ee8f](https://github.com/CCXXXI/ecg_monitor/commit/851ee8fbe090f73953cf0a17bc1140185c8835ae))
+- **database:** move labelTimes to database.dart ([f1a5bd5](https://github.com/CCXXXI/ecg_monitor/commit/f1a5bd5f9b13bc6f9ffddcd0afe21ec40074e371))
+- **database:** move writeEcgData to database.dart ([c9401be](https://github.com/CCXXXI/ecg_monitor/commit/c9401bec1c1a15e1f0b6ff1f1504d39abb8dcd52))
+- **database:** reorder functions ([1a06727](https://github.com/CCXXXI/ecg_monitor/commit/1a0672706d3452c5f8b6f41ac80b8df4253d8461))
+
+### Tests
+
+- **database:** test for database operations ([4509905](https://github.com/CCXXXI/ecg_monitor/commit/4509905c6cd6c9089084c6078cbf13b68a54496f))
+
 ## [0.29.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.28.0...v0.29.0) (2023-03-26)
 
 ### Features
