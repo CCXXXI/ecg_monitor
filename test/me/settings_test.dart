@@ -2,6 +2,7 @@ import "package:ecg_monitor/generated/l10n.dart";
 import "package:ecg_monitor/me/settings/data_types.dart";
 import "package:ecg_monitor/me/settings/settings.dart";
 import "package:ecg_monitor/utils/database.dart";
+import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_test/flutter_test.dart";
@@ -18,7 +19,7 @@ void main() {
 
   group("Settings", () {
     setUp(() async {
-      SharedPreferences.setMockInitialValues({"showDevTools": true});
+      SharedPreferences.setMockInitialValues({K.showDevTools: true});
       await Isar.initializeIsarCore(download: true);
       await initDatabase();
     });
