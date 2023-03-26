@@ -1,5 +1,6 @@
 import "dart:math";
 
+import "package:animations/animations.dart";
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -30,6 +31,18 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
   return Duration(seconds: (duration.inSeconds / intervalCount).ceil());
 }
 
+Widget _chartTransitionBuilder(
+  Widget child,
+  Animation<double> primaryAnimation,
+  Animation<double> secondaryAnimation,
+) =>
+    SharedAxisTransition(
+      animation: primaryAnimation,
+      secondaryAnimation: secondaryAnimation,
+      transitionType: SharedAxisTransitionType.horizontal,
+      child: child,
+    );
+
 @swidget
 Widget __chart(
   BuildContext context, {
@@ -43,6 +56,8 @@ Widget __chart(
   required LineType verticalLineType,
   required bool showDots,
   required List<BeatData> beats,
+  required Key? lineChartKey,
+  required bool reverse,
 }) {
   const largeXInterval = smallXInterval * 5;
   const largeYInterval = smallYInterval * 5;
@@ -98,71 +113,77 @@ Widget __chart(
     children: [
       if (isPortrait) Text(title),
       Expanded(
-        child: LineChart(
-          swapAnimationDuration: Duration.zero, // disable animation
-          LineChartData(
-            minX:
-                points.isEmpty ? null : points.last.x - duration.inMilliseconds,
-            maxX: points.isEmpty ? null : points.last.x,
-            minY: points.isEmpty
-                ? null
-                : points.map((p) => p.y).reduce(min) - smallYInterval,
-            maxY: points.isEmpty
-                ? null
-                : points.map((p) => p.y).reduce(max) + smallYInterval,
-            backgroundColor: backgroundColor,
-            titlesData: FlTitlesData(
-              topTitles: AxisTitles(),
-              bottomTitles: bottomTitles,
-              leftTitles: leftTitles,
-              rightTitles: AxisTitles(),
-            ),
-            borderData: FlBorderData(show: false),
-            gridData: FlGridData(
-              show: drawHorizontalLine || drawVerticalLine,
-              drawHorizontalLine: drawHorizontalLine,
-              drawVerticalLine: drawVerticalLine,
-              horizontalInterval: horizontalLineType == LineType.full
-                  ? smallYInterval
-                  : largeYInterval,
-              verticalInterval: verticalLineType == LineType.full
-                  ? smallXInterval
-                  : largeXInterval,
-              getDrawingHorizontalLine: (value) => FlLine(
-                color: gridColor,
-                strokeWidth: getStrokeWidth(value, isHorizontal: true),
+        child: PageTransitionSwitcher(
+          reverse: reverse,
+          transitionBuilder: _chartTransitionBuilder,
+          child: LineChart(
+            key: lineChartKey,
+            swapAnimationDuration: Duration.zero, // disable animation
+            LineChartData(
+              minX: points.isEmpty
+                  ? null
+                  : points.last.x - duration.inMilliseconds,
+              maxX: points.isEmpty ? null : points.last.x,
+              minY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(min) - smallYInterval,
+              maxY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(max) + smallYInterval,
+              backgroundColor: backgroundColor,
+              titlesData: FlTitlesData(
+                topTitles: AxisTitles(),
+                bottomTitles: bottomTitles,
+                leftTitles: leftTitles,
+                rightTitles: AxisTitles(),
               ),
-              getDrawingVerticalLine: (value) => FlLine(
-                color: gridColor,
-                strokeWidth: getStrokeWidth(value, isHorizontal: false),
-              ),
-            ),
-            lineBarsData: [
-              LineChartBarData(
-                spots: points,
-                color: lineColor,
-                barWidth: dataLineWidth,
-                preventCurveOverShooting: true,
-                dotData: FlDotData(
-                  show: showDots,
-                  getDotPainter: (spot, xPercentage, bar, index) =>
-                      FlDotSquarePainter(color: backgroundColor),
+              borderData: FlBorderData(show: false),
+              gridData: FlGridData(
+                show: drawHorizontalLine || drawVerticalLine,
+                drawHorizontalLine: drawHorizontalLine,
+                drawVerticalLine: drawVerticalLine,
+                horizontalInterval: horizontalLineType == LineType.full
+                    ? smallYInterval
+                    : largeYInterval,
+                verticalInterval: verticalLineType == LineType.full
+                    ? smallXInterval
+                    : largeXInterval,
+                getDrawingHorizontalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: getStrokeWidth(value, isHorizontal: true),
+                ),
+                getDrawingVerticalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: getStrokeWidth(value, isHorizontal: false),
                 ),
               ),
-            ],
-            extraLinesData: ExtraLinesData(
-              verticalLines: [
-                for (final beat in beats)
-                  VerticalLine(
-                    x: beat.time.millisecondsSinceEpoch.toDouble(),
-                    color: Colors.transparent,
-                    label: VerticalLineLabel(
-                      show: true,
-                      alignment: Alignment.center,
-                      labelResolver: (_) => beat.label.name,
-                    ),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: points,
+                  color: lineColor,
+                  barWidth: dataLineWidth,
+                  preventCurveOverShooting: true,
+                  dotData: FlDotData(
+                    show: showDots,
+                    getDotPainter: (spot, xPercentage, bar, index) =>
+                        FlDotSquarePainter(color: backgroundColor),
                   ),
+                ),
               ],
+              extraLinesData: ExtraLinesData(
+                verticalLines: [
+                  for (final beat in beats)
+                    VerticalLine(
+                      x: beat.time.millisecondsSinceEpoch.toDouble(),
+                      color: Colors.transparent,
+                      label: VerticalLineLabel(
+                        show: true,
+                        alignment: Alignment.center,
+                        labelResolver: (_) => beat.label.name,
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -188,6 +209,8 @@ Widget _chart3Lead(
   required LineType verticalLineType,
   required bool showDots,
   List<BeatData> beats = const [],
+  Key? lineChartKey,
+  bool reverse = false,
 }) {
   final s = S.of(context);
 
@@ -205,6 +228,8 @@ Widget _chart3Lead(
           verticalLineType: verticalLineType,
           showDots: showDots,
           beats: beats,
+          lineChartKey: lineChartKey,
+          reverse: reverse,
         ),
       )
   ];
