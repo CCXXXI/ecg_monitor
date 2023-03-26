@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:isar/isar.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -6,6 +7,7 @@ import "../device_manager/device.dart";
 
 part "database.g.dart";
 
+@visibleForTesting
 @collection
 class SamplePoint {
   const SamplePoint({
@@ -31,6 +33,7 @@ class SamplePoint {
   final double leadII;
 }
 
+@visibleForTesting
 @collection
 class Beat {
   const Beat({
