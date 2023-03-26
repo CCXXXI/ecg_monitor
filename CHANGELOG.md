@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.29.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.1...v0.29.2) (2023-03-26)
+
+### Performance Improvements
+
+- toList(growable: false) ([#275](https://github.com/CCXXXI/ecg_monitor/issues/275)) ([9d42b47](https://github.com/CCXXXI/ecg_monitor/commit/9d42b47583eaf5039e600961cb6acfac98382db7))
+
 ## [0.29.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.0...v0.29.1) (2023-03-26)
 
 ### Performance Improvements
