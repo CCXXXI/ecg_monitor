@@ -80,7 +80,7 @@ List<DateTime> labelTimes(Label label) => _isar.beats
     .millisecondsSinceEpochProperty()
     .findAllSync()
     .map(DateTime.fromMillisecondsSinceEpoch)
-    .toList();
+    .toList(growable: false);
 
 List<BeatData> beatDataBetween(DateTime start, DateTime end) {
   final data = _isar.beats
@@ -91,7 +91,7 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
       )
       .findAllSync();
 
-  return data.map((d) => d.toBeatData()).toList();
+  return data.map((d) => d.toBeatData()).toList(growable: false);
 }
 // endregion
 
@@ -109,7 +109,7 @@ List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
       )
       .findAllSync();
 
-  return data.map((d) => d.toEcgData()).toList();
+  return data.map((d) => d.toEcgData()).toList(growable: false);
 }
 // endregion
 
