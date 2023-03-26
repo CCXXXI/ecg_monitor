@@ -61,22 +61,9 @@ jobs:
           name: release
           path: build/app/outputs/bundle/
 
-  check-ref:
-    runs-on: ubuntu-latest
-    outputs:
-      is_version: ${{ steps.check-ref.outputs.is_version }}
-    steps:
-      - id: check-ref
-        run: |
-          if [[ $GITHUB_REF =~ ^refs/tags/v[0-9]+.[0-9]+.[0-9]+$ ]]; then
-              echo "is_version=true" >> $GITHUB_OUTPUT
-          else
-              echo "is_version=false" >> $GITHUB_OUTPUT
-          fi
-
   release:
-    needs: [ check-ref, build-apk-release, build-apk-debug, build-appbundle-release, build-appbundle-debug ]
-    if: needs.check-ref.outputs.is_version == 'true'
+    needs: [ build-apk-release, build-apk-debug, build-appbundle-release, build-appbundle-debug ]
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v3
@@ -87,8 +74,7 @@ jobs:
           files: '**'
 
   sentry:
-    needs: [ check-ref ]
-    if: needs.check-ref.outputs.is_version == 'true'
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

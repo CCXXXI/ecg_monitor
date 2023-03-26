@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.19.0 <3.0.0"
 
 dependencies:
+  animations: ^2.0.7
   cupertino_icons: ^1.0.5
   dio: ^5.0.2
   ffi: ^2.0.1
