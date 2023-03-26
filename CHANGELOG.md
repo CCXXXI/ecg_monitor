@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.29.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.28.0...v0.29.0) (2023-03-26)
+
+
+### Features
+
+* **history:** center the selected time ([#270](https://github.com/CCXXXI/ecg_monitor/issues/270)) ([8e1ca65](https://github.com/CCXXXI/ecg_monitor/commit/8e1ca65bde16859d75e1da4ff4fc1d3b018daf0d))
+* **settings:** improve duration pickers ([b0ae380](https://github.com/CCXXXI/ecg_monitor/commit/b0ae380d5fb7962bbd3caaeb225d4f54f6c228c7))
+
+
+### Build System
+
+* flutter pub add duration_picker ([72951d6](https://github.com/CCXXXI/ecg_monitor/commit/72951d6594d5a3137d61cf9ada02dc57213d0663))
+
+
+### Tests
+
+* **settings:** "showDevTools": true ([1921f5f](https://github.com/CCXXXI/ecg_monitor/commit/1921f5fcbb9d3e23eb790d4debb26a1fdc3f82ba))
+* **settings:** add test for Settings ([ac9238e](https://github.com/CCXXXI/ecg_monitor/commit/ac9238e79e066b36cf725ea67f26a61146cd09b4))
+* **settings:** avoid magic value ([7785d9a](https://github.com/CCXXXI/ecg_monitor/commit/7785d9a8bc85b80f89e18db87cc4d426832eb6d6))
+
 ## [0.28.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.27.0...v0.28.0) (2023-03-26)
 
 ### Features
