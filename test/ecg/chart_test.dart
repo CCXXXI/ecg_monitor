@@ -67,6 +67,9 @@ void main() {
     expect(find.text(s.leadII), findsOneWidget);
     expect(find.text(s.leadIII), findsOneWidget);
 
+    // resets the screen to its original size after the test end
+    addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+
     // portrait chart
     tester.binding.window.physicalSizeTestValue = const Size(1000, 2000);
     await tester.pumpAndSettle();
