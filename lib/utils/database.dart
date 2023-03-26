@@ -89,3 +89,10 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
 
   return data.map((d) => d.toBeatData()).toList();
 }
+
+List<DateTime> labelTimes(Label label) => isar.beats
+    .where()
+    .labelEqualTo(label)
+    .findAllSync()
+    .map((e) => e.toBeatData().time)
+    .toList();
