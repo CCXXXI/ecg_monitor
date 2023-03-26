@@ -3,7 +3,6 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
-import "package:isar/isar.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../analytics/data_types.dart";
@@ -20,15 +19,7 @@ List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
   final start = time.subtract(duration ~/ 2);
   final end = time.add(duration ~/ 2);
 
-  final data = isar.samplePoints
-      .where()
-      .millisecondsSinceEpochBetween(
-        start.millisecondsSinceEpoch,
-        end.millisecondsSinceEpoch,
-      )
-      .findAllSync();
-
-  return data.map((d) => d.toEcgData()).toList();
+  return ecgDataBetween(start, end);
 }
 
 @riverpod

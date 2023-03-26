@@ -66,6 +66,18 @@ Future<void> initDatabase() async {
 int labelCount(Label label) =>
     isar.beats.where().labelEqualTo(label).countSync();
 
+List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
+  final data = isar.samplePoints
+      .where()
+      .millisecondsSinceEpochBetween(
+        start.millisecondsSinceEpoch,
+        end.millisecondsSinceEpoch,
+      )
+      .findAllSync();
+
+  return data.map((d) => d.toEcgData()).toList();
+}
+
 List<BeatData> beatDataBetween(DateTime start, DateTime end) {
   final data = isar.beats
       .where()
