@@ -1,3 +1,4 @@
+import "package:animations/animations.dart";
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import "package:quiver/time.dart";
@@ -14,6 +15,25 @@ import "../me/settings/settings.dart";
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: "root");
 final _homeKey = GlobalKey<NavigatorState>(debugLabel: "home");
 
+class _FadeThroughTransitionPage<T> extends CustomTransitionPage<T> {
+  const _FadeThroughTransitionPage({
+    required super.key,
+    required super.child,
+  }) : super(transitionsBuilder: _transitionsBuilder);
+
+  static Widget _transitionsBuilder(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) =>
+      FadeThroughTransition(
+        animation: animation,
+        secondaryAnimation: secondaryAnimation,
+        child: child,
+      );
+}
+
 final router = GoRouter(
   navigatorKey: _rootKey,
   initialLocation: "/real_time",
@@ -26,27 +46,43 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: "/real_time",
-          builder: (context, state) => const RealTime(),
+          pageBuilder: (context, state) => _FadeThroughTransitionPage(
+            key: state.pageKey,
+            child: const RealTime(),
+          ),
         ),
         GoRoute(
           path: "/history",
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             // Show 3 seconds ago by default to avoid showing an empty chart.
             final time = state.extra ?? DateTime.now().subtract(aSecond * 3);
-            return History(time as DateTime);
+
+            return _FadeThroughTransitionPage(
+              key: state.pageKey,
+              child: History(time as DateTime),
+            );
           },
         ),
         GoRoute(
           path: "/analytics",
-          builder: (context, state) => const Analytics(),
+          pageBuilder: (context, state) => _FadeThroughTransitionPage(
+            key: state.pageKey,
+            child: const Analytics(),
+          ),
         ),
         GoRoute(
           path: "/device_manager",
-          builder: (context, state) => const DeviceManager(),
+          pageBuilder: (context, state) => _FadeThroughTransitionPage(
+            key: state.pageKey,
+            child: const DeviceManager(),
+          ),
         ),
         GoRoute(
           path: "/me",
-          builder: (context, state) => const Me(),
+          pageBuilder: (context, state) => _FadeThroughTransitionPage(
+            key: state.pageKey,
+            child: const Me(),
+          ),
         ),
       ],
     ),
