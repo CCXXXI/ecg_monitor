@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:duration_picker/duration_picker.dart";
 import "package:flex_color_picker/flex_color_picker.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -50,10 +51,7 @@ Widget __sectionTitle(BuildContext context, String title) {
 }
 
 extension DurationToSecondsString on Duration {
-  String toSecondsString() {
-    final seconds = inMilliseconds / Duration.millisecondsPerSecond;
-    return "${seconds.toStringAsFixed(1)} s";
-  }
+  String toMsString() => "$inMilliseconds ms";
 }
 
 @swidget
@@ -92,6 +90,27 @@ Widget __chartSettings(
           ColorPickerType.both: true,
         },
       );
+
+  Future<Duration> pickDuration(Duration initialDuration) async {
+    final duration = await showDurationPicker(
+      context: context,
+      initialTime: initialDuration,
+      baseUnit: BaseUnit.millisecond,
+    );
+
+    if (duration == null) {
+      return initialDuration;
+    }
+
+    final lowerLimit = aMillisecond * 100;
+    final upperLimit = aSecond * 10;
+    return Duration(
+      milliseconds: duration.inMilliseconds.clamp(
+        lowerLimit.inMilliseconds,
+        upperLimit.inMilliseconds,
+      ),
+    );
+  }
 
   final lineTypeSegments = [
     ButtonSegment(
@@ -149,33 +168,17 @@ Widget __chartSettings(
       ListTile(
         leading: const Icon(Icons.stay_primary_portrait_outlined),
         title: Text(s.portraitDuration),
-        subtitle: Text(portraitDuration.toSecondsString()),
-        trailing: SizedBox(
-          width: 200,
-          child: Slider.adaptive(
-            value: portraitDuration.inMilliseconds.toDouble(),
-            onChanged: (ms) => onPortraitDurationChanged(aMillisecond * ms),
-            min: 500,
-            max: 4000,
-            divisions: 7,
-            label: portraitDuration.toSecondsString(),
-          ),
+        trailing: Text(portraitDuration.toMsString()),
+        onTap: () async => onPortraitDurationChanged(
+          await pickDuration(portraitDuration),
         ),
       ),
       ListTile(
         leading: const Icon(Icons.stay_primary_landscape_outlined),
         title: Text(s.landscapeDuration),
-        subtitle: Text(landscapeDuration.toSecondsString()),
-        trailing: SizedBox(
-          width: 200,
-          child: Slider.adaptive(
-            value: landscapeDuration.inMilliseconds.toDouble(),
-            onChanged: (ms) => onLandscapeDurationChanged(aMillisecond * ms),
-            min: 1000,
-            max: 8000,
-            divisions: 7,
-            label: landscapeDuration.toSecondsString(),
-          ),
+        trailing: Text(landscapeDuration.toMsString()),
+        onTap: () async => onLandscapeDurationChanged(
+          await pickDuration(landscapeDuration),
         ),
       ),
       ListTile(
