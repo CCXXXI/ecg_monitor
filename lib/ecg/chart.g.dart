@@ -19,8 +19,6 @@ class _Chart extends StatelessWidget {
     required this.verticalLineType,
     required this.showDots,
     required this.beats,
-    required this.lineChartKey,
-    required this.reverse,
   }) : super(key: key);
 
   final String title;
@@ -43,10 +41,6 @@ class _Chart extends StatelessWidget {
 
   final List<BeatData> beats;
 
-  final Key? lineChartKey;
-
-  final bool reverse;
-
   @override
   Widget build(BuildContext _context) => __chart(
         _context,
@@ -60,8 +54,6 @@ class _Chart extends StatelessWidget {
         verticalLineType: verticalLineType,
         showDots: showDots,
         beats: beats,
-        lineChartKey: lineChartKey,
-        reverse: reverse,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -79,8 +71,6 @@ class _Chart extends StatelessWidget {
         .add(EnumProperty<LineType>('verticalLineType', verticalLineType));
     properties.add(DiagnosticsProperty<bool>('showDots', showDots));
     properties.add(DiagnosticsProperty<List<BeatData>>('beats', beats));
-    properties.add(DiagnosticsProperty<Key?>('lineChartKey', lineChartKey));
-    properties.add(DiagnosticsProperty<bool>('reverse', reverse));
   }
 }
 
@@ -98,8 +88,6 @@ class Chart3Lead extends ConsumerWidget {
     required this.verticalLineType,
     required this.showDots,
     this.beats = const [],
-    this.lineChartKey,
-    this.reverse = false,
   }) : super(key: key);
 
   final List<FlSpot> pointsI;
@@ -124,10 +112,6 @@ class Chart3Lead extends ConsumerWidget {
 
   final List<BeatData> beats;
 
-  final Key? lineChartKey;
-
-  final bool reverse;
-
   @override
   Widget build(
     BuildContext _context,
@@ -147,8 +131,6 @@ class Chart3Lead extends ConsumerWidget {
         verticalLineType: verticalLineType,
         showDots: showDots,
         beats: beats,
-        lineChartKey: lineChartKey,
-        reverse: reverse,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -167,7 +149,5 @@ class Chart3Lead extends ConsumerWidget {
         .add(EnumProperty<LineType>('verticalLineType', verticalLineType));
     properties.add(DiagnosticsProperty<bool>('showDots', showDots));
     properties.add(DiagnosticsProperty<List<BeatData>>('beats', beats));
-    properties.add(DiagnosticsProperty<Key?>('lineChartKey', lineChartKey));
-    properties.add(DiagnosticsProperty<bool>('reverse', reverse));
   }
 }

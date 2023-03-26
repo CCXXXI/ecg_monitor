@@ -3,6 +3,7 @@ import "package:ecg_monitor/analytics/data_types.dart";
 import "package:ecg_monitor/generated/l10n.dart";
 import "package:ecg_monitor/utils/database.dart";
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
 import "package:shared_preferences/shared_preferences.dart";
@@ -17,7 +18,13 @@ void main() {
 
   testWidgets("Analytics", (tester) async {
     await tester.pumpWidget(
-      const MaterialApp(home: Scaffold(body: Analytics())),
+      const ProviderScope(
+        child: MaterialApp(
+          home: Scaffold(
+            body: Analytics(),
+          ),
+        ),
+      ),
     );
 
     for (final label in Label.values) {

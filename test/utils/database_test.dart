@@ -45,8 +45,8 @@ void main() {
     tearDown(clearDatabase);
 
     test("Beat", () async {
-      expect(labelCount(Label.sinusRhythm), 0);
-      expect(labelTimes(Label.sinusRhythm), isEmpty);
+      expect(await labelCount(Label.sinusRhythm), 0);
+      expect(await labelTimes(Label.sinusRhythm), isEmpty);
 
       final fakeBeatData = BeatData(
         time: DateTime(2023),
@@ -54,13 +54,16 @@ void main() {
       );
       await writeBeatData(fakeBeatData);
 
-      expect(labelCount(Label.sinusRhythm), 1);
-      expect(labelTimes(Label.sinusRhythm), [fakeBeatData.time]);
-      expect(beatDataBetween(DateTime(2022), DateTime(2024)), [fakeBeatData]);
+      expect(await labelCount(Label.sinusRhythm), 1);
+      expect(await labelTimes(Label.sinusRhythm), [fakeBeatData.time]);
+      expect(
+        await beatDataBetween(DateTime(2022), DateTime(2024)),
+        [fakeBeatData],
+      );
     });
 
     test("SamplePoint", () async {
-      expect(ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
+      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
 
       final fakeEcgData = EcgData(
         time: DateTime(2023),
@@ -69,7 +72,10 @@ void main() {
       );
       await writeEcgData(fakeEcgData);
 
-      expect(ecgDataBetween(DateTime(2022), DateTime(2024)), [fakeEcgData]);
+      expect(
+        await ecgDataBetween(DateTime(2022), DateTime(2024)),
+        [fakeEcgData],
+      );
     });
   });
 }

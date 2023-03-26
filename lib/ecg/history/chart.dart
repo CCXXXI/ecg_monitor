@@ -15,21 +15,26 @@ import "../chart.dart";
 part "chart.g.dart";
 
 @riverpod
-List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
-  final start = time.subtract(duration ~/ 2);
-  final end = time.add(duration ~/ 2);
-
-  return ecgDataBetween(start, end);
-}
-
-@riverpod
-List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) =>
-    beatDataBetween(
+Future<List<EcgData>> _ecgData(
+  _EcgDataRef ref,
+  DateTime time,
+  Duration duration,
+) =>
+    ecgDataBetween(
       time.subtract(duration ~/ 2),
       time.add(duration ~/ 2),
     );
 
-DateTime? _previousTime;
+@riverpod
+Future<List<BeatData>> _beatData(
+  _BeatDataRef ref,
+  DateTime time,
+  Duration duration,
+) =>
+    beatDataBetween(
+      time.subtract(duration ~/ 2),
+      time.add(duration ~/ 2),
+    );
 
 @cwidget
 Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
@@ -41,7 +46,12 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
         : historyLandscapeDurationProvider,
   );
 
-  final data = ref.watch(_ecgDataProvider(time, duration));
+  final data = ref.watch(_ecgDataProvider(time, duration)).valueOrNull;
+  final beats = ref.watch(_beatDataProvider(time, duration)).valueOrNull;
+
+  if (data == null || beats == null) {
+    return const Center(child: CircularProgressIndicator());
+  }
 
   if (data.isEmpty) {
     return const _NoData();
@@ -57,12 +67,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     pointsIII.add(FlSpot(x, d.leadIII));
   }
 
-  final beats = ref.watch(_beatDataProvider(time, duration));
-
-  // Determine the direction of the transition animation.
-  final reverse = _previousTime != null && time.isBefore(_previousTime!);
-  _previousTime = time;
-
   return Chart3Lead(
     pointsI: pointsI,
     pointsII: pointsII,
@@ -75,8 +79,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     verticalLineType: ref.watch(historyVerticalLineTypeProvider),
     showDots: ref.watch(historyShowDotsProvider),
     beats: beats,
-    lineChartKey: ValueKey(time),
-    reverse: reverse,
   );
 }
 

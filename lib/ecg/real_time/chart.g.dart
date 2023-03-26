@@ -39,7 +39,7 @@ final _refreshIntervalProvider = AutoDisposeProvider<double>.internal(
 );
 
 typedef _RefreshIntervalRef = AutoDisposeProviderRef<double>;
-String _$pointsHash() => r'ebd1696b840b1b576b00217987750da3e4783571';
+String _$pointsHash() => r'49630cfe6bc38aab07beceb009c9d73165011cf3';
 
 /// Copied from Dart SDK
 class _SystemHash {

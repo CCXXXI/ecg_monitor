@@ -1,11 +1,14 @@
 import "package:flutter/material.dart";
 import "package:isar/isar.dart";
+import "package:logging/logging.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 import "../analytics/data_types.dart";
 import "../device_manager/device.dart";
 
 part "database.g.dart";
+
+final _logger = Logger("Database");
 
 @visibleForTesting
 @collection
@@ -67,47 +70,70 @@ Future<void> initDatabase() async {
 }
 
 // region Beat
-Future<void> writeBeatData(BeatData data) => _isar.writeTxn(
-      () async => _isar.beats.put(Beat.fromBeatData(data)),
-    );
+Future<void> writeBeatData(BeatData data) async {
+  final stopwatch = Stopwatch()..start();
+  await _isar.writeTxn(() => _isar.beats.put(Beat.fromBeatData(data)));
+  _logger.finer("Writing beat data took ${stopwatch.elapsed}.");
+}
 
-int labelCount(Label label) =>
-    _isar.beats.where().labelEqualTo(label).countSync();
+Future<int> labelCount(Label label) async {
+  final stopwatch = Stopwatch()..start();
+  final count = await _isar.beats.where().labelEqualTo(label).count();
+  _logger.fine("Counting label $label took ${stopwatch.elapsed}.");
 
-List<DateTime> labelTimes(Label label) => _isar.beats
-    .where()
-    .labelEqualTo(label)
-    .millisecondsSinceEpochProperty()
-    .findAllSync()
-    .map(DateTime.fromMillisecondsSinceEpoch)
-    .toList(growable: false);
+  return count;
+}
 
-List<BeatData> beatDataBetween(DateTime start, DateTime end) {
-  final data = _isar.beats
+Future<List<DateTime>> labelTimes(Label label) async {
+  final stopwatch = Stopwatch()..start();
+  final msSinceEpoch = await _isar.beats
+      .where()
+      .labelEqualTo(label)
+      .millisecondsSinceEpochProperty()
+      .findAll();
+  _logger.fine("Finding label $label took ${stopwatch.elapsed}.");
+
+  return msSinceEpoch
+      .map(DateTime.fromMillisecondsSinceEpoch)
+      .toList(growable: false);
+}
+
+Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
+  final stopwatch = Stopwatch()..start();
+  final data = await _isar.beats
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
         end.millisecondsSinceEpoch,
       )
-      .findAllSync();
+      .findAll();
+  _logger.fine("Finding beats between $start and $end "
+      "took ${stopwatch.elapsed}.");
 
   return data.map((d) => d.toBeatData()).toList(growable: false);
 }
 // endregion
 
 // region SamplePoint
-Future<void> writeEcgData(EcgData data) => _isar.writeTxn(
-      () async => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
-    );
+Future<void> writeEcgData(EcgData data) async {
+  final stopwatch = Stopwatch()..start();
+  await _isar.writeTxn(
+    () => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
+  );
+  _logger.finest("Writing sample point took ${stopwatch.elapsed}.");
+}
 
-List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
-  final data = _isar.samplePoints
+Future<List<EcgData>> ecgDataBetween(DateTime start, DateTime end) async {
+  final stopwatch = Stopwatch()..start();
+  final data = await _isar.samplePoints
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
         end.millisecondsSinceEpoch,
       )
-      .findAllSync();
+      .findAll();
+  _logger.fine("Finding sample points between $start and $end "
+      "took ${stopwatch.elapsed}.");
 
   return data.map((d) => d.toEcgData()).toList(growable: false);
 }
