@@ -10,6 +10,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "../analytics/data_types.dart";
 import "../generated/l10n.dart";
 import "../me/settings/data_types.dart";
+import "../utils/time.dart";
 
 part "chart.g.dart";
 
@@ -27,19 +28,6 @@ Duration getInterval(Duration duration, {required bool isPortrait}) {
   final intervalCount =
       isPortrait ? maxIntervalCountPortrait : maxIntervalCountLandscape;
   return Duration(seconds: (duration.inSeconds / intervalCount).ceil());
-}
-
-extension DateTimeToTimeString on DateTime {
-  String toTimeString({required bool showMs}) {
-    if (millisecond != 0 && !showMs) {
-      return "";
-    }
-    final msStr = showMs ? ".${millisecond.toString().padLeft(3, "0")}" : "";
-    return "${hour.toString().padLeft(2, "0")}"
-        ":${minute.toString().padLeft(2, "0")}"
-        ":${second.toString().padLeft(2, "0")}"
-        "$msStr";
-  }
 }
 
 @swidget

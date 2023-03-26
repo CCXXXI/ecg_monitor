@@ -13,3 +13,16 @@ extension TimeOfDayToDateTime on TimeOfDay {
     return timeOfToday.isBefore(now) ? timeOfToday : timeOfYesterday;
   }
 }
+
+extension DateTimeToTimeString on DateTime {
+  String toTimeString({required bool showMs}) {
+    if (millisecond != 0 && !showMs) {
+      return "";
+    }
+    final msStr = showMs ? ".${millisecond.toString().padLeft(3, "0")}" : "";
+    return "${hour.toString().padLeft(2, "0")}"
+        ":${minute.toString().padLeft(2, "0")}"
+        ":${second.toString().padLeft(2, "0")}"
+        "$msStr";
+  }
+}
