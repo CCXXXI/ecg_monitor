@@ -67,6 +67,10 @@ Future<void> initDatabase() async {
 }
 
 // region Beat
+Future<void> writeBeatData(BeatData data) => _isar.writeTxn(
+      () async => _isar.beats.put(Beat.fromBeatData(data)),
+    );
+
 int labelCount(Label label) =>
     _isar.beats.where().labelEqualTo(label).countSync();
 
