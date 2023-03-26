@@ -52,7 +52,7 @@ void main() {
         time: DateTime(2023),
         label: Label.sinusRhythm,
       );
-      writeBeatData(fakeBeatData);
+      await writeBeatData(fakeBeatData);
 
       expect(labelCount(Label.sinusRhythm), 1);
       expect(labelTimes(Label.sinusRhythm), [fakeBeatData.time]);
@@ -67,7 +67,7 @@ void main() {
         leadI: 1,
         leadII: 2,
       );
-      writeEcgData(fakeEcgData);
+      await writeEcgData(fakeEcgData);
 
       expect(ecgDataBetween(DateTime(2022), DateTime(2024)), [fakeEcgData]);
     });

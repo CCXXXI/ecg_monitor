@@ -15,15 +15,22 @@ import "../chart.dart";
 part "chart.g.dart";
 
 @riverpod
-List<EcgData> _ecgData(_EcgDataRef ref, DateTime time, Duration duration) {
-  final start = time.subtract(duration ~/ 2);
-  final end = time.add(duration ~/ 2);
-
-  return ecgDataBetween(start, end);
-}
+Future<List<EcgData>> _ecgData(
+  _EcgDataRef ref,
+  DateTime time,
+  Duration duration,
+) =>
+    ecgDataBetween(
+      time.subtract(duration ~/ 2),
+      time.add(duration ~/ 2),
+    );
 
 @riverpod
-List<BeatData> _beatData(_BeatDataRef ref, DateTime time, Duration duration) =>
+Future<List<BeatData>> _beatData(
+  _BeatDataRef ref,
+  DateTime time,
+  Duration duration,
+) =>
     beatDataBetween(
       time.subtract(duration ~/ 2),
       time.add(duration ~/ 2),
@@ -41,7 +48,12 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
         : historyLandscapeDurationProvider,
   );
 
-  final data = ref.watch(_ecgDataProvider(time, duration));
+  final data = ref.watch(_ecgDataProvider(time, duration)).valueOrNull;
+  final beats = ref.watch(_beatDataProvider(time, duration)).valueOrNull;
+
+  if (data == null || beats == null) {
+    return const Center(child: CircularProgressIndicator());
+  }
 
   if (data.isEmpty) {
     return const _NoData();
@@ -56,8 +68,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     pointsII.add(FlSpot(x, d.leadII));
     pointsIII.add(FlSpot(x, d.leadIII));
   }
-
-  final beats = ref.watch(_beatDataProvider(time, duration));
 
   // Determine the direction of the transition animation.
   final reverse = _previousTime != null && time.isBefore(_previousTime!);

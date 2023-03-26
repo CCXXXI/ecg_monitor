@@ -70,27 +70,27 @@ Future<void> initDatabase() async {
 }
 
 // region Beat
-void writeBeatData(BeatData data) {
+Future<void> writeBeatData(BeatData data) async {
   final stopwatch = Stopwatch()..start();
-  _isar.writeTxnSync(() => _isar.beats.putSync(Beat.fromBeatData(data)));
+  await _isar.writeTxn(() => _isar.beats.put(Beat.fromBeatData(data)));
   _logger.finer("Writing beat data took ${stopwatch.elapsed}.");
 }
 
-int labelCount(Label label) {
+Future<int> labelCount(Label label) async {
   final stopwatch = Stopwatch()..start();
-  final count = _isar.beats.where().labelEqualTo(label).countSync();
+  final count = await _isar.beats.where().labelEqualTo(label).count();
   _logger.fine("Counting label $label took ${stopwatch.elapsed}.");
 
   return count;
 }
 
-List<DateTime> labelTimes(Label label) {
+Future<List<DateTime>> labelTimes(Label label) async {
   final stopwatch = Stopwatch()..start();
-  final msSinceEpoch = _isar.beats
+  final msSinceEpoch = await _isar.beats
       .where()
       .labelEqualTo(label)
       .millisecondsSinceEpochProperty()
-      .findAllSync();
+      .findAll();
   _logger.fine("Finding label $label took ${stopwatch.elapsed}.");
 
   return msSinceEpoch
@@ -98,15 +98,15 @@ List<DateTime> labelTimes(Label label) {
       .toList(growable: false);
 }
 
-List<BeatData> beatDataBetween(DateTime start, DateTime end) {
+Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
   final stopwatch = Stopwatch()..start();
-  final data = _isar.beats
+  final data = await _isar.beats
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
         end.millisecondsSinceEpoch,
       )
-      .findAllSync();
+      .findAll();
   _logger.fine("Finding beats between $start and $end "
       "took ${stopwatch.elapsed}.");
 
@@ -115,23 +115,23 @@ List<BeatData> beatDataBetween(DateTime start, DateTime end) {
 // endregion
 
 // region SamplePoint
-void writeEcgData(EcgData data) {
+Future<void> writeEcgData(EcgData data) async {
   final stopwatch = Stopwatch()..start();
-  _isar.writeTxnSync(
-    () => _isar.samplePoints.putSync(SamplePoint.fromEcgData(data)),
+  await _isar.writeTxn(
+    () => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
   );
   _logger.finest("Writing sample point took ${stopwatch.elapsed}.");
 }
 
-List<EcgData> ecgDataBetween(DateTime start, DateTime end) {
+Future<List<EcgData>> ecgDataBetween(DateTime start, DateTime end) async {
   final stopwatch = Stopwatch()..start();
-  final data = _isar.samplePoints
+  final data = await _isar.samplePoints
       .where()
       .millisecondsSinceEpochBetween(
         start.millisecondsSinceEpoch,
         end.millisecondsSinceEpoch,
       )
-      .findAllSync();
+      .findAll();
   _logger.fine("Finding sample points between $start and $end "
       "took ${stopwatch.elapsed}.");
 

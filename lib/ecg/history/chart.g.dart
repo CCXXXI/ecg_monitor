@@ -42,7 +42,7 @@ class _NoData extends StatelessWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ecgDataHash() => r'23b17bb6a0759d81a1162d441eda326759321c16';
+String _$ecgDataHash() => r'a2ca39862bc4fa3938852936168a9003f14a294c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -65,14 +65,14 @@ class _SystemHash {
   }
 }
 
-typedef _EcgDataRef = AutoDisposeProviderRef<List<EcgData>>;
+typedef _EcgDataRef = AutoDisposeFutureProviderRef<List<EcgData>>;
 
 /// See also [_ecgData].
 @ProviderFor(_ecgData)
 const _ecgDataProvider = _EcgDataFamily();
 
 /// See also [_ecgData].
-class _EcgDataFamily extends Family<List<EcgData>> {
+class _EcgDataFamily extends Family<AsyncValue<List<EcgData>>> {
   /// See also [_ecgData].
   const _EcgDataFamily();
 
@@ -113,7 +113,7 @@ class _EcgDataFamily extends Family<List<EcgData>> {
 }
 
 /// See also [_ecgData].
-class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
+class _EcgDataProvider extends AutoDisposeFutureProvider<List<EcgData>> {
   /// See also [_ecgData].
   _EcgDataProvider(
     this.time,
@@ -154,15 +154,15 @@ class _EcgDataProvider extends AutoDisposeProvider<List<EcgData>> {
   }
 }
 
-String _$beatDataHash() => r'f5fe4d20675c758882b1a8225444daceb49c8eaf';
-typedef _BeatDataRef = AutoDisposeProviderRef<List<BeatData>>;
+String _$beatDataHash() => r'f6ae17bf7a76fb7d686731fe4b7de98c2b2daf37';
+typedef _BeatDataRef = AutoDisposeFutureProviderRef<List<BeatData>>;
 
 /// See also [_beatData].
 @ProviderFor(_beatData)
 const _beatDataProvider = _BeatDataFamily();
 
 /// See also [_beatData].
-class _BeatDataFamily extends Family<List<BeatData>> {
+class _BeatDataFamily extends Family<AsyncValue<List<BeatData>>> {
   /// See also [_beatData].
   const _BeatDataFamily();
 
@@ -203,7 +203,7 @@ class _BeatDataFamily extends Family<List<BeatData>> {
 }
 
 /// See also [_beatData].
-class _BeatDataProvider extends AutoDisposeProvider<List<BeatData>> {
+class _BeatDataProvider extends AutoDisposeFutureProvider<List<BeatData>> {
   /// See also [_beatData].
   _BeatDataProvider(
     this.time,
