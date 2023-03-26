@@ -2,42 +2,36 @@
 
 ## [0.28.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.27.0...v0.28.0) (2023-03-26)
 
-
 ### Features
 
-* **analytics:** use OpenContainer for LabelDetails ([d1fe890](https://github.com/CCXXXI/ecg_monitor/commit/d1fe890fa4fc86f4020ef1155908e4a580d4afd7))
-* **history:** add SharedAxisTransition ([c41b7ab](https://github.com/CCXXXI/ecg_monitor/commit/c41b7ab52d77b746f50fa371993fd13a82e88893))
-* **home:** FadeThroughTransitionPage ([08fad17](https://github.com/CCXXXI/ecg_monitor/commit/08fad170abb569f8f2b1a73be51fb65fdb29fd7b))
-
+- **analytics:** use OpenContainer for LabelDetails ([d1fe890](https://github.com/CCXXXI/ecg_monitor/commit/d1fe890fa4fc86f4020ef1155908e4a580d4afd7))
+- **history:** add SharedAxisTransition ([c41b7ab](https://github.com/CCXXXI/ecg_monitor/commit/c41b7ab52d77b746f50fa371993fd13a82e88893))
+- **home:** FadeThroughTransitionPage ([08fad17](https://github.com/CCXXXI/ecg_monitor/commit/08fad170abb569f8f2b1a73be51fb65fdb29fd7b))
 
 ### Bug Fixes
 
-* **analytics:** use background color instead of transparent ([f6e7664](https://github.com/CCXXXI/ecg_monitor/commit/f6e76647d72b0a1aae63162dbd35a29465463243))
-* **label-details:** pop before go to history ([a29eb71](https://github.com/CCXXXI/ecg_monitor/commit/a29eb71261c8d8f6434c08fecee9c6857050ef66))
-
+- **analytics:** use background color instead of transparent ([f6e7664](https://github.com/CCXXXI/ecg_monitor/commit/f6e76647d72b0a1aae63162dbd35a29465463243))
+- **label-details:** pop before go to history ([a29eb71](https://github.com/CCXXXI/ecg_monitor/commit/a29eb71261c8d8f6434c08fecee9c6857050ef66))
 
 ### Build System
 
-* flutter pub add animations ([d37a14b](https://github.com/CCXXXI/ecg_monitor/commit/d37a14baaa80a14666c1de552d732b38c4b8239b))
-
+- flutter pub add animations ([d37a14b](https://github.com/CCXXXI/ecg_monitor/commit/d37a14baaa80a14666c1de552d732b38c4b8239b))
 
 ### Code Refactoring
 
-* **router:** rename unused param to _ ([58d1399](https://github.com/CCXXXI/ecg_monitor/commit/58d13998822605b78f3c361e1cbc1441f7bc1e28))
-
+- **router:** rename unused param to \_ ([58d1399](https://github.com/CCXXXI/ecg_monitor/commit/58d13998822605b78f3c361e1cbc1441f7bc1e28))
 
 ### Tests
 
-* **chart:** add tear down ([5b363c5](https://github.com/CCXXXI/ecg_monitor/commit/5b363c59873bcf927a869adb5531f41a9cdc81bf))
-* **chart:** add test for Chart3Lead ([bffbcc6](https://github.com/CCXXXI/ecg_monitor/commit/bffbcc624f611320351c96ed034a4faae4214ba6))
-* **chart:** show grids ([766d9f5](https://github.com/CCXXXI/ecg_monitor/commit/766d9f57cc338272688db281eec1df48f2280c79))
-* **chart:** test for orientation ([aad245a](https://github.com/CCXXXI/ecg_monitor/commit/aad245a32a8433847013dd7c826f810ab0fed748))
-
+- **chart:** add tear down ([5b363c5](https://github.com/CCXXXI/ecg_monitor/commit/5b363c59873bcf927a869adb5531f41a9cdc81bf))
+- **chart:** add test for Chart3Lead ([bffbcc6](https://github.com/CCXXXI/ecg_monitor/commit/bffbcc624f611320351c96ed034a4faae4214ba6))
+- **chart:** show grids ([766d9f5](https://github.com/CCXXXI/ecg_monitor/commit/766d9f57cc338272688db281eec1df48f2280c79))
+- **chart:** test for orientation ([aad245a](https://github.com/CCXXXI/ecg_monitor/commit/aad245a32a8433847013dd7c826f810ab0fed748))
 
 ### Continuous Integration
 
-* **build:** simplify tag check ([963a608](https://github.com/CCXXXI/ecg_monitor/commit/963a6087656d887965e6b0d37df1ab30af63271a))
-* **coverage:** ignore generated files ([85c7d7c](https://github.com/CCXXXI/ecg_monitor/commit/85c7d7c35b6e6b2bb71036816016a22912b5a1a7))
+- **build:** simplify tag check ([963a608](https://github.com/CCXXXI/ecg_monitor/commit/963a6087656d887965e6b0d37df1ab30af63271a))
+- **coverage:** ignore generated files ([85c7d7c](https://github.com/CCXXXI/ecg_monitor/commit/85c7d7c35b6e6b2bb71036816016a22912b5a1a7))
 
 ## [0.27.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.26.1...v0.27.0) (2023-03-26)
 
