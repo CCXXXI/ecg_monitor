@@ -16,6 +16,7 @@ import "../../utils/dio.dart";
 import "../../utils/strings.dart";
 import "../../utils/urls.dart";
 import "providers.dart";
+import "restart_snack_bar.dart";
 
 part "dev_tools.g.dart";
 
@@ -38,6 +39,8 @@ class _LoggerLevel extends _$LoggerLevel {
   Future<void> setIndex(int index) => set(loggerLevels[index]);
 }
 
+final _loadingFakeSamplePointsProvider = StateProvider<bool>((ref) => false);
+
 @cwidget
 Widget _devTools(BuildContext context, WidgetRef ref) {
   final s = S.of(context);
@@ -56,7 +59,18 @@ Widget _devTools(BuildContext context, WidgetRef ref) {
       ListTile(
         leading: const Icon(Icons.javascript_outlined),
         title: Text(s.loadFakeSamplePoints),
-        onTap: _loadFakeSamplePoints,
+        trailing: ref.watch(_loadingFakeSamplePointsProvider)
+            ? const CircularProgressIndicator()
+            : null,
+        onTap: () async {
+          ref.read(_loadingFakeSamplePointsProvider.notifier).state = true;
+          await _loadFakeSamplePoints();
+          ref.read(_loadingFakeSamplePointsProvider.notifier).state = false;
+
+          if (context.mounted) {
+            showRestartSnackBar(context);
+          }
+        },
       ),
       ListTile(
         leading: const Icon(Icons.text_snippet_outlined),
