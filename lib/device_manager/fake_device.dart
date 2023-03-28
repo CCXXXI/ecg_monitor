@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:flutter/services.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
+import "package:quiver/time.dart";
 
 import "../utils/database.dart";
 import "../utils/strings.dart";
@@ -11,10 +12,23 @@ import "device.dart";
 part "fake_device.freezed.dart";
 part "fake_device.g.dart";
 
+class _MillisecondsDurationConverter implements JsonConverter<Duration, int> {
+  const _MillisecondsDurationConverter();
+
+  @override
+  Duration fromJson(int json) => Duration(milliseconds: json);
+
+  @override
+  int toJson(Duration object) => object.inMilliseconds;
+}
+
 @freezed
 class FakeEcgData with _$FakeEcgData {
   factory FakeEcgData({
-    required int millisecondsSinceStart,
+    // ignore: invalid_annotation_target
+    @JsonKey(name: "millisecondsSinceStart")
+    @_MillisecondsDurationConverter()
+        required Duration sinceStart,
     required double leadI,
     required double leadII,
   }) = _FakeEcgData;
@@ -50,14 +64,9 @@ class _FakeDevice implements Device {
   @override
   int get fs => 125;
 
-  /// 采样周期
-  Duration get _tick => Duration(
-        milliseconds: Duration.millisecondsPerSecond ~/ fs,
-      );
-
   @override
   Stream<bool> get connectedStream => Stream.periodic(
-        _tick,
+        aSecond,
         (_) => prefs.getBool(K.fakeDeviceOn) ?? false,
       );
 
@@ -69,20 +78,38 @@ class _FakeDevice implements Device {
 
   @override
   Stream<EcgData> get ecgStream async* {
-    for (var t = DateTime.now();; t = t.add(_tick)) {
-      // Wait until the next tick.
-      await Future<void>.delayed(t.difference(DateTime.now()));
+    final dataLenMs = (aMinute * 10).inMilliseconds;
+    final startCycle = DateTime.now().millisecondsSinceEpoch ~/ dataLenMs;
 
-      // Do not yield data if the fake device is off.
-      final fakeDeviceOn = prefs.getBool(K.fakeDeviceOn) ?? false;
-      if (!fakeDeviceOn) {
-        continue;
+    var firstRun = true;
+
+    for (var cycle = startCycle;; ++cycle) {
+      // The start time of this cycle.
+      final startTime = DateTime.fromMillisecondsSinceEpoch(cycle * dataLenMs);
+
+      for (final d in _data) {
+        // Calculate the time of the data.
+        final t = startTime.add(d.sinceStart);
+
+        // At first run, skip the data before now.
+        if (firstRun && t.isBefore(DateTime.now())) {
+          continue;
+        }
+        firstRun = false;
+
+        // Wait until the next data.
+        await Future<void>.delayed(t.difference(DateTime.now()));
+
+        // Do not yield data if the fake device is off.
+        final fakeDeviceOn = prefs.getBool(K.fakeDeviceOn) ?? false;
+        if (!fakeDeviceOn) {
+          continue;
+        }
+
+        // Yield the next fake ECG data.
+        _logger.finest("yield t=$t, d=$d");
+        yield EcgData(time: t, leadI: d.leadI, leadII: d.leadII);
       }
-
-      // Yield the next fake ECG data.
-      final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % _data.length;
-      _logger.finest("yield t=$t, i=$i");
-      yield EcgData(time: t, leadI: _data[i].leadI, leadII: _data[i].leadII);
     }
   }
 }

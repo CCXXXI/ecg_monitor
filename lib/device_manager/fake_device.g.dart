@@ -8,14 +8,16 @@ part of 'fake_device.dart';
 
 _$_FakeEcgData _$$_FakeEcgDataFromJson(Map<String, dynamic> json) =>
     _$_FakeEcgData(
-      millisecondsSinceStart: json['millisecondsSinceStart'] as int,
+      sinceStart: const _MillisecondsDurationConverter()
+          .fromJson(json['millisecondsSinceStart'] as int),
       leadI: (json['leadI'] as num).toDouble(),
       leadII: (json['leadII'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$_FakeEcgDataToJson(_$_FakeEcgData instance) =>
     <String, dynamic>{
-      'millisecondsSinceStart': instance.millisecondsSinceStart,
+      'millisecondsSinceStart':
+          const _MillisecondsDurationConverter().toJson(instance.sinceStart),
       'leadI': instance.leadI,
       'leadII': instance.leadII,
     };

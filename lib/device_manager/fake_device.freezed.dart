@@ -20,7 +20,10 @@ FakeEcgData _$FakeEcgDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FakeEcgData {
-  int get millisecondsSinceStart => throw _privateConstructorUsedError;
+// ignore: invalid_annotation_target
+  @JsonKey(name: "millisecondsSinceStart")
+  @_MillisecondsDurationConverter()
+  Duration get sinceStart => throw _privateConstructorUsedError;
   double get leadI => throw _privateConstructorUsedError;
   double get leadII => throw _privateConstructorUsedError;
 
@@ -36,7 +39,12 @@ abstract class $FakeEcgDataCopyWith<$Res> {
           FakeEcgData value, $Res Function(FakeEcgData) then) =
       _$FakeEcgDataCopyWithImpl<$Res, FakeEcgData>;
   @useResult
-  $Res call({int millisecondsSinceStart, double leadI, double leadII});
+  $Res call(
+      {@JsonKey(name: "millisecondsSinceStart")
+      @_MillisecondsDurationConverter()
+          Duration sinceStart,
+      double leadI,
+      double leadII});
 }
 
 /// @nodoc
@@ -52,15 +60,15 @@ class _$FakeEcgDataCopyWithImpl<$Res, $Val extends FakeEcgData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? millisecondsSinceStart = null,
+    Object? sinceStart = null,
     Object? leadI = null,
     Object? leadII = null,
   }) {
     return _then(_value.copyWith(
-      millisecondsSinceStart: null == millisecondsSinceStart
-          ? _value.millisecondsSinceStart
-          : millisecondsSinceStart // ignore: cast_nullable_to_non_nullable
-              as int,
+      sinceStart: null == sinceStart
+          ? _value.sinceStart
+          : sinceStart // ignore: cast_nullable_to_non_nullable
+              as Duration,
       leadI: null == leadI
           ? _value.leadI
           : leadI // ignore: cast_nullable_to_non_nullable
@@ -81,7 +89,12 @@ abstract class _$$_FakeEcgDataCopyWith<$Res>
       __$$_FakeEcgDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int millisecondsSinceStart, double leadI, double leadII});
+  $Res call(
+      {@JsonKey(name: "millisecondsSinceStart")
+      @_MillisecondsDurationConverter()
+          Duration sinceStart,
+      double leadI,
+      double leadII});
 }
 
 /// @nodoc
@@ -95,15 +108,15 @@ class __$$_FakeEcgDataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? millisecondsSinceStart = null,
+    Object? sinceStart = null,
     Object? leadI = null,
     Object? leadII = null,
   }) {
     return _then(_$_FakeEcgData(
-      millisecondsSinceStart: null == millisecondsSinceStart
-          ? _value.millisecondsSinceStart
-          : millisecondsSinceStart // ignore: cast_nullable_to_non_nullable
-              as int,
+      sinceStart: null == sinceStart
+          ? _value.sinceStart
+          : sinceStart // ignore: cast_nullable_to_non_nullable
+              as Duration,
       leadI: null == leadI
           ? _value.leadI
           : leadI // ignore: cast_nullable_to_non_nullable
@@ -120,15 +133,20 @@ class __$$_FakeEcgDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FakeEcgData implements _FakeEcgData {
   _$_FakeEcgData(
-      {required this.millisecondsSinceStart,
+      {@JsonKey(name: "millisecondsSinceStart")
+      @_MillisecondsDurationConverter()
+          required this.sinceStart,
       required this.leadI,
       required this.leadII});
 
   factory _$_FakeEcgData.fromJson(Map<String, dynamic> json) =>
       _$$_FakeEcgDataFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
-  final int millisecondsSinceStart;
+  @JsonKey(name: "millisecondsSinceStart")
+  @_MillisecondsDurationConverter()
+  final Duration sinceStart;
   @override
   final double leadI;
   @override
@@ -136,7 +154,7 @@ class _$_FakeEcgData implements _FakeEcgData {
 
   @override
   String toString() {
-    return 'FakeEcgData(millisecondsSinceStart: $millisecondsSinceStart, leadI: $leadI, leadII: $leadII)';
+    return 'FakeEcgData(sinceStart: $sinceStart, leadI: $leadI, leadII: $leadII)';
   }
 
   @override
@@ -144,16 +162,15 @@ class _$_FakeEcgData implements _FakeEcgData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FakeEcgData &&
-            (identical(other.millisecondsSinceStart, millisecondsSinceStart) ||
-                other.millisecondsSinceStart == millisecondsSinceStart) &&
+            (identical(other.sinceStart, sinceStart) ||
+                other.sinceStart == sinceStart) &&
             (identical(other.leadI, leadI) || other.leadI == leadI) &&
             (identical(other.leadII, leadII) || other.leadII == leadII));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, millisecondsSinceStart, leadI, leadII);
+  int get hashCode => Object.hash(runtimeType, sinceStart, leadI, leadII);
 
   @JsonKey(ignore: true)
   @override
@@ -171,15 +188,19 @@ class _$_FakeEcgData implements _FakeEcgData {
 
 abstract class _FakeEcgData implements FakeEcgData {
   factory _FakeEcgData(
-      {required final int millisecondsSinceStart,
+      {@JsonKey(name: "millisecondsSinceStart")
+      @_MillisecondsDurationConverter()
+          required final Duration sinceStart,
       required final double leadI,
       required final double leadII}) = _$_FakeEcgData;
 
   factory _FakeEcgData.fromJson(Map<String, dynamic> json) =
       _$_FakeEcgData.fromJson;
 
-  @override
-  int get millisecondsSinceStart;
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: "millisecondsSinceStart")
+  @_MillisecondsDurationConverter()
+  Duration get sinceStart;
   @override
   double get leadI;
   @override
