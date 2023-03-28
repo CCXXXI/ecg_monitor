@@ -62,6 +62,9 @@ class _HeartRate extends _$HeartRate {
     // Initialize the Pan-Tompkins library with the sampling frequency.
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
 
+    // Keep the ref alive to run Pan-Tompkins algorithm in the background.
+    ref.keepAlive();
+
     // Listen to the ECG data.
     final subscription = ref.listen(
       ecgProvider.future,
