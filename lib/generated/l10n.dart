@@ -520,11 +520,11 @@ class S {
     );
   }
 
-  /// `Load fake sample point`
-  String get LoadFakeSamplePoint {
+  /// `Load fake sample points`
+  String get loadFakeSamplePoints {
     return Intl.message(
-      'Load fake sample point',
-      name: 'LoadFakeSamplePoint',
+      'Load fake sample points',
+      name: 'loadFakeSamplePoints',
       desc: '',
       args: [],
     );

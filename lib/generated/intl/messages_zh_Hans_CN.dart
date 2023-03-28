@@ -26,8 +26,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "LoadFakeSamplePoint":
-            MessageLookupByLibrary.simpleMessage("加载模拟采样点数据"),
         "about": MessageLookupByLibrary.simpleMessage("关于"),
         "analytics": MessageLookupByLibrary.simpleMessage("分析报告"),
         "appName": MessageLookupByLibrary.simpleMessage("心电监测"),
@@ -69,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "lineTypeFull": MessageLookupByLibrary.simpleMessage("完整"),
         "lineTypeHide": MessageLookupByLibrary.simpleMessage("隐藏"),
         "lineTypeSimple": MessageLookupByLibrary.simpleMessage("简化"),
+        "loadFakeSamplePoints":
+            MessageLookupByLibrary.simpleMessage("加载模拟采样点数据"),
         "loggerLevel": MessageLookupByLibrary.simpleMessage("日志等级"),
         "me": MessageLookupByLibrary.simpleMessage("我的"),
         "minDistance": MessageLookupByLibrary.simpleMessage("最小点间距"),
