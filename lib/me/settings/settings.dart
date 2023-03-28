@@ -1,6 +1,5 @@
 import "dart:io";
 
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
@@ -16,6 +15,7 @@ import "../../utils/strings.dart";
 import "../../utils/urls.dart";
 import "chart_settings.dart";
 import "providers.dart";
+import "section_title.dart";
 
 part "settings.g.dart";
 
@@ -36,15 +36,6 @@ class _LoggerLevel extends _$LoggerLevel {
   }
 
   Future<void> setIndex(int index) => set(loggerLevels[index]);
-}
-
-@swidget
-Widget __sectionTitle(BuildContext context, String title) {
-  const padding = EdgeInsetsDirectional.fromSTEB(24, 24, 24, 10);
-  final color = Theme.of(context).colorScheme.primary;
-  final style = Theme.of(context).textTheme.labelLarge!.copyWith(color: color);
-
-  return Padding(padding: padding, child: Text(title, style: style));
 }
 
 @cwidget
@@ -68,7 +59,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
     appBar: AppBar(title: Text(s.settings)),
     body: ListView(
       children: [
-        _SectionTitle(s.realTime),
+        SectionTitle(s.realTime),
         ChartSettings(
           chartSettingsData: ref.watch(realTimeChartSettingsProvider),
           onChartSettingsChanged:
@@ -127,7 +118,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
             ),
           ),
         ),
-        _SectionTitle(s.history),
+        SectionTitle(s.history),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.cloud_upload_outlined),
           title: Text(s.autoUpload),
@@ -162,7 +153,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           onShowDotsChanged: ref.read(historyShowDotsProvider.notifier).set,
           showDevTools: showDevTools,
         ),
-        _SectionTitle(s.analytics),
+        SectionTitle(s.analytics),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.analytics_outlined),
           title: Text(s.autoGenerate),
@@ -175,7 +166,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           value: ref.watch(analyticsAutoUploadProvider),
           onChanged: ref.read(analyticsAutoUploadProvider.notifier).set,
         ),
-        _SectionTitle(s.devTools),
+        SectionTitle(s.devTools),
         SwitchListTile.adaptive(
           secondary: const Icon(Icons.developer_mode_outlined),
           title: Text(s.showDevTools),
