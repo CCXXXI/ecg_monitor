@@ -1,9 +1,14 @@
+import "dart:convert";
+import "dart:io";
+
+import "package:file_picker/file_picker.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../device_manager/fake_device.dart";
 import "../../generated/l10n.dart";
 import "../../utils/database.dart";
 import "../../utils/debug/logger.dart";
@@ -49,6 +54,11 @@ Widget _devTools(BuildContext context, WidgetRef ref) {
         onChanged: ref.read(fakeDeviceOnProvider.notifier).set,
       ),
       ListTile(
+        leading: const Icon(Icons.javascript_outlined),
+        title: Text(s.loadFakeSamplePoints),
+        onTap: _loadFakeSamplePoints,
+      ),
+      ListTile(
         leading: const Icon(Icons.text_snippet_outlined),
         title: Text(s.loggerLevel),
         subtitle: Text(loggerLevel.name),
@@ -71,4 +81,26 @@ Widget _devTools(BuildContext context, WidgetRef ref) {
       )
     ],
   );
+}
+
+Future<void> _loadFakeSamplePoints() async {
+  // Pick a file.
+  final picked = await FilePicker.platform.pickFiles(
+    type: FileType.custom,
+    allowedExtensions: ["json"],
+  );
+  if (picked == null) {
+    return;
+  }
+
+  // Convert to data.
+  final file = File(picked.files.single.path!);
+  final str = await file.readAsString();
+  final json = jsonDecode(str) as List;
+  final data = json.map(
+    (e) => FakeEcgData.fromJson(e as Map<String, dynamic>),
+  );
+
+  // Write to database.
+  await writeFakeEcgData(data);
 }
