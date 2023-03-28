@@ -2,11 +2,10 @@
 
 ## [0.31.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.30.0...v0.31.0) (2023-03-28)
 
-
 ### Features
 
-* **heart-rate:** keep-alive ([8b3509b](https://github.com/CCXXXI/ecg_monitor/commit/8b3509b1b04031cebff8786e456b941e00d8c740))
-* **heart-rate:** save beat to database ([e174f45](https://github.com/CCXXXI/ecg_monitor/commit/e174f45b1777f27a0a510b5610be998b9f4ddc9f))
+- **heart-rate:** keep-alive ([8b3509b](https://github.com/CCXXXI/ecg_monitor/commit/8b3509b1b04031cebff8786e456b941e00d8c740))
+- **heart-rate:** save beat to database ([e174f45](https://github.com/CCXXXI/ecg_monitor/commit/e174f45b1777f27a0a510b5610be998b9f4ddc9f))
 
 ## [0.30.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.3...v0.30.0) (2023-03-28)
 
