@@ -9,6 +9,492 @@ part of 'database.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
+extension GetBeatCollection on Isar {
+  IsarCollection<Beat> get beats => this.collection();
+}
+
+const BeatSchema = CollectionSchema(
+  name: r'Beat',
+  id: -4573558557513909777,
+  properties: {
+    r'label': PropertySchema(
+      id: 0,
+      name: r'label',
+      type: IsarType.byte,
+      enumMap: _BeatlabelEnumValueMap,
+    )
+  },
+  estimateSize: _beatEstimateSize,
+  serialize: _beatSerialize,
+  deserialize: _beatDeserialize,
+  deserializeProp: _beatDeserializeProp,
+  idName: r'millisecondsSinceEpoch',
+  indexes: {
+    r'label': IndexSchema(
+      id: 6902807635198700142,
+      name: r'label',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'label',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    )
+  },
+  links: {},
+  embeddedSchemas: {},
+  getId: _beatGetId,
+  getLinks: _beatGetLinks,
+  attach: _beatAttach,
+  version: '3.0.5',
+);
+
+int _beatEstimateSize(
+  Beat object,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  var bytesCount = offsets.last;
+  return bytesCount;
+}
+
+void _beatSerialize(
+  Beat object,
+  IsarWriter writer,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  writer.writeByte(offsets[0], object.label.index);
+}
+
+Beat _beatDeserialize(
+  Id id,
+  IsarReader reader,
+  List<int> offsets,
+  Map<Type, List<int>> allOffsets,
+) {
+  final object = Beat(
+    label: _BeatlabelValueEnumMap[reader.readByteOrNull(offsets[0])] ??
+        Label.sinusRhythm,
+    millisecondsSinceEpoch: id,
+  );
+  return object;
+}
+
+P _beatDeserializeProp<P>(
+  IsarReader reader,
+  int propertyId,
+  int offset,
+  Map<Type, List<int>> allOffsets,
+) {
+  switch (propertyId) {
+    case 0:
+      return (_BeatlabelValueEnumMap[reader.readByteOrNull(offset)] ??
+          Label.sinusRhythm) as P;
+    default:
+      throw IsarError('Unknown property with id $propertyId');
+  }
+}
+
+const _BeatlabelEnumValueMap = {
+  'sinusRhythm': 0,
+  'atrialPrematureBeat': 1,
+  'atrialFlutter': 2,
+  'atrialFibrillation': 3,
+  'ventricularPrematureBeat': 4,
+  'paroxysmalSupraVentricularTachycardia': 5,
+  'ventricularPreExcitation': 6,
+  'ventricularFlutterAndFibrillation': 7,
+  'atrioventricularBlock': 8,
+  'noise': 9,
+  'unknown': 10,
+};
+const _BeatlabelValueEnumMap = {
+  0: Label.sinusRhythm,
+  1: Label.atrialPrematureBeat,
+  2: Label.atrialFlutter,
+  3: Label.atrialFibrillation,
+  4: Label.ventricularPrematureBeat,
+  5: Label.paroxysmalSupraVentricularTachycardia,
+  6: Label.ventricularPreExcitation,
+  7: Label.ventricularFlutterAndFibrillation,
+  8: Label.atrioventricularBlock,
+  9: Label.noise,
+  10: Label.unknown,
+};
+
+Id _beatGetId(Beat object) {
+  return object.millisecondsSinceEpoch;
+}
+
+List<IsarLinkBase<dynamic>> _beatGetLinks(Beat object) {
+  return [];
+}
+
+void _beatAttach(IsarCollection<dynamic> col, Id id, Beat object) {}
+
+extension BeatQueryWhereSort on QueryBuilder<Beat, Beat, QWhere> {
+  QueryBuilder<Beat, Beat, QAfterWhere> anyMillisecondsSinceEpoch() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(const IdWhereClause.any());
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhere> anyLabel() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'label'),
+      );
+    });
+  }
+}
+
+extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochEqualTo(
+      Id millisecondsSinceEpoch) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: millisecondsSinceEpoch,
+        upper: millisecondsSinceEpoch,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochNotEqualTo(
+      Id millisecondsSinceEpoch) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(
+              IdWhereClause.lessThan(
+                  upper: millisecondsSinceEpoch, includeUpper: false),
+            )
+            .addWhereClause(
+              IdWhereClause.greaterThan(
+                  lower: millisecondsSinceEpoch, includeLower: false),
+            );
+      } else {
+        return query
+            .addWhereClause(
+              IdWhereClause.greaterThan(
+                  lower: millisecondsSinceEpoch, includeLower: false),
+            )
+            .addWhereClause(
+              IdWhereClause.lessThan(
+                  upper: millisecondsSinceEpoch, includeUpper: false),
+            );
+      }
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochGreaterThan(
+      Id millisecondsSinceEpoch,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.greaterThan(
+            lower: millisecondsSinceEpoch, includeLower: include),
+      );
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochLessThan(
+      Id millisecondsSinceEpoch,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.lessThan(
+            upper: millisecondsSinceEpoch, includeUpper: include),
+      );
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochBetween(
+    Id lowerMillisecondsSinceEpoch,
+    Id upperMillisecondsSinceEpoch, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: lowerMillisecondsSinceEpoch,
+        includeLower: includeLower,
+        upper: upperMillisecondsSinceEpoch,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualTo(Label label) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'label',
+        value: [label],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelNotEqualTo(Label label) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [],
+              upper: [label],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [label],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [label],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label',
+              lower: [],
+              upper: [label],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelGreaterThan(
+    Label label, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [label],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelLessThan(
+    Label label, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [],
+        upper: [label],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelBetween(
+    Label lowerLabel,
+    Label upperLabel, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label',
+        lower: [lowerLabel],
+        includeLower: includeLower,
+        upper: [upperLabel],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+}
+
+extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelEqualTo(Label value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'label',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelGreaterThan(
+    Label value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'label',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelLessThan(
+    Label value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'label',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelBetween(
+    Label lower,
+    Label upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'label',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochEqualTo(
+      Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'millisecondsSinceEpoch',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition>
+      millisecondsSinceEpochGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'millisecondsSinceEpoch',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition>
+      millisecondsSinceEpochLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'millisecondsSinceEpoch',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'millisecondsSinceEpoch',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+}
+
+extension BeatQueryObject on QueryBuilder<Beat, Beat, QFilterCondition> {}
+
+extension BeatQueryLinks on QueryBuilder<Beat, Beat, QFilterCondition> {}
+
+extension BeatQuerySortBy on QueryBuilder<Beat, Beat, QSortBy> {
+  QueryBuilder<Beat, Beat, QAfterSortBy> sortByLabel() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'label', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> sortByLabelDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'label', Sort.desc);
+    });
+  }
+}
+
+extension BeatQuerySortThenBy on QueryBuilder<Beat, Beat, QSortThenBy> {
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByLabel() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'label', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByLabelDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'label', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpoch() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'millisecondsSinceEpoch', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpochDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'millisecondsSinceEpoch', Sort.desc);
+    });
+  }
+}
+
+extension BeatQueryWhereDistinct on QueryBuilder<Beat, Beat, QDistinct> {
+  QueryBuilder<Beat, Beat, QDistinct> distinctByLabel() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'label');
+    });
+  }
+}
+
+extension BeatQueryProperty on QueryBuilder<Beat, Beat, QQueryProperty> {
+  QueryBuilder<Beat, int, QQueryOperations> millisecondsSinceEpochProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'millisecondsSinceEpoch');
+    });
+  }
+
+  QueryBuilder<Beat, Label, QQueryOperations> labelProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'label');
+    });
+  }
+}
+
+// coverage:ignore-file
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
+
 extension GetSamplePointCollection on Isar {
   IsarCollection<SamplePoint> get samplePoints => this.collection();
 }
@@ -490,51 +976,41 @@ extension SamplePointQueryProperty
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
-extension GetBeatCollection on Isar {
-  IsarCollection<Beat> get beats => this.collection();
+extension GetFakeSamplePointCollection on Isar {
+  IsarCollection<FakeSamplePoint> get fakeSamplePoints => this.collection();
 }
 
-const BeatSchema = CollectionSchema(
-  name: r'Beat',
-  id: -4573558557513909777,
+const FakeSamplePointSchema = CollectionSchema(
+  name: r'FakeSamplePoint',
+  id: -7536874272993607975,
   properties: {
-    r'label': PropertySchema(
+    r'leadI': PropertySchema(
       id: 0,
-      name: r'label',
-      type: IsarType.byte,
-      enumMap: _BeatlabelEnumValueMap,
+      name: r'leadI',
+      type: IsarType.double,
+    ),
+    r'leadII': PropertySchema(
+      id: 1,
+      name: r'leadII',
+      type: IsarType.double,
     )
   },
-  estimateSize: _beatEstimateSize,
-  serialize: _beatSerialize,
-  deserialize: _beatDeserialize,
-  deserializeProp: _beatDeserializeProp,
-  idName: r'millisecondsSinceEpoch',
-  indexes: {
-    r'label': IndexSchema(
-      id: 6902807635198700142,
-      name: r'label',
-      unique: false,
-      replace: false,
-      properties: [
-        IndexPropertySchema(
-          name: r'label',
-          type: IndexType.value,
-          caseSensitive: false,
-        )
-      ],
-    )
-  },
+  estimateSize: _fakeSamplePointEstimateSize,
+  serialize: _fakeSamplePointSerialize,
+  deserialize: _fakeSamplePointDeserialize,
+  deserializeProp: _fakeSamplePointDeserializeProp,
+  idName: r'millisecondsSinceStart',
+  indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _beatGetId,
-  getLinks: _beatGetLinks,
-  attach: _beatAttach,
+  getId: _fakeSamplePointGetId,
+  getLinks: _fakeSamplePointGetLinks,
+  attach: _fakeSamplePointAttach,
   version: '3.0.5',
 );
 
-int _beatEstimateSize(
-  Beat object,
+int _fakeSamplePointEstimateSize(
+  FakeSamplePoint object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -542,30 +1018,31 @@ int _beatEstimateSize(
   return bytesCount;
 }
 
-void _beatSerialize(
-  Beat object,
+void _fakeSamplePointSerialize(
+  FakeSamplePoint object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeByte(offsets[0], object.label.index);
+  writer.writeDouble(offsets[0], object.leadI);
+  writer.writeDouble(offsets[1], object.leadII);
 }
 
-Beat _beatDeserialize(
+FakeSamplePoint _fakeSamplePointDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Beat(
-    label: _BeatlabelValueEnumMap[reader.readByteOrNull(offsets[0])] ??
-        Label.sinusRhythm,
-    millisecondsSinceEpoch: id,
+  final object = FakeSamplePoint(
+    leadI: reader.readDouble(offsets[0]),
+    leadII: reader.readDouble(offsets[1]),
+    millisecondsSinceStart: id,
   );
   return object;
 }
 
-P _beatDeserializeProp<P>(
+P _fakeSamplePointDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -573,323 +1050,288 @@ P _beatDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (_BeatlabelValueEnumMap[reader.readByteOrNull(offset)] ??
-          Label.sinusRhythm) as P;
+      return (reader.readDouble(offset)) as P;
+    case 1:
+      return (reader.readDouble(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
-const _BeatlabelEnumValueMap = {
-  'sinusRhythm': 0,
-  'atrialPrematureBeat': 1,
-  'atrialFlutter': 2,
-  'atrialFibrillation': 3,
-  'ventricularPrematureBeat': 4,
-  'paroxysmalSupraVentricularTachycardia': 5,
-  'ventricularPreExcitation': 6,
-  'ventricularFlutterAndFibrillation': 7,
-  'atrioventricularBlock': 8,
-  'noise': 9,
-  'unknown': 10,
-};
-const _BeatlabelValueEnumMap = {
-  0: Label.sinusRhythm,
-  1: Label.atrialPrematureBeat,
-  2: Label.atrialFlutter,
-  3: Label.atrialFibrillation,
-  4: Label.ventricularPrematureBeat,
-  5: Label.paroxysmalSupraVentricularTachycardia,
-  6: Label.ventricularPreExcitation,
-  7: Label.ventricularFlutterAndFibrillation,
-  8: Label.atrioventricularBlock,
-  9: Label.noise,
-  10: Label.unknown,
-};
-
-Id _beatGetId(Beat object) {
-  return object.millisecondsSinceEpoch;
+Id _fakeSamplePointGetId(FakeSamplePoint object) {
+  return object.millisecondsSinceStart;
 }
 
-List<IsarLinkBase<dynamic>> _beatGetLinks(Beat object) {
+List<IsarLinkBase<dynamic>> _fakeSamplePointGetLinks(FakeSamplePoint object) {
   return [];
 }
 
-void _beatAttach(IsarCollection<dynamic> col, Id id, Beat object) {}
+void _fakeSamplePointAttach(
+    IsarCollection<dynamic> col, Id id, FakeSamplePoint object) {}
 
-extension BeatQueryWhereSort on QueryBuilder<Beat, Beat, QWhere> {
-  QueryBuilder<Beat, Beat, QAfterWhere> anyMillisecondsSinceEpoch() {
+extension FakeSamplePointQueryWhereSort
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QWhere> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhere>
+      anyMillisecondsSinceStart() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
-
-  QueryBuilder<Beat, Beat, QAfterWhere> anyLabel() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'label'),
-      );
-    });
-  }
 }
 
-extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochEqualTo(
-      Id millisecondsSinceEpoch) {
+extension FakeSamplePointQueryWhere
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QWhereClause> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhereClause>
+      millisecondsSinceStartEqualTo(Id millisecondsSinceStart) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: millisecondsSinceEpoch,
-        upper: millisecondsSinceEpoch,
+        lower: millisecondsSinceStart,
+        upper: millisecondsSinceStart,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochNotEqualTo(
-      Id millisecondsSinceEpoch) {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhereClause>
+      millisecondsSinceStartNotEqualTo(Id millisecondsSinceStart) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
               IdWhereClause.lessThan(
-                  upper: millisecondsSinceEpoch, includeUpper: false),
+                  upper: millisecondsSinceStart, includeUpper: false),
             )
             .addWhereClause(
               IdWhereClause.greaterThan(
-                  lower: millisecondsSinceEpoch, includeLower: false),
+                  lower: millisecondsSinceStart, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
               IdWhereClause.greaterThan(
-                  lower: millisecondsSinceEpoch, includeLower: false),
+                  lower: millisecondsSinceStart, includeLower: false),
             )
             .addWhereClause(
               IdWhereClause.lessThan(
-                  upper: millisecondsSinceEpoch, includeUpper: false),
+                  upper: millisecondsSinceStart, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochGreaterThan(
-      Id millisecondsSinceEpoch,
-      {bool include = false}) {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhereClause>
+      millisecondsSinceStartGreaterThan(Id millisecondsSinceStart,
+          {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(
-            lower: millisecondsSinceEpoch, includeLower: include),
+            lower: millisecondsSinceStart, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochLessThan(
-      Id millisecondsSinceEpoch,
-      {bool include = false}) {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhereClause>
+      millisecondsSinceStartLessThan(Id millisecondsSinceStart,
+          {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.lessThan(
-            upper: millisecondsSinceEpoch, includeUpper: include),
+            upper: millisecondsSinceStart, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochBetween(
-    Id lowerMillisecondsSinceEpoch,
-    Id upperMillisecondsSinceEpoch, {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterWhereClause>
+      millisecondsSinceStartBetween(
+    Id lowerMillisecondsSinceStart,
+    Id upperMillisecondsSinceStart, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerMillisecondsSinceEpoch,
+        lower: lowerMillisecondsSinceStart,
         includeLower: includeLower,
-        upper: upperMillisecondsSinceEpoch,
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualTo(Label label) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'label',
-        value: [label],
-      ));
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelNotEqualTo(Label label) {
-    return QueryBuilder.apply(this, (query) {
-      if (query.whereSort == Sort.asc) {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
-              lower: [],
-              upper: [label],
-              includeUpper: false,
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
-              lower: [label],
-              includeLower: false,
-              upper: [],
-            ));
-      } else {
-        return query
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
-              lower: [label],
-              includeLower: false,
-              upper: [],
-            ))
-            .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
-              lower: [],
-              upper: [label],
-              includeUpper: false,
-            ));
-      }
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelGreaterThan(
-    Label label, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
-        lower: [label],
-        includeLower: include,
-        upper: [],
-      ));
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelLessThan(
-    Label label, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
-        lower: [],
-        upper: [label],
-        includeUpper: include,
-      ));
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelBetween(
-    Label lowerLabel,
-    Label upperLabel, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
-        lower: [lowerLabel],
-        includeLower: includeLower,
-        upper: [upperLabel],
+        upper: upperMillisecondsSinceStart,
         includeUpper: includeUpper,
       ));
     });
   }
 }
 
-extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelEqualTo(Label value) {
+extension FakeSamplePointQueryFilter
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QFilterCondition> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'label',
+        property: r'leadI',
         value: value,
+        epsilon: epsilon,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelGreaterThan(
-    Label value, {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIGreaterThan(
+    double value, {
     bool include = false,
+    double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'label',
+        property: r'leadI',
         value: value,
+        epsilon: epsilon,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelLessThan(
-    Label value, {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadILessThan(
+    double value, {
     bool include = false,
+    double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'label',
+        property: r'leadI',
         value: value,
+        epsilon: epsilon,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> labelBetween(
-    Label lower,
-    Label upper, {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIBetween(
+    double lower,
+    double upper, {
     bool includeLower = true,
     bool includeUpper = true,
+    double epsilon = Query.epsilon,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'label',
+        property: r'leadI',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+        epsilon: epsilon,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochEqualTo(
-      Id value) {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIIEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'millisecondsSinceEpoch',
+        property: r'leadII',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIIGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'leadII',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIILessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'leadII',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      leadIIBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'leadII',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      millisecondsSinceStartEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'millisecondsSinceStart',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition>
-      millisecondsSinceEpochGreaterThan(
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      millisecondsSinceStartGreaterThan(
     Id value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'millisecondsSinceEpoch',
+        property: r'millisecondsSinceStart',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition>
-      millisecondsSinceEpochLessThan(
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      millisecondsSinceStartLessThan(
     Id value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'millisecondsSinceEpoch',
+        property: r'millisecondsSinceStart',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochBetween(
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterFilterCondition>
+      millisecondsSinceStartBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -897,7 +1339,7 @@ extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'millisecondsSinceEpoch',
+        property: r'millisecondsSinceStart',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -907,68 +1349,117 @@ extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
   }
 }
 
-extension BeatQueryObject on QueryBuilder<Beat, Beat, QFilterCondition> {}
+extension FakeSamplePointQueryObject
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QFilterCondition> {}
 
-extension BeatQueryLinks on QueryBuilder<Beat, Beat, QFilterCondition> {}
+extension FakeSamplePointQueryLinks
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QFilterCondition> {}
 
-extension BeatQuerySortBy on QueryBuilder<Beat, Beat, QSortBy> {
-  QueryBuilder<Beat, Beat, QAfterSortBy> sortByLabel() {
+extension FakeSamplePointQuerySortBy
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QSortBy> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy> sortByLeadI() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'label', Sort.asc);
+      return query.addSortBy(r'leadI', Sort.asc);
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterSortBy> sortByLabelDesc() {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      sortByLeadIDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'label', Sort.desc);
-    });
-  }
-}
-
-extension BeatQuerySortThenBy on QueryBuilder<Beat, Beat, QSortThenBy> {
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByLabel() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'label', Sort.asc);
+      return query.addSortBy(r'leadI', Sort.desc);
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByLabelDesc() {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy> sortByLeadII() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'label', Sort.desc);
+      return query.addSortBy(r'leadII', Sort.asc);
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpoch() {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      sortByLeadIIDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'millisecondsSinceEpoch', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpochDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'millisecondsSinceEpoch', Sort.desc);
+      return query.addSortBy(r'leadII', Sort.desc);
     });
   }
 }
 
-extension BeatQueryWhereDistinct on QueryBuilder<Beat, Beat, QDistinct> {
-  QueryBuilder<Beat, Beat, QDistinct> distinctByLabel() {
+extension FakeSamplePointQuerySortThenBy
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QSortThenBy> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy> thenByLeadI() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'label');
+      return query.addSortBy(r'leadI', Sort.asc);
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      thenByLeadIDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'leadI', Sort.desc);
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy> thenByLeadII() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'leadII', Sort.asc);
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      thenByLeadIIDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'leadII', Sort.desc);
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      thenByMillisecondsSinceStart() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'millisecondsSinceStart', Sort.asc);
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QAfterSortBy>
+      thenByMillisecondsSinceStartDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'millisecondsSinceStart', Sort.desc);
     });
   }
 }
 
-extension BeatQueryProperty on QueryBuilder<Beat, Beat, QQueryProperty> {
-  QueryBuilder<Beat, int, QQueryOperations> millisecondsSinceEpochProperty() {
+extension FakeSamplePointQueryWhereDistinct
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QDistinct> {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QDistinct> distinctByLeadI() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'millisecondsSinceEpoch');
+      return query.addDistinctBy(r'leadI');
     });
   }
 
-  QueryBuilder<Beat, Label, QQueryOperations> labelProperty() {
+  QueryBuilder<FakeSamplePoint, FakeSamplePoint, QDistinct> distinctByLeadII() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'label');
+      return query.addDistinctBy(r'leadII');
+    });
+  }
+}
+
+extension FakeSamplePointQueryProperty
+    on QueryBuilder<FakeSamplePoint, FakeSamplePoint, QQueryProperty> {
+  QueryBuilder<FakeSamplePoint, int, QQueryOperations>
+      millisecondsSinceStartProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'millisecondsSinceStart');
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, double, QQueryOperations> leadIProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'leadI');
+    });
+  }
+
+  QueryBuilder<FakeSamplePoint, double, QQueryOperations> leadIIProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'leadII');
     });
   }
 }

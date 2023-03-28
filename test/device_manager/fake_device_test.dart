@@ -1,10 +1,10 @@
 import "package:ecg_monitor/device_manager/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
-import "package:ecg_monitor/utils/debug/data.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
+import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 void main() {
@@ -13,8 +13,14 @@ void main() {
     SharedPreferences.setMockInitialValues({K.fakeDeviceOn: true});
     await Isar.initializeIsarCore(download: true);
     await initDatabase();
-    await initDebugData();
+    await writeFakeEcgData(
+      [
+        for (var i = 1; i < Duration.secondsPerMinute * 10; ++i)
+          FakeEcgData(sinceStart: aSecond * i, leadI: 1, leadII: 2),
+      ],
+    );
   });
+  tearDownAll(clearDatabase);
 
   group("basic info", () {
     test("id", () => expect(fakeDevice.id, isNotEmpty));

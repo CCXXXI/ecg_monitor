@@ -10,7 +10,6 @@ import "analytics/model.dart";
 import "device_manager/device.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
-import "utils/debug/data.dart";
 import "utils/debug/logger.dart";
 import "utils/debug/ume.dart";
 import "utils/license.dart";
@@ -60,7 +59,6 @@ void main() async {
   initLogger();
   await initPackageInfo();
   await loadModel();
-  await initDebugData();
   initLicense();
 
   // init Sentry & run app

@@ -171,7 +171,7 @@ Widget __chart(
   );
 }
 
-final _landscapeIndexProvider = StateProvider<int>((ref) => 0);
+final _landscapeIndexProvider = StateProvider((ref) => 0);
 
 @cwidget
 Widget _chart3Lead(
