@@ -109,7 +109,6 @@ flutter:
   assets:
     - assets/images/
     - assets/model.pt
-    - ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/data.json
     - ios/Classes/PanTompkinsQRS/LICENSE
 
 flutter_intl:
