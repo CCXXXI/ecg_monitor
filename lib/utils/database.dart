@@ -5,6 +5,7 @@ import "package:shared_preferences/shared_preferences.dart";
 
 import "../analytics/data_types.dart";
 import "../device_manager/device.dart";
+import "../device_manager/fake_device.dart";
 
 part "database.g.dart";
 
@@ -131,12 +132,63 @@ Future<List<EcgData>> ecgDataBetween(DateTime start, DateTime end) async {
 }
 // endregion
 
+// region FakeSamplePoint
+@visibleForTesting
+@collection
+class FakeSamplePoint {
+  const FakeSamplePoint({
+    required this.millisecondsSinceStart,
+    required this.leadI,
+    required this.leadII,
+  });
+
+  factory FakeSamplePoint.fromFakeEcgData(FakeEcgData data) => FakeSamplePoint(
+        millisecondsSinceStart: data.sinceStart.inMilliseconds,
+        leadI: data.leadI,
+        leadII: data.leadII,
+      );
+
+  FakeEcgData toFakeEcgData() => FakeEcgData(
+        sinceStart: Duration(milliseconds: millisecondsSinceStart),
+        leadI: leadI,
+        leadII: leadII,
+      );
+
+  final Id millisecondsSinceStart;
+  final double leadI;
+  final double leadII;
+}
+
+Future<void> writeFakeEcgData(Iterable<FakeEcgData> data) async {
+  final stopwatch = Stopwatch()..start();
+  await _isar.writeTxn(() async {
+    for (final d in data) {
+      await _isar.fakeSamplePoints.put(FakeSamplePoint.fromFakeEcgData(d));
+    }
+  });
+  _logger.fine("Writing fake sample points took ${stopwatch.elapsed}.");
+}
+
+Future<FakeEcgData?> fakeEcgDataAt(int offset) async {
+  final stopwatch = Stopwatch()..start();
+  final data = await _isar.fakeSamplePoints.where().offset(offset).findFirst();
+  _logger.finest("Finding fake sample point at $offset "
+      "took ${stopwatch.elapsed}.");
+
+  return data?.toFakeEcgData();
+}
+// endregion
+
 late final SharedPreferences prefs;
 late final Isar _isar;
 
 Future<void> initDatabase() async {
   prefs = await SharedPreferences.getInstance();
-  _isar = await Isar.open([SamplePointSchema, BeatSchema]);
+  _isar = await Isar.open([
+    BeatSchema,
+    SamplePointSchema,
+    FakeSamplePointSchema,
+  ]);
 }
 
 @visibleForTesting
