@@ -12,17 +12,18 @@ part "fake_device.freezed.dart";
 part "fake_device.g.dart";
 
 @freezed
-class _Point with _$_Point {
-  factory _Point({
+class FakeEcgData with _$FakeEcgData {
+  factory FakeEcgData({
     required int millisecondsSinceStart,
     required double leadI,
     required double leadII,
-  }) = __Point;
+  }) = _FakeEcgData;
 
-  factory _Point.fromJson(Map<String, dynamic> json) => _$_PointFromJson(json);
+  factory FakeEcgData.fromJson(Map<String, dynamic> json) =>
+      _$FakeEcgDataFromJson(json);
 }
 
-late final List<_Point> _data;
+late final List<FakeEcgData> _data;
 
 Future<void> initFakeDevice() async {
   const path = "ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/data.json";
@@ -30,7 +31,7 @@ Future<void> initFakeDevice() async {
   final s = await rootBundle.loadString(path);
   final json = jsonDecode(s) as List;
   _data = json
-      .map((e) => _Point.fromJson(e as Map<String, dynamic>))
+      .map((e) => FakeEcgData.fromJson(e as Map<String, dynamic>))
       .toList(growable: false);
 }
 

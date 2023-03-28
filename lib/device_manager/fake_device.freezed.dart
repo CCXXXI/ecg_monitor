@@ -14,33 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-_Point _$_PointFromJson(Map<String, dynamic> json) {
-  return __Point.fromJson(json);
+FakeEcgData _$FakeEcgDataFromJson(Map<String, dynamic> json) {
+  return _FakeEcgData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$_Point {
+mixin _$FakeEcgData {
   int get millisecondsSinceStart => throw _privateConstructorUsedError;
   double get leadI => throw _privateConstructorUsedError;
   double get leadII => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$PointCopyWith<_Point> get copyWith => throw _privateConstructorUsedError;
+  $FakeEcgDataCopyWith<FakeEcgData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PointCopyWith<$Res> {
-  factory _$PointCopyWith(_Point value, $Res Function(_Point) then) =
-      __$PointCopyWithImpl<$Res, _Point>;
+abstract class $FakeEcgDataCopyWith<$Res> {
+  factory $FakeEcgDataCopyWith(
+          FakeEcgData value, $Res Function(FakeEcgData) then) =
+      _$FakeEcgDataCopyWithImpl<$Res, FakeEcgData>;
   @useResult
   $Res call({int millisecondsSinceStart, double leadI, double leadII});
 }
 
 /// @nodoc
-class __$PointCopyWithImpl<$Res, $Val extends _Point>
-    implements _$PointCopyWith<$Res> {
-  __$PointCopyWithImpl(this._value, this._then);
+class _$FakeEcgDataCopyWithImpl<$Res, $Val extends FakeEcgData>
+    implements $FakeEcgDataCopyWith<$Res> {
+  _$FakeEcgDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -72,19 +74,22 @@ class __$PointCopyWithImpl<$Res, $Val extends _Point>
 }
 
 /// @nodoc
-abstract class _$$__PointCopyWith<$Res> implements _$PointCopyWith<$Res> {
-  factory _$$__PointCopyWith(_$__Point value, $Res Function(_$__Point) then) =
-      __$$__PointCopyWithImpl<$Res>;
+abstract class _$$_FakeEcgDataCopyWith<$Res>
+    implements $FakeEcgDataCopyWith<$Res> {
+  factory _$$_FakeEcgDataCopyWith(
+          _$_FakeEcgData value, $Res Function(_$_FakeEcgData) then) =
+      __$$_FakeEcgDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int millisecondsSinceStart, double leadI, double leadII});
 }
 
 /// @nodoc
-class __$$__PointCopyWithImpl<$Res>
-    extends __$PointCopyWithImpl<$Res, _$__Point>
-    implements _$$__PointCopyWith<$Res> {
-  __$$__PointCopyWithImpl(_$__Point _value, $Res Function(_$__Point) _then)
+class __$$_FakeEcgDataCopyWithImpl<$Res>
+    extends _$FakeEcgDataCopyWithImpl<$Res, _$_FakeEcgData>
+    implements _$$_FakeEcgDataCopyWith<$Res> {
+  __$$_FakeEcgDataCopyWithImpl(
+      _$_FakeEcgData _value, $Res Function(_$_FakeEcgData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +99,7 @@ class __$$__PointCopyWithImpl<$Res>
     Object? leadI = null,
     Object? leadII = null,
   }) {
-    return _then(_$__Point(
+    return _then(_$_FakeEcgData(
       millisecondsSinceStart: null == millisecondsSinceStart
           ? _value.millisecondsSinceStart
           : millisecondsSinceStart // ignore: cast_nullable_to_non_nullable
@@ -113,14 +118,14 @@ class __$$__PointCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$__Point implements __Point {
-  _$__Point(
+class _$_FakeEcgData implements _FakeEcgData {
+  _$_FakeEcgData(
       {required this.millisecondsSinceStart,
       required this.leadI,
       required this.leadII});
 
-  factory _$__Point.fromJson(Map<String, dynamic> json) =>
-      _$$__PointFromJson(json);
+  factory _$_FakeEcgData.fromJson(Map<String, dynamic> json) =>
+      _$$_FakeEcgDataFromJson(json);
 
   @override
   final int millisecondsSinceStart;
@@ -131,14 +136,14 @@ class _$__Point implements __Point {
 
   @override
   String toString() {
-    return '_Point(millisecondsSinceStart: $millisecondsSinceStart, leadI: $leadI, leadII: $leadII)';
+    return 'FakeEcgData(millisecondsSinceStart: $millisecondsSinceStart, leadI: $leadI, leadII: $leadII)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$__Point &&
+            other is _$_FakeEcgData &&
             (identical(other.millisecondsSinceStart, millisecondsSinceStart) ||
                 other.millisecondsSinceStart == millisecondsSinceStart) &&
             (identical(other.leadI, leadI) || other.leadI == leadI) &&
@@ -153,24 +158,25 @@ class _$__Point implements __Point {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$__PointCopyWith<_$__Point> get copyWith =>
-      __$$__PointCopyWithImpl<_$__Point>(this, _$identity);
+  _$$_FakeEcgDataCopyWith<_$_FakeEcgData> get copyWith =>
+      __$$_FakeEcgDataCopyWithImpl<_$_FakeEcgData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$__PointToJson(
+    return _$$_FakeEcgDataToJson(
       this,
     );
   }
 }
 
-abstract class __Point implements _Point {
-  factory __Point(
+abstract class _FakeEcgData implements FakeEcgData {
+  factory _FakeEcgData(
       {required final int millisecondsSinceStart,
       required final double leadI,
-      required final double leadII}) = _$__Point;
+      required final double leadII}) = _$_FakeEcgData;
 
-  factory __Point.fromJson(Map<String, dynamic> json) = _$__Point.fromJson;
+  factory _FakeEcgData.fromJson(Map<String, dynamic> json) =
+      _$_FakeEcgData.fromJson;
 
   @override
   int get millisecondsSinceStart;
@@ -180,6 +186,6 @@ abstract class __Point implements _Point {
   double get leadII;
   @override
   @JsonKey(ignore: true)
-  _$$__PointCopyWith<_$__Point> get copyWith =>
+  _$$_FakeEcgDataCopyWith<_$_FakeEcgData> get copyWith =>
       throw _privateConstructorUsedError;
 }
