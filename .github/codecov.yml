@@ -1,5 +1,6 @@
 # Same as analysis_options.yaml
 ignore:
   - "**/*.g.dart"
+  - "**/*.freezed.dart"
   - "**/generated_bindings.dart"
   - "lib/generated/"
