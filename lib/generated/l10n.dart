@@ -520,6 +520,16 @@ class S {
     );
   }
 
+  /// `Load fake sample point`
+  String get LoadFakeSamplePoint {
+    return Intl.message(
+      'Load fake sample point',
+      name: 'LoadFakeSamplePoint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Logger level`
   String get loggerLevel {
     return Intl.message(

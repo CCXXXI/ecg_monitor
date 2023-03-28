@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "LoadFakeSamplePoint":
+            MessageLookupByLibrary.simpleMessage("加载模拟采样点数据"),
         "about": MessageLookupByLibrary.simpleMessage("关于"),
         "analytics": MessageLookupByLibrary.simpleMessage("分析报告"),
         "appName": MessageLookupByLibrary.simpleMessage("心电监测"),

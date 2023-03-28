@@ -47,6 +47,7 @@
   "restartNeeded": "需要重启应用",
   "restart": "重启",
   "fakeDevice": "模拟设备",
+  "LoadFakeSamplePoint": "加载模拟采样点数据",
   "loggerLevel": "日志等级",
   "networkTest": "网络测试",
   "showDots": "显示数据点",
