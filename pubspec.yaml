@@ -3,7 +3,7 @@ description: Yet another electrocardiogram monitor app.
 
 publish_to: "none"
 
-version: 0.30.0+48
+version: 0.31.0+49
 
 environment:
   sdk: ">=2.19.0 <3.0.0"
