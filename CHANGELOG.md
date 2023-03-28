@@ -2,73 +2,64 @@
 
 ## [0.30.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.3...v0.30.0) (2023-03-28)
 
-
 ### Features
 
-* **dev-tools:** add loadFakeSamplePoints ([84af190](https://github.com/CCXXXI/ecg_monitor/commit/84af190cb3aaaa71ff5fdd53b5ef582f32b86db1))
-* **dev-tools:** show progress indicator & restart notification ([53ed6c4](https://github.com/CCXXXI/ecg_monitor/commit/53ed6c42d509e98498716c12468accb53d28e76c))
-
+- **dev-tools:** add loadFakeSamplePoints ([84af190](https://github.com/CCXXXI/ecg_monitor/commit/84af190cb3aaaa71ff5fdd53b5ef582f32b86db1))
+- **dev-tools:** show progress indicator & restart notification ([53ed6c4](https://github.com/CCXXXI/ecg_monitor/commit/53ed6c42d509e98498716c12468accb53d28e76c))
 
 ### Bug Fixes
 
-* **database:** clear old fake data before writing ([524c317](https://github.com/CCXXXI/ecg_monitor/commit/524c317de9fc9676a102ae000251c0383fd56d5a))
-* **dev-tools:** disallow multiple loading at same time ([c884c39](https://github.com/CCXXXI/ecg_monitor/commit/c884c39f58633641bce448661ad2169e0b3996fb))
-
+- **database:** clear old fake data before writing ([524c317](https://github.com/CCXXXI/ecg_monitor/commit/524c317de9fc9676a102ae000251c0383fd56d5a))
+- **dev-tools:** disallow multiple loading at same time ([c884c39](https://github.com/CCXXXI/ecg_monitor/commit/c884c39f58633641bce448661ad2169e0b3996fb))
 
 ### Performance Improvements
 
-* **fake-device:** read all fake data to memory ([c1b197e](https://github.com/CCXXXI/ecg_monitor/commit/c1b197e2108fbbd4019ebee7537d11981748e69c))
-
+- **fake-device:** read all fake data to memory ([c1b197e](https://github.com/CCXXXI/ecg_monitor/commit/c1b197e2108fbbd4019ebee7537d11981748e69c))
 
 ### Continuous Integration
 
-* ignore generated files ([9c1e9eb](https://github.com/CCXXXI/ecg_monitor/commit/9c1e9eb3633ee5903e1182f2840f37cb9262eb38))
-
+- ignore generated files ([9c1e9eb](https://github.com/CCXXXI/ecg_monitor/commit/9c1e9eb3633ee5903e1182f2840f37cb9262eb38))
 
 ### Tests
 
-* **database:** add test for FakeSamplePoint ([8287c4b](https://github.com/CCXXXI/ecg_monitor/commit/8287c4bfb3bbe0d1d113824ceff2cc824a8d3f34))
-
+- **database:** add test for FakeSamplePoint ([8287c4b](https://github.com/CCXXXI/ecg_monitor/commit/8287c4bfb3bbe0d1d113824ceff2cc824a8d3f34))
 
 ### Build System
 
-* flutter pub add file_picker ([a31c44d](https://github.com/CCXXXI/ecg_monitor/commit/a31c44da4fe71f87817a096bea8055257d2dcef2))
-* flutter pub add json_annotation dev:json_serializable ([8f660c1](https://github.com/CCXXXI/ecg_monitor/commit/8f660c1f8a6820527f0badce8d085ee1b3af2bfa))
-* flutter pub remove json_annotation ([8313d98](https://github.com/CCXXXI/ecg_monitor/commit/8313d982a9480eeb403a446fe76cbea58e692ec4))
-
+- flutter pub add file_picker ([a31c44d](https://github.com/CCXXXI/ecg_monitor/commit/a31c44da4fe71f87817a096bea8055257d2dcef2))
+- flutter pub add json_annotation dev:json_serializable ([8f660c1](https://github.com/CCXXXI/ecg_monitor/commit/8f660c1f8a6820527f0badce8d085ee1b3af2bfa))
+- flutter pub remove json_annotation ([8313d98](https://github.com/CCXXXI/ecg_monitor/commit/8313d982a9480eeb403a446fe76cbea58e692ec4))
 
 ### Styles
 
-* **settings:** prefer relative imports ([4dd7635](https://github.com/CCXXXI/ecg_monitor/commit/4dd76355be216ba61a3eb5f0d7b58daefd21a271))
-
+- **settings:** prefer relative imports ([4dd7635](https://github.com/CCXXXI/ecg_monitor/commit/4dd76355be216ba61a3eb5f0d7b58daefd21a271))
 
 ### Code Refactoring
 
-* **chart:** simplify provider ([4a52ddf](https://github.com/CCXXXI/ecg_monitor/commit/4a52ddf47de23b22ceed38d73941be7a8f442552))
-* **database:** add FakeSamplePoint ([235b47e](https://github.com/CCXXXI/ecg_monitor/commit/235b47ea12bbfd040f7f299486a6c9d3bfa9cfd4))
-* **database:** rename ms to milliseconds ([8afb4da](https://github.com/CCXXXI/ecg_monitor/commit/8afb4dae73b5b7ad973bb1c277b05939f6fa5597))
-* **database:** reorder ([f620c2a](https://github.com/CCXXXI/ecg_monitor/commit/f620c2af82ee72f4ecfa85976c4d2a87fa8a46d4))
-* **database:** update log ([5010947](https://github.com/CCXXXI/ecg_monitor/commit/50109477b02978367917280bd60c2dc0cdcb2d0b))
-* **dev-tools:** simplify provider ([21f4ebc](https://github.com/CCXXXI/ecg_monitor/commit/21f4ebce2cab7b696458ccec5171534ac763a751))
-* **fake-device:** align to data source ([ba761e9](https://github.com/CCXXXI/ecg_monitor/commit/ba761e93ba45f3d855223c996db15698cf20f81f))
-* **fake-device:** read data from database ([902cecf](https://github.com/CCXXXI/ecg_monitor/commit/902cecf2f5f0b0ccd2f3412e4ef679a91e8447e9))
-* **fake-device:** rename data type ([4b3a53e](https://github.com/CCXXXI/ecg_monitor/commit/4b3a53e7fbbd9ae77f7c93ce77f38f37a34a2e65))
-* **l10n:** add new messages ([57ffea6](https://github.com/CCXXXI/ecg_monitor/commit/57ffea64fc7df2e16dba6bb100ed6342dff84cd7))
-* **l10n:** fix typo ([a4c71cb](https://github.com/CCXXXI/ecg_monitor/commit/a4c71cbe8e5402937536b1ac17313c1655d001f8))
-* read fake data from json ([055ad1b](https://github.com/CCXXXI/ecg_monitor/commit/055ad1b7f2adeaab9c45eb5461aef458e042d626))
-* **settings:** extract chart_settings.dart ([37a91dc](https://github.com/CCXXXI/ecg_monitor/commit/37a91dc9ab68832873433a00aff2a6550ae18fc1))
-* **settings:** extract dev_tools.dart ([fd2e8d2](https://github.com/CCXXXI/ecg_monitor/commit/fd2e8d2acde79703ac37e2d3aae86a7f01ff9ab9))
-* **settings:** extract restart_snack_bar.dart ([ec880d6](https://github.com/CCXXXI/ecg_monitor/commit/ec880d6168e670e5bd282de24611089cad68d85f))
-* **settings:** extract section_title.dart ([cb2602e](https://github.com/CCXXXI/ecg_monitor/commit/cb2602ec73def04aeedd6de56225cdc3f2b37c57))
-
+- **chart:** simplify provider ([4a52ddf](https://github.com/CCXXXI/ecg_monitor/commit/4a52ddf47de23b22ceed38d73941be7a8f442552))
+- **database:** add FakeSamplePoint ([235b47e](https://github.com/CCXXXI/ecg_monitor/commit/235b47ea12bbfd040f7f299486a6c9d3bfa9cfd4))
+- **database:** rename ms to milliseconds ([8afb4da](https://github.com/CCXXXI/ecg_monitor/commit/8afb4dae73b5b7ad973bb1c277b05939f6fa5597))
+- **database:** reorder ([f620c2a](https://github.com/CCXXXI/ecg_monitor/commit/f620c2af82ee72f4ecfa85976c4d2a87fa8a46d4))
+- **database:** update log ([5010947](https://github.com/CCXXXI/ecg_monitor/commit/50109477b02978367917280bd60c2dc0cdcb2d0b))
+- **dev-tools:** simplify provider ([21f4ebc](https://github.com/CCXXXI/ecg_monitor/commit/21f4ebce2cab7b696458ccec5171534ac763a751))
+- **fake-device:** align to data source ([ba761e9](https://github.com/CCXXXI/ecg_monitor/commit/ba761e93ba45f3d855223c996db15698cf20f81f))
+- **fake-device:** read data from database ([902cecf](https://github.com/CCXXXI/ecg_monitor/commit/902cecf2f5f0b0ccd2f3412e4ef679a91e8447e9))
+- **fake-device:** rename data type ([4b3a53e](https://github.com/CCXXXI/ecg_monitor/commit/4b3a53e7fbbd9ae77f7c93ce77f38f37a34a2e65))
+- **l10n:** add new messages ([57ffea6](https://github.com/CCXXXI/ecg_monitor/commit/57ffea64fc7df2e16dba6bb100ed6342dff84cd7))
+- **l10n:** fix typo ([a4c71cb](https://github.com/CCXXXI/ecg_monitor/commit/a4c71cbe8e5402937536b1ac17313c1655d001f8))
+- read fake data from json ([055ad1b](https://github.com/CCXXXI/ecg_monitor/commit/055ad1b7f2adeaab9c45eb5461aef458e042d626))
+- **settings:** extract chart_settings.dart ([37a91dc](https://github.com/CCXXXI/ecg_monitor/commit/37a91dc9ab68832873433a00aff2a6550ae18fc1))
+- **settings:** extract dev_tools.dart ([fd2e8d2](https://github.com/CCXXXI/ecg_monitor/commit/fd2e8d2acde79703ac37e2d3aae86a7f01ff9ab9))
+- **settings:** extract restart_snack_bar.dart ([ec880d6](https://github.com/CCXXXI/ecg_monitor/commit/ec880d6168e670e5bd282de24611089cad68d85f))
+- **settings:** extract section_title.dart ([cb2602e](https://github.com/CCXXXI/ecg_monitor/commit/cb2602ec73def04aeedd6de56225cdc3f2b37c57))
 
 ### Miscellaneous Chores
 
-* add data.json to assets ([8ebca58](https://github.com/CCXXXI/ecg_monitor/commit/8ebca588e0a082b34dfe74eb6701c2acfaef13d5))
-* empty commit to trigger CI again ([5c1eecf](https://github.com/CCXXXI/ecg_monitor/commit/5c1eecff88baefaac6a7b3873e416316827bc670))
-* remove fake data from assets ([4f0d928](https://github.com/CCXXXI/ecg_monitor/commit/4f0d928f2e95c9d092fca4137d8eedc79f9410c0))
-* remove images from assets ([32ccaf2](https://github.com/CCXXXI/ecg_monitor/commit/32ccaf2dfa33f2ec99a3644b494cdf869aaffc92))
-* update submodules ([ee018bf](https://github.com/CCXXXI/ecg_monitor/commit/ee018bf5ef0ca4d58011812f1bdcd7117a66c503))
+- add data.json to assets ([8ebca58](https://github.com/CCXXXI/ecg_monitor/commit/8ebca588e0a082b34dfe74eb6701c2acfaef13d5))
+- empty commit to trigger CI again ([5c1eecf](https://github.com/CCXXXI/ecg_monitor/commit/5c1eecff88baefaac6a7b3873e416316827bc670))
+- remove fake data from assets ([4f0d928](https://github.com/CCXXXI/ecg_monitor/commit/4f0d928f2e95c9d092fca4137d8eedc79f9410c0))
+- remove images from assets ([32ccaf2](https://github.com/CCXXXI/ecg_monitor/commit/32ccaf2dfa33f2ec99a3644b494cdf869aaffc92))
+- update submodules ([ee018bf](https://github.com/CCXXXI/ecg_monitor/commit/ee018bf5ef0ca4d58011812f1bdcd7117a66c503))
 
 ## [0.29.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.29.2...v0.29.3) (2023-03-26)
 
