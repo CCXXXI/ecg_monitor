@@ -86,14 +86,14 @@ Future<int> labelCount(Label label) async {
 
 Future<List<DateTime>> labelTimes(Label label) async {
   final stopwatch = Stopwatch()..start();
-  final msSinceEpoch = await _isar.beats
+  final millisecondsSinceEpoch = await _isar.beats
       .where()
       .labelEqualTo(label)
       .millisecondsSinceEpochProperty()
       .findAll();
   _logger.fine("Finding label $label took ${stopwatch.elapsed}.");
 
-  return msSinceEpoch
+  return millisecondsSinceEpoch
       .map(DateTime.fromMillisecondsSinceEpoch)
       .toList(growable: false);
 }
