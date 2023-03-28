@@ -48,6 +48,8 @@ Widget _devTools(BuildContext context, WidgetRef ref) {
   final loggerLevel = ref.watch(_loggerLevelProvider);
   final loggerLevelIndex = loggerLevels.indexOf(loggerLevel);
 
+  final loadingFakeSamplePoints = ref.watch(_loadingFakeSamplePointsProvider);
+
   return Column(
     children: [
       SwitchListTile.adaptive(
@@ -59,9 +61,9 @@ Widget _devTools(BuildContext context, WidgetRef ref) {
       ListTile(
         leading: const Icon(Icons.javascript_outlined),
         title: Text(s.loadFakeSamplePoints),
-        trailing: ref.watch(_loadingFakeSamplePointsProvider)
-            ? const CircularProgressIndicator()
-            : null,
+        trailing:
+            loadingFakeSamplePoints ? const CircularProgressIndicator() : null,
+        enabled: !loadingFakeSamplePoints,
         onTap: () async {
           ref.read(_loadingFakeSamplePointsProvider.notifier).state = true;
           await _loadFakeSamplePoints();
