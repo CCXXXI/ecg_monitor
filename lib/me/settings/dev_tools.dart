@@ -39,7 +39,7 @@ class _LoggerLevel extends _$LoggerLevel {
   Future<void> setIndex(int index) => set(loggerLevels[index]);
 }
 
-final _loadingFakeSamplePointsProvider = StateProvider<bool>((ref) => false);
+final _loadingFakeSamplePointsProvider = StateProvider((ref) => false);
 
 @cwidget
 Widget _devTools(BuildContext context, WidgetRef ref) {
