@@ -8,7 +8,6 @@ import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model.dart";
 import "device_manager/device.dart";
-import "device_manager/fake_device.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
 import "utils/debug/logger.dart";
@@ -60,7 +59,6 @@ void main() async {
   initLogger();
   await initPackageInfo();
   await loadModel();
-  await initFakeDevice();
   initLicense();
 
   // init Sentry & run app

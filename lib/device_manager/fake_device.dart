@@ -1,6 +1,3 @@
-import "dart:convert";
-
-import "package:flutter/services.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:quiver/time.dart";
@@ -37,18 +34,6 @@ class FakeEcgData with _$FakeEcgData {
       _$FakeEcgDataFromJson(json);
 }
 
-late final List<FakeEcgData> _data;
-
-Future<void> initFakeDevice() async {
-  const path = "ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/data.json";
-
-  final s = await rootBundle.loadString(path);
-  final json = jsonDecode(s) as List;
-  _data = json
-      .map((e) => FakeEcgData.fromJson(e as Map<String, dynamic>))
-      .toList(growable: false);
-}
-
 final _logger = Logger("FakeDevice");
 
 class _FakeDevice implements Device {
@@ -78,6 +63,11 @@ class _FakeDevice implements Device {
 
   @override
   Stream<EcgData> get ecgStream async* {
+    // Empty stream if there is no fake data in the database.
+    if (await fakeEcgDataAt(0) == null) {
+      return;
+    }
+
     final dataLenMs = (aMinute * 10).inMilliseconds;
     final startCycle = DateTime.now().millisecondsSinceEpoch ~/ dataLenMs;
 
@@ -87,7 +77,15 @@ class _FakeDevice implements Device {
       // The start time of this cycle.
       final startTime = DateTime.fromMillisecondsSinceEpoch(cycle * dataLenMs);
 
-      for (final d in _data) {
+      for (var offset = 0;; ++offset) {
+        // Get the next data.
+        final d = await fakeEcgDataAt(offset);
+
+        // If there is no more data, go to the next cycle.
+        if (d == null) {
+          break;
+        }
+
         // Calculate the time of the data.
         final t = startTime.add(d.sinceStart);
 
