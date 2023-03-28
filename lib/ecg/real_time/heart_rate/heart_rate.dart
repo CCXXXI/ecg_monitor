@@ -1,3 +1,4 @@
+import "dart:async";
 import "dart:collection";
 import "dart:ffi";
 
@@ -9,8 +10,10 @@ import "package:logging/logging.dart";
 import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
+import "../../../analytics/data_types.dart";
 import "../../../device_manager/device.dart";
 import "../../../generated/l10n.dart";
+import "../../../utils/database.dart";
 import "generated_bindings.dart";
 
 part "heart_rate.freezed.dart";
@@ -62,6 +65,9 @@ class _HeartRate extends _$HeartRate {
     // Initialize the Pan-Tompkins library with the sampling frequency.
     _lib.init(ref.watch(currentDeviceProvider.select((d) => d?.fs ?? 0)));
 
+    // Keep the ref alive to run Pan-Tompkins algorithm in the background.
+    ref.keepAlive();
+
     // Listen to the ECG data.
     final subscription = ref.listen(
       ecgProvider.future,
@@ -96,6 +102,9 @@ class _HeartRate extends _$HeartRate {
     }
 
     _logger.finer("QRS: ${data.time}");
+
+    // Save the beat to database.
+    unawaited(writeBeatData(BeatData(time: data.time, label: Label.unknown)));
 
     // Add new QRS.
     _qrsBuffer.addLast(data.time);
