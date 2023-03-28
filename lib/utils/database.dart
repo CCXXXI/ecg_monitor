@@ -162,6 +162,10 @@ class FakeSamplePoint {
 Future<void> writeFakeEcgData(Iterable<FakeEcgData> data) async {
   final stopwatch = Stopwatch()..start();
   await _isar.writeTxn(() async {
+    // Clear old data.
+    await _isar.fakeSamplePoints.clear();
+
+    // Write new data.
     for (final d in data) {
       await _isar.fakeSamplePoints.put(FakeSamplePoint.fromFakeEcgData(d));
     }
