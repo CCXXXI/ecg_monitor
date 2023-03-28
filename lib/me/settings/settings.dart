@@ -1,9 +1,7 @@
-import "dart:io";
-
+import "package:ecg_monitor/me/settings/restart_snack_bar.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
-import "package:restart_app/restart_app.dart";
 
 import "../../generated/l10n.dart";
 import "../../utils/strings.dart";
@@ -153,19 +151,7 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           isThreeLine: showDevTools,
           value: showDevTools,
           onChanged: (on) async {
-            final restartActionAvailable = Platform.isAndroid;
-
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(s.restartNeeded),
-                action: restartActionAvailable
-                    ? SnackBarAction(
-                        label: s.restart,
-                        onPressed: Restart.restartApp,
-                      )
-                    : null,
-              ),
-            );
+            showRestartSnackBar(context);
             await ref.read(showDevToolsProvider.notifier).set(on);
           },
         ),
