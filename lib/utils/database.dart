@@ -10,32 +10,7 @@ part "database.g.dart";
 
 final _logger = Logger("Database");
 
-@visibleForTesting
-@collection
-class SamplePoint {
-  const SamplePoint({
-    required this.millisecondsSinceEpoch,
-    required this.leadI,
-    required this.leadII,
-  });
-
-  factory SamplePoint.fromEcgData(EcgData data) => SamplePoint(
-        millisecondsSinceEpoch: data.time.millisecondsSinceEpoch,
-        leadI: data.leadI,
-        leadII: data.leadII,
-      );
-
-  EcgData toEcgData() => EcgData(
-        time: DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch),
-        leadI: leadI,
-        leadII: leadII,
-      );
-
-  final Id millisecondsSinceEpoch;
-  final double leadI;
-  final double leadII;
-}
-
+// region Beat
 @visibleForTesting
 @collection
 class Beat {
@@ -61,15 +36,6 @@ class Beat {
   final Label label;
 }
 
-late final SharedPreferences prefs;
-late final Isar _isar;
-
-Future<void> initDatabase() async {
-  prefs = await SharedPreferences.getInstance();
-  _isar = await Isar.open([SamplePointSchema, BeatSchema]);
-}
-
-// region Beat
 Future<void> writeBeatData(BeatData data) async {
   final stopwatch = Stopwatch()..start();
   await _isar.writeTxn(() => _isar.beats.put(Beat.fromBeatData(data)));
@@ -115,6 +81,32 @@ Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
 // endregion
 
 // region SamplePoint
+@visibleForTesting
+@collection
+class SamplePoint {
+  const SamplePoint({
+    required this.millisecondsSinceEpoch,
+    required this.leadI,
+    required this.leadII,
+  });
+
+  factory SamplePoint.fromEcgData(EcgData data) => SamplePoint(
+        millisecondsSinceEpoch: data.time.millisecondsSinceEpoch,
+        leadI: data.leadI,
+        leadII: data.leadII,
+      );
+
+  EcgData toEcgData() => EcgData(
+        time: DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch),
+        leadI: leadI,
+        leadII: leadII,
+      );
+
+  final Id millisecondsSinceEpoch;
+  final double leadI;
+  final double leadII;
+}
+
 Future<void> writeEcgData(EcgData data) async {
   final stopwatch = Stopwatch()..start();
   await _isar.writeTxn(
@@ -138,6 +130,14 @@ Future<List<EcgData>> ecgDataBetween(DateTime start, DateTime end) async {
   return data.map((d) => d.toEcgData()).toList(growable: false);
 }
 // endregion
+
+late final SharedPreferences prefs;
+late final Isar _isar;
+
+Future<void> initDatabase() async {
+  prefs = await SharedPreferences.getInstance();
+  _isar = await Isar.open([SamplePointSchema, BeatSchema]);
+}
 
 @visibleForTesting
 Future<void> clearDatabase() async {
