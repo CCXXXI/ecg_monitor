@@ -81,7 +81,7 @@ void main() {
     });
 
     test("FakeSamplePoint", () async {
-      expect(await fakeEcgDataAt(0), null);
+      expect(await getFakeEcgData(), isEmpty);
 
       final data = FakeEcgData(
         sinceStart: aSecond,
@@ -90,8 +90,7 @@ void main() {
       );
       await writeFakeEcgData([data]);
 
-      expect(await fakeEcgDataAt(0), data);
-      expect(await fakeEcgDataAt(1), null);
+      expect(await getFakeEcgData(), [data]);
     });
   });
 }

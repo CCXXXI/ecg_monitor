@@ -173,13 +173,12 @@ Future<void> writeFakeEcgData(Iterable<FakeEcgData> data) async {
   _logger.fine("Writing fake sample points took ${stopwatch.elapsed}.");
 }
 
-Future<FakeEcgData?> fakeEcgDataAt(int offset) async {
+Future<List<FakeEcgData>> getFakeEcgData() async {
   final stopwatch = Stopwatch()..start();
-  final data = await _isar.fakeSamplePoints.where().offset(offset).findFirst();
-  _logger.finest("Finding fake sample point at $offset "
-      "took ${stopwatch.elapsed}.");
+  final data = await _isar.fakeSamplePoints.where().findAll();
+  _logger.fine("Finding fake sample points took ${stopwatch.elapsed}.");
 
-  return data?.toFakeEcgData();
+  return data.map((d) => d.toFakeEcgData()).toList(growable: false);
 }
 // endregion
 

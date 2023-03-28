@@ -63,8 +63,11 @@ class _FakeDevice implements Device {
 
   @override
   Stream<EcgData> get ecgStream async* {
+    // Get fake data.
+    final data = await getFakeEcgData();
+
     // Empty stream if there is no fake data in the database.
-    if (await fakeEcgDataAt(0) == null) {
+    if (data.isEmpty) {
       return;
     }
 
@@ -77,15 +80,7 @@ class _FakeDevice implements Device {
       // The start time of this cycle.
       final startTime = DateTime.fromMillisecondsSinceEpoch(cycle * dataLenMs);
 
-      for (var offset = 0;; ++offset) {
-        // Get the next data.
-        final d = await fakeEcgDataAt(offset);
-
-        // If there is no more data, go to the next cycle.
-        if (d == null) {
-          break;
-        }
-
+      for (final d in data) {
         // Calculate the time of the data.
         final t = startTime.add(d.sinceStart);
 
