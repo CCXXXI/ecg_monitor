@@ -1,4 +1,3 @@
-import "package:ecg_monitor/me/settings/restart_snack_bar.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
@@ -8,6 +7,7 @@ import "../../utils/strings.dart";
 import "chart_settings.dart";
 import "dev_tools.dart";
 import "providers.dart";
+import "restart_snack_bar.dart";
 import "section_title.dart";
 
 part "settings.g.dart";
