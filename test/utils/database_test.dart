@@ -1,8 +1,10 @@
 import "package:ecg_monitor/analytics/data_types.dart";
 import "package:ecg_monitor/device_manager/device.dart";
+import "package:ecg_monitor/device_manager/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
+import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 void main() {
@@ -76,6 +78,20 @@ void main() {
         await ecgDataBetween(DateTime(2022), DateTime(2024)),
         [fakeEcgData],
       );
+    });
+
+    test("FakeSamplePoint", () async {
+      expect(await fakeEcgDataAt(0), null);
+
+      final data = FakeEcgData(
+        sinceStart: aSecond,
+        leadI: 1,
+        leadII: 2,
+      );
+      await writeFakeEcgData([data]);
+
+      expect(await fakeEcgDataAt(0), data);
+      expect(await fakeEcgDataAt(1), null);
     });
   });
 }
