@@ -1,6 +1,5 @@
 import "package:ecg_monitor/device_manager/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
-import "package:ecg_monitor/utils/debug/data.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
@@ -13,7 +12,7 @@ void main() {
     SharedPreferences.setMockInitialValues({K.fakeDeviceOn: true});
     await Isar.initializeIsarCore(download: true);
     await initDatabase();
-    await initDebugData();
+    await initFakeDevice();
   });
 
   group("basic info", () {

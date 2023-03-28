@@ -1,9 +1,38 @@
+import "dart:convert";
+
+import "package:flutter/services.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 
 import "../utils/database.dart";
-import "../utils/debug/data.dart";
 import "../utils/strings.dart";
 import "device.dart";
+
+part "fake_device.freezed.dart";
+part "fake_device.g.dart";
+
+@freezed
+class _Point with _$_Point {
+  factory _Point({
+    required int millisecondsSinceStart,
+    required double leadI,
+    required double leadII,
+  }) = __Point;
+
+  factory _Point.fromJson(Map<String, dynamic> json) => _$_PointFromJson(json);
+}
+
+late final List<_Point> _data;
+
+Future<void> initFakeDevice() async {
+  const path = "ios/Classes/PanTompkinsQRS/assets/ecg_data/assets/data.json";
+
+  final s = await rootBundle.loadString(path);
+  final json = jsonDecode(s) as List;
+  _data = json
+      .map((e) => _Point.fromJson(e as Map<String, dynamic>))
+      .toList(growable: false);
+}
 
 final _logger = Logger("FakeDevice");
 
@@ -50,9 +79,9 @@ class _FakeDevice implements Device {
       }
 
       // Yield the next fake ECG data.
-      final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % leadI.length;
+      final i = t.millisecondsSinceEpoch ~/ _tick.inMilliseconds % _data.length;
       _logger.finest("yield t=$t, i=$i");
-      yield EcgData(time: t, leadI: leadI[i], leadII: leadII[i]);
+      yield EcgData(time: t, leadI: _data[i].leadI, leadII: _data[i].leadII);
     }
   }
 }
