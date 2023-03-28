@@ -176,7 +176,7 @@ Future<void> writeFakeEcgData(Iterable<FakeEcgData> data) async {
 Future<List<FakeEcgData>> getFakeEcgData() async {
   final stopwatch = Stopwatch()..start();
   final data = await _isar.fakeSamplePoints.where().findAll();
-  _logger.fine("Finding fake sample points took ${stopwatch.elapsed}.");
+  _logger.fine("Get all fake sample points took ${stopwatch.elapsed}.");
 
   return data.map((d) => d.toFakeEcgData()).toList(growable: false);
 }
