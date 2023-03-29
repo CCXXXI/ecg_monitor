@@ -40,7 +40,7 @@ class Analytics extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$labelCountHash() => r'c036ac68ef1fa5166c8fb8fe52f3e4c66bde0674';
+String _$labelCountsHash() => r'7a503edb071c351295acfb41262c6d6684379d35';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -63,36 +63,33 @@ class _SystemHash {
   }
 }
 
-typedef _LabelCountRef = AutoDisposeFutureProviderRef<int>;
+typedef _LabelCountsRef = AutoDisposeFutureProviderRef<Map<Label, int>>;
 
-/// See also [_labelCount].
-@ProviderFor(_labelCount)
-const _labelCountProvider = _LabelCountFamily();
+/// See also [_labelCounts].
+@ProviderFor(_labelCounts)
+const _labelCountsProvider = _LabelCountsFamily();
 
-/// See also [_labelCount].
-class _LabelCountFamily extends Family<AsyncValue<int>> {
-  /// See also [_labelCount].
-  const _LabelCountFamily();
+/// See also [_labelCounts].
+class _LabelCountsFamily extends Family<AsyncValue<Map<Label, int>>> {
+  /// See also [_labelCounts].
+  const _LabelCountsFamily();
 
-  /// See also [_labelCount].
-  _LabelCountProvider call(
-    Label label,
+  /// See also [_labelCounts].
+  _LabelCountsProvider call(
     DateTime start,
     DateTime end,
   ) {
-    return _LabelCountProvider(
-      label,
+    return _LabelCountsProvider(
       start,
       end,
     );
   }
 
   @override
-  _LabelCountProvider getProviderOverride(
-    covariant _LabelCountProvider provider,
+  _LabelCountsProvider getProviderOverride(
+    covariant _LabelCountsProvider provider,
   ) {
     return call(
-      provider.label,
       provider.start,
       provider.end,
     );
@@ -110,42 +107,38 @@ class _LabelCountFamily extends Family<AsyncValue<int>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'_labelCountProvider';
+  String? get name => r'_labelCountsProvider';
 }
 
-/// See also [_labelCount].
-class _LabelCountProvider extends AutoDisposeFutureProvider<int> {
-  /// See also [_labelCount].
-  _LabelCountProvider(
-    this.label,
+/// See also [_labelCounts].
+class _LabelCountsProvider extends AutoDisposeFutureProvider<Map<Label, int>> {
+  /// See also [_labelCounts].
+  _LabelCountsProvider(
     this.start,
     this.end,
   ) : super.internal(
-          (ref) => _labelCount(
+          (ref) => _labelCounts(
             ref,
-            label,
             start,
             end,
           ),
-          from: _labelCountProvider,
-          name: r'_labelCountProvider',
+          from: _labelCountsProvider,
+          name: r'_labelCountsProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$labelCountHash,
-          dependencies: _LabelCountFamily._dependencies,
+                  : _$labelCountsHash,
+          dependencies: _LabelCountsFamily._dependencies,
           allTransitiveDependencies:
-              _LabelCountFamily._allTransitiveDependencies,
+              _LabelCountsFamily._allTransitiveDependencies,
         );
 
-  final Label label;
   final DateTime start;
   final DateTime end;
 
   @override
   bool operator ==(Object other) {
-    return other is _LabelCountProvider &&
-        other.label == label &&
+    return other is _LabelCountsProvider &&
         other.start == start &&
         other.end == end;
   }
@@ -153,7 +146,6 @@ class _LabelCountProvider extends AutoDisposeFutureProvider<int> {
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, label.hashCode);
     hash = _SystemHash.combine(hash, start.hashCode);
     hash = _SystemHash.combine(hash, end.hashCode);
 
