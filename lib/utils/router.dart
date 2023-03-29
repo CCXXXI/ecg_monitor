@@ -55,20 +55,26 @@ final router = GoRouter(
           path: "/history",
           pageBuilder: (context, state) {
             // Show 3 seconds ago by default to avoid showing an empty chart.
-            final time = state.extra ?? DateTime.now().subtract(aSecond * 3);
+            final time = state.extra as DateTime?;
 
             return _FadeThroughTransitionPage(
               key: state.pageKey,
-              child: History(time as DateTime),
+              child: History(time ?? DateTime.now().subtract(aSecond * 3)),
             );
           },
         ),
         GoRoute(
           path: "/analytics",
-          pageBuilder: (context, state) => _FadeThroughTransitionPage(
-            key: state.pageKey,
-            child: const Analytics(),
-          ),
+          pageBuilder: (context, state) {
+            final range = state.extra as List<DateTime>?;
+            final start = range?.first ?? DateTime.now().subtract(anHour);
+            final end = range?.last ?? DateTime.now();
+
+            return _FadeThroughTransitionPage(
+              key: state.pageKey,
+              child: Analytics(start, end),
+            );
+          },
         ),
         GoRoute(
           path: "/device_manager",

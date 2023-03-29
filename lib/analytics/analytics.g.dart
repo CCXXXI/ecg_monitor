@@ -7,7 +7,15 @@ part of 'analytics.dart';
 // **************************************************************************
 
 class Analytics extends ConsumerWidget {
-  const Analytics({Key? key}) : super(key: key);
+  const Analytics(
+    this.start,
+    this.end, {
+    Key? key,
+  }) : super(key: key);
+
+  final DateTime start;
+
+  final DateTime end;
 
   @override
   Widget build(
@@ -17,14 +25,22 @@ class Analytics extends ConsumerWidget {
       analytics(
         _context,
         _ref,
+        start,
+        end,
       );
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<DateTime>('start', start));
+    properties.add(DiagnosticsProperty<DateTime>('end', end));
+  }
 }
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$labelCountHash() => r'003554523900bfdd7c22cc541cdc81a2e237713e';
+String _$labelCountHash() => r'c036ac68ef1fa5166c8fb8fe52f3e4c66bde0674';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -61,9 +77,13 @@ class _LabelCountFamily extends Family<AsyncValue<int>> {
   /// See also [_labelCount].
   _LabelCountProvider call(
     Label label,
+    DateTime start,
+    DateTime end,
   ) {
     return _LabelCountProvider(
       label,
+      start,
+      end,
     );
   }
 
@@ -73,6 +93,8 @@ class _LabelCountFamily extends Family<AsyncValue<int>> {
   ) {
     return call(
       provider.label,
+      provider.start,
+      provider.end,
     );
   }
 
@@ -96,10 +118,14 @@ class _LabelCountProvider extends AutoDisposeFutureProvider<int> {
   /// See also [_labelCount].
   _LabelCountProvider(
     this.label,
+    this.start,
+    this.end,
   ) : super.internal(
           (ref) => _labelCount(
             ref,
             label,
+            start,
+            end,
           ),
           from: _labelCountProvider,
           name: r'_labelCountProvider',
@@ -113,16 +139,23 @@ class _LabelCountProvider extends AutoDisposeFutureProvider<int> {
         );
 
   final Label label;
+  final DateTime start;
+  final DateTime end;
 
   @override
   bool operator ==(Object other) {
-    return other is _LabelCountProvider && other.label == label;
+    return other is _LabelCountProvider &&
+        other.label == label &&
+        other.start == start &&
+        other.end == end;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, label.hashCode);
+    hash = _SystemHash.combine(hash, start.hashCode);
+    hash = _SystemHash.combine(hash, end.hashCode);
 
     return _SystemHash.finish(hash);
   }
