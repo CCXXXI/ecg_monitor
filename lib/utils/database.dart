@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:isar/isar.dart";
 import "package:logging/logging.dart";
+import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 import "../analytics/data_types.dart";
@@ -78,6 +79,34 @@ Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
       "took ${stopwatch.elapsed}.");
 
   return data.map((d) => d.toBeatData()).toList(growable: false);
+}
+
+Future<DateTime> beatTimeBefore(DateTime time) async {
+  final stopwatch = Stopwatch()..start();
+  final ms = await _isar.beats
+      .where(sort: Sort.desc)
+      .millisecondsSinceEpochLessThan(time.millisecondsSinceEpoch)
+      .millisecondsSinceEpochProperty()
+      .findFirst();
+  _logger.fine("Finding beat before $time took ${stopwatch.elapsed}.");
+
+  return ms == null
+      ? time.subtract(aSecond)
+      : DateTime.fromMillisecondsSinceEpoch(ms);
+}
+
+Future<DateTime> beatTimeAfter(DateTime time) async {
+  final stopwatch = Stopwatch()..start();
+  final ms = await _isar.beats
+      .where()
+      .millisecondsSinceEpochGreaterThan(time.millisecondsSinceEpoch)
+      .millisecondsSinceEpochProperty()
+      .findFirst();
+  _logger.fine("Finding beat after $time took ${stopwatch.elapsed}.");
+
+  return ms == null
+      ? time.add(aSecond)
+      : DateTime.fromMillisecondsSinceEpoch(ms);
 }
 // endregion
 

@@ -7,11 +7,15 @@ import "package:isar/isar.dart";
 import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
+final d22 = DateTime(2022);
+final d23 = DateTime(2023);
+final d24 = DateTime(2024);
+
 void main() {
   group("data types", () {
     test("EcgData -> SamplePoint -> EcgData", () {
       final originData = EcgData(
-        time: DateTime(2023),
+        time: d23,
         leadI: 1,
         leadII: 2,
       );
@@ -51,34 +55,37 @@ void main() {
       expect(await labelTimes(Label.sinusRhythm), isEmpty);
 
       final fakeBeatData = BeatData(
-        time: DateTime(2023),
+        time: d23,
         label: Label.sinusRhythm,
       );
       await writeBeatData(fakeBeatData);
 
       expect(await labelCount(Label.sinusRhythm), 1);
       expect(await labelTimes(Label.sinusRhythm), [fakeBeatData.time]);
-      expect(
-        await beatDataBetween(DateTime(2022), DateTime(2024)),
-        [fakeBeatData],
-      );
+      expect(await beatDataBetween(d22, d24), [fakeBeatData]);
+
+      expect(await beatTimeBefore(d24), fakeBeatData.time);
+      expect(await beatTimeAfter(d22), fakeBeatData.time);
+
+      expect((await beatTimeBefore(d22)).isBefore(d22), isTrue);
+      expect((await beatTimeAfter(d24)).isAfter(d24), isTrue);
     });
 
     test("SamplePoint", () async {
       // There is no data at the beginning.
-      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
+      expect(await ecgDataBetween(d22, d24), isEmpty);
 
       // There is a buffer so the data is not immediately available.
-      await writeEcgData(EcgData(time: DateTime(2023), leadI: 1, leadII: 2));
-      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
+      await writeEcgData(EcgData(time: d23, leadI: 1, leadII: 2));
+      expect(await ecgDataBetween(d22, d24), isEmpty);
 
       // Write enough data to flush the buffer.
       for (var i = 0; i < 500; i++) {
         await writeEcgData(
-          EcgData(time: DateTime(2023, 1, 1, 0, 0, i), leadI: 1, leadII: 2),
+          EcgData(time: d23.add(aSecond * i), leadI: 1, leadII: 2),
         );
       }
-      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isNotEmpty);
+      expect(await ecgDataBetween(d22, d24), isNotEmpty);
     });
 
     test("FakeSamplePoint", () async {
