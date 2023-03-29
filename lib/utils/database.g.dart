@@ -22,22 +22,45 @@ const BeatSchema = CollectionSchema(
       name: r'label',
       type: IsarType.byte,
       enumMap: _BeatlabelEnumValueMap,
+    ),
+    r'time': PropertySchema(
+      id: 1,
+      name: r'time',
+      type: IsarType.dateTime,
     )
   },
   estimateSize: _beatEstimateSize,
   serialize: _beatSerialize,
   deserialize: _beatDeserialize,
   deserializeProp: _beatDeserializeProp,
-  idName: r'millisecondsSinceEpoch',
+  idName: r'id',
   indexes: {
-    r'label': IndexSchema(
-      id: 6902807635198700142,
-      name: r'label',
+    r'time': IndexSchema(
+      id: -2250472054110640942,
+      name: r'time',
+      unique: false,
+      replace: false,
+      properties: [
+        IndexPropertySchema(
+          name: r'time',
+          type: IndexType.value,
+          caseSensitive: false,
+        )
+      ],
+    ),
+    r'label_time': IndexSchema(
+      id: 3356589036610194125,
+      name: r'label_time',
       unique: false,
       replace: false,
       properties: [
         IndexPropertySchema(
           name: r'label',
+          type: IndexType.value,
+          caseSensitive: false,
+        ),
+        IndexPropertySchema(
+          name: r'time',
           type: IndexType.value,
           caseSensitive: false,
         )
@@ -68,6 +91,7 @@ void _beatSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeByte(offsets[0], object.label.index);
+  writer.writeDateTime(offsets[1], object.time);
 }
 
 Beat _beatDeserialize(
@@ -79,7 +103,7 @@ Beat _beatDeserialize(
   final object = Beat(
     label: _BeatlabelValueEnumMap[reader.readByteOrNull(offsets[0])] ??
         Label.sinusRhythm,
-    millisecondsSinceEpoch: id,
+    time: reader.readDateTime(offsets[1]),
   );
   return object;
 }
@@ -94,6 +118,8 @@ P _beatDeserializeProp<P>(
     case 0:
       return (_BeatlabelValueEnumMap[reader.readByteOrNull(offset)] ??
           Label.sinusRhythm) as P;
+    case 1:
+      return (reader.readDateTime(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
@@ -127,7 +153,7 @@ const _BeatlabelValueEnumMap = {
 };
 
 Id _beatGetId(Beat object) {
-  return object.millisecondsSinceEpoch;
+  return object.id;
 }
 
 List<IsarLinkBase<dynamic>> _beatGetLinks(Beat object) {
@@ -137,118 +163,205 @@ List<IsarLinkBase<dynamic>> _beatGetLinks(Beat object) {
 void _beatAttach(IsarCollection<dynamic> col, Id id, Beat object) {}
 
 extension BeatQueryWhereSort on QueryBuilder<Beat, Beat, QWhere> {
-  QueryBuilder<Beat, Beat, QAfterWhere> anyMillisecondsSinceEpoch() {
+  QueryBuilder<Beat, Beat, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhere> anyLabel() {
+  QueryBuilder<Beat, Beat, QAfterWhere> anyTime() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        const IndexWhereClause.any(indexName: r'label'),
+        const IndexWhereClause.any(indexName: r'time'),
+      );
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhere> anyLabelTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        const IndexWhereClause.any(indexName: r'label_time'),
       );
     });
   }
 }
 
 extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochEqualTo(
-      Id millisecondsSinceEpoch) {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: millisecondsSinceEpoch,
-        upper: millisecondsSinceEpoch,
+        lower: id,
+        upper: id,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochNotEqualTo(
-      Id millisecondsSinceEpoch) {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(
-              IdWhereClause.lessThan(
-                  upper: millisecondsSinceEpoch, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             )
             .addWhereClause(
-              IdWhereClause.greaterThan(
-                  lower: millisecondsSinceEpoch, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             );
       } else {
         return query
             .addWhereClause(
-              IdWhereClause.greaterThan(
-                  lower: millisecondsSinceEpoch, includeLower: false),
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
             )
             .addWhereClause(
-              IdWhereClause.lessThan(
-                  upper: millisecondsSinceEpoch, includeUpper: false),
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
             );
       }
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochGreaterThan(
-      Id millisecondsSinceEpoch,
+  QueryBuilder<Beat, Beat, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.greaterThan(
-            lower: millisecondsSinceEpoch, includeLower: include),
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
       );
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochLessThan(
-      Id millisecondsSinceEpoch,
+  QueryBuilder<Beat, Beat, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
-        IdWhereClause.lessThan(
-            upper: millisecondsSinceEpoch, includeUpper: include),
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
       );
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> millisecondsSinceEpochBetween(
-    Id lowerMillisecondsSinceEpoch,
-    Id upperMillisecondsSinceEpoch, {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> idBetween(
+    Id lowerId,
+    Id upperId, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
-        lower: lowerMillisecondsSinceEpoch,
+        lower: lowerId,
         includeLower: includeLower,
-        upper: upperMillisecondsSinceEpoch,
+        upper: upperId,
         includeUpper: includeUpper,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualTo(Label label) {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> timeEqualTo(DateTime time) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
-        indexName: r'label',
+        indexName: r'time',
+        value: [time],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> timeNotEqualTo(DateTime time) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [],
+              upper: [time],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [time],
+              includeLower: false,
+              upper: [],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [time],
+              includeLower: false,
+              upper: [],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'time',
+              lower: [],
+              upper: [time],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> timeGreaterThan(
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [time],
+        includeLower: include,
+        upper: [],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> timeLessThan(
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [],
+        upper: [time],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> timeBetween(
+    DateTime lowerTime,
+    DateTime upperTime, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'time',
+        lower: [lowerTime],
+        includeLower: includeLower,
+        upper: [upperTime],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualToAnyTime(Label label) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'label_time',
         value: [label],
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelNotEqualTo(Label label) {
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelNotEqualToAnyTime(
+      Label label) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
             .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
+              indexName: r'label_time',
               lower: [],
               upper: [label],
               includeUpper: false,
             ))
             .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
+              indexName: r'label_time',
               lower: [label],
               includeLower: false,
               upper: [],
@@ -256,13 +369,13 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
       } else {
         return query
             .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
+              indexName: r'label_time',
               lower: [label],
               includeLower: false,
               upper: [],
             ))
             .addWhereClause(IndexWhereClause.between(
-              indexName: r'label',
+              indexName: r'label_time',
               lower: [],
               upper: [label],
               includeUpper: false,
@@ -271,13 +384,13 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelGreaterThan(
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelGreaterThanAnyTime(
     Label label, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
+        indexName: r'label_time',
         lower: [label],
         includeLower: include,
         upper: [],
@@ -285,13 +398,13 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelLessThan(
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelLessThanAnyTime(
     Label label, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
+        indexName: r'label_time',
         lower: [],
         upper: [label],
         includeUpper: include,
@@ -299,7 +412,7 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterWhereClause> labelBetween(
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelBetweenAnyTime(
     Label lowerLabel,
     Label upperLabel, {
     bool includeLower = true,
@@ -307,7 +420,7 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.between(
-        indexName: r'label',
+        indexName: r'label_time',
         lower: [lowerLabel],
         includeLower: includeLower,
         upper: [upperLabel],
@@ -315,9 +428,154 @@ extension BeatQueryWhere on QueryBuilder<Beat, Beat, QWhereClause> {
       ));
     });
   }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelTimeEqualTo(
+      Label label, DateTime time) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.equalTo(
+        indexName: r'label_time',
+        value: [label, time],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualToTimeNotEqualTo(
+      Label label, DateTime time) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label_time',
+              lower: [label],
+              upper: [label, time],
+              includeUpper: false,
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label_time',
+              lower: [label, time],
+              includeLower: false,
+              upper: [label],
+            ));
+      } else {
+        return query
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label_time',
+              lower: [label, time],
+              includeLower: false,
+              upper: [label],
+            ))
+            .addWhereClause(IndexWhereClause.between(
+              indexName: r'label_time',
+              lower: [label],
+              upper: [label, time],
+              includeUpper: false,
+            ));
+      }
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualToTimeGreaterThan(
+    Label label,
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label_time',
+        lower: [label, time],
+        includeLower: include,
+        upper: [label],
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualToTimeLessThan(
+    Label label,
+    DateTime time, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label_time',
+        lower: [label],
+        upper: [label, time],
+        includeUpper: include,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterWhereClause> labelEqualToTimeBetween(
+    Label label,
+    DateTime lowerTime,
+    DateTime upperTime, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IndexWhereClause.between(
+        indexName: r'label_time',
+        lower: [label, lowerTime],
+        includeLower: includeLower,
+        upper: [label, upperTime],
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> idEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> idGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> idLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> idBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Beat, Beat, QAfterFilterCondition> labelEqualTo(Label value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -370,53 +628,50 @@ extension BeatQueryFilter on QueryBuilder<Beat, Beat, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochEqualTo(
-      Id value) {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> timeEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'millisecondsSinceEpoch',
+        property: r'time',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition>
-      millisecondsSinceEpochGreaterThan(
-    Id value, {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> timeGreaterThan(
+    DateTime value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'millisecondsSinceEpoch',
+        property: r'time',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition>
-      millisecondsSinceEpochLessThan(
-    Id value, {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> timeLessThan(
+    DateTime value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'millisecondsSinceEpoch',
+        property: r'time',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterFilterCondition> millisecondsSinceEpochBetween(
-    Id lower,
-    Id upper, {
+  QueryBuilder<Beat, Beat, QAfterFilterCondition> timeBetween(
+    DateTime lower,
+    DateTime upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'millisecondsSinceEpoch',
+        property: r'time',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -442,9 +697,33 @@ extension BeatQuerySortBy on QueryBuilder<Beat, Beat, QSortBy> {
       return query.addSortBy(r'label', Sort.desc);
     });
   }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> sortByTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'time', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> sortByTimeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'time', Sort.desc);
+    });
+  }
 }
 
 extension BeatQuerySortThenBy on QueryBuilder<Beat, Beat, QSortThenBy> {
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
+    });
+  }
+
   QueryBuilder<Beat, Beat, QAfterSortBy> thenByLabel() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'label', Sort.asc);
@@ -457,15 +736,15 @@ extension BeatQuerySortThenBy on QueryBuilder<Beat, Beat, QSortThenBy> {
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpoch() {
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByTime() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'millisecondsSinceEpoch', Sort.asc);
+      return query.addSortBy(r'time', Sort.asc);
     });
   }
 
-  QueryBuilder<Beat, Beat, QAfterSortBy> thenByMillisecondsSinceEpochDesc() {
+  QueryBuilder<Beat, Beat, QAfterSortBy> thenByTimeDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'millisecondsSinceEpoch', Sort.desc);
+      return query.addSortBy(r'time', Sort.desc);
     });
   }
 }
@@ -476,18 +755,30 @@ extension BeatQueryWhereDistinct on QueryBuilder<Beat, Beat, QDistinct> {
       return query.addDistinctBy(r'label');
     });
   }
+
+  QueryBuilder<Beat, Beat, QDistinct> distinctByTime() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'time');
+    });
+  }
 }
 
 extension BeatQueryProperty on QueryBuilder<Beat, Beat, QQueryProperty> {
-  QueryBuilder<Beat, int, QQueryOperations> millisecondsSinceEpochProperty() {
+  QueryBuilder<Beat, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'millisecondsSinceEpoch');
+      return query.addPropertyName(r'id');
     });
   }
 
   QueryBuilder<Beat, Label, QQueryOperations> labelProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'label');
+    });
+  }
+
+  QueryBuilder<Beat, DateTime, QQueryOperations> timeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'time');
     });
   }
 }

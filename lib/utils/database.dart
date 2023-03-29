@@ -17,24 +17,28 @@ final _logger = Logger("Database");
 @collection
 class Beat {
   const Beat({
-    required this.millisecondsSinceEpoch,
+    required this.time,
     required this.label,
   });
 
   factory Beat.fromBeatData(BeatData data) => Beat(
-        millisecondsSinceEpoch: data.time.millisecondsSinceEpoch,
+        time: data.time,
         label: data.label,
       );
 
   BeatData toBeatData() => BeatData(
-        time: DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch),
+        time: time,
         label: label,
       );
 
-  final Id millisecondsSinceEpoch;
+  // ignore: avoid_field_initializers_in_const_classes
+  final Id id = Isar.autoIncrement;
+
+  @Index()
+  final DateTime time;
 
   @enumerated
-  @Index()
+  @Index(composite: [CompositeIndex("time")])
   final Label label;
 }
 
@@ -44,37 +48,41 @@ Future<void> writeBeatData(BeatData data) async {
   _logger.finer("Writing beat data took ${stopwatch.elapsed}.");
 }
 
-Future<int> labelCount(Label label) async {
+Future<int> labelCount(
+  Label label,
+  DateTime start,
+  DateTime end,
+) async {
   final stopwatch = Stopwatch()..start();
-  final count = await _isar.beats.where().labelEqualTo(label).count();
-  _logger.fine("Counting label $label took ${stopwatch.elapsed}.");
+  final count = await _isar.beats
+      .where()
+      .labelEqualToTimeBetween(label, start, end)
+      .count();
+  _logger.fine("Finding label $label between $start and $end "
+      "took ${stopwatch.elapsed}.");
 
   return count;
 }
 
-Future<List<DateTime>> labelTimes(Label label) async {
+Future<List<DateTime>> labelTimes(
+  Label label,
+  DateTime start,
+  DateTime end,
+) async {
   final stopwatch = Stopwatch()..start();
-  final millisecondsSinceEpoch = await _isar.beats
+  final times = await _isar.beats
       .where()
-      .labelEqualTo(label)
-      .millisecondsSinceEpochProperty()
+      .labelEqualToTimeBetween(label, start, end)
+      .timeProperty()
       .findAll();
   _logger.fine("Finding label $label took ${stopwatch.elapsed}.");
 
-  return millisecondsSinceEpoch
-      .map(DateTime.fromMillisecondsSinceEpoch)
-      .toList(growable: false);
+  return times;
 }
 
 Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
   final stopwatch = Stopwatch()..start();
-  final data = await _isar.beats
-      .where()
-      .millisecondsSinceEpochBetween(
-        start.millisecondsSinceEpoch,
-        end.millisecondsSinceEpoch,
-      )
-      .findAll();
+  final data = await _isar.beats.where().timeBetween(start, end).findAll();
   _logger.fine("Finding beats between $start and $end "
       "took ${stopwatch.elapsed}.");
 
@@ -83,30 +91,26 @@ Future<List<BeatData>> beatDataBetween(DateTime start, DateTime end) async {
 
 Future<DateTime> beatTimeBefore(DateTime time) async {
   final stopwatch = Stopwatch()..start();
-  final ms = await _isar.beats
+  final prevTime = await _isar.beats
       .where(sort: Sort.desc)
-      .millisecondsSinceEpochLessThan(time.millisecondsSinceEpoch)
-      .millisecondsSinceEpochProperty()
+      .timeLessThan(time)
+      .timeProperty()
       .findFirst();
   _logger.fine("Finding beat before $time took ${stopwatch.elapsed}.");
 
-  return ms == null
-      ? time.subtract(aSecond)
-      : DateTime.fromMillisecondsSinceEpoch(ms);
+  return prevTime ?? time.subtract(aSecond);
 }
 
 Future<DateTime> beatTimeAfter(DateTime time) async {
   final stopwatch = Stopwatch()..start();
-  final ms = await _isar.beats
-      .where()
-      .millisecondsSinceEpochGreaterThan(time.millisecondsSinceEpoch)
-      .millisecondsSinceEpochProperty()
+  final next = await _isar.beats
+      .where(sort: Sort.asc)
+      .timeGreaterThan(time)
+      .timeProperty()
       .findFirst();
   _logger.fine("Finding beat after $time took ${stopwatch.elapsed}.");
 
-  return ms == null
-      ? time.add(aSecond)
-      : DateTime.fromMillisecondsSinceEpoch(ms);
+  return next ?? time.add(aSecond);
 }
 // endregion
 
