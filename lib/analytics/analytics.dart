@@ -13,13 +13,16 @@ import "label_details.dart";
 part "analytics.g.dart";
 
 @riverpod
-Future<int> _labelCount(
-  _LabelCountRef ref,
-  Label label,
+Future<Map<Label, int>> _labelCounts(
+  _LabelCountsRef ref,
   DateTime start,
   DateTime end,
-) async =>
-    labelCount(label, start, end);
+) async {
+  final counts = await Future.wait(
+    Label.values.map((label) => labelCount(label, start, end)),
+  );
+  return Map.fromIterables(Label.values, counts);
+}
 
 @cwidget
 Widget analytics(
@@ -29,9 +32,14 @@ Widget analytics(
   DateTime end,
 ) {
   final backgroundColor = Theme.of(context).colorScheme.background;
+  final labelCntAsync = ref.watch(_labelCountsProvider(start, end));
 
   return Column(
     children: [
+      if (labelCntAsync.isLoading)
+        const LinearProgressIndicator()
+      else
+        const SizedBox(height: 4),
       Expanded(
         child: ListView(
           children: [
@@ -39,18 +47,13 @@ Widget analytics(
               OpenContainer(
                 closedColor: backgroundColor,
                 closedElevation: 0,
-                closedBuilder: (_, __) {
-                  final cntAsync =
-                      ref.watch(_labelCountProvider(label, start, end));
-
-                  return ListTile(
-                    title: Text(label.name),
-                    trailing: cntAsync.maybeWhen(
-                      data: (cnt) => Text(cnt.toString()),
-                      orElse: CircularProgressIndicator.new,
-                    ),
-                  );
-                },
+                closedBuilder: (_, __) => ListTile(
+                  title: Text(label.name),
+                  trailing: labelCntAsync.maybeWhen(
+                    data: (cnt) => Text(cnt[label].toString()),
+                    orElse: SizedBox.shrink,
+                  ),
+                ),
                 openColor: backgroundColor,
                 openBuilder: (_, __) => LabelDetails(label, start, end),
                 useRootNavigator: true,
