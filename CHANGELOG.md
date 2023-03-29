@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.31.0...v0.31.1) (2023-03-29)
+
+
+### Performance Improvements
+
+* **database:** add ecgDataBuffer ([#285](https://github.com/CCXXXI/ecg_monitor/issues/285)) ([8c6d1c6](https://github.com/CCXXXI/ecg_monitor/commit/8c6d1c6812b387c7d091c86d84cfff3d23adedd9))
+
 ## [0.31.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.30.0...v0.31.0) (2023-03-28)
 
 ### Features
