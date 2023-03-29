@@ -108,12 +108,32 @@ class SamplePoint {
   final double leadII;
 }
 
+const _ecgDataBufferSize = 100;
+final _ecgDataBuffer = <EcgData>[];
+
 Future<void> writeEcgData(EcgData data) async {
+  // Write to the buffer.
+  _ecgDataBuffer.add(data);
+
+  // If the buffer is not full, return.
+  // Do not create a write transaction for every sample point.
+  // That would be very slow.
+  if (_ecgDataBuffer.length < _ecgDataBufferSize) {
+    return;
+  }
+
+  // Write the buffer to the database.
   final stopwatch = Stopwatch()..start();
   await _isar.writeTxn(
-    () => _isar.samplePoints.put(SamplePoint.fromEcgData(data)),
+    () => _isar.samplePoints.putAll(
+      _ecgDataBuffer.map(SamplePoint.fromEcgData).toList(growable: false),
+    ),
   );
-  _logger.finest("Writing sample point took ${stopwatch.elapsed}.");
+  _logger.finer("Writing $_ecgDataBufferSize sample points took "
+      "${stopwatch.elapsed}.");
+
+  // Clear the buffer after writing to the database.
+  _ecgDataBuffer.clear();
 }
 
 Future<List<EcgData>> ecgDataBetween(DateTime start, DateTime end) async {

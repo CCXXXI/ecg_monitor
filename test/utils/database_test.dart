@@ -65,19 +65,20 @@ void main() {
     });
 
     test("SamplePoint", () async {
+      // There is no data at the beginning.
       expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
 
-      final fakeEcgData = EcgData(
-        time: DateTime(2023),
-        leadI: 1,
-        leadII: 2,
-      );
-      await writeEcgData(fakeEcgData);
+      // There is a buffer so the data is not immediately available.
+      await writeEcgData(EcgData(time: DateTime(2023), leadI: 1, leadII: 2));
+      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isEmpty);
 
-      expect(
-        await ecgDataBetween(DateTime(2022), DateTime(2024)),
-        [fakeEcgData],
-      );
+      // Write enough data to flush the buffer.
+      for (var i = 0; i < 500; i++) {
+        await writeEcgData(
+          EcgData(time: DateTime(2023, 1, 1, 0, 0, i), leadI: 1, leadII: 2),
+        );
+      }
+      expect(await ecgDataBetween(DateTime(2022), DateTime(2024)), isNotEmpty);
     });
 
     test("FakeSamplePoint", () async {
