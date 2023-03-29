@@ -21,6 +21,7 @@ void main() {
     await tester.pumpWidget(
       ProviderScope(
         child: MaterialApp(
+          localizationsDelegates: const [S.delegate],
           home: Scaffold(
             body: Analytics(DateTime.now().subtract(anHour), DateTime.now()),
           ),
