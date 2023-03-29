@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.33.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.33.0...v0.33.1) (2023-03-29)
+
+### Bug Fixes
+
+- **analytics:** progress as a group ([#292](https://github.com/CCXXXI/ecg_monitor/issues/292)) ([5b996cb](https://github.com/CCXXXI/ecg_monitor/commit/5b996cb701b4381d7a56b64fc8b888482b9ccd91))
+
 ## [0.33.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.32.0...v0.33.0) (2023-03-29)
 
 ### Features
