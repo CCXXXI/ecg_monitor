@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.33.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.32.0...v0.33.0) (2023-03-29)
+
+
+### Features
+
+* **analytics:** add range controller ([74a1cd3](https://github.com/CCXXXI/ecg_monitor/commit/74a1cd36e5477ebf22c49296f4ae161cdbb04165))
+* **analytics:** better controller ([3359b5c](https://github.com/CCXXXI/ecg_monitor/commit/3359b5cf326de53ffbca0ed579ef7c38b9a427bd))
+
+
+### Continuous Integration
+
+* **release-please:** update job name ([#289](https://github.com/CCXXXI/ecg_monitor/issues/289)) ([f52c45d](https://github.com/CCXXXI/ecg_monitor/commit/f52c45d8ebda13d24cd832fc5def77d1a281def1))
+
+
+### Miscellaneous Chores
+
+* save IDEA configs ([d01f22d](https://github.com/CCXXXI/ecg_monitor/commit/d01f22d073fd1061aba1703edbe6dd43510d356e))
+
+
+### Build System
+
+* flutter pub add time_range_picker ([d92b5b1](https://github.com/CCXXXI/ecg_monitor/commit/d92b5b101d05492a598266c9f16a9681855ebbcb))
+
+
+### Code Refactoring
+
+* **analytics:** align to minute ([f1cbf12](https://github.com/CCXXXI/ecg_monitor/commit/f1cbf1203fd7bbc06680e3ec8bd045af4af20884))
+* **analytics:** extract controller.dart ([5258386](https://github.com/CCXXXI/ecg_monitor/commit/525838622a674923262f00c05cf392a7ab229537))
+* **analytics:** range filter ([857b866](https://github.com/CCXXXI/ecg_monitor/commit/857b86612dec006f0f0da03cdebc764e2dae6ffb))
+* **database:** beat time range ([38704ce](https://github.com/CCXXXI/ecg_monitor/commit/38704cec7dc30e64ca466d104046025ee8a9b6c9))
+* **time:** toDateTimeBefore ([0865c4f](https://github.com/CCXXXI/ecg_monitor/commit/0865c4f44284c7ef99b79faf99181d03004b14a1))
+
+
+### Tests
+
+* **analytics:** correct l10n ([baf3ea4](https://github.com/CCXXXI/ecg_monitor/commit/baf3ea49b31330dbd70175480fa99701aa972d3d))
+* **analytics:** correct skipOffstage ([7b4bdb4](https://github.com/CCXXXI/ecg_monitor/commit/7b4bdb44c330b375bcaf250a48ddae764c318d8c))
+
 ## [0.32.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.31.1...v0.32.0) (2023-03-29)
 
 ### Features
