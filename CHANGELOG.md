@@ -2,16 +2,14 @@
 
 ## [0.32.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.31.1...v0.32.0) (2023-03-29)
 
-
 ### Features
 
-* **history:** go to prev / next beat ([fdde9d5](https://github.com/CCXXXI/ecg_monitor/commit/fdde9d5e506ae37824e22cc4503bb05efb7abf1c))
-
+- **history:** go to prev / next beat ([fdde9d5](https://github.com/CCXXXI/ecg_monitor/commit/fdde9d5e506ae37824e22cc4503bb05efb7abf1c))
 
 ### Code Refactoring
 
-* **database:** add beatTimeBefore & beatTimeAfter ([bb0cf14](https://github.com/CCXXXI/ecg_monitor/commit/bb0cf14715748b8f51646b46cc0a34c153e66b73))
-* **history:** simplify controller ([cfee7ec](https://github.com/CCXXXI/ecg_monitor/commit/cfee7ec53c452731ed5d99c7cb037d0aea8baa30))
+- **database:** add beatTimeBefore & beatTimeAfter ([bb0cf14](https://github.com/CCXXXI/ecg_monitor/commit/bb0cf14715748b8f51646b46cc0a34c153e66b73))
+- **history:** simplify controller ([cfee7ec](https://github.com/CCXXXI/ecg_monitor/commit/cfee7ec53c452731ed5d99c7cb037d0aea8baa30))
 
 ## [0.31.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.31.0...v0.31.1) (2023-03-29)
 
