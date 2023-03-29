@@ -64,5 +64,7 @@
   "ventricularFlutterAndFibrillation": "室扑室颤",
   "atrioventricularBlock": "房室传导阻滞",
   "noise": "噪声",
-  "unknown": "未知"
+  "unknown": "未知",
+  "from": "从",
+  "to": "到"
 }

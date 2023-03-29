@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Disconnect device"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("Fake device"),
         "feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
+        "from": MessageLookupByLibrary.simpleMessage("From"),
         "gridColor": MessageLookupByLibrary.simpleMessage("Grid color"),
         "heartRateDetecting":
             MessageLookupByLibrary.simpleMessage("Heart rate detecting ..."),
@@ -105,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("simp."),
         "sinusRhythm": MessageLookupByLibrary.simpleMessage("Sinus rhythm"),
         "style": MessageLookupByLibrary.simpleMessage("Style"),
+        "to": MessageLookupByLibrary.simpleMessage("To"),
         "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
         "ventricularFlutterAndFibrillation":
             MessageLookupByLibrary.simpleMessage(
