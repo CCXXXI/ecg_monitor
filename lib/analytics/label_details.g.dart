@@ -8,11 +8,17 @@ part of 'label_details.dart';
 
 class LabelDetails extends ConsumerWidget {
   const LabelDetails(
-    this.label, {
+    this.label,
+    this.start,
+    this.end, {
     Key? key,
   }) : super(key: key);
 
   final Label label;
+
+  final DateTime start;
+
+  final DateTime end;
 
   @override
   Widget build(
@@ -23,11 +29,15 @@ class LabelDetails extends ConsumerWidget {
         _context,
         _ref,
         label,
+        start,
+        end,
       );
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(EnumProperty<Label>('label', label));
+    properties.add(DiagnosticsProperty<DateTime>('start', start));
+    properties.add(DiagnosticsProperty<DateTime>('end', end));
   }
 }
 
@@ -35,7 +45,7 @@ class LabelDetails extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$labelTimesHash() => r'9f477ab2aa4075aa44ef2bb5f3f2108cf1a9ae1d';
+String _$labelTimesHash() => r'b2838615d1976ffb77e6ebda709a9996ebfc950e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,9 +82,13 @@ class _LabelTimesFamily extends Family<AsyncValue<List<DateTime>>> {
   /// See also [_labelTimes].
   _LabelTimesProvider call(
     Label label,
+    DateTime start,
+    DateTime end,
   ) {
     return _LabelTimesProvider(
       label,
+      start,
+      end,
     );
   }
 
@@ -84,6 +98,8 @@ class _LabelTimesFamily extends Family<AsyncValue<List<DateTime>>> {
   ) {
     return call(
       provider.label,
+      provider.start,
+      provider.end,
     );
   }
 
@@ -107,10 +123,14 @@ class _LabelTimesProvider extends AutoDisposeFutureProvider<List<DateTime>> {
   /// See also [_labelTimes].
   _LabelTimesProvider(
     this.label,
+    this.start,
+    this.end,
   ) : super.internal(
           (ref) => _labelTimes(
             ref,
             label,
+            start,
+            end,
           ),
           from: _labelTimesProvider,
           name: r'_labelTimesProvider',
@@ -124,16 +144,23 @@ class _LabelTimesProvider extends AutoDisposeFutureProvider<List<DateTime>> {
         );
 
   final Label label;
+  final DateTime start;
+  final DateTime end;
 
   @override
   bool operator ==(Object other) {
-    return other is _LabelTimesProvider && other.label == label;
+    return other is _LabelTimesProvider &&
+        other.label == label &&
+        other.start == start &&
+        other.end == end;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, label.hashCode);
+    hash = _SystemHash.combine(hash, start.hashCode);
+    hash = _SystemHash.combine(hash, end.hashCode);
 
     return _SystemHash.finish(hash);
   }

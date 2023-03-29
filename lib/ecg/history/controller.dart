@@ -36,7 +36,7 @@ Widget _historyController(BuildContext context, DateTime time) {
             initialTime: TimeOfDay.fromDateTime(time),
           );
           if (newTime != null) {
-            go(newTime.toLastPastDateTime());
+            go(newTime.toDateTimeBefore(DateTime.now()));
           }
         },
       ),

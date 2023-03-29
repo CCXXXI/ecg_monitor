@@ -11,12 +11,23 @@ import "data_types.dart";
 part "label_details.g.dart";
 
 @riverpod
-Future<List<DateTime>> _labelTimes(_LabelTimesRef ref, Label label) async =>
-    labelTimes(label);
+Future<List<DateTime>> _labelTimes(
+  _LabelTimesRef ref,
+  Label label,
+  DateTime start,
+  DateTime end,
+) async =>
+    labelTimes(label, start, end);
 
 @cwidget
-Widget _labelDetails(BuildContext context, WidgetRef ref, Label label) {
-  final timesAsync = ref.watch(_labelTimesProvider(label));
+Widget _labelDetails(
+  BuildContext context,
+  WidgetRef ref,
+  Label label,
+  DateTime start,
+  DateTime end,
+) {
+  final timesAsync = ref.watch(_labelTimesProvider(label, start, end));
 
   return Scaffold(
     appBar: AppBar(title: Text(label.name)),

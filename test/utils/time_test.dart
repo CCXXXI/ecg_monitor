@@ -4,15 +4,16 @@ import "package:flutter_test/flutter_test.dart";
 
 void main() {
   group("TimeOfDay.toLastPastDateTime", () {
+    final now = DateTime(2023, 1, 1, 1);
     test("past time", () {
       const pastTime = TimeOfDay(hour: 0, minute: 0);
-      final dateTime = pastTime.toLastPastDateTime();
-      expect(dateTime.isBefore(DateTime.now()), isTrue);
+      final dateTime = pastTime.toDateTimeBefore(now);
+      expect(dateTime.isBefore(now), isTrue);
     });
     test("future time", () {
       const futureTime = TimeOfDay(hour: 23, minute: 59);
-      final dateTime = futureTime.toLastPastDateTime();
-      expect(dateTime.isBefore(DateTime.now()), isTrue);
+      final dateTime = futureTime.toDateTimeBefore(now);
+      expect(dateTime.isBefore(now), isTrue);
     });
   });
 

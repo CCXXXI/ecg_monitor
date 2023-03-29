@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "disconnectDevice": MessageLookupByLibrary.simpleMessage("解绑设备"),
         "fakeDevice": MessageLookupByLibrary.simpleMessage("模拟设备"),
         "feedback": MessageLookupByLibrary.simpleMessage("反馈"),
+        "from": MessageLookupByLibrary.simpleMessage("从"),
         "gridColor": MessageLookupByLibrary.simpleMessage("网格颜色"),
         "heartRateDetecting": MessageLookupByLibrary.simpleMessage("正在检测心率……"),
         "history": MessageLookupByLibrary.simpleMessage("历史心电"),
@@ -90,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("简洁"),
         "sinusRhythm": MessageLookupByLibrary.simpleMessage("窦性心律"),
         "style": MessageLookupByLibrary.simpleMessage("显示风格"),
+        "to": MessageLookupByLibrary.simpleMessage("到"),
         "unknown": MessageLookupByLibrary.simpleMessage("未知"),
         "ventricularFlutterAndFibrillation":
             MessageLookupByLibrary.simpleMessage("室扑室颤"),

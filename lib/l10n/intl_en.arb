@@ -64,5 +64,7 @@
   "ventricularFlutterAndFibrillation": "Ventricular flutter and fibrillation",
   "atrioventricularBlock": "Atrioventricular block",
   "noise": "Noise",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "from": "From",
+  "to": "To"
 }

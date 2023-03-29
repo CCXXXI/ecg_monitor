@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
+import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 void main() {
@@ -18,17 +19,18 @@ void main() {
 
   testWidgets("Analytics", (tester) async {
     await tester.pumpWidget(
-      const ProviderScope(
+      ProviderScope(
         child: MaterialApp(
+          localizationsDelegates: const [S.delegate],
           home: Scaffold(
-            body: Analytics(),
+            body: Analytics(DateTime.now().subtract(anHour), DateTime.now()),
           ),
         ),
       ),
     );
 
     for (final label in Label.values) {
-      expect(find.text(label.name), findsOneWidget);
+      expect(find.text(label.name, skipOffstage: false), findsOneWidget);
     }
   });
 }
