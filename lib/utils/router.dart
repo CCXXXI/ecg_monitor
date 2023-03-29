@@ -67,8 +67,9 @@ final router = GoRouter(
           path: "/analytics",
           pageBuilder: (context, state) {
             final range = state.extra as List<DateTime>?;
-            final start = range?.first ?? DateTime.now().subtract(anHour);
-            final end = range?.last ?? DateTime.now();
+            final now = DateTime.now().copyWith(second: 0, millisecond: 0);
+            final start = range?.first ?? now.subtract(anHour);
+            final end = range?.last ?? now;
 
             return _FadeThroughTransitionPage(
               key: state.pageKey,
