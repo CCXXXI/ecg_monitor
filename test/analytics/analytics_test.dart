@@ -30,7 +30,7 @@ void main() {
     );
 
     for (final label in Label.values) {
-      expect(find.text(label.name), findsOneWidget);
+      expect(find.text(label.name, skipOffstage: false), findsOneWidget);
     }
   });
 }
