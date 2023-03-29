@@ -4,6 +4,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:go_router/go_router.dart";
 import "package:quiver/time.dart";
 
+import "../../utils/database.dart";
 import "../../utils/time.dart";
 
 part "controller.g.dart";
@@ -36,7 +37,7 @@ Widget _historyController(BuildContext context, DateTime time) {
       ),
       IconButton(
         icon: const Icon(Icons.arrow_back_outlined),
-        onPressed: () => replay(aSecond),
+        onPressed: () async => go(await beatTimeBefore(time)),
       ),
       TextButton(
         child: Text(time.toTimeString(showMs: true)),
@@ -52,7 +53,7 @@ Widget _historyController(BuildContext context, DateTime time) {
       ),
       IconButton(
         icon: const Icon(Icons.arrow_forward_outlined),
-        onPressed: () => forward(aSecond),
+        onPressed: () async => go(await beatTimeAfter(time)),
       ),
       IconButton(
         icon: const Icon(Icons.forward_5_outlined),
