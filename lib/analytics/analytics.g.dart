@@ -22,7 +22,7 @@ class Analytics extends ConsumerWidget {
     BuildContext _context,
     WidgetRef _ref,
   ) =>
-      analytics(
+      _analytics(
         _context,
         _ref,
         start,

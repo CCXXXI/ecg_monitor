@@ -26,7 +26,7 @@ Future<Map<Label, int>> _labelCounts(
 }
 
 @cwidget
-Widget analytics(
+Widget _analytics(
   BuildContext context,
   WidgetRef ref,
   DateTime start,
