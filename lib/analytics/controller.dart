@@ -18,7 +18,7 @@ Widget _analyticsController(
 ) {
   final s = S.of(context);
 
-  return TextButton(
+  return FilledButton.tonal(
     onPressed: () async {
       final now = DateTime.now().copyWith(second: 0, millisecond: 0);
 
