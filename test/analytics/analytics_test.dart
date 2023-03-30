@@ -18,6 +18,9 @@ void main() {
   });
 
   testWidgets("Analytics", (tester) async {
+    tester.binding.window.physicalSizeTestValue = const Size(4320, 7680);
+    addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+
     await tester.pumpWidget(
       ProviderScope(
         child: MaterialApp(

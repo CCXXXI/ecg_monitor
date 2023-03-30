@@ -8,6 +8,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "../utils/database.dart";
 import "controller.dart";
 import "data_types.dart";
+import "label_card.dart";
 import "label_details.dart";
 
 part "analytics.g.dart";
@@ -25,34 +26,36 @@ Future<Map<Label, int>> _labelCounts(
 }
 
 @cwidget
-Widget analytics(
+Widget _analytics(
   BuildContext context,
   WidgetRef ref,
   DateTime start,
   DateTime end,
 ) {
+  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
   final backgroundColor = Theme.of(context).colorScheme.background;
-  final labelCntAsync = ref.watch(_labelCountsProvider(start, end));
+  final cnt = ref.watch(_labelCountsProvider(start, end));
 
   return Column(
     children: [
-      if (labelCntAsync.isLoading)
+      if (cnt.isLoading)
         const LinearProgressIndicator()
       else
         const SizedBox(height: 4),
       Expanded(
-        child: ListView(
+        child: GridView.count(
+          crossAxisCount: isPortrait ? 2 : 4,
+          childAspectRatio: 1.75,
           children: [
             for (final label in Label.values)
               OpenContainer(
                 closedColor: backgroundColor,
                 closedElevation: 0,
-                closedBuilder: (_, __) => ListTile(
-                  title: Text(label.name),
-                  trailing: labelCntAsync.maybeWhen(
-                    data: (cnt) => Text(cnt[label].toString()),
-                    orElse: SizedBox.shrink,
-                  ),
+                tappable: false,
+                closedBuilder: (_, onTap) => LabelCard(
+                  label,
+                  cnt.value?[label],
+                  onTap,
                 ),
                 openColor: backgroundColor,
                 openBuilder: (_, __) => LabelDetails(label, start, end),
