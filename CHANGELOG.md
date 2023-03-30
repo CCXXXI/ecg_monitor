@@ -2,26 +2,22 @@
 
 ## [0.35.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.34.0...v0.35.0) (2023-03-30)
 
-
 ### Features
 
-* **analytics:** improve label widgets ([d3df707](https://github.com/CCXXXI/ecg_monitor/commit/d3df707ca9e3ef34a598df6c16cc1e094fb1fe64))
-
+- **analytics:** improve label widgets ([d3df707](https://github.com/CCXXXI/ecg_monitor/commit/d3df707ca9e3ef34a598df6c16cc1e094fb1fe64))
 
 ### Bug Fixes
 
-* **analytics:** FilledButton.tonal for AnalyticsController ([3f1fb77](https://github.com/CCXXXI/ecg_monitor/commit/3f1fb777895744ac01003b2f5cfde7d8ece5d117))
-
+- **analytics:** FilledButton.tonal for AnalyticsController ([3f1fb77](https://github.com/CCXXXI/ecg_monitor/commit/3f1fb777895744ac01003b2f5cfde7d8ece5d117))
 
 ### Code Refactoring
 
-* **analytics:** extract label_card.dart ([286a34a](https://github.com/CCXXXI/ecg_monitor/commit/286a34a05b9e01ecad83ebd005e2165e82a4797d))
-* **analytics:** make widget function private ([87c3886](https://github.com/CCXXXI/ecg_monitor/commit/87c3886f7b545d95e2615d2b91d4d8fc67c84d39))
-
+- **analytics:** extract label_card.dart ([286a34a](https://github.com/CCXXXI/ecg_monitor/commit/286a34a05b9e01ecad83ebd005e2165e82a4797d))
+- **analytics:** make widget function private ([87c3886](https://github.com/CCXXXI/ecg_monitor/commit/87c3886f7b545d95e2615d2b91d4d8fc67c84d39))
 
 ### Tests
 
-* **analytics:** set window size ([cf08430](https://github.com/CCXXXI/ecg_monitor/commit/cf084303c2ed77f1bb27b5506a743c472651586e))
+- **analytics:** set window size ([cf08430](https://github.com/CCXXXI/ecg_monitor/commit/cf084303c2ed77f1bb27b5506a743c472651586e))
 
 ## [0.34.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.33.1...v0.34.0) (2023-03-30)
 
