@@ -32,6 +32,7 @@ Widget analytics(
   DateTime start,
   DateTime end,
 ) {
+  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
   final backgroundColor = Theme.of(context).colorScheme.background;
   final cnt = ref.watch(_labelCountsProvider(start, end));
 
@@ -42,13 +43,20 @@ Widget analytics(
       else
         const SizedBox(height: 4),
       Expanded(
-        child: ListView(
+        child: GridView.count(
+          crossAxisCount: isPortrait ? 2 : 4,
+          childAspectRatio: 1.75,
           children: [
             for (final label in Label.values)
               OpenContainer(
                 closedColor: backgroundColor,
                 closedElevation: 0,
-                closedBuilder: (_, __) => LabelCard(label, cnt.value?[label]),
+                tappable: false,
+                closedBuilder: (_, onTap) => LabelCard(
+                  label,
+                  cnt.value?[label],
+                  onTap,
+                ),
                 openColor: backgroundColor,
                 openBuilder: (_, __) => LabelDetails(label, start, end),
                 useRootNavigator: true,

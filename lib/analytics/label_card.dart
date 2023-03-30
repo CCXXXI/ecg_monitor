@@ -7,9 +7,40 @@ import "data_types.dart";
 part "label_card.g.dart";
 
 @swidget
-Widget _labelCard(Label label, int? count) => ListTile(
-      title: Text(label.name),
-      subtitle: Text(label.desc),
-      isThreeLine: true,
-      trailing: count != null ? Text(count.toString()) : null,
+Widget _labelCard(
+  BuildContext context,
+  Label label,
+  int? count,
+  void Function() onTap,
+) =>
+    Card(
+      elevation: 0,
+      color: Theme.of(context).colorScheme.surfaceVariant,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    label.name,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  if (count != null) Text(count.toString())
+                ],
+              ),
+              const Divider(),
+              Text(
+                label.desc,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
