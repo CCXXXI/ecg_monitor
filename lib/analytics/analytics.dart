@@ -8,6 +8,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "../utils/database.dart";
 import "controller.dart";
 import "data_types.dart";
+import "label_card.dart";
 import "label_details.dart";
 
 part "analytics.g.dart";
@@ -32,11 +33,11 @@ Widget analytics(
   DateTime end,
 ) {
   final backgroundColor = Theme.of(context).colorScheme.background;
-  final labelCntAsync = ref.watch(_labelCountsProvider(start, end));
+  final cnt = ref.watch(_labelCountsProvider(start, end));
 
   return Column(
     children: [
-      if (labelCntAsync.isLoading)
+      if (cnt.isLoading)
         const LinearProgressIndicator()
       else
         const SizedBox(height: 4),
@@ -47,13 +48,7 @@ Widget analytics(
               OpenContainer(
                 closedColor: backgroundColor,
                 closedElevation: 0,
-                closedBuilder: (_, __) => ListTile(
-                  title: Text(label.name),
-                  trailing: labelCntAsync.maybeWhen(
-                    data: (cnt) => Text(cnt[label].toString()),
-                    orElse: SizedBox.shrink,
-                  ),
-                ),
+                closedBuilder: (_, __) => LabelCard(label, cnt.value?[label]),
                 openColor: backgroundColor,
                 openBuilder: (_, __) => LabelDetails(label, start, end),
                 useRootNavigator: true,
