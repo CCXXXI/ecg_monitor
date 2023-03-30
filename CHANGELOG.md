@@ -2,10 +2,9 @@
 
 ## [0.34.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.33.1...v0.34.0) (2023-03-30)
 
-
 ### Features
 
-* **label-details:** add description ([#294](https://github.com/CCXXXI/ecg_monitor/issues/294)) ([97d1d13](https://github.com/CCXXXI/ecg_monitor/commit/97d1d132643a170e09c82692355c83748985b7ab))
+- **label-details:** add description ([#294](https://github.com/CCXXXI/ecg_monitor/issues/294)) ([97d1d13](https://github.com/CCXXXI/ecg_monitor/commit/97d1d132643a170e09c82692355c83748985b7ab))
 
 ## [0.33.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.33.0...v0.33.1) (2023-03-29)
 
