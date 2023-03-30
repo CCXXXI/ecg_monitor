@@ -78,6 +78,35 @@ enum Label {
         return s.unknown;
     }
   }
+
+  String get desc {
+    final s = S.current;
+
+    switch (this) {
+      case Label.sinusRhythm:
+        return s.sinusRhythmDesc;
+      case Label.atrialPrematureBeat:
+        return s.atrialPrematureBeatDesc;
+      case Label.atrialFlutter:
+        return s.atrialFlutterDesc;
+      case Label.atrialFibrillation:
+        return s.atrialFibrillationDesc;
+      case Label.ventricularPrematureBeat:
+        return s.ventricularPrematureBeatDesc;
+      case Label.paroxysmalSupraVentricularTachycardia:
+        return s.paroxysmalSupraVentricularTachycardiaDesc;
+      case Label.ventricularPreExcitation:
+        return s.ventricularPreExcitationDesc;
+      case Label.ventricularFlutterAndFibrillation:
+        return s.ventricularFlutterAndFibrillationDesc;
+      case Label.atrioventricularBlock:
+        return s.atrioventricularBlockDesc;
+      case Label.noise:
+        return s.noiseDesc;
+      case Label.unknown:
+        return s.unknownDesc;
+    }
+  }
 }
 
 @freezed

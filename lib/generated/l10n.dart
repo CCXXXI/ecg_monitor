@@ -700,6 +700,116 @@ class S {
     );
   }
 
+  /// `A normal heart rhythm originating from the sinoatrial (SA) node, which is the natural pacemaker of the heart. The sinus rhythm produces regular electrical impulses that cause the heart to contract and pump blood effectively.`
+  String get sinusRhythmDesc {
+    return Intl.message(
+      'A normal heart rhythm originating from the sinoatrial (SA) node, which is the natural pacemaker of the heart. The sinus rhythm produces regular electrical impulses that cause the heart to contract and pump blood effectively.',
+      name: 'sinusRhythmDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An irregular heartbeat that originates in the atria (upper chambers of the heart) and occurs earlier than the next expected normal heartbeat. This can sometimes be felt as a palpitation or skipped beat.`
+  String get atrialPrematureBeatDesc {
+    return Intl.message(
+      'An irregular heartbeat that originates in the atria (upper chambers of the heart) and occurs earlier than the next expected normal heartbeat. This can sometimes be felt as a palpitation or skipped beat.',
+      name: 'atrialPrematureBeatDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A type of abnormal heart rhythm that occurs when the atria contract too quickly, causing a fast and irregular heartbeat. It typically has a distinctive saw-tooth pattern on an electrocardiogram (ECG).`
+  String get atrialFlutterDesc {
+    return Intl.message(
+      'A type of abnormal heart rhythm that occurs when the atria contract too quickly, causing a fast and irregular heartbeat. It typically has a distinctive saw-tooth pattern on an electrocardiogram (ECG).',
+      name: 'atrialFlutterDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The most common type of irregular heart rhythm, where the atria contract rapidly and irregularly. This can lead to poor blood flow and increase the risk of blood clots, stroke, and heart failure.`
+  String get atrialFibrillationDesc {
+    return Intl.message(
+      'The most common type of irregular heart rhythm, where the atria contract rapidly and irregularly. This can lead to poor blood flow and increase the risk of blood clots, stroke, and heart failure.',
+      name: 'atrialFibrillationDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A type of irregular heartbeat that originates from the ventricles (lower chambers of the heart) and occurs earlier than the next expected normal heartbeat.`
+  String get ventricularPrematureBeatDesc {
+    return Intl.message(
+      'A type of irregular heartbeat that originates from the ventricles (lower chambers of the heart) and occurs earlier than the next expected normal heartbeat.',
+      name: 'ventricularPrematureBeatDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A sudden, rapid heart rate that originates above the ventricles and can be caused by abnormal electrical signals in the heart. It usually starts and stops suddenly, and can cause symptoms such as palpitations, chest pain, and dizziness.`
+  String get paroxysmalSupraVentricularTachycardiaDesc {
+    return Intl.message(
+      'A sudden, rapid heart rate that originates above the ventricles and can be caused by abnormal electrical signals in the heart. It usually starts and stops suddenly, and can cause symptoms such as palpitations, chest pain, and dizziness.',
+      name: 'paroxysmalSupraVentricularTachycardiaDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A condition where there is an extra pathway in the heart that allows electrical impulses to bypass the usual route through the atrioventricular (AV) node. This can lead to a rapid heartbeat and an increased risk of arrhythmias.`
+  String get ventricularPreExcitationDesc {
+    return Intl.message(
+      'A condition where there is an extra pathway in the heart that allows electrical impulses to bypass the usual route through the atrioventricular (AV) node. This can lead to a rapid heartbeat and an increased risk of arrhythmias.',
+      name: 'ventricularPreExcitationDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Life-threatening arrhythmias that occur when the ventricles contract too quickly and irregularly, which can result in the heart not being able to pump blood effectively.`
+  String get ventricularFlutterAndFibrillationDesc {
+    return Intl.message(
+      'Life-threatening arrhythmias that occur when the ventricles contract too quickly and irregularly, which can result in the heart not being able to pump blood effectively.',
+      name: 'ventricularFlutterAndFibrillationDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A condition where the electrical signals between the atria and ventricles are delayed or blocked, which can result in a slower heart rate and other symptoms such as dizziness, fainting, and shortness of breath.`
+  String get atrioventricularBlockDesc {
+    return Intl.message(
+      'A condition where the electrical signals between the atria and ventricles are delayed or blocked, which can result in a slower heart rate and other symptoms such as dizziness, fainting, and shortness of breath.',
+      name: 'atrioventricularBlockDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In continuous monitoring, ECG signal is corrupted by different noises.`
+  String get noiseDesc {
+    return Intl.message(
+      'In continuous monitoring, ECG signal is corrupted by different noises.',
+      name: 'noiseDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Heart beats that have not been classified yet.`
+  String get unknownDesc {
+    return Intl.message(
+      'Heart beats that have not been classified yet.',
+      name: 'unknownDesc',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `From`
   String get from {
     return Intl.message(

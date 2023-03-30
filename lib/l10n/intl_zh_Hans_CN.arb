@@ -65,6 +65,17 @@
   "atrioventricularBlock": "房室传导阻滞",
   "noise": "噪声",
   "unknown": "未知",
+  "sinusRhythmDesc": "一种正常的心律，起源于心脏的窦房结，它产生规律的电脉冲，使心脏有效地收缩和泵血。",
+  "atrialPrematureBeatDesc": "一种异常的心律，起源于心脏的心房（上腔室），比下一个期望的正常心跳提前发生。有时会感到心悸或漏博。",
+  "atrialFlutterDesc": "一种异常的心律，当心房收缩过快时，会引起快速和不规则的心跳。通常在心电图上有一个特有的锯齿状图案。",
+  "atrialFibrillationDesc": "最常见的异常心律，当心房快速而不规则地收缩时会发生。这可能导致血液流动不畅，增加血栓、中风和心力衰竭的风险。",
+  "ventricularPrematureBeatDesc": "一种异常的心律，起源于心脏的室壁（下腔室），比下一个期望的正常心跳提前发生。",
+  "paroxysmalSupraVentricularTachycardiaDesc": "一种突然发生的快速心跳，起源于心脏上部，可能是由于心脏异常电信号引起的。它通常突然开始和停止，可能导致心悸、胸痛和头晕等症状。",
+  "ventricularPreExcitationDesc": "一种异常的心律，存在一条额外的传导路径，使电脉冲可以绕过正常的房室结路线，这可能导致心跳加速和心律失常的风险增加。",
+  "ventricularFlutterAndFibrillationDesc": "危及生命的心律失常，当室壁过快和不规则收缩时，可能导致心脏无法有效地泵血。",
+  "atrioventricularBlockDesc": "一种异常的心律，心房和心室之间的电信号被延迟或阻断，可能导致心跳减缓和其他症状，如头晕、晕厥和呼吸急促。",
+  "noiseDesc": "在连续监测中，心电图信号会受到不同噪声的干扰。",
+  "unknownDesc": "尚未分类的心跳。",
   "from": "从",
   "to": "到"
 }

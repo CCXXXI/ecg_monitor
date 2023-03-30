@@ -31,19 +31,29 @@ Widget _labelDetails(
 
   return Scaffold(
     appBar: AppBar(title: Text(label.name)),
-    body: timesAsync.maybeWhen(
-      data: (times) => ListView(
-        children: [
-          for (final time in times)
-            ListTile(
-              title: Text(time.toString()),
-              onTap: () => context
-                ..pop()
-                ..go("/history", extra: time),
+    body: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(label.desc),
+        ),
+        Expanded(
+          child: timesAsync.maybeWhen(
+            data: (times) => ListView(
+              children: [
+                for (final time in times)
+                  ListTile(
+                    title: Text(time.toString()),
+                    onTap: () => context
+                      ..pop()
+                      ..go("/history", extra: time),
+                  ),
+              ],
             ),
-        ],
-      ),
-      orElse: () => const Center(child: CircularProgressIndicator()),
+            orElse: () => const Center(child: CircularProgressIndicator()),
+          ),
+        ),
+      ],
     ),
   );
 }
