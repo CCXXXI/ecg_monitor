@@ -31,11 +31,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("ECG Monitor"),
         "atrialFibrillation":
             MessageLookupByLibrary.simpleMessage("Atrial fibrillation"),
+        "atrialFibrillationDesc": MessageLookupByLibrary.simpleMessage(
+            "The most common type of irregular heart rhythm, where the atria contract rapidly and irregularly. This can lead to poor blood flow and increase the risk of blood clots, stroke, and heart failure."),
         "atrialFlutter": MessageLookupByLibrary.simpleMessage("Atrial flutter"),
+        "atrialFlutterDesc": MessageLookupByLibrary.simpleMessage(
+            "A type of abnormal heart rhythm that occurs when the atria contract too quickly, causing a fast and irregular heartbeat. It typically has a distinctive saw-tooth pattern on an electrocardiogram (ECG)."),
         "atrialPrematureBeat":
             MessageLookupByLibrary.simpleMessage("Atrial premature beat"),
+        "atrialPrematureBeatDesc": MessageLookupByLibrary.simpleMessage(
+            "An irregular heartbeat that originates in the atria (upper chambers of the heart) and occurs earlier than the next expected normal heartbeat. This can sometimes be felt as a palpitation or skipped beat."),
         "atrioventricularBlock":
             MessageLookupByLibrary.simpleMessage("Atrioventricular block"),
+        "atrioventricularBlockDesc": MessageLookupByLibrary.simpleMessage(
+            "A condition where the electrical signals between the atria and ventricles are delayed or blocked, which can result in a slower heart rate and other symptoms such as dizziness, fainting, and shortness of breath."),
         "autoGenerate": MessageLookupByLibrary.simpleMessage("Auto generate"),
         "autoUpload": MessageLookupByLibrary.simpleMessage("Auto upload"),
         "backgroundColor":
@@ -90,9 +98,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "noHistoryData": MessageLookupByLibrary.simpleMessage(
             "No data at the selected time"),
         "noise": MessageLookupByLibrary.simpleMessage("Noise"),
+        "noiseDesc": MessageLookupByLibrary.simpleMessage(
+            "In continuous monitoring, ECG signal is corrupted by different noises."),
         "paroxysmalSupraVentricularTachycardia":
             MessageLookupByLibrary.simpleMessage(
                 "Paroxysmal supra-ventricular tachycardia"),
+        "paroxysmalSupraVentricularTachycardiaDesc":
+            MessageLookupByLibrary.simpleMessage(
+                "A sudden, rapid heart rate that originates above the ventricles and can be caused by abnormal electrical signals in the heart. It usually starts and stops suddenly, and can cause symptoms such as palpitations, chest pain, and dizziness."),
         "portraitDuration":
             MessageLookupByLibrary.simpleMessage("Port. duration"),
         "professional": MessageLookupByLibrary.simpleMessage("prof."),
@@ -105,16 +118,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "showDots": MessageLookupByLibrary.simpleMessage("Show dots"),
         "simple": MessageLookupByLibrary.simpleMessage("simp."),
         "sinusRhythm": MessageLookupByLibrary.simpleMessage("Sinus rhythm"),
+        "sinusRhythmDesc": MessageLookupByLibrary.simpleMessage(
+            "A normal heart rhythm originating from the sinoatrial (SA) node, which is the natural pacemaker of the heart. The sinus rhythm produces regular electrical impulses that cause the heart to contract and pump blood effectively."),
         "style": MessageLookupByLibrary.simpleMessage("Style"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "unknown": MessageLookupByLibrary.simpleMessage("Unknown"),
+        "unknownDesc": MessageLookupByLibrary.simpleMessage(
+            "Heart beats that have not been classified yet."),
         "ventricularFlutterAndFibrillation":
             MessageLookupByLibrary.simpleMessage(
                 "Ventricular flutter and fibrillation"),
+        "ventricularFlutterAndFibrillationDesc":
+            MessageLookupByLibrary.simpleMessage(
+                "Life-threatening arrhythmias that occur when the ventricles contract too quickly and irregularly, which can result in the heart not being able to pump blood effectively."),
         "ventricularPreExcitation":
             MessageLookupByLibrary.simpleMessage("Ventricular pre-excitation"),
+        "ventricularPreExcitationDesc": MessageLookupByLibrary.simpleMessage(
+            "A condition where there is an extra pathway in the heart that allows electrical impulses to bypass the usual route through the atrioventricular (AV) node. This can lead to a rapid heartbeat and an increased risk of arrhythmias."),
         "ventricularPrematureBeat":
             MessageLookupByLibrary.simpleMessage("Ventricular premature beat"),
+        "ventricularPrematureBeatDesc": MessageLookupByLibrary.simpleMessage(
+            "A type of irregular heartbeat that originates from the ventricles (lower chambers of the heart) and occurs earlier than the next expected normal heartbeat."),
         "verticalLines": MessageLookupByLibrary.simpleMessage("Ver. lines")
       };
 }

@@ -65,6 +65,17 @@
   "atrioventricularBlock": "Atrioventricular block",
   "noise": "Noise",
   "unknown": "Unknown",
+  "sinusRhythmDesc": "A normal heart rhythm originating from the sinoatrial (SA) node, which is the natural pacemaker of the heart. The sinus rhythm produces regular electrical impulses that cause the heart to contract and pump blood effectively.",
+  "atrialPrematureBeatDesc": "An irregular heartbeat that originates in the atria (upper chambers of the heart) and occurs earlier than the next expected normal heartbeat. This can sometimes be felt as a palpitation or skipped beat.",
+  "atrialFlutterDesc": "A type of abnormal heart rhythm that occurs when the atria contract too quickly, causing a fast and irregular heartbeat. It typically has a distinctive saw-tooth pattern on an electrocardiogram (ECG).",
+  "atrialFibrillationDesc": "The most common type of irregular heart rhythm, where the atria contract rapidly and irregularly. This can lead to poor blood flow and increase the risk of blood clots, stroke, and heart failure.",
+  "ventricularPrematureBeatDesc": "A type of irregular heartbeat that originates from the ventricles (lower chambers of the heart) and occurs earlier than the next expected normal heartbeat.",
+  "paroxysmalSupraVentricularTachycardiaDesc": "A sudden, rapid heart rate that originates above the ventricles and can be caused by abnormal electrical signals in the heart. It usually starts and stops suddenly, and can cause symptoms such as palpitations, chest pain, and dizziness.",
+  "ventricularPreExcitationDesc": "A condition where there is an extra pathway in the heart that allows electrical impulses to bypass the usual route through the atrioventricular (AV) node. This can lead to a rapid heartbeat and an increased risk of arrhythmias.",
+  "ventricularFlutterAndFibrillationDesc": "Life-threatening arrhythmias that occur when the ventricles contract too quickly and irregularly, which can result in the heart not being able to pump blood effectively.",
+  "atrioventricularBlockDesc": "A condition where the electrical signals between the atria and ventricles are delayed or blocked, which can result in a slower heart rate and other symptoms such as dizziness, fainting, and shortness of breath.",
+  "noiseDesc": "In continuous monitoring, ECG signal is corrupted by different noises.",
+  "unknownDesc": "Heart beats that have not been classified yet.",
   "from": "From",
   "to": "To"
 }
