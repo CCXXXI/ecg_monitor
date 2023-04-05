@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.35.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.0...v0.35.1) (2023-04-05)
+
+### Bug Fixes
+
+- **deps:** update kotlin monorepo to v1.8.20 ([#296](https://github.com/CCXXXI/ecg_monitor/issues/296)) ([7813cfb](https://github.com/CCXXXI/ecg_monitor/commit/7813cfbb4d42782b4a6f9a92a85921514829c23e))
+
 ## [0.35.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.34.0...v0.35.0) (2023-03-30)
 
 ### Features
