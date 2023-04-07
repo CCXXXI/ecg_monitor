@@ -35,7 +35,10 @@ Widget _labelDetails(
       children: [
         Padding(
           padding: const EdgeInsets.all(8),
-          child: Text(label.desc),
+          child: Text("房性早搏共 124 次，占比 2.61%，在正常范围（< 10%）内。\n"
+              "成对房早 13 次，房早二联律 15 次，房早三联律 2 次，短阵房速 8 阵，短阵房速最快心室率 112 次/分。\n"
+              "房性早搏可在许多健康人中出现，极少引起症状。饮用咖啡、茶或酒精或者使用有些治疗感冒、花粉热或哮喘的药物都可能会引起房性早搏。\n"
+              "以下是房性早搏出现的具体时间，可以点击查看对应时间的心电图。"),
         ),
         Expanded(
           child: timesAsync.maybeWhen(
