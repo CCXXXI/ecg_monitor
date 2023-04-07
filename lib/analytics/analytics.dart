@@ -32,9 +32,10 @@ Widget _analytics(
   DateTime start,
   DateTime end,
 ) {
-  final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
   final backgroundColor = Theme.of(context).colorScheme.background;
   final cnt = ref.watch(_labelCountsProvider(start, end));
+  final values = cnt.value?.values;
+  final total = values?.reduce((a, b) => a + b);
 
   return Column(
     children: [
@@ -42,10 +43,20 @@ Widget _analytics(
         const LinearProgressIndicator()
       else
         const SizedBox(height: 4),
+      ListTile(
+        title: const Text("总体分析结果"),
+        subtitle: const Text("报告仅供参考，有胸痛、胸闷等不适感请及时就医。"),
+        trailing: Text(
+          "正常",
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge
+              ?.copyWith(color: Colors.green[700]),
+        ),
+      ),
+      const Divider(),
       Expanded(
-        child: GridView.count(
-          crossAxisCount: isPortrait ? 2 : 4,
-          childAspectRatio: 1.75,
+        child: ListView(
           children: [
             for (final label in Label.values)
               OpenContainer(
@@ -55,6 +66,7 @@ Widget _analytics(
                 closedBuilder: (_, onTap) => LabelCard(
                   label,
                   cnt.value?[label],
+                  total,
                   onTap,
                 ),
                 openColor: backgroundColor,

@@ -10,6 +10,7 @@ class LabelCard extends StatelessWidget {
   const LabelCard(
     this.label,
     this.count,
+    this.total,
     this.onTap, {
     Key? key,
   }) : super(key: key);
@@ -18,6 +19,8 @@ class LabelCard extends StatelessWidget {
 
   final int? count;
 
+  final int? total;
+
   final void Function() onTap;
 
   @override
@@ -25,6 +28,7 @@ class LabelCard extends StatelessWidget {
         _context,
         label,
         count,
+        total,
         onTap,
       );
   @override
@@ -32,6 +36,7 @@ class LabelCard extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(EnumProperty<Label>('label', label));
     properties.add(DiagnosticsProperty<int?>('count', count));
+    properties.add(DiagnosticsProperty<int?>('total', total));
     properties.add(DiagnosticsProperty<void Function()>('onTap', onTap));
   }
 }

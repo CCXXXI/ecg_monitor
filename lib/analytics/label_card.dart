@@ -11,36 +11,61 @@ Widget _labelCard(
   BuildContext context,
   Label label,
   int? count,
+  int? total,
   void Function() onTap,
 ) =>
-    Card(
-      elevation: 0,
-      color: Theme.of(context).colorScheme.surfaceVariant,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    label.name,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  if (count != null) Text(count.toString())
-                ],
-              ),
-              const Divider(),
-              Text(
-                label.desc,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
-          ),
-        ),
+    ListTile(
+      onTap: onTap,
+      isThreeLine: true,
+      title: Text(
+        label.name +
+            (count == null
+                ? ""
+                : count == 0
+                    ? "  无"
+                    : "  $count 次  "
+                        "${(count / total! * 100).toStringAsFixed(2)}%"),
+      ),
+      subtitle: getFakeSubtitle(label),
+      trailing: Text(
+        "正常",
+        style: Theme.of(context)
+            .textTheme
+            .bodyLarge
+            ?.copyWith(color: Colors.green[700]),
       ),
     );
+
+Widget getFakeSubtitle(Label label) {
+  switch (label) {
+    case Label.sinusRhythm:
+      return Wrap(
+        children: const [
+          Text(
+            "平均心室率 80，最快130，最慢54；无窦性停搏",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            "参考值：占比 > 90%，平均心室率 60-100，无窦性停搏",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      );
+    case Label.atrialPrematureBeat:
+      return Wrap(
+        children: const [
+          Text(
+            "成对房早 13 次，房早二联律 15 次，房早三联律 2 次",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text("参考值：占比 < 10%"),
+        ],
+      );
+    case Label.ventricularPreExcitation:
+      return const Text("参考值：占比 < 3%");
+  }
+  return const Text("参考值：无");
+}
