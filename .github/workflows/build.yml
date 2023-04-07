@@ -5,7 +5,10 @@ on:
   pull_request:
 
 jobs:
-  build-apk-release:
+  build-apk:
+    strategy:
+      matrix:
+        mode: [ release, debug ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,12 +16,15 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build apk --split-per-abi --release
+      - run: flutter build apk --split-per-abi --${{ matrix.mode }}
       - uses: ./.github/actions/upload
         with:
           files: build/app/outputs/flutter-apk/*
 
-  build-apk-debug:
+  build-appbundle:
+    strategy:
+      matrix:
+        mode: [ release, debug ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,33 +32,7 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build apk --split-per-abi --debug
-      - uses: ./.github/actions/upload
-        with:
-          files: build/app/outputs/flutter-apk/*
-
-  build-appbundle-release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-      - uses: ./.github/actions/setup-android
-
-      - run: flutter build appbundle --release
-      - uses: ./.github/actions/upload
-        with:
-          path: build/app/outputs/bundle/*
-
-  build-appbundle-debug:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-      - uses: ./.github/actions/setup-android
-
-      - run: flutter build appbundle --debug
+      - run: flutter build appbundle --${{ matrix.mode }}
       - uses: ./.github/actions/upload
         with:
           path: build/app/outputs/bundle/*
