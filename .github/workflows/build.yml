@@ -5,26 +5,39 @@ on:
   pull_request:
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        include:
-          - os: ubuntu-latest
-            command: 'apk --split-per-abi'
-            files: build/app/outputs/apk/release/*.apk
-    runs-on: ${{ matrix.os }}
+  build-apk:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build ${{ matrix.command }}
+      - run: flutter build apk --split-per-abi
 
       - uses: actions/upload-artifact@v3
         with:
-          path: ${{ matrix.files }}
+          name: apk
+          path: build/app/outputs/apk/release/*.apk
       - if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ matrix.files }}
+          files: build/app/outputs/apk/release/*.apk
+
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: ./.github/actions/setup-flutter
+
+      - run: flutter build ios --no-codesign
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: build/ios/iphoneos/*.app
+#      - if: startsWith(github.ref, 'refs/tags/v')
+#        uses: softprops/action-gh-release@v1
+#        with:
+#          files: ${{ matrix.files }}
