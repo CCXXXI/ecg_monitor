@@ -8,7 +8,6 @@ jobs:
   build:
     strategy:
       matrix:
-        mode: [ release, debug ]
         command: [ 'apk --split-per-abi', 'appbundle' ]
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +16,7 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build ${{ matrix.command }} --${{ matrix.mode }}
+      - run: flutter build ${{ matrix.command }}
 
       - uses: actions/upload-artifact@v3
         with:
