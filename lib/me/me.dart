@@ -16,9 +16,9 @@ Widget _me(BuildContext context) {
   return ListView(
     children: [
       const ListTile(
-        leading: Icon(Icons.person_outlined),
-        title: Text("某用户"),
-        subtitle: Text("某些信息\n某些信息"),
+        leading: CircleAvatar(child: Text('测')),
+        title: Text("测试用户"),
+        subtitle: Text("男 21岁\nID: test"),
         isThreeLine: true,
       ),
       ListTile(
