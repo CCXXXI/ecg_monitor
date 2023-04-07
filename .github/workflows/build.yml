@@ -17,7 +17,7 @@ jobs:
           submodules: recursive
       - uses: ./.github/actions/setup-android
 
-      - run: flutter build {{ matrix.command }} --${{ matrix.mode }}
+      - run: flutter build ${{ matrix.command }} --${{ matrix.mode }}
 
       - uses: actions/upload-artifact@v3
         with:
