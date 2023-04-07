@@ -1,6 +1,7 @@
 import "dart:async";
 import "dart:collection";
 import "dart:ffi";
+import "dart:io";
 
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
@@ -132,6 +133,11 @@ class _HeartRate extends _$HeartRate {
 
 @cwidget
 Widget _heartRateWidget(BuildContext context, WidgetRef ref) {
+  if (Platform.isIOS) {
+    // iOS is not fully supported yet.
+    return const Placeholder();
+  }
+
   final s = S.of(context);
 
   final data = ref.watch(_heartRateProvider);
