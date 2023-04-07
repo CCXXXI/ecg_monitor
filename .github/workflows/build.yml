@@ -8,8 +8,10 @@ jobs:
   build:
     strategy:
       matrix:
-        command: [ 'apk --split-per-abi' ]
-    runs-on: ubuntu-latest
+        include:
+          - os: ubuntu-latest
+            command: 'apk --split-per-abi'
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
         with:
