@@ -35,7 +35,7 @@ jobs:
       - run: flutter build appbundle --${{ matrix.mode }}
       - uses: ./.github/actions/upload
         with:
-          path: build/app/outputs/bundle/*
+          files: build/app/outputs/bundle/*
 
   sentry:
     if: startsWith(github.ref, 'refs/tags/v')
