@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        command: [ 'apk --split-per-abi', 'appbundle' ]
+        command: [ 'apk --split-per-abi' ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
