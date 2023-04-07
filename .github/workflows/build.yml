@@ -15,10 +15,6 @@ jobs:
 
       - run: flutter build apk --split-per-abi
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: apk
-          path: build/app/outputs/apk/release/*.apk
       - if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
@@ -34,13 +30,11 @@ jobs:
 
       - run: flutter build ios --no-codesign
 
-      - uses: vimtor/action-zip@v1.1
+      - if: startsWith(github.ref, 'refs/tags/v')
+        uses: vimtor/action-zip@v1.1
         with:
           files: build/ios/iphoneos/Runner.app
           dest: Runner.app.zip
-      - uses: actions/upload-artifact@v3
-        with:
-          path: Runner.app.zip
       - if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
