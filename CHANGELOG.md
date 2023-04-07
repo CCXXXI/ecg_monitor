@@ -1,5 +1,44 @@
 # Changelog
 
+## [0.35.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.1...v0.35.2) (2023-04-07)
+
+
+### Bug Fixes
+
+* **heart-rate:** no heart rate for iOS yet ([44d1051](https://github.com/CCXXXI/ecg_monitor/commit/44d1051e960de7576ad9ac872c3af8559961a43d))
+
+
+### Reverts
+
+* Revert "ci(build): correct setup" ([000d8e1](https://github.com/CCXXXI/ecg_monitor/commit/000d8e1ac26d3b7fe5594549ab2aaaeeb67103b4))
+* Revert "ci(build): move setup to matrix" ([16b355b](https://github.com/CCXXXI/ecg_monitor/commit/16b355bb5859892472f7b2ec12b737de262712f7))
+
+
+### Miscellaneous Chores
+
+* save IDEA config ([b9f4f83](https://github.com/CCXXXI/ecg_monitor/commit/b9f4f834b346d2d2769977ba6b06607f25eeb5dc))
+
+
+### Continuous Integration
+
+* **build:** build ios ([c5329b5](https://github.com/CCXXXI/ecg_monitor/commit/c5329b58b04d000e9cfa5403ed3e3a60b048c57f))
+* **build:** correct command ([0a815f8](https://github.com/CCXXXI/ecg_monitor/commit/0a815f830b5dfc7fd34c9e581781c833c959676a))
+* **build:** correct files ([660b5e1](https://github.com/CCXXXI/ecg_monitor/commit/660b5e1f93aa481a99aef45e21c1bf942fcedf8d))
+* **build:** correct setup ([95570fd](https://github.com/CCXXXI/ecg_monitor/commit/95570fdc241e8c1b4a81b3aa8d928a328089b535))
+* **build:** fix input ([cbd4a58](https://github.com/CCXXXI/ecg_monitor/commit/cbd4a586f5e2ab7bd1fb6eedce490616bc8a7b35))
+* **build:** more matrix ([f27a02d](https://github.com/CCXXXI/ecg_monitor/commit/f27a02dee2b6b06566561f063be5759103131728))
+* **build:** move setup to matrix ([a6adee4](https://github.com/CCXXXI/ecg_monitor/commit/a6adee49f352e49419e1ab5c0cff0c0aa46ecf96))
+* **build:** no aab ([6709410](https://github.com/CCXXXI/ecg_monitor/commit/67094105ee748b795c5c2a2bb35b462602b8a515))
+* **build:** no artifacts ([abe4e1f](https://github.com/CCXXXI/ecg_monitor/commit/abe4e1fd1b01138d65a06bd8b3864a770d4269f1))
+* **build:** no debug build ([01c15d7](https://github.com/CCXXXI/ecg_monitor/commit/01c15d714e148279167a3defdb69014e9607a49f))
+* **build:** simplify glob ([a22c275](https://github.com/CCXXXI/ecg_monitor/commit/a22c27516e2e9c249b93d0081b7c5ffdd7c83dc7))
+* **build:** simplify jobs with matrix ([d3d4a59](https://github.com/CCXXXI/ecg_monitor/commit/d3d4a598407d236569c7436f5e66043cb771cbda))
+* **build:** simplify matrix ([2dfa5df](https://github.com/CCXXXI/ecg_monitor/commit/2dfa5df27fae8016bdf053e3d17600663cba7849))
+* **build:** simplify upload ([3f42693](https://github.com/CCXXXI/ecg_monitor/commit/3f42693d6df976c10cbd030dc287e7e5f3bcad3f))
+* **build:** upload less files ([100909d](https://github.com/CCXXXI/ecg_monitor/commit/100909de25bedad2b399fa9bb5bcadf9775bf04d))
+* **build:** zip Runner.app ([c5e63de](https://github.com/CCXXXI/ecg_monitor/commit/c5e63dec2a7669aa685cafb0acb93139ee5a5180))
+* separate sentry ([849975d](https://github.com/CCXXXI/ecg_monitor/commit/849975d233f2c9d4b29931768ee6270f95face40))
+
 ## [0.35.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.0...v0.35.1) (2023-04-05)
 
 ### Bug Fixes
