@@ -10,14 +10,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            setup: android
             command: 'apk --split-per-abi'
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - uses: ./.github/actions/setup-${{ matrix.setup }}
+      - uses: ./.github/actions/setup-android
 
       - run: flutter build ${{ matrix.command }}
 
