@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.35.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.2...v0.35.3) (2023-04-07)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency flutter_launcher_icons to ^0.13.0 ([#304](https://github.com/CCXXXI/ecg_monitor/issues/304)) ([3dde9ff](https://github.com/CCXXXI/ecg_monitor/commit/3dde9ffb90465965af14923ac7195a45a2688d4c))
+
 ## [0.35.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.1...v0.35.2) (2023-04-07)
 
 ### Bug Fixes
