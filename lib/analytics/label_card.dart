@@ -42,12 +42,12 @@ Widget getFakeSubtitle(Label label) {
       return Wrap(
         children: const [
           Text(
-            "平均心室率 80，最快130，最慢54；无窦性停搏",
+            "参考值：占比 > 90%，平均心室率 60-100，无窦性停搏",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
           Text(
-            "参考值：占比 > 90%，平均心室率 60-100，无窦性停搏",
+            "平均心室率 80，最快130，最慢54；无窦性停搏",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -56,12 +56,12 @@ Widget getFakeSubtitle(Label label) {
     case Label.atrialPrematureBeat:
       return Wrap(
         children: const [
+          Text("参考值：占比 < 10%"),
           Text(
             "成对房早 13 次，房早二联律 15 次，房早三联律 2 次",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          Text("参考值：占比 < 10%"),
         ],
       );
     case Label.ventricularPreExcitation:
