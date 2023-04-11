@@ -11,7 +11,7 @@ Widget _labelCard(
   BuildContext context,
   Label label,
   int? count,
-  void Function() onTap,
+  VoidCallback onTap,
 ) =>
     Card(
       elevation: 0,
