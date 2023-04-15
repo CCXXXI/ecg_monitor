@@ -2,15 +2,13 @@
 
 ## [0.35.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.3...v0.35.4) (2023-04-15)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency fl_chart to ^0.62.0 ([#309](https://github.com/CCXXXI/ecg_monitor/issues/309)) ([8e71896](https://github.com/CCXXXI/ecg_monitor/commit/8e71896fe61effb54c656a726ec47e2e8db1b082))
-
+- **deps:** update dependency fl_chart to ^0.62.0 ([#309](https://github.com/CCXXXI/ecg_monitor/issues/309)) ([8e71896](https://github.com/CCXXXI/ecg_monitor/commit/8e71896fe61effb54c656a726ec47e2e8db1b082))
 
 ### Code Refactoring
 
-* **label-card:** `void Function()` -&gt; `VoidCallback` ([#306](https://github.com/CCXXXI/ecg_monitor/issues/306)) ([6aae7f3](https://github.com/CCXXXI/ecg_monitor/commit/6aae7f3d93c261c3962a5da44e0cfb9f2a63cd88))
+- **label-card:** `void Function()` -&gt; `VoidCallback` ([#306](https://github.com/CCXXXI/ecg_monitor/issues/306)) ([6aae7f3](https://github.com/CCXXXI/ecg_monitor/commit/6aae7f3d93c261c3962a5da44e0cfb9f2a63cd88))
 
 ## [0.35.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.2...v0.35.3) (2023-04-07)
 
