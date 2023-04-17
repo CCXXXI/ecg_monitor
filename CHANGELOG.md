@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.35.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.4...v0.35.5) (2023-04-17)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.30 ([#310](https://github.com/CCXXXI/ecg_monitor/issues/310)) ([9a92a43](https://github.com/CCXXXI/ecg_monitor/commit/9a92a438e86ab49d265f3fb178fea490804bfb5b))
+
 ## [0.35.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.3...v0.35.4) (2023-04-15)
 
 ### Bug Fixes
