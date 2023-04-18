@@ -2,10 +2,9 @@
 
 ## [0.35.6](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.5...v0.35.6) (2023-04-18)
 
-
 ### Miscellaneous Chores
 
-* **deps:** update dependency all_lint_rules_community to ^0.0.31 ([#312](https://github.com/CCXXXI/ecg_monitor/issues/312)) ([cc7c687](https://github.com/CCXXXI/ecg_monitor/commit/cc7c687ac12526ff3b9a565bf92ab6ebcee15084))
+- **deps:** update dependency all_lint_rules_community to ^0.0.31 ([#312](https://github.com/CCXXXI/ecg_monitor/issues/312)) ([cc7c687](https://github.com/CCXXXI/ecg_monitor/commit/cc7c687ac12526ff3b9a565bf92ab6ebcee15084))
 
 ## [0.35.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.4...v0.35.5) (2023-04-17)
 
