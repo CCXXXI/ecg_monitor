@@ -17,7 +17,7 @@ part "chart.g.dart";
 final _logger = Logger("RealTimeChart");
 
 @riverpod
-double _refreshInterval(_RefreshIntervalRef ref) {
+double _refreshIntervalMs(_RefreshIntervalMsRef ref) {
   final rateHz = ref.watch(refreshRateHzProvider);
   return Duration.millisecondsPerSecond / rateHz;
 }
@@ -70,7 +70,7 @@ class _Points extends _$Points {
     }
 
     // refresh UI
-    final intervalMs = ref.watch(_refreshIntervalProvider);
+    final intervalMs = ref.watch(_refreshIntervalMsProvider);
     if (point.x >= _previousRefreshTimeMs + intervalMs) {
       _previousRefreshTimeMs = point.x;
       state = _buffer.toList(growable: false);

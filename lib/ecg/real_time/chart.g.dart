@@ -24,22 +24,22 @@ class RealTimeChart extends ConsumerWidget {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$refreshIntervalHash() => r'773cbd91949094503b63c614551cef772768a4d6';
+String _$refreshIntervalMsHash() => r'27f5135c481d4fad5dec0b9fbdeb142075fe35ea';
 
-/// See also [_refreshInterval].
-@ProviderFor(_refreshInterval)
-final _refreshIntervalProvider = AutoDisposeProvider<double>.internal(
-  _refreshInterval,
-  name: r'_refreshIntervalProvider',
+/// See also [_refreshIntervalMs].
+@ProviderFor(_refreshIntervalMs)
+final _refreshIntervalMsProvider = AutoDisposeProvider<double>.internal(
+  _refreshIntervalMs,
+  name: r'_refreshIntervalMsProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$refreshIntervalHash,
+      : _$refreshIntervalMsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _RefreshIntervalRef = AutoDisposeProviderRef<double>;
-String _$pointsHash() => r'49630cfe6bc38aab07beceb009c9d73165011cf3';
+typedef _RefreshIntervalMsRef = AutoDisposeProviderRef<double>;
+String _$pointsHash() => r'3f60bb2a7fb797bc913c0cb193534f15eeff71f1';
 
 /// Copied from Dart SDK
 class _SystemHash {
