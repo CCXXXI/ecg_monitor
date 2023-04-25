@@ -33,7 +33,7 @@ Widget _me(BuildContext context) {
       ListTile(
         leading: const Icon(Icons.settings_outlined),
         title: Text(s.settings),
-        onTap: () => context.push("/me/settings"),
+        onTap: () async => context.push("/me/settings"),
       ),
       AboutListTile(
         icon: const Icon(Icons.info_outlined),

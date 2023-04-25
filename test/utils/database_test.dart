@@ -4,8 +4,11 @@ import "package:ecg_monitor/device_manager/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
+import "package:path_provider_platform_interface/path_provider_platform_interface.dart";
 import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
+
+import "../fake_path_provider.dart";
 
 final d2 = DateTime(2022);
 final d3 = DateTime(2023);
@@ -46,6 +49,7 @@ void main() {
     setUpAll(() async {
       SharedPreferences.setMockInitialValues({});
       await Isar.initializeIsarCore(download: true);
+      PathProviderPlatform.instance = FakePathProviderPlatform();
       await initDatabase();
     });
     tearDown(clearDatabase);

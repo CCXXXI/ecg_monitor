@@ -9,6 +9,7 @@ import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../device_manager/device.dart";
+import "../../me/settings/chart_settings.dart";
 import "../../me/settings/providers.dart";
 import "../chart.dart";
 
@@ -17,7 +18,7 @@ part "chart.g.dart";
 final _logger = Logger("RealTimeChart");
 
 @riverpod
-double _refreshInterval(_RefreshIntervalRef ref) {
+double _refreshIntervalMs(_RefreshIntervalMsRef ref) {
   final rateHz = ref.watch(refreshRateHzProvider);
   return Duration.millisecondsPerSecond / rateHz;
 }
@@ -70,7 +71,7 @@ class _Points extends _$Points {
     }
 
     // refresh UI
-    final intervalMs = ref.watch(_refreshIntervalProvider);
+    final intervalMs = ref.watch(_refreshIntervalMsProvider);
     if (point.x >= _previousRefreshTimeMs + intervalMs) {
       _previousRefreshTimeMs = point.x;
       state = _buffer.toList(growable: false);
@@ -78,27 +79,38 @@ class _Points extends _$Points {
   }
 }
 
+var _initDuration = Duration.zero;
+
 @cwidget
 Widget _realTimeChart(BuildContext context, WidgetRef ref) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  _duration = ref.watch(
-    isPortrait
-        ? realTimePortraitDurationProvider
-        : realTimeLandscapeDurationProvider,
-  );
+  final durationProvider = isPortrait
+      ? realTimePortraitDurationProvider
+      : realTimeLandscapeDurationProvider;
+  _duration = ref.watch(durationProvider);
 
-  return Chart3Lead(
-    pointsI: ref.watch(_pointsProvider(0)),
-    pointsII: ref.watch(_pointsProvider(1)),
-    pointsIII: ref.watch(_pointsProvider(2)),
-    duration: _duration,
-    backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-    lineColor: ref.watch(realTimeLineColorProvider),
-    gridColor: ref.watch(realTimeGridColorProvider),
-    horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
-    verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
-    showDots: ref.watch(realTimeShowDotsProvider),
+  return GestureDetector(
+    onScaleStart: (_) => _initDuration = _duration,
+    onScaleUpdate: (details) async {
+      final ms = (_initDuration.inMilliseconds / details.scale).round().clamp(
+            chartDurationLowerLimit.inMilliseconds,
+            chartDurationUpperLimit.inMilliseconds,
+          );
+      await ref.read(durationProvider.notifier).set(Duration(milliseconds: ms));
+    },
+    child: Chart3Lead(
+      pointsI: ref.watch(_pointsProvider(0)),
+      pointsII: ref.watch(_pointsProvider(1)),
+      pointsIII: ref.watch(_pointsProvider(2)),
+      duration: _duration,
+      backgroundColor: ref.watch(realTimeBackgroundColorProvider),
+      lineColor: ref.watch(realTimeLineColorProvider),
+      gridColor: ref.watch(realTimeGridColorProvider),
+      horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
+      verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
+      showDots: ref.watch(realTimeShowDotsProvider),
+    ),
   );
 }
 

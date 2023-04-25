@@ -14,6 +14,9 @@ extension DurationToSecondsString on Duration {
   String toMsString() => "$inMilliseconds ms";
 }
 
+const chartDurationLowerLimit = aSecond;
+final chartDurationUpperLimit = aSecond * 10;
+
 @swidget
 Widget _chartSettings(
   BuildContext context, {
@@ -62,12 +65,10 @@ Widget _chartSettings(
       return initialDuration;
     }
 
-    final lowerLimit = aMillisecond * 100;
-    final upperLimit = aSecond * 10;
     return Duration(
       milliseconds: duration.inMilliseconds.clamp(
-        lowerLimit.inMilliseconds,
-        upperLimit.inMilliseconds,
+        chartDurationLowerLimit.inMilliseconds,
+        chartDurationUpperLimit.inMilliseconds,
       ),
     );
   }

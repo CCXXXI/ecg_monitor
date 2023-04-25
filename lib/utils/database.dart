@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:isar/isar.dart";
 import "package:logging/logging.dart";
+import "package:path_provider/path_provider.dart";
 import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
@@ -240,11 +241,15 @@ late final Isar _isar;
 
 Future<void> initDatabase() async {
   prefs = await SharedPreferences.getInstance();
-  _isar = await Isar.open([
-    BeatSchema,
-    SamplePointSchema,
-    FakeSamplePointSchema,
-  ]);
+  final dir = await getApplicationDocumentsDirectory();
+  _isar = await Isar.open(
+    directory: dir.path,
+    [
+      BeatSchema,
+      SamplePointSchema,
+      FakeSamplePointSchema,
+    ],
+  );
 }
 
 @visibleForTesting
