@@ -91,7 +91,7 @@ Widget _realTimeChart(BuildContext context, WidgetRef ref) {
   _duration = ref.watch(durationProvider);
 
   return GestureDetector(
-    onScaleStart: (details) => _initDuration = _duration,
+    onScaleStart: (_) => _initDuration = _duration,
     onScaleUpdate: (details) async {
       final ms = (_initDuration.inMilliseconds / details.scale).round().clamp(
             chartDurationLowerLimit.inMilliseconds,
