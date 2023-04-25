@@ -38,6 +38,8 @@ Future<List<BeatData>> _beatData(
     );
 
 var _initDuration = Duration.zero;
+var _prevData = <EcgData>[];
+var _prevBeats = <BeatData>[];
 
 @cwidget
 Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
@@ -55,16 +57,21 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
     return const _NoData();
   }
 
+  if (data != null) {
+    _prevData = data;
+  }
+  if (beats != null) {
+    _prevBeats = beats;
+  }
+
   final pointsI = <FlSpot>[];
   final pointsII = <FlSpot>[];
   final pointsIII = <FlSpot>[];
-  if (data != null) {
-    for (final d in data) {
-      final x = d.time.millisecondsSinceEpoch.toDouble();
-      pointsI.add(FlSpot(x, d.leadI));
-      pointsII.add(FlSpot(x, d.leadII));
-      pointsIII.add(FlSpot(x, d.leadIII));
-    }
+  for (final d in data ?? _prevData) {
+    final x = d.time.millisecondsSinceEpoch.toDouble();
+    pointsI.add(FlSpot(x, d.leadI));
+    pointsII.add(FlSpot(x, d.leadII));
+    pointsIII.add(FlSpot(x, d.leadIII));
   }
 
   return GestureDetector(
@@ -87,7 +94,7 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
       horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
       verticalLineType: ref.watch(historyVerticalLineTypeProvider),
       showDots: ref.watch(historyShowDotsProvider),
-      beats: beats ?? [],
+      beats: beats ?? _prevBeats,
     ),
   );
 }
