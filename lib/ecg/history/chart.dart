@@ -53,15 +53,15 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
   final data = ref.watch(_ecgDataProvider(time, duration)).valueOrNull;
   final beats = ref.watch(_beatDataProvider(time, duration)).valueOrNull;
 
-  if (data?.isEmpty ?? false) {
-    return const _NoData();
-  }
-
   if (data != null) {
     _prevData = data;
   }
   if (beats != null) {
     _prevBeats = beats;
+  }
+
+  if ((data ?? _prevData).isEmpty) {
+    return const _NoData();
   }
 
   final pointsI = <FlSpot>[];
