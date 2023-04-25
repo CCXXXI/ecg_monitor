@@ -8,6 +8,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 import "../../analytics/data_types.dart";
 import "../../device_manager/device.dart";
 import "../../generated/l10n.dart";
+import "../../me/settings/chart_settings.dart";
 import "../../me/settings/providers.dart";
 import "../../utils/database.dart";
 import "../chart.dart";
@@ -36,49 +37,58 @@ Future<List<BeatData>> _beatData(
       time.add(duration ~/ 2),
     );
 
+var _initDuration = Duration.zero;
+
 @cwidget
 Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
-  final duration = ref.watch(
-    isPortrait
-        ? historyPortraitDurationProvider
-        : historyLandscapeDurationProvider,
-  );
+  final durationProvider = isPortrait
+      ? historyPortraitDurationProvider
+      : historyLandscapeDurationProvider;
+  final duration = ref.watch(durationProvider);
 
   final data = ref.watch(_ecgDataProvider(time, duration)).valueOrNull;
   final beats = ref.watch(_beatDataProvider(time, duration)).valueOrNull;
 
-  if (data == null || beats == null) {
-    return const Center(child: CircularProgressIndicator());
-  }
-
-  if (data.isEmpty) {
+  if (data?.isEmpty ?? false) {
     return const _NoData();
   }
 
   final pointsI = <FlSpot>[];
   final pointsII = <FlSpot>[];
   final pointsIII = <FlSpot>[];
-  for (final d in data) {
-    final x = d.time.millisecondsSinceEpoch.toDouble();
-    pointsI.add(FlSpot(x, d.leadI));
-    pointsII.add(FlSpot(x, d.leadII));
-    pointsIII.add(FlSpot(x, d.leadIII));
+  if (data != null) {
+    for (final d in data) {
+      final x = d.time.millisecondsSinceEpoch.toDouble();
+      pointsI.add(FlSpot(x, d.leadI));
+      pointsII.add(FlSpot(x, d.leadII));
+      pointsIII.add(FlSpot(x, d.leadIII));
+    }
   }
 
-  return Chart3Lead(
-    pointsI: pointsI,
-    pointsII: pointsII,
-    pointsIII: pointsIII,
-    duration: duration,
-    backgroundColor: ref.watch(historyBackgroundColorProvider),
-    lineColor: ref.watch(historyLineColorProvider),
-    gridColor: ref.watch(historyGridColorProvider),
-    horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
-    verticalLineType: ref.watch(historyVerticalLineTypeProvider),
-    showDots: ref.watch(historyShowDotsProvider),
-    beats: beats,
+  return GestureDetector(
+    onScaleStart: (_) => _initDuration = duration,
+    onScaleUpdate: (details) async {
+      final ms = (_initDuration.inMilliseconds / details.scale).round().clamp(
+            chartDurationLowerLimit.inMilliseconds,
+            chartDurationUpperLimit.inMilliseconds,
+          );
+      await ref.read(durationProvider.notifier).set(Duration(milliseconds: ms));
+    },
+    child: Chart3Lead(
+      pointsI: pointsI,
+      pointsII: pointsII,
+      pointsIII: pointsIII,
+      duration: duration,
+      backgroundColor: ref.watch(historyBackgroundColorProvider),
+      lineColor: ref.watch(historyLineColorProvider),
+      gridColor: ref.watch(historyGridColorProvider),
+      horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
+      verticalLineType: ref.watch(historyVerticalLineTypeProvider),
+      showDots: ref.watch(historyShowDotsProvider),
+      beats: beats ?? [],
+    ),
   );
 }
 
