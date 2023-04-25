@@ -94,80 +94,83 @@ Widget __chart(
     ),
   );
 
-  return Column(
-    children: [
-      if (isPortrait) Text(title),
-      Expanded(
-        child: LineChart(
-          swapAnimationDuration: Duration.zero, // disable animation
-          LineChartData(
-            minX:
-                points.isEmpty ? null : points.last.x - duration.inMilliseconds,
-            maxX: points.isEmpty ? null : points.last.x,
-            minY: points.isEmpty
-                ? null
-                : points.map((p) => p.y).reduce(min) - smallYInterval,
-            maxY: points.isEmpty
-                ? null
-                : points.map((p) => p.y).reduce(max) + smallYInterval,
-            backgroundColor: backgroundColor,
-            titlesData: FlTitlesData(
-              topTitles: AxisTitles(),
-              bottomTitles: bottomTitles,
-              leftTitles: leftTitles,
-              rightTitles: AxisTitles(),
-            ),
-            borderData: FlBorderData(show: false),
-            gridData: FlGridData(
-              show: drawHorizontalLine || drawVerticalLine,
-              drawHorizontalLine: drawHorizontalLine,
-              drawVerticalLine: drawVerticalLine,
-              horizontalInterval: horizontalLineType == LineType.full
-                  ? smallYInterval
-                  : largeYInterval,
-              verticalInterval: verticalLineType == LineType.full
-                  ? smallXInterval
-                  : largeXInterval,
-              getDrawingHorizontalLine: (value) => FlLine(
-                color: gridColor,
-                strokeWidth: getStrokeWidth(value, isHorizontal: true),
+  return IgnorePointer(
+    child: Column(
+      children: [
+        if (isPortrait) Text(title),
+        Expanded(
+          child: LineChart(
+            swapAnimationDuration: Duration.zero, // disable animation
+            LineChartData(
+              minX: points.isEmpty
+                  ? null
+                  : points.last.x - duration.inMilliseconds,
+              maxX: points.isEmpty ? null : points.last.x,
+              minY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(min) - smallYInterval,
+              maxY: points.isEmpty
+                  ? null
+                  : points.map((p) => p.y).reduce(max) + smallYInterval,
+              backgroundColor: backgroundColor,
+              titlesData: FlTitlesData(
+                topTitles: AxisTitles(),
+                bottomTitles: bottomTitles,
+                leftTitles: leftTitles,
+                rightTitles: AxisTitles(),
               ),
-              getDrawingVerticalLine: (value) => FlLine(
-                color: gridColor,
-                strokeWidth: getStrokeWidth(value, isHorizontal: false),
-              ),
-            ),
-            lineBarsData: [
-              LineChartBarData(
-                spots: points,
-                color: lineColor,
-                barWidth: dataLineWidth,
-                preventCurveOverShooting: true,
-                dotData: FlDotData(
-                  show: showDots,
-                  getDotPainter: (spot, xPercentage, bar, index) =>
-                      FlDotSquarePainter(color: backgroundColor),
+              borderData: FlBorderData(show: false),
+              gridData: FlGridData(
+                show: drawHorizontalLine || drawVerticalLine,
+                drawHorizontalLine: drawHorizontalLine,
+                drawVerticalLine: drawVerticalLine,
+                horizontalInterval: horizontalLineType == LineType.full
+                    ? smallYInterval
+                    : largeYInterval,
+                verticalInterval: verticalLineType == LineType.full
+                    ? smallXInterval
+                    : largeXInterval,
+                getDrawingHorizontalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: getStrokeWidth(value, isHorizontal: true),
+                ),
+                getDrawingVerticalLine: (value) => FlLine(
+                  color: gridColor,
+                  strokeWidth: getStrokeWidth(value, isHorizontal: false),
                 ),
               ),
-            ],
-            extraLinesData: ExtraLinesData(
-              verticalLines: [
-                for (final beat in beats)
-                  VerticalLine(
-                    x: beat.time.millisecondsSinceEpoch.toDouble(),
-                    color: Colors.transparent,
-                    label: VerticalLineLabel(
-                      show: true,
-                      alignment: Alignment.center,
-                      labelResolver: (_) => beat.label.name,
-                    ),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: points,
+                  color: lineColor,
+                  barWidth: dataLineWidth,
+                  preventCurveOverShooting: true,
+                  dotData: FlDotData(
+                    show: showDots,
+                    getDotPainter: (spot, xPercentage, bar, index) =>
+                        FlDotSquarePainter(color: backgroundColor),
                   ),
+                ),
               ],
+              extraLinesData: ExtraLinesData(
+                verticalLines: [
+                  for (final beat in beats)
+                    VerticalLine(
+                      x: beat.time.millisecondsSinceEpoch.toDouble(),
+                      color: Colors.transparent,
+                      label: VerticalLineLabel(
+                        show: true,
+                        alignment: Alignment.center,
+                        labelResolver: (_) => beat.label.name,
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
 
