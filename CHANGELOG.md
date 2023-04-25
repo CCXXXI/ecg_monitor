@@ -2,10 +2,9 @@
 
 ## [0.36.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.0...v0.36.1) (2023-04-25)
 
-
 ### Bug Fixes
 
-* **deps:** update kotlin monorepo to v1.8.21 ([#318](https://github.com/CCXXXI/ecg_monitor/issues/318)) ([ec07aee](https://github.com/CCXXXI/ecg_monitor/commit/ec07aee30b9345b7a64f2bc03984efc9374c573f))
+- **deps:** update kotlin monorepo to v1.8.21 ([#318](https://github.com/CCXXXI/ecg_monitor/issues/318)) ([ec07aee](https://github.com/CCXXXI/ecg_monitor/commit/ec07aee30b9345b7a64f2bc03984efc9374c573f))
 
 ## [0.36.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.6...v0.36.0) (2023-04-25)
 
