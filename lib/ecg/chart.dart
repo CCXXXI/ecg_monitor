@@ -94,7 +94,7 @@ Widget __chart(
     ),
   );
 
-  return IgnorePointer(
+  return AbsorbPointer(
     child: Column(
       children: [
         if (isPortrait) Text(title),
