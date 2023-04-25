@@ -2,49 +2,42 @@
 
 ## [0.36.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.6...v0.36.0) (2023-04-25)
 
-
 ### Features
 
-* **history:** handle drag gesture ([b305c8a](https://github.com/CCXXXI/ecg_monitor/commit/b305c8a75fd339c9d3933f10cae9a6210e1ea12d))
-* **history:** handle scale gesture ([eec8b8c](https://github.com/CCXXXI/ecg_monitor/commit/eec8b8cc8ecb44a8d7a81df20196bf758607b2aa))
-* **real-time:** handle scale gesture ([6943e82](https://github.com/CCXXXI/ecg_monitor/commit/6943e82964457e589f669677fee24f8075873555))
-
+- **history:** handle drag gesture ([b305c8a](https://github.com/CCXXXI/ecg_monitor/commit/b305c8a75fd339c9d3933f10cae9a6210e1ea12d))
+- **history:** handle scale gesture ([eec8b8c](https://github.com/CCXXXI/ecg_monitor/commit/eec8b8cc8ecb44a8d7a81df20196bf758607b2aa))
+- **real-time:** handle scale gesture ([6943e82](https://github.com/CCXXXI/ecg_monitor/commit/6943e82964457e589f669677fee24f8075873555))
 
 ### Bug Fixes
 
-* **chart:** IgnorePointer -&gt; AbsorbPointer ([b6ac64e](https://github.com/CCXXXI/ecg_monitor/commit/b6ac64eee02a1a2e8799bdd796be2043d5155982))
-* **database:** fix isar init ([3e0975e](https://github.com/CCXXXI/ecg_monitor/commit/3e0975e2d9a225657f9c04ab2778e6eb9974250c))
-* **history:** correct empty cache ([0dddfeb](https://github.com/CCXXXI/ecg_monitor/commit/0dddfeb5aac14b13c4f3100f315013ea1a4e308a))
-
+- **chart:** IgnorePointer -&gt; AbsorbPointer ([b6ac64e](https://github.com/CCXXXI/ecg_monitor/commit/b6ac64eee02a1a2e8799bdd796be2043d5155982))
+- **database:** fix isar init ([3e0975e](https://github.com/CCXXXI/ecg_monitor/commit/3e0975e2d9a225657f9c04ab2778e6eb9974250c))
+- **history:** correct empty cache ([0dddfeb](https://github.com/CCXXXI/ecg_monitor/commit/0dddfeb5aac14b13c4f3100f315013ea1a4e308a))
 
 ### Performance Improvements
 
-* **history:** cache prev data ([abb136e](https://github.com/CCXXXI/ecg_monitor/commit/abb136efdd06dbd9f8003b014c90093a46f3df7a))
-
+- **history:** cache prev data ([abb136e](https://github.com/CCXXXI/ecg_monitor/commit/abb136efdd06dbd9f8003b014c90093a46f3df7a))
 
 ### Miscellaneous Chores
 
-* run build_runner ([7a50814](https://github.com/CCXXXI/ecg_monitor/commit/7a5081497e0d2137cb8d948f499ffea603271c59))
-
+- run build_runner ([7a50814](https://github.com/CCXXXI/ecg_monitor/commit/7a5081497e0d2137cb8d948f499ffea603271c59))
 
 ### Code Refactoring
 
-* **me:** add async ([8fb9697](https://github.com/CCXXXI/ecg_monitor/commit/8fb96970cdc64b6ace4fe054c049aef2b8429924))
-* **real-time:** remove unused params ([0985f85](https://github.com/CCXXXI/ecg_monitor/commit/0985f851d8956b79c67e9f11a8223610b2e5428e))
-* **real-time:** rename refreshIntervalMs ([02e5153](https://github.com/CCXXXI/ecg_monitor/commit/02e5153a11a4abbde202abe018593df607f2f401))
-
+- **me:** add async ([8fb9697](https://github.com/CCXXXI/ecg_monitor/commit/8fb96970cdc64b6ace4fe054c049aef2b8429924))
+- **real-time:** remove unused params ([0985f85](https://github.com/CCXXXI/ecg_monitor/commit/0985f851d8956b79c67e9f11a8223610b2e5428e))
+- **real-time:** rename refreshIntervalMs ([02e5153](https://github.com/CCXXXI/ecg_monitor/commit/02e5153a11a4abbde202abe018593df607f2f401))
 
 ### Build System
 
-* flutter pub add dev:path_provider_platform_interface ([64a631c](https://github.com/CCXXXI/ecg_monitor/commit/64a631c898f8e9ca78e60a41fbcd8dc6befd0ef9))
-* flutter pub add dev:plugin_platform_interface ([66e00e9](https://github.com/CCXXXI/ecg_monitor/commit/66e00e9fb92d0acb22a19ef882435766f9df951c))
-* upgrade deps ([c30b781](https://github.com/CCXXXI/ecg_monitor/commit/c30b781dbdb2f569c4ed86535290d335ceb16955))
-* upgrade riverpod manually ([73323e2](https://github.com/CCXXXI/ecg_monitor/commit/73323e26a6c49dafb19b6c8597bc6ae729c89eed))
-
+- flutter pub add dev:path_provider_platform_interface ([64a631c](https://github.com/CCXXXI/ecg_monitor/commit/64a631c898f8e9ca78e60a41fbcd8dc6befd0ef9))
+- flutter pub add dev:plugin_platform_interface ([66e00e9](https://github.com/CCXXXI/ecg_monitor/commit/66e00e9fb92d0acb22a19ef882435766f9df951c))
+- upgrade deps ([c30b781](https://github.com/CCXXXI/ecg_monitor/commit/c30b781dbdb2f569c4ed86535290d335ceb16955))
+- upgrade riverpod manually ([73323e2](https://github.com/CCXXXI/ecg_monitor/commit/73323e26a6c49dafb19b6c8597bc6ae729c89eed))
 
 ### Tests
 
-* FakePathProviderPlatform ([ac181d3](https://github.com/CCXXXI/ecg_monitor/commit/ac181d3563f564e9b46afe9ab93629d963a6a14f))
+- FakePathProviderPlatform ([ac181d3](https://github.com/CCXXXI/ecg_monitor/commit/ac181d3563f564e9b46afe9ab93629d963a6a14f))
 
 ## [0.35.6](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.5...v0.35.6) (2023-04-18)
 
