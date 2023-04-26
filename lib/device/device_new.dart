@@ -57,7 +57,7 @@ Widget __deviceList(
     children: [
       for (final d in devices..sort((a, b) => b.rssi.compareTo(a.rssi)))
         ListTile(
-          leading: const Icon(Icons.bluetooth_searching_outlined),
+          leading: const Icon(Icons.bluetooth_outlined),
           title: Text(d.name),
           subtitle: Text(d.id),
           onTap: () async =>
