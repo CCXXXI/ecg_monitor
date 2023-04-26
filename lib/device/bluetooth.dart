@@ -35,6 +35,24 @@ class HA301B implements Device {
     _id = id;
     _name = name;
     _updateStream = _ble.connectToDevice(id: id);
+
+    _rxCharacteristic = QualifiedCharacteristic(
+      characteristicId: _rxUuid,
+      serviceId: _serviceUuid,
+      deviceId: _id,
+    );
+    _txCharacteristic = QualifiedCharacteristic(
+      characteristicId: _txUuid,
+      serviceId: _serviceUuid,
+      deviceId: _id,
+    );
+    _txStream =
+        _ble.subscribeToCharacteristic(_txCharacteristic).asBroadcastStream()
+          ..listen((data) {
+            assert(data.length == 20, "Unexpected data length: ${data.length}");
+            assert(data[0] == 0xAA, "Unexpected data header: ${data[0]}");
+            assert(data.last == 0xCC, "Unexpected data footer: ${data.last}");
+          });
   }
 
   /// The 128-bit vendor-specific service UUID.
@@ -52,6 +70,10 @@ class HA301B implements Device {
   late final String _id;
   late final String _name;
   late final Stream<ConnectionStateUpdate> _updateStream;
+
+  late final QualifiedCharacteristic _rxCharacteristic;
+  late final QualifiedCharacteristic _txCharacteristic;
+  late final Stream<List<int>> _txStream;
 
   @override
   String get id => _id;
@@ -72,25 +94,26 @@ class HA301B implements Device {
       _updateStream.map((update) => update.connectionState);
 
   @override
-  // TODO: implement batteryStream
-  Stream<int> get batteryStream => const Stream.empty();
+  Stream<int> get batteryStream async* {
+    while (true) {
+      await _ble.writeCharacteristicWithoutResponse(
+        _rxCharacteristic,
+        value: [0xAA, 0x03, for (var i = 0; i < 17; ++i) 0x00, 0xCC],
+      );
+
+      final res = await _txStream.firstWhere((data) => data[1] == 0x03);
+      yield res[2];
+
+      await Future<void>.delayed(aMinute);
+    }
+  }
 
   @override
   Stream<EcgData> get ecgStream {
-    final characteristic = QualifiedCharacteristic(
-      characteristicId: _txUuid,
-      serviceId: _serviceUuid,
-      deviceId: _id,
-    );
     var time = DateTime.now();
-    return _ble
-        .subscribeToCharacteristic(characteristic)
+    return _txStream
+        .where((data) => data[1] == 0x01)
         .asyncExpand((data) async* {
-      assert(data.length == 20, "Unexpected data length: ${data.length}");
-      assert(data[0] == 0xAA, "Unexpected data header: ${data[0]}");
-      assert(data[1] == 0x01, "Unexpected data type: ${data[1]}");
-      assert(data.last == 0xCC, "Unexpected data footer: ${data.last}");
-
       for (var i = 0; i < 4; i++) {
         final start = 2 + i * 4;
         yield parseEcgData(
