@@ -56,14 +56,12 @@ Widget __deviceList(
   return ListView(
     children: [
       for (final d in devices..sort((a, b) => b.rssi.compareTo(a.rssi)))
-        Card(
-          child: ListTile(
-            leading: const Icon(Icons.bluetooth_searching_outlined),
-            title: Text(d.name),
-            subtitle: Text(d.id),
-            onTap: () async =>
-                ref.read(currentDeviceProvider.notifier).set(fakeDevice),
-          ),
+        ListTile(
+          leading: const Icon(Icons.bluetooth_searching_outlined),
+          title: Text(d.name),
+          subtitle: Text(d.id),
+          onTap: () async =>
+              ref.read(currentDeviceProvider.notifier).set(fakeDevice),
         ),
     ],
   );
