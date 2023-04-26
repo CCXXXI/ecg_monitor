@@ -61,7 +61,6 @@ Widget __deviceList(
             leading: const Icon(Icons.bluetooth_searching_outlined),
             title: Text(d.name),
             subtitle: Text(d.id),
-            trailing: Text(s.bluetoothRssi(d.rssi)),
             onTap: () async =>
                 ref.read(currentDeviceProvider.notifier).set(fakeDevice),
           ),
