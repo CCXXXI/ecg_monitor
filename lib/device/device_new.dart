@@ -55,7 +55,7 @@ Widget __deviceList(
 
   return ListView(
     children: [
-      for (final d in devices)
+      for (final d in devices..sort((a, b) => b.rssi.compareTo(a.rssi)))
         Card(
           child: ListTile(
             leading: const Icon(Icons.bluetooth_searching_outlined),
