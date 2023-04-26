@@ -7,7 +7,7 @@ import "package:go_router/go_router.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../analytics/data_types.dart";
-import "../../device_manager/device.dart";
+import "../../device/device.dart";
 import "../../generated/l10n.dart";
 import "../../me/settings/chart_settings.dart";
 import "../../me/settings/providers.dart";

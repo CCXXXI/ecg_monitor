@@ -8,7 +8,7 @@ import "package:functional_widget_annotation/functional_widget_annotation.dart";
 import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
-import "../../device_manager/device.dart";
+import "../../device/device.dart";
 import "../../me/settings/chart_settings.dart";
 import "../../me/settings/providers.dart";
 import "../chart.dart";

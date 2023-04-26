@@ -6,8 +6,8 @@ import "package:quiver/time.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 import "../analytics/data_types.dart";
-import "../device_manager/device.dart";
-import "../device_manager/fake_device.dart";
+import "../device/device.dart";
+import "../device/fake_device.dart";
 
 part "database.g.dart";
 
