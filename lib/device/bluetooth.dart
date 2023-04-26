@@ -65,6 +65,8 @@ class HA301B implements Device {
   @override
   int get fs => 125;
 
+  Duration get _tick => aSecond ~/ fs;
+
   @override
   Stream<DeviceConnectionState> get stateStream =>
       _updateStream.map((update) => update.connectionState);
@@ -92,11 +94,11 @@ class HA301B implements Device {
       for (var i = 0; i < 4; i++) {
         final start = 2 + i * 4;
         yield parseEcgData(
-          time.add(aMillisecond * 8 * i),
+          time.add(_tick * i),
           data.sublist(start, start + 4),
         );
       }
-      time = time.add(aMillisecond * 32);
+      time = time.add(_tick * 4);
     });
   }
 
