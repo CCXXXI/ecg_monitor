@@ -50,22 +50,19 @@ Widget __deviceList(
   BuildContext context,
   WidgetRef ref,
   List<DiscoveredDevice> devices,
-) {
-  final s = S.of(context);
-
-  return ListView(
-    children: [
-      for (final d in devices..sort((a, b) => b.rssi.compareTo(a.rssi)))
-        ListTile(
-          leading: const Icon(Icons.bluetooth_outlined),
-          title: Text(d.name),
-          subtitle: Text(d.id),
-          onTap: () async =>
-              ref.read(currentDeviceProvider.notifier).set(fakeDevice),
-        ),
-    ],
-  );
-}
+) =>
+    ListView(
+      children: [
+        for (final d in devices..sort((a, b) => b.rssi.compareTo(a.rssi)))
+          ListTile(
+            leading: const Icon(Icons.bluetooth_outlined),
+            title: Text(d.name),
+            subtitle: Text(d.id),
+            onTap: () async =>
+                ref.read(currentDeviceProvider.notifier).set(fakeDevice),
+          ),
+      ],
+    );
 
 @swidget
 Widget __noDevice(BuildContext context) {
