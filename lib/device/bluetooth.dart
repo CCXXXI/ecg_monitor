@@ -15,15 +15,14 @@ Stream<List<DiscoveredDevice>> devices(DevicesRef ref) async* {
   await Permission.location.request();
 
   _logger.info("Scanning for devices...");
-  final list = <DiscoveredDevice>[];
-  yield* _ble.scanForDevices(withServices: []).map((d) {
-    _logger.finest("Discovered device: $d");
+  final found = <String, DiscoveredDevice>{};
+  yield* _ble.scanForDevices(withServices: []).asyncExpand((d) {
     if (d.name.isEmpty) {
-      return list;
+      return const Stream.empty();
     }
 
-    _logger.finer("Adding device to list: $d");
-    list.add(d);
-    return list;
+    _logger.finer("Found device: $d");
+    found[d.id] = d;
+    return Stream.value(found.values.toList());
   });
 }
