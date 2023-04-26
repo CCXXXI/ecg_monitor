@@ -36,6 +36,18 @@ class HA301B implements Device {
     _updateStream = _ble.connectToDevice(id: id);
   }
 
+  /// The 128-bit vendor-specific service UUID.
+  static final _serviceUuid =
+      Uuid.parse("6E400001-B5A3-F393-E0A9-E50E24DCCA9E");
+
+  /// Write data to the RX Characteristic to send it on to the UART interface.
+  static final _rxUuid = Uuid.parse("6E400002-B5A3-F393-E0A9-E50E24DCCA9E");
+
+  /// Enable notifications for the TX Characteristic to receive data from the
+  /// application. The application transmits all data that is received over
+  /// UART as notifications.
+  static final _txUuid = Uuid.parse("6E400003-B5A3-F393-E0A9-E50E24DCCA9E");
+
   late final String _id;
   late final String _name;
   late final Stream<ConnectionStateUpdate> _updateStream;
