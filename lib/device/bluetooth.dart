@@ -17,7 +17,7 @@ Stream<List<DiscoveredDevice>> devices(DevicesRef ref) async* {
   _logger.info("Scanning for devices...");
   final list = <DiscoveredDevice>[];
   yield* _ble.scanForDevices(withServices: []).map((d) {
-    _logger.info("Discovered device: $d");
+    _logger.finest("Discovered device: $d");
     list.add(d);
     return list;
   });
