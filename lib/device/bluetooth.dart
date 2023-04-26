@@ -63,7 +63,7 @@ class HA301B implements Device {
   String get model => "HA301B";
 
   @override
-  int get fs => 125;
+  int get fs => 250;
 
   Duration get _tick => aSecond ~/ fs;
 
