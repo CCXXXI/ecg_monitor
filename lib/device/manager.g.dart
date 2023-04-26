@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'device_manager.dart';
+part of 'manager.dart';
 
 // **************************************************************************
 // FunctionalWidgetGenerator

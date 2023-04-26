@@ -5,7 +5,7 @@ import "package:quiver/time.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 
 import "../analytics/analytics.dart";
-import "../device/device_manager.dart";
+import "../device/manager.dart";
 import "../ecg/history/history.dart";
 import "../ecg/real_time/real_time.dart";
 import "../home.dart";

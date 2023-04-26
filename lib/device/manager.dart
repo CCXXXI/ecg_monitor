@@ -6,7 +6,7 @@ import "../generated/l10n.dart";
 import "device.dart";
 import "device_new.dart";
 
-part "device_manager.g.dart";
+part "manager.g.dart";
 
 @cwidget
 Widget _deviceManager(BuildContext context, WidgetRef ref) {
