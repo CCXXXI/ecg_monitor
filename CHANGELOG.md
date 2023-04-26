@@ -1,5 +1,54 @@
 # Changelog
 
+## [0.37.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.1...v0.37.0) (2023-04-26)
+
+
+### Features
+
+* **device:** better bluetooth states ([cdcec04](https://github.com/CCXXXI/ecg_monitor/commit/cdcec043c20b2add650afa96aa8b8a8e14df1d9c))
+* **device:** connect to HA301B ([832ac14](https://github.com/CCXXXI/ecg_monitor/commit/832ac14b77d570fb9a6de3909dc9dc4b3de4d294))
+* **device:** get battery ([e28576c](https://github.com/CCXXXI/ecg_monitor/commit/e28576cf7d056ec551446ecabeb14ee24f0e4f38))
+* **device:** read ecg data from device ([a10d74a](https://github.com/CCXXXI/ecg_monitor/commit/a10d74a77f3b6aecabd5fff75a738c504a943fec))
+* **device:** show bluetooth devices ([a749707](https://github.com/CCXXXI/ecg_monitor/commit/a749707abd6e4ac7eb46c32f9008527b4dadb0f7))
+
+
+### Bug Fixes
+
+* **device:** auto connect on startup ([b1774e1](https://github.com/CCXXXI/ecg_monitor/commit/b1774e13654933dd04d6656d4287f21434499b58))
+* **device:** better icons ([0c2ecf4](https://github.com/CCXXXI/ecg_monitor/commit/0c2ecf4e0f66924d55b865821170f1aea1665f20))
+* **device:** correct fs of HA301B ([ac8aab2](https://github.com/CCXXXI/ecg_monitor/commit/ac8aab2b2261b38254e009e58684b08ab8763ebe))
+* **device:** filter unnamed devices ([6ef1cba](https://github.com/CCXXXI/ecg_monitor/commit/6ef1cba39bbd3677fa8134117fb18ed618400040))
+* **device:** hide rssi for DeviceList ([0911454](https://github.com/CCXXXI/ecg_monitor/commit/0911454dfcab8d2cc132ed74421fd8a0084aa17c))
+* **device:** no rssi displaying ([36c7f46](https://github.com/CCXXXI/ecg_monitor/commit/36c7f46d1c30128c90183d27d4a1a58d73a26a63))
+* **device:** remove card ([268295c](https://github.com/CCXXXI/ecg_monitor/commit/268295c3274593aaad4df42fef50444886f93f59))
+* **device:** show unique devices ([5a4f54b](https://github.com/CCXXXI/ecg_monitor/commit/5a4f54b78306f0a6a4ef4c86758aead2964ef179))
+* **device:** sort by rssi for DeviceList ([627a6b1](https://github.com/CCXXXI/ecg_monitor/commit/627a6b13f9ed472f76e8e438db656d815472be13))
+
+
+### Build System
+
+* flutter pub add flutter_reactive_ble ([7482070](https://github.com/CCXXXI/ecg_monitor/commit/74820705134653fb6c2a48e8fb59f390a8132577))
+* flutter pub add permission_handler ([1d32cad](https://github.com/CCXXXI/ecg_monitor/commit/1d32cadabf86a3a87ccc95d64ef62b4fe8d90892))
+
+
+### Code Refactoring
+
+* device_manager/ -&gt; device/ ([1315773](https://github.com/CCXXXI/ecg_monitor/commit/13157734b4ad5fafbe1dc33c1c36efc386c29787))
+* device/device_manager -&gt; device/manager ([5efc8cc](https://github.com/CCXXXI/ecg_monitor/commit/5efc8cc4033e717cd6d8fa97c8ac42fededd005e))
+* **device:** correct logger level ([c8511bb](https://github.com/CCXXXI/ecg_monitor/commit/c8511bb3fc04bfe3c5d42b5ea0d29e7e80179920))
+* **device:** Duration get _tick =&gt; aSecond ~/ fs ([3322bc3](https://github.com/CCXXXI/ecg_monitor/commit/3322bc3c371e40bdf096154a45ef9d350a4dee39))
+* **device:** remove unused var ([8c1f6e0](https://github.com/CCXXXI/ecg_monitor/commit/8c1f6e03b1dcec9892718b4917cee776b9a0e7ef))
+* **device:** save UUIDs ([775b8f7](https://github.com/CCXXXI/ecg_monitor/commit/775b8f7274d5991c8fd813b00d6f1c56443d31ec))
+* **device:** Stream.empty() -&gt; null ([7a93327](https://github.com/CCXXXI/ecg_monitor/commit/7a933270816de8f39e3dbb3c385d41aef35bbe38))
+* init ble ([fcba109](https://github.com/CCXXXI/ecg_monitor/commit/fcba109791dfbddc7cb7ce74a4cba7f905cec609))
+* sync test dir ([8b55e02](https://github.com/CCXXXI/ecg_monitor/commit/8b55e02da3d66e257cb2c8b8a5660e94dacc7e84))
+
+
+### Miscellaneous Chores
+
+* require more permissions ([2a1f928](https://github.com/CCXXXI/ecg_monitor/commit/2a1f928fbc10cba7b4305a52c7c9781c41be3c06))
+* rerun build_runner ([484d023](https://github.com/CCXXXI/ecg_monitor/commit/484d02326fc218fd70cb93a526105940dda77093))
+
 ## [0.36.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.0...v0.36.1) (2023-04-25)
 
 ### Bug Fixes
