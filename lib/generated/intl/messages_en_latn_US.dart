@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Battery unknown"),
         "bluetoothConnected":
             MessageLookupByLibrary.simpleMessage("Bluetooth connected"),
+        "bluetoothConnecting":
+            MessageLookupByLibrary.simpleMessage("Bluetooth connecting ..."),
         "bluetoothDisconnected":
             MessageLookupByLibrary.simpleMessage("Bluetooth disconnected"),
         "bluetoothRssi": m0,

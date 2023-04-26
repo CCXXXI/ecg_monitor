@@ -29,6 +29,7 @@
   "analytics": "分析报告",
   "autoGenerate": "自动生成",
   "deviceManager": "设备管理",
+  "bluetoothConnecting": "正在连接蓝牙设备……",
   "bluetoothConnected": "蓝牙已连接",
   "bluetoothDisconnected": "蓝牙已断开",
   "bluetoothRssi": "信号强度：{rssi} dBm",

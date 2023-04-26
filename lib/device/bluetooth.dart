@@ -33,12 +33,12 @@ class HA301B implements Device {
   HA301B({required String id, required String name}) {
     _id = id;
     _name = name;
-    _stateStream = _ble.connectToDevice(id: id);
+    _updateStream = _ble.connectToDevice(id: id);
   }
 
   late final String _id;
   late final String _name;
-  late final Stream<ConnectionStateUpdate> _stateStream;
+  late final Stream<ConnectionStateUpdate> _updateStream;
 
   @override
   String get id => _id;
@@ -53,9 +53,8 @@ class HA301B implements Device {
   int get fs => 125;
 
   @override
-  Stream<bool> get connectedStream => _stateStream.map(
-        (update) => update.connectionState == DeviceConnectionState.connected,
-      );
+  Stream<DeviceConnectionState> get stateStream =>
+      _updateStream.map((update) => update.connectionState);
 
   @override
   // TODO: implement batteryStream

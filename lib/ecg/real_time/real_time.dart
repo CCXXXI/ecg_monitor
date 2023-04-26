@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
 
@@ -11,7 +12,8 @@ part "real_time.g.dart";
 
 @cwidget
 Widget _realTime(BuildContext context, WidgetRef ref) {
-  final deviceAvailable = ref.watch(connectedProvider).value ?? true;
+  final deviceAvailable = ref.watch(connectionStateProvider).value !=
+      DeviceConnectionState.disconnected;
   if (!deviceAvailable) {
     return const DeviceNotAvailable();
   }

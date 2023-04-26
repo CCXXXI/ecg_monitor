@@ -1,3 +1,4 @@
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart" hide Logger;
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:logging/logging.dart";
 import "package:quiver/time.dart";
@@ -50,9 +51,11 @@ class _FakeDevice implements Device {
   int get fs => 125;
 
   @override
-  Stream<bool> get connectedStream => Stream.periodic(
+  Stream<DeviceConnectionState> get stateStream => Stream.periodic(
         aSecond,
-        (_) => prefs.getBool(K.fakeDeviceOn) ?? false,
+        (_) => (prefs.getBool(K.fakeDeviceOn) ?? false)
+            ? DeviceConnectionState.connected
+            : DeviceConnectionState.disconnected,
       );
 
   @override

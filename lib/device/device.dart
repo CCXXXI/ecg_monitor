@@ -1,3 +1,4 @@
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
@@ -37,7 +38,7 @@ abstract class Device {
   /// Sampling Frequency
   int get fs;
 
-  Stream<bool> get connectedStream;
+  Stream<DeviceConnectionState> get stateStream;
 
   Stream<int> get batteryStream;
 
@@ -75,8 +76,9 @@ Stream<int> battery(BatteryRef ref) =>
     ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
 
 @riverpod
-Stream<bool> connected(ConnectedRef ref) =>
-    ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
+Stream<DeviceConnectionState> connectionState(ConnectionStateRef ref) =>
+    ref.watch(currentDeviceProvider)?.stateStream ??
+    Stream.value(DeviceConnectionState.disconnected);
 
 @riverpod
 Stream<EcgData> ecg(EcgRef ref) =>
