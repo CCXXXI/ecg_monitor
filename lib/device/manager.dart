@@ -18,7 +18,6 @@ Widget _deviceManager(BuildContext context, WidgetRef ref) {
     return const DeviceNew();
   }
 
-  final rssi = ref.watch(rssiProvider);
   final battery = ref.watch(batteryProvider);
   final connected = ref.watch(connectedProvider).valueOrNull ?? false;
 
@@ -33,9 +32,6 @@ Widget _deviceManager(BuildContext context, WidgetRef ref) {
         ListTile(
           leading: const Icon(Icons.bluetooth_connected_outlined),
           title: Text(s.bluetoothConnected),
-          subtitle: rssi.whenOrNull(
-            data: (r) => Text(s.bluetoothRssi(r)),
-          ),
         )
       else
         ListTile(

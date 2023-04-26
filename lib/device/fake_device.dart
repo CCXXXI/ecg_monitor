@@ -56,9 +56,6 @@ class _FakeDevice implements Device {
       );
 
   @override
-  Stream<int> get rssiStream => Stream.value(-42);
-
-  @override
   Stream<int> get batteryStream => Stream.value(100);
 
   @override

@@ -38,9 +38,6 @@ abstract class Device {
 
   Stream<bool> get connectedStream;
 
-  /// Received Signal Strength Indication
-  Stream<int> get rssiStream;
-
   Stream<int> get batteryStream;
 
   Stream<EcgData> get ecgStream;
@@ -67,10 +64,6 @@ class CurrentDevice extends _$CurrentDevice {
     state = device;
   }
 }
-
-@riverpod
-Stream<int> rssi(RssiRef ref) =>
-    ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty();
 
 @riverpod
 Stream<int> battery(BatteryRef ref) =>

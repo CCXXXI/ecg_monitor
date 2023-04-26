@@ -37,7 +37,6 @@ void main() {
       "connected",
       () => expect(fakeDevice.connectedStream, emits(isTrue)),
     );
-    test("rssi", () => expect(fakeDevice.rssiStream, emits(anything)));
     test("battery", () => expect(fakeDevice.batteryStream, emits(anything)));
     test("ecg", () => expect(fakeDevice.ecgStream, emits(anything)));
   });
