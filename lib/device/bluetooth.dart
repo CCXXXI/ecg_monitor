@@ -20,7 +20,7 @@ Stream<List<DiscoveredDevice>> devices(DevicesRef ref) async* {
   final found = <String, DiscoveredDevice>{};
   yield* _ble.scanForDevices(withServices: []).asyncExpand((d) {
     if (d.name.isEmpty) {
-      return const Stream.empty();
+      return null;
     }
 
     _logger.finer("Found device: $d");
