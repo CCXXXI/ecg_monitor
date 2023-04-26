@@ -7,7 +7,7 @@ import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
 import "analytics/model.dart";
-import "device_manager/device.dart";
+import "device/device.dart";
 import "generated/l10n.dart";
 import "utils/database.dart";
 import "utils/debug/logger.dart";

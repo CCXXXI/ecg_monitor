@@ -12,7 +12,7 @@ import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../../../analytics/data_types.dart";
-import "../../../device_manager/device.dart";
+import "../../../device/device.dart";
 import "../../../generated/l10n.dart";
 import "../../../utils/database.dart";
 import "generated_bindings.dart";

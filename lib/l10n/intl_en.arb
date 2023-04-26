@@ -29,6 +29,7 @@
   "analytics": "Analytics",
   "autoGenerate": "Auto generate",
   "deviceManager": "Device",
+  "bluetoothConnecting": "Bluetooth connecting ...",
   "bluetoothConnected": "Bluetooth connected",
   "bluetoothDisconnected": "Bluetooth disconnected",
   "bluetoothRssi": "RSSI: {rssi} dBm",

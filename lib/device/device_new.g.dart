@@ -21,7 +21,12 @@ class DeviceNew extends ConsumerWidget {
 }
 
 class _DeviceList extends ConsumerWidget {
-  const _DeviceList({Key? key}) : super(key: key);
+  const _DeviceList(
+    this.devices, {
+    Key? key,
+  }) : super(key: key);
+
+  final List<DiscoveredDevice> devices;
 
   @override
   Widget build(
@@ -31,7 +36,14 @@ class _DeviceList extends ConsumerWidget {
       __deviceList(
         _context,
         _ref,
+        devices,
       );
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty<List<DiscoveredDevice>>('devices', devices));
+  }
 }
 
 class _NoDevice extends StatelessWidget {

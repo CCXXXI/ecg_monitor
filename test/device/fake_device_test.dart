@@ -1,7 +1,8 @@
-import "package:ecg_monitor/device_manager/fake_device.dart";
+import "package:ecg_monitor/device/fake_device.dart";
 import "package:ecg_monitor/utils/database.dart";
 import "package:ecg_monitor/utils/strings.dart";
 import "package:flutter/material.dart";
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
 import "package:path_provider_platform_interface/path_provider_platform_interface.dart";
@@ -35,9 +36,11 @@ void main() {
   group("streams", () {
     test(
       "connected",
-      () => expect(fakeDevice.connectedStream, emits(isTrue)),
+      () => expect(
+        fakeDevice.stateStream,
+        emits(DeviceConnectionState.connected),
+      ),
     );
-    test("rssi", () => expect(fakeDevice.rssiStream, emits(anything)));
     test("battery", () => expect(fakeDevice.batteryStream, emits(anything)));
     test("ecg", () => expect(fakeDevice.ecgStream, emits(anything)));
   });

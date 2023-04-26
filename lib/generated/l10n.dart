@@ -340,6 +340,16 @@ class S {
     );
   }
 
+  /// `Bluetooth connecting ...`
+  String get bluetoothConnecting {
+    return Intl.message(
+      'Bluetooth connecting ...',
+      name: 'bluetoothConnecting',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Bluetooth connected`
   String get bluetoothConnected {
     return Intl.message(

@@ -44,6 +44,7 @@ class K {
   static const autoGenerate = "autoGenerate";
 
   static const currentDeviceId = "currentDeviceId";
+  static const currentDeviceName = "currentDeviceName";
 
   static const showDevTools = "showDevTools";
   static const fakeDeviceOn = "fakeDeviceOn";
