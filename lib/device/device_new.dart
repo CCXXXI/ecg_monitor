@@ -58,8 +58,10 @@ Widget __deviceList(
             leading: const Icon(Icons.bluetooth_outlined),
             title: Text(d.name),
             subtitle: Text(d.id),
-            onTap: () async =>
-                ref.read(currentDeviceProvider.notifier).set(fakeDevice),
+            onTap: () async {
+              final newDevice = d.id == fakeDevice.id ? fakeDevice : HA301B(d);
+              await ref.read(currentDeviceProvider.notifier).set(newDevice);
+            },
           ),
       ],
     );

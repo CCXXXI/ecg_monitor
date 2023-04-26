@@ -6,7 +6,7 @@ part of 'bluetooth.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$devicesHash() => r'1d15c0bcfc5d033c32b80582cd32a2d5b16dbc49';
+String _$devicesHash() => r'4605b583d887ce23fe3cbb2211da970e283f9459';
 
 /// See also [devices].
 @ProviderFor(devices)
