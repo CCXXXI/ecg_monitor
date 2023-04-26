@@ -3,6 +3,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../utils/database.dart";
 import "../utils/strings.dart";
+import "bluetooth.dart";
 import "fake_device.dart";
 
 part "device.freezed.dart";
@@ -48,10 +49,13 @@ class CurrentDevice extends _$CurrentDevice {
   @override
   Device? build() {
     final id = prefs.getString(K.currentDeviceId);
+    if (id == null) {
+      return null;
+    }
     if (id == fakeDevice.id) {
       return fakeDevice;
     }
-    return null;
+    return HA301B(id: id, name: prefs.getString(K.currentDeviceName)!);
   }
 
   // ignore: use_setters_to_change_properties
@@ -60,6 +64,7 @@ class CurrentDevice extends _$CurrentDevice {
       await prefs.remove(K.currentDeviceId);
     } else {
       await prefs.setString(K.currentDeviceId, device.id);
+      await prefs.setString(K.currentDeviceName, device.name);
     }
     state = device;
   }

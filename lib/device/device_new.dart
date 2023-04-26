@@ -59,7 +59,9 @@ Widget __deviceList(
             title: Text(d.name),
             subtitle: Text(d.id),
             onTap: () async {
-              final newDevice = d.id == fakeDevice.id ? fakeDevice : HA301B(d);
+              final newDevice = d.id == fakeDevice.id
+                  ? fakeDevice
+                  : HA301B(id: d.id, name: d.name);
               await ref.read(currentDeviceProvider.notifier).set(newDevice);
             },
           ),

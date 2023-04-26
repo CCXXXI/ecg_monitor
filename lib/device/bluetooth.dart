@@ -30,10 +30,10 @@ Stream<List<DiscoveredDevice>> devices(DevicesRef ref) async* {
 }
 
 class HA301B implements Device {
-  HA301B(DiscoveredDevice d) {
-    _id = d.id;
-    _name = d.name;
-    _stateStream = _ble.connectToDevice(id: d.id);
+  HA301B({required String id, required String name}) {
+    _id = id;
+    _name = name;
+    _stateStream = _ble.connectToDevice(id: id);
   }
 
   late final String _id;
