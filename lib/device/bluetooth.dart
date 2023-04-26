@@ -1,6 +1,7 @@
 import "package:flutter_reactive_ble/flutter_reactive_ble.dart" hide Logger;
 import "package:logging/logging.dart";
 import "package:permission_handler/permission_handler.dart";
+import "package:quiver/time.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "device.dart";
@@ -73,6 +74,39 @@ class HA301B implements Device {
   Stream<int> get batteryStream => const Stream.empty();
 
   @override
-  // TODO: implement ecgStream
-  Stream<EcgData> get ecgStream => const Stream.empty();
+  Stream<EcgData> get ecgStream {
+    final characteristic = QualifiedCharacteristic(
+      characteristicId: _txUuid,
+      serviceId: _serviceUuid,
+      deviceId: _id,
+    );
+    var time = DateTime.now();
+    return _ble
+        .subscribeToCharacteristic(characteristic)
+        .asyncExpand((data) async* {
+      assert(data.length == 20, "Unexpected data length: ${data.length}");
+      assert(data[0] == 0xAA, "Unexpected data header: ${data[0]}");
+      assert(data[1] == 0x01, "Unexpected data type: ${data[1]}");
+      assert(data.last == 0xCC, "Unexpected data footer: ${data.last}");
+
+      for (var i = 0; i < 4; i++) {
+        final start = 2 + i * 4;
+        yield parseEcgData(
+          time.add(aMillisecond * 8 * i),
+          data.sublist(start, start + 4),
+        );
+      }
+      time = time.add(aMillisecond * 32);
+    });
+  }
+
+  static EcgData parseEcgData(DateTime time, List<int> raw) {
+    assert(raw.length == 4, "Unexpected data length: ${raw.length}");
+
+    return EcgData(
+      time: time,
+      leadI: ((raw[0] << 8) + raw[1] - (1 << 14)) / (1 << 9),
+      leadII: ((raw[2] << 8) + raw[3] - (1 << 14)) / (1 << 9),
+    );
+  }
 }
