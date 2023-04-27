@@ -12,8 +12,6 @@ class _Chart extends StatelessWidget {
     required this.title,
     required this.points,
     required this.duration,
-    required this.backgroundColor,
-    required this.lineColor,
     required this.gridColor,
     required this.horizontalLineType,
     required this.verticalLineType,
@@ -26,10 +24,6 @@ class _Chart extends StatelessWidget {
   final List<FlSpot> points;
 
   final Duration duration;
-
-  final Color backgroundColor;
-
-  final Color lineColor;
 
   final Color gridColor;
 
@@ -47,8 +41,6 @@ class _Chart extends StatelessWidget {
         title: title,
         points: points,
         duration: duration,
-        backgroundColor: backgroundColor,
-        lineColor: lineColor,
         gridColor: gridColor,
         horizontalLineType: horizontalLineType,
         verticalLineType: verticalLineType,
@@ -61,9 +53,6 @@ class _Chart extends StatelessWidget {
     properties.add(StringProperty('title', title));
     properties.add(DiagnosticsProperty<List<FlSpot>>('points', points));
     properties.add(DiagnosticsProperty<Duration>('duration', duration));
-    properties
-        .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));
-    properties.add(DiagnosticsProperty<Color>('lineColor', lineColor));
     properties.add(DiagnosticsProperty<Color>('gridColor', gridColor));
     properties
         .add(EnumProperty<LineType>('horizontalLineType', horizontalLineType));
@@ -81,8 +70,6 @@ class Chart3Lead extends ConsumerWidget {
     required this.pointsII,
     required this.pointsIII,
     required this.duration,
-    required this.backgroundColor,
-    required this.lineColor,
     required this.gridColor,
     required this.horizontalLineType,
     required this.verticalLineType,
@@ -97,10 +84,6 @@ class Chart3Lead extends ConsumerWidget {
   final List<FlSpot> pointsIII;
 
   final Duration duration;
-
-  final Color backgroundColor;
-
-  final Color lineColor;
 
   final Color gridColor;
 
@@ -124,8 +107,6 @@ class Chart3Lead extends ConsumerWidget {
         pointsII: pointsII,
         pointsIII: pointsIII,
         duration: duration,
-        backgroundColor: backgroundColor,
-        lineColor: lineColor,
         gridColor: gridColor,
         horizontalLineType: horizontalLineType,
         verticalLineType: verticalLineType,
@@ -139,9 +120,6 @@ class Chart3Lead extends ConsumerWidget {
     properties.add(DiagnosticsProperty<List<FlSpot>>('pointsII', pointsII));
     properties.add(DiagnosticsProperty<List<FlSpot>>('pointsIII', pointsIII));
     properties.add(DiagnosticsProperty<Duration>('duration', duration));
-    properties
-        .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));
-    properties.add(DiagnosticsProperty<Color>('lineColor', lineColor));
     properties.add(DiagnosticsProperty<Color>('gridColor', gridColor));
     properties
         .add(EnumProperty<LineType>('horizontalLineType', horizontalLineType));

@@ -104,8 +104,6 @@ Widget _realTimeChart(BuildContext context, WidgetRef ref) {
       pointsII: ref.watch(_pointsProvider(1)),
       pointsIII: ref.watch(_pointsProvider(2)),
       duration: _duration,
-      backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-      lineColor: ref.watch(realTimeLineColorProvider),
       gridColor: ref.watch(realTimeGridColorProvider),
       horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
       verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
