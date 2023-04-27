@@ -141,7 +141,7 @@ Widget __chart(
               lineBarsData: [
                 LineChartBarData(
                   spots: points,
-                  color: lineColor,
+                  color: Theme.of(context).colorScheme.onBackground,
                   barWidth: dataLineWidth,
                   preventCurveOverShooting: true,
                   dotData: FlDotData(
