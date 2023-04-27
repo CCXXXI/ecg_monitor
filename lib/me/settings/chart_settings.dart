@@ -26,10 +26,6 @@ Widget _chartSettings(
   required void Function(Duration) onPortraitDurationChanged,
   required Duration landscapeDuration,
   required void Function(Duration) onLandscapeDurationChanged,
-  required Color backgroundColor,
-  required void Function(Color) onBackgroundColorChanged,
-  required Color lineColor,
-  required void Function(Color) onLineColorChanged,
   required Color gridColor,
   required void Function(Color) onGridColorChanged,
   required LineType horizontalLineType,
@@ -140,22 +136,6 @@ Widget _chartSettings(
         trailing: Text(landscapeDuration.toMsString()),
         onTap: () async => onLandscapeDurationChanged(
           await pickDuration(landscapeDuration),
-        ),
-      ),
-      ListTile(
-        leading: const Icon(Icons.color_lens_outlined),
-        title: Text(s.backgroundColor),
-        trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
-        onTap: () async => onBackgroundColorChanged(
-          await pickColor(backgroundColor),
-        ),
-      ),
-      ListTile(
-        leading: const Icon(Icons.show_chart_outlined),
-        title: Text(s.lineColor),
-        trailing: ColorIndicator(color: lineColor, hasBorder: true),
-        onTap: () async => onLineColorChanged(
-          await pickColor(lineColor),
         ),
       ),
       ListTile(

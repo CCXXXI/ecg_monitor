@@ -210,26 +210,6 @@ class S {
     );
   }
 
-  /// `Background color`
-  String get backgroundColor {
-    return Intl.message(
-      'Background color',
-      name: 'backgroundColor',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Line color`
-  String get lineColor {
-    return Intl.message(
-      'Line color',
-      name: 'lineColor',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Grid color`
   String get gridColor {
     return Intl.message(

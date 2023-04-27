@@ -563,7 +563,7 @@ class _LineTypeProvider
 }
 
 String _$realTimeChartSettingsHash() =>
-    r'0559a8f4195504fc74d2982a6f706376c8cce6c3';
+    r'c307eea7236be9bc1a2f8bf8cd3c33f7f7d5a631';
 
 /// See also [RealTimeChartSettings].
 @ProviderFor(RealTimeChartSettings)
@@ -580,7 +580,7 @@ final realTimeChartSettingsProvider = AutoDisposeNotifierProvider<
 
 typedef _$RealTimeChartSettings = AutoDisposeNotifier<ChartSettingsData>;
 String _$realTimeChartSettingsSetterHash() =>
-    r'c4c90b2a9dd39777b42a93b245523553b84b7694';
+    r'b7ad609d170a8904947ca8b57cf686603cf346b8';
 
 /// [RealTimeChartSettings.ref] is invalidated when any of the settings changes.
 /// So we need to use a separate provider to set the settings.
@@ -600,7 +600,7 @@ final _realTimeChartSettingsSetterProvider =
 
 typedef _$RealTimeChartSettingsSetter = AutoDisposeNotifier<void>;
 String _$historyChartSettingsHash() =>
-    r'db3a231ad6fe334fc10a6494296a8e8900d9ab50';
+    r'ab7866d028b387d2d86a022eefa2903aecbec3c0';
 
 /// See also [HistoryChartSettings].
 @ProviderFor(HistoryChartSettings)
@@ -617,7 +617,7 @@ final historyChartSettingsProvider = AutoDisposeNotifierProvider<
 
 typedef _$HistoryChartSettings = AutoDisposeNotifier<ChartSettingsData>;
 String _$historyChartSettingsSetterHash() =>
-    r'def1991a82de1503317d25e2506c23b0b1296c79';
+    r'52266360ec727cf916b4065ccf6a634aa60400fb';
 
 /// See also [_HistoryChartSettingsSetter].
 @ProviderFor(_HistoryChartSettingsSetter)

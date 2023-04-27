@@ -15,10 +15,6 @@ class ChartSettings extends StatelessWidget {
     required this.onPortraitDurationChanged,
     required this.landscapeDuration,
     required this.onLandscapeDurationChanged,
-    required this.backgroundColor,
-    required this.onBackgroundColorChanged,
-    required this.lineColor,
-    required this.onLineColorChanged,
     required this.gridColor,
     required this.onGridColorChanged,
     required this.horizontalLineType,
@@ -41,14 +37,6 @@ class ChartSettings extends StatelessWidget {
   final Duration landscapeDuration;
 
   final void Function(Duration) onLandscapeDurationChanged;
-
-  final Color backgroundColor;
-
-  final void Function(Color) onBackgroundColorChanged;
-
-  final Color lineColor;
-
-  final void Function(Color) onLineColorChanged;
 
   final Color gridColor;
 
@@ -77,10 +65,6 @@ class ChartSettings extends StatelessWidget {
         onPortraitDurationChanged: onPortraitDurationChanged,
         landscapeDuration: landscapeDuration,
         onLandscapeDurationChanged: onLandscapeDurationChanged,
-        backgroundColor: backgroundColor,
-        onBackgroundColorChanged: onBackgroundColorChanged,
-        lineColor: lineColor,
-        onLineColorChanged: onLineColorChanged,
         gridColor: gridColor,
         onGridColorChanged: onGridColorChanged,
         horizontalLineType: horizontalLineType,
@@ -106,13 +90,6 @@ class ChartSettings extends StatelessWidget {
         DiagnosticsProperty<Duration>('landscapeDuration', landscapeDuration));
     properties.add(DiagnosticsProperty<void Function(Duration)>(
         'onLandscapeDurationChanged', onLandscapeDurationChanged));
-    properties
-        .add(DiagnosticsProperty<Color>('backgroundColor', backgroundColor));
-    properties.add(DiagnosticsProperty<void Function(Color)>(
-        'onBackgroundColorChanged', onBackgroundColorChanged));
-    properties.add(DiagnosticsProperty<Color>('lineColor', lineColor));
-    properties.add(DiagnosticsProperty<void Function(Color)>(
-        'onLineColorChanged', onLineColorChanged));
     properties.add(DiagnosticsProperty<Color>('gridColor', gridColor));
     properties.add(DiagnosticsProperty<void Function(Color)>(
         'onGridColorChanged', onGridColorChanged));

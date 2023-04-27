@@ -77,14 +77,6 @@ final realTimeLandscapeDurationProvider = _durationProvider(
   "${K.realTime}.${K.landscapeDuration}",
   ChartSettingsData.simple.landscapeDuration,
 );
-final realTimeBackgroundColorProvider = _colorProvider(
-  "${K.realTime}.${K.backgroundColor}",
-  ChartSettingsData.simple.backgroundColor,
-);
-final realTimeLineColorProvider = _colorProvider(
-  "${K.realTime}.${K.lineColor}",
-  ChartSettingsData.simple.lineColor,
-);
 final realTimeGridColorProvider = _colorProvider(
   "${K.realTime}.${K.gridColor}",
   ChartSettingsData.simple.gridColor,
@@ -108,8 +100,6 @@ class RealTimeChartSettings extends _$RealTimeChartSettings {
   ChartSettingsData build() => ChartSettingsData(
         portraitDuration: ref.watch(realTimePortraitDurationProvider),
         landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
-        backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-        lineColor: ref.watch(realTimeLineColorProvider),
         gridColor: ref.watch(realTimeGridColorProvider),
         horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
         verticalLineType: ref.watch(realTimeVerticalLineTypeProvider),
@@ -137,12 +127,6 @@ class _RealTimeChartSettingsSetter extends _$RealTimeChartSettingsSetter {
     await ref
         .read(realTimeLandscapeDurationProvider.notifier)
         .set(chartSettingsData.landscapeDuration);
-    await ref
-        .read(realTimeBackgroundColorProvider.notifier)
-        .set(chartSettingsData.backgroundColor);
-    await ref
-        .read(realTimeLineColorProvider.notifier)
-        .set(chartSettingsData.lineColor);
     await ref
         .read(realTimeGridColorProvider.notifier)
         .set(chartSettingsData.gridColor);
@@ -182,14 +166,6 @@ final historyLandscapeDurationProvider = _durationProvider(
   "${K.history}.${K.landscapeDuration}",
   ChartSettingsData.professional.landscapeDuration,
 );
-final historyBackgroundColorProvider = _colorProvider(
-  "${K.history}.${K.backgroundColor}",
-  ChartSettingsData.professional.backgroundColor,
-);
-final historyLineColorProvider = _colorProvider(
-  "${K.history}.${K.lineColor}",
-  ChartSettingsData.professional.lineColor,
-);
 final historyGridColorProvider = _colorProvider(
   "${K.history}.${K.gridColor}",
   ChartSettingsData.professional.gridColor,
@@ -213,8 +189,6 @@ class HistoryChartSettings extends _$HistoryChartSettings {
   ChartSettingsData build() => ChartSettingsData(
         portraitDuration: ref.watch(historyPortraitDurationProvider),
         landscapeDuration: ref.watch(historyLandscapeDurationProvider),
-        backgroundColor: ref.watch(historyBackgroundColorProvider),
-        lineColor: ref.watch(historyLineColorProvider),
         gridColor: ref.watch(historyGridColorProvider),
         horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
         verticalLineType: ref.watch(historyVerticalLineTypeProvider),
@@ -240,12 +214,6 @@ class _HistoryChartSettingsSetter extends _$HistoryChartSettingsSetter {
     await ref
         .read(historyLandscapeDurationProvider.notifier)
         .set(chartSettingsData.landscapeDuration);
-    await ref
-        .read(historyBackgroundColorProvider.notifier)
-        .set(chartSettingsData.backgroundColor);
-    await ref
-        .read(historyLineColorProvider.notifier)
-        .set(chartSettingsData.lineColor);
     await ref
         .read(historyGridColorProvider.notifier)
         .set(chartSettingsData.gridColor);

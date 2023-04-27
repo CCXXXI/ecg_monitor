@@ -11,8 +11,6 @@ class ChartSettingsData with _$ChartSettingsData {
   const factory ChartSettingsData({
     required Duration portraitDuration,
     required Duration landscapeDuration,
-    required Color backgroundColor,
-    required Color lineColor,
     required Color gridColor,
     required LineType horizontalLineType,
     required LineType verticalLineType,
@@ -22,8 +20,6 @@ class ChartSettingsData with _$ChartSettingsData {
   static final simple = ChartSettingsData(
     portraitDuration: aSecond * 1.5,
     landscapeDuration: aSecond * 4,
-    backgroundColor: Colors.white,
-    lineColor: Colors.black,
     // Color(Colors.red.value) != Colors.red
     // The former is a Color object, the latter is a MaterialColor object.
     // The color read from SharedPreferences is a Color object.

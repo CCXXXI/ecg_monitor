@@ -51,8 +51,6 @@ void main() {
             pointsII: const [],
             pointsIII: const [],
             duration: aSecond,
-            backgroundColor: Colors.white,
-            lineColor: Colors.black,
             gridColor: Colors.black,
             horizontalLineType: LineType.full,
             verticalLineType: LineType.full,

@@ -36,8 +36,6 @@ Widget __chart(
   required String title,
   required List<FlSpot> points,
   required Duration duration,
-  required Color backgroundColor,
-  required Color lineColor,
   required Color gridColor,
   required LineType horizontalLineType,
   required LineType verticalLineType,
@@ -112,7 +110,6 @@ Widget __chart(
               maxY: points.isEmpty
                   ? null
                   : points.map((p) => p.y).reduce(max) + smallYInterval,
-              backgroundColor: backgroundColor,
               titlesData: FlTitlesData(
                 topTitles: AxisTitles(),
                 bottomTitles: bottomTitles,
@@ -142,13 +139,13 @@ Widget __chart(
               lineBarsData: [
                 LineChartBarData(
                   spots: points,
-                  color: lineColor,
+                  color: Theme.of(context).colorScheme.onBackground,
                   barWidth: dataLineWidth,
                   preventCurveOverShooting: true,
                   dotData: FlDotData(
                     show: showDots,
                     getDotPainter: (spot, xPercentage, bar, index) =>
-                        FlDotSquarePainter(color: backgroundColor),
+                        FlDotCrossPainter(),
                   ),
                 ),
               ],
@@ -160,6 +157,7 @@ Widget __chart(
                       color: Colors.transparent,
                       label: VerticalLineLabel(
                         show: true,
+                        style: Theme.of(context).textTheme.labelMedium,
                         alignment: Alignment.center,
                         labelResolver: (_) => beat.label.name,
                       ),
@@ -184,8 +182,6 @@ Widget _chart3Lead(
   required List<FlSpot> pointsII,
   required List<FlSpot> pointsIII,
   required Duration duration,
-  required Color backgroundColor,
-  required Color lineColor,
   required Color gridColor,
   required LineType horizontalLineType,
   required LineType verticalLineType,
@@ -201,8 +197,6 @@ Widget _chart3Lead(
           title: [s.leadI, s.leadII, s.leadIII][i],
           points: [pointsI, pointsII, pointsIII][i],
           duration: duration,
-          backgroundColor: backgroundColor,
-          lineColor: lineColor,
           gridColor: gridColor,
           horizontalLineType: horizontalLineType,
           verticalLineType: verticalLineType,

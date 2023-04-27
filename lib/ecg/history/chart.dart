@@ -93,8 +93,6 @@ Widget _historyChart(BuildContext context, WidgetRef ref, DateTime time) {
       pointsII: pointsII,
       pointsIII: pointsIII,
       duration: duration,
-      backgroundColor: ref.watch(historyBackgroundColorProvider),
-      lineColor: ref.watch(historyLineColorProvider),
       gridColor: ref.watch(historyGridColorProvider),
       horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),
       verticalLineType: ref.watch(historyVerticalLineTypeProvider),

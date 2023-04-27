@@ -16,8 +16,6 @@
   "landscapeDuration": "横屏数据范围",
   "refreshRate": "刷新率",
   "minDistance": "最小点间距",
-  "backgroundColor": "背景颜色",
-  "lineColor": "折线颜色",
   "gridColor": "网格颜色",
   "horizontalLines": "水平网格线",
   "verticalLines": "垂直网格线",
