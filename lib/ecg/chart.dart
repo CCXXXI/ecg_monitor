@@ -157,6 +157,7 @@ Widget __chart(
                       color: Colors.transparent,
                       label: VerticalLineLabel(
                         show: true,
+                        style: Theme.of(context).textTheme.labelMedium,
                         alignment: Alignment.center,
                         labelResolver: (_) => beat.label.name,
                       ),
