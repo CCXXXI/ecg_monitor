@@ -147,7 +147,7 @@ Widget __chart(
                   dotData: FlDotData(
                     show: showDots,
                     getDotPainter: (spot, xPercentage, bar, index) =>
-                        FlDotSquarePainter(color: backgroundColor),
+                        FlDotCrossPainter(),
                   ),
                 ),
               ],
