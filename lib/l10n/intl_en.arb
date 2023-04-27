@@ -16,8 +16,6 @@
   "landscapeDuration": "Land. duration",
   "refreshRate": "Refresh rate",
   "minDistance": "Min distance",
-  "backgroundColor": "Background color",
-  "lineColor": "Line color",
   "gridColor": "Grid color",
   "horizontalLines": "Hor. lines",
   "verticalLines": "Ver. lines",
