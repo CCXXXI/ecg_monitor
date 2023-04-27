@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.37.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.0...v0.37.1) (2023-04-27)
+
+
+### Bug Fixes
+
+* **chart:** better label text theme ([abec1da](https://github.com/CCXXXI/ecg_monitor/commit/abec1da8ab270c5e3d150671eef74d7e8ed73d94))
+* **chart:** FlDotCrossPainter for dotData ([5fe4e50](https://github.com/CCXXXI/ecg_monitor/commit/5fe4e508622e48458c16758eb6a8ff6d890eeca9))
+* **chart:** lineColor -&gt; onBackground ([9b6e05c](https://github.com/CCXXXI/ecg_monitor/commit/9b6e05c84d8f97887f828b5c0c203146cc4de011))
+* **chart:** remove backgroundColor ([e7f5832](https://github.com/CCXXXI/ecg_monitor/commit/e7f5832d2c8fffca235937503f2942347f507c78))
+* **settings:** remove useless settings ([ce33076](https://github.com/CCXXXI/ecg_monitor/commit/ce33076d2c8a823efdf9d40933bb7c6cf29cd8f9))
+
+
+### Code Refactoring
+
+* **chart:** remove unused params ([318f3c3](https://github.com/CCXXXI/ecg_monitor/commit/318f3c38dffe817f970fb792e23a0220a3c38083))
+* remove unused l10n messages ([e7f7a1d](https://github.com/CCXXXI/ecg_monitor/commit/e7f7a1df63855c147e8cf4e7e95c9a2c0904a6c6))
+* **strings:** remove unused keys ([399c4ef](https://github.com/CCXXXI/ecg_monitor/commit/399c4ef1dbdecbd6876b06ed42fc11726abf2b44))
+
 ## [0.37.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.1...v0.37.0) (2023-04-26)
 
 ### Features
