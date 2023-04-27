@@ -112,7 +112,6 @@ Widget __chart(
               maxY: points.isEmpty
                   ? null
                   : points.map((p) => p.y).reduce(max) + smallYInterval,
-              backgroundColor: backgroundColor,
               titlesData: FlTitlesData(
                 topTitles: AxisTitles(),
                 bottomTitles: bottomTitles,
