@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.37.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.1...v0.37.2) (2023-04-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency go_router to v7 ([#329](https://github.com/CCXXXI/ecg_monitor/issues/329)) ([e9e3174](https://github.com/CCXXXI/ecg_monitor/commit/e9e317435c2492a9c42f4da62249df088c73a277))
+
 ## [0.37.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.0...v0.37.1) (2023-04-27)
 
 ### Bug Fixes
