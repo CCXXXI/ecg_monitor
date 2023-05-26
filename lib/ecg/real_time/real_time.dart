@@ -21,8 +21,8 @@ Widget _realTime(BuildContext context, WidgetRef ref) {
   final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
   if (isPortrait) {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         Expanded(child: HeartRateWidget()),
         Expanded(flex: 5, child: RealTimeChart()),
       ],
