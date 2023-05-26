@@ -33,6 +33,7 @@ Widget _chartSettings(
   required LineType verticalLineType,
   required void Function(LineType) onVerticalLineTypeChanged,
   required bool showDots,
+  // ignore: avoid_positional_boolean_parameters
   required void Function(bool) onShowDotsChanged,
   required bool showDevTools,
 }) {
