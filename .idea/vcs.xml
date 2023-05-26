@@ -12,5 +12,6 @@
     <mapping directory="$PROJECT_DIR$/ios/Classes/PanTompkinsQRS/assets/ecg_data" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ios/Classes/PanTompkinsQRS/vcpkg" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ios/Classes/ecg_model_cpp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ios/Classes/ecg_model_cpp/vcpkg" vcs="Git" />
   </component>
 </project>
