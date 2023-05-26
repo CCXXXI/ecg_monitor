@@ -72,7 +72,7 @@ const BeatSchema = CollectionSchema(
   getId: _beatGetId,
   getLinks: _beatGetLinks,
   attach: _beatAttach,
-  version: '3.1.0',
+  version: '3.1.0+1',
 );
 
 int _beatEstimateSize(
@@ -816,7 +816,7 @@ const SamplePointSchema = CollectionSchema(
   getId: _samplePointGetId,
   getLinks: _samplePointGetLinks,
   attach: _samplePointAttach,
-  version: '3.1.0',
+  version: '3.1.0+1',
 );
 
 int _samplePointEstimateSize(
@@ -1297,7 +1297,7 @@ const FakeSamplePointSchema = CollectionSchema(
   getId: _fakeSamplePointGetId,
   getLinks: _fakeSamplePointGetLinks,
   attach: _fakeSamplePointAttach,
-  version: '3.1.0',
+  version: '3.1.0+1',
 );
 
 int _fakeSamplePointEstimateSize(
