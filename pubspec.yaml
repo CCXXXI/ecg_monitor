@@ -60,7 +60,7 @@ dev_dependencies:
   all_lint_rules_community: ^0.0.31
   build_runner: ^2.3.3
   dependency_validator: ^3.2.2
-  ffigen: ^7.2.10
+  ffigen: ^8.0.0
   flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
