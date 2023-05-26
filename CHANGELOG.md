@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.37.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.2...v0.37.3) (2023-05-26)
+
+### Bug Fixes
+
+- **deps:** update dependency intl to ^0.18.0 ([#336](https://github.com/CCXXXI/ecg_monitor/issues/336)) ([8105668](https://github.com/CCXXXI/ecg_monitor/commit/810566823c80f8a2c1fd433c7bb5abc520a8cd6b))
+
+### Code Refactoring
+
+- dart fix ([21a5c0d](https://github.com/CCXXXI/ecg_monitor/commit/21a5c0d13e26f30c6f0063694fcdd8332c3f2d43))
+- resolve deprecated warnings ([3e24bc2](https://github.com/CCXXXI/ecg_monitor/commit/3e24bc20dfadfe4c38657a7f5fd33f21164d7544))
+
+### Miscellaneous Chores
+
+- ignore: avoid_positional_boolean_parameters ([dae8f71](https://github.com/CCXXXI/ecg_monitor/commit/dae8f71ebd524bab6130bc1aefdadd36b5606be9))
+- rerun build_runner ([ed75d04](https://github.com/CCXXXI/ecg_monitor/commit/ed75d04e730b28c64db17be1c670c8d10686568b))
+- save IDEA config ([499fdef](https://github.com/CCXXXI/ecg_monitor/commit/499fdefa243fa19f5fdb24015beb96da0fbf26c0))
+- update gitignore ([8a3cf37](https://github.com/CCXXXI/ecg_monitor/commit/8a3cf3793840563209a689a13e47cb26df851c5d))
+
+### Build System
+
+- flutter pub upgrade ([3cfd1a0](https://github.com/CCXXXI/ecg_monitor/commit/3cfd1a00266a91f20be0690781c65b2c53d26422))
+- update build.gradle ([2367ad9](https://github.com/CCXXXI/ecg_monitor/commit/2367ad9eb2696b0f01a407f3cb8337f31ee225b5))
+- update ios configs ([520a685](https://github.com/CCXXXI/ecg_monitor/commit/520a6852f582b50ca68b25dede6ecbb10ac428a7))
+
 ## [0.37.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.1...v0.37.2) (2023-04-29)
 
 ### Bug Fixes
