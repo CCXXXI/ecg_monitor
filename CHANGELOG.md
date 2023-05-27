@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.37.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.3...v0.37.4) (2023-05-26)
+
+### Bug Fixes
+
+- **deps:** update dependency package_info_plus to v4 ([#332](https://github.com/CCXXXI/ecg_monitor/issues/332)) ([7c23fbb](https://github.com/CCXXXI/ecg_monitor/commit/7c23fbb3c830ac1b1c0b0f5b66774a819b4a8892))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency ffigen to v8 ([#331](https://github.com/CCXXXI/ecg_monitor/issues/331)) ([a6c1a07](https://github.com/CCXXXI/ecg_monitor/commit/a6c1a072871d6004deb7ffc23f31e038a57fac51))
+
 ## [0.37.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.2...v0.37.3) (2023-05-26)
 
 ### Bug Fixes
