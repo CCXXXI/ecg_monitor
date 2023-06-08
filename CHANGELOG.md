@@ -2,11 +2,10 @@
 
 ## [0.37.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.4...v0.37.5) (2023-06-08)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency go_router to v8 ([#347](https://github.com/CCXXXI/ecg_monitor/issues/347)) ([feedc60](https://github.com/CCXXXI/ecg_monitor/commit/feedc607e85e02a61aaded3fc33e363b0a83502a))
-* **deps:** update kotlin monorepo to v1.8.22 ([#345](https://github.com/CCXXXI/ecg_monitor/issues/345)) ([df2697b](https://github.com/CCXXXI/ecg_monitor/commit/df2697bc114939c8cb6e0cd7e09adabc60d70817))
+- **deps:** update dependency go_router to v8 ([#347](https://github.com/CCXXXI/ecg_monitor/issues/347)) ([feedc60](https://github.com/CCXXXI/ecg_monitor/commit/feedc607e85e02a61aaded3fc33e363b0a83502a))
+- **deps:** update kotlin monorepo to v1.8.22 ([#345](https://github.com/CCXXXI/ecg_monitor/issues/345)) ([df2697b](https://github.com/CCXXXI/ecg_monitor/commit/df2697bc114939c8cb6e0cd7e09adabc60d70817))
 
 ## [0.37.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.3...v0.37.4) (2023-05-26)
 
