@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChartSettingsData {
   Duration get portraitDuration => throw _privateConstructorUsedError;
   Duration get landscapeDuration => throw _privateConstructorUsedError;
-  Color get backgroundColor => throw _privateConstructorUsedError;
-  Color get lineColor => throw _privateConstructorUsedError;
   Color get gridColor => throw _privateConstructorUsedError;
   LineType get horizontalLineType => throw _privateConstructorUsedError;
   LineType get verticalLineType => throw _privateConstructorUsedError;
@@ -39,8 +37,6 @@ abstract class $ChartSettingsDataCopyWith<$Res> {
   $Res call(
       {Duration portraitDuration,
       Duration landscapeDuration,
-      Color backgroundColor,
-      Color lineColor,
       Color gridColor,
       LineType horizontalLineType,
       LineType verticalLineType,
@@ -62,8 +58,6 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
-    Object? backgroundColor = null,
-    Object? lineColor = null,
     Object? gridColor = null,
     Object? horizontalLineType = null,
     Object? verticalLineType = null,
@@ -78,14 +72,6 @@ class _$ChartSettingsDataCopyWithImpl<$Res, $Val extends ChartSettingsData>
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      lineColor: null == lineColor
-          ? _value.lineColor
-          : lineColor // ignore: cast_nullable_to_non_nullable
-              as Color,
       gridColor: null == gridColor
           ? _value.gridColor
           : gridColor // ignore: cast_nullable_to_non_nullable
@@ -117,8 +103,6 @@ abstract class _$$_ChartSettingsDataCopyWith<$Res>
   $Res call(
       {Duration portraitDuration,
       Duration landscapeDuration,
-      Color backgroundColor,
-      Color lineColor,
       Color gridColor,
       LineType horizontalLineType,
       LineType verticalLineType,
@@ -138,8 +122,6 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
   $Res call({
     Object? portraitDuration = null,
     Object? landscapeDuration = null,
-    Object? backgroundColor = null,
-    Object? lineColor = null,
     Object? gridColor = null,
     Object? horizontalLineType = null,
     Object? verticalLineType = null,
@@ -154,14 +136,6 @@ class __$$_ChartSettingsDataCopyWithImpl<$Res>
           ? _value.landscapeDuration
           : landscapeDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
-      backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      lineColor: null == lineColor
-          ? _value.lineColor
-          : lineColor // ignore: cast_nullable_to_non_nullable
-              as Color,
       gridColor: null == gridColor
           ? _value.gridColor
           : gridColor // ignore: cast_nullable_to_non_nullable
@@ -188,8 +162,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
   const _$_ChartSettingsData(
       {required this.portraitDuration,
       required this.landscapeDuration,
-      required this.backgroundColor,
-      required this.lineColor,
       required this.gridColor,
       required this.horizontalLineType,
       required this.verticalLineType,
@@ -199,10 +171,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
   final Duration portraitDuration;
   @override
   final Duration landscapeDuration;
-  @override
-  final Color backgroundColor;
-  @override
-  final Color lineColor;
   @override
   final Color gridColor;
   @override
@@ -214,7 +182,7 @@ class _$_ChartSettingsData implements _ChartSettingsData {
 
   @override
   String toString() {
-    return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, backgroundColor: $backgroundColor, lineColor: $lineColor, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
+    return 'ChartSettingsData(portraitDuration: $portraitDuration, landscapeDuration: $landscapeDuration, gridColor: $gridColor, horizontalLineType: $horizontalLineType, verticalLineType: $verticalLineType, showDots: $showDots)';
   }
 
   @override
@@ -226,10 +194,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
                 other.portraitDuration == portraitDuration) &&
             (identical(other.landscapeDuration, landscapeDuration) ||
                 other.landscapeDuration == landscapeDuration) &&
-            (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor) &&
-            (identical(other.lineColor, lineColor) ||
-                other.lineColor == lineColor) &&
             (identical(other.gridColor, gridColor) ||
                 other.gridColor == gridColor) &&
             (identical(other.horizontalLineType, horizontalLineType) ||
@@ -245,8 +209,6 @@ class _$_ChartSettingsData implements _ChartSettingsData {
       runtimeType,
       portraitDuration,
       landscapeDuration,
-      backgroundColor,
-      lineColor,
       gridColor,
       horizontalLineType,
       verticalLineType,
@@ -264,8 +226,6 @@ abstract class _ChartSettingsData implements ChartSettingsData {
   const factory _ChartSettingsData(
       {required final Duration portraitDuration,
       required final Duration landscapeDuration,
-      required final Color backgroundColor,
-      required final Color lineColor,
       required final Color gridColor,
       required final LineType horizontalLineType,
       required final LineType verticalLineType,
@@ -275,10 +235,6 @@ abstract class _ChartSettingsData implements ChartSettingsData {
   Duration get portraitDuration;
   @override
   Duration get landscapeDuration;
-  @override
-  Color get backgroundColor;
-  @override
-  Color get lineColor;
   @override
   Color get gridColor;
   @override

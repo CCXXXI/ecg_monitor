@@ -6,20 +6,6 @@ part of 'device.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$rssiHash() => r'8ee600f40887629b80da91c83a7ea016f4499386';
-
-/// See also [rssi].
-@ProviderFor(rssi)
-final rssiProvider = AutoDisposeStreamProvider<int>.internal(
-  rssi,
-  name: r'rssiProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$rssiHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef RssiRef = AutoDisposeStreamProviderRef<int>;
 String _$batteryHash() => r'd011c05bf7bb23f1a99136fa9e2a1262b02d61d4';
 
 /// See also [battery].
@@ -34,20 +20,23 @@ final batteryProvider = AutoDisposeStreamProvider<int>.internal(
 );
 
 typedef BatteryRef = AutoDisposeStreamProviderRef<int>;
-String _$connectedHash() => r'e990b890af88dd40d385cac4f977f64e29fb3f6c';
+String _$connectionStateHash() => r'0a3ebff933e63c810d22bee518bc34fe3bbcebbf';
 
-/// See also [connected].
-@ProviderFor(connected)
-final connectedProvider = AutoDisposeStreamProvider<bool>.internal(
-  connected,
-  name: r'connectedProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$connectedHash,
+/// See also [connectionState].
+@ProviderFor(connectionState)
+final connectionStateProvider =
+    AutoDisposeStreamProvider<DeviceConnectionState>.internal(
+  connectionState,
+  name: r'connectionStateProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$connectionStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef ConnectedRef = AutoDisposeStreamProviderRef<bool>;
+typedef ConnectionStateRef
+    = AutoDisposeStreamProviderRef<DeviceConnectionState>;
 String _$ecgHash() => r'9b693b804614294fe010d8c1507cad41e4d86695';
 
 /// See also [ecg].
@@ -62,7 +51,7 @@ final ecgProvider = AutoDisposeStreamProvider<EcgData>.internal(
 );
 
 typedef EcgRef = AutoDisposeStreamProviderRef<EcgData>;
-String _$currentDeviceHash() => r'7703f30584c43d9e1723f63fb0159d7d89aaa179';
+String _$currentDeviceHash() => r'c30d92a24e6280eb7ba4c8cd4fca5196c6e3f33c';
 
 /// See also [CurrentDevice].
 @ProviderFor(CurrentDevice)

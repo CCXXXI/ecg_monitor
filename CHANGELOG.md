@@ -1,5 +1,185 @@
 # Changelog
 
+## [0.37.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.4...v0.37.5) (2023-06-08)
+
+### Bug Fixes
+
+- **deps:** update dependency go_router to v8 ([#347](https://github.com/CCXXXI/ecg_monitor/issues/347)) ([feedc60](https://github.com/CCXXXI/ecg_monitor/commit/feedc607e85e02a61aaded3fc33e363b0a83502a))
+- **deps:** update kotlin monorepo to v1.8.22 ([#345](https://github.com/CCXXXI/ecg_monitor/issues/345)) ([df2697b](https://github.com/CCXXXI/ecg_monitor/commit/df2697bc114939c8cb6e0cd7e09adabc60d70817))
+
+## [0.37.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.3...v0.37.4) (2023-05-26)
+
+### Bug Fixes
+
+- **deps:** update dependency package_info_plus to v4 ([#332](https://github.com/CCXXXI/ecg_monitor/issues/332)) ([7c23fbb](https://github.com/CCXXXI/ecg_monitor/commit/7c23fbb3c830ac1b1c0b0f5b66774a819b4a8892))
+
+### Miscellaneous Chores
+
+- **deps:** update dependency ffigen to v8 ([#331](https://github.com/CCXXXI/ecg_monitor/issues/331)) ([a6c1a07](https://github.com/CCXXXI/ecg_monitor/commit/a6c1a072871d6004deb7ffc23f31e038a57fac51))
+
+## [0.37.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.2...v0.37.3) (2023-05-26)
+
+### Bug Fixes
+
+- **deps:** update dependency intl to ^0.18.0 ([#336](https://github.com/CCXXXI/ecg_monitor/issues/336)) ([8105668](https://github.com/CCXXXI/ecg_monitor/commit/810566823c80f8a2c1fd433c7bb5abc520a8cd6b))
+
+### Code Refactoring
+
+- dart fix ([21a5c0d](https://github.com/CCXXXI/ecg_monitor/commit/21a5c0d13e26f30c6f0063694fcdd8332c3f2d43))
+- resolve deprecated warnings ([3e24bc2](https://github.com/CCXXXI/ecg_monitor/commit/3e24bc20dfadfe4c38657a7f5fd33f21164d7544))
+
+### Miscellaneous Chores
+
+- ignore: avoid_positional_boolean_parameters ([dae8f71](https://github.com/CCXXXI/ecg_monitor/commit/dae8f71ebd524bab6130bc1aefdadd36b5606be9))
+- rerun build_runner ([ed75d04](https://github.com/CCXXXI/ecg_monitor/commit/ed75d04e730b28c64db17be1c670c8d10686568b))
+- save IDEA config ([499fdef](https://github.com/CCXXXI/ecg_monitor/commit/499fdefa243fa19f5fdb24015beb96da0fbf26c0))
+- update gitignore ([8a3cf37](https://github.com/CCXXXI/ecg_monitor/commit/8a3cf3793840563209a689a13e47cb26df851c5d))
+
+### Build System
+
+- flutter pub upgrade ([3cfd1a0](https://github.com/CCXXXI/ecg_monitor/commit/3cfd1a00266a91f20be0690781c65b2c53d26422))
+- update build.gradle ([2367ad9](https://github.com/CCXXXI/ecg_monitor/commit/2367ad9eb2696b0f01a407f3cb8337f31ee225b5))
+- update ios configs ([520a685](https://github.com/CCXXXI/ecg_monitor/commit/520a6852f582b50ca68b25dede6ecbb10ac428a7))
+
+## [0.37.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.1...v0.37.2) (2023-04-29)
+
+### Bug Fixes
+
+- **deps:** update dependency go_router to v7 ([#329](https://github.com/CCXXXI/ecg_monitor/issues/329)) ([e9e3174](https://github.com/CCXXXI/ecg_monitor/commit/e9e317435c2492a9c42f4da62249df088c73a277))
+
+## [0.37.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.0...v0.37.1) (2023-04-27)
+
+### Bug Fixes
+
+- **chart:** better label text theme ([abec1da](https://github.com/CCXXXI/ecg_monitor/commit/abec1da8ab270c5e3d150671eef74d7e8ed73d94))
+- **chart:** FlDotCrossPainter for dotData ([5fe4e50](https://github.com/CCXXXI/ecg_monitor/commit/5fe4e508622e48458c16758eb6a8ff6d890eeca9))
+- **chart:** lineColor -&gt; onBackground ([9b6e05c](https://github.com/CCXXXI/ecg_monitor/commit/9b6e05c84d8f97887f828b5c0c203146cc4de011))
+- **chart:** remove backgroundColor ([e7f5832](https://github.com/CCXXXI/ecg_monitor/commit/e7f5832d2c8fffca235937503f2942347f507c78))
+- **settings:** remove useless settings ([ce33076](https://github.com/CCXXXI/ecg_monitor/commit/ce33076d2c8a823efdf9d40933bb7c6cf29cd8f9))
+
+### Code Refactoring
+
+- **chart:** remove unused params ([318f3c3](https://github.com/CCXXXI/ecg_monitor/commit/318f3c38dffe817f970fb792e23a0220a3c38083))
+- remove unused l10n messages ([e7f7a1d](https://github.com/CCXXXI/ecg_monitor/commit/e7f7a1df63855c147e8cf4e7e95c9a2c0904a6c6))
+- **strings:** remove unused keys ([399c4ef](https://github.com/CCXXXI/ecg_monitor/commit/399c4ef1dbdecbd6876b06ed42fc11726abf2b44))
+
+## [0.37.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.1...v0.37.0) (2023-04-26)
+
+### Features
+
+- **device:** better bluetooth states ([cdcec04](https://github.com/CCXXXI/ecg_monitor/commit/cdcec043c20b2add650afa96aa8b8a8e14df1d9c))
+- **device:** connect to HA301B ([832ac14](https://github.com/CCXXXI/ecg_monitor/commit/832ac14b77d570fb9a6de3909dc9dc4b3de4d294))
+- **device:** get battery ([e28576c](https://github.com/CCXXXI/ecg_monitor/commit/e28576cf7d056ec551446ecabeb14ee24f0e4f38))
+- **device:** read ecg data from device ([a10d74a](https://github.com/CCXXXI/ecg_monitor/commit/a10d74a77f3b6aecabd5fff75a738c504a943fec))
+- **device:** show bluetooth devices ([a749707](https://github.com/CCXXXI/ecg_monitor/commit/a749707abd6e4ac7eb46c32f9008527b4dadb0f7))
+
+### Bug Fixes
+
+- **device:** auto connect on startup ([b1774e1](https://github.com/CCXXXI/ecg_monitor/commit/b1774e13654933dd04d6656d4287f21434499b58))
+- **device:** better icons ([0c2ecf4](https://github.com/CCXXXI/ecg_monitor/commit/0c2ecf4e0f66924d55b865821170f1aea1665f20))
+- **device:** correct fs of HA301B ([ac8aab2](https://github.com/CCXXXI/ecg_monitor/commit/ac8aab2b2261b38254e009e58684b08ab8763ebe))
+- **device:** filter unnamed devices ([6ef1cba](https://github.com/CCXXXI/ecg_monitor/commit/6ef1cba39bbd3677fa8134117fb18ed618400040))
+- **device:** hide rssi for DeviceList ([0911454](https://github.com/CCXXXI/ecg_monitor/commit/0911454dfcab8d2cc132ed74421fd8a0084aa17c))
+- **device:** no rssi displaying ([36c7f46](https://github.com/CCXXXI/ecg_monitor/commit/36c7f46d1c30128c90183d27d4a1a58d73a26a63))
+- **device:** remove card ([268295c](https://github.com/CCXXXI/ecg_monitor/commit/268295c3274593aaad4df42fef50444886f93f59))
+- **device:** show unique devices ([5a4f54b](https://github.com/CCXXXI/ecg_monitor/commit/5a4f54b78306f0a6a4ef4c86758aead2964ef179))
+- **device:** sort by rssi for DeviceList ([627a6b1](https://github.com/CCXXXI/ecg_monitor/commit/627a6b13f9ed472f76e8e438db656d815472be13))
+
+### Build System
+
+- flutter pub add flutter_reactive_ble ([7482070](https://github.com/CCXXXI/ecg_monitor/commit/74820705134653fb6c2a48e8fb59f390a8132577))
+- flutter pub add permission_handler ([1d32cad](https://github.com/CCXXXI/ecg_monitor/commit/1d32cadabf86a3a87ccc95d64ef62b4fe8d90892))
+
+### Code Refactoring
+
+- device_manager/ -&gt; device/ ([1315773](https://github.com/CCXXXI/ecg_monitor/commit/13157734b4ad5fafbe1dc33c1c36efc386c29787))
+- device/device_manager -&gt; device/manager ([5efc8cc](https://github.com/CCXXXI/ecg_monitor/commit/5efc8cc4033e717cd6d8fa97c8ac42fededd005e))
+- **device:** correct logger level ([c8511bb](https://github.com/CCXXXI/ecg_monitor/commit/c8511bb3fc04bfe3c5d42b5ea0d29e7e80179920))
+- **device:** Duration get \_tick =&gt; aSecond ~/ fs ([3322bc3](https://github.com/CCXXXI/ecg_monitor/commit/3322bc3c371e40bdf096154a45ef9d350a4dee39))
+- **device:** remove unused var ([8c1f6e0](https://github.com/CCXXXI/ecg_monitor/commit/8c1f6e03b1dcec9892718b4917cee776b9a0e7ef))
+- **device:** save UUIDs ([775b8f7](https://github.com/CCXXXI/ecg_monitor/commit/775b8f7274d5991c8fd813b00d6f1c56443d31ec))
+- **device:** Stream.empty() -&gt; null ([7a93327](https://github.com/CCXXXI/ecg_monitor/commit/7a933270816de8f39e3dbb3c385d41aef35bbe38))
+- init ble ([fcba109](https://github.com/CCXXXI/ecg_monitor/commit/fcba109791dfbddc7cb7ce74a4cba7f905cec609))
+- sync test dir ([8b55e02](https://github.com/CCXXXI/ecg_monitor/commit/8b55e02da3d66e257cb2c8b8a5660e94dacc7e84))
+
+### Miscellaneous Chores
+
+- require more permissions ([2a1f928](https://github.com/CCXXXI/ecg_monitor/commit/2a1f928fbc10cba7b4305a52c7c9781c41be3c06))
+- rerun build_runner ([484d023](https://github.com/CCXXXI/ecg_monitor/commit/484d02326fc218fd70cb93a526105940dda77093))
+
+## [0.36.1](https://github.com/CCXXXI/ecg_monitor/compare/v0.36.0...v0.36.1) (2023-04-25)
+
+### Bug Fixes
+
+- **deps:** update kotlin monorepo to v1.8.21 ([#318](https://github.com/CCXXXI/ecg_monitor/issues/318)) ([ec07aee](https://github.com/CCXXXI/ecg_monitor/commit/ec07aee30b9345b7a64f2bc03984efc9374c573f))
+
+## [0.36.0](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.6...v0.36.0) (2023-04-25)
+
+### Features
+
+- **history:** handle drag gesture ([b305c8a](https://github.com/CCXXXI/ecg_monitor/commit/b305c8a75fd339c9d3933f10cae9a6210e1ea12d))
+- **history:** handle scale gesture ([eec8b8c](https://github.com/CCXXXI/ecg_monitor/commit/eec8b8cc8ecb44a8d7a81df20196bf758607b2aa))
+- **real-time:** handle scale gesture ([6943e82](https://github.com/CCXXXI/ecg_monitor/commit/6943e82964457e589f669677fee24f8075873555))
+
+### Bug Fixes
+
+- **chart:** IgnorePointer -&gt; AbsorbPointer ([b6ac64e](https://github.com/CCXXXI/ecg_monitor/commit/b6ac64eee02a1a2e8799bdd796be2043d5155982))
+- **database:** fix isar init ([3e0975e](https://github.com/CCXXXI/ecg_monitor/commit/3e0975e2d9a225657f9c04ab2778e6eb9974250c))
+- **history:** correct empty cache ([0dddfeb](https://github.com/CCXXXI/ecg_monitor/commit/0dddfeb5aac14b13c4f3100f315013ea1a4e308a))
+
+### Performance Improvements
+
+- **history:** cache prev data ([abb136e](https://github.com/CCXXXI/ecg_monitor/commit/abb136efdd06dbd9f8003b014c90093a46f3df7a))
+
+### Miscellaneous Chores
+
+- run build_runner ([7a50814](https://github.com/CCXXXI/ecg_monitor/commit/7a5081497e0d2137cb8d948f499ffea603271c59))
+
+### Code Refactoring
+
+- **me:** add async ([8fb9697](https://github.com/CCXXXI/ecg_monitor/commit/8fb96970cdc64b6ace4fe054c049aef2b8429924))
+- **real-time:** remove unused params ([0985f85](https://github.com/CCXXXI/ecg_monitor/commit/0985f851d8956b79c67e9f11a8223610b2e5428e))
+- **real-time:** rename refreshIntervalMs ([02e5153](https://github.com/CCXXXI/ecg_monitor/commit/02e5153a11a4abbde202abe018593df607f2f401))
+
+### Build System
+
+- flutter pub add dev:path_provider_platform_interface ([64a631c](https://github.com/CCXXXI/ecg_monitor/commit/64a631c898f8e9ca78e60a41fbcd8dc6befd0ef9))
+- flutter pub add dev:plugin_platform_interface ([66e00e9](https://github.com/CCXXXI/ecg_monitor/commit/66e00e9fb92d0acb22a19ef882435766f9df951c))
+- upgrade deps ([c30b781](https://github.com/CCXXXI/ecg_monitor/commit/c30b781dbdb2f569c4ed86535290d335ceb16955))
+- upgrade riverpod manually ([73323e2](https://github.com/CCXXXI/ecg_monitor/commit/73323e26a6c49dafb19b6c8597bc6ae729c89eed))
+
+### Tests
+
+- FakePathProviderPlatform ([ac181d3](https://github.com/CCXXXI/ecg_monitor/commit/ac181d3563f564e9b46afe9ab93629d963a6a14f))
+
+## [0.35.6](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.5...v0.35.6) (2023-04-18)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.31 ([#312](https://github.com/CCXXXI/ecg_monitor/issues/312)) ([cc7c687](https://github.com/CCXXXI/ecg_monitor/commit/cc7c687ac12526ff3b9a565bf92ab6ebcee15084))
+
+## [0.35.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.4...v0.35.5) (2023-04-17)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency all_lint_rules_community to ^0.0.30 ([#310](https://github.com/CCXXXI/ecg_monitor/issues/310)) ([9a92a43](https://github.com/CCXXXI/ecg_monitor/commit/9a92a438e86ab49d265f3fb178fea490804bfb5b))
+
+## [0.35.4](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.3...v0.35.4) (2023-04-15)
+
+### Bug Fixes
+
+- **deps:** update dependency fl_chart to ^0.62.0 ([#309](https://github.com/CCXXXI/ecg_monitor/issues/309)) ([8e71896](https://github.com/CCXXXI/ecg_monitor/commit/8e71896fe61effb54c656a726ec47e2e8db1b082))
+
+### Code Refactoring
+
+- **label-card:** `void Function()` -&gt; `VoidCallback` ([#306](https://github.com/CCXXXI/ecg_monitor/issues/306)) ([6aae7f3](https://github.com/CCXXXI/ecg_monitor/commit/6aae7f3d93c261c3962a5da44e0cfb9f2a63cd88))
+
+## [0.35.3](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.2...v0.35.3) (2023-04-07)
+
+### Miscellaneous Chores
+
+- **deps:** update dependency flutter_launcher_icons to ^0.13.0 ([#304](https://github.com/CCXXXI/ecg_monitor/issues/304)) ([3dde9ff](https://github.com/CCXXXI/ecg_monitor/commit/3dde9ffb90465965af14923ac7195a45a2688d4c))
+
 ## [0.35.2](https://github.com/CCXXXI/ecg_monitor/compare/v0.35.1...v0.35.2) (2023-04-07)
 
 ### Bug Fixes

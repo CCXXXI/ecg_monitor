@@ -43,10 +43,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "一种异常的心律，心房和心室之间的电信号被延迟或阻断，可能导致心跳减缓和其他症状，如头晕、晕厥和呼吸急促。"),
         "autoGenerate": MessageLookupByLibrary.simpleMessage("自动生成"),
         "autoUpload": MessageLookupByLibrary.simpleMessage("自动上传"),
-        "backgroundColor": MessageLookupByLibrary.simpleMessage("背景颜色"),
         "battery": MessageLookupByLibrary.simpleMessage("电量"),
         "batteryUnknown": MessageLookupByLibrary.simpleMessage("电量未知"),
         "bluetoothConnected": MessageLookupByLibrary.simpleMessage("蓝牙已连接"),
+        "bluetoothConnecting":
+            MessageLookupByLibrary.simpleMessage("正在连接蓝牙设备……"),
         "bluetoothDisconnected": MessageLookupByLibrary.simpleMessage("蓝牙已断开"),
         "bluetoothRssi": m0,
         "bluetoothSearching":
@@ -72,7 +73,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "leadI": MessageLookupByLibrary.simpleMessage("I 导联"),
         "leadII": MessageLookupByLibrary.simpleMessage("II 导联"),
         "leadIII": MessageLookupByLibrary.simpleMessage("III 导联"),
-        "lineColor": MessageLookupByLibrary.simpleMessage("折线颜色"),
         "lineTypeFull": MessageLookupByLibrary.simpleMessage("完整"),
         "lineTypeHide": MessageLookupByLibrary.simpleMessage("隐藏"),
         "lineTypeSimple": MessageLookupByLibrary.simpleMessage("简化"),

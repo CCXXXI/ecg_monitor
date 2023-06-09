@@ -7,7 +7,7 @@ part of 'database.dart';
 // **************************************************************************
 
 // coverage:ignore-file
-// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
 extension GetBeatCollection on Isar {
   IsarCollection<Beat> get beats => this.collection();
@@ -72,7 +72,7 @@ const BeatSchema = CollectionSchema(
   getId: _beatGetId,
   getLinks: _beatGetLinks,
   attach: _beatAttach,
-  version: '3.0.5',
+  version: '3.1.0+1',
 );
 
 int _beatEstimateSize(
@@ -784,7 +784,7 @@ extension BeatQueryProperty on QueryBuilder<Beat, Beat, QQueryProperty> {
 }
 
 // coverage:ignore-file
-// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
 extension GetSamplePointCollection on Isar {
   IsarCollection<SamplePoint> get samplePoints => this.collection();
@@ -816,7 +816,7 @@ const SamplePointSchema = CollectionSchema(
   getId: _samplePointGetId,
   getLinks: _samplePointGetLinks,
   attach: _samplePointAttach,
-  version: '3.0.5',
+  version: '3.1.0+1',
 );
 
 int _samplePointEstimateSize(
@@ -1265,7 +1265,7 @@ extension SamplePointQueryProperty
 }
 
 // coverage:ignore-file
-// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
+// ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
 extension GetFakeSamplePointCollection on Isar {
   IsarCollection<FakeSamplePoint> get fakeSamplePoints => this.collection();
@@ -1297,7 +1297,7 @@ const FakeSamplePointSchema = CollectionSchema(
   getId: _fakeSamplePointGetId,
   getLinks: _fakeSamplePointGetLinks,
   attach: _fakeSamplePointAttach,
-  version: '3.0.5',
+  version: '3.1.0+1',
 );
 
 int _fakeSamplePointEstimateSize(

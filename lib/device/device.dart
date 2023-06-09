@@ -1,8 +1,10 @@
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../utils/database.dart";
 import "../utils/strings.dart";
+import "bluetooth.dart";
 import "fake_device.dart";
 
 part "device.freezed.dart";
@@ -36,10 +38,7 @@ abstract class Device {
   /// Sampling Frequency
   int get fs;
 
-  Stream<bool> get connectedStream;
-
-  /// Received Signal Strength Indication
-  Stream<int> get rssiStream;
+  Stream<DeviceConnectionState> get stateStream;
 
   Stream<int> get batteryStream;
 
@@ -51,10 +50,13 @@ class CurrentDevice extends _$CurrentDevice {
   @override
   Device? build() {
     final id = prefs.getString(K.currentDeviceId);
+    if (id == null) {
+      return null;
+    }
     if (id == fakeDevice.id) {
       return fakeDevice;
     }
-    return null;
+    return HA301B(id: id, name: prefs.getString(K.currentDeviceName)!);
   }
 
   // ignore: use_setters_to_change_properties
@@ -63,22 +65,20 @@ class CurrentDevice extends _$CurrentDevice {
       await prefs.remove(K.currentDeviceId);
     } else {
       await prefs.setString(K.currentDeviceId, device.id);
+      await prefs.setString(K.currentDeviceName, device.name);
     }
     state = device;
   }
 }
 
 @riverpod
-Stream<int> rssi(RssiRef ref) =>
-    ref.watch(currentDeviceProvider)?.rssiStream ?? const Stream.empty();
-
-@riverpod
 Stream<int> battery(BatteryRef ref) =>
     ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
 
 @riverpod
-Stream<bool> connected(ConnectedRef ref) =>
-    ref.watch(currentDeviceProvider)?.connectedStream ?? Stream.value(false);
+Stream<DeviceConnectionState> connectionState(ConnectionStateRef ref) =>
+    ref.watch(currentDeviceProvider)?.stateStream ??
+    Stream.value(DeviceConnectionState.disconnected);
 
 @riverpod
 Stream<EcgData> ecg(EcgRef ref) =>

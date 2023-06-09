@@ -51,8 +51,6 @@ void main() {
             pointsII: const [],
             pointsIII: const [],
             duration: aSecond,
-            backgroundColor: Colors.white,
-            lineColor: Colors.black,
             gridColor: Colors.black,
             horizontalLineType: LineType.full,
             verticalLineType: LineType.full,
@@ -68,15 +66,15 @@ void main() {
     expect(find.text(s.leadIII), findsOneWidget);
 
     // resets the screen to its original size after the test end
-    addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
+    addTearDown(tester.view.resetPhysicalSize);
 
     // portrait chart
-    tester.binding.window.physicalSizeTestValue = const Size(1000, 2000);
+    tester.view.physicalSize = const Size(1000, 2000);
     await tester.pumpAndSettle();
     expect(find.byType(LineChart), findsNWidgets(3));
 
     // landscape chart
-    tester.binding.window.physicalSizeTestValue = const Size(2000, 1000);
+    tester.view.physicalSize = const Size(2000, 1000);
     await tester.pumpAndSettle();
     expect(find.byType(LineChart), findsOneWidget);
   });

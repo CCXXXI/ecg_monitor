@@ -14,6 +14,9 @@ extension DurationToSecondsString on Duration {
   String toMsString() => "$inMilliseconds ms";
 }
 
+const chartDurationLowerLimit = aSecond;
+final chartDurationUpperLimit = aSecond * 10;
+
 @swidget
 Widget _chartSettings(
   BuildContext context, {
@@ -23,10 +26,6 @@ Widget _chartSettings(
   required void Function(Duration) onPortraitDurationChanged,
   required Duration landscapeDuration,
   required void Function(Duration) onLandscapeDurationChanged,
-  required Color backgroundColor,
-  required void Function(Color) onBackgroundColorChanged,
-  required Color lineColor,
-  required void Function(Color) onLineColorChanged,
   required Color gridColor,
   required void Function(Color) onGridColorChanged,
   required LineType horizontalLineType,
@@ -34,6 +33,7 @@ Widget _chartSettings(
   required LineType verticalLineType,
   required void Function(LineType) onVerticalLineTypeChanged,
   required bool showDots,
+  // ignore: avoid_positional_boolean_parameters
   required void Function(bool) onShowDotsChanged,
   required bool showDevTools,
 }) {
@@ -62,12 +62,10 @@ Widget _chartSettings(
       return initialDuration;
     }
 
-    final lowerLimit = aMillisecond * 100;
-    final upperLimit = aSecond * 10;
     return Duration(
       milliseconds: duration.inMilliseconds.clamp(
-        lowerLimit.inMilliseconds,
-        upperLimit.inMilliseconds,
+        chartDurationLowerLimit.inMilliseconds,
+        chartDurationUpperLimit.inMilliseconds,
       ),
     );
   }
@@ -139,22 +137,6 @@ Widget _chartSettings(
         trailing: Text(landscapeDuration.toMsString()),
         onTap: () async => onLandscapeDurationChanged(
           await pickDuration(landscapeDuration),
-        ),
-      ),
-      ListTile(
-        leading: const Icon(Icons.color_lens_outlined),
-        title: Text(s.backgroundColor),
-        trailing: ColorIndicator(color: backgroundColor, hasBorder: true),
-        onTap: () async => onBackgroundColorChanged(
-          await pickColor(backgroundColor),
-        ),
-      ),
-      ListTile(
-        leading: const Icon(Icons.show_chart_outlined),
-        title: Text(s.lineColor),
-        trailing: ColorIndicator(color: lineColor, hasBorder: true),
-        onTap: () async => onLineColorChanged(
-          await pickColor(lineColor),
         ),
       ),
       ListTile(

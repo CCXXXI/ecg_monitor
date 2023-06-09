@@ -46,13 +46,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "A condition where the electrical signals between the atria and ventricles are delayed or blocked, which can result in a slower heart rate and other symptoms such as dizziness, fainting, and shortness of breath."),
         "autoGenerate": MessageLookupByLibrary.simpleMessage("Auto generate"),
         "autoUpload": MessageLookupByLibrary.simpleMessage("Auto upload"),
-        "backgroundColor":
-            MessageLookupByLibrary.simpleMessage("Background color"),
         "battery": MessageLookupByLibrary.simpleMessage("Battery"),
         "batteryUnknown":
             MessageLookupByLibrary.simpleMessage("Battery unknown"),
         "bluetoothConnected":
             MessageLookupByLibrary.simpleMessage("Bluetooth connected"),
+        "bluetoothConnecting":
+            MessageLookupByLibrary.simpleMessage("Bluetooth connecting ..."),
         "bluetoothDisconnected":
             MessageLookupByLibrary.simpleMessage("Bluetooth disconnected"),
         "bluetoothRssi": m0,
@@ -83,7 +83,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "leadI": MessageLookupByLibrary.simpleMessage("Lead I"),
         "leadII": MessageLookupByLibrary.simpleMessage("Lead II"),
         "leadIII": MessageLookupByLibrary.simpleMessage("Lead III"),
-        "lineColor": MessageLookupByLibrary.simpleMessage("Line color"),
         "lineTypeFull": MessageLookupByLibrary.simpleMessage("full"),
         "lineTypeHide": MessageLookupByLibrary.simpleMessage("hide"),
         "lineTypeSimple": MessageLookupByLibrary.simpleMessage("simp."),

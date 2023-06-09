@@ -42,11 +42,6 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           landscapeDuration: ref.watch(realTimeLandscapeDurationProvider),
           onLandscapeDurationChanged:
               ref.read(realTimeLandscapeDurationProvider.notifier).set,
-          backgroundColor: ref.watch(realTimeBackgroundColorProvider),
-          onBackgroundColorChanged:
-              ref.read(realTimeBackgroundColorProvider.notifier).set,
-          lineColor: ref.watch(realTimeLineColorProvider),
-          onLineColorChanged: ref.read(realTimeLineColorProvider.notifier).set,
           gridColor: ref.watch(realTimeGridColorProvider),
           onGridColorChanged: ref.read(realTimeGridColorProvider.notifier).set,
           horizontalLineType: ref.watch(realTimeHorizontalLineTypeProvider),
@@ -108,11 +103,6 @@ Widget _settings(BuildContext context, WidgetRef ref) {
           landscapeDuration: ref.watch(historyLandscapeDurationProvider),
           onLandscapeDurationChanged:
               ref.read(historyLandscapeDurationProvider.notifier).set,
-          backgroundColor: ref.watch(historyBackgroundColorProvider),
-          onBackgroundColorChanged:
-              ref.read(historyBackgroundColorProvider.notifier).set,
-          lineColor: ref.watch(historyLineColorProvider),
-          onLineColorChanged: ref.read(historyLineColorProvider.notifier).set,
           gridColor: ref.watch(historyGridColorProvider),
           onGridColorChanged: ref.read(historyGridColorProvider.notifier).set,
           horizontalLineType: ref.watch(historyHorizontalLineTypeProvider),

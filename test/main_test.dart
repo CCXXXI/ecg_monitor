@@ -4,12 +4,16 @@ import "package:ecg_monitor/utils/database.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:isar/isar.dart";
+import "package:path_provider_platform_interface/path_provider_platform_interface.dart";
 import "package:shared_preferences/shared_preferences.dart";
+
+import "fake_path_provider.dart";
 
 void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     await Isar.initializeIsarCore(download: true);
+    PathProviderPlatform.instance = FakePathProviderPlatform();
     await initDatabase();
   });
 

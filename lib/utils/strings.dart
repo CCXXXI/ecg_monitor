@@ -30,8 +30,6 @@ class K {
   static const landscapeDuration = "landscapeDuration";
   static const refreshRateHz = "refreshRateHz";
   static const minDistance = "minDistance";
-  static const backgroundColor = "backgroundColor";
-  static const lineColor = "lineColor";
   static const gridColor = "gridColor";
   static const horizontalLineType = "horizontalLineType";
   static const verticalLineType = "verticalLineType";
@@ -44,6 +42,7 @@ class K {
   static const autoGenerate = "autoGenerate";
 
   static const currentDeviceId = "currentDeviceId";
+  static const currentDeviceName = "currentDeviceName";
 
   static const showDevTools = "showDevTools";
   static const fakeDeviceOn = "fakeDeviceOn";
