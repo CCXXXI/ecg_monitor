@@ -2,10 +2,9 @@
 
 ## [0.37.6](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.5...v0.37.6) (2023-06-27)
 
-
 ### Bug Fixes
 
-* **deps:** update dependency go_router to v9 ([#350](https://github.com/CCXXXI/ecg_monitor/issues/350)) ([b80446f](https://github.com/CCXXXI/ecg_monitor/commit/b80446f231524edc3e66ac95407d1c18e85c7776))
+- **deps:** update dependency go_router to v9 ([#350](https://github.com/CCXXXI/ecg_monitor/issues/350)) ([b80446f](https://github.com/CCXXXI/ecg_monitor/commit/b80446f231524edc3e66ac95407d1c18e85c7776))
 
 ## [0.37.5](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.4...v0.37.5) (2023-06-08)
 
