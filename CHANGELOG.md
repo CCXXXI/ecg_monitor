@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.37.8](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.7...v0.37.8) (2023-06-29)
+
+### Build System
+
+- flutter pub upgrade ([9699f3e](https://github.com/CCXXXI/ecg_monitor/commit/9699f3e25300ceac1b494a9052263b7fe8ba61ac))
+- remove ios ([f23fe8a](https://github.com/CCXXXI/ecg_monitor/commit/f23fe8aa918062e958d7d1526df8017cf3e2477d))
+
 ## [0.37.7](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.6...v0.37.7) (2023-06-29)
 
 ### Bug Fixes
