@@ -98,7 +98,7 @@ Widget __chart(
         if (isPortrait) Text(title),
         Expanded(
           child: LineChart(
-            swapAnimationDuration: Duration.zero, // disable animation
+            duration: Duration.zero, // disable animation
             LineChartData(
               minX: points.isEmpty
                   ? null
@@ -111,10 +111,10 @@ Widget __chart(
                   ? null
                   : points.map((p) => p.y).reduce(max) + smallYInterval,
               titlesData: FlTitlesData(
-                topTitles: AxisTitles(),
+                topTitles: const AxisTitles(),
                 bottomTitles: bottomTitles,
                 leftTitles: leftTitles,
-                rightTitles: AxisTitles(),
+                rightTitles: const AxisTitles(),
               ),
               borderData: FlBorderData(show: false),
               gridData: FlGridData(
