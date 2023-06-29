@@ -111,10 +111,10 @@ Widget __chart(
                   ? null
                   : points.map((p) => p.y).reduce(max) + smallYInterval,
               titlesData: FlTitlesData(
-                topTitles: AxisTitles(),
+                topTitles: const AxisTitles(),
                 bottomTitles: bottomTitles,
                 leftTitles: leftTitles,
-                rightTitles: AxisTitles(),
+                rightTitles: const AxisTitles(),
               ),
               borderData: FlBorderData(show: false),
               gridData: FlGridData(
