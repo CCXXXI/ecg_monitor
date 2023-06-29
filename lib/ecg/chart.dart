@@ -98,7 +98,7 @@ Widget __chart(
         if (isPortrait) Text(title),
         Expanded(
           child: LineChart(
-            swapAnimationDuration: Duration.zero, // disable animation
+            duration: Duration.zero, // disable animation
             LineChartData(
               minX: points.isEmpty
                   ? null
