@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.37.7](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.6...v0.37.7) (2023-06-29)
+
+### Bug Fixes
+
+- **chart:** swapAnimationDuration -&gt; duration ([a26a02c](https://github.com/CCXXXI/ecg_monitor/commit/a26a02cfee2d6d242ccf232e95f97b4f04b9830b))
+- **deps:** update dependency fl_chart to ^0.63.0 ([67d16d0](https://github.com/CCXXXI/ecg_monitor/commit/67d16d06a0006afce2d99fd7ade89176bfa7d233))
+
+### Code Refactoring
+
+- **chart:** dart fix ([c64c11b](https://github.com/CCXXXI/ecg_monitor/commit/c64c11b79e60ed070b5e3a615f3c22d7ff2b00c5))
+
 ## [0.37.6](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.5...v0.37.6) (2023-06-27)
 
 ### Bug Fixes
