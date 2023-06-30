@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.37.9](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.8...v0.37.9) (2023-06-30)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency gradle to v7.6.2 ([#355](https://github.com/CCXXXI/ecg_monitor/issues/355)) ([2651217](https://github.com/CCXXXI/ecg_monitor/commit/265121780de620eb660d13daa9dc9fa6c38a765b))
+
 ## [0.37.8](https://github.com/CCXXXI/ecg_monitor/compare/v0.37.7...v0.37.8) (2023-06-29)
 
 ### Build System
