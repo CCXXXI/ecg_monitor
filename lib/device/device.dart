@@ -73,6 +73,8 @@ class CurrentDevice extends _$CurrentDevice {
       await prefs.setString(K.currentDeviceId, device.id);
       await prefs.setString(K.currentDeviceName, device.name);
     }
+
+    _logger.fine("CurrentDevice set to $device");
     state = device;
   }
 }
