@@ -80,14 +80,27 @@ class CurrentDevice extends _$CurrentDevice {
 }
 
 @riverpod
-Stream<int> battery(BatteryRef ref) =>
-    ref.watch(currentDeviceProvider)?.batteryStream ?? const Stream.empty();
+Stream<int> battery(BatteryRef ref) {
+  _logger.fine("Building Battery");
+  ref.onDispose(() => _logger.fine("Disposing Battery"));
+
+  return ref.watch(currentDeviceProvider)?.batteryStream ??
+      const Stream.empty();
+}
 
 @riverpod
-Stream<DeviceConnectionState> connectionState(ConnectionStateRef ref) =>
-    ref.watch(currentDeviceProvider)?.stateStream ??
-    Stream.value(DeviceConnectionState.disconnected);
+Stream<DeviceConnectionState> connectionState(ConnectionStateRef ref) {
+  _logger.fine("Building ConnectionState");
+  ref.onDispose(() => _logger.fine("Disposing ConnectionState"));
+
+  return ref.watch(currentDeviceProvider)?.stateStream ??
+      Stream.value(DeviceConnectionState.disconnected);
+}
 
 @riverpod
-Stream<EcgData> ecg(EcgRef ref) =>
-    ref.watch(currentDeviceProvider)?.ecgStream ?? const Stream.empty();
+Stream<EcgData> ecg(EcgRef ref) {
+  _logger.fine("Building Ecg");
+  ref.onDispose(() => _logger.fine("Disposing Ecg"));
+
+  return ref.watch(currentDeviceProvider)?.ecgStream ?? const Stream.empty();
+}
