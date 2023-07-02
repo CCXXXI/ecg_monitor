@@ -51,7 +51,7 @@ final ecgProvider = AutoDisposeStreamProvider<EcgData>.internal(
 );
 
 typedef EcgRef = AutoDisposeStreamProviderRef<EcgData>;
-String _$currentDeviceHash() => r'c30d92a24e6280eb7ba4c8cd4fca5196c6e3f33c';
+String _$currentDeviceHash() => r'24435b6723fa49f7721fab65f87c5ccacb74d8c7';
 
 /// See also [CurrentDevice].
 @ProviderFor(CurrentDevice)
