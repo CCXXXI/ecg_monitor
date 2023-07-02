@@ -1,5 +1,6 @@
-import "package:flutter_reactive_ble/flutter_reactive_ble.dart";
+import "package:flutter_reactive_ble/flutter_reactive_ble.dart" hide Logger;
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:logging/logging.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 import "../utils/database.dart";
@@ -9,6 +10,8 @@ import "fake_device.dart";
 
 part "device.freezed.dart";
 part "device.g.dart";
+
+final _logger = Logger("Device");
 
 @freezed
 class EcgData with _$EcgData {
@@ -49,6 +52,9 @@ abstract class Device {
 class CurrentDevice extends _$CurrentDevice {
   @override
   Device? build() {
+    _logger.fine("Building CurrentDevice");
+    ref.onDispose(() => _logger.fine("Disposing CurrentDevice"));
+
     final id = prefs.getString(K.currentDeviceId);
     if (id == null) {
       return null;
