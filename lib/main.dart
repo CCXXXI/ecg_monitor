@@ -3,6 +3,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:flutter_ume/flutter_ume.dart";
 import "package:functional_widget_annotation/functional_widget_annotation.dart";
+import "package:logging/logging.dart";
 import "package:sentry_flutter/sentry_flutter.dart";
 import "package:sentry_logging/sentry_logging.dart";
 
@@ -17,6 +18,8 @@ import "utils/router.dart";
 import "utils/strings.dart";
 
 part "main.g.dart";
+
+final _logger = Logger("Main");
 
 /// The root widget of the app.
 /// Wrap [AppCore] with multiple Widgets to provide additional functionality.
@@ -34,6 +37,7 @@ Widget _app(BuildContext context) => SentryScreenshotWidget(
 /// With no additional functionality for testing purposes.
 @cwidget
 Widget _appCore(BuildContext context, WidgetRef ref) {
+  _logger.fine("Building AppCore");
   ref.listen(ecgProvider.future, (_, data) async => data.then(writeEcgData));
 
   return MaterialApp.router(
